@@ -150,19 +150,42 @@
             </mat-form-field>
           </form>
           &nbsp;&nbsp;&nbsp; {{ 'Translate between yet another set' | translate }} <mat-icon aria-hidden="false" aria-label="Yet another set to translate">add_circle_outline</mat-icon><br/><br/>
-          <!-- Tab delete : https://stackblitz.com/angular/eardvdpkrkgy?file=app%2Ftab-group-dynamic-example.html -->
-        </div>
+          <!--Tab delete : https://stackblitz.com/angular/eardvdpkrkgy?file=app%2Ftab-group-dynamic-example.html-->
+      </div>
+      <!--iframe id="translateId"
+        title="Translation English-Italian"
+        width="99%"
+        height="500px"
+        src="https://translate.google.com/?sl=it&tl=en&op=translate"
+        scrolling="yes">
+      </iframe-->
     </mat-tab>
     <mat-tab label="{{ 'Dictionary' | translate }}">
-        
+      <iframe id="dictionaryId"
+        title="Dictionary English-Italian"
+        width="99%"
+        height="500px"
+        src="https://en.bab.la/dictionary/"
+        scrolling="yes">
+      </iframe>
     </mat-tab>
     <mat-tab label="{{ 'Thesaurus' | translate }}">
-        
+      <iframe id="thesaurusId"
+        title="Thesaurus Italian"
+        width="99%"
+        height="500px"
+        src="https://synonyms.reverso.net/sinonimi/it/"
+        scrolling="yes">
+      </iframe>
     </mat-tab>
     <mat-tab label="{{ 'Linguistic' | translate }} {{ 'Information' | translate }}">
-      {{ 'used to write' | translate }} Romance, Anglo-Saxon, Celtic, Gaellic, Germanic, Gothic, Scandinavian, Baltic, Balkan, Cyrillic, Greek, Berber, Armenian, Georgian, Mongolic, Turkic, many African, Austronesian & Polynesian {{ 'languages' | translate }} {{ 'and' | translate }} {{ 'more' | translate }}. <br/> &nbsp;&nbsp;
-      {{ 'used to write' | translate }} Arabic Hebrew Persian Aramaic Syriac {{ 'and' | translate }} {{ 'more' | translate }}.
-      Info from URL like Decode Unicode/Script Source/Wikipedia/Ancient Scripts/Atlas of Endangered Alphabets : https://decodeunicode.org/en/scripts/thaana#thaana
+      <iframe id="linguisticInfoId"
+          title="Linguistic Info Italian"
+          width="99%"
+          height="500px"
+          src="https://omniglot.com/writing/italian.htm"
+          scrolling="yes">
+      </iframe>
     </mat-tab>
 </mat-tab-group>
 <div class="keyboard-container" dir="ltr">
