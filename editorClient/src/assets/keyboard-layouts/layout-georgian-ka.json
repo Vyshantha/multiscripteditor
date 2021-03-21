@@ -1,0 +1,52 @@
+[
+    {"row":[
+        {"value": "ა", "action": "char"},
+        {"value": "ბ", "action": "char"},
+        {"value": "გ", "action": "char"},
+        {"value": "დ", "action": "char"},
+        {"value": "ე", "action": "char"},
+        {"value": "ვ", "action": "char"},
+        {"value": "ზ", "action": "char"},
+        {"value": "თ", "action": "char"},
+        {"value": "ი", "action": "char"},
+        {"value": "კ", "action": "char"},
+        {"value": "ლ", "action": "char"},
+        {"value": "მ", "action": "char"},
+        {"value": "ნ", "action": "char"},
+        {"value": "ო", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "პ", "action": "char"},
+        {"value": "ჟ", "action": "char"},
+        {"value": "რ", "action": "char"},
+        {"value": "ს", "action": "char"},
+        {"value": "ტ", "action": "char"},
+        {"value": "უ", "action": "char"},
+        {"value": "ფ", "action": "char"},
+        {"value": "ქ", "action": "char"},
+        {"value": "ღ", "action": "char"},
+        {"value": "ყ", "action": "char"},
+        {"value": "შ", "action": "char"},
+        {"value": "ჩ", "action": "char"},
+        {"value": "ც", "action": "char"},
+        {"value": "ძ", "action": "char"}
+    ]},{"row":[
+        {"value": "წ", "action": "char"},
+        {"value": "ჭ", "action": "char"},
+        {"value": "ხ", "action": "char"},
+        {"value": "ჯ", "action": "char"},
+        {"value": "ჰ", "action": "char"},
+        {"value": "ჱ", "action": "char", "type": "unused"},
+        {"value": "ჲ", "action": "char", "type": "unused"},
+        {"value": "ჳ", "action": "char", "type": "unused"},
+        {"value": "ჴ", "action": "char", "type": "unused"},
+        {"value": "ჵ", "action": "char", "type": "unused"},
+        {"value": "\u10DA", "action": "char"},
+        {"value": "჻", "action": "char"},
+        {"value": "ჼ", "action": "char"},
+        {"value": "ჽ", "action": "char"},
+        {"value": "ჾ", "action": "char"},
+        {"value": "ჿ", "action": "char"},
+        {"value": "₾", "action": "char"}
+    ]}
+]

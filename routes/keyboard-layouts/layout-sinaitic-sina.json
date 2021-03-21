@@ -1,0 +1,34 @@
+[
+    {"row":[
+        {"value": "𐡌", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Proto-semiticM-01.svg"},
+        {"value": "𐡋", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/7/7c/Proto-semiticL-01.svg"},
+        {"value": "𐡊", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Proto-semiticK-01.svg"},
+        {"value": "𐡉", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/3/31/Proto-semiticI-01.svg"},
+        {"value": "𐡉", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/4/40/Proto-semiticI-02.svg"},
+        {"value": "𐡈", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Proto-semiticTet-01.png"},
+        {"value": "𐡇", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Proto-semiticH-01.svg"},
+        {"value": "𐡆", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/0/00/Proto-semiticZ-01.svg"},
+        {"value": "𐡅", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Proto-semiticW-01.svg"},
+        {"value": "𐡄", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Proto-semiticE-01.svg"},
+        {"value": "𐡃", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/9/98/Proto-semiticD-02.svg"},
+        {"value": "𐡂", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/7/75/Proto-semiticG-01.svg"},
+        {"value": "𐡁", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Proto-semiticB-01.svg"},
+        {"value": "𐡀", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Proto-semiticA-01.svg"}
+    ]},
+    {"row":[
+        {"value": "𐡕", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Proto-semiticT-01.svg"},
+        {"value": "𐡔", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Proto-semiticS-01.svg"},
+        {"value": "𐡔", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Shamash.svg"},
+        {"value": "𐡓", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Proto-semiticR-01.svg"},
+        {"value": "𐡒", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/9/91/Proto-semiticQ-01.svg"},
+        {"value": "𐡑", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/e/e0/SemiticTsade-002.png"},
+        {"value": "𐡑", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/4/40/SemiticTsade-001.png"},
+        {"value": "𐡑", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Proto-Canaanite_letter_sad.svg"},
+        {"value": "𐡐", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/1/12/Proto-semiticP-01.svg"},
+        {"value": "𐡏", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Ghayn.svg"},
+        {"value": "𐡏", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/2/20/Proto-semiticO-01.svg"},
+        {"value": "𐡎", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/1/10/Proto-semiticX-01.svg"},
+        {"value": "𐡎", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/0/03/Proto-Canaanite_letter_samek.svg"},
+        {"value": "𐡍", "action": "char", "src": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Proto-semiticN-01.svg"}
+    ]}
+]

@@ -1,0 +1,36 @@
+<div [ngClass]="[ isDarkTheme === true ? 'dark-theme' : ( isLightTheme === true ? 'light-theme' : 'cdk-high-contrast-theme') ]">
+    <app-tool-bar-actions *ngIf="headerVisible"></app-tool-bar-actions>
+    <br *ngIf="headerVisible"/><br *ngIf="headerVisible"/><br *ngIf="headerVisible"/>
+
+    <app-rich-text-editor></app-rich-text-editor>
+
+    <div #openSettings>
+        <mat-divider style="background-color: black;"></mat-divider>
+        <br/>
+        <app-service-for-keyboard></app-service-for-keyboard>
+        <br/> 
+    </div>
+
+    <mat-divider style="background-color: black;"></mat-divider>
+
+    <app-keyboard-layouts></app-keyboard-layouts>
+
+    <mat-expansion-panel (opened)="urlLanguageInfo = true"
+                            (closed)="urlLanguageInfo = false">
+        <mat-expansion-panel-header>
+        <mat-panel-title>
+            <mat-icon>info</mat-icon> &nbsp;&nbsp;&nbsp; <b>How to access this Keyboard, what is my URL?</b>
+        </mat-panel-title>
+        <mat-panel-description>
+            <b>How to see this page in my Language?</b>
+        </mat-panel-description>
+        </mat-expansion-panel-header> 
+        <mat-card style="font-size: 0.8rem;"><mat-icon>keyboard</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'Use this' | translate }} <a href="{{currentURL}}" target="_blank">{{currentURL}}</a> {{ 'or' | translate }} <a href="{{alternativeURL}}" target="_blank">{{alternativeURL}}</a> {{ 'URL to access this Keyboard directly next time' | translate }}. {{ 'Keyboard is build as per' | translate }} <a href="https://www.unicode.org/charts/PDF/U0900.pdf">Unicode</a></mat-card>
+
+        <mat-card *ngIf="isSupportedLocale" style="font-size: 0.8rem;"><mat-icon>language</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'You may also access this URL' | translate }} <a href="{{alternativeURL}}" target="_blank">{{alternativeURL}}</a> {{ 'or' | translate }} <a href="{{alternativeURL}}" target="_blank">{{endemicURL}}</a> {{ 'to view screen and keyboard in that language' | translate }}.</mat-card>
+    </mat-expansion-panel>
+    <br/>
+    <app-translator-options *ngIf="onlineOnly"></app-translator-options>
+    
+    <app-foot-info-bar *ngIf="footerVisible"></app-foot-info-bar>
+</div>

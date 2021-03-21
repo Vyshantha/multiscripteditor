@@ -1,0 +1,39 @@
+[
+    {"row":[
+        {"value": "ᨀ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨁ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨂ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨃ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨄ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨅ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨆ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨇ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨈ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨉᚐ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨊ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨋ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨌ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨍ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨎ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨏ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨐ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨑ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨒ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨓ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨔ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨕ", "action": "char", "type": "vyanjana"},
+        {"value": "ᨖ", "action": "char", "type": "vyanjana"}
+    ]},
+    {"row":[
+        {"value": "ꦂ", "action": "char", "type" : "swara", "src": "https://upload.wikimedia.org/wikipedia/commons/0/01/Buginese_Diacritic_vowel_killer.png"},
+        {"value": "◌ᨗ", "action": "char", "type" : "swara"},
+        {"value": "◌ᨘ", "action": "char", "type" : "swara"},
+        {"value": "ᨙ◌", "action": "char", "type" : "swara"},
+        {"value": "◌ᨚ", "action": "char", "type" : "swara"},
+        {"value": "◌ᨛ", "action": "char", "type" : "swara"},
+        {"value": "ॅ", "action": "char", "type" : "swara", "src": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Buginese_Diacritic_nasalizer.png"},
+        {"value": "ꦁ", "action": "char", "type" : "swara", "src": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Buginese_Diacritic_glottal.png"},
+        {"value": "᨞", "action": "char"},
+        {"value": "᨟", "action": "char"}
+    ]}
+]

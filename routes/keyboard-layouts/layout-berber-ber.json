@@ -1,0 +1,64 @@
+[
+    {"row":[
+        {"value": "l", "action": "char", "src": "./assets/characters/ber/9.png"},
+        {"value": "k", "action": "char", "src": "./assets/characters/ber/26.png"},
+        {"value": "y", "action": "char", "src": "./assets/characters/ber/25.png"},
+        {"value": "ṭḍ", "action": "char", "src": "./assets/characters/ber/24.png"},
+        {"value": "ẖ", "action": "char", "src": "./assets/characters/ber/15.png"},
+        {"value": "z̄", "action": "char", "src": "./assets/characters/ber/13.png"},
+        {"value": "ž", "action": "char", "src": "./assets/characters/ber/11.png"},
+        {"value": "z", "action": "char", "src": "./assets/characters/ber/10.png"},
+        {"value": "w", "action": "char", "src": "./assets/characters/ber/7.png"},
+        {"value": "d", "action": "char", "src": "./assets/characters/ber/5.png"},
+        {"value": "ǧ", "action": "char", "src": "./assets/characters/ber/49.png"},
+        {"value": "b", "action": "char", "src": "./assets/characters/ber/2.png"},
+        {"value": "'", "action": "char", "src": "./assets/characters/ber/1.png"}
+    ]},
+    {"row":[
+        {"value": "tˤ", "action": "char", "src": "./assets/characters/ber/45.png"},
+        {"value": "θ̱", "action": "char", "src": "./assets/characters/ber/51.png"},
+        {"value": "š", "action": "char", "src": "./assets/characters/ber/40.png"},
+        {"value": "r", "action": "char", "src": "./assets/characters/ber/39.png"},
+        {"value": "f", "action": "char", "src": "./assets/characters/ber/36.png"},
+        {"value": "ǵ", "action": "char", "src": "./assets/characters/ber/50.png"},
+        {"value": "sˤ", "action": "char", "src": "./assets/characters/ber/30.png"},
+        {"value": "s", "action": "char", "src": "./assets/characters/ber/23.png"},
+        {"value": "n", "action": "char", "src": "./assets/characters/ber/29.png"},
+        {"value": "m", "action": "char", "src": "./assets/characters/ber/28.png"}
+    ]},
+    {"row":[
+        {"value": "t", "action": "char", "src": "./assets/characters/ber/46.png"},
+        {"value": "f", "action": "char", "src": "./assets/characters/ber/36.png"},
+        {"value": "m", "action": "char", "src": "./assets/characters/ber/54.png"},
+        {"value": "ẖ", "action": "char", "src": "./assets/characters/ber/53.png"},
+        {"value": "h", "action": "char", "src": "./assets/characters/ber/8.png"}
+    ]},
+    {"row":[
+        {"value": "θ̱", "action": "char", "src": "./assets/characters/ber/44.png"},
+        {"value": "ǵ", "action": "char", "src": "./assets/characters/ber/55.png"},
+        {"value": "l", "action": "char", "src": "./assets/characters/ber/20.png"},
+        {"value": "ž", "action": "char", "src": "./assets/characters/ber/14.png"},
+        {"value": "d", "action": "char", "src": "./assets/characters/ber/6.png"}
+    ]},
+    {"row":[
+        {"value": "š", "action": "char", "src": "./assets/characters/ber/57.png"},
+        {"value": "sˤ", "action": "char", "src": "./assets/characters/ber/31.png"},
+        {"value": "k", "action": "char", "src": "./assets/characters/ber/19.png"},
+        {"value": "ž", "action": "char", "src": "./assets/characters/ber/12.png"},
+        {"value": "ǧ", "action": "char", "src": "./assets/characters/ber/3.png"}
+    ]},
+    {"row":[
+        {"value": "r", "action": "char", "src": "./assets/characters/ber/56.png"},
+        {"value": "s", "action": "char", "src": "./assets/characters/ber/23.png"},
+        {"value": "y", "action": "char", "src": "./assets/characters/ber/18.png"},
+        {"value": "z", "action": "char", "src": "./assets/characters/ber/10.png"},
+        {"value": "b", "action": "char", "src": "./assets/characters/ber/4.png"}
+    ]},
+    {"row":[
+        {"value": "q", "action": "char", "src": "./assets/characters/ber/37.png"},
+        {"value": "n", "action": "char", "src": "./assets/characters/ber/29.png"},
+        {"value": "ṭ ḍ", "action": "char", "src": "./assets/characters/ber/14.png"},
+        {"value": "w", "action": "char", "src": "./assets/characters/ber/9.png"},
+        {"value": "'", "action": "char", "src": "./assets/characters/ber/1.png"}
+    ]}
+]

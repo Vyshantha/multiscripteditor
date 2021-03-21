@@ -1,0 +1,54 @@
+[
+    {"row":[
+        {"value": "\ud803\udf38", "action": "char", "src":"./assets/characters/sog/9.png"},
+        {"value": "\ud803\udf37", "action": "char", "src":"./assets/characters/sog/8.png"},
+        {"value": "\ud803\udf36", "action": "char", "src":"./assets/characters/sog/7.png"},
+        {"value": "\ud803\udf35", "action": "char", "src":"./assets/characters/sog/6.png"},
+        {"value": "\ud803\udf34", "action": "char", "src":"./assets/characters/sog/5.png"},
+        {"value": "\ud803\udf33", "action": "char", "src":"./assets/characters/sog/4.png"},
+        {"value": "\ud803\udf32", "action": "char", "src":"./assets/characters/sog/3.png"},
+        {"value": "\ud803\udf31", "action": "char", "src":"./assets/characters/sog/2.png"},
+        {"value": "\ud803\udf30", "action": "char", "src":"./assets/characters/sog/1.png"}
+    ]},
+    {"row":[
+        {"value": "\ud803\udf3f", "action": "char", "src":"./assets/characters/sog/16.png"},
+        {"value": "\ud803\udf3e", "action": "char", "src":"./assets/characters/sog/15.png"},
+        {"value": "\ud803\udf3d", "action": "char", "src":"./assets/characters/sog/14.png"},
+        {"value": "\ud803\udf3c", "action": "char", "src":"./assets/characters/sog/13.png"},
+        {"value": "\ud803\udf3b", "action": "char", "src":"./assets/characters/sog/12.png"},
+        {"value": "\ud803\udf3a", "action": "char", "src":"./assets/characters/sog/11.png"},
+        {"value": "\ud803\udf39", "action": "char", "src":"./assets/characters/sog/10.png"}
+    ]},
+    {"row":[
+        {"value": "\ud803\udf45", "action": "char", "src":"./assets/characters/sog/22.png"},
+        {"value": "\ud803\udf44", "action": "char", "src":"./assets/characters/sog/21.png"},
+        {"value": "\ud803\udf43", "action": "char", "src":"./assets/characters/sog/20.png"},
+        {"value": "\ud803\udf42", "action": "char", "src":"./assets/characters/sog/19.png"},
+        {"value": "\ud803\udf41", "action": "char", "src":"./assets/characters/sog/18.png"},
+        {"value": "\ud803\udf40", "action": "char", "src":"./assets/characters/sog/17.png"}
+    ]},
+    {"row":[
+        {"value": "\ud803\udf50", "action": "char", "src":"./assets/characters/sog/33.png", "type": "swara"},
+        {"value": "\ud803\udf4f", "action": "char", "src":"./assets/characters/sog/32.png", "type": "swara"},
+        {"value": "\ud803\udf4e", "action": "char", "src":"./assets/characters/sog/31.png", "type": "swara"},
+        {"value": "\ud803\udf4d", "action": "char", "src":"./assets/characters/sog/30.png", "type": "swara"},
+        {"value": "\ud803\udf4c", "action": "char", "src":"./assets/characters/sog/29.png", "type": "swara"},
+        {"value": "\ud803\udf4b", "action": "char", "src":"./assets/characters/sog/28.png", "type": "swara"},
+        {"value": "\ud803\udf4a", "action": "char", "src":"./assets/characters/sog/27.png", "type": "swara"},
+        {"value": "\ud803\udf49", "action": "char", "src":"./assets/characters/sog/26.png", "type": "swara"},
+        {"value": "\ud803\udf48", "action": "char", "src":"./assets/characters/sog/25.png", "type": "swara"},
+        {"value": "\ud803\udf47", "action": "char", "src":"./assets/characters/sog/24.png", "type": "swara"},
+        {"value": "\ud803\udf46", "action": "char", "src":"./assets/characters/sog/23.png", "type": "swara"}
+    ]},
+    {"row":[
+        {"value": "\ud803\udf59", "action": "char", "src":"./assets/characters/sog/42.png"},
+        {"value": "\ud803\udf58", "action": "char", "src":"./assets/characters/sog/41.png"},
+        {"value": "\ud803\udf57", "action": "char", "src":"./assets/characters/sog/40.png"},
+        {"value": "\ud803\udf56", "action": "char", "src":"./assets/characters/sog/39.png"},
+        {"value": "\ud803\udf55", "action": "char", "src":"./assets/characters/sog/38.png"},
+        {"value": "\ud803\udf54", "action": "char", "src":"./assets/characters/sog/37.png"},
+        {"value": "\ud803\udf53", "action": "char", "src":"./assets/characters/sog/36.png"},
+        {"value": "\ud803\udf52", "action": "char", "src":"./assets/characters/sog/35.png"},
+        {"value": "\ud803\udf51", "action": "char", "src":"./assets/characters/sog/34.png"}
+    ]}
+]

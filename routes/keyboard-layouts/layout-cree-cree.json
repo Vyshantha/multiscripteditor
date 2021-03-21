@@ -1,0 +1,56 @@
+[
+    {"rowVert":[
+        {"value": "ᐊ", "action": "consonantvowel", "type": "swara"},
+        {"value": "ᐁ", "action": "consonantvowel", "type": "swara"},
+        {"value": "ᐃ", "action": "consonantvowel", "type": "swara"},
+        {"value": "ᐅ", "action": "consonantvowel", "type": "swara"}
+    ]},
+    {"rowVert":[
+        {"value": "ᐸ", "action": "consonant"},
+        {"value": "ᐯ", "action": "consonant"},
+        {"value": "ᐱ", "action": "consonant"},
+        {"value": "ᐳ", "action": "consonant"}
+    ]},
+    {"rowVert":[
+        {"value": "ᑕ", "action": "consonant"},
+        {"value": "ᑌ", "action": "consonant"},
+        {"value": "ᑎ", "action": "consonant"},
+        {"value": "ᑐ", "action": "consonant"}
+    ]},
+    {"rowVert":[
+        {"value": "ᑲ", "action": "consonant"},
+        {"value": "ᑫ", "action": "consonant"},
+        {"value": "ᑭ", "action": "consonant"},
+        {"value": "ᑯ", "action": "consonant"}
+    ]},
+    {"rowVert":[
+        {"value": "ᒐ", "action": "consonant"},
+        {"value": "ᒉ", "action": "consonant"},
+        {"value": "ᒋ", "action": "consonant"},
+        {"value": "ᒍ", "action": "consonant"}
+    ]},
+    {"rowVert":[
+        {"value": "ᒪ", "action": "consonant"},
+        {"value": "ᒣ", "action": "consonant"},
+        {"value": "ᒥ", "action": "consonant"},
+        {"value": "ᒧ", "action": "consonant"}
+    ]},
+    {"rowVert":[
+        {"value": "ᓇ", "action": "consonant"},
+        {"value": "ᓀ", "action": "consonant"},
+        {"value": "ᓂ", "action": "consonant"},
+        {"value": "ᓄ", "action": "consonant"}
+    ]},
+    {"rowVert":[
+        {"value": "ᓴ", "action": "consonant"},
+        {"value": "ᓭ", "action": "consonant"},
+        {"value": "ᓯ", "action": "consonant"},
+        {"value": "ᓱ", "action": "consonant"}
+    ]},
+    {"rowVert":[
+        {"value": "ᔭ", "action": "consonant"},
+        {"value": "ᔦ", "action": "consonant"},
+        {"value": "ᔨ", "action": "consonant"},
+        {"value": "ᔪ", "action": "consonant"}
+    ]}
+]

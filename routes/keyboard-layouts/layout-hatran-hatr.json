@@ -1,0 +1,34 @@
+[
+    {"row":[
+        {"value": "\ud802\udcea", "action": "char", "src":"./assets/characters/hatr/11.png"},
+        {"value": "\ud802\udce9", "action": "char", "src":"./assets/characters/hatr/10.png"},
+        {"value": "\ud802\udce8", "action": "char", "src":"./assets/characters/hatr/9.png"},
+        {"value": "\ud802\udce7", "action": "char", "src":"./assets/characters/hatr/8.png"},
+        {"value": "\ud802\udce6", "action": "char", "src":"./assets/characters/hatr/7.png"},
+        {"value": "\ud802\udce5", "action": "char", "src":"./assets/characters/hatr/6.png"},
+        {"value": "\ud802\udce4", "action": "char", "src":"./assets/characters/hatr/5.png"},
+        {"value": "\ud802\udce3", "action": "char", "src":"./assets/characters/hatr/4.png"},
+        {"value": "\ud802\udce2", "action": "char", "src":"./assets/characters/hatr/3.png"},
+        {"value": "\ud802\udce1", "action": "char", "src":"./assets/characters/hatr/2.png"},
+        {"value": "\ud802\udce0", "action": "char", "src":"./assets/characters/hatr/1.png"}
+    ]},
+    {"row":[
+        {"value": "\ud802\udcf5", "action": "char", "src":"./assets/characters/hatr/21.png"},
+        {"value": "\ud802\udcf4", "action": "char", "src":"./assets/characters/hatr/20.png"},
+        {"value": "\ud802\udcf2", "action": "char", "src":"./assets/characters/hatr/19.png"},
+        {"value": "\ud802\udcf1", "action": "char", "src":"./assets/characters/hatr/18.png"},
+        {"value": "\ud802\udcf0", "action": "char", "src":"./assets/characters/hatr/17.png"},
+        {"value": "\ud802\udcef", "action": "char", "src":"./assets/characters/hatr/16.png"},
+        {"value": "\ud802\udcee", "action": "char", "src":"./assets/characters/hatr/15.png"},
+        {"value": "\ud802\udced", "action": "char", "src":"./assets/characters/hatr/14.png"},
+        {"value": "\ud802\udcec", "action": "char", "src":"./assets/characters/hatr/13.png"},
+        {"value": "\ud802\udceb", "action": "char", "src":"./assets/characters/hatr/12.png"}
+    ]},
+    {"row": [
+        {"value": "\ud802\udcff", "action": "char", "src":"./assets/characters/hatr/26.png"},
+        {"value": "\ud802\udcfe", "action": "char", "src":"./assets/characters/hatr/25.png"},
+        {"value": "\ud802\udcfd", "action": "char", "src":"./assets/characters/hatr/24.png"},
+        {"value": "\ud802\udcfc", "action": "char", "src":"./assets/characters/hatr/23.png"},
+        {"value": "\ud802\udcfb", "action": "char", "src":"./assets/characters/hatr/22.png"}
+    ]}
+]

@@ -1,0 +1,39 @@
+[
+    {"row":[
+        {"value": "\ud802\udd8f", "action":"char", "src": "./assets/characters/mer/16.png"},
+        {"value": "\ud802\udd8e", "action":"char", "src": "./assets/characters/mer/15.png"},
+        {"value": "\ud802\udd8d", "action":"char", "src": "./assets/characters/mer/14.png"},
+        {"value": "\ud802\udd8c", "action":"char", "src": "./assets/characters/mer/13.png"},
+        {"value": "\ud802\udd8b", "action":"char", "src": "./assets/characters/mer/12.png"},
+        {"value": "\ud802\udd8a", "action":"char", "src": "./assets/characters/mer/11.png"},
+        {"value": "\ud802\udd89", "action":"char", "src": "./assets/characters/mer/10.png"},
+        {"value": "\ud802\udd88", "action":"char", "src": "./assets/characters/mer/9.png"},
+        {"value": "\ud802\udd87", "action":"char", "src": "./assets/characters/mer/8.png"},
+        {"value": "\ud802\udd86", "action":"char", "src": "./assets/characters/mer/7.png"},
+        {"value": "\ud802\udd85", "action":"char", "src": "./assets/characters/mer/6.png"},
+        {"value": "\ud802\udd84", "action":"char", "src": "./assets/characters/mer/5.png"},
+        {"value": "\ud802\udd83", "action":"char", "type": "swara", "src": "./assets/characters/mer/4.png"},
+        {"value": "\ud802\udd82", "action":"char", "type": "swara", "src": "./assets/characters/mer/3.png"},
+        {"value": "\ud802\udd81", "action":"char", "type": "swara", "src": "./assets/characters/mer/2.png"},
+        {"value": "\ud802\udd80", "action":"char", "type": "swara", "src": "./assets/characters/mer/1.png"}
+    ]},
+    {"row":[
+        {"value": ":"},
+        {"value": "\ud802\udd9f", "action":"char", "src": "./assets/characters/mer/32.png"},
+        {"value": "\ud802\udd9e", "action":"char", "src": "./assets/characters/mer/31.png"},
+        {"value": "\ud802\udd9d", "action":"char", "src": "./assets/characters/mer/30.png"},
+        {"value": "\ud802\udd9c", "action":"char", "src": "./assets/characters/mer/29.png"},
+        {"value": "\ud802\udd9b", "action":"char", "src": "./assets/characters/mer/28.png"},
+        {"value": "\ud802\udd9a", "action":"char", "src": "./assets/characters/mer/27.png"},
+        {"value": "\ud802\udd99", "action":"char", "src": "./assets/characters/mer/26.png"},
+        {"value": "\ud802\udd98", "action":"char", "src": "./assets/characters/mer/25.png"},
+        {"value": "\ud802\udd97", "action":"char", "src": "./assets/characters/mer/24.png"},
+        {"value": "\ud802\udd96", "action":"char", "src": "./assets/characters/mer/23.png"},
+        {"value": "\ud802\udd95", "action":"char", "src": "./assets/characters/mer/22.png"},
+        {"value": "\ud802\udd94", "action":"char", "src": "./assets/characters/mer/21.png"},
+        {"value": "\ud802\udd93", "action":"char", "src": "./assets/characters/mer/20.png"},
+        {"value": "\ud802\udd92", "action":"char", "src": "./assets/characters/mer/19.png"},
+        {"value": "\ud802\udd91", "action":"char", "src": "./assets/characters/mer/18.png"},
+        {"value": "\ud802\udd90", "action":"char", "src": "./assets/characters/mer/17.png"}
+    ]}
+]

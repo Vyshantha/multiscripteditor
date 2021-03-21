@@ -1,0 +1,77 @@
+[
+    {"rowVert":[
+        {"value": "ᖳ", "action": "consonantvowel", "type": "swara"},
+        {"value": "ᖰ", "action": "consonantvowel", "type": "swara"},
+        {"value": "ᖱ", "action": "consonantvowel", "type": "swara"},
+        {"value": "ᖲ", "action": "consonantvowel", "type": "swara"},
+        {"value": "\u00A0", "action": "char"}
+    ]},
+    {"rowVert":[
+        {"value": "ᑫ", "action": "consonant"},
+        {"value": "ᑭ", "action": "consonant"},
+        {"value": "ᑯ", "action": "consonant"},
+        {"value": "ᑲ", "action": "consonant"},
+        {"value": "ᐤ", "action": "char"}
+    ]},
+    {"rowVert":[
+        {"value": "ᒣ", "action": "consonant"},
+        {"value": "ᒥ", "action": "consonant"},
+        {"value": "ᒧ", "action": "consonant"},
+        {"value": "ᒪ", "action": "consonant"},
+        {"value": "ᐨ", "action": "char"}
+    ]},
+    {"rowVert":[
+        {"value": "ᖿ", "action": "consonant"},
+        {"value": "ᖼ", "action": "consonant"},
+        {"value": "ᖽ", "action": "consonant"},
+        {"value": "ᖽ", "action": "consonant"},
+        {"value": "ᘁ", "action": "char"}
+    ]},
+    {"rowVert":[
+        {"value": "ᒉ", "action": "consonant"},
+        {"value": "ᒋ", "action": "consonant"},
+        {"value": "ᒍ", "action": "consonant"},
+        {"value": "ᒐ", "action": "consonant"},
+        {"value": "ᐢ", "action": "char"}
+    ]},
+    {"rowVert":[
+        {"value": "ᖻ", "action": "consonant"},
+        {"value": "ᖸ", "action": "consonant"},
+        {"value": "ᖹ", "action": "consonant"},
+        {"value": "ᖺ", "action": "consonant"},
+        {"value": "ᐡ", "action": "char"}
+    ]},
+    {"rowVert":[
+        {"value": "ᓭ", "action": "consonant"},
+        {"value": "ᓯ", "action": "consonant"},
+        {"value": "ᓱ", "action": "consonant"},
+        {"value": "ᓴ", "action": "consonant"},
+        {"value": "ᔈ", "action": "char"},
+        {"value": "ᣟ", "action": "char"}
+    ]},
+    {"rowVert":[
+        {"value": "ᔦ", "action": "consonant"},
+        {"value": "ᔨ", "action": "consonant"},
+        {"value": "ᔪ", "action": "consonant"},
+        {"value": "ᔭ", "action": "consonant"},
+        {"value": "ᐟ", "action": "char"},
+        {"value": "ᐟ", "action": "char"}
+    ]},
+    {"rowVert":[
+        {"value": "ᖷ", "action": "consonant"},
+        {"value": "ᖴ", "action": "consonant"},
+        {"value": "ᖵ", "action": "consonant"},
+        {"value": "ᖶ", "action": "consonant"},
+        {"value": "ᐠ", "action": "char"},
+        {"value": "ᙾ", "action": "char"}
+    ]},
+    {"rowVert":[
+        {"value": "ᕁ", "action": "char"},
+        {"value": "ᑊ", "action": "consonant"},
+        {"value": "ᐦ", "action": "consonant"},
+        {"value": "ᖿᐧ", "action": "consonant"},
+        {"value": "ᒣᐧ", "action": "consonant"},
+        {"value": "ᖿᑉ", "action": "consonant"},
+        {"value": "ᖿᙾ", "action": "consonant"}
+    ]}
+]

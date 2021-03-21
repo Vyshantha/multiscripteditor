@@ -1,0 +1,44 @@
+[
+    {"row":[
+        {"value": "· −", "action": "char"},
+        {"value": "− · · ·", "action": "char"},
+        {"value": "− · − ·", "action": "char"},
+        {"value": "− · ·", "action": "char"},
+        {"value": "·", "action": "char"},
+        {"value": "· · − ·", "action": "char"},
+        {"value": "− − ·", "action": "char"},
+        {"value": "· · · ·", "action": "char"},
+        {"value": "· ·", "action": "char"},
+        {"value": "· − − −", "action": "char"},
+        {"value": "− · −", "action": "char"},
+        {"value": "· − · ·", "action": "char"},
+        {"value": "− −", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "− ·", "action": "char"},
+        {"value": "− − −", "action": "char"},
+        {"value": "· − − ·", "action": "char"},
+        {"value": "− − · −", "action": "char"},
+        {"value": "· − ·", "action": "char"},
+        {"value": "· · ·", "action": "char"},
+        {"value": "−", "action": "char"},
+        {"value": "· · −", "action": "char"},
+        {"value": "· · · −", "action": "char"},
+        {"value": "· − −", "action": "char"},
+        {"value": "− · · −", "action": "char"},
+        {"value": "− · − −", "action": "char"},
+        {"value": "− − · ·", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "− − − − −", "action": "char"},
+        {"value": "· − − − −", "action": "char"},
+        {"value": "· · − − −", "action": "char"},
+        {"value": "· · · − −", "action": "char"},
+        {"value": "· · · · −", "action": "char"},
+        {"value": "· · · · ·", "action": "char"},
+        {"value": "− · · · ·", "action": "char"},
+        {"value": "− − · · ·", "action": "char"},
+        {"value": "− − − · ·", "action": "char"},
+        {"value": "− − − − ·", "action": "char"}
+    ]}
+]

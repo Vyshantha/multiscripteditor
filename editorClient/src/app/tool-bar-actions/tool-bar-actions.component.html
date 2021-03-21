@@ -1,0 +1,145 @@
+<div class="toolbar" role="banner">
+    <img
+      width="20"
+      alt="Angular Logo"
+      src="./../assets/images/editor-icon-large.png"
+    />
+    <button mat-button><span style="color: black;font-size: 0.8rem;" (click)="swapToDarkTheme()">{{ 'Dark' | translate }}</span></button> <button mat-button style="font-size: 0.8rem; color: azure;" (click)="swapToLightTheme()">{{ 'Light' | translate }}</button> <button mat-button (click)="swapToHighContrastTheme()"><span style="color: greenyellow;font-size: 0.8rem;">{{ 'High Contrast' | translate }}</span></button>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;
+
+    <mat-form-field class="menuselect">
+      <mat-label>{{ 'Languages' | translate }} ...</mat-label>
+      <mat-select style="width: 450px;" [(value)]="localeUISelection">
+        <table>
+          <tr>
+            <td>
+              <mat-option value=" {{ 'Afrikaans' | translate }} " (click)="localeForUI('af')"> {{ 'Afrikaans' | translate }} </mat-option>
+              <mat-option value=" {{ 'Albanian' | translate }} " (click)="localeForUI('sq')"> {{ 'Albanian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Amharic' | translate }} " (click)="localeForUI('am')"> {{ 'Amharic' | translate }} </mat-option>
+              <mat-option value=" {{ 'Arabic' | translate }} " (click)="localeForUI('ar')"> {{ 'Arabic' | translate }} </mat-option>
+              <mat-option value=" {{ 'Armenian' | translate }} " (click)="localeForUI('hy')"> {{ 'Armenian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Azerbaijani' | translate }} " (click)="localeForUI('az')"> {{ 'Azerbaijani' | translate }} </mat-option>
+              <mat-option value=" {{ 'Basque' | translate }} " (click)="localeForUI('eu')"> {{ 'Basque' | translate }} </mat-option>
+              <mat-option value=" {{ 'Belarusian' | translate }} " (click)="localeForUI('be')"> {{ 'Belarusian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Bengali' | translate }} " (click)="localeForUI('bn')"> {{ 'Bengali' | translate }} </mat-option>
+              <mat-option value=" {{ 'Bosnian' | translate }} " (click)="localeForUI('bs')"> {{ 'Bosnian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Bulgarian' | translate }} " (click)="localeForUI('bg')"> {{ 'Bulgarian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Catalan' | translate }} " (click)="localeForUI('ca')"> {{ 'Catalan' | translate }} </mat-option>
+              <mat-option value=" {{ 'Cebuano' | translate }} " (click)="localeForUI('ceb')"> {{ 'Cebuano' | translate }} </mat-option>
+              <mat-option value=" {{ 'Chinese S' | translate }} " (click)="localeForUI('zh-CN')"> {{ 'Chinese S' | translate }} </mat-option>
+              <mat-option value=" {{ 'Chinese T' | translate }} " (click)="localeForUI('zh-TW')"> {{ 'Chinese T' | translate }} </mat-option>
+              <mat-option value=" {{ 'Corsican' | translate }} " (click)="localeForUI('co')"> {{ 'Corsican' | translate }} </mat-option>
+              <mat-option value=" {{ 'Croatian' | translate }} " (click)="localeForUI('hr')"> {{ 'Croatian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Czech' | translate }} " (click)="localeForUI('cs')"> {{ 'Czech' | translate }} </mat-option>
+              <mat-option value=" {{ 'Danish' | translate }} " (click)="localeForUI('da')"> {{ 'Danish' | translate }} </mat-option>
+              <mat-option value=" {{ 'Dutch' | translate }} " (click)="localeForUI('nl')"> {{ 'Dutch' | translate }} </mat-option>
+              <mat-option value=" {{ 'English' | translate }} " (click)="localeForUI('en')"> {{ 'English' | translate }} </mat-option>
+              <mat-option value=" {{ 'Esperanto' | translate }} " (click)="localeForUI('eo')"> {{ 'Esperanto' | translate }} </mat-option>
+              <mat-option value=" {{ 'Estonian' | translate }} " (click)="localeForUI('et')"> {{ 'Estonian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Finnish' | translate }} " (click)="localeForUI('fi')"> {{ 'Finnish' | translate }} </mat-option>
+              <mat-option value=" {{ 'French' | translate }} " (click)="localeForUI('fr')"> {{ 'French' | translate }} </mat-option>
+              <mat-option value=" {{ 'Galician' | translate }} " (click)="localeForUI('gl')"> {{ 'Galician' | translate }} </mat-option>
+              <mat-option value=" {{ 'Georgian' | translate }} " (click)="localeForUI('ka')"> {{ 'Georgian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Greek' | translate }} " (click)="localeForUI('el')"> {{ 'Greek' | translate }} </mat-option>
+            </td>
+            <td>
+              <mat-option value=" {{ 'German' | translate }} " (click)="localeForUI('de')"> {{ 'German' | translate }} </mat-option>
+              <mat-option value=" {{ 'Gujarati' | translate }} " (click)="localeForUI('gu')"> {{ 'Gujarati' | translate }} </mat-option>
+              <mat-option value=" {{ 'Haitian Creole' | translate }} " (click)="localeForUI('ht')"> {{ 'Haitian Creole' | translate }} </mat-option>
+              <mat-option value=" {{ 'Hausa' | translate }} " (click)="localeForUI('ha')"> {{ 'Hausa' | translate }} </mat-option>
+              <mat-option value=" {{ 'Hawaiian' | translate }} " (click)="localeForUI('haw')"> {{ 'Hawaiian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Hebrew' | translate }} " (click)="localeForUI('he')"> {{ 'Hebrew' | translate }} </mat-option>
+              <mat-option value=" {{ 'Hindi' | translate }} " (click)="localeForUI('hi')"> {{ 'Hindi' | translate }} </mat-option>
+              <mat-option value=" {{ 'Hmong' | translate }} " (click)="localeForUI('hmn')"> {{ 'Hmong' | translate }} </mat-option>
+              <mat-option value=" {{ 'Hungarian' | translate }} " (click)="localeForUI('hu')"> {{ 'Hungarian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Icelandic' | translate }} " (click)="localeForUI('is')"> {{ 'Icelandic' | translate }} </mat-option>
+              <mat-option value=" {{ 'Igbo' | translate }} " (click)="localeForUI('igbo')"> {{ 'Igbo' | translate }} </mat-option>
+              <mat-option value=" {{ 'Latvian' | translate }} " (click)="localeForUI('lv')"> {{ 'Latvian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Lithuanian' | translate }} " (click)="localeForUI('lt')"> {{ 'Lithuanian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Luxembourgish' | translate }} " (click)="localeForUI('lb')"> {{ 'Luxembourgish' | translate }} </mat-option>
+              <mat-option value=" {{ 'Macedonian' | translate }} " (click)="localeForUI('mk')"> {{ 'Macedonian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Malagasy' | translate }} " (click)="localeForUI('mg')"> {{ 'Malagasy' | translate }} </mat-option>
+              <mat-option value=" {{ 'Malay' | translate }} " (click)="localeForUI('ms')"> {{ 'Malay' | translate }} </mat-option>
+              <mat-option value=" {{ 'Kannada' | translate }} " (click)="localeForUI('kn')"> {{ 'Kannada' | translate }} </mat-option>
+              <mat-option value=" {{ 'Kazakh' | translate }} " (click)="localeForUI('kk')"> {{ 'Kazakh' | translate }} </mat-option>
+              <mat-option value=" {{ 'Khmer' | translate }} " (click)="localeForUI('km')"> {{ 'Khmer' | translate }} </mat-option>
+              <mat-option value=" {{ 'Kinyarwanda' | translate }} " (click)="localeForUI('rw')"> {{ 'Kinyarwanda' | translate }} </mat-option>
+              <mat-option value=" {{ 'Korean' | translate }} " (click)="localeForUI('ko')"> {{ 'Korean' | translate }} </mat-option>
+              <mat-option value=" {{ 'Kurdish' | translate }} " (click)="localeForUI('ku')"> {{ 'Kurdish' | translate }} </mat-option>
+              <mat-option value=" {{ 'Kyrgyz' | translate }} " (click)="localeForUI('ky')"> {{ 'Kyrgyz' | translate }} </mat-option>
+              <mat-option value=" {{ 'Lao' | translate }} " (click)="localeForUI('lo')"> {{ 'Lao' | translate }} </mat-option>
+              <mat-option value=" {{ 'Latin' | translate }} " (click)="localeForUI('la')"> {{ 'Latin' | translate }} </mat-option>
+              <mat-option value=" {{ 'Indonesian' | translate }} " (click)="localeForUI('id')"> {{ 'Indonesian' | translate }} </mat-option>
+            </td>
+            <td>
+              <mat-option value=" {{ 'Irish' | translate }} " (click)="localeForUI('ga')"> {{ 'Irish' | translate }} </mat-option>
+              <mat-option value=" {{ 'Italian' | translate }} " (click)="localeForUI('it')"> {{ 'Italian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Japanese' | translate }} " (click)="localeForUI('ja')"> {{ 'Japanese' | translate }} </mat-option>
+              <mat-option value=" {{ 'Javanese' | translate }} " (click)="localeForUI('jy')"> {{ 'Javanese' | translate }} </mat-option>
+              <mat-option value=" {{ 'Malayalam' | translate }} " (click)="localeForUI('ml')"> {{ 'Malayalam' | translate }} </mat-option>
+              <mat-option value=" {{ 'Maltese' | translate }} " (click)="localeForUI('mt')"> {{ 'Maltese' | translate }} </mat-option>
+              <mat-option value=" {{ 'Maori' | translate }} " (click)="localeForUI('mi')"> {{ 'Maori' | translate }} </mat-option>
+              <mat-option value=" {{ 'Marathi' | translate }} " (click)="localeForUI('mr')"> {{ 'Marathi' | translate }} </mat-option>
+              <mat-option value=" {{ 'Mongolian' | translate }} " (click)="localeForUI('mn')"> {{ 'Mongolian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Myanmar' | translate }} " (click)="localeForUI('my')"> {{ 'Myanmar' | translate }} </mat-option>
+              <mat-option value=" {{ 'Nepali' | translate }} " (click)="localeForUI('ne')"> {{ 'Nepali' | translate }} </mat-option>
+              <mat-option value=" {{ 'Norwegian' | translate }} " (click)="localeForUI('no')"> {{ 'Norwegian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Nyanja' | translate }} " (click)="localeForUI('ny')"> {{ 'Nyanja' | translate }} </mat-option>
+              <mat-option value=" {{ 'Odia' | translate }} " (click)="localeForUI('or')"> {{ 'Odia' | translate }} </mat-option>
+              <mat-option value=" {{ 'Pashto' | translate }} " (click)="localeForUI('ps')"> {{ 'Pashto' | translate }} </mat-option>
+              <mat-option value=" {{ 'Persian' | translate }} " (click)="localeForUI('fa')"> {{ 'Persian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Polish' | translate }} " (click)="localeForUI('pl')"> {{ 'Polish' | translate }} </mat-option>
+              <mat-option value=" {{ 'Portuguese' | translate }} " (click)="localeForUI('pt')"> {{ 'Portuguese' | translate }} </mat-option>
+              <mat-option value=" {{ 'Punjabi' | translate }} " (click)="localeForUI('pa')"> {{ 'Punjabi' | translate }} </mat-option>
+              <mat-option value=" {{ 'Romanian' | translate }} " (click)="localeForUI('ro')"> {{ 'Romanian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Russian' | translate }} " (click)="localeForUI('ru')"> {{ 'Russian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Samoan' | translate }} " (click)="localeForUI('sm')"> {{ 'Samoan' | translate }} </mat-option>
+              <mat-option value=" {{ 'Sankethi' | translate }} " (click)="localeForUI('sank')"> {{ 'Sankethi' | translate }} </mat-option>
+              <mat-option value=" {{ 'Sanskrit' | translate }} " (click)="localeForUI('sa')"> {{ 'Sanskrit' | translate }} </mat-option>
+              <mat-option value=" {{ 'Scots Gaelic' | translate }} " (click)="localeForUI('gd')"> {{ 'Scots Gaelic' | translate }} </mat-option>
+              <mat-option value=" {{ 'Serbian' | translate }} " (click)="localeForUI('sr')"> {{ 'Serbian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Sesotho' | translate }} " (click)="localeForUI('st')"> {{ 'Sesotho' | translate }} </mat-option>
+              <mat-option value=" {{ 'Shona' | translate }} " (click)="localeForUI('sn')"> {{ 'Shona' | translate }} </mat-option>
+            </td>
+            <td>
+              <mat-option value=" {{ 'Sindhi' | translate }} " (click)="localeForUI('sd')"> {{ 'Sindhi' | translate }} </mat-option>
+              <mat-option value=" {{ 'Sinhala' | translate }} " (click)="localeForUI('si')"> {{ 'Sinhala' | translate }} </mat-option>
+              <mat-option value=" {{ 'Slovak' | translate }} " (click)="localeForUI('sk')"> {{ 'Slovak' | translate }} </mat-option>
+              <mat-option value=" {{ 'Slovenian' | translate }} " (click)="localeForUI('sl')"> {{ 'Slovenian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Somalia' | translate }} " (click)="localeForUI('so')"> {{ 'Somalia' | translate }} </mat-option>
+              <mat-option value=" {{ 'Spanish' | translate }} " (click)="localeForUI('es')"> {{ 'Spanish' | translate }} </mat-option>
+              <mat-option value=" {{ 'Sudanese' | translate }} " (click)="localeForUI('su')"> {{ 'Sudanese' | translate }} </mat-option>
+              <mat-option value=" {{ 'Swahili' | translate }} " (click)="localeForUI('sw')"> {{ 'Swahili' | translate }} </mat-option>
+              <mat-option value=" {{ 'Swedish' | translate }} " (click)="localeForUI('sv')"> {{ 'Swedish' | translate }} </mat-option>
+              <mat-option value=" {{ 'Tagalog' | translate }} " (click)="localeForUI('tl')"> {{ 'Tagalog' | translate }} </mat-option>
+              <mat-option value=" {{ 'Tajik' | translate }} " (click)="localeForUI('tg')"> {{ 'Tajik' | translate }} </mat-option>
+              <mat-option value=" {{ 'Tamil' | translate }} " (click)="localeForUI('ta')"> {{ 'Tamil' | translate }} </mat-option>
+              <mat-option value=" {{ 'Tatar' | translate }} " (click)="localeForUI('tt')"> {{ 'Tatar' | translate }} </mat-option>
+              <mat-option value=" {{ 'Telugu' | translate }} " (click)="localeForUI('te')"> {{ 'Telugu' | translate }} </mat-option>
+              <mat-option value=" {{ 'Thai' | translate }} " (click)="localeForUI('th')"> {{ 'Thai' | translate }} </mat-option>
+              <mat-option value=" {{ 'Turkish' | translate }} " (click)="localeForUI('tr')"> {{ 'Turkish' | translate }} </mat-option>
+              <mat-option value=" {{ 'Turkmen' | translate }} " (click)="localeForUI('tk')"> {{ 'Turkmen' | translate }} </mat-option>
+              <mat-option value=" {{ 'Ukrainian' | translate }} " (click)="localeForUI('uk')"> {{ 'Ukrainian' | translate }} </mat-option>
+              <mat-option value=" {{ 'Urdu' | translate }} " (click)="localeForUI('ur')"> {{ 'Urdu' | translate }} </mat-option>
+              <mat-option value=" {{ 'Uyghur' | translate }} " (click)="localeForUI('ug')"> {{ 'Uyghur' | translate }} </mat-option>
+              <mat-option value=" {{ 'Uzbek' | translate }} " (click)="localeForUI('uz')"> {{ 'Uzbek' | translate }} </mat-option>
+              <mat-option value=" {{ 'Vietnamese' | translate }} " (click)="localeForUI('vi')"> {{ 'Vietnamese' | translate }} </mat-option>
+              <mat-option value=" {{ 'Welsh' | translate }} " (click)="localeForUI('cy')"> {{ 'Welsh' | translate }} </mat-option>
+              <mat-option value=" {{ 'Xhosa' | translate }} " (click)="localeForUI('xh')"> {{ 'Xhosa' | translate }} </mat-option>
+              <mat-option value=" {{ 'Yiddish' | translate }} " (click)="localeForUI('yi')"> {{ 'Yiddish' | translate }} </mat-option>
+              <mat-option value=" {{ 'Yoruba' | translate }} " (click)="localeForUI('yo')"> {{ 'Yoruba' | translate }} </mat-option>
+              <mat-option value=" {{ 'Zulu' | translate }} " (click)="localeForUI('zu')"> {{ 'Zulu' | translate }} </mat-option>
+            </td>
+          </tr>
+        </table>
+      </mat-select>
+    </mat-form-field>
+    <div class="spacer"></div>
+    <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;height: 10px;">{{ 'Power to Write Every Word in the World' | translate }}</h1>
+    <div class="spacer"></div>
+    <p style="font-size: 0.5rem; width: 15%;text-align: center;">
+      {{ 'Website abids by Privacy Laws and no Personal Information or any content while editing are collected' | translate }}
+    </p>
+    &nbsp;&nbsp; <mat-icon (click)="helpForUser()" style="cursor: pointer;">help_center</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp; <mat-slide-toggle (click)="offlineOnly()" [(ngModel)]="offlineUsage"> {{ 'Offline' | translate }} </mat-slide-toggle>&nbsp;&nbsp;&nbsp;&nbsp;
+</div>

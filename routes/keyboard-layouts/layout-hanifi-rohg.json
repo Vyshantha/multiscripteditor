@@ -1,0 +1,60 @@
+[
+    {"row":[
+        {"value": "\ud803\udd0d", "action": "char", "src": "./assets/characters/rohg/14.png"},
+        {"value": "\ud803\udd0c", "action": "char", "src": "./assets/characters/rohg/13.png"},
+        {"value": "\ud803\udd0b", "action": "char", "src": "./assets/characters/rohg/12.png"},
+        {"value": "\ud803\udd0a", "action": "char", "src": "./assets/characters/rohg/11.png"},
+        {"value": "\ud803\udd09", "action": "char", "src": "./assets/characters/rohg/10.png"},
+        {"value": "\ud803\udd08", "action": "char", "src": "./assets/characters/rohg/9.png"},
+        {"value": "\ud803\udd07", "action": "char", "src": "./assets/characters/rohg/8.png"},
+        {"value": "\ud803\udd06", "action": "char", "src": "./assets/characters/rohg/7.png"},
+        {"value": "\ud803\udd05", "action": "char", "src": "./assets/characters/rohg/6.png"},
+        {"value": "\ud803\udd04", "action": "char", "src": "./assets/characters/rohg/5.png"},
+        {"value": "\ud803\udd03", "action": "char", "src": "./assets/characters/rohg/4.png"},
+        {"value": "\ud803\udd02", "action": "char", "src": "./assets/characters/rohg/3.png"},
+        {"value": "\ud803\udd01", "action": "char", "src": "./assets/characters/rohg/2.png"},
+        {"value": "\ud803\udd00", "action": "char", "src": "./assets/characters/rohg/1.png"}
+    ]},
+    {"row":[
+        {"value": "\ud803\udd1c", "action": "char", "type": "unused", "src": "./assets/characters/rohg/29.png"},
+        {"value": "\ud803\udd1b", "action": "char", "src": "./assets/characters/rohg/28.png"},
+        {"value": "\ud803\udd1a", "action": "char", "src": "./assets/characters/rohg/27.png"},
+        {"value": "\ud803\udd19", "action": "char", "src": "./assets/characters/rohg/26.png"},
+        {"value": "\ud803\udd18", "action": "char", "src": "./assets/characters/rohg/25.png"},
+        {"value": "\ud803\udd17", "action": "char", "src": "./assets/characters/rohg/24.png"},
+        {"value": "\ud803\udd16", "action": "char", "src": "./assets/characters/rohg/23.png"},
+        {"value": "\ud803\udd15", "action": "char", "src": "./assets/characters/rohg/22.png"},
+        {"value": "\ud803\udd14", "action": "char", "src": "./assets/characters/rohg/21.png"},
+        {"value": "\ud803\udd13", "action": "char", "src": "./assets/characters/rohg/20.png"},
+        {"value": "\ud803\udd12", "action": "char", "src": "./assets/characters/rohg/19.png"},
+        {"value": "\ud803\udd11", "action": "char", "src": "./assets/characters/rohg/18.png"},
+        {"value": "\ud803\udd10", "action": "char", "src": "./assets/characters/rohg/17.png"},
+        {"value": "\ud803\udd0f", "action": "char", "src": "./assets/characters/rohg/16.png"},
+        {"value": "\ud803\udd0e", "action": "char", "src": "./assets/characters/rohg/15.png"}
+    ]},
+    {"row":[
+        {"value": "\ud803\udd27", "action": "char", "src": "./assets/characters/rohg/40.png"},
+        {"value": "\ud803\udd26", "action": "char", "type": "swara", "src": "./assets/characters/rohg/39.png"},
+        {"value": "\ud803\udd25", "action": "char", "type": "swara", "src": "./assets/characters/rohg/38.png"},
+        {"value": "\ud803\udd24", "action": "char", "type": "swara", "src": "./assets/characters/rohg/37.png"},
+        {"value": "\ud803\udd23", "action": "char", "src": "./assets/characters/rohg/36.png"},
+        {"value": "\ud803\udd22", "action": "char", "src": "./assets/characters/rohg/35.png"},
+        {"value": "\ud803\udd21", "action": "char", "type": "swara", "src": "./assets/characters/rohg/34.png"},
+        {"value": "\ud803\udd20", "action": "char", "type": "swara", "src": "./assets/characters/rohg/33.png"},
+        {"value": "\ud803\udd1f", "action": "char", "type": "swara", "src": "./assets/characters/rohg/32.png"},
+        {"value": "\ud803\udd1e", "action": "char", "type": "swara", "src": "./assets/characters/rohg/31.png"},
+        {"value": "\ud803\udd1d", "action": "char", "type": "swara", "src": "./assets/characters/rohg/30.png"}
+    ]},
+    {"row":[
+        {"value": "\ud803\udd39", "action": "char", "src": "./assets/characters/rohg/50.png"},
+        {"value": "\ud803\udd38", "action": "char", "src": "./assets/characters/rohg/49.png"},
+        {"value": "\ud803\udd37", "action": "char", "src": "./assets/characters/rohg/48.png"},
+        {"value": "\ud803\udd36", "action": "char", "src": "./assets/characters/rohg/47.png"},
+        {"value": "\ud803\udd35", "action": "char", "src": "./assets/characters/rohg/46.png"},
+        {"value": "\ud803\udd34", "action": "char", "src": "./assets/characters/rohg/45.png"},
+        {"value": "\ud803\udd33", "action": "char", "src": "./assets/characters/rohg/44.png"},
+        {"value": "\ud803\udd32", "action": "char", "src": "./assets/characters/rohg/43.png"},
+        {"value": "\ud803\udd31", "action": "char", "src": "./assets/characters/rohg/42.png"},
+        {"value": "\ud803\udd30", "action": "char", "src": "./assets/characters/rohg/41.png"}
+    ]}
+]

@@ -1,0 +1,26 @@
+[
+    {"row":[
+        {"value": "p", "action": "char", "src": "./assets/characters/khom/1.png"},
+        {"value": "t", "action": "char", "src": "./assets/characters/khom/2.png"},
+        {"value": "k", "action": "char", "src": "./assets/characters/khom/3.png"},
+        {"value": "ʔ", "action": "char", "src": "./assets/characters/khom/4.png"},
+        {"value": "m", "action": "char", "src": "./assets/characters/khom/5.png"},
+        {"value": "ŋ", "action": "char", "src": "./assets/characters/khom/6.png"},
+        {"value": "s", "action": "char", "src": "./assets/characters/khom/7.png"},
+        {"value": "h", "action": "char", "src": "./assets/characters/khom/8.png"}
+    ]},
+    {"row":[
+        {"value": "ip", "action": "char", "src": "./assets/characters/khom/9.png"},
+        {"value": "it", "action": "char", "src": "./assets/characters/khom/10.png"},
+        {"value": "in", "action": "char", "src": "./assets/characters/khom/11.png"},
+        {"value": "ap", "action": "char", "src": "./assets/characters/khom/12.png"},
+        {"value": "at", "action": "char", "src": "./assets/characters/khom/13.png"},
+        {"value": "an", "action": "char", "src": "./assets/characters/khom/14.png"},
+        {"value": "up", "action": "char", "src": "./assets/characters/khom/15.png"},
+        {"value": "ut", "action": "char", "src": "./assets/characters/khom/16.png"},
+        {"value": "un", "action": "char", "src": "./assets/characters/khom/17.png"},
+        {"value": "op", "action": "char", "src": "./assets/characters/khom/18.png"},
+        {"value": "ot", "action": "char", "src": "./assets/characters/khom/19.png"},
+        {"value": "on", "action": "char", "src": "./assets/characters/khom/20.png"}
+    ]}
+]

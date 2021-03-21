@@ -1,0 +1,66 @@
+[
+    {"row":[
+        {"value": "a \u2801", "action": "char"},
+        {"value": "b \u2803", "action": "char"},
+        {"value": "c \u2809", "action": "char"},
+        {"value": "d \u2819", "action": "char"},
+        {"value": "e \u2811", "action": "char"},
+        {"value": "f \u280B", "action": "char"},
+        {"value": "g \u281B", "action": "char"},
+        {"value": "h \u2813", "action": "char"},
+        {"value": "i \u280A", "action": "char"},
+        {"value": "j \u281A", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "k \u2805", "action": "char"},
+        {"value": "l \u2807", "action": "char"},
+        {"value": "m \u280D", "action": "char"},
+        {"value": "n \u281D", "action": "char"},
+        {"value": "o \u2815", "action": "char"},
+        {"value": "p \u280F", "action": "char"},
+        {"value": "q \u281F", "action": "char"},
+        {"value": "r \u2817", "action": "char"},
+        {"value": "s \u280E", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "t \u281E", "action": "char"},
+        {"value": "u \u2825", "action": "char"},
+        {"value": "v \u2827", "action": "char"},
+        {"value": "w \u283A", "action": "char"},
+        {"value": "x \u282D", "action": "char"},
+        {"value": "y \u283D", "action": "char"},
+        {"value": "z \u2835", "action": "char"}   
+    ]},
+    {"qwerty":[
+        {"value": "q \u281F", "action": "char"},
+        {"value": "w \u283A", "action": "char"},
+        {"value": "e \u2811", "action": "char"},
+        {"value": "r \u2817", "action": "char"},
+        {"value": "t \u281E", "action": "char"},
+        {"value": "y \u283D", "action": "char"},
+        {"value": "u \u2825", "action": "char"},
+        {"value": "i \u280A", "action": "char"},
+        {"value": "o \u2815", "action": "char"},
+        {"value": "p \u280F", "action": "char"}
+    ]},
+    {"qwerty":[
+        {"value": "a \u2801", "action": "char"},
+        {"value": "s \u280E", "action": "char"},
+        {"value": "d \u2819", "action": "char"},
+        {"value": "f \u280B", "action": "char"},
+        {"value": "g \u281B", "action": "char"},
+        {"value": "h \u2813", "action": "char"},
+        {"value": "j \u281A", "action": "char"},
+        {"value": "k \u2805", "action": "char"},
+        {"value": "l \u2807", "action": "char"}
+    ]},
+    {"qwerty":[
+        {"value": "z \u2835", "action": "char"},
+        {"value": "x \u282D", "action": "char"},
+        {"value": "c \u2809", "action": "char"},
+        {"value": "v \u2827", "action": "char"},
+        {"value": "b \u2803", "action": "char"},
+        {"value": "n \u281D", "action": "char"},
+        {"value": "m \u280D", "action": "char"}
+    ]}
+]

@@ -1,0 +1,62 @@
+[
+    {"row":[
+        {"value": "𐎠", "action": "char", "type": "swara"},
+        {"value": "𐎡", "action": "char", "type": "swara"},
+        {"value": "𐎢", "action": "char", "type": "swara"},
+        {"value": "𐏐", "action": "char"},
+        {"value": "𐎣", "action": "char"},
+        {"value": "𐎤", "action": "char"},
+        {"value": "𐎧", "action": "char"},
+        {"value": "𐎦", "action": "char"},
+        {"value": "/", "action": "char"},
+        {"value": "𐎨", "action": "char"},
+        {"value": "𐏂", "action": "char"},
+        {"value": "𐎩", "action": "char"},
+        {"value": "𐎪", "action": "char"},
+        {"value": "\\", "action": "char"},
+        {"value": "𐏈", "action": "char"},
+        {"value": "𐏉", "action": "char"},
+        {"value": "𐏊", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "𐎫", "action": "char"},
+        {"value": "𐎬", "action": "char"},
+        {"value": "𐎰", "action": "char"},
+        {"value": "𐎭", "action": "char"},
+        {"value": "𐎮", "action": "char"},
+        {"value": "𐎯", "action": "char"},
+        {"value": "(", "action": "char"},
+        {"value": "𐎱", "action": "char"},
+        {"value": "𐎳", "action": "char"},
+        {"value": "𐎲", "action": "char"},
+        {"value": "𐎴", "action": "char"},
+        {"value": "𐎵", "action": "char"},
+        {"value": ")", "action": "char"},
+        {"value": "𐏋", "action": "char"},
+        {"value": "𐏌", "action": "char"},
+        {"value": "𐏍", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "𐎹", "action": "char"},
+        {"value": "𐎼", "action": "char"},
+        {"value": "𐎽", "action": "char"},
+        {"value": "𐎾", "action": "char"},
+        {"value": "𐎺", "action": "char"},
+        {"value": "𐎻", "action": "char"},
+        {"value": "\u00A0", "action": "space"},
+        {"value": "𐎿", "action": "char"},
+        {"value": "𐏀", "action": "char"},
+        {"value": "𐏁", "action": "char"},
+        {"value": "𐏃 ", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "𐏎", "action": "char"},
+        {"value": "𐏏", "action": "char"},
+        {"value": "𐏑", "action": "char"},
+        {"value": "𐏒", "action": "char"},
+        {"value": "𐏓", "action": "char"},
+        {"value": "𐏔", "action": "char"},
+        {"value": "𐏕", "action": "char"},
+        {"value": "\u23CE", "action": "enter"}
+    ]}
+]

@@ -1,0 +1,51 @@
+[
+    {"row":[
+        {"value": "\uD81A\uDE40", "action": "char", "src": "./assets/characters/mroo/1.png"},
+        {"value": "\uD81A\uDE41", "action": "char", "src": "./assets/characters/mroo/2.png"},
+        {"value": "\uD81A\uDE42", "action": "char", "src": "./assets/characters/mroo/3.png"},
+        {"value": "\uD81A\uDE43", "action": "char", "src": "./assets/characters/mroo/4.png"},
+        {"value": "\uD81A\uDE44", "action": "char", "src": "./assets/characters/mroo/5.png"},
+        {"value": "\uD81A\uDE45", "action": "char", "src": "./assets/characters/mroo/6.png"},
+        {"value": "\uD81A\uDE46", "action": "char", "src": "./assets/characters/mroo/7.png"},
+        {"value": "\uD81A\uDE47", "action": "char", "src": "./assets/characters/mroo/8.png"},
+        {"value": "\uD81A\uDE48", "action": "char", "src": "./assets/characters/mroo/9.png"},
+        {"value": "\uD81A\uDE49", "action": "char", "src": "./assets/characters/mroo/10.png"},
+        {"value": "\uD81A\uDE4A", "action": "char", "src": "./assets/characters/mroo/11.png"},
+        {"value": "\uD81A\uDE4B", "action": "char", "src": "./assets/characters/mroo/12.png"},
+        {"value": "\uD81A\uDE4C", "action": "char", "src": "./assets/characters/mroo/13.png"},
+        {"value": "\uD81A\uDE4D", "action": "char", "src": "./assets/characters/mroo/14.png"},
+        {"value": "\uD81A\uDE4E", "action": "char", "src": "./assets/characters/mroo/15.png"},
+        {"value": "\uD81A\uDE4F", "action": "char", "src": "./assets/characters/mroo/16.png"}
+    ]},
+    {"row":[
+        {"value": "\uD81A\uDE50", "action": "char", "src": "./assets/characters/mroo/17.png"},
+        {"value": "\uD81A\uDE51", "action": "char", "src": "./assets/characters/mroo/18.png"},
+        {"value": "\uD81A\uDE52", "action": "char", "src": "./assets/characters/mroo/19.png"},
+        {"value": "\uD81A\uDE53", "action": "char", "src": "./assets/characters/mroo/20.png"},
+        {"value": "\uD81A\uDE54", "action": "char", "src": "./assets/characters/mroo/21.png"},
+        {"value": "\uD81A\uDE55", "action": "char", "src": "./assets/characters/mroo/22.png"},
+        {"value": "\uD81A\uDE56", "action": "char", "src": "./assets/characters/mroo/23.png"},
+        {"value": "\uD81A\uDE57", "action": "char", "src": "./assets/characters/mroo/24.png"},
+        {"value": "\uD81A\uDE58", "action": "char", "src": "./assets/characters/mroo/25.png"},
+        {"value": "\uD81A\uDE59", "action": "char", "src": "./assets/characters/mroo/26.png"},
+        {"value": "\uD81A\uDE5A", "action": "char", "src": "./assets/characters/mroo/27.png"},
+        {"value": "\uD81A\uDE5B", "action": "char", "src": "./assets/characters/mroo/28.png"},
+        {"value": "\uD81A\uDE5C", "action": "char", "src": "./assets/characters/mroo/29.png"},
+        {"value": "\uD81A\uDE5D", "action": "char", "src": "./assets/characters/mroo/30.png"},
+        {"value": "\uD81A\uDE5E", "action": "char", "src": "./assets/characters/mroo/31.png"}
+    ]},
+    {"row":[
+        {"value": "\uD81A\uDE60", "action": "char", "src": "./assets/characters/mroo/32.png"},
+        {"value": "\uD81A\uDE61", "action": "char", "src": "./assets/characters/mroo/33.png"},
+        {"value": "\uD81A\uDE62", "action": "char", "src": "./assets/characters/mroo/34.png"},
+        {"value": "\uD81A\uDE63", "action": "char", "src": "./assets/characters/mroo/35.png"},
+        {"value": "\uD81A\uDE64", "action": "char", "src": "./assets/characters/mroo/36.png"},
+        {"value": "\uD81A\uDE65", "action": "char", "src": "./assets/characters/mroo/37.png"},
+        {"value": "\uD81A\uDE66", "action": "char", "src": "./assets/characters/mroo/38.png"},
+        {"value": "\uD81A\uDE67", "action": "char", "src": "./assets/characters/mroo/39.png"},
+        {"value": "\uD81A\uDE68", "action": "char", "src": "./assets/characters/mroo/40.png"},
+        {"value": "\uD81A\uDE69", "action": "char", "src": "./assets/characters/mroo/41.png"},
+        {"value": "\uD81A\uDE6E", "action": "char", "src": "./assets/characters/mroo/42.png"},
+        {"value": "\uD81A\uDE6F", "action": "char", "src": "./assets/characters/mroo/43.png"}
+    ]}
+]

@@ -1,0 +1,59 @@
+[
+    {"row":[
+        {"value": "\"", "action": "char"},
+        {"value": "'", "action": "char"},
+        {"value": "\ud805\ude80", "action": "char", "type": "swara", "src":"./assets/characters/mult/1.png"},
+        {"value": "\ud805\ude81", "action": "char", "type": "swara", "src":"./assets/characters/mult/2.png"},
+        {"value": "\ud805\ude82", "action": "char", "type": "swara", "src":"./assets/characters/mult/3.png"},
+        {"value": "\ud805\ude83", "action": "char", "type": "swara", "src":"./assets/characters/mult/4.png"},
+        {"value": "\ud805\udea9", "action": "char", "src":"./assets/characters/mult/5.png"},        
+        {"value": "+", "action": "char"},
+        {"value": "-", "action": "char"},
+        {"value": "⌫", "action": "del"}
+    ]},
+    {"row":[
+        {"value": "\ud805\ude84", "action": "char", "src": "./assets/characters/mult/7.png"},
+        {"value": "\ud805\ude85", "action": "char", "src": "./assets/characters/mult/8.png"},
+        {"value": "\ud805\ude86", "action": "char", "src": "./assets/characters/mult/9.png"},
+        {"value": "\ud805\ude88", "action": "char", "src": "./assets/characters/mult/10.png"},
+        {"value": "/", "action": "char"},
+        {"value": "\ud805\ude8a", "action": "char", "src": "./assets/characters/mult/11.png"},
+        {"value": "\ud805\ude8b", "action": "char", "src": "./assets/characters/mult/12.png"},
+        {"value": "\ud805\ude8c", "action": "char", "src": "./assets/characters/mult/13.png"},
+        {"value": "\ud805\ude8d", "action": "char", "src": "./assets/characters/mult/14.png"},
+        {"value": "\ud805\ude8f", "action": "char", "src": "./assets/characters/mult/15.png"},
+        {"value": "\\", "action": "char"},
+        {"value": "\ud805\ude90", "action": "char", "src": "./assets/characters/mult/16.png"},
+        {"value": "\ud805\ude91", "action": "char", "src": "./assets/characters/mult/17.png"},
+        {"value": "\ud805\ude92", "action": "char", "src": "./assets/characters/mult/18.png"},
+        {"value": "\ud805\ude93", "action": "char", "src": "./assets/characters/mult/19.png"},
+        {"value": "\ud805\ude94", "action": "char", "src": "./assets/characters/mult/20.png"},
+        {"value": "\ud805\ude95", "action": "char", "src": "./assets/characters/mult/21.png"}   
+    ]},
+    {"row":[
+        {"value": "\ud805\ude96", "action": "char", "src": "./assets/characters/mult/22.png"},
+        {"value": "\ud805\ude97", "action": "char", "src": "./assets/characters/mult/23.png"},
+        {"value": "\ud805\ude98", "action": "char", "src": "./assets/characters/mult/24.png"},
+        {"value": "\ud805\ude99", "action": "char", "src": "./assets/characters/mult/25.png"},
+        {"value": "\ud805\ude9a", "action": "char", "src": "./assets/characters/mult/26.png"},
+        {"value": "(", "action": "char"},
+        {"value": "\ud805\ude9b", "action": "char", "src": "./assets/characters/mult/27.png"},
+        {"value": "\ud805\ude9c", "action": "char", "src": "./assets/characters/mult/28.png"},
+        {"value": "\ud805\ude9d", "action": "char", "src": "./assets/characters/mult/29.png"},
+        {"value": "\ud805\ude9f", "action": "char", "src": "./assets/characters/mult/30.png"},
+        {"value": "\ud805\udea0", "action": "char", "src": "./assets/characters/mult/31.png"},
+        {"value": ")", "action": "char"},
+        {"value": "\u23CE", "action": "enter"}
+    ]},
+    {"row":[
+        {"value": "\ud805\udea1", "action": "char", "src": "./assets/characters/mult/32.png"},
+        {"value": "\ud805\udea2", "action": "char", "src": "./assets/characters/mult/33.png"},
+        {"value": "\ud805\udea3", "action": "char", "src": "./assets/characters/mult/34.png"},
+        {"value": "\ud805\udea4", "action": "char", "src": "./assets/characters/mult/35.png"},
+        {"value": "\u00A0", "action": "space"},
+        {"value": "\ud805\udea5", "action": "char", "src": "./assets/characters/mult/36.png"},
+        {"value": "\ud805\udea6", "action": "char", "src": "./assets/characters/mult/37.png"},
+        {"value": "\ud805\udea7", "action": "char", "src": "./assets/characters/mult/38.png"},
+        {"value": "\ud805\udea8", "action": "char", "src": "./assets/characters/mult/39.png"}
+    ]}
+]

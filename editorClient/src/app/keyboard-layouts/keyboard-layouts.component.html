@@ -1,0 +1,1266 @@
+<div>
+    <div id="typeIntellisense" #onlyKeyboard><br/> 
+        <span style="width: 4%; float: left">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <mat-icon aria-hidden="false" matTooltip="Open Settings" style="cursor: pointer;" (click)="openSettings()">input</mat-icon>
+        </span>
+        <span style="width: 92%;text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <span style="width: 4%; float: right">
+            <mat-icon (click)="helpForUser()" style="cursor: pointer;">help_center</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+        </span>
+        <!-- Write Code based on APIs for 'word' suggestion in the language used to Type not UI locale -->
+        
+    </div>
+</div>
+<div #allScriptsTabs>
+    <mat-tab-group color="primary" dynamicHeight [(selectedIndex)]="selectedAllScriptTab" (focusChange)="allScriptTypesTabs($event)" #scriptTypesTabAll disableRipple>
+        <mat-tab label="{{ 'Abjad' | translate }}">
+            <mat-expansion-panel [(expanded)]="panelAbjadState">
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <b><a href="https://omniglot.com/writing/alphabetic.htm" target="_blank">{{ 'Abjad' | translate }}</a></b>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <span style="font-size: 1rem;width: 10%;">Show Scripts</span> &nbsp;&nbsp; <mat-icon>menu_open</mat-icon>
+                    &nbsp;&nbsp;&nbsp; <mat-icon>pageview</mat-icon> &nbsp;&nbsp; <input type="search" matInput #searchAbjad placeholder="Search for Language or Script">
+                </mat-panel-description>
+                </mat-expansion-panel-header>  
+                <table class="worldmapbkg">
+                    <tbody>
+                        <tr>
+                            <td colspan="3">
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('sina')" [ngStyle]="{ 'visibility': (keyboardLayouts['sina'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['sina'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">Old Sinaitic</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('rohg')" [ngStyle]="{ 'visibility': (keyboardLayouts['rohg'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['rohg'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">Hanifi</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('chrs')" [ngStyle]="{ 'visibility': (keyboardLayouts['chrs'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['chrs'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">Khwarezmian</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('elym')" [ngStyle]="{ 'visibility': (keyboardLayouts['elym'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['elym'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">Elymaic</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('hatr')" [ngStyle]="{ 'visibility': (keyboardLayouts['hatr'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['hatr'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">Hatran</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('mani')" [ngStyle]="{ 'visibility': (keyboardLayouts['mani'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['mani'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">Manichaean</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('ber')" [ngStyle]="{ 'visibility': (keyboardLayouts['ber'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['ber'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">Old Berber</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('xsa')" [ngStyle]="{ 'visibility': (keyboardLayouts['xsa'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['xsa'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">𐩪𐩨𐩱</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('safa')" [ngStyle]="{ 'visibility': (keyboardLayouts['safa'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['safa'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">Safaitic</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('mand')" [ngStyle]="{ 'visibility': (keyboardLayouts['mand'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['mand'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">ࡓࡀࡈࡍࡀ</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('kult')" [ngStyle]="{ 'visibility': (keyboardLayouts['kult'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['kult'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">Old Sogdian</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('sog')" [ngStyle]="{ 'visibility': (keyboardLayouts['sog'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['sog'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">suγδīk</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('psal')" [ngStyle]="{ 'visibility': (keyboardLayouts['psal'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['psal'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">Psalter</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('xpr')" [ngStyle]="{ 'visibility': (keyboardLayouts['xpr'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['xpr'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">𐭐𐭀𐭓𐭈𐭉𐭀</button> 
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('pal')" [ngStyle]="{ 'visibility': (keyboardLayouts['pal'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['pal'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">𐭯𐭠𐭫𐭮𐭩𐭪</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('nbat')" [ngStyle]="{ 'visibility': (keyboardLayouts['nbat'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['nbat'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">Nabataean</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('palm')" [ngStyle]="{ 'visibility': (keyboardLayouts['palm'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['palm'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">Palmyrene</button> 
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('samr')" [ngStyle]="{ 'visibility': (keyboardLayouts['samr'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['samr'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">ࠕࠍ‎ࠓ‎ࠏࠌ</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('arc')" [ngStyle]="{ 'visibility': (keyboardLayouts['arc'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['arc'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">𐡀𐡓𐡌𐡉𐡀</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('gars')" [ngStyle]="{ 'visibility': (keyboardLayouts['gars'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['gars'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">സുറിയാനി-ܡܠܝܠܡ</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('sert')" [ngStyle]="{ 'visibility': (keyboardLayouts['sert'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['sert'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">ܣܶܪܛܳܐ‎</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('estr')" [ngStyle]="{ 'visibility': (keyboardLayouts['estr'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['estr'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">ܐܣܛܪܢܓܠܐ‎</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('madn')" [ngStyle]="{ 'visibility': (keyboardLayouts['madn'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['madn'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">ܡܲܕ݂ܢܚܵܝܵܐ‎</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('syrc')" [ngStyle]="{ 'visibility': (keyboardLayouts['syrc'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['syrc'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">ܐܠܦ ܒܝܬ ܣܘܪܝܝܐ</button>
+                                <button mat-button color="primary">Ladino</button> 
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('yid')">ייִדיש‎</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('he')" [ngStyle]="{ 'visibility': (keyboardLayouts['he'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['he'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">אָלֶף־בֵּית</button>
+                                <button mat-button color="primary">Saraiki</button>‎
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('ajam')" [ngStyle]="{ 'visibility': (keyboardLayouts['ajam'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['ajam'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">عجمي</button>
+                                <button mat-button color="primary">جاوي‎</button>
+                                <button mat-button color="primary">بلۏچی</button> 
+                                <button mat-button color="primary">سنڌي‎</button> 
+                                <button mat-button color="primary">بروشسکی‎</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('pego')">ڤَيڬَونْ</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('rhg')">رُاَࣺينڠَ</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('ks')">کشمیر</button> 
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('ps')">پښتو</button> 
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('ku')">کوردیی</button> 
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('ur')">اردو</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('fa')" [ngStyle]="{ 'visibility': (keyboardLayouts['fa'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['fa'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">فارسی</button>
+                                <button mat-button color="primary" (click)="allAbjadTypeClicked('ar')" [ngStyle]="{ 'visibility': (keyboardLayouts['ar'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['ar'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '') ? 'visible' : 'hidden' }">الْعَرَبِيَّة</button> 
+                                &nbsp;&nbsp; <span style="float: right"><mat-icon>history_edu</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="chronoTimeline" tickInterval="100" min="-5000" max="2021" value="2021"></mat-slider> &nbsp;&nbsp; <mat-icon>history</mat-icon></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+            </mat-expansion-panel>
+            <mat-tab-group dynamicHeight [(selectedIndex)]="selectKeysTabs" (focusChange)="abjadType($event)" #scriptAbjadType>
+                <mat-tab label="الكتابة">
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                    Arabic <button mat-button color="primary" (click)="languageScriptClicked('ar')">الْعَرَبِيَّة</button> 
+                    Persian <button mat-button color="primary" (click)="languageScriptClicked('fa')">فارسی</button> 
+                    Urdu <button mat-button color="primary" (click)="languageScriptClicked('ur')">اردو</button> 
+                    Kurdish <button mat-button color="primary" (click)="languageScriptClicked('ku')">کوردیی</button> 
+                    Pashto <button mat-button color="primary" (click)="languageScriptClicked('ps')">پښتو</button> 
+                    Kashmiri <button mat-button color="primary" (click)="languageScriptClicked('ks')">کشمیر</button> 
+                    Rohingya <button mat-button color="primary" (click)="languageScriptClicked('rhg')">رُاَࣺينڠَ</button> 
+                    Pegon <button mat-button color="primary" (click)="languageScriptClicked('pego')">ڤَيڬَونْ</button> 
+                    Sindhi <button mat-button color="primary">سنڌي‎</button> 
+                    Balochi <button mat-button color="primary">بلۏچی</button> 
+                    Burushaski <button mat-button color="primary">بروشسکی‎</button>
+                    Jawi <button mat-button color="primary">جاوي‎</button>
+                    Ajami <button mat-button color="primary" (click)="languageScriptClicked('ajam')">عجمي</button>
+                    {{ 'and' | translate }} <a href="https://en.wikipedia.org/wiki/Arabic_script" target="_blank">{{ 'more' | translate }}</a>
+                </mat-tab>
+                <mat-tab label="אָלֶף־בֵּית">
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                    Hebrew <button mat-button color="primary" (click)="languageScriptClicked('he')">עִבְרִית‎</button> 
+                    Yiddish <button mat-button color="primary" (click)="languageScriptClicked('yid')">ייִדיש‎</button> 
+                    <button mat-button color="primary">Ladino</button> 
+                    Judeo-Arabic & Persian Tajik
+                </mat-tab>
+                <mat-tab label="ܐܠܦ ܒܝܬ ܣܘܪܝܝܐ"> 
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('syrc')">ܐܠܦ ܒܝܬ ܣܘܪܝܝܐ</button> Syriac - <button mat-button color="primary" (click)="languageScriptClicked('estr')">ܐܣܛܪܢܓܠܐ‎</button> ʾEsṭrangēlā Classical - <button mat-button color="primary" (click)="languageScriptClicked('madn')">ܡܲܕ݂ܢܚܵܝܵܐ‎</button> Maḏnḥāyā Eastern - <button mat-button color="primary" (click)="languageScriptClicked('sert')">ܣܶܪܛܳܐ‎</button> Serṭā Western - <button mat-button color="primary" (click)="languageScriptClicked('gars')">സുറിയാനി-ܡܠܝܠܡ</button> Karshoni Malayalam
+                </mat-tab>
+                <mat-tab label="𐡀𐡓𐡌𐡉𐡀">
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                    Imperial Aramaic <button mat-button color="primary" (click)="languageScriptClicked('arc')">𐡀𐡓𐡌𐡉𐡀</button> . <mat-icon>visibility</mat-icon> Samaritan
+                    <button mat-button color="primary" (click)="languageScriptClicked('samr')">ࠕࠍ‎ࠓ‎ࠏࠌ</button>  
+                    <button mat-button color="primary" (click)="languageScriptClicked('palm')">Palmyrene</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('nbat')">Nabataean</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('elym')">Elymaic</button>
+                </mat-tab>
+                <mat-tab label="𐭯𐭠𐭫𐭮𐭩𐭪">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Pahlavi - Pārsīg <button mat-button color="primary" (click)="languageScriptClicked('pal')">𐭯𐭠𐭫𐭮𐭩𐭪</button>
+                    Parthian <button mat-button color="primary" (click)="languageScriptClicked('xpr')">𐭐𐭀𐭓𐭈𐭉𐭀</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('hatr')">Hatran</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('psal')">Psalter</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('mani')">Manichaean</button>
+                </mat-tab>
+                <mat-tab label="suγδīk">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('sog')">Sogdian</button> suγδīk <button mat-button color="primary" (click)="languageScriptClicked('kult')">Old Sogdian-Kultobe</button>
+                </mat-tab>
+                <mat-tab label="ࡓࡀࡈࡍࡀ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Mandaic
+                </mat-tab>
+                <mat-tab label="Safaitic">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Safaitic
+                </mat-tab>
+                <mat-tab label="𐩪𐩨𐩱">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Sabaean Qatabanian Hadramite Hadramite
+                </mat-tab>
+                <mat-tab label="Old Berber">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Old Berber, Numidian
+                </mat-tab>
+                <mat-tab label="Khwarezmian">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Khwarezmian-Chorasmian
+                </mat-tab>
+                <mat-tab label="Hanifi">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Hanifi Rohingya
+                </mat-tab>
+                <mat-tab label="Old Sinaitic">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Old-Sinaitic
+                </mat-tab>
+            </mat-tab-group>
+        </mat-tab>
+        <mat-tab label="{{ 'Alphabet' | translate }}">
+            <mat-accordion>
+                <mat-expansion-panel [(expanded)]="panelAlphabetState">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <b><a href="https://omniglot.com/writing/alphabets.htm" target="_blank">{{ 'Alphabet' | translate }}</a></b>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <span style="font-size: 1rem;width: 10%;">Show Scripts</span> &nbsp;&nbsp; <mat-icon>menu_open</mat-icon> 
+                        &nbsp;&nbsp;&nbsp; <mat-icon>pageview</mat-icon> &nbsp;&nbsp; <input type="search" matInput #searchAlphabet placeholder="Search for Language or Script">
+                    </mat-panel-description>
+                  </mat-expansion-panel-header> 
+                  <table class="worldmapbkg">
+                    <tbody>
+                        <tr>
+                            <td colspan="3">  
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('')">Old Arabic</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('')">Wolofal</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('toto')" [ngStyle]="{ 'visibility': (keyboardLayouts['toto'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['toto'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">তোতো</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('cyrs')" [ngStyle]="{ 'visibility': (keyboardLayouts['cyrs'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['cyrs'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">СЛОВѢНЬСКА</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('zou')" [ngStyle]="{ 'visibility': (keyboardLayouts['zou'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['zou'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Zoulai</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('vith')" [ngStyle]="{ 'visibility': (keyboardLayouts['vith'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['vith'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Vithkuqi</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('')">Gaelic</button>  
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('cana')" [ngStyle]="{ 'visibility': (keyboardLayouts['cana'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['cana'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Old Canaanite</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('udi')" [ngStyle]="{'visibility': (keyboardLayouts['udi'][7] < history.value || keyboardLayouts['udi'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['udi'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Old Udi</button>  
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('wcho')" [ngStyle]="{'visibility': (keyboardLayouts['wcho'][7] < history.value || keyboardLayouts['wcho'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['wcho'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Wancho</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('yezi')" [ngStyle]="{'visibility': (keyboardLayouts['khaz'][7] < history.value || keyboardLayouts['yezi'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['yezi'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Yezidi</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('khaz')" [ngStyle]="{'visibility': (keyboardLayouts['khaz'][7] < history.value || keyboardLayouts['khaz'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['khaz'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Khazarian</button>  
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('adin')" [ngStyle]="{'visibility': (keyboardLayouts['adin'][7] < history.value || keyboardLayouts['adin'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['adin'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Adinkra</button>  
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('chik')" [ngStyle]="{'visibility': (keyboardLayouts['chik'][7] < history.value || keyboardLayouts['chik'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['chik'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Tokbirim</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('luo')" [ngStyle]="{ 'visibility': (keyboardLayouts['luo'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['luo'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Luo</button>  
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('khat')" [ngStyle]="{ 'visibility': (keyboardLayouts['khat'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['khat'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Baburi</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('mamb')" [ngStyle]="{ 'visibility': (keyboardLayouts['mamb'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['mamb'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Mandombe</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('zag')" [ngStyle]="{ 'visibility': (keyboardLayouts['zag'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['zag'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Zaghawa</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('adlm')" [ngStyle]="{ 'visibility': (keyboardLayouts['adlm'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['adlm'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">𞤀𞤣𞤤𞤢𞤥</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('wolf')" [ngStyle]="{ 'visibility': (keyboardLayouts['wolf'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['wolf'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Wolof</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('osge')" [ngStyle]="{ 'visibility': (keyboardLayouts['osge'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['osge'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">𐓏𐓘𐓻𐓘𐓻𐓟 𐒻𐓟</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('sora')" [ngStyle]="{ 'visibility': (keyboardLayouts['sora'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['sora'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Sora</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('vah')" [ngStyle]="{ 'visibility': (keyboardLayouts['vah'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['vah'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Bassa-Vah</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('avst')" [ngStyle]="{ 'visibility': (keyboardLayouts['avst'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['avst'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">𐬀𐬬𐬯𐬙𐬁𐬥</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('elba')" [ngStyle]="{'visibility': (keyboardLayouts['elba'][7] < history.value || keyboardLayouts['elba'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['elba'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Elbasan</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('lyci')" [ngStyle]="{'visibility': (keyboardLayouts['lyci'][7] < history.value || keyboardLayouts['lyci'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['lyci'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">𐊗𐊕𐊐𐊎𐊆𐊖</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('cari')" [ngStyle]="{'visibility': (keyboardLayouts['cari'][7] < history.value || keyboardLayouts['cari'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['cari'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">𐊢𐊠𐊥𐊹𐊠</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('olck')" [ngStyle]="{ 'visibility': (keyboardLayouts['olck'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['olck'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">ᱥᱟᱱᱛᱟᱲᱤ</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('osma')" [ngStyle]="{'visibility': (keyboardLayouts['osma'][7] < history.value) ? 'visible' : 'hidden' }">𐒋𐒘𐒈𐒑𐒛𐒒𐒕𐒀</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('goth')" [ngStyle]="{ 'visibility': (keyboardLayouts['goth'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['goth'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">𐌲𐍉𐌸𐌹𐌺</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('dale')" [ngStyle]="{ 'visibility': (keyboardLayouts['dale'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['dale'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">ᚦᚷᛚᚱᚢᚿᛁ</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('runr')" [ngStyle]="{ 'visibility': (keyboardLayouts['runr'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['runr'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">ᚱᚢᚾᛖᛋ</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('ogam')" [ngStyle]="{ 'visibility': (keyboardLayouts['ogam'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['ogam'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">ᚑᚌᚆᚐᚋ</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('phyg')" [ngStyle]="{ 'visibility': (keyboardLayouts['phyg'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['phyg'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Phrygian</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('pice')" [ngStyle]="{ 'visibility': (keyboardLayouts['pice'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['pice'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Picene</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('sabe')" [ngStyle]="{ 'visibility': (keyboardLayouts['sabe'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['sabe'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Sabellic</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('lepo')" [ngStyle]="{ 'visibility': (keyboardLayouts['lepo'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['lepo'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Lepontic</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('ett')" [ngStyle]="{ 'visibility': (keyboardLayouts['ett'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['ett'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }"><div style="transform: scaleX(-1);">𐌓𐌀𐌔𐌄𐌍𐌍𐌀</div></button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('ital')" [ngStyle]="{ 'visibility': (keyboardLayouts['ital'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['ital'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">𐌉𐌕𐌀𐌋𐌉𐌂</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('hung')" style="transform: scaleX(-1);">Rovásírás</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('lydi')" [ngStyle]="{ 'visibility': (keyboardLayouts['lydi'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['lydi'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">𐤮𐤱𐤠𐤭𐤣𐤶𐤯𐤦𐤳</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('mroo')" [ngStyle]="{ 'visibility': (keyboardLayouts['mroo'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['mroo'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Mru</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('glag')" [ngStyle]="{ 'visibility': (keyboardLayouts['glag'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['glag'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Ⰳⰾⰰⰳⱁⰾⰹⱌⰰ</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('copt')" [ngStyle]="{ 'visibility': (keyboardLayouts['copt'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['copt'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">ⲘⲉⲧⲢⲉⲙ̀ⲛⲭⲏⲙⲓ‎</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('xpeo')" [ngStyle]="{ 'visibility': (keyboardLayouts['xpeo'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['xpeo'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">𐎭𐎠𐎼𐎹𐎺𐎢𐏁</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('nkoo')" [ngStyle]="{ 'visibility': (keyboardLayouts['nkoo'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['nkoo'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">ߒߞߏ‎</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('xpu')" [ngStyle]="{ 'visibility': (keyboardLayouts['xpu'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['xpu'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">𐤒𐤓𐤕𐤟𐤇𐤃𐤔𐤕</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('phn')" [ngStyle]="{ 'visibility': (keyboardLayouts['phn'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['phn'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">𐤐𐤕</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('ugar')" [ngStyle]="{ 'visibility': (keyboardLayouts['ugar'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['ugar'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">𐎜𐎗𐎟𐎝</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('ko')" [ngStyle]="{ 'visibility': (keyboardLayouts['ko'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['ko'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">한글</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('mn')" [ngStyle]="{ 'visibility': (keyboardLayouts['mn'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['mn'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">ᠮᠣᠩᠭᠣᠯ</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('ber')" [ngStyle]="{ 'visibility': (keyboardLayouts['ber'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['ber'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Ancient Berber</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('tfng')" [ngStyle]="{ 'visibility': (keyboardLayouts['tfng'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['tfng'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">ⵜⴰⵎⴰⵣⵉⵖⵜ</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('nusk')" [ngStyle]="{ 'visibility': (keyboardLayouts['nusk'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['nusk'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">ნუსხური</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('asom')" [ngStyle]="{ 'visibility': (keyboardLayouts['asom'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['asom'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">ასომთავრული</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('ka')" [ngStyle]="{ 'visibility': (keyboardLayouts['ka'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['ka'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">მხედრული</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('hy')" [ngStyle]="{ 'visibility': (keyboardLayouts['hy'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['hy'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Հայոց գրեր</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('ion')"  [ngStyle]="{ 'visibility': (keyboardLayouts['ion'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['ion'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Ἰωνία</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('el')" [ngStyle]="{ 'visibility': (keyboardLayouts['el'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['el'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Ελληνικά</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('komi')" [ngStyle]="{ 'visibility': (keyboardLayouts['komi'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['komi'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Коми кыв</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Хальмг Өөрдин</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('srb')"  [ngStyle]="{ 'visibility': (keyboardLayouts['srb'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['srb'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">српски</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">български</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('tt')">татар</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('mk')" [ngStyle]="{ 'visibility': (keyboardLayouts['mk'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['mk'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">македонски</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('be')" [ngStyle]="{ 'visibility': (keyboardLayouts['be'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['be'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">беларуская</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('uk')" [ngStyle]="{ 'visibility': (keyboardLayouts['uk'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['uk'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">українська</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('ru')" [ngStyle]="{ 'visibility': (keyboardLayouts['ru'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['ru'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">русский</button> 
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('ru')" [ngStyle]="{ 'visibility': (keyboardLayouts['ru'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['ru'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Кири́ллица</button>
+                                <button mat-button color="primary" (click)="allAlphabetTypeClicked('la')" [ngStyle]="{ 'visibility': (keyboardLayouts['la'][2].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || keyboardLayouts['la'][5].toLowerCase().indexOf(searchAlphabet.value.toLowerCase()) !== -1 || searchAlphabet.value == '') ? 'visible' : 'hidden' }">Latin</button>
+                                &nbsp;&nbsp; <span style="float: right"><mat-icon>history_edu</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="chronoTimeline" #history tickInterval="100" min="-5000" max="2021" value="2021"></mat-slider> &nbsp;&nbsp; <mat-icon>history</mat-icon></span> 
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </mat-expansion-panel>
+            </mat-accordion> 
+            <mat-tab-group dynamicHeight [(selectedIndex)]="selectKeysTabs" (focusChange)="alphabetType($event)" #scriptAlphabetType disableRipple>
+                <mat-tab label="Latin">
+                    <mat-accordion>
+                        <mat-expansion-panel [(expanded)]="panelLatinState">
+                          <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                <b>Latin script</b>
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                <span style="font-size: 1rem;width: 13%;">Show Languages</span> &nbsp;&nbsp; <mat-icon>menu_open</mat-icon>
+                                &nbsp;&nbsp;&nbsp; <mat-icon>pageview</mat-icon> &nbsp;&nbsp; <input type="search" matInput #searchLatin placeholder="Search for Language or Script">
+                            </mat-panel-description>
+                          </mat-expansion-panel-header> 
+                            Afrikaans Akan(Twi) Aragonés Asturianu Aymar-aru
+                            <button mat-button color="primary" (click)="languageScriptClicked('avo')" [ngStyle]="{ 'visibility': (keyboardLayouts['avo'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['avo'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Avoiuli</button>
+                            <button mat-button color="primary" (click)="languageScriptClicked('az')" [ngStyle]="{ 'visibility': (keyboardLayouts['az'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['az'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Azerbaijani</button>
+                            Bahasa-Banjar Bahasa-Hulontalo Bahsa-Acèh Bamanankan Basa-Bali Basa-Ugi Baso-Minangkabau Bikol-Central Bislama Boarisch Bodo Bosanski
+                            <button mat-button color="primary" (click)="languageScriptClicked('nb')" [ngStyle]="{ 'visibility': (keyboardLayouts['nb'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['nb'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Bøkmål-Nynorsk</button>
+                            Brezhoneg Català
+                            <button mat-button color="primary" (click)="languageScriptClicked('cs')" [ngStyle]="{ 'visibility': (keyboardLayouts['cs'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['cs'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Čeština</button> 
+                            Chamoru
+                            <button mat-button color="primary">Chewa</button>
+                            Chickewa chiShona Corsu Cymraeg Dagaare Dagbanli
+                            <button mat-button color="primary" (click)="languageScriptClicked('da')" [ngStyle]="{ 'visibility': (keyboardLayouts['da'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['da'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Dansk</button> 
+                            Davvisámegiella
+                            <button mat-button color="primary" (click)="languageScriptClicked('de')" [ngStyle]="{ 'visibility': (keyboardLayouts['de'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['de'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Deutsch</button>
+                            Dholuo Dolnoserbski Dorerin-Naoero Edo
+                            <button mat-button color="primary" (click)="languageScriptClicked('et')" [ngStyle]="{ 'visibility': (keyboardLayouts['et'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['et'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Eesti</button> 
+                            Elsassisch
+                            <button mat-button color="primary" (click)="languageScriptClicked('enintl')" [ngStyle]="{ 'visibility': (keyboardLayouts['enintl'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['enintl'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">English(Intl)</button>  
+                            <button mat-button color="primary" (click)="languageScriptClicked('enuk')" [ngStyle]="{ 'visibility': (keyboardLayouts['enuk'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['enuk'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">English(UK)</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('enus')" [ngStyle]="{ 'visibility': (keyboardLayouts['enus'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['enus'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">English(US)</button>
+                            <button mat-button color="primary" (click)="languageScriptClicked('es')" [ngStyle]="{ 'visibility': (keyboardLayouts['es'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['es'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Español</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('esmx')" [ngStyle]="{ 'visibility': (keyboardLayouts['esmx'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['esmx'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Español (Latino)</button> Esperanto
+                            <button mat-button color="primary" (click)="languageScriptClicked('eu')" [ngStyle]="{ 'visibility': (keyboardLayouts['eu'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['eu'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Euskara</button> 
+                            EurKEY Evegbe Fongbe
+                            <button mat-button color="primary" (click)="languageScriptClicked('fr')" [ngStyle]="{ 'visibility': (keyboardLayouts['fr'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['fr'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Française</button> 
+                            <button mat-button color="primary">Føroyskt</button> 
+                            Frysk Furlan Gaeilge
+                            <button mat-button color="primary">Ᵹaelaç</button>
+                            Gagana-Samoa Gagauz
+                            <button mat-button color="primary">Gàidhlig</button> 
+                            Galego Gikuyu Griko
+                            <button mat-button color="primary">Guaraní</button> 
+                            <button mat-button color="primary">Hausa (Raina, Salifu)</button> 
+                            Hawai'i Hornjoserbscina
+                            <button mat-button color="primary">Hrvatska</button> 
+                            <button mat-button color="primary">Igbo</button> 
+                            Ikirundi Ilonggo Ilokano
+                            <button mat-button color="primary">Indonesian</button> 
+                            Inuinnaqtun
+                            <button mat-button color="primary" (click)="languageScriptClicked('ipa')" >IPA</button> 
+                            <button mat-button color="primary">Irish</button> 
+                            isiNdebele
+                            <button mat-button color="primary">IsiXhosa</button> 
+                            <button mat-button color="primary">IsiZulu</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('is')" [ngStyle]="{ 'visibility': (keyboardLayouts['is'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['is'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Íslenska</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('it')" [ngStyle]="{ 'visibility': (keyboardLayouts['it'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['it'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Italiano</button>
+                            Japanese Jèrriais Jumiekan-Patwa Kabiye Kajin-Majel Kalaallisut Kapampangan Kaszebsczi
+                            <button mat-button color="primary" (click)="languageScriptClicked('kaz')" [ngStyle]="{ 'visibility': (keyboardLayouts['kaz'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['kaz'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Kazakh</button> 
+                            Kernewek Khasi Kikongo
+                            <button mat-button color="primary">Kinyarwanda</button> 
+                            Kiswahili Kreol-Morisien Kreol-Seselwa Kreyòl-ayisyen Kurdi Kurpsosky
+                            <button mat-button color="primary">Ladino</button> 
+                            Latgalu
+                            <button mat-button color="primary" (click)="languageScriptClicked('la')" [ngStyle]="{ 'visibility': (keyboardLayouts['la'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['la'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Latium</button> 
+                            Lea-faka-tonga Lëtzebuergesch
+                            <button mat-button color="primary" (click)="languageScriptClicked('lt')" [ngStyle]="{ 'visibility': (keyboardLayouts['lt'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['lt'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Lietuvių</button> 
+                            Ligure Limburgs
+                            <button mat-button color="primary">Lingála</button> 
+                            Li-Niha Lingua-Franca-Nova Lombard Madhura
+                            <button mat-button color="primary">Magyar</button> 
+                            <button mat-button color="primary">Malagasy</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('mt')" [ngStyle]="{ 'visibility': (keyboardLayouts['mt'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['mt'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Malti</button> 
+                            Mandingo Manx
+                            <button mat-button color="primary">Maori</button> 
+                            Mazurská-gádkä Meranaw Mirandés Mi'kmawi'simk Mongol Mooré Napulitano  Na-Vosa-Vakaviti
+                            <button mat-button color="primary" (click)="languageScriptClicked('nl')" [ngStyle]="{ 'visibility': (keyboardLayouts['nl'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['nl'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Nederlands</button>
+                            Normaund Occitan Oluganda Oromo Palenquero Pangasinan Papiamento Piemontèis Plattdüütsch
+                            <button mat-button color="primary">Polski</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('pt')" [ngStyle]="{ 'visibility': (keyboardLayouts['pt'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['pt'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Português</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('ptbr')" [ngStyle]="{ 'visibility': (keyboardLayouts['ptbr'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['ptbr'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Português(BR)</button> 
+                            Pulaar-Fulfude Qafaraf Qaraqalpaq Rapa-Nui
+                            <button mat-button color="primary">Runasimi</button>
+                            Saamáka Sardu Sassaresu Scots Schwiizerdütsch Sesotho-sa-Leboa Setswana
+                            <button mat-button color="primary">Shona</button>
+                            <button mat-button color="primary" (click)="languageScriptClicked('alb')" [ngStyle]="{ 'visibility': (keyboardLayouts['alb'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['alb'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Shqip</button> 
+                            Sicilianu Sinugboanon SiSwati
+                            <button mat-button color="primary">Slovenčina</button> 
+                            <button mat-button color="primary">Slovenski</button> 
+                            Soomaaliga
+                            <button mat-button color="primary">Suomi</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('sv')" [ngStyle]="{ 'visibility': (keyboardLayouts['sv'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['sv'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Sverige</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('ang')" [ngStyle]="{ 'visibility': (keyboardLayouts['ang'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['ang'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Stæfrof</button> 
+                            <button mat-button color="primary">Swahilli</button> 
+                            Taetae-ni-Kiribati
+                            <button mat-button color="primary" (click)="languageScriptClicked('tg')" [ngStyle]="{ 'visibility': (keyboardLayouts['tg'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['tg'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Tajik</button> 
+                            Taqbaylit Tetun Tekoi-er-a-Belau Tok-Pisin tok-pona Tshivenda
+                            <button mat-button color="primary">Turkish</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('uyy')" [ngStyle]="{ 'visibility': (keyboardLayouts['uyy'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['uyy'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Uyghur</button> 
+                            <button mat-button color="primary" (click)="allAlphabetTypeClicked('uz')" [ngStyle]="{ 'visibility': (keyboardLayouts['uz'][2].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || keyboardLayouts['uz'][5].toLowerCase().indexOf(searchLatin.value.toLowerCase()) !== -1 || searchLatin.value == '') ? 'visible' : 'hidden' }">Uzbek</button> 
+                            <button mat-button color="primary">Vietnamese</button> 
+                            Vèneto Xikwor Walon Waray Wymysiöerys Yorùbá Xitsonga Zazaki Zemaiteska 
+                            {{ 'see' | translate }} <a href="https://en.wikipedia.org/wiki/Latin_script" target="_blank">{{ 'more' | translate }}</a>
+                        </mat-expansion-panel>
+                    </mat-accordion><br/> 
+                </mat-tab>
+                <mat-tab label="Кири́ллица">
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                    <button mat-button color="primary" (click)="languageScriptClicked('ru')">русский</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('uk')">українська</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('be')">беларуская</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('mk')">македонски</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('tt')">татар</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('')">български</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('srb')">српски</button>   
+                    <button mat-button color="primary" (click)="languageScriptClicked('')">Abkhazia</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('')">Bashkir</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('kk')">қазақша</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('aze')">Азəрбајҹан</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('tgk')">тадж</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('uzb')">Ўзбекча</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('ky')">Кыргыз</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('mon')">Монгол</button>  
+                    <button mat-button color="primary" (click)="languageScriptClicked('sah')">саха</button>  
+                    <mat-icon>visibility</mat-icon>
+                    <button mat-button color="primary" (click)="languageScriptClicked('')">Хальмг Өөрдин</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('komi')">Коми кыв</button> Важ Перым - Old Permic 
+                    <button mat-button color="primary" (click)="languageScriptClicked('cyrs')">СЛОВѢНЬСКА</button> Old Slavonic<br/>
+                </mat-tab>
+                <mat-tab label="Ελληνικά">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <mat-icon>visibility</mat-icon> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('el')">Ελληνικά</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('ion')"  [ngStyle]="{ 'visibility': (keyboardLayouts['ion'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['ion'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Ἰωνία</button> Ionian (Archaic Greek) 
+                    Cypriot <button mat-button color="primary" (click)="languageScriptClicked('cprt')">𐠁𐠀𐠂𐠃𐠄</button> 
+                    Linear B  <button mat-button color="primary" (click)="languageScriptClicked('linb')">𐀀𐀁𐀂𐀃𐀄</button> 
+                    Linear A
+                    <button mat-button color="primary" (click)="languageScriptClicked('linb')">Αριαο</button>  Bactrian
+                </mat-tab>
+                <mat-tab label="Հայոց գրեր">
+                    <button mat-button color="primary" (click)="languageScriptClicked('hy')">Հայոց գրեր</button>  
+                    <button mat-button color="primary" (click)="languageScriptClicked('udi')">Old Udi</button>  
+                    &nbsp; 
+                </mat-tab>
+                <mat-tab label="მხედრული">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <mat-icon>visibility</mat-icon> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('ka')">მხედრული</button> Mkhedruli
+                    <button mat-button color="primary" (click)="languageScriptClicked('asom')">ასომთავრული</button> Asomtavruli
+                    <button mat-button color="primary" (click)="languageScriptClicked('nusk')">ნუსხური</button> Nuskhuri
+                </mat-tab>
+                <mat-tab label="ⵜⴰⵎⴰⵣⵉⵖⵜ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('tfng')">ⵜⴰⵎⴰⵣⵉⵖⵜ</button> Neo-Tamazight <mat-icon>visibility</mat-icon>, Ghadamès, Ghomara, Guanche, Kabyle, , Rifian, Shilha (Tashelhit), Shawiya, Tamahaq, Tamasheq, Tamazight, Zenaga, Zuwara Berber. <mat-icon>visibility</mat-icon> <button mat-button color="primary" (click)="languageScriptClicked('ber')">Ancient Berber</button> <br/>
+                </mat-tab>
+                <mat-tab label="ᠮᠣᠩᠭᠣᠯ"><br/><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                    <button mat-button color="primary" style="transform: rotate(90deg)">ᠮᠣᠩᠭᠣᠯ ᠪᠢᠴᠢᠭ</button> ᠮᠣᠩᠭᠣᠯ ᠬᠡᠯᠡ Mongolian - 
+                    <button mat-button color="primary" (click)="languageScriptClicked('oira')" style="transform: rotate(90deg)">ᡐᡆᡑᡆ</button> Kalmyk-Oirat ᡍᠠᠯᡅᡏᠠᡎ ᡘᡄᠯᡄᠨ - Todo Bichig Clear &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button mat-button color="primary">Manchu</button>
+                    <button mat-button color="primary">Xibe</button> Hudum-Mongol-Bichig. <mat-icon>visibility</mat-icon> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('oui')" style="transform: rotate(90deg)">Huíhú yǔ</button>
+                    <button mat-button color="primary"  (click)="languageScriptClicked('galk')">Galik</button>
+                    <br/><br/>
+                </mat-tab>
+                <mat-tab label="한글">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Korean 한글 Hangul
+                </mat-tab>
+                <mat-tab label="𐎜𐎗𐎟𐎝">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Ugaritic
+                </mat-tab>
+                <mat-tab label="𐤐𐤕">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Phonecian - <button mat-button color="primary" (click)="languageScriptClicked('phn')">𐤐𐤄𐤅𐤏𐤍𐤉𐤑𐤉𐤀</button> <mat-icon>visibility</mat-icon> Punic <button mat-button color="primary" (click)="languageScriptClicked('xpu')">𐤒𐤓𐤕𐤟𐤇𐤃𐤔𐤕</button>
+                </mat-tab>
+                <mat-tab label="ߒߞߏ‎">
+                    &nbsp;&nbsp;&nbsp;&nbsp; N'Ko - 'Kangbe' {{ 'Used to' | translate }} Manding Yoruba Fon Bambara-Bamana/Bamanankan ߓߡߊߣߊ߲ߞߊ߲‎
+                </mat-tab>
+                <mat-tab label="𐎭𐎠𐎼𐎹𐎺𐎢𐏁">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Old Persian 𐎭𐎠𐎼𐎹𐎺𐎢𐏁
+                </mat-tab>
+                <mat-tab label="ⲘⲉⲧⲢⲉⲙ̀ⲛⲭⲏⲙⲓ‎">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Coptic
+                </mat-tab>
+                <mat-tab label="Ⰳⰾⰰⰳⱁⰾⰹⱌⰰ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Ⰳⰾⰰⰳⱁⰾⰹⱌⰰ Glagolitic
+                </mat-tab>
+                <mat-tab label="Mru">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Mro-Mrung
+                </mat-tab>
+                <mat-tab label="𐤮𐤱𐤠𐤭𐤣𐤶𐤯𐤦𐤳">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Lydian-Śfardẽtis
+                </mat-tab>
+                <mat-tab label="Rovásírás">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Szekely-Hungarian_Rovas.svg" width="25%" height="28%"> - <button mat-button color="primary" (click)="languageScriptClicked('khaz')">Khazarian</button>
+                </mat-tab>
+                <mat-tab label="𐌉𐌕𐌀𐌋𐌉𐌂">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Archaic Latin
+                </mat-tab>
+                <mat-tab label="𐌀𐌍𐌍𐌄𐌔𐌀𐌓">&nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('phyg')">Phrygian</button> <button mat-button color="primary" (click)="languageScriptClicked('pice')">Picene</button> North Picene <button mat-button color="primary" (click)="languageScriptClicked('sabe')">Sabellic</button> South Picene <button mat-button color="primary" (click)="languageScriptClicked('lepo')">Lepontic</button>
+                    &nbsp;&nbsp; Rasenna-Etruscan <button mat-button color="primary" (click)="languageScriptClicked('ett')"><div style="transform: scaleX(-1);">𐌓𐌀𐌔𐌄𐌍𐌍𐌀</div></button>
+                </mat-tab>
+                <mat-tab label="ᚑᚌᚆᚐᚋ"><br/>
+                    &nbsp;&nbsp;&nbsp;&nbsp; ᚑᚌᚆᚐᚋ &nbsp;&nbsp; Ogham <button mat-button color="primary" style="transform: rotate(-90deg)">ᚑᚌᚆᚐᚋ</button>
+                </mat-tab>
+                <mat-tab label="ᚱᚢᚾᛖᛋ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('runr')">ᚱᚢᚾᛖᛋ</button> Runic
+                    <button mat-button color="primary" (click)="languageScriptClicked('dale')">ᚦᚷᛚᚱᚢᚿᛁ</button> Dalecarlian
+                </mat-tab>
+                <mat-tab label="𐌲𐍉𐌸𐌹𐌺">
+                    &nbsp;&nbsp;&nbsp;&nbsp; 𐌲𐍉𐌸𐌹𐌺
+                </mat-tab>
+                <mat-tab label="𐒋𐒘𐒈𐒑𐒛𐒒𐒕𐒀">
+                    &nbsp;&nbsp;&nbsp;&nbsp; 𐒋𐒘𐒈𐒑𐒛𐒒𐒕𐒀 Somali 
+                </mat-tab>
+                <mat-tab label="ᱥᱟᱱᱛᱟᱲᱤ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; ᱥᱟᱱᱛᱟᱲᱤ Ol Chiki - <mat-icon>history_edu</mat-icon>  Santali
+                </mat-tab>
+                <mat-tab label="𐊢𐊠𐊥𐊹𐊠">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Carian
+                </mat-tab>
+                <mat-tab label="𐊗𐊕𐊐𐊎𐊆𐊖">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <mat-icon>language</mat-icon>Trm̃mili &nbsp;&nbsp;&nbsp;&nbsp; <mat-icon>label</mat-icon>Lycian 
+                </mat-tab>
+                <mat-tab label="Elbasan">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('elba')">Elbasan</button> <button mat-button color="primary" (click)="languageScriptClicked('')">Todhri</button> <button mat-button color="primary" (click)="languageScriptClicked('vith')">Vithkuqi</button> Beitha Kukju
+                </mat-tab>
+                <mat-tab label="𐬀𐬬𐬯𐬙𐬁𐬥"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Avestan 𐬀𐬬𐬯𐬙𐬁𐬥</p>
+                </mat-tab>
+                <mat-tab label="𐓏𐓘𐓻𐓘𐓻𐓟 𐒻𐓟"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; 𐓏𐓘𐓻𐓘𐓻𐓟 𐒻𐓟 Osage </p>
+                </mat-tab>
+                <mat-tab label="𞤀𞤣𞤤𞤢𞤥"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Adlam 𞤀𞤣𞤤𞤢𞤥</p>
+                </mat-tab>
+                <mat-tab label="Wolof"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Wolof</p>
+                </mat-tab>
+                <mat-tab label="Sora">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Sora Sompeng
+                </mat-tab>
+                <mat-tab label="Bassa-Vah">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Bassa-Vah
+                </mat-tab>
+                <mat-tab label="Mandombe">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Mandombe
+                </mat-tab>
+                <mat-tab label="Zaghawa">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Beria-Zaghawa
+                </mat-tab>
+                <mat-tab label="Baburi">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Khatt-i-Badí Baburi
+                </mat-tab>
+                <mat-tab label="Luo">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Dholuo
+                </mat-tab>
+                <mat-tab label="Tokbirim">
+                    &nbsp;&nbsp;&nbsp;&nbsp; A-chik Tokbirim : <mat-icon>history_edu</mat-icon> Garo
+                </mat-tab>
+                <mat-tab label="Adinkra">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Adinkra : <mat-icon>history_edu</mat-icon> Akan, Dagbani, Ewe and Ga
+                </mat-tab>
+                <mat-tab label="Khazarian">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Khazarian : <mat-icon>history_edu</mat-icon> Ogur, As-Alan and Common Turkic
+                </mat-tab>
+                <mat-tab label="Yezidi">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Yezidi
+                </mat-tab>
+                <mat-tab label="Wancho">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Wancho
+                </mat-tab>
+                <mat-tab label="Old Udi">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Caucasian Albanian
+                </mat-tab>
+                <mat-tab label="Old Canaanite">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Old-Canaanite
+                </mat-tab>
+                <mat-tab label="Zoulai">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Zou
+                </mat-tab>
+                <mat-tab label="СЛОВѢНЬСКА">
+                    &nbsp;&nbsp;&nbsp;&nbsp; СЛОВѢНЬСКА - Old Church Slavonic
+                </mat-tab>
+                <mat-tab label="তোতো">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Toto
+                </mat-tab>
+            </mat-tab-group>
+        </mat-tab>
+        <mat-tab label="{{ 'Abugida' | translate }}"> 
+            <mat-accordion>
+                <mat-expansion-panel [(expanded)]="panelAbugidaState">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <b><a href="https://omniglot.com/writing/syllabic.htm" target="_blank">{{ 'Abugida' | translate }}</a></b>
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <span style="font-size: 1rem;width: 10%;">Show Scripts</span> &nbsp;&nbsp; <mat-icon>menu_open</mat-icon>
+                        &nbsp;&nbsp;&nbsp; <mat-icon>pageview</mat-icon> &nbsp;&nbsp; <input type="search" matInput #searchAbugida placeholder="Search for Language or Script">
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <table class="worldmapbkg">
+                    <tbody>
+                        <tr>
+                            <td colspan="3">
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Aima</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Coorgi</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Bima</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Jefnticha</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Sirmauri</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Leke</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Tolong</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Marchen</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Gondi</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Khe Prih</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Lampung</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Gangga-Malayu</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Pau-Cin-Hau</button>    
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Warang-Citi</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Miao</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('tamu')" [ngStyle]="{ 'visibility': (keyboardLayouts['tamu'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['tamu'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Khema</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('tika')" [ngStyle]="{ 'visibility': (keyboardLayouts['tika'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['tika'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Tikamuli</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('land')" [ngStyle]="{ 'visibility': (keyboardLayouts['land'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['land'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Laṇḍā</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('prac')" [ngStyle]="{ 'visibility': (keyboardLayouts['prac'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['prac'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Pracalit</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('dham')" [ngStyle]="{ 'visibility': (keyboardLayouts['dham'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['dham'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Dhimal</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('bhai')" [ngStyle]="{ 'visibility': (keyboardLayouts['bhai'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['bhai'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Bhaiksuki</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('tach')" [ngStyle]="{ 'visibility': (keyboardLayouts['tach'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['tach'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Tanchangya</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('zanb')" [ngStyle]="{ 'visibility': (keyboardLayouts['zanb'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['zanb'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Zanabazar</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('tang')" [ngStyle]="{ 'visibility': (keyboardLayouts['tang'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['tang'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Khimhun</button>     
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('mwan')" [ngStyle]="{ 'visibility': (keyboardLayouts['mwan'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['mwan'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Mwangwego</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('ahom')" [ngStyle]="{ 'visibility': (keyboardLayouts['ahom'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['ahom'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Ahom</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('takr')" [ngStyle]="{ 'visibility': (keyboardLayouts['takr'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['takr'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Takri</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('maha')" [ngStyle]="{ 'visibility': (keyboardLayouts['maha'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['maha'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Mahajani</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('khud')" [ngStyle]="{ 'visibility': (keyboardLayouts['khud'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['khud'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Khudawadi</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('mult')" [ngStyle]="{ 'visibility': (keyboardLayouts['mult'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['mult'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Multani</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('khoj')" [ngStyle]="{ 'visibility': (keyboardLayouts['khoj'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['khoj'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Khojki</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('nand')" [ngStyle]="{ 'visibility': (keyboardLayouts['nand'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['nand'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Nandinagari</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('gup')" [ngStyle]="{ 'visibility': (keyboardLayouts['gup'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['gup'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Gupta</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('renc')" [ngStyle]="{ 'visibility': (keyboardLayouts['renc'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['renc'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Rencong</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('cham')" [ngStyle]="{ 'visibility': (keyboardLayouts['cham'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['cham'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ꨌꩌ</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('limb')" [ngStyle]="{ 'visibility': (keyboardLayouts['limb'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['limb'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ᤕᤠᤰᤌᤢᤱ ᤐᤠᤴ</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('buhd')" [ngStyle]="{ 'visibility': (keyboardLayouts['buhd'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['buhd'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ᝊᝓᝑᝒ</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('rjng')" [ngStyle]="{ 'visibility': (keyboardLayouts['rjng'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['rjng'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ꥆꤰ꥓ꤼꤽ ꤽꥍꤺꥏ</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('sund')" [ngStyle]="{ 'visibility': (keyboardLayouts['sund'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['sund'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ᮞᮥᮔ᮪ᮓ</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('kali')" [ngStyle]="{ 'visibility': (keyboardLayouts['kali'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['kali'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ꤊꤢ꤬ꤛꤢ꤭ ꤜꤟꤤ꤬</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('lepc')" [ngStyle]="{ 'visibility': (keyboardLayouts['lepc'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['lepc'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ᰛᰩᰴ</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('cakm')" [ngStyle]="{ 'visibility': (keyboardLayouts['cakm'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['cakm'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">𑄌𑄋𑄴𑄟𑄳𑄦 𑄞𑄌𑄴</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('sidd')" [ngStyle]="{ 'visibility': (keyboardLayouts['sidd'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['sidd'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Siddam</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('shrd')" [ngStyle]="{ 'visibility': (keyboardLayouts['shrd'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['shrd'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Sharada</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('modi')" [ngStyle]="{ 'visibility': (keyboardLayouts['modi'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['modi'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Modi</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('toch')" [ngStyle]="{ 'visibility': (keyboardLayouts['toch'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['toch'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Tocharian</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('khar')" [ngStyle]="{ 'visibility': (keyboardLayouts['khar'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['khar'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">𐨑𐨪𐨆𐨮𐨿𐨛𐨁𐨌</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('kawi')" [ngStyle]="{ 'visibility': (keyboardLayouts['kawi'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['kawi'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ꦏꦮꦶ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('lana')" [ngStyle]="{ 'visibility': (keyboardLayouts['lana'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['lana'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ᨲ᩠ᩅᩫᨾᩮᩥᩬᨦ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('dogr')" [ngStyle]="{ 'visibility': (keyboardLayouts['dogr'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['dogr'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Dogri</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('kada')" [ngStyle]="{ 'visibility': (keyboardLayouts['kada'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['kada'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Kadamba</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('gran')" [ngStyle]="{ 'visibility': (keyboardLayouts['gran'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['gran'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Grantha</button>  
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('orkh')" [ngStyle]="{ 'visibility': (keyboardLayouts['orkh'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['orkh'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">𐱅𐰭𐰼𐰃</button>  
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('tagb')" [ngStyle]="{ 'visibility': (keyboardLayouts['tagb'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['tagb'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ᝦᝪᝯ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('hano')" [ngStyle]="{ 'visibility': (keyboardLayouts['hano'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['hano'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ᜱᜨᜳᜨᜳᜢ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('btk')" [ngStyle]="{ 'visibility': (keyboardLayouts['btk'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['btk'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ᯅᯖᯂ᯲</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('tdd')" [ngStyle]="{ 'visibility': (keyboardLayouts['tdd'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['tdd'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ᥖᥭᥰᥖᥬᥳᥑᥨᥒᥰ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('kuli')" [ngStyle]="{ 'visibility': (keyboardLayouts['kuli'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['kuli'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Kulitan</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('mero')" [ngStyle]="{ 'visibility': (keyboardLayouts['mero'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['mero'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">𐦨𐦡𐦫𐦣𐦢𐦶𐦡</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('pall')" [ngStyle]="{ 'visibility': (keyboardLayouts['pall'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['pall'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Pallava</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('phag')" [ngStyle]="{ 'visibility': (keyboardLayouts['phag'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['phag'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Soyombo</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('phag')" [ngStyle]="{ 'visibility': (keyboardLayouts['phag'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['phag'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ꡏꡡꡃ ꡢꡡꡙ ꡁꡦ ꡙꡦ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('bali')" [ngStyle]="{ 'visibility': (keyboardLayouts['bali'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['bali'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ᬪᬵᬱᬩᬮᬶ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('tglg')" [ngStyle]="{ 'visibility': (keyboardLayouts['tglg'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['tglg'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ᜊᜌ᜔ᜊᜌᜒᜈ᜔</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('java')" [ngStyle]="{ 'visibility': (keyboardLayouts['java'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['java'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ꦧꦱꦗꦮ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('my')" [ngStyle]="{ 'visibility': (keyboardLayouts['my'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['my'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">မြန်မာစာ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('hmn')" [ngStyle]="{ 'visibility': (keyboardLayouts['hmn'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['hmn'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Hmong</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('diak')" [ngStyle]="{ 'visibility': (keyboardLayouts['diak'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['diak'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Dhives Akuru</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('thaa')" [ngStyle]="{ 'visibility': (keyboardLayouts['thaa'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['thaa'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ތާނަ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('maka')" [ngStyle]="{ 'visibility': (keyboardLayouts['maka'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['maka'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Makassarese</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('bug')" [ngStyle]="{ 'visibility': (keyboardLayouts['bug'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['bug'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ᨅᨔ ᨕᨘᨁᨗ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('km')" [ngStyle]="{ 'visibility': (keyboardLayouts['km'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['km'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ភាសាខ្មែរ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('lo')" [ngStyle]="{ 'visibility': (keyboardLayouts['lo'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['lo'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ພາສາລາວ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('th')" [ngStyle]="{ 'visibility': (keyboardLayouts['th'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['th'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ภาษาไทย</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('geez')" [ngStyle]="{ 'visibility': (keyboardLayouts['geez'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['geez'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ግዕዝ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('tibt')" [ngStyle]="{ 'visibility': (keyboardLayouts['tibt'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['tibt'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">རྫོང་ཁ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('new')" [ngStyle]="{ 'visibility': (keyboardLayouts['new'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['new'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Newar</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('sinh')" [ngStyle]="{ 'visibility': (keyboardLayouts['sinh'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['sinh'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">සිංහල</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('mni')" [ngStyle]="{ 'visibility': (keyboardLayouts['mni'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['mni'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ꯃꯤꯇꯩꯂꯣꯟ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('sylo')" [ngStyle]="{ 'visibility': (keyboardLayouts['sylo'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['sylo'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ꠍꠤꠟꠐꠤ ꠘꠣꠉꠞꠤ</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('bn')" [ngStyle]="{ 'visibility': (keyboardLayouts['bn'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['bn'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">বাংলা</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('tirh')" [ngStyle]="{ 'visibility': (keyboardLayouts['tirh'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['tirh'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">মৈথিল</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('or')" [ngStyle]="{ 'visibility': (keyboardLayouts['or'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['or'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ଓଡ଼ିଆ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('gu')" [ngStyle]="{ 'visibility': (keyboardLayouts['gu'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['gu'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ગુજરાતી</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('pa')" [ngStyle]="{ 'visibility': (keyboardLayouts['pa'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['pa'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ਗੁਰਮੁਖੀ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('saur')" [ngStyle]="{ 'visibility': (keyboardLayouts['saur'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['saur'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ꢱꣃꢬꢵꢰ꣄ꢜ꣄ꢬ</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('ml')" [ngStyle]="{ 'visibility': (keyboardLayouts['ml'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['ml'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">മലയാലിപി</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('gars')" [ngStyle]="{ 'visibility': (keyboardLayouts['gars'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['gars'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">സുറിയാനി</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('bada')" [ngStyle]="{ 'visibility': (keyboardLayouts['bada'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['bada'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Badaga</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Vatteluttu</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('ta')" [ngStyle]="{ 'visibility': (keyboardLayouts['ta'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['ta'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">தமிழ்</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('te')" [ngStyle]="{ 'visibility': (keyboardLayouts['te'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['te'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">తెలుగు</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Kōchi</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('tiga')" [ngStyle]="{ 'visibility': (keyboardLayouts['tiga'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['tiga'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Tigalari</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('kn')" [ngStyle]="{ 'visibility': (keyboardLayouts['kn'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['kn'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">ಕನ್ನಡ</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('mr')" [ngStyle]="{ 'visibility': (keyboardLayouts['mr'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['mr'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">मराठी</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('hi')" [ngStyle]="{ 'visibility': (keyboardLayouts['hi'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['hi'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">हिन्दी</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('sa')" [ngStyle]="{ 'visibility': (keyboardLayouts['sa'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['sa'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">संस्कृत</button> 
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('sa')" [ngStyle]="{ 'visibility': (keyboardLayouts['sa'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['sa'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">देवनागरी</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Licchavi</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('')">Kushan</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('maga')" [ngStyle]="{ 'visibility': (keyboardLayouts['maga'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['maga'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">Magar Akkha</button>
+                                <button mat-button color="primary" (click)="allAbugidaTypeClicked('brah')" [ngStyle]="{ 'visibility': (keyboardLayouts['brah'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['brah'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '') ? 'visible' : 'hidden' }">𑀩𑁆𑀭𑀸𑀳𑁆𑀫𑀻𑀮𑀺𑀧𑀺</button> 
+                                &nbsp;&nbsp; <span style="float: right"><mat-icon>history_edu</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="chronoTimeline" tickInterval="100" min="-5000" max="2021" value="2021"></mat-slider> &nbsp;&nbsp; <mat-icon>history</mat-icon></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </mat-expansion-panel>
+            </mat-accordion>   
+            <mat-tab-group dynamicHeight [(selectedIndex)]="selectKeysTabs" (focusChange)="abugidaType($event)" #scriptAbugidaType disableRipple>
+                <mat-tab label="𑀩𑁆𑀭𑀸𑀳𑁆𑀫𑀻𑀮𑀺𑀧𑀺"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('brah')">𑀩𑁆𑀭𑀸𑀳𑁆𑀫𑀻𑀮𑀺𑀧𑀺</button> Brahmi. &nbsp;&nbsp; <mat-icon>visibility</mat-icon> Satavahana <button mat-button color="primary" (click)="languageScriptClicked('maga')">Magar Akkha</button>‎ <button mat-button color="primary" (click)="languageScriptClicked('gup')">Gupta</button> <button mat-button color="primary" (click)="languageScriptClicked('kush')">Kushan</button> Licchavi <button mat-button color="primary" (click)="languageScriptClicked('nand')">Nandinagari</button> </p>
+                </mat-tab>
+                <mat-tab label="देवनागरी">
+                    <p style="text-align: center;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;<mat-icon>history_edu</mat-icon> <button mat-button color="primary" (click)="languageScriptClicked('sa')">संस्कृत</button> <button mat-button color="primary" (click)="languageScriptClicked('hi')">हिन्दी</button> <button mat-button color="primary" (click)="languageScriptClicked('mr')">मराठी</button> <button mat-button color="primary" (click)="languageScriptClicked('kthi')">𑂍𑂶𑂟𑂲</button> <button mat-button color="primary" (click)="languageScriptClicked('snd')">सिन्धी</button> अवधी, भोजपुरी, छत्तीसगढ़ी, मारवाड़ी, मुंडारी, नेपाली, प्राकृत, पाली, राजस्थानी, संताली, शेरपा. <mat-icon>visibility</mat-icon> <button mat-button color="primary" (click)="languageScriptClicked('olck')">ᱥᱟᱱᱛᱟᱲᱤ</button> <button mat-button color="primary" (click)="languageScriptClicked('brah')">𑀩𑁆𑀭𑀸𑀳𑁆𑀫𑀻𑀮𑀺𑀧𑀺</button> <button mat-button color="primary" (click)="languageScriptClicked('nand')">Nandinagari</button> <button mat-button color="primary" (click)="languageScriptClicked('gup')">Gupta</button> <button mat-button color="primary" (click)="languageScriptClicked('saur')">ꢱꣃꢬꢵꢰ꣄ꢜ꣄ꢬ</button> <button mat-button color="primary" (click)="languageScriptClicked('modi')">Modi</button> <button mat-button color="primary" (click)="languageScriptClicked('shrd')">Sharada</button> 
+                    </p>
+                </mat-tab>
+                <mat-tab label="ಕನ್ನಡ">
+                    <p style="text-align: center;">
+                        &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('kn')">ಕನ್ನದ</button> Kannada - ಕೊಡವ Kodava - ಕೊಂಕಣಿ Konkani - ತುಳು Tulu - ಹವಿಗನ್ನಡ Havigannada - ಸಂಕೇತಿ Sankethi. <mat-icon>visibility</mat-icon> <button mat-button color="primary" (click)="languageScriptClicked('tiga')">Tigalari</button> <button mat-button color="primary" (click)="languageScriptClicked('modi')">Modi</button> <button mat-button color="primary" (click)="languageScriptClicked('kada')">Kadamba</button> <button mat-button color="primary" (click)="languageScriptClicked('bada')">ಬಡಗ</button> Badaga    
+                    </p>
+                </mat-tab>
+                <mat-tab label="తెలుగు">
+                    <p style="text-align: center;">
+                        &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('te')">తెలుగు</button> Telugu <mat-icon>visibility</mat-icon> <button mat-button color="primary" (click)="languageScriptClicked('kada')">Kadamba</button> Bhattiprolu
+                    </p>
+                </mat-tab>
+                <mat-tab label="தமிழ்">
+                    <p style="text-align: center;">
+                        &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('ta')">தமிழ்</button> Tamil. <mat-icon>visibility</mat-icon> <button mat-button color="primary" (click)="languageScriptClicked('gran')">Grantha</button> <button mat-button color="primary" (click)="languageScriptClicked('tiga')">Tigalari</button> <button mat-button color="primary" (click)="languageScriptClicked('pall')">Pallava</button> Vatteluttu <button mat-button color="primary" (click)="languageScriptClicked('bada')">படகா</button> Badaga
+                    </p>
+                </mat-tab>
+                <mat-tab label="മലയാളലിപി">
+                    <p style="text-align: center;">
+                        &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('ml')">മലയാളലിപി</button> Malayalam. <mat-icon>visibility</mat-icon> <button mat-button color="primary" (click)="languageScriptClicked('saur')">ꢱꣃꢬꢵꢰ꣄ꢜ꣄ꢬ</button> Saurashtra <button mat-button color="primary" (click)="languageScriptClicked('gran')">Grantha</button> <button mat-button color="primary" (click)="languageScriptClicked('tiga')">Tigalari</button> Kōchi <button mat-button color="primary" (click)="languageScriptClicked('gars')">സുറിയാനി</button> Suriyani Garshuni
+                    </p>
+                </mat-tab>
+                <mat-tab label="ਗੁਰਮੁਖੀ">
+                    <p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; ਗੁਰਮੁਖੀ Gurumukhi</p>
+                </mat-tab>
+                <mat-tab label="ગુજરાતી"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; ગુજરાતી Gujarati</p>
+                </mat-tab>
+                <mat-tab label="ଓଡ଼ିଆ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; ଓଡ଼ିଆ Odia</p>
+                </mat-tab>
+                <mat-tab label="মৈথিনী"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; মৈথিনী Maithali</p>
+                </mat-tab>
+                <mat-tab label="বাংলা"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('bn')">বাংলা-অসমীয়া</button> <button mat-button color="primary" (click)="languageScriptClicked('bn')">Eastern Nagari</button> বিষ্ণুপ্রিয়া Bishnupriya - ক ক্ত্যেন খসি Khasi - হাজং Hajong - Sylheti Syloti <button mat-button color="primary" (click)="languageScriptClicked('sylo')">ꠍꠤꠟꠐꠤ ꠘꠣꠉꠞꠤ</button> - Kamarupi</p>
+                </mat-tab>
+                <mat-tab label="ꯃꯤꯇꯩꯂꯣꯟ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; ꯃꯤꯇꯩꯂꯣꯟ Meitei / Manipuri </p>
+                </mat-tab>
+                <mat-tab label="සිංහල"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; සිංහල Singhala</p>
+                </mat-tab>
+                <mat-tab label="Newar"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Nepalibhasa <button mat-button color="primary" (click)="languageScriptClicked('new')">Rañjanā</button> - Kutila - Lantsa <button mat-button color="primary" (click)="languageScriptClicked('dham')">Dham-Dhimal</button> <button mat-button color="primary" (click)="languageScriptClicked('')">Bhujimol</button> <button mat-button color="primary" (click)="languageScriptClicked('prac')">Pracalit - Newar</button></p>
+                </mat-tab>
+                <mat-tab label="རྫོང་ཁ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Brusha <button mat-button color="primary">Tibetian</button> <button mat-button color="primary">Dzongkha</button> <button mat-button color="primary">Ladakhi</button> Pungchen Sikkimese Sherpa Jirel Yolmo Tshangla <button mat-button color="primary">Balti-A</button> <button mat-button color="primary">Balti-B</button> </p>
+                </mat-tab>
+                <mat-tab label="ግዕዝ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('geez')">ትግርኛ</button> Tigrinya <button mat-button color="primary" (click)="languageScriptClicked('am')">አማርኛ</button> Amharic <button mat-button color="primary" (click)="languageScriptClicked('geez')">ትግረ</button> Tigre &nbsp;&nbsp;&nbsp;&nbsp; ብሊና Bilen &nbsp;&nbsp;&nbsp;&nbsp; ጉራጌ Guragē-Guragie Me'en, Blin, and Sebatbeit</p> 
+                </mat-tab>
+                <mat-tab label="ภาษาไทย"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('th')">ภาษาไทย</button>Thai <button mat-button color="primary" (click)="languageScriptClicked('shan')">လိၵ်ႈတႆး</button>Shan - Tai Yai- Tai Phake</p>
+                </mat-tab>
+                <mat-tab label="ພາສາລາວ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Lao</p>
+                </mat-tab>
+                <mat-tab label="ភាសាខ្មែរ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Khmer</p>
+                </mat-tab>
+                <mat-tab label="ᨅᨔ ᨕᨘᨁᨗ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Buginese <button mat-button color="primary" (click)="languageScriptClicked('bug')">ᨒᨚᨈᨑ</button> Lontara - <button mat-button color="primary" (click)="languageScriptClicked('maka')">Makasar</button> Makassarese - Ende (Li'o) - <button mat-button color="primary" (click)="languageScriptClicked('')">Bilang-bilang</button> Satera-Jontal</p>
+                </mat-tab>
+                <mat-tab label="ތާނަ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Thaana Dhivedi <button mat-button color="primary" (click)="languageScriptClicked('thaa')">ތާނަ</button>. <mat-icon>visibility</mat-icon> <button mat-button color="primary" (click)="languageScriptClicked('diak')">Dhives Akuru</button> Divehi-Evēla Akuru</p>
+                </mat-tab>
+                <mat-tab label="Hmong"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Hmong : Cher Vang-Pahawh Nyiakeng-Puachue Daw-Eebee</p>
+                </mat-tab>
+                <mat-tab label="မြန်မာစာ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('my')">မြန်မာစာ</button> Myanmar - <button mat-button color="primary" (click)="languageScriptClicked('pyu')">Pyu</button> - ဘာသာ မန် Mon - ကညီလံာ်ခီၣ်ထံး S'gaw Karen - Khamti</p>
+                </mat-tab>
+                <mat-tab label="ꦧꦱꦗꦮ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Javanese Madurese</p>
+                </mat-tab>
+                <mat-tab label="ᜊᜌ᜔ᜊᜌᜒᜈ᜔"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Baybayin</p>
+                </mat-tab>
+                <mat-tab label="ᬪᬵᬱᬩᬮᬶ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Balinese - <button mat-button color="primary" (click)="languageScriptClicked('sask')">Sasak</button></p>
+                </mat-tab>
+                <mat-tab label="ꡏꡡꡃ ꡢꡡꡙ ꡁꡦ ꡙꡦ"><p style="text-align: center;">
+                                &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('phag')">ꡏꡡꡃ ꡢꡡꡙ ꡁꡦ ꡙꡦ</button> Phags-pa Mongolian Soyombo <button mat-button color="primary" (click)="languageScriptClicked('zanb')">Zanabazar</button> </p>
+                </mat-tab>
+                <mat-tab label="Pallava"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;</p>
+                </mat-tab>
+                <mat-tab label="𐦨𐦡𐦫𐦣𐦢𐦶𐦡"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; 𐦨𐦡𐦫𐦣𐦢𐦶𐦡 Meroïtic </p> 
+                </mat-tab>
+                <mat-tab label="Kulitan"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;</p>
+                </mat-tab>
+                <mat-tab label="ᥖᥭᥰᥖᥬᥳᥑᥨᥒᥰ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Tai Nüa &nbsp;&nbsp; <mat-icon>visibility</mat-icon> <button mat-button color="primary">Tai Viet</button> <button mat-button color="primary"  (click)="languageScriptClicked('talu')">Tai Lü</button> <button mat-button color="primary" (click)="languageScriptClicked('tale')">ᥖᥭᥰᥘᥫᥴ</button>Tai Le - Tai Dam</p> 
+                </mat-tab>
+                <mat-tab label="ᯅᯖᯂ᯲"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;  <mat-icon>history_edu</mat-icon> Batak Mandailing Pakpak Simalungun - Palawano </p>
+                </mat-tab>
+                <mat-tab label="ᜱᜨᜳᜨᜳᜢ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Hanunó'o </p>
+                </mat-tab>
+                <mat-tab label="ᝦᝪᝯ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Tagbanwa</p>
+                </mat-tab>
+                <mat-tab label="𐱅𐰭𐰼𐰃"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Göktürk - Orkhon Yenisei</p>
+                </mat-tab>
+                <mat-tab label="Dogri"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Dogri</p>
+                </mat-tab>
+                <mat-tab label="ᨲ᩠ᩅᩫᨾᩮᩥᩬᨦ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Lanna - Tai Tham</p>
+                </mat-tab>
+                <mat-tab label="Grantha"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Grantha</p>
+                </mat-tab>
+                <mat-tab label="Kadamba"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Kadamba <mat-icon>history_edu</mat-icon> ಕನ್ನದ - Kannada <mat-icon>visibility</mat-icon> <button mat-button color="primary">ಆದಿ ಗಂಗಾ</button> <button mat-button color="primary">ಬಾದಾಮಿ ಚಾಲುಕ್ಯ</button> <button mat-button color="primary">ರಾಷ್ಟ್ರಕೂಟ</button> <button mat-button color="primary">ಕಲ್ಯಾಣ ಚಾಲುಕ್ಯ</button> <button mat-button color="primary">ಹೊಯ್ಸಳ</button> <button mat-button color="primary">ವಿಜಯನಗರ</button> <button mat-button color="primary" (click)="languageScriptClicked('modi')">ಮುಡಿ</button> - Mōdi </p>
+                </mat-tab>
+                <mat-tab label="ꦏꦮꦶ"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Kawi</p>
+                </mat-tab>
+                <mat-tab label="𐨑𐨪𐨆𐨮𐨿𐨛𐨁𐨌"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Kharosthi 𐨑𐨪𐨆𐨮𐨿𐨛𐨁𐨌</p>
+                </mat-tab>
+                <mat-tab label="Tocharian"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Tocharian</p>
+                </mat-tab>
+                <mat-tab label="Modi"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Modi</p>
+                </mat-tab>
+                <mat-tab label="Sharada"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Sharada</p>
+                </mat-tab>
+                <mat-tab label="Siddam"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Siddam</p>
+                </mat-tab>
+                <mat-tab label="𑄌𑄋𑄴𑄟𑄳𑄦 𑄞𑄌𑄴">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Chakma
+                </mat-tab>
+                <mat-tab label="ᰛᰩᰴ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Lepcha
+                </mat-tab>
+                <mat-tab label="ꤊꤢ꤬ꤛꤢ꤭ ꤜꤟꤤ꤬">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Kayah li 
+                </mat-tab>
+                <mat-tab label="ᮞᮥᮔ᮪ᮓ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; ᮃᮊ᮪ᮞᮛ <button mat-button color="primary" (click)="languageScriptClicked('sund')">ᮞᮥᮔ᮪ᮓ</button> Sundanese &nbsp;&nbsp;&nbsp;&nbsp; <mat-icon>visibility</mat-icon> <button mat-button color="primary" (click)="languageScriptClicked('buhd')">ᝊᝓᝑᝒ</button> Buhid <button mat-button color="primary" (click)="languageScriptClicked('rjng')">ꥆꤰ꥓ꤼꤽ ꤽꥍꤺꥏ</button> Rejang
+                </mat-tab>
+                <mat-tab label="ᤕᤠᤰᤌᤢᤱ ᤐᤠᤴ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; ᤕᤠᤰᤌᤢᤱ ᤐᤠᤴ Limbu-Sirijanga "Kirat Rai"
+                </mat-tab>
+                <mat-tab label="ꨌꩌ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Cham
+                </mat-tab>
+                <mat-tab label="Multani">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Multani
+                </mat-tab>
+                <mat-tab label="Mahajani">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Mahajani
+                </mat-tab>
+                <mat-tab label="Takri">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Takri - Jaunsari - Dhankari
+                </mat-tab>
+                <mat-tab label="Khojki">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Khojki
+                </mat-tab>
+                <mat-tab label="Khudawadi">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Khudawadi
+                </mat-tab>
+                <mat-tab label="Mwangwego">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Mwangwego
+                </mat-tab>
+                <mat-tab label="Rencong">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Kerinci-Baso Kincayi
+                </mat-tab>
+                <mat-tab label="Ahom">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Ahom
+                </mat-tab>
+                <mat-tab label="Khimhun">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Khimhun : Tangsa
+                </mat-tab>
+                <mat-tab label="Zanabazar">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('zanb')">Zanabazar</button> <button mat-button color="primary" (click)="languageScriptClicked('phag')">ꡏꡡꡃ ꡢꡡꡙ ꡁꡦ ꡙꡦ</button>
+                </mat-tab>
+                <mat-tab label="Tanchangya">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Tanchangya
+                </mat-tab>
+                <mat-tab label="Bhaiksuki">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Bhaiksuki
+                </mat-tab>
+                <mat-tab label="Dham">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Dham - Dhimal
+                </mat-tab>
+                <mat-tab label="Pracalit">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Pracalit - Newar
+                </mat-tab>
+                <mat-tab label="Laṇḍā">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Laṇḍā
+                </mat-tab>
+                <mat-tab label="Tikamuli">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Tikamuli - Sunwar
+                </mat-tab>
+                <mat-tab label="Khema">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Khema - Gurung : तमु क्यी, ཏམུ་ཀི, Tamu Kyi
+                </mat-tab>
+            </mat-tab-group>
+        </mat-tab>
+        <mat-tab label="{{ 'Syllabery' | translate }}"> 
+            <mat-expansion-panel [(expanded)]="panelSyllaberyState">
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <b><a href="https://omniglot.com/writing/syllabaries.htm" target="_blank">{{ 'Syllabery' | translate }}</a></b>
+                </mat-panel-title>
+                <mat-panel-description>
+                    <span style="font-size: 1rem;width: 10%;">Show Scripts</span> &nbsp;&nbsp; <mat-icon>menu_open</mat-icon>
+                    &nbsp;&nbsp;&nbsp; <mat-icon>pageview</mat-icon> &nbsp;&nbsp; <input type="search" matInput #searchSyllabery placeholder="Search for Language or Script">
+                </mat-panel-description>
+                </mat-expansion-panel-header> 
+                <table class="worldmapbkg">
+                    <tbody>
+                        <tr>
+                            <td colspan="3">
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('')">Taino</button>
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('maya')" [ngStyle]="{ 'visibility': (keyboardLayouts['maya'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['maya'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">Maya</button>
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('moss')" [ngStyle]="{ 'visibility': (keyboardLayouts['moss'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['moss'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">Mossang</button>
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('khom')" [ngStyle]="{ 'visibility': (keyboardLayouts['khom'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['khom'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">Khom</button>
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('dite')" [ngStyle]="{ 'visibility': (keyboardLayouts['dite'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['dite'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">Ditema</button> 
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('bla')" [ngStyle]="{ 'visibility': (keyboardLayouts['bla'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['bla'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">ᓱᖽᐧᖿ</button> 
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('')">Tartessian</button>
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('cprt')" [ngStyle]="{ 'visibility': (keyboardLayouts['cprt'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['cprt'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">𐠁𐠀𐠂𐠃𐠄</button> 
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('linb')" [ngStyle]="{ 'visibility': (keyboardLayouts['linb'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['linb'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">𐀀𐀁𐀂𐀃𐀄</button> 
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('ndju')" [ngStyle]="{ 'visibility': (keyboardLayouts['ndju'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['ndju'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">Afaka</button> 
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('bamu')" [ngStyle]="{ 'visibility': (keyboardLayouts['bamu'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['bamu'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">ꚠꚡꚢꚣ</button> 
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('wole')" [ngStyle]="{ 'visibility': (keyboardLayouts['wole'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['wole'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">Woleai</button> 
+                                <button mat-button color="primary">Celtiberian</button> 
+                                <button mat-button color="primary">Eskaya</button> 
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('iba')" [ngStyle]="{ 'visibility': (keyboardLayouts['iba'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['iba'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">Iban</button> 
+                                <button mat-button color="primary">Iberian</button> 
+                                <button mat-button color="primary">Kpelle</button> 
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('loma')" [ngStyle]="{ 'visibility': (keyboardLayouts['loma'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['loma'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">Loma</button> 
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('mend')" [ngStyle]="{ 'visibility': (keyboardLayouts['mend'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['mend'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">𞠀𞠁𞠂</button> 
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('nshu')" [ngStyle]="{ 'visibility': (keyboardLayouts['nshu'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['nshu'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">女书</button> 
+                                <button mat-button color="primary">Nwagụ Aneke</button> 
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('vaii')" [ngStyle]="{ 'visibility': (keyboardLayouts['vaii'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['vaii'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">ꕙꔤ</button> 
+                                <button mat-button color="primary">Yugtun</button>
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('yiii')" [ngStyle]="{ 'visibility': (keyboardLayouts['yiii'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['yiii'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">ꆈꌠ꒿</button>
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('cher')" [ngStyle]="{ 'visibility': (keyboardLayouts['cher'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['cher'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">ᏣᎳᎩ ᎦᏬᏂᎯᏍᏗ</button>
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('')">万葉仮名</button>
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('kata')" [ngStyle]="{ 'visibility': (keyboardLayouts['kata'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['kata'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">カタカナ</button>
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('hira')" [ngStyle]="{ 'visibility': (keyboardLayouts['hira'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['hira'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">ひらがな</button>  
+                                <button mat-button color="primary" (click)="allSyllaberyTypeClicked('inuk')" [ngStyle]="{ 'visibility': (keyboardLayouts['inuk'][2].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || keyboardLayouts['inuk'][5].toLowerCase().indexOf(searchSyllabery.value.toLowerCase()) !== -1 || searchSyllabery.value == '') ? 'visible' : 'hidden' }">ᑲᓇᑕᐦᓇ</button>
+                                &nbsp;&nbsp; <span style="float: right"><mat-icon>history_edu</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="chronoTimeline" tickInterval="100" min="-5000" max="2021" value="2021"></mat-slider> &nbsp;&nbsp; <mat-icon>history</mat-icon></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-expansion-panel>
+            <mat-tab-group dynamicHeight [(selectedIndex)]="selectKeysTabs" (focusChange)="syllaberyType($event)" #scriptSyllaberyType disableRipple>
+                <mat-tab label="ᐃᓄᒃᑎᑐᑦ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Aboriginal Canadian - <button mat-button color="primary" (click)="languageScriptClicked('cree')">ᖃᓂᐅᔮᖅᐸᐃᑦ</button> Inuktitut - <button mat-button color="primary" (click)="languageScriptClicked('cree')">ᓀᐦᐃᔭᐍᐏᐣ</button> Cree <button mat-button color="primary" (click)="languageScriptClicked('cree')">Eastern Cree</button> - <button mat-button color="primary" (click)="languageScriptClicked('cree')">Western Cree</button> - Ojibwe <button mat-button color="primary" (click)="languageScriptClicked('cree')">ᐊᓂᐦᔑᓈᐯᒧᐎᓐ</button> Anishinaabemowin <button mat-button color="primary" (click)="languageScriptClicked('cree')">ᓇᔅᑲᐱ</button> Naskapi - <button mat-button color="primary" (click)="languageScriptClicked('cree')">ᑐᑊᘁᗕᑋᗸ</button> Carrier
+                </mat-tab>
+                <mat-tab label="ひらがな">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Hiragana <button mat-button color="primary" (click)="languageScriptClicked('hira')">ひらがな</button> Katakana <button mat-button color="primary" (click)="languageScriptClicked('kata')">カタカナ</button> Man'yōgana 万葉仮名 Kanadana <button mat-button color="primary">ᑲᓇᑕᐦᓇ</button>
+                </mat-tab>
+                <mat-tab label="カタカナ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Hiragana <button mat-button color="primary" (click)="languageScriptClicked('hira')">ひらがな</button> Katakana <button mat-button color="primary" (click)="languageScriptClicked('kata')">カタカナ</button> Man'yōgana 万葉仮名 Kanadana <button mat-button color="primary">ᑲᓇᑕᐦᓇ</button>
+                </mat-tab>
+                <mat-tab label="ᏣᎳᎩ ᎦᏬᏂᎯᏍᏗ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Cherokee
+                </mat-tab>
+                <mat-tab label="ꆈꌠ꒿">
+                    &nbsp;&nbsp;&nbsp;&nbsp; ꆈꌠ꒿ Yi (Nosu) : Nuosu, Nisu, Wusa Nasu, and Mantsi.
+                </mat-tab>
+                <mat-tab label="Yugtun">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Yugtun : Central Alaskan Yup'ik 
+                </mat-tab>
+                <mat-tab label="ꕙꔤ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Vai Vy-Gallinas Mande
+                </mat-tab>
+                <mat-tab label="Nwagụ Aneke">
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                </mat-tab>
+                <mat-tab label="女书">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Nüshu - Xiangnan Tuhua (湘南土話) : Dong
+                </mat-tab>
+                <mat-tab label="𞠀𞠁𞠂">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Mende
+                </mat-tab>
+                <mat-tab label="Loma">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Löömàgòòi / Löghömàgòòi : Mande
+                </mat-tab>  
+                <mat-tab label="Kpelle">
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                </mat-tab>
+                <mat-tab label="Iberian">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Palaeohispanic, Tartessian, Espanca
+                </mat-tab>
+                <mat-tab label="Iban">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Iban - Dunging
+                </mat-tab>
+                <mat-tab label="Eskaya">
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                </mat-tab>
+                <mat-tab label="Celtiberian">
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                </mat-tab>
+                <mat-tab label="Woleai">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Caroline Island
+                </mat-tab>
+                <mat-tab label="ꚠꚡꚢꚣ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Bamum Bagam-Eghap
+                </mat-tab>
+                <mat-tab label="Afaka">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Ndyuka Aukan - Okanisi, Ndyuka tongo, Aukaans, Businenge Tongo
+                </mat-tab>
+                <mat-tab label="𐀀𐀁𐀂𐀃𐀄">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Mycenaean
+                </mat-tab>
+                <mat-tab label="𐠁𐠀𐠂𐠃𐠄">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Cypriot
+                </mat-tab>
+                <mat-tab label="Tartessian">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Tartessian
+                </mat-tab>
+                <mat-tab label="ᓱᖽᐧᖿ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Blackfoot - Siksiká / ᓱᖽᐧᖿ - Aamsskáápipikani
+                </mat-tab>
+                <mat-tab label="Ditema">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Ditema tsa Dinoko - Sesotho, Setswana, IsiZulu, IsiXhosa, SiSwati, SiPhuthi, Xitsonga, EMakhuwa, ChiNgoni, SiLozi, or Tshivenḓa
+                </mat-tab>
+                <mat-tab label="Khom">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Khom
+                </mat-tab>
+                <mat-tab label="Mossang">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Mossang : Tangsa
+                </mat-tab>
+                <mat-tab label="Maya">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Mayan Glyph
+                </mat-tab>
+            </mat-tab-group>
+        </mat-tab>
+        <mat-tab label="{{ 'Ideogram' | translate }} {{ 'Logogram' | translate }} {{ 'Pictogram' | translate }}"> 
+            <mat-expansion-panel [(expanded)]="panelGramsState">
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <b><a href="https://omniglot.com/writing/semanto-phonetic.php" target="_blank">{{ 'Ideogram' | translate }} {{ 'Logogram' | translate }} {{ 'Pictogram' | translate }} </a></b> &nbsp;&nbsp;
+                </mat-panel-title>
+                <mat-panel-description>
+                    <span style="font-size: 1rem;width: 10%;">Show Scripts</span> &nbsp;&nbsp; <mat-icon>menu_open</mat-icon>
+                    &nbsp;&nbsp;&nbsp; <mat-icon>pageview</mat-icon> &nbsp;&nbsp; <input type="search" matInput #searchGrams placeholder="Search for Language or Script">
+                </mat-panel-description>
+                </mat-expansion-panel-header> 
+                <table class="worldmapbkg">
+                    <tbody>
+                        <tr>
+                            <td colspan="3">
+                                <button mat-button color="primary">Idu</button>
+                                <button mat-button color="primary">Yonaguni</button>
+                                <button mat-button color="primary" (click)="allGramTypeClicked('mikq')" [ngStyle]="{ 'visibility': (keyboardLayouts['mikq'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['mikq'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">Mi’kmaq</button> 
+                                <button mat-button color="primary" (click)="allGramTypeClicked('kaid')" [ngStyle]="{ 'visibility': (keyboardLayouts['kaid'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['kaid'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">カイダ</button>
+                                <button mat-button color="primary">水书</button> 
+                                <button mat-button color="primary">Small seal</button> 
+                                <button mat-button color="primary" (click)="allGramTypeClicked('jiag')" [ngStyle]="{ 'visibility': (keyboardLayouts['jiag'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['jiag'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">甲骨文</button> 
+                                <button mat-button color="primary">Old Hanzi</button> 
+                                <button mat-button color="primary" (click)="allGramTypeClicked('aztc')" [ngStyle]="{ 'visibility': (keyboardLayouts['aztc'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['aztc'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">Aztec</button> 
+                                <button mat-button color="primary">Warring</button> 
+                                <button mat-button color="primary">Zhuang</button> 
+                                <button mat-button color="primary">Jurchen</button> 
+                                <button mat-button color="primary">Dongba</button> 
+                                <button mat-button color="primary" (click)="allGramTypeClicked('geba')" [ngStyle]="{ 'visibility': (keyboardLayouts['geba'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['geba'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">Geba</button>
+                                <button mat-button color="primary">𒉌𒌇</button>
+                                <button mat-button color="primary" (click)="allGramTypeClicked('txg')" [ngStyle]="{ 'visibility': (keyboardLayouts['txg'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['txg'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">Tangut</button>
+                                <button mat-button color="primary">𡨸喃</button>
+                                <button mat-button color="primary">Hurrian</button>
+                                <button mat-button color="primary" (click)="allGramTypeClicked('luw')" [ngStyle]="{ 'visibility': (keyboardLayouts['luw'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['luw'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">Luwian</button>
+                                <button mat-button color="primary" (click)="allGramTypeClicked('mer')" [ngStyle]="{ 'visibility': (keyboardLayouts['mer'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['mer'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">Meroïtic</button>
+                                <button mat-button color="primary" (click)="allGramTypeClicked('egyd')" [ngStyle]="{ 'visibility': (keyboardLayouts['egyd'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['egyd'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">Demotic</button> 
+                                <button mat-button color="primary" (click)="allGramTypeClicked('kmt')" [ngStyle]="{ 'visibility': (keyboardLayouts['kmt'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['kmt'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">𓆎𓅓𓏏𓊖</button>
+                                <button mat-button color="primary" (click)="allGramTypeClicked('elx')" [ngStyle]="{ 'visibility': (keyboardLayouts['elx'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['elx'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">𒁹𒄬𒆷𒁶𒋾</button>
+                                <button mat-button color="primary" (click)="allGramTypeClicked('hit')" [ngStyle]="{ 'visibility': (keyboardLayouts['hit'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['hit'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">𒉈𒅆𒇷</button>
+                                <button mat-button color="primary" (click)="allGramTypeClicked('sux')" [ngStyle]="{ 'visibility': (keyboardLayouts['sux'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['sux'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">𒅴𒂠</button>
+                                <button mat-button color="primary" (click)="allGramTypeClicked('ja')" [ngStyle]="{ 'visibility': (keyboardLayouts['ja'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['ja'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">日本語</button>
+                                <button mat-button color="primary" (click)="allGramTypeClicked('zih')" [ngStyle]="{ 'visibility': (keyboardLayouts['zih'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['zih'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">部首</button>
+                                <button mat-button color="primary" (click)="allGramTypeClicked('kan')" [ngStyle]="{ 'visibility': (keyboardLayouts['kan'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['kan'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">康熙部首</button>
+                                <button mat-button color="primary" (click)="allGramTypeClicked('bopo')" [ngStyle]="{ 'visibility': (keyboardLayouts['bopo'][2].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || keyboardLayouts['bopo'][5].toLowerCase().indexOf(searchGrams.value.toLowerCase()) !== -1 || searchGrams.value == '') ? 'visible' : 'hidden' }">注音符號</button>
+                                <button mat-button color="primary">漢語</button>
+                                <button mat-button color="primary">汉语</button> 
+                                &nbsp;&nbsp; <span style="float: right"><mat-icon>history_edu</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="chronoTimeline" tickInterval="100" min="-5000" max="2021" value="2021"></mat-slider> &nbsp;&nbsp; <mat-icon>history</mat-icon></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-expansion-panel>
+            <mat-tab-group dynamicHeight [(selectedIndex)]="selectKeysTabs" (focusChange)="gramsType($event)" #scriptGramsType disableRipple>
+                <mat-tab label="汉语">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Simplified Chinese - Lisu - Sui
+                </mat-tab>
+                <mat-tab label="漢語">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Traditional Chinese - Tài Xuán Jīng <button mat-button color="primary" (click)="languageScriptClicked('bopo')">注音符號</button> 注音符号 (ㄅㄆㄇㄈ) Bopomofo <button mat-button color="primary" (click)="languageScriptClicked('kan')">康熙部首</button> Kangxi <button mat-button color="primary" (click)="languageScriptClicked('zih')">部首</button> Zihui
+                </mat-tab>
+                <mat-tab label="日本語">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Japanese 日本語 
+                    <button mat-button color="primary" (click)="languageScriptClicked('ja')">教育漢字</button> Education Kanji
+                    <button mat-button color="primary" (click)="languageScriptClicked('hira')">Hiragana ひらがな</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('kata')">Katakana カタカナ</button> Jindai
+                </mat-tab>
+                <mat-tab label="𒅴𒂠">
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                    <button mat-button color="primary" (click)="languageScriptClicked('sux')">𒅴𒂠 - 𒀝𒅗𒁺𒌑</button> Sumerian-Akkadian
+                    <button mat-button color="primary" (click)="languageScriptClicked('hit')">𒉈𒅆𒇷</button> Nešili-Hittite 
+                    <button mat-button color="primary" (click)="languageScriptClicked('elx')">𒁹𒄬𒆷𒁶𒋾</button> Haltamti-Elam. 
+                    <mat-icon>visibility</mat-icon> Ugaritic <button mat-button color="primary" (click)="languageScriptClicked('ugar')">𐎜𐎗𐎟𐎝</button> Old Persian <button mat-button color="primary" (click)="languageScriptClicked('xpeo')">𐎭𐎠𐎼𐎹𐎺𐎢𐏁</button> 
+                </mat-tab>
+                <mat-tab label="𓆎𓅓𓏏𓊖">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('kmt')">Hieroglyph</button> <button mat-button color="primary" (click)="languageScriptClicked('hier')">Hieratic</button> <button mat-button color="primary" (click)="languageScriptClicked('egyd')">Demotic</button> 
+                </mat-tab>
+                <mat-tab label="Meroïtic">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('mer')">Meroïtic Glyph</button> <mat-icon>visibility</mat-icon> <button mat-button color="primary" (click)="languageScriptClicked('mero')">𐦨𐦡𐦫𐦣𐦢𐦶𐦡 Meroïtic</button>
+                </mat-tab>
+                <mat-tab label="Luwian">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Anatolian Glyph
+                </mat-tab>
+                <mat-tab label="Hurrian">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                </mat-tab>
+                <mat-tab label="𡨸喃">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Chữ Nôm
+                </mat-tab>
+                <mat-tab label="Tangut">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Tangut 𗼇𗟲 Xi-Xia
+                </mat-tab>
+                <mat-tab label="𒉌𒌇">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Dilmun
+                </mat-tab>
+                <mat-tab label="Geba">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Geba-Naxi
+                </mat-tab>
+                <mat-tab label="Dogba">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Dogba
+                </mat-tab>
+                <mat-tab label="Jurchen">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Jurchen
+                </mat-tab>
+                <mat-tab label="Zhuang">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Zhuang
+                </mat-tab>
+                <mat-tab label="Warring">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Warring
+                </mat-tab>
+                <mat-tab label="Aztec">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Aztec Glyph
+                </mat-tab>
+                <mat-tab label="Old Hanzi">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Old-Hanzi
+                </mat-tab>
+                <mat-tab label="甲骨文">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Oracle-Bone Jiǎgǔwén
+                </mat-tab>
+                <mat-tab label="Small seal">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Small-seal
+                </mat-tab>
+                <mat-tab label="水书">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Shuishu : Sui
+                </mat-tab>
+                <mat-tab label="カイダ">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Kaida カイダー字
+                </mat-tab>
+                <mat-tab label="Mi’kmaq">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Mi’kmaq - Mi’kmaw Micmac, Mi’gmaq, Miigmao or Restigouche
+                </mat-tab>
+            </mat-tab-group>
+        </mat-tab>
+        <mat-tab label="{{ 'Braille' | translate }}"> 
+            <p style="text-align: center;">&nbsp;&nbsp; Braille - International Uniformity of Braille Alphabets see <a href="https://en.wikipedia.org/wiki/International_uniformity_of_braille_alphabets" target="_blank">{{ 'more' | translate }}</a> 
+                <button mat-button color="primary" (click)="languageScriptClicked('braille')">Braille IUB</button>
+                <button mat-button color="primary" (click)="languageScriptClicked('moon')">Moon-Type</button> </p>
+        </mat-tab>
+        <mat-tab label="{{ 'Sign' | translate }} "> &nbsp;&nbsp;
+            <mat-tab-group> 
+                <mat-tab label="SignWriting"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Sutton SignWriting</p>
+                </mat-tab>
+                <mat-tab label="Fingerspelling"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; Manual Alphabets 
+                    <button mat-button color="primary" (click)="languageScriptClicked('ussign')">American</button> 
+                    <button mat-button color="primary" (click)="languageScriptClicked('arsign')">Arabic</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('banzsl')">BANZSL</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('gbsign')">British</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('casign')">Catalan</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('chsign')">Chilean</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('frsign')">French</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('eisign')">Irish</button>                    
+                    <button mat-button color="primary" (click)="languageScriptClicked('jasign')">Japanese</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('nlsign')">Dutch</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('insign')">Indian</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('kosign')">Korean</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('nesign')">Nepali</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('posign')">Polish</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('essign')">Spanish</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('svsign')">Swedish</button>
+                    <button mat-button color="primary" (click)="languageScriptClicked('tusign')">Turkish</button>
+                </p>
+                </mat-tab>
+                <mat-tab label="Other Forms"><p style="text-align: center;">
+                    &nbsp;&nbsp;&nbsp;&nbsp; <button mat-button color="primary" (click)="languageScriptClicked('')">Barbier-Night writing</button> <button mat-button color="primary" (click)="languageScriptClicked('')">Cued speech</button> Whistled-Silbo Gomero </p>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-tab>
+        <mat-tab label="{{ 'Code' | translate }} {{ 'Shorthand' | translate }} {{ 'Emoji' | translate }}"> &nbsp;&nbsp; {{ 'Code' | translate }} {{ 'Shorthand' | translate }} {{ 'Emoji' | translate }} 
+            <button mat-button color="primary" (click)="languageScriptClicked('math')">Mathematics</button>
+            <button mat-button color="primary" (click)="languageScriptClicked('short')">Duployan</button> 
+            <button mat-button color="primary" (click)="languageScriptClicked('short')">Chinook Pipa</button> 
+            <button mat-button color="primary" (click)="languageScriptClicked('short')">Pitman</button>   
+            <button mat-button color="primary" (click)="languageScriptClicked('alch')">Alchemy</button>
+            <button mat-button color="primary" (click)="languageScriptClicked('ics')">International Code of Signals</button>
+            <button mat-button color="primary" (click)="languageScriptClicked('flag')">Flag semaphore</button>
+            <button mat-button color="primary" (click)="languageScriptClicked('morse')">Morse code</button>
+            <button mat-button color="primary" (click)="languageScriptClicked('')">Optical telegraphy</button>
+            Dingbats
+        </mat-tab>
+        <mat-tab label="{{ 'Unclassified' | translate }}"> &nbsp;&nbsp; {{ 'Unclassified' | translate }} {{ 'see' | translate }} <a href="https://omniglot.com/writing/undeciphered.htm" target="_blank">{{ 'more' | translate }}</a>  &nbsp;&nbsp;&nbsp; <mat-icon>pageview</mat-icon> &nbsp;&nbsp; <input type="search" matInput #searchUnclassified placeholder="Search for Language or Script">
+            <table class="worldmapbkg">
+                <tbody>
+                    <tr>
+                        <td colspan="3">
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Paucartambo</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Aymara</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Tărtăria</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Banpo</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Byblos</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Cretan</button>
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Elamite</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Isthmian</button>
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Jiahu</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Linear-A</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Cypriot-Minoan</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Lydian</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Abaj Takalik-Kaminaljuyú</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Mixtec</button>
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Olmec</button>
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Phaistos</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Quipu</button>
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Rongorongo</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Sidetic</button>
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Sindhu</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Zapotec</button>
+                            Codex -
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Voynich</button>
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Rohonc</button>
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Seraphinianus</button> 
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Hamptonese</button>
+                            <button mat-button color="primary" (click)="languageScriptClicked('')"  [ngStyle]="{ 'visibility': (keyboardLayouts['en'][2].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || keyboardLayouts['en'][5].toLowerCase().indexOf(searchUnclassified.value.toLowerCase()) !== -1 || searchUnclassified.value == '') ? 'visible' : 'hidden' }">Dorabella</button>
+                            &nbsp;&nbsp; <span style="float: right"><mat-icon>history_edu</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="chronoTimeline" tickInterval="100" min="-5000" max="2021" value="2021"></mat-slider> &nbsp;&nbsp; <mat-icon>history</mat-icon></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+<div class="keyboard-container" dir="ltr" style="overflow-y: scroll;overflow-x: scroll;">
+    <ul *ngFor="let rows of layoutCurrentKeys" style="list-style-type: none;">
+        <li *ngFor="let character of (isQwerty? ( (isTransliterate) ? ( (isShiftKeyPress) ? rows.qwertyShiftTrans : rows.qwertyTrans ) : ( (isShiftKeyPress) ? rows.qwertyShift : rows.qwerty ) ) : ((keysToRotate && enableRotateKeyboard)? rows.rowVert : rows.row) )" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate }" [ngStyle]="{'color': character.type == 'swara'? 'brown' : ((character.type == 'unused')? 'darkgrey' :'inherit'), 'width' : (character.action === 'space' || character.action === 'enter') ? '180px' : '55px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : 'none'), 'font-size' : fonts.value/10 + 'rem', 'width' : (character.action == 'space' || character.action == 'enter') ? '180px' : cells.value + 'px', 'height' : keysToRotate? cells.value*40/50 + 'px' : cells.value*40/55 + 'px'}" (click)="keyPressed(character, character.value, character.action, character.type)">
+            <div *ngIf="!showImageGlyph || character.src == null">
+                {{character.value}}
+            </div>
+            <div *ngIf="showImageGlyph && character.src != null">
+                <img src="{{character.src}}" [ngStyle]="{'width': fonts.value*1.4+'px', 'height': fonts.value*1.3+'px'}"/>
+            </div>
+        </li>
+    </ul>
+    <img *ngIf="layoutCurrentKeys == undefined" src="./../../assets/images/keyboard_to_construct.png" style="height: 350px; width: 390px;" dir="auto"/>
+    <br/>
+    <mat-card dir="auto">     
+        <p style="text-align: center;">
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <!--input [(colorPicker)]="color" [style.background]="color"/-->
+            &nbsp;&nbsp;&nbsp;&nbsp; 
+            <mat-icon aria-hidden="false">settings_suggest</mat-icon> Custom
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <mat-icon>format_size</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="fontSize" #fonts tickInterval="1" min="1" max="50" value="12"></mat-slider>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <mat-icon>aspect_ratio</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="cellSize" #cells tickInterval="1" min="20" max="100" value="55"></mat-slider>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span *ngIf="enableRotateKeyboard" [ngStyle]="{'width': enableRotateKeyboard == true ? '33%' : '33%'}">
+                <mat-icon *ngIf="enableRotateKeyboard && !isQwerty">keyboard</mat-icon> &nbsp;&nbsp; 
+                <mat-icon aria-hidden="false" *ngIf="enableRotateKeyboard && !isQwerty" (click)="orientKeyboard()" style="cursor: pointer;">loop</mat-icon> 
+            </span> 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <span *ngIf="bidiLetters" [ngStyle]="{'width': bidiLetters == true ? '33%' : '33%'}">
+                <mat-icon aria-hidden="false" (click)="renderBiDi(false)" style="cursor: pointer;">switch_left</mat-icon> 
+                <mat-icon aria-hidden="false">swap_horiz</mat-icon>
+                <mat-icon aria-hidden="false" (click)="renderBiDi(true)" style="cursor: pointer;">switch_right</mat-icon>
+            </span> 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;      
+            <mat-icon *ngIf="unicode5AndHigher">format_strikethrough</mat-icon> &nbsp;&nbsp; 
+            <mat-slide-toggle *ngIf="unicode5AndHigher" (click)="toggleGlyphShow()"></mat-slide-toggle> &nbsp;&nbsp; 
+            <mat-icon *ngIf="unicode5AndHigher">image_not_supported</mat-icon> &nbsp;&nbsp; 
+            <mat-icon aria-hidden="false">settings_backup_restore</mat-icon> Reset
+        </p>
+    </mat-card>      
+</div>

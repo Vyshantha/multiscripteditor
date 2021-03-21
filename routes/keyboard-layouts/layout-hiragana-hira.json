@@ -1,0 +1,204 @@
+[
+    {"row":[
+        {"value": "あ", "action": "char"},
+        {"value": "か", "action": "char"},
+        {"value": "が", "action": "char"},
+        {"value": "さ", "action": "char"},
+        {"value": "ざ", "action": "char"},
+        {"value": "た", "action": "char"},
+        {"value": "だ", "action": "char"},
+        {"value": "な", "action": "char"},
+        {"value": "は", "action": "char"},
+        {"value": "ば", "action": "char"},
+        {"value": "ぱ", "action": "char"},
+        {"value": "ま", "action": "char"},
+        {"value": "や", "action": "char"},
+        {"value": "ら", "action": "char"},
+        {"value": "わ", "action": "char"},
+        {"value": "ん", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "い", "action": "char"},
+        {"value": "き", "action": "char"},
+        {"value": "ぎ", "action": "char"},
+        {"value": "し", "action": "char"},
+        {"value": "じ", "action": "char"},
+        {"value": "ち", "action": "char"},
+        {"value": "ぢ", "action": "char"},
+        {"value": "に", "action": "char"},
+        {"value": "ひ", "action": "char"},
+        {"value": "び", "action": "char"},
+        {"value": "ぴ", "action": "char"},
+        {"value": "み", "action": "char"},
+        {"value": "\u00A0", "action": "char"},
+        {"value": "り", "action": "char"},
+        {"value": "ゐ", "action": "char", "type": "unused"},
+        {"value": "っ", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "う", "action": "char"},
+        {"value": "く", "action": "char"},
+        {"value": "ぐ", "action": "char"},
+        {"value": "す", "action": "char"},
+        {"value": "ず", "action": "char"},
+        {"value": "つ", "action": "char"},
+        {"value": "づ", "action": "char"},
+        {"value": "ぬ", "action": "char"},
+        {"value": "ふ", "action": "char"},
+        {"value": "ぶ", "action": "char"},
+        {"value": "ぷ", "action": "char"},
+        {"value": "む", "action": "char"},
+        {"value": "ゆ", "action": "char"},
+        {"value": "る", "action": "char"},
+        {"value": "\u00A0", "action": "char"},
+        {"value": "ゝ", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "え", "action": "char"},
+        {"value": "け", "action": "char"},
+        {"value": "げ", "action": "char"},
+        {"value": "せ", "action": "char"},
+        {"value": "ぜ", "action": "char"},
+        {"value": "て", "action": "char"},
+        {"value": "で", "action": "char"},
+        {"value": "ね", "action": "char"},
+        {"value": "へ", "action": "char"},
+        {"value": "べ", "action": "char"},
+        {"value": "ぺ", "action": "char"},
+        {"value": "め", "action": "char"},
+        {"value": "え", "action": "char", "type": "unused"},
+        {"value": "れ", "action": "char"},
+        {"value": "ゑ", "action": "char"},
+        {"value": "゛", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "お", "action": "char"},
+        {"value": "こ", "action": "char"},
+        {"value": "ご", "action": "char"},
+        {"value": "そ", "action": "char"},
+        {"value": "ぞ", "action": "char"},
+        {"value": "と", "action": "char"},
+        {"value": "ど", "action": "char"},
+        {"value": "の", "action": "char"},
+        {"value": "ほ", "action": "char"},
+        {"value": "ぼ", "action": "char"},
+        {"value": "ぽ", "action": "char"},
+        {"value": "も", "action": "char"},
+        {"value": "よ", "action": "char"},
+        {"value": "ろ", "action": "char"},
+        {"value": "を", "action": "char"},
+        {"value": "゜", "action": "char"}
+    ]},
+    {"rowVert": [
+        {"value": "あ", "action": "char"},
+        {"value": "い", "action": "char"},
+        {"value": "う", "action": "char"},
+        {"value": "え", "action": "char"},
+        {"value": "お", "action": "char"}
+    ]},
+    {"rowVert": [
+        {"value": "か", "action": "char"},
+        {"value": "き", "action": "char"},
+        {"value": "く", "action": "char"},
+        {"value": "け", "action": "char"},
+        {"value": "こ", "action": "char"}
+    ]},
+    {"rowVert": [
+        {"value": "が", "action": "char"},
+        {"value": "ぎ", "action": "char"},
+        {"value": "ぐ", "action": "char"},
+        {"value": "げ", "action": "char"},
+        {"value": "ご", "action": "char"}
+    ]},
+    {"rowVert": [
+        {"value": "さ", "action": "char"},
+        {"value": "し", "action": "char"},
+        {"value": "す", "action": "char"},
+        {"value": "せ", "action": "char"},
+        {"value": "そ", "action": "char"}
+    ]},
+    {"rowVert": [
+        {"value": "ざ", "action": "char"},
+        {"value": "じ", "action": "char"},
+        {"value": "ず", "action": "char"},
+        {"value": "ぜ", "action": "char"},
+        {"value": "ぞ", "action": "char"}
+    ]},
+    {"rowVert": [
+        {"value": "た", "action": "char"},
+        {"value": "ち", "action": "char"},
+        {"value": "つ", "action": "char"},
+        {"value": "て", "action": "char"},
+        {"value": "と", "action": "char"}
+    ]},
+    {"rowVert": [
+        {"value": "だ", "action": "char"},
+        {"value": "ぢ", "action": "char"},
+        {"value": "づ", "action": "char"},
+        {"value": "で", "action": "char"},
+        {"value": "ど", "action": "char"}        
+    ]},
+    {"rowVert": [
+        {"value": "な", "action": "char"},
+        {"value": "に", "action": "char"},
+        {"value": "ぬ", "action": "char"},
+        {"value": "ね", "action": "char"},
+        {"value": "の", "action": "char"}
+    ]},
+    {"rowVert": [
+        {"value": "は", "action": "char"},
+        {"value": "ひ", "action": "char"},
+        {"value": "ふ", "action": "char"},
+        {"value": "へ", "action": "char"},
+        {"value": "ほ", "action": "char"}
+    ]},
+    {"rowVert": [
+        {"value": "ば", "action": "char"},
+        {"value": "び", "action": "char"},
+        {"value": "ぶ", "action": "char"},
+        {"value": "べ", "action": "char"},
+        {"value": "ぼ", "action": "char"}
+    ]},
+    {"rowVert": [
+        {"value": "ぱ", "action": "char"},
+        {"value": "ぴ", "action": "char"},
+        {"value": "ぷ", "action": "char"},
+        {"value": "ぺ", "action": "char"},
+        {"value": "ぽ", "action": "char"}        
+    ]},
+    {"rowVert": [
+        {"value": "ま", "action": "char"},
+        {"value": "み", "action": "char"},
+        {"value": "む", "action": "char"},
+        {"value": "め", "action": "char"},
+        {"value": "も", "action": "char"}        
+    ]},
+    {"rowVert": [
+        {"value": "や", "action": "char"},
+        {"value": "\u00A0", "action": "char"},
+        {"value": "ゆ", "action": "char"},
+        {"value": "え", "action": "char", "type": "unused"},
+        {"value": "よ", "action": "char"}        
+    ]},
+    {"rowVert": [
+        {"value": "ら", "action": "char"},
+        {"value": "り", "action": "char"},
+        {"value": "る", "action": "char"},
+        {"value": "れ", "action": "char"},
+        {"value": "ろ", "action": "char"}        
+    ]},
+    {"rowVert": [
+        {"value": "わ", "action": "char"},
+        {"value": "ゐ", "action": "char", "type": "unused"},
+        {"value": "\u00A0", "action": "char"},
+        {"value": "ゑ", "action": "char"},
+        {"value": "を", "action": "char"}
+    ]},
+    {"rowVert": [
+        {"value": "ん", "action": "char"},
+        {"value": "っ", "action": "char"},
+        {"value": "ゝ", "action": "char"},
+        {"value": "゛", "action": "char"},
+        {"value": "゜", "action": "char"}
+    ]}
+]

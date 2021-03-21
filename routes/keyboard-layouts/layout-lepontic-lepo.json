@@ -1,0 +1,36 @@
+[
+    {"row":[
+        {"value": "ᛟ", "action": "char"},
+        {"value": "𐌏", "action": "char"},
+        {"value": "И", "action": "char"},
+        {"value": "𐌍", "action": "char"},
+        {"value": "𐊃", "action": "char"},
+        {"value": "M", "action": "char"},
+        {"value": "𐌋", "action": "char"},
+        {"value": "𐌊", "action": "char"},
+        {"value": "𐌉", "action": "char"},
+        {"value": "𐌄", "action": "char"},
+        {"value": "ᚫ", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "ᚯ", "action": "char"},
+        {"value": "𐠟", "action": "char"},
+        {"value": "𐊜", "action": "char"},
+        {"value": "𐤥", "action": "char"},
+        {"value": "Y", "action": "char"},
+        {"value": "V", "action": "char"},
+        {"value": "𐌈", "action": "char"},
+        {"value": "ʘ", "action": "char"},
+        {"value": "𐌕", "action": "char"},
+        {"value": "X", "action": "char"},
+        {"value": "ᛞ", "action": "char"},
+        {"value": "𐊖", "action": "char"},
+        {"value": "𐤧", "action": "char"},
+        {"value": "ᛐ", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "\u23CE", "action": "enter"},
+        {"value": "\u00A0", "action": "space"},
+        {"value": "↳", "action": "enter"}
+    ]}
+]

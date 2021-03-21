@@ -1,0 +1,63 @@
+[
+    {"row":[
+        {"value": "\ud801\udd30", "action": "char", "src": "./assets/characters/udi/1.png"},
+        {"value": "\ud801\udd31", "action": "char", "src": "./assets/characters/udi/2.png"},
+        {"value": "\ud801\udd32", "action": "char", "src": "./assets/characters/udi/3.png"},
+        {"value": "\ud801\udd33", "action": "char", "src": "./assets/characters/udi/4.png"},
+        {"value": "\ud801\udd34", "action": "char", "src": "./assets/characters/udi/5.png"},
+        {"value": "\ud801\udd35", "action": "char", "src": "./assets/characters/udi/6.png"},
+        {"value": "\ud801\udd36", "action": "char", "src": "./assets/characters/udi/7.png"},
+        {"value": "\ud801\udd37", "action": "char", "src": "./assets/characters/udi/8.png"},
+        {"value": "\ud801\udd38", "action": "char", "src": "./assets/characters/udi/9.png"},
+        {"value": "\ud801\udd39", "action": "char", "src": "./assets/characters/udi/10.png"},
+        {"value": "\ud801\udd3a", "action": "char", "src": "./assets/characters/udi/11.png"},
+        {"value": "\ud801\udd3b", "action": "char", "src": "./assets/characters/udi/12.png"},
+        {"value": "\ud801\udd3c", "action": "char", "src": "./assets/characters/udi/13.png"},
+        {"value": "\ud801\udd3d", "action": "char", "src": "./assets/characters/udi/14.png"},
+        {"value": "\ud801\udd3e", "action": "char", "src": "./assets/characters/udi/15.png"}
+    ]},
+    {"row":[
+        {"value": "\ud801\udd3f", "action": "char", "src": "./assets/characters/udi/16.png"},
+        {"value": "\ud801\udd40", "action": "char", "src": "./assets/characters/udi/17.png"},
+        {"value": "\ud801\udd41", "action": "char", "src": "./assets/characters/udi/18.png"},
+        {"value": "\ud801\udd42", "action": "char", "src": "./assets/characters/udi/19.png"},
+        {"value": "\ud801\udd43", "action": "char", "src": "./assets/characters/udi/20.png"},
+        {"value": "\ud801\udd44", "action": "char", "src": "./assets/characters/udi/21.png"},
+        {"value": "\ud801\udd45", "action": "char", "src": "./assets/characters/udi/22.png"},
+        {"value": "\ud801\udd46", "action": "char", "src": "./assets/characters/udi/23.png"},
+        {"value": "\ud801\udd47", "action": "char", "src": "./assets/characters/udi/24.png"},
+        {"value": "\ud801\udd48", "action": "char", "src": "./assets/characters/udi/25.png"},
+        {"value": "\ud801\udd49", "action": "char", "src": "./assets/characters/udi/26.png"},
+        {"value": "\ud801\udd4a", "action": "char", "src": "./assets/characters/udi/27.png"},
+        {"value": "\ud801\udd4b", "action": "char", "src": "./assets/characters/udi/28.png"},
+        {"value": "\ud801\udd4c", "action": "char", "src": "./assets/characters/udi/29.png"}
+    ]},
+    {"row":[
+        {"value": "\ud801\udd4d", "action": "char", "src": "./assets/characters/udi/30.png"},
+        {"value": "\ud801\udd4e", "action": "char", "src": "./assets/characters/udi/31.png"},
+        {"value": "\ud801\udd4f", "action": "char", "src": "./assets/characters/udi/32.png"},
+        {"value": "\ud801\udd50", "action": "char", "src": "./assets/characters/udi/33.png"},
+        {"value": "\ud801\udd51", "action": "char", "src": "./assets/characters/udi/34.png"},
+        {"value": "\ud801\udd52", "action": "char", "src": "./assets/characters/udi/35.png"},
+        {"value": "\ud801\udd53", "action": "char", "src": "./assets/characters/udi/36.png"},
+        {"value": "\ud801\udd54", "action": "char", "src": "./assets/characters/udi/37.png"},
+        {"value": "\ud801\udd55", "action": "char", "src": "./assets/characters/udi/38.png"},
+        {"value": "\ud801\udd56", "action": "char", "src": "./assets/characters/udi/39.png"},
+        {"value": "\ud801\udd57", "action": "char", "src": "./assets/characters/udi/40.png"},
+        {"value": "\ud801\udd58", "action": "char", "src": "./assets/characters/udi/41.png"},
+        {"value": "\ud801\udd59", "action": "char", "src": "./assets/characters/udi/42.png"},
+        {"value": "\ud801\udd5a", "action": "char", "src": "./assets/characters/udi/43.png"},
+        {"value": "\ud801\udd5b", "action": "char", "src": "./assets/characters/udi/44.png"}
+    ]},
+    {"row":[
+        {"value": "\ud801\udd5c", "action": "char", "src": "./assets/characters/udi/45.png"},
+        {"value": "\ud801\udd5d", "action": "char", "src": "./assets/characters/udi/46.png"},
+        {"value": "\ud801\udd5e", "action": "char", "src": "./assets/characters/udi/47.png"},
+        {"value": "\ud801\udd5f", "action": "char", "src": "./assets/characters/udi/48.png"},
+        {"value": "\ud801\udd60", "action": "char", "src": "./assets/characters/udi/49.png"},
+        {"value": "\ud801\udd61", "action": "char", "src": "./assets/characters/udi/50.png"},
+        {"value": "\ud801\udd62", "action": "char", "src": "./assets/characters/udi/51.png"},
+        {"value": "\ud801\udd63", "action": "char", "src": "./assets/characters/udi/52.png"},
+        {"value": "\ud801\udd6f", "action": "char", "src": "./assets/characters/udi/53.png"}
+    ]}
+]

@@ -1,0 +1,70 @@
+[
+    {"row":[
+        {"value": "߷", "action": "char"},
+        {"value": "߶", "action": "char"},
+        {"value": "ߐ‎", "action": "char"},
+        {"value": "ߏ‎", "action": "char"},
+        {"value": "ߎ‎", "action": "char"},
+        {"value": "ߍ‎", "action": "char"},
+        {"value": "ߌ‎", "action": "char"},
+        {"value": "ߋ", "action": "char"},
+        {"value": "ߊ‎", "action": "char"},
+        {"value": "ߵ‎", "action": "char"},
+        {"value": "ߴ", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "⸮", "action": "char"},
+        {"value": "ߺ", "action": "char"},
+        {"value": "ߜ‎", "action": "char"},
+        {"value": "ߛ", "action": "char"},
+        {"value": "ߚ", "action": "char"},
+        {"value": "ߙ‎", "action": "char"},
+        {"value": "ߘ‎", "action": "char"},
+        {"value": "ߗ‎", "action": "char"},
+        {"value": "ߖ", "action": "char"},
+        {"value": "ߕ", "action": "char"},
+        {"value": "ߔ‎", "action": "char"},
+        {"value": "ߓ‎", "action": "char"},
+        {"value": "߹", "action": "char"},
+        {"value": "߸", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "ߧ‎", "action": "char", "type": "unused"},
+        {"value": "ߒ‎", "action": "char"},
+        {"value": "ߦ‎", "action": "char"},
+        {"value": "ߥ‎", "action": "char"},
+        {"value": "ߤ‎", "action": "char"},
+        {"value": "ߣ‎", "action": "char"},
+        {"value": "ߢ‎", "action": "char"},
+        {"value": "ߡ‎", "action": "char"},
+        {"value": "ߟ‎", "action": "char"},
+        {"value": "ߞ‎", "action": "char"},
+        {"value": "ߝ‎", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "ߪ", "action": "char"},
+        {"value": "ߩ", "action": "char"},
+        {"value": "ߨ", "action": "char"},
+        {"value": "\u07F3", "action": "char", "type": "swara"},
+        {"value": "\u07F2", "action": "char", "type": "swara"},
+        {"value": "\u07F1", "action": "char", "type": "swara"},
+        {"value": "\u07F0", "action": "char", "type": "swara"},
+        {"value": "\u07EF", "action": "char", "type": "swara"},
+        {"value": "\u07EE", "action": "char", "type": "swara"},
+        {"value": "\u07ED", "action": "char", "type": "swara"},
+        {"value": "\u07EC", "action": "char", "type": "swara"},
+        {"value": "\u07EB", "action": "char", "type": "swara"}
+    ]},
+    {"row":[
+        {"value": "߉", "action": "char"},
+        {"value": "߈‎", "action": "char"},
+        {"value": "߇", "action": "char"},
+        {"value": "߆‎", "action": "char"},
+        {"value": "߅‎", "action": "char"},
+        {"value": "߄‎", "action": "char"},
+        {"value": "߃‎", "action": "char"},
+        {"value": "߂‎", "action": "char"},
+        {"value": "߁‎", "action": "char"},
+        {"value": "߀", "action": "char"}
+    ]}
+]

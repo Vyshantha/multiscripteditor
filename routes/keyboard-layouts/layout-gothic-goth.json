@@ -1,0 +1,35 @@
+[
+    {"row":[
+        {"value": "𐌰", "action": "char"},
+        {"value": "𐌱", "action": "char"},
+        {"value": "𐌲", "action": "char"},
+        {"value": "𐌳", "action": "char"},
+        {"value": "𐌴", "action": "char"},
+        {"value": "𐌵", "action": "char"},
+        {"value": "𐌶", "action": "char"},
+        {"value": "𐌷", "action": "char"},
+        {"value": "𐌸", "action": "char"},
+        {"value": "𐌹", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "𐌺", "action": "char"},
+        {"value": "𐌻", "action": "char"},
+        {"value": "𐌼", "action": "char"},
+        {"value": "𐌽", "action": "char"},
+        {"value": "𐌾", "action": "char"},
+        {"value": "𐌿", "action": "char"},
+        {"value": "𐍀", "action": "char"},
+        {"value": "𐍁", "action": "char"},
+        {"value": "𐍂", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "𐍃", "action": "char"},
+        {"value": "𐍄", "action": "char"},
+        {"value": "𐍅", "action": "char"},
+        {"value": "𐍆", "action": "char"},
+        {"value": "𐍇", "action": "char"},
+        {"value": "𐍈", "action": "char"},
+        {"value": "𐍉", "action": "char"},
+        {"value": "𐍊", "action": "char"}
+    ]}
+]

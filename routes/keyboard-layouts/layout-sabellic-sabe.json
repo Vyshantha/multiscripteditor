@@ -1,0 +1,37 @@
+[
+    {"row":[
+        {"value": "𐌀", "action": "char"},
+        {"value": "ᚤ", "action": "char", "src": "./assets/characters/sabe/1.png"},
+        {"value": "𐌁", "action": "char"},
+        {"value": "𐌊", "action": "char"},
+        {"value": "𐌃", "action": "char"},
+        {"value": "E", "action": "char"},
+        {"value": ":", "action": "char"},
+        {"value": "𐌂", "action": "char"},
+        {"value": "𐰿", "action": "char", "src": "./assets/characters/sabe/2.png"},
+        {"value": "𐌉", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "ᛞ", "action": "char"},
+        {"value": "Г", "action": "char"},
+        {"value": "ᛖ", "action": "char"},
+        {"value": "𐌍", "action": "char"},
+        {"value": "𐊔", "action": "char"},
+        {"value": "𐌐", "action": "char"},
+        {"value": "𐍈", "action": "char"},
+        {"value": "Ⱇ", "action": "char", "src": "./assets/characters/sabe/3.png"},
+        {"value": "ᚹ", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "ᛊ", "action": "char"},
+        {"value": "I", "action": "char", "src": "./assets/characters/sabe/4.png"},
+        {"value": "𐩻", "action": "char", "src": "./assets/characters/sabe/5.png"},
+        {"value": "Λ", "action": "char"},
+        {"value": "ᛦ", "action": "char", "src": "./assets/characters/sabe/6.png"},
+        {"value": "C", "action": "char", "src": "./assets/characters/sabe/7.png"},
+        {"value": "Ɪ", "action": "char"},
+        {"value": "ð", "action": "char", "src": "./assets/characters/sabe/8.png"},
+        {"value": "𐊌", "action": "char"},
+        {"value": "⋮", "action": "char"}
+    ]}
+]

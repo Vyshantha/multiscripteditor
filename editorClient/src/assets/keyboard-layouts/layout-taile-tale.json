@@ -1,0 +1,67 @@
+[
+    {"row": [
+        {"value": "⌦", "action": "del"},
+        {"value": "\"", "action": "char"},
+        {"value": "'", "action": "char"},
+        {"value": "+", "action": "char"},
+        {"value": "-", "action": "char"},
+        {"value": "ᥰ", "action": "char"},
+        {"value": "◌̈", "action": "char"},
+        {"value": "ᥱ", "action": "char"},
+        {"value": "◌̌", "action": "char"},
+        {"value": "ᥲ", "action": "char"},
+        {"value": "◌̀", "action": "char"},
+        {"value": "ᥳ", "action": "char"},
+        {"value": "◌̇", "action": "char"},
+        {"value": "ᥴ", "action": "char"},
+        {"value": "◌́", "action": "char"},
+        {"value": "?", "action": "char"},
+        {"value": ":", "action": "char"},
+        {"value": ",", "action": "char"},
+        {"value": ".", "action": "char"},
+        {"value": "⌫", "action": "del"}
+    ]},
+    {"row":[
+        {"value": "ᥣ", "action": "char", "type": "swara"},
+        {"value": "ᥤ", "action": "char", "type": "swara"},
+        {"value": "ᥥ", "action": "char", "type": "swara"},
+        {"value": "ᥦ", "action": "char", "type": "swara"},
+        {"value": "ᥧ", "action": "char", "type": "swara"},
+        {"value": "ᥨᥝ", "action": "char", "type": "swara"},
+        {"value": "ᥩ", "action": "char", "type": "swara"},
+        {"value": "ᥪ", "action": "char", "type": "swara"},
+        {"value": "ᥫ", "action": "char", "type": "swara"},
+        {"value": "ᥬ", "action": "char", "type": "swara"},
+        {"value": "ᥭ", "action": "char", "type": "swara"}
+    ]},
+    {"row":[
+        {"value": "ᥐ", "action": "char", "type": "vyanjana"},
+        {"value": "ᥑ", "action": "char", "type": "vyanjana"},
+        {"value": "ᥒ", "action": "char", "type": "vyanjana"},
+        {"value": "/", "action": "char"},
+        {"value": "ᥓ", "action": "char", "type": "vyanjana"},
+        {"value": "ᥔ", "action": "char", "type": "vyanjana"},
+        {"value": "ᥕ", "action": "char", "type": "vyanjana"},
+        {"value": "\\", "action": "char"},
+        {"value": "ᥖ", "action": "char", "type": "vyanjana"},
+        {"value": "ᥗ", "action": "char", "type": "vyanjana"},
+        {"value": "ᥘ", "action": "char", "type": "vyanjana"}
+    ]},
+    {"row":[
+        {"value": "ᥙ", "action": "char", "type": "vyanjana"},
+        {"value": "ᥚ", "action": "char", "type": "vyanjana"},
+        {"value": "ᥛ", "action": "char", "type": "vyanjana"},
+        {"value": "ᥜ", "action": "char", "type": "vyanjana"},
+        {"value": "(", "action": "char"},
+        {"value": "ᥝ", "action": "char", "type": "vyanjana"},
+        {"value": "ᥞ", "action": "char", "type": "vyanjana"},
+        {"value": "ᥠ", "action": "char", "type": "vyanjana"},
+        {"value": "ᥡ", "action": "char", "type": "vyanjana"},
+        {"value": "ᥢ", "action": "char", "type": "vyanjana"},
+        {"value": ")", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "\u00A0", "action": "space"},
+        {"value": "\u23CE", "action": "enter"}
+    ]}
+]

@@ -1,0 +1,112 @@
+[
+    {"row":[
+        {"value": "a", "action": "char", "type": "swara"},
+        {"value": "A", "action": "char", "type": "swara"},
+        {"value": "b", "action": "char"},
+        {"value": "B", "action": "char"},
+        {"value": "c", "action": "char"},
+        {"value": "C", "action": "char"},
+        {"value": "d", "action": "char"},
+        {"value": "D", "action": "char"},
+        {"value": "e", "action": "char", "type": "swara"},
+        {"value": "E", "action": "char", "type": "swara"},
+        {"value": "f", "action": "char"},
+        {"value": "F", "action": "char"},
+        {"value": "g", "action": "char"},
+        {"value": "G", "action": "char"},
+        {"value": "h", "action": "char"},
+        {"value": "H", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "i", "action": "char", "type": "swara"},
+        {"value": "I", "action": "char", "type": "swara"},
+        {"value": "k", "action": "char"},
+        {"value": "K", "action": "char"},
+        {"value": "l", "action": "char"},
+        {"value": "L", "action": "char"},
+        {"value": "m", "action": "char"},
+        {"value": "M", "action": "char"},
+        {"value": "n", "action": "char"},
+        {"value": "N", "action": "char"},
+        {"value": "o", "action": "char", "type": "swara"},
+        {"value": "O", "action": "char", "type": "swara"},
+        {"value": "p", "action": "char"},
+        {"value": "P", "action": "char"},
+        {"value": "q", "action": "char"},
+        {"value": "Q", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "r", "action": "char"},
+        {"value": "R", "action": "char"},
+        {"value": "s", "action": "char"},
+        {"value": "S", "action": "char"},
+        {"value": "t", "action": "char"},
+        {"value": "T", "action": "char"},
+        {"value": "v", "action": "char"},
+        {"value": "V", "action": "char"},
+        {"value": "x", "action": "char"},
+        {"value": "X", "action": "char"},
+        {"value": "y", "action": "char", "type": "swara"},
+        {"value": "Y", "action": "char", "type": "swara"},
+        {"value": "z", "action": "char"},
+        {"value": "Z", "action": "char"}
+    ]},
+    {"qwerty":[
+        {"value": "q", "action": "char"},
+        {"value": "e", "action": "char", "type": "swara"},
+        {"value": "r", "action": "char"},
+        {"value": "t", "action": "char"},
+        {"value": "y", "action": "char", "type": "swara"},
+        {"value": "i", "action": "char", "type": "swara"},
+        {"value": "o", "action": "char", "type": "swara"},
+        {"value": "p", "action": "char"}
+    ]},
+    {"qwerty":[
+        {"value": "a", "action": "char", "type": "swara"},
+        {"value": "s", "action": "char"},
+        {"value": "d", "action": "char"},
+        {"value": "f", "action": "char"},
+        {"value": "g", "action": "char"},
+        {"value": "h", "action": "char"},
+        {"value": "k", "action": "char"},
+        {"value": "l", "action": "char"}
+    ]},
+    {"qwerty":[
+        {"value": "z", "action": "char"},
+        {"value": "x", "action": "char"},
+        {"value": "c", "action": "char"},
+        {"value": "v", "action": "char"},
+        {"value": "b", "action": "char"},
+        {"value": "n", "action": "char"},
+        {"value": "m", "action": "char"}
+    ]},
+    {"qwertyShift":[
+        {"value": "Q", "action": "char"},
+        {"value": "E", "action": "char", "type": "swara"},
+        {"value": "R", "action": "char"},
+        {"value": "T", "action": "char"},
+        {"value": "Y", "action": "char", "type": "swara"},
+        {"value": "I", "action": "char", "type": "swara"},
+        {"value": "O", "action": "char", "type": "swara"},
+        {"value": "P", "action": "char"}
+    ]},
+    {"qwertyShift":[
+        {"value": "A", "action": "char", "type": "swara"},
+        {"value": "S", "action": "char"},
+        {"value": "D", "action": "char"},
+        {"value": "F", "action": "char"},
+        {"value": "G", "action": "char"},
+        {"value": "H", "action": "char"},
+        {"value": "K", "action": "char"},
+        {"value": "L", "action": "char"}
+    ]},
+    {"qwertyShift":[
+        {"value": "Z", "action": "char"},
+        {"value": "X", "action": "char"},
+        {"value": "C", "action": "char"},
+        {"value": "V", "action": "char"},
+        {"value": "B", "action": "char"},
+        {"value": "N", "action": "char"},
+        {"value": "M", "action": "char"}
+    ]}
+]

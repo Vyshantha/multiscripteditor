@@ -1,0 +1,50 @@
+[
+    {"row":[
+        {"value": "ⴀ", "action": "char"},
+        {"value": "ⴁ", "action": "char"},
+        {"value": "ⴂ", "action": "char"},
+        {"value": "ⴃ", "action": "char"},
+        {"value": "ⴄ", "action": "char"},
+        {"value": "ⴅ", "action": "char"},
+        {"value": "ⴆ", "action": "char"},
+        {"value": "ⴇ", "action": "char"},
+        {"value": "ⴈ", "action": "char"},
+        {"value": "ⴉ", "action": "char"},
+        {"value": "ⴊ", "action": "char"},
+        {"value": "ⴋ", "action": "char"},
+        {"value": "ⴌ", "action": "char"},
+        {"value": "ⴍ", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "ⴎ", "action": "char"},
+        {"value": "ⴏ", "action": "char"},
+        {"value": "ⴐ", "action": "char"},
+        {"value": "ⴑ", "action": "char"},
+        {"value": "ⴒ", "action": "char"},
+        {"value": "ⴓ", "action": "char"},
+        {"value": "ⴔ", "action": "char"},
+        {"value": "ⴕ", "action": "char"},
+        {"value": "ⴖ", "action": "char"},
+        {"value": "ⴗ", "action": "char"},
+        {"value": "ⴘ", "action": "char"},
+        {"value": "ⴙ", "action": "char"},
+        {"value": "ⴚ", "action": "char"},
+        {"value": "ⴛ", "action": "char"}
+    ]},{"row":[
+        {"value": "ⴜ", "action": "char"},
+        {"value": "ⴝ", "action": "char"},
+        {"value": "ⴞ", "action": "char"},
+        {"value": "ⴟ", "action": "char"},
+        {"value": "ⴠ", "action": "char"},
+        {"value": "ⴡ", "action": "char"},
+        {"value": "ⴢ", "action": "char"},
+        {"value": "ⴣ", "action": "char"},
+        {"value": "ⴤ", "action": "char"},
+        {"value": "ⴥ", "action": "char"},
+        {"value": "ⴧ", "action": "char"},
+        {"value": "ⴭ", "action": "char"},
+        {"value": "჻", "action": "char"},
+        {"value": "ჼ", "action": "char"},
+        {"value": "₾", "action": "char"}
+    ]}
+]

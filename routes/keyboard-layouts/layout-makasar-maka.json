@@ -1,0 +1,31 @@
+[
+    {"row":[
+        {"value": "\ud807\udee0", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/1.png"},
+        {"value": "\ud807\udee1", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/2.png"},
+        {"value": "\ud807\udee2", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/3.png"},
+        {"value": "\ud807\udee3", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/4.png"},
+        {"value": "\ud807\udee4", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/5.png"},
+        {"value": "\ud807\udee5", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/6.png"},
+        {"value": "\ud807\udee6", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/7.png"},
+        {"value": "\ud807\udee7", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/8.png"},
+        {"value": "\ud807\udee8", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/9.png"},
+        {"value": "\ud807\udee9", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/10.png"},
+        {"value": "\ud807\udeea", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/11.png"},
+        {"value": "\ud807\udeeb", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/12.png"},
+        {"value": "\ud807\udeec", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/13.png"},
+        {"value": "\ud807\udeed", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/14.png"},
+        {"value": "\ud807\udeee", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/15.png"},
+        {"value": "\ud807\udeef", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/16.png"},
+        {"value": "\ud807\udef0", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/17.png"},
+        {"value": "\ud807\udef1", "action": "char", "type": "vyanjana", "src": "./assets/characters/maka/18.png"}
+    ]},
+    {"row":[
+        {"value": "\ud807\udef2", "action": "char", "src": "./assets/characters/maka/19.png"},
+        {"value": "\ud807\udef3", "action": "char", "type" : "swara", "src": "./assets/characters/maka/20.png"},
+        {"value": "\ud807\udef4", "action": "char", "type" : "swara", "src": "./assets/characters/maka/21.png"},
+        {"value": "\ud807\udef5", "action": "char", "type" : "swara", "src": "./assets/characters/maka/22.png"},
+        {"value": "\ud807\udef6", "action": "char", "type" : "swara", "src": "./assets/characters/maka/23.png"},
+        {"value": "\ud807\udef7", "action": "char", "src": "./assets/characters/maka/24.png"},
+        {"value": "\ud807\udef8", "action": "char", "src": "./assets/characters/maka/25.png"}
+    ]}
+]

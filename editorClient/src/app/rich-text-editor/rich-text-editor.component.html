@@ -1,0 +1,22 @@
+<mat-tab-group dynamicHeight>
+    <mat-tab label="{{ 'Full' | translate }} {{ 'Mode' | translate }}">
+        <ng-template matTabContent>
+            <ckeditor [config]="ckEditorConfiguration" [(ngModel)]="ckeditorContent" id="ckeditorFull" (keydown)="showChar($event)"></ckeditor> 
+        </ng-template>
+    </mat-tab>
+    <mat-tab label="{{ 'Classic' | translate }} {{ 'Mode' | translate }}">
+        <div id="classic_editor"></div> 
+    </mat-tab>
+    <mat-tab label="{{ 'Inline' | translate }} {{ 'Mode' | translate }}"> 
+        <div id="inline_editor"></div> 
+    </mat-tab>
+    <mat-tab label="{{ 'Block' | translate }} {{ 'Mode' | translate }}"> 
+        <div id="ballon_block_editor"></div>
+    </mat-tab>
+    <mat-tab label="{{ 'Balloon' | translate }} {{ 'Mode' | translate }}"> 
+        <div id="ballon_editor"></div>
+    </mat-tab>
+    <mat-tab label="{{ 'Document' | translate }} {{ 'Mode' | translate }}"> 
+        <div id="document_editor"></div>
+    </mat-tab>
+</mat-tab-group>

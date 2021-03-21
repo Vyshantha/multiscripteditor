@@ -1,0 +1,48 @@
+[
+    {"row":[
+        {"value": "P", "action": "char", "src": "./assets/characters/toto/1.png"},
+        {"value": "B", "action": "char", "src": "./assets/characters/toto/2.png"},
+        {"value": "T", "action": "char", "src": "./assets/characters/toto/3.png"},
+        {"value": "D", "action": "char", "src": "./assets/characters/toto/4.png"},
+        {"value": "K", "action": "char", "src": "./assets/characters/toto/5.png"},
+        {"value": "G", "action": "char", "src": "./assets/characters/toto/6.png"},
+        {"value": "M", "action": "char", "src": "./assets/characters/toto/7.png"},
+        {"value": "N", "action": "char", "src": "./assets/characters/toto/8.png"},
+        {"value": "NG", "action": "char", "src": "./assets/characters/toto/9.png"},
+        {"value": "S", "action": "char", "src": "./assets/characters/toto/10.png"},
+        {"value": "CH", "action": "char", "src": "./assets/characters/toto/11.png"},
+        {"value": "Y", "action": "char", "src": "./assets/characters/toto/12.png"},
+        {"value": "W", "action": "char", "src": "./assets/characters/toto/13.png"}
+    ]},
+    {"row":[
+        {"value": "J", "action": "char", "src": "./assets/characters/toto/14.png"},
+        {"value": "H", "action": "char", "src": "./assets/characters/toto/15.png"},
+        {"value": "R", "action": "char", "src": "./assets/characters/toto/16.png"},
+        {"value": "L", "action": "char", "src": "./assets/characters/toto/17.png"},
+        {"value": "´", "action": "char", "src": "./assets/characters/toto/31.png"},
+        {"value": "`", "action": "char", "src": "./assets/characters/toto/32.png"},
+        {"value": "!", "action": "char"},
+        {"value": ",", "action": "char"},
+        {"value": ".", "action": "char"},
+        {"value": "?", "action": "char"},
+        {"value": "'", "action": "char"},
+        {"value": "\"", "action": "char"},
+        {"value": "/", "action": "char"},
+        {"value": "\\", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "I", "action": "char", "src": "./assets/characters/toto/18.png", "type": "swara"},
+        {"value": "I᾿", "action": "char", "src": "./assets/characters/toto/19.png", "type": "swara"},
+        {"value": "IU", "action": "char", "src": "./assets/characters/toto/20.png", "type": "swara"},
+        {"value": "IU᾿", "action": "char", "src": "./assets/characters/toto/21.png", "type": "swara"},
+        {"value": "U", "action": "char", "src": "./assets/characters/toto/22.png", "type": "swara"},
+        {"value": "E", "action": "char", "src": "./assets/characters/toto/23.png", "type": "swara"},
+        {"value": "E᾿", "action": "char", "src": "./assets/characters/toto/24.png", "type": "swara"},
+        {"value": "EO", "action": "char", "src": "./assets/characters/toto/25.png", "type": "swara"},
+        {"value": "EO᾿", "action": "char", "src": "./assets/characters/toto/26.png", "type": "swara"},
+        {"value": "O", "action": "char", "src": "./assets/characters/toto/27.png", "type": "swara"},
+        {"value": "AE", "action": "char", "src": "./assets/characters/toto/28.png", "type": "swara"},
+        {"value": "AE᾿", "action": "char", "src": "./assets/characters/toto/29.png", "type": "swara"},
+        {"value": "A", "action": "char", "src": "./assets/characters/toto/30.png", "type": "swara"}
+    ]}
+]

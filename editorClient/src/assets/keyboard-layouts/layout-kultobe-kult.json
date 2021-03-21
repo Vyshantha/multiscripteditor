@@ -1,0 +1,50 @@
+[
+    {"row":[
+        {"value": "\ud803\udf08", "action": "char", "src":"./assets/characters/kult/9.png"},
+        {"value": "\ud803\udf07", "action": "char", "src":"./assets/characters/kult/8.png"},
+        {"value": "\ud803\udf06", "action": "char", "src":"./assets/characters/kult/7.png"},
+        {"value": "\ud803\udf05", "action": "char", "src":"./assets/characters/kult/6.png"},
+        {"value": "\ud803\udf04", "action": "char", "src":"./assets/characters/kult/5.png"},
+        {"value": "\ud803\udf03", "action": "char", "src":"./assets/characters/kult/4.png"},
+        {"value": "\ud803\udf02", "action": "char", "src":"./assets/characters/kult/3.png"},
+        {"value": "\ud803\udf01", "action": "char", "src":"./assets/characters/kult/2.png"},
+        {"value": "\ud803\udf00", "action": "char", "src":"./assets/characters/kult/1.png"}
+    ]},
+    {"row":[
+        {"value": "\ud803\udf12", "action": "char", "src":"./assets/characters/kult/19.png"},
+        {"value": "\ud803\udf11", "action": "char", "src":"./assets/characters/kult/18.png"},
+        {"value": "\ud803\udf10", "action": "char", "src":"./assets/characters/kult/17.png"},
+        {"value": "\ud803\udf0f", "action": "char", "src":"./assets/characters/kult/16.png"},
+        {"value": "\ud803\udf0e", "action": "char", "src":"./assets/characters/kult/15.png"},
+        {"value": "\ud803\udf0d", "action": "char", "src":"./assets/characters/kult/14.png"},
+        {"value": "\ud803\udf0c", "action": "char", "src":"./assets/characters/kult/13.png"},
+        {"value": "\ud803\udf0b", "action": "char", "src":"./assets/characters/kult/12.png"},
+        {"value": "\ud803\udf0a", "action": "char", "src":"./assets/characters/kult/11.png"},
+        {"value": "\ud803\udf09", "action": "char", "src":"./assets/characters/kult/10.png"}
+    ]},
+    {"row":[
+        {"value": "\ud803\udf27", "action": "char", "src":"./assets/characters/kult/40.png"},
+        {"value": "\ud803\udf1c", "action": "char", "src":"./assets/characters/kult/29.png"},
+        {"value": "\ud803\udf1b", "action": "char", "src":"./assets/characters/kult/28.png"},
+        {"value": "\ud803\udf1a", "action": "char", "src":"./assets/characters/kult/27.png"},
+        {"value": "\ud803\udf19", "action": "char", "src":"./assets/characters/kult/26.png"},
+        {"value": "\ud803\udf18", "action": "char", "src":"./assets/characters/kult/25.png"},
+        {"value": "\ud803\udf17", "action": "char", "src":"./assets/characters/kult/24.png"},
+        {"value": "\ud803\udf16", "action": "char", "src":"./assets/characters/kult/23.png"},
+        {"value": "\ud803\udf15", "action": "char", "src":"./assets/characters/kult/22.png"},
+        {"value": "\ud803\udf14", "action": "char", "src":"./assets/characters/kult/21.png"},
+        {"value": "\ud803\udf13", "action": "char", "src":"./assets/characters/kult/20.png"}
+    ]},
+    {"row":[
+        {"value": "\ud803\udf26", "action": "char", "src":"./assets/characters/kult/39.png"},
+        {"value": "\ud803\udf25", "action": "char", "src":"./assets/characters/kult/38.png"},
+        {"value": "\ud803\udf24", "action": "char", "src":"./assets/characters/kult/37.png"},
+        {"value": "\ud803\udf23", "action": "char", "src":"./assets/characters/kult/36.png"},
+        {"value": "\ud803\udf22", "action": "char", "src":"./assets/characters/kult/35.png"},
+        {"value": "\ud803\udf21", "action": "char", "src":"./assets/characters/kult/34.png"},
+        {"value": "\ud803\udf20", "action": "char", "src":"./assets/characters/kult/33.png"},
+        {"value": "\ud803\udf1f", "action": "char", "src":"./assets/characters/kult/32.png"},
+        {"value": "\ud803\udf1e", "action": "char", "src":"./assets/characters/kult/31.png"},
+        {"value": "\ud803\udf1d", "action": "char", "src":"./assets/characters/kult/30.png"}
+    ]}
+]

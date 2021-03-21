@@ -1,0 +1,34 @@
+[
+    {"row":[
+        {"value": "𐌇", "action": "char"},
+        {"value": "𐌆", "action": "char"},
+        {"value": "𐌅", "action": "char"},
+        {"value": "𐌄", "action": "char"},
+        {"value": "𐌃", "action": "char"},
+        {"value": "𐌂", "action": "char"},
+        {"value": "𐌁", "action": "char"},
+        {"value": "𐌀", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "𐌐", "action": "char"},
+        {"value": "𐌏", "action": "char"},
+        {"value": "𐌍", "action": "char"},
+        {"value": "𐌌", "action": "char"},
+        {"value": "𐌋", "action": "char"},
+        {"value": "𐌊", "action": "char"},
+        {"value": "𐌉", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "𐌗", "action": "char"},
+        {"value": "𐌖", "action": "char"},
+        {"value": "𐌕", "action": "char"},
+        {"value": "𐌔", "action": "char"},
+        {"value": "𐌓", "action": "char"},
+        {"value": "𐌒", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "\u23CE", "action": "enter"},
+        {"value": "\u00A0", "action": "space"},
+        {"value": "↳", "action": "enter"}
+    ]}
+]

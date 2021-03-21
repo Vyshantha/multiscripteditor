@@ -1,0 +1,42 @@
+[
+    {"row":[
+        {"value": "\"", "action": "char"},
+        {"value": "'", "action": "char"},
+        {"value": "?", "action": "char"},
+        {"value": ":", "action": "char"},
+        {"value": ",", "action": "char"},
+        {"value": ".", "action": "char"},
+        {"value": "᥄", "action": "char"},
+        {"value": "᥅", "action": "char"},
+        {"value": "⌫", "action": "del"}
+    ]},
+    {"row":[
+        {"value": "ᝠ", "action": "char"},
+        {"value": "ᝡ", "action": "char"},
+        {"value": "ᝢ", "action": "char"},
+        {"value": "ᝲ", "action": "char", "type" : "swara"},
+        {"value": "ᝳ", "action": "char", "type" : "swara"},
+        {"value": "\u23CE", "action": "enter"}
+    ]},
+    {"row":[
+        {"value": "ᝣ", "action": "char", "type": "vyanjana"},
+        {"value": "ᝤ", "action": "char", "type": "vyanjana"},
+        {"value": "ᝥ", "action": "char", "type": "vyanjana"},
+        {"value": "/", "action": "char"},
+        {"value": "ᝦ", "action": "char", "type": "vyanjana"},
+        {"value": "ᝧ", "action": "char", "type": "vyanjana"},
+        {"value": "ᝨ", "action": "char", "type": "vyanjana"},
+        {"value": "\\", "action": "char"},
+        {"value": "ᝩ", "action": "char", "type": "vyanjana"},
+        {"value": "ᝪ", "action": "char", "type": "vyanjana"},
+        {"value": "ᝫ", "action": "char", "type": "vyanjana"},
+        {"value": "?", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "ᝬ", "action": "char", "type": "vyanjana"},
+        {"value": "ᝮ", "action": "char", "type": "vyanjana"},
+        {"value": "\u00A0", "action": "space"},
+        {"value": "ᝯ", "action": "char", "type": "vyanjana"},
+        {"value": "ᝰ", "action": "char", "type": "vyanjana"}
+    ]}
+]

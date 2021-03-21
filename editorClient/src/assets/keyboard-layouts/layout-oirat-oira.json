@@ -1,0 +1,84 @@
+[
+    {"row":[
+        {"value": "ᠠ", "action": "char", "orient" : "t2b", "type": "swara"},
+        {"value": "ᡄ", "action": "char", "orient" : "t2b", "type": "swara"},
+        {"value": "ᡅ", "action": "char", "orient" : "t2b", "type": "swara"},
+        {"value": "ᡆ", "action": "char", "orient" : "t2b", "type": "swara"},
+        {"value": "ᡇ", "action": "char", "orient" : "t2b", "type": "swara"},
+        {"value": "ᡈ", "action": "char", "orient" : "t2b", "type": "swara"},
+        {"value": "ᡉ", "action": "char", "orient" : "t2b", "type": "swara"}
+    ]},
+    {"row":[
+        {"value": "ᡋ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡌ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡏ", "action": "char", "orient" : "t2b"},
+        {"value": "ᠯ", "action": "char", "orient" : "t2b"},
+        {"value": "ᠰ", "action": "char", "orient" : "t2b"},
+        {"value": "ᠱ", "action": "char", "orient" : "t2b"},
+        {"value": "ᠨ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡍ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡎ", "action": "char", "orient" : "t2b"}    
+    ]},
+    {"row":[
+        {"value": "ᡐ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡑ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡔ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡒ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡓ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡕ", "action": "char", "orient" : "t2b"},
+        {"value": "ᠷ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡖ", "action": "char", "orient" : "t2b"}
+    ]},
+    {"row":[
+        {"value": "ᡙ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡘ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡗ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡚ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡛ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡜ", "action": "char", "orient" : "t2b"},
+        {"value": "ᢘ", "action": "char", "orient" : "t2b"},
+        {"value": "ᢙ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡊ", "action": "char", "orient" : "t2b"}
+    ]},
+    {"rowVert":[
+        {"value": "ᠠ", "action": "char", "orient" : "t2b", "type": "swara"},
+        {"value": "ᡄ", "action": "char", "orient" : "t2b", "type": "swara"},
+        {"value": "ᡅ", "action": "char", "orient" : "t2b", "type": "swara"},
+        {"value": "ᡆ", "action": "char", "orient" : "t2b", "type": "swara"},
+        {"value": "ᡇ", "action": "char", "orient" : "t2b", "type": "swara"},
+        {"value": "ᡈ", "action": "char", "orient" : "t2b", "type": "swara"},
+        {"value": "ᡉ", "action": "char", "orient" : "t2b", "type": "swara"}
+    ]},
+    {"rowVert":[
+        {"value": "ᡋ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡌ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡏ", "action": "char", "orient" : "t2b"},
+        {"value": "ᠯ", "action": "char", "orient" : "t2b"},
+        {"value": "ᠰ", "action": "char", "orient" : "t2b"},
+        {"value": "ᠱ", "action": "char", "orient" : "t2b"},
+        {"value": "ᠨ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡍ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡎ", "action": "char", "orient" : "t2b"}    
+    ]},
+    {"rowVert":[
+        {"value": "ᡐ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡑ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡔ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡒ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡓ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡕ", "action": "char", "orient" : "t2b"},
+        {"value": "ᠷ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡖ", "action": "char", "orient" : "t2b"}
+    ]},
+    {"rowVert":[
+        {"value": "ᡙ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡘ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡗ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡚ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡛ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡜ", "action": "char", "orient" : "t2b"},
+        {"value": "ᢘ", "action": "char", "orient" : "t2b"},
+        {"value": "ᢙ", "action": "char", "orient" : "t2b"},
+        {"value": "ᡊ", "action": "char", "orient" : "t2b"}
+    ]}
+]

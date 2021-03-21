@@ -1,0 +1,86 @@
+[
+    {"row":[
+        {"value": "is", "action": "char", "src": "./assets/characters/iba/1.png"},
+        {"value": "it", "action": "char", "src": "./assets/characters/iba/2.png"},
+        {"value": "ao", "action": "char", "src": "./assets/characters/iba/3.png"},
+        {"value": "a", "action": "char", "src": "./assets/characters/iba/4.png"},
+        {"value": "la", "action": "char", "src": "./assets/characters/iba/5.png"}
+    ]},
+    {"row": [
+        {"value": "cha", "action": "char", "src": "./assets/characters/iba/6.png"},
+        {"value": "oi", "action": "char", "src": "./assets/characters/iba/7.png"},
+        {"value": "oh", "action": "char", "src": "./assets/characters/iba/8.png"},
+        {"value": "uw", "action": "char", "src": "./assets/characters/iba/9.png"},
+        {"value": "ein", "action": "char", "src": "./assets/characters/iba/10.png"}
+    ]},
+    {"row": [
+        {"value": "op", "action": "char", "src": "./assets/characters/iba/11.png"},
+        {"value": "A", "action": "char", "src": "./assets/characters/iba/12.png"},
+        {"value": "ah", "action": "char", "src": "./assets/characters/iba/13.png"},
+        {"value": "il", "action": "char", "src": "./assets/characters/iba/14.png"},
+        {"value": "ba", "action": "char", "src": "./assets/characters/iba/15.png"}
+    ]},
+    {"row":[
+        {"value": "sa", "action": "char", "src": "./assets/characters/iba/16.png"},
+        {"value": "ja", "action": "char", "src": "./assets/characters/iba/17.png"},
+        {"value": "ut", "action": "char", "src": "./assets/characters/iba/18.png"},
+        {"value": "I", "action": "char", "src": "./assets/characters/iba/19.png"},
+        {"value": "ong", "action": "char", "src": "./assets/characters/iba/20.png"}
+    ]},
+    {"row": [
+        {"value": "or", "action": "char", "src": "./assets/characters/iba/21.png"},
+        {"value": "ga", "action": "char", "src": "./assets/characters/iba/22.png"},
+        {"value": "al", "action": "char", "src": "./assets/characters/iba/23.png"},
+        {"value": "ra", "action": "char", "src": "./assets/characters/iba/24.png"},
+        {"value": "eix", "action": "char", "src": "./assets/characters/iba/25.png"}
+    ]},
+    {"row":[
+        {"value": "ya", "action": "char", "src": "./assets/characters/iba/26.png"},
+        {"value": "ok", "action": "char", "src": "./assets/characters/iba/27.png"},
+        {"value": "ak", "action": "char", "src": "./assets/characters/iba/28.png"},
+        {"value": "ap", "action": "char", "src": "./assets/characters/iba/29.png"},
+        {"value": "eig", "action": "char", "src": "./assets/characters/iba/30.png"}
+    ]},
+    {"row": [
+        {"value": "ma", "action": "char", "src": "./assets/characters/iba/31.png"},
+        {"value": "E", "action": "char", "src": "./assets/characters/iba/32.png"},
+        {"value": "nga", "action": "char", "src": "./assets/characters/iba/33.png"},
+        {"value": "ta", "action": "char", "src": "./assets/characters/iba/34.png"},
+        {"value": "ir", "action": "char", "src": "./assets/characters/iba/35.png"}
+    ]},
+    {"row":[
+        {"value": "nya", "action": "char", "src": "./assets/characters/iba/36.png"},
+        {"value": "pa", "action": "char", "src": "./assets/characters/iba/37.png"},
+        {"value": "ieng", "action": "char", "src": "./assets/characters/iba/38.png"},
+        {"value": "na", "action": "char", "src": "./assets/characters/iba/39.png"},
+        {"value": "ang", "action": "char", "src": "./assets/characters/iba/40.png"}
+    ]},
+    {"row": [
+        {"value": "om", "action": "char", "src": "./assets/characters/iba/41.png"},
+        {"value": "am", "action": "char", "src": "./assets/characters/iba/42.png"},
+        {"value": "an", "action": "char", "src": "./assets/characters/iba/43.png"},
+        {"value": "da", "action": "char", "src": "./assets/characters/iba/44.png"},
+        {"value": "oug", "action": "char", "src": "./assets/characters/iba/45.png"}
+    ]},
+    {"row":[
+        {"value": "au", "action": "char", "src": "./assets/characters/iba/46.png"},
+        {"value": "as", "action": "char", "src": "./assets/characters/iba/47.png"},
+        {"value": "un", "action": "char", "src": "./assets/characters/iba/48.png"},
+        {"value": "at", "action": "char", "src": "./assets/characters/iba/49.png"},
+        {"value": "R", "action": "char", "src": "./assets/characters/iba/50.png"}
+    ]},
+    {"row": [
+        {"value": "us", "action": "char", "src": "./assets/characters/iba/51.png"},
+        {"value": "ieh", "action": "char", "src": "./assets/characters/iba/52.png"},
+        {"value": "ek", "action": "char", "src": "./assets/characters/iba/53.png"},
+        {"value": "ul", "action": "char", "src": "./assets/characters/iba/54.png"},
+        {"value": "O", "action": "char", "src": "./assets/characters/iba/55.png"}
+    ]},
+    {"row": [
+        {"value": "ka", "action": "char", "src": "./assets/characters/iba/56.png"},
+        {"value": "iem", "action": "char", "src": "./assets/characters/iba/57.png"},
+        {"value": "ip", "action": "char", "src": "./assets/characters/iba/58.png"},
+        {"value": "eng", "action": "char", "src": "./assets/characters/iba/59.png"},
+        {"value": "\u00A0", "action": "char"}
+    ]}
+]

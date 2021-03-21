@@ -1,0 +1,40 @@
+[
+    {"row":[
+        {"value": "\ud802\udc6b", "action": "char", "src":"./assets/characters/palm/12.png"},
+        {"value": "\ud802\udc6a", "action": "char", "src":"./assets/characters/palm/11.png"},
+        {"value": "\ud802\udc69", "action": "char", "src":"./assets/characters/palm/10.png"},
+        {"value": "\ud802\udc68", "action": "char", "src":"./assets/characters/palm/9.png"},
+        {"value": "\ud802\udc67", "action": "char", "src":"./assets/characters/palm/8.png"},
+        {"value": "\ud802\udc66", "action": "char", "src":"./assets/characters/palm/7.png"},
+        {"value": "\ud802\udc65", "action": "char", "src":"./assets/characters/palm/6.png"},
+        {"value": "\ud802\udc64", "action": "char", "src":"./assets/characters/palm/5.png"},
+        {"value": "\ud802\udc63", "action": "char", "src":"./assets/characters/palm/4.png"},
+        {"value": "\ud802\udc62", "action": "char", "src":"./assets/characters/palm/3.png"},
+        {"value": "\ud802\udc61", "action": "char", "src":"./assets/characters/palm/2.png"},
+        {"value": "\ud802\udc60", "action": "char", "src":"./assets/characters/palm/1.png"}
+    ]},
+    {"row":[
+        {"value": "\ud802\udc76", "action": "char", "src":"./assets/characters/palm/23.png"},
+        {"value": "\ud802\udc75", "action": "char", "src":"./assets/characters/palm/22.png"},
+        {"value": "\ud802\udc74", "action": "char", "src":"./assets/characters/palm/21.png"},
+        {"value": "\ud802\udc73", "action": "char", "src":"./assets/characters/palm/20.png"},
+        {"value": "\ud802\udc72", "action": "char", "src":"./assets/characters/palm/19.png"},
+        {"value": "\ud802\udc71", "action": "char", "src":"./assets/characters/palm/18.png"},
+        {"value": "\ud802\udc70", "action": "char", "src":"./assets/characters/palm/17.png"},
+        {"value": "\ud802\udc6f", "action": "char", "src":"./assets/characters/palm/16.png"},
+        {"value": "\ud802\udc6e", "action": "char", "src":"./assets/characters/palm/15.png"},
+        {"value": "\ud802\udc6d", "action": "char", "src":"./assets/characters/palm/14.png"},
+        {"value": "\ud802\udc6c", "action": "char", "src":"./assets/characters/palm/13.png"}
+    ]},
+    {"row":[
+        {"value": "\ud802\udc7f", "action": "char", "src":"./assets/characters/palm/32.png"},
+        {"value": "\ud802\udc7e", "action": "char", "src":"./assets/characters/palm/31.png"},
+        {"value": "\ud802\udc7d", "action": "char", "src":"./assets/characters/palm/30.png"},
+        {"value": "\ud802\udc7c", "action": "char", "src":"./assets/characters/palm/29.png"},
+        {"value": "\ud802\udc7b", "action": "char", "src":"./assets/characters/palm/28.png"},
+        {"value": "\ud802\udc7a", "action": "char", "src":"./assets/characters/palm/27.png"},
+        {"value": "\ud802\udc79", "action": "char", "src":"./assets/characters/palm/26.png"},
+        {"value": "\ud802\udc78", "action": "char", "src":"./assets/characters/palm/25.png"},
+        {"value": "\ud802\udc77", "action": "char", "src":"./assets/characters/palm/24.png"}
+    ]}
+]

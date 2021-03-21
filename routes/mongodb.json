@@ -1,0 +1,12 @@
+{ 
+	"user" : "soilshantha", 
+	"account" : "shantha-soil",
+	"pwd" : "time for bottu and pimpu",
+	"db" : "soilproperties",
+	"url" : "https://mlab.com/home?newDatabase=1",
+	"user" : "soiladmin",
+	"password" : "s0IlAdmin",
+	"collection" : "districtsoils",
+	"mongo_shell" : "mongo ds149732.mlab.com:49732/soilproperties -u <dbuser> -p <dbpassword>",
+	"mongo_driver" : "mongodb://<dbuser>:<dbpassword>@ds149732.mlab.com:49732/soilproperties"
+}

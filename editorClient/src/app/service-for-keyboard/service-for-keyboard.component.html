@@ -1,0 +1,16 @@
+<table style="width: 100%;">
+    <tr>
+      <td style="width: 30%;text-align: center;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <i>{{ 'Switch Keyboards with Language Change' | translate }}</i> : &nbsp; <span [ngStyle]="{'font-weight': keyboardDisassociateLocale == true ? 'normal' : 'bold'}">{{ 'On' | translate }}</span> &nbsp; <mat-slide-toggle (click)="switchTogther()" [(ngModel)]="keyboardDisassociateLocale"></mat-slide-toggle> &nbsp;&nbsp; <span [ngStyle]="{'font-weight': keyboardDisassociateLocale == true ? 'bold' : 'normal'}">{{ 'Off' | translate }}</span>
+      </td>
+      <td style="width: 26%;text-align: center;">
+      <mat-icon>visibility</mat-icon> &nbsp;&nbsp; <span [ngStyle]="{'font-weight': showAllInitially == true ? 'bold' : 'normal'}">{{ 'All' | translate }}</span> &nbsp; <mat-slide-toggle (click)="showOnlyKeyboard()" [(ngModel)]="onlyKeyboardToggle"><mat-icon>self_improvement</mat-icon></mat-slide-toggle> 
+      </td>
+      <td style="width: 23%;text-align: center;">
+      <mat-icon>view_comfy</mat-icon> &nbsp;&nbsp; <span [ngStyle]="{'font-weight': languageBased == true ? 'normal' : 'bold'}">{{ 'QWERTY' | translate }}</span> &nbsp; <mat-slide-toggle (click)="qwertyKeyboard()" [(ngModel)]="languageBased"></mat-slide-toggle> &nbsp;&nbsp; <span [ngStyle]="{'font-weight': languageBased == true ? 'bold' : 'normal'}">{{ 'Language Learning' | translate }}</span>
+      </td>
+      <td [ngStyle]="{ 'visibility': (allowTransliterate) ? 'visible' : 'hidden' }">
+      <mat-icon>keyboard</mat-icon> &nbsp;&nbsp; <span [ngStyle]="{'font-weight': standardKeyboard == true ? 'bold' : 'normal'}">{{ 'Standard' | translate }}</span> &nbsp;&nbsp;<mat-slide-toggle (click)="transliterationKeysClicked()" [disabled]="standardKeyboard && languageBased"></mat-slide-toggle>&nbsp;&nbsp; <span [ngStyle]="{'font-weight': standardKeyboard == true ? 'normal' : 'bold'}">{{ 'Transliteration' | translate }}</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </td>
+    </tr>
+</table>

@@ -1,0 +1,60 @@
+[
+    {"row":[
+        {"value": "\"", "action": "char"},
+        {"value": "'", "action": "char"},
+        {"value": "\ud805\ude50", "action": "char", "type": "swara", "src":"./assets/characters/maha/0.png"},
+        {"value": "\ud805\ude51", "action": "char", "type": "swara", "src":"./assets/characters/maha/1.png"},
+        {"value": "\ud805\ude52", "action": "char", "type": "swara", "src":"./assets/characters/maha/2.png"},
+        {"value": "\ud805\ude53", "action": "char", "type": "swara", "src":"./assets/characters/maha/3.png"},
+        {"value": "\ud805\ude54", "action": "char", "type": "swara", "src":"./assets/characters/maha/4.png"},        
+        {"value": "\ud805\ude73", "action": "char", "type": "swara", "src":"./assets/characters/maha/5.png"},        
+        {"value": "\ud805\ude74", "action": "char", "src":"./assets/characters/maha/6.png"},        
+        {"value": "\ud805\ude75", "action": "char", "src":"./assets/characters/maha/70.png"},        
+        {"value": "\ud805\ude76", "action": "char", "src":"./assets/characters/maha/80.png"},        
+        {"value": "+", "action": "char"},
+        {"value": "-", "action": "char"},
+        {"value": "⌫", "action": "del"}
+    ]},
+    {"row":[
+        {"value": "\ud805\ude55", "action": "char", "src": "./assets/characters/maha/7.png"},
+        {"value": "\ud805\ude56", "action": "char", "src": "./assets/characters/maha/8.png"},
+        {"value": "\ud805\ude57", "action": "char", "src": "./assets/characters/maha/9.png"},
+        {"value": "\ud805\ude58", "action": "char", "src": "./assets/characters/maha/10.png"},
+        {"value": "/", "action": "char"},
+        {"value": "\ud805\ude59", "action": "char", "src": "./assets/characters/maha/11.png"},
+        {"value": "\ud805\ude5a", "action": "char", "src": "./assets/characters/maha/12.png"},
+        {"value": "\ud805\ude5b", "action": "char", "src": "./assets/characters/maha/13.png"},
+        {"value": "\ud805\ude5c", "action": "char", "src": "./assets/characters/maha/14.png"},
+        {"value": "\ud805\ude5d", "action": "char", "src": "./assets/characters/maha/15.png"},
+        {"value": "\\", "action": "char"},
+        {"value": "\ud805\ude5e", "action": "char", "src": "./assets/characters/maha/16.png"},
+        {"value": "\ud805\ude5f", "action": "char", "src": "./assets/characters/maha/17.png"},
+        {"value": "\ud805\ude60", "action": "char", "src": "./assets/characters/maha/18.png"},
+        {"value": "\ud805\ude61", "action": "char", "src": "./assets/characters/maha/19.png"},
+        {"value": "\ud805\ude62", "action": "char", "src": "./assets/characters/maha/20.png"}
+    ]},
+    {"row":[
+        {"value": "\ud805\ude63", "action": "char", "src": "./assets/characters/maha/21.png"},   
+        {"value": "\ud805\ude64", "action": "char", "src": "./assets/characters/maha/22.png"},
+        {"value": "\ud805\ude65", "action": "char", "src": "./assets/characters/maha/23.png"},
+        {"value": "\ud805\ude66", "action": "char", "src": "./assets/characters/maha/24.png"},
+        {"value": "\ud805\ude67", "action": "char", "src": "./assets/characters/maha/25.png"},
+        {"value": "(", "action": "char"},
+        {"value": "\ud805\ude68", "action": "char", "src": "./assets/characters/maha/26.png"},
+        {"value": "\ud805\ude69", "action": "char", "src": "./assets/characters/maha/27.png"},
+        {"value": "\ud805\ude6a", "action": "char", "src": "./assets/characters/maha/28.png"},
+        {"value": "\ud805\ude6b", "action": "char", "src": "./assets/characters/maha/29.png"},
+        {"value": "\ud805\ude6c", "action": "char", "src": "./assets/characters/maha/30.png"},
+        {"value": ")", "action": "char"},
+        {"value": "\u23CE", "action": "enter"}
+    ]},
+    {"row":[
+        {"value": "\ud805\ude6d", "action": "char", "src": "./assets/characters/maha/31.png"},
+        {"value": "\ud805\ude6e", "action": "char", "src": "./assets/characters/maha/32.png"},
+        {"value": "\ud805\ude6f", "action": "char", "src": "./assets/characters/maha/33.png"},
+        {"value": "\u00A0", "action": "space"},
+        {"value": "\ud805\ude70", "action": "char", "src": "./assets/characters/maha/34.png"},
+        {"value": "\ud805\ude71", "action": "char", "src": "./assets/characters/maha/35.png"},
+        {"value": "\ud805\ude72", "action": "char", "src": "./assets/characters/maha/36.png"}
+    ]}
+]

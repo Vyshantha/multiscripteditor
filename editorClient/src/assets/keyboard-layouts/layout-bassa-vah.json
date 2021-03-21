@@ -1,0 +1,44 @@
+[
+    {"row":[
+        {"value": "\ud81a\uded0", "action": "char", "src": "./assets/characters/vah/1.png"},
+        {"value": "\ud81a\uded1", "action": "char", "src": "./assets/characters/vah/2.png"},
+        {"value": "\ud81a\uded2", "action": "char", "src": "./assets/characters/vah/3.png"},
+        {"value": "\ud81a\uded3", "action": "char", "src": "./assets/characters/vah/4.png"},
+        {"value": "\ud81a\uded4", "action": "char", "src": "./assets/characters/vah/5.png"},
+        {"value": "\ud81a\uded5", "action": "char", "src": "./assets/characters/vah/6.png"},
+        {"value": "\ud81a\uded6", "action": "char", "src": "./assets/characters/vah/7.png"},
+        {"value": "\ud81a\uded7", "action": "char", "src": "./assets/characters/vah/8.png"},
+        {"value": "\ud81a\uded8", "action": "char", "src": "./assets/characters/vah/9.png"},
+        {"value": "\ud81a\uded9", "action": "char", "src": "./assets/characters/vah/10.png"},
+        {"value": "\ud81a\udeda", "action": "char", "src": "./assets/characters/vah/11.png"},
+        {"value": "\ud81a\udedb", "action": "char", "src": "./assets/characters/vah/12.png"}
+    ]},
+    {"row":[
+        {"value": "\ud81a\udedc", "action": "char", "src": "./assets/characters/vah/13.png"},
+        {"value": "\ud81a\udedd", "action": "char", "src": "./assets/characters/vah/14.png"},
+        {"value": "\ud81a\udede", "action": "char", "src": "./assets/characters/vah/15.png"},
+        {"value": "\ud81a\udedf", "action": "char", "src": "./assets/characters/vah/16.png"},
+        {"value": "\ud81a\udee0", "action": "char", "src": "./assets/characters/vah/17.png"},
+        {"value": "\ud81a\udee1", "action": "char", "src": "./assets/characters/vah/18.png"},
+        {"value": "\ud81a\udee2", "action": "char", "src": "./assets/characters/vah/19.png"},
+        {"value": "\ud81a\udee3", "action": "char", "src": "./assets/characters/vah/20.png"},
+        {"value": "\ud81a\udee4", "action": "char", "src": "./assets/characters/vah/21.png"},
+        {"value": "\ud81a\udee5", "action": "char", "src": "./assets/characters/vah/22.png"},
+        {"value": "\ud81a\udee6", "action": "char", "src": "./assets/characters/vah/23.png"},
+        {"value": "\ud81a\udef5", "action": "char", "src": "./assets/characters/vah/24.png"}
+    ]},
+    {"row":[
+        {"value": "\ud81a\udee7", "action": "char", "src": "./assets/characters/vah/25.png"},
+        {"value": "\ud81a\udee8", "action": "char", "src": "./assets/characters/vah/26.png"},
+        {"value": "\ud81a\udee9", "action": "char", "src": "./assets/characters/vah/27.png"},
+        {"value": "\ud81a\udeea", "action": "char", "src": "./assets/characters/vah/28.png"},
+        {"value": "\ud81a\udeeb", "action": "char", "src": "./assets/characters/vah/29.png"},
+        {"value": "\ud81a\udeec", "action": "char", "src": "./assets/characters/vah/30.png"},
+        {"value": "\ud81a\udeed", "action": "char", "src": "./assets/characters/vah/31.png"},
+        {"value": "\ud81a\udef0", "action": "char", "type": "swara", "src": "./assets/characters/vah/32.png"},
+        {"value": "\ud81a\udef1", "action": "char", "type": "swara", "src": "./assets/characters/vah/33.png"},
+        {"value": "\ud81a\udef2", "action": "char", "type": "swara", "src": "./assets/characters/vah/34.png"},
+        {"value": "\ud81a\udef3", "action": "char", "type": "swara", "src": "./assets/characters/vah/35.png"},
+        {"value": "\ud81a\udef4", "action": "char", "type": "swara", "src": "./assets/characters/vah/36.png"}
+    ]}
+]

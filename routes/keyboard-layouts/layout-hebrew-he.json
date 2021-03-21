@@ -1,0 +1,59 @@
+[
+    {"row":[
+        {"value": "ט‎", "action": "char"},
+        {"value": "ח", "action": "char"},
+        {"value": "ז", "action": "char"},
+        {"value": "ו‎", "action": "char"},
+        {"value": "ה", "action": "char"},
+        {"value": "ד", "action": "char"},
+        {"value": "ג", "action": "char"},
+        {"value": "ב", "action": "char"},
+        {"value": "בּ‎", "action": "char"},
+        {"value": "א", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "ע", "action": "char"},
+        {"value": "ס‎", "action": "char"},
+        {"value": "ן‎", "action": "char"},
+        {"value": "נ", "action": "char"},
+        {"value": "ם‎", "action": "char"},
+        {"value": "מ‎", "action": "char"},
+        {"value": "ל‎", "action": "char"},
+        {"value": "ך‎", "action": "char"},
+        {"value": "ךּ", "action": "char"},
+        {"value": "כ‎", "action": "char"},
+        {"value": "כּ‎", "action": "char"},
+        {"value": "י", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "ת‎", "action": "char"},
+        {"value": "תּ‎", "action": "char"},
+        {"value": "שׂ‎", "action": "char"},
+        {"value": "שׁ‎", "action": "char"},
+        {"value": "ר‎", "action": "char"},
+        {"value": "ק‎", "action": "char"},
+        {"value": "ץ‎", "action": "char"},
+        {"value": "צ", "action": "char"},
+        {"value": "ף‎", "action": "char"},
+        {"value": "פ‎", "action": "char"},
+        {"value": "פּ‎", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "׆‎", "action": "char"},
+        {"value": "װ", "action": "char"},
+        {"value": "ױ", "action": "char"},
+        {"value": "״‎", "action": "char"},
+        {"value": "׳", "action": "char"},
+        {"value": "ׇ ", "action": "char", "type": "swara"},
+        {"value": "ֻ‎ ", "action": "char", "type": "swara"},
+        {"value": "וּ‎", "action": "char", "type": "swara"},
+        {"value": "וֹ‎", "action": "char", "type": "swara"},
+        {"value": "ֱ‎ ", "action": "char", "type": "swara"},
+        {"value": "ֶ‎ ", "action": "char", "type": "swara"},
+        {"value": "ֵ‎ ", "action": "char", "type": "swara"},
+        {"value": "ֲ‎ ", "action": "char", "type": "swara"},
+        {"value": "ַ‎ ", "action": "char", "type": "swara"},        
+        {"value": "\u05BF", "action": "char", "type": "swara"}
+    ]}
+    
+]

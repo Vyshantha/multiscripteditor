@@ -1,0 +1,30 @@
+[
+    {"row":[
+        {"value": "𐌋", "action": "char"},
+        {"value": "𐌊", "action": "char"},
+        {"value": "𐌉", "action": "char"},
+        {"value": "𐌅", "action": "char"},
+        {"value": "𐌄", "action": "char"},
+        {"value": "𐌓", "action": "char"},
+        {"value": "𐌂", "action": "char"},
+        {"value": "𐌁", "action": "char"},
+        {"value": "A", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "𐌈", "action": "char"},
+        {"value": "𐊜", "action": "char", "src": "./assets/characters/pice/4.png"},
+        {"value": "𐌕", "action": "char", "src": "./assets/characters/pice/3.png"},
+        {"value": "𐊃", "action": "char", "src": "./assets/characters/pice/2.png"},
+        {"value": "𐤵", "action": "char"},
+        {"value": "𐤿", "action": "char", "src": "./assets/characters/pice/1.png"},
+        {"value": "ᛐ", "action": "char"},
+        {"value": "𐌏", "action": "char"},
+        {"value": "𐌍", "action": "char"},
+        {"value": "𐌌", "action": "char"}
+    ]},
+    {"row":[
+        {"value": "\u23CE", "action": "enter"},
+        {"value": "\u00A0", "action": "space"},
+        {"value": "↳", "action": "enter"}
+    ]}
+]
