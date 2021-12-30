@@ -350,24 +350,11 @@ export class AppComponent implements AfterViewInit {
   *  2. [PUBLISHING]           Publishing Website : https://console.firebase.google.com and UPDATE PROPERTIES FILES
   *                                Run ./nlpOnNode/downloadNLP.py then include Hostname & Ports in with IHS/Proxy (on 80 & redirect)
   *                                exec : ./startMSE.sh > ./logs/MultiScriptEditor.log &
-  *                            NodeJS App : https://www.youtube.com/watch?v=Qnw2bO3ljZs (https://api.worldscriptsexplorer.app/)
-  *                            AngularJS App : https://www.youtube.com/watch?v=dPIyS5R6lHU (https://worldscriptsexplorer.app/)
-  *                            When URL is available then setup Content-Security-Policy and the Certificate for the Node & Angular server : 
+  *                            NodeJS App : https://www.youtube.com/watch?v=Qnw2bO3ljZs (https://api.worldscriptsexplorer.web.app/)
+  *                            When URL is available then setup Content-Security-Policy and the Certificate for the Node server : 
   *                               https://medium.com/skyshidigital/deploy-node-js-to-firebase-hosting-cdc44518fe21
-  *  3. [ACCESSIBILITY]        HTML Accessibility : https://www.a11yproject.com/checklist/ - FAILED CHECKLIST Items as screenshots
-  *  4. [SEO CODING]           HTML Tags : https://www.searchenginejournal.com/html-tags-attributes-seo/389503/#close
+  *  3. [SEO CODING]           HTML Tags : https://www.searchenginejournal.com/html-tags-attributes-seo/389503/#close
   * 
-*/
-
-/*  Bugs & Defects -
-  1. Cursor position based typing not working - https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_editor.html
-  2. Deletion of images partly working but not accurately - https://ckeditor.com/cke4/presets-all
-  3. Superscript not shown, and duplicate calls even when focus is not present
-  4. Explorer mode then return to Editor, changes to editor added in batches with lags and can't type continuously
-  5. Looping of "setTimeout" for onchange for Editor when moving from a Tab back to editor
-  6. Help - Load Keyboard : sections of types of keyboard does not change translation with locale change
-  7. RTL language and then switch to LTR, the Editor writing direction does not update
-  8. Multi scripts within 'p' or 'div' or 'span' then only render typing direction for explicitly detected scripts alone
 */
 
 /* Lower Priority -

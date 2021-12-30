@@ -1,4 +1,7 @@
 <mat-tab-group *ngIf="isMobile && !isTablet" (focusChange)="allOptionsTabs($event)" dynamicHeight>
+  <mat-tab label="{{ 'Every Writers Choice' | translate }}">
+
+  </mat-tab>
   <mat-tab label="{{ 'Wikipedia' | translate }}">
     <iframe id="wikipediaId"
         title="{{ 'Wikipedia' | translate }}"
@@ -75,6 +78,9 @@
 </div-->
 
 <mat-tab-group *ngIf="!isMobile && isTablet" (focusChange)="allOptionsTabs($event)" dynamicHeight>
+  <mat-tab label="{{ 'Every Writers Choice' | translate }}">
+
+  </mat-tab>
   <mat-tab label="{{ 'Wikipedia' | translate }}">
     <iframe id="wikipediaId"
         title="{{ 'Wikipedia' | translate }}"
@@ -151,6 +157,9 @@
 </div-->
 
 <mat-tab-group *ngIf="!isMobile && !isTablet" (focusChange)="allOptionsTabs($event)" dynamicHeight>
+  <mat-tab label="{{ 'Every Writers Choice' | translate }}">
+
+  </mat-tab>
   <mat-tab label="{{ 'Wikipedia' | translate }}">
     <iframe id="wikipediaId"
         title="{{ 'Wikipedia' | translate }}"
