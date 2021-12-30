@@ -1,0 +1,103 @@
+<div *ngIf="isMobile && !isTablet" class="mat-typography" dir="auto">
+    <h3 style="height: 25px;"><div [ngStyle]="{'float': (isRTL == 'rtl') ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} </div> <div [ngStyle]="{'float': (isRTL == 'rtl') ? 'left': 'right'}"><mat-icon style="font-size: 14px;" aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h3>
+    <div *ngIf="window.orientation == 0 || window.orientation == 180">{{ 'Rotate to Landscape mode for customising keyboard' | translate }}</div>
+    <mat-card style="font-size: smaller;" *ngIf="window.orientation == 90 || window.orientation == -90">
+        {{ 'Grid for Keyboard' | translate}} <br/>
+        <!--div *ngIf="!isMobile && !isTablet" class="keyboard-container" dir="ltr" style="overflow-y: scroll;overflow-x: scroll;">
+            <ul *ngFor="let rows of layoutCurrentKeys" style="list-style-type: none;">
+                <li *ngFor="let character of (isQwerty? ( (isTransliterate) ? ( (isShiftKeyPress) ? ( (isAltGrKeyPress) ? rows.altGrCaps : rows.qwertyShiftTrans ) : ( (isAltGrKeyPress) ? rows.altGr : rows.qwertyTrans ) ) : ( (isShiftKeyPress) ? ( (isAltGrKeyPress) ? rows.altGrCaps : rows.qwertyShift ) : ( (isAltGrKeyPress) ? rows.altGr : rows.qwerty ) ) ) : ( ( keysToRotate && enableRotateKeyboard ) ? rows.rowVert : rows.row ) )" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr') }" [ngStyle]="{'color': (highlightKeys && (character.type == 'swara' || character.type == 'vowel'))? 'brown' : ((character.type == 'unused')? 'darkgrey' :'inherit'), 'box-sizing': 'border-box', 'width' : ( (!isQwerty && !isTransliterate && character.action === 'enter') ? cells.value*3.4 + 'px' : ( ( (isQwerty || isTransliterate) &&  character.action === 'enter') ? cells.value*2.2 + 'px' : ( (character.action === 'space') ? cells.value*3.35 + 'px' : cells.value + 'px') ) ), 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : 'none'), 'font-size' : fonts.value/10 + 'rem', 'height' : keysToRotate? cells.value*40/50 + 'px' : cells.value*40/55 + 'px'}" (click)="keyPressed(character, character.value, character.action, character.type, character.src)">
+                    <div *ngIf="!showImageGlyph || character.src == null">
+                        {{character.value}} 
+                    </div>
+                    <div *ngIf="showImageGlyph && character.src != null">
+                        <img src="{{character.src}}" [ngStyle]="{'width': fonts.value*1.4+'px', 'height': fonts.value*1.3+'px'}"/>
+                    </div>
+                </li>
+            </ul>  
+        </div--><br/>
+        {{ 'Unicode Table search' | translate }} <br/>
+        <br/>
+        E-Mail : everywriterschoice@gmail.com with this new layout
+    </mat-card>
+    <br/>
+    <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>&nbsp;
+    <button mat-raised-button color="accent" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><mat-icon>self_improvement</mat-icon></button>&nbsp;
+    <button mat-raised-button type="submit" color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
+</div>
+
+<div *ngIf="!isMobile && isTablet" class="mat-typography" dir="auto">
+    <h1> <div [ngStyle]="{'float': (isRTL == 'rtl') ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <mat-icon aria-label="Privacy Centre" alt="Privacy Centre">settings_suggest</mat-icon></div> <div [ngStyle]="{'float': (isRTL == 'rtl') ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
+  
+    <br/><br/>
+    <mat-card>
+        {{ 'Grid for Keyboard' | translate}} <br/>
+        <!--div *ngIf="!isMobile && !isTablet" class="keyboard-container" dir="ltr" style="overflow-y: scroll;overflow-x: scroll;">
+            <ul *ngFor="let rows of layoutCurrentKeys" style="list-style-type: none;">
+                <li *ngFor="let character of (isQwerty? ( (isTransliterate) ? ( (isShiftKeyPress) ? ( (isAltGrKeyPress) ? rows.altGrCaps : rows.qwertyShiftTrans ) : ( (isAltGrKeyPress) ? rows.altGr : rows.qwertyTrans ) ) : ( (isShiftKeyPress) ? ( (isAltGrKeyPress) ? rows.altGrCaps : rows.qwertyShift ) : ( (isAltGrKeyPress) ? rows.altGr : rows.qwerty ) ) ) : ( ( keysToRotate && enableRotateKeyboard ) ? rows.rowVert : rows.row ) )" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr') }" [ngStyle]="{'color': (highlightKeys && (character.type == 'swara' || character.type == 'vowel'))? 'brown' : ((character.type == 'unused')? 'darkgrey' :'inherit'), 'box-sizing': 'border-box', 'width' : ( (!isQwerty && !isTransliterate && character.action === 'enter') ? cells.value*3.4 + 'px' : ( ( (isQwerty || isTransliterate) &&  character.action === 'enter') ? cells.value*2.2 + 'px' : ( (character.action === 'space') ? cells.value*3.35 + 'px' : cells.value + 'px') ) ), 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : 'none'), 'font-size' : fonts.value/10 + 'rem', 'height' : keysToRotate? cells.value*40/50 + 'px' : cells.value*40/55 + 'px'}" (click)="keyPressed(character, character.value, character.action, character.type, character.src)">
+                    <div *ngIf="!showImageGlyph || character.src == null">
+                        {{character.value}} 
+                    </div>
+                    <div *ngIf="showImageGlyph && character.src != null">
+                        <img src="{{character.src}}" [ngStyle]="{'width': fonts.value*1.4+'px', 'height': fonts.value*1.3+'px'}"/>
+                    </div>
+                </li>
+            </ul>  
+        </div--><br/>
+        {{ 'Unicode Table search' | translate }} <br/>
+        <br/>
+        E-Mail : everywriterschoice@gmail.com with this new layout
+    </mat-card>
+  
+    <div mat-dialog-actions style="margin-bottom: 0px;">
+        <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon> {{ 'Close' | translate }}</button>
+        <button mat-raised-button color="accent" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><mat-icon>self_improvement</mat-icon> {{ 'Zen' | translate }}</button>
+        <button mat-raised-button type="submit" color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>
+    </div>
+</div>
+  
+  
+<div *ngIf="!isMobile && !isTablet" class="mat-typography" dir="auto">
+    <h1> <div [ngStyle]="{'float': (isRTL == 'rtl') ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <mat-icon aria-label="Privacy Centre" alt="Privacy Centre">settings_suggest</mat-icon></div> <div [ngStyle]="{'float': (isRTL == 'rtl') ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
+  
+    <br/><br/>
+    <mat-card>
+        <div cdkDropListGroup>
+            <h2>{{ 'Grid for Keyboard' | translate}}</h2>
+            <div *ngIf="!isMobile && !isTablet" class="keyboard-container" dir="ltr" style="overflow-y: scroll;overflow-x: scroll;" cdkDropList>
+                <ul *ngFor="let rows of layoutCurrentKeys" style="list-style-type: none;">
+                    <li *ngFor="let character of (isQwerty? ( (isTransliterate) ? ( (isShiftKeyPress) ? ( (isAltGrKeyPress) ? rows.altGrCaps : rows.qwertyShiftTrans ) : ( (isAltGrKeyPress) ? rows.altGr : rows.qwertyTrans ) ) : ( (isShiftKeyPress) ? ( (isAltGrKeyPress) ? rows.altGrCaps : rows.qwertyShift ) : ( (isAltGrKeyPress) ? rows.altGr : rows.qwerty ) ) ) : ( ( keysToRotate && enableRotateKeyboard ) ? rows.rowVert : rows.row ) )" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr') }" [ngStyle]="{'color': (highlightKeys && (character.type == 'swara' || character.type == 'vowel'))? 'brown' : ((character.type == 'unused')? 'darkgrey' :'inherit'), 'box-sizing': 'border-box', 'width' : ( (!isQwerty && !isTransliterate && character.action === 'enter') ? cells.value*3.3 + 'px' : ( ( (isQwerty || isTransliterate) &&  character.action === 'enter') ? cells.value*2.2 + 'px' : ( (character.action === 'space') ? cells.value*3.3 + 'px' : cells.value + 'px') ) ), 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : 'none'), 'font-size' : fonts.value + 'px', 'height' : keysToRotate? cells.value*40/50 + 'px' : cells.value*40/55 + 'px'}" (click)="keyPressed(character, character.value, character.action, character.type, character.src)" cdkDrag>
+                        <div *ngIf="!showImageGlyph || character.src == null">
+                            {{character.value}} 
+                        </div>
+                        <div *ngIf="showImageGlyph && character.src != null">
+                            <img src="{{character.src}}" [ngStyle]="{'width': fonts.value*1.4+'px', 'height': fonts.value*1.3+'px'}"/>
+                        </div>
+                    </li>
+                </ul>  
+            </div>
+            <h2>{{ 'Recycle Keys Area' | translate }}</h2>
+            <div cdkDropList (cdkDropListDropped)="drop($event)" style="height: 100px; width: 100%;">
+
+            </div>
+        </div>    
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <mat-icon aria-label="{{ 'Modify Font Size' | translate }}" alt="{{ 'Modify Font Size' | translate }}" matTooltip="{{ 'Modify Font Size' | translate }}">format_size</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="fontSize" #fonts tickInterval="1" min="5" max="50" value="{{defaultFontSize}}"></mat-slider>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <mat-icon aria-label="{{ 'Modify Cell Size' | translate }}" alt="{{ 'Modify Cell Size' | translate }}" matTooltip="{{ 'Modify Cell Size' | translate }}">aspect_ratio</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="cellSize" #cells tickInterval="1" min="10" max="100" value="{{defaultCellSize}}"></mat-slider>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <br/><br/>
+        &nbsp;&nbsp;&nbsp;&nbsp; {{ 'Unicode Table search' | translate }} <br/>
+        <mat-card dir="{{dirSet}}">
+
+        </mat-card>
+        <br/>
+        <mat-icon aria-label="{{ 'Email this layout' | translate }}" alt="{{ 'Email this layout' | translate }}" (click)="done()" style="cursor: pointer;font-size: 15px;">email</mat-icon> &nbsp;&nbsp;&nbsp; everywriterschoice@gmail.com with this new layout
+    </mat-card>
+  
+    <div mat-dialog-actions style="margin-bottom: 0px;">
+        <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon> {{ 'Close' | translate }}</button>
+        <button mat-raised-button color="accent" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><mat-icon>self_improvement</mat-icon> {{ 'Zen' | translate }}</button>
+        <button mat-raised-button type="submit" color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>
+    </div>
+</div>

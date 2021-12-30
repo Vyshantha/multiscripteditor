@@ -76,7 +76,7 @@
 }
 
 ::ng-deep .cdk-high-contrast-theme .mat-tab-label {
-    color: rgb(123, 218, 95);
+    color: #FFFF00;
 }
 
 ::ng-deep .cdk-high-contrast-theme .mat-tab-list .mat-tab-labels {
@@ -87,6 +87,10 @@
 ::ng-deep .cdk-high-contrast-theme .mat-tab-label:hover {
     background-color: rgb(133, 135, 236);
 }   
+
+::ng-deep .cdk-high-contrast-theme .keyboardTheming {
+    color: #FFFF00;
+}
 
 @media screen and (orientation:portrait) {
     // CSS applied when the device is in portrait mode

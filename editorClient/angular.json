@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/editorClient",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -31,7 +31,8 @@
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.scss"
             ],
-            "scripts": [ 
+            "scripts": [
+              
             ]
           },
           "configurations": {
@@ -52,13 +53,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "8mb",
+                  "maximumError": "9mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
+                  "maximumWarning": "250kb",
+                  "maximumError": "300kb"
                 }
               ]
             }
@@ -96,7 +97,8 @@
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+            ]
           }
         },
         "lint": {

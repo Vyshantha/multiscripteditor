@@ -6,5 +6,5 @@ npm install -g "@angular/cli"
 cd editorClient
 npm install
 cd ..
-./startSVA.sh # permission for executing startSVA.sh or startSVA.bat
-# http://hostname:4200/sva (Soil Viewer)
+./startMSE.sh # permission for executing startMSE.sh
+# https://hostname:4200/ (Multi-Script Editor)

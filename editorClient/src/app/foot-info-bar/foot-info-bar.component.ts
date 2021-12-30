@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { SessionManagerService } from '../core/services/session-manager.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { SessionManagerService } from '../core/services/session-manager.service'
 })
 export class FootInfoBarComponent implements OnInit {
 
+  isMobile: Boolean = window.outerWidth < 500;
+  isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200;
   footerVisible : Boolean = true;
 
   constructor(private sessionManager: SessionManagerService) { }
@@ -19,6 +21,16 @@ export class FootInfoBarComponent implements OnInit {
       } else if (flagValue == false) {
         this.footerVisible = true;
       }
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.sessionManager.isMobileDevice.subscribe((value) => {
+      this.isMobile = value;
+    });
+
+    this.sessionManager.isTabletDevice.subscribe((value) => {
+      this.isTablet = value;
     });
   }
 

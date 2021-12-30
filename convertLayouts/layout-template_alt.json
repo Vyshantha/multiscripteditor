@@ -1,0 +1,749 @@
+[
+    {
+        "qwertyTrans": [
+            {
+                "value": "\\",
+                "action": "char"
+            },
+            {
+                "value": "1",
+                "action": "char"
+            },
+            {
+                "value": "2",
+                "action": "char"
+            },
+            {
+                "value": "3",
+                "action": "char"
+            },
+            {
+                "value": "4",
+                "action": "char"
+            },
+            {
+                "value": "5",
+                "action": "char"
+            },
+            {
+                "value": "6",
+                "action": "char"
+            },
+            {
+                "value": "7",
+                "action": "char"
+            },
+            {
+                "value": "8",
+                "action": "char"
+            },
+            {
+                "value": "9",
+                "action": "char"
+            },
+            {
+                "value": "0",
+                "action": "char"
+            },
+            {
+                "value": "-",
+                "action": "char"
+            },
+            {
+                "value": "=",
+                "action": "char"
+            },
+            {
+                "value": "⌫",
+                "action": "del",
+                "type": "letter"
+            }
+        ]
+    },
+    {
+        "qwertyTrans": [
+            {
+                "value": "\u21b9",
+                "action": "tab"
+            },
+            {
+                "value": "q",
+                "action": "char"
+            },
+            {
+                "value": "w",
+                "action": "char"
+            },
+            {
+                "value": "e",
+                "action": "char"
+            },
+            {
+                "value": "r",
+                "action": "char"
+            },
+            {
+                "value": "t",
+                "action": "char"
+            },
+            {
+                "value": "z",
+                "action": "char"
+            },
+            {
+                "value": "u",
+                "action": "char"
+            },
+            {
+                "value": "i",
+                "action": "char"
+            },
+            {
+                "value": "o",
+                "action": "char"
+            },
+            {
+                "value": "p",
+                "action": "char"
+            },
+            {
+                "value": "\u00e7",
+                "action": "char"
+            },
+            {
+                "value": "@",
+                "action": "char"
+            }
+        ]
+    },
+    {
+        "qwertyTrans": [
+            {
+                "value": "a",
+                "action": "char"
+            },
+            {
+                "value": "s",
+                "action": "char"
+            },
+            {
+                "value": "d",
+                "action": "char"
+            },
+            {
+                "value": "f",
+                "action": "char"
+            },
+            {
+                "value": "g",
+                "action": "char"
+            },
+            {
+                "value": "h",
+                "action": "char"
+            },
+            {
+                "value": "j",
+                "action": "char"
+            },
+            {
+                "value": "k",
+                "action": "char"
+            },
+            {
+                "value": "l",
+                "action": "char"
+            },
+            {
+                "value": "\u00eb",
+                "action": "char"
+            },
+            {
+                "value": "[",
+                "action": "char"
+            },
+            {
+                "value": "]",
+                "action": "char"
+            },
+            {
+                "value": "\u23ce",
+                "action": "enter"
+            }
+        ]
+    },
+    {
+        "qwertyTrans": [
+            {
+                "value": "\u21e7",
+                "action": "shift"
+            },
+            {
+                "value": "<",
+                "action": "char"
+            },
+            {
+                "value": "y",
+                "action": "char"
+            },
+            {
+                "value": "x",
+                "action": "char"
+            },
+            {
+                "value": "c",
+                "action": "char"
+            },
+            {
+                "value": "v",
+                "action": "char"
+            },
+            {
+                "value": "b",
+                "action": "char"
+            },
+            {
+                "value": "n",
+                "action": "char"
+            },
+            {
+                "value": "m",
+                "action": "char"
+            },
+            {
+                "value": ",",
+                "action": "char"
+            },
+            {
+                "value": ".",
+                "action": "char"
+            },
+            {
+                "value": "/",
+                "action": "char"
+            },
+            {
+                "value": "\u21e7",
+                "action": "shift"
+            }
+        ]
+    },
+    {
+        "qwertyTrans": [
+            {
+                "value": "⌘",
+                "action": "control"
+            },
+            {
+                "value": "⌥",
+                "action": "altGr"
+            },
+            {
+                "value": "\u00a0",
+                "action": "space"
+            },
+            {
+                "value": "⌥",
+                "action": "altGr"
+            },
+            {
+                "value": "⌘",
+                "action": "control"
+            },
+            {
+                "value": "☰",
+                "action": "contextmenu"
+            },
+            {
+                "value": "←",
+                "action": "left"
+            },
+            {
+                "value": "↑",
+                "action": "top"
+            },
+            {
+                "value": "→",
+                "action": "right"
+            },
+            {
+                "value": "↓",
+                "action": "bottom"
+            }
+        ]
+    },
+    {
+        "qwertyShiftTrans": [
+            {
+                "value": "|",
+                "action": "char"
+            },
+            {
+                "value": "!",
+                "action": "char"
+            },
+            {
+                "value": "#",
+                "action": "char"
+            },
+            {
+                "value": "$",
+                "action": "char"
+            },
+            {
+                "value": "%",
+                "action": "char"
+            },
+            {
+                "value": "^",
+                "action": "char"
+            },
+            {
+                "value": "&",
+                "action": "char"
+            },
+            {
+                "value": "*",
+                "action": "char"
+            },
+            {
+                "value": "(",
+                "action": "char"
+            },
+            {
+                "value": ")",
+                "action": "char"
+            },
+            {
+                "value": "_",
+                "action": "char"
+            },
+            {
+                "value": "+",
+                "action": "char"
+            },
+            {
+                "value": "⌫",
+                "action": "del",
+                "type": "letter"
+            }
+        ]
+    },
+    {
+        "qwertyShiftTrans": [
+            {
+                "value": "\u21b9",
+                "action": "tab"
+            },
+            {
+                "value": "Q",
+                "action": "char"
+            },
+            {
+                "value": "W",
+                "action": "char"
+            },
+            {
+                "value": "E",
+                "action": "char"
+            },
+            {
+                "value": "R",
+                "action": "char"
+            },
+            {
+                "value": "T",
+                "action": "char"
+            },
+            {
+                "value": "Z",
+                "action": "char"
+            },
+            {
+                "value": "U",
+                "action": "char"
+            },
+            {
+                "value": "I",
+                "action": "char"
+            },
+            {
+                "value": "O",
+                "action": "char"
+            },
+            {
+                "value": "P",
+                "action": "char"
+            },
+            {
+                "value": "\u00c7",
+                "action": "char"
+            },
+            {
+                "value": "\"",
+                "action": "char"
+            }
+        ]
+    },
+    {
+        "qwertyShiftTrans": [
+            {
+                "value": "A",
+                "action": "char"
+            },
+            {
+                "value": "S",
+                "action": "char"
+            },
+            {
+                "value": "D",
+                "action": "char"
+            },
+            {
+                "value": "F",
+                "action": "char"
+            },
+            {
+                "value": "G",
+                "action": "char"
+            },
+            {
+                "value": "H",
+                "action": "char"
+            },
+            {
+                "value": "J",
+                "action": "char"
+            },
+            {
+                "value": "K",
+                "action": "char"
+            },
+            {
+                "value": "L",
+                "action": "char"
+            },
+            {
+                "value": "\u00cb",
+                "action": "char"
+            },
+            {
+                "value": "{",
+                "action": "char"
+            },
+            {
+                "value": "}",
+                "action": "char"
+            },
+            {
+                "value": "\u23ce",
+                "action": "enter"
+            }
+        ]
+    },
+    {
+        "qwertyShiftTrans": [
+            {
+                "value": "\u21e7",
+                "action": "shift"
+            },
+            {
+                "value": ">",
+                "action": "char"
+            },
+            {
+                "value": "Y",
+                "action": "char"
+            },
+            {
+                "value": "X",
+                "action": "char"
+            },
+            {
+                "value": "C",
+                "action": "char"
+            },
+            {
+                "value": "V",
+                "action": "char"
+            },
+            {
+                "value": "B",
+                "action": "char"
+            },
+            {
+                "value": "N",
+                "action": "char"
+            },
+            {
+                "value": "M",
+                "action": "char"
+            },
+            {
+                "value": ";",
+                "action": "char"
+            },
+            {
+                "value": ":",
+                "action": "char"
+            },
+            {
+                "value": "?",
+                "action": "char"
+            },
+            {
+                "value": "\u21e7",
+                "action": "shift"
+            }
+        ]
+    },
+    {
+        "qwertyShiftTrans": [
+            {
+                "value": "⌘",
+                "action": "control"
+            },
+            {
+                "value": "⌥",
+                "action": "altGr"
+            },
+            {
+                "value": "\u00a0",
+                "action": "space"
+            },
+            {
+                "value": "⌥",
+                "action": "altGr"
+            },
+            {
+                "value": "⌘",
+                "action": "control"
+            },
+            {
+                "value": "☰",
+                "action": "contextmenu"
+            },
+            {
+                "value": "←",
+                "action": "left"
+            },
+            {
+                "value": "↑",
+                "action": "top"
+            },
+            {
+                "value": "→",
+                "action": "right"
+            },
+            {
+                "value": "↓",
+                "action": "bottom"
+            }
+        ]
+    },
+    {
+        "altGrTrans": [
+            {
+                "value": "~",
+                "action": "char"
+            },
+            {
+                "value": "\u02c7",
+                "action": "char"
+            },
+            {
+                "value": "^",
+                "action": "char"
+            },
+            {
+                "value": "\u02d8",
+                "action": "char"
+            },
+            {
+                "value": "\u00b0",
+                "action": "char"
+            },
+            {
+                "value": "\u02db",
+                "action": "char"
+            },
+            {
+                "value": "`",
+                "action": "char"
+            },
+            {
+                "value": "\u02d9",
+                "action": "char"
+            },
+            {
+                "value": "\u00b4",
+                "action": "char"
+            },
+            {
+                "value": "\u02dd",
+                "action": "char"
+            },
+            {
+                "value": "\u00a8",
+                "action": "char"
+            },
+            {
+                "value": "\u00b8",
+                "action": "char"
+            },
+            {
+                "value": "⌫",
+                "action": "del",
+                "type": "letter"
+            }
+        ]
+    },
+    {
+        "altGrTrans": [
+            {
+                "value": "\u21b9",
+                "action": "tab"
+            },
+            {
+                "value": "\\",
+                "action": "char"
+            },
+            {
+                "value": "|",
+                "action": "char"
+            },
+            {
+                "value": "\u00f7",
+                "action": "char"
+            },
+            {
+                "value": "\u00d7",
+                "action": "char"
+            }
+        ]
+    },
+    {
+        "altGrTrans": [
+            {
+                "value": "\u0111",
+                "action": "char"
+            },
+            {
+                "value": "\u0110",
+                "action": "char"
+            },
+            {
+                "value": "[",
+                "action": "char"
+            },
+            {
+                "value": "]",
+                "action": "char"
+            },
+            {
+                "value": "\u0142",
+                "action": "char"
+            },
+            {
+                "value": "\u0141",
+                "action": "char"
+            },
+            {
+                "value": "$",
+                "action": "char"
+            },
+            {
+                "value": "\u00df",
+                "action": "char"
+            },
+            {
+                "value": "\u00a4",
+                "action": "char"
+            },
+            {
+                "value": "\u23ce",
+                "action": "enter"
+            }
+        ]
+    },
+    {
+        "altGrTrans": [
+            {
+                "value": "\u21e7",
+                "action": "shift"
+            },
+            {
+                "value": "@",
+                "action": "char"
+            },
+            {
+                "value": "{",
+                "action": "char"
+            },
+            {
+                "value": "}",
+                "action": "char"
+            },
+            {
+                "value": "\u00a7",
+                "action": "char"
+            },
+            {
+                "value": "<",
+                "action": "char"
+            },
+            {
+                "value": ">",
+                "action": "char"
+            },
+            {
+                "value": "\u21e7",
+                "action": "shift"
+            }
+        ]
+    },
+    {
+        "altGrTrans": [
+            {
+                "value": "⌘",
+                "action": "control"
+            },
+            {
+                "value": "⌥",
+                "action": "altGr"
+            },
+            {
+                "value": "\u00a0",
+                "action": "space"
+            },
+            {
+                "value": "⌥",
+                "action": "altGr"
+            },
+            {
+                "value": "⌘",
+                "action": "control"
+            },
+            {
+                "value": "☰",
+                "action": "contextmenu"
+            },
+            {
+                "value": "←",
+                "action": "left"
+            },
+            {
+                "value": "↑",
+                "action": "top"
+            },
+            {
+                "value": "→",
+                "action": "right"
+            },
+            {
+                "value": "↓",
+                "action": "bottom"
+            }
+        ]
+    }
+]

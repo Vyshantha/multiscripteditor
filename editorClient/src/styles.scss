@@ -98,7 +98,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", "Noto Serif Armenian", 
 
   .content {
     display: flex;
-    margin: 30px auto 32px;
+    margin: 20px auto 12px;
     padding: 0 16px;
     max-width: 960px;
     flex-direction: column;
@@ -333,12 +333,21 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", "Noto Serif Armenian", 
     }
   }
 
+  .mat-expansion-panel-body {
+    padding: 0 24px 0 !important;
+  }
+
   .panelColor {
     background-color: lightsalmon;
   }
 
   .menuselect {
     width: 7%;
+    height: 35px;
+  }
+
+  .mat-form-field-infix {
+    border-top-width: 0.0px;
   }
   
   .mat-tab-body-wrapper {
@@ -346,172 +355,231 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", "Noto Serif Armenian", 
     padding-right: 10px;
   }
 
-.btnVert{
-  background-color: blanchedalmond;
-  display: inline-block;
-  width: 40px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding-top: 1px;
-  margin: 3px;
-  border-radius: 3px;
-  border: solid 1px black;
-  box-shadow: 1px 3px;
-  writing-mode: vertical-lr;
-  vertical-align: text-top;
-  cursor: pointer;
-}
-
-.dark-theme .btnVert{
-  background-color: lightslategray;
-  display: inline-block;
-  width: 40px;
-  height: 50px;
-  color: beige;
-  line-height: 50px;
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding-top: 1px;
-  margin: 3px;
-  border-radius: 3px;
-  border: solid 1px beige;
-  box-shadow: 1px 3px;
-  writing-mode: vertical-lr;
-  vertical-align: text-top;
-  cursor: pointer;
-}
-
-.cdk-high-contrast-theme .btnVert{
-  background-color: cadetblue;
-  display: inline-block;
-  width: 40px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  color: cyan;
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding-top: 1px;
-  margin: 3px;
-  border-radius: 3px;
-  border: solid 1px beige;
-  box-shadow: 1px 3px;
-  writing-mode: vertical-lr;
-  vertical-align: text-top;
-  cursor: pointer;
-}
-
-.btn{
-  background-color: blanchedalmond;
-  display: inline-block;
-  width: 55px;
-  height: 40px;
-  line-height: 30px;
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding-top: 5px;
-  margin: 3px;
-  border-radius: 3px;
-  border: solid 1px black;
-  box-shadow: 1px 3px;
-  cursor: pointer;
-}
-
-.dark-theme .btn{
-  background-color: lightslategray;
-  display: inline-block;
-  width: 55px;
-  height: 40px;
-  color: beige;
-  line-height: 30px;
-  text-align: center;
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding-top: 5px;
-  margin: 3px;
-  border-radius: 3px;
-  border: solid 1px beige;
-  box-shadow: 1px 3px;
-  cursor: pointer;
-}
-
-.cdk-high-contrast-theme .btn{
-  background-color: cadetblue;
-  display: inline-block;
-  width: 55px;
-  height: 40px;
-  line-height: 30px;
-  text-align: center;
-  color: cyan;
-  font-size: 1.2rem;
-  font-weight: 500;
-  padding-top: 5px;
-  margin: 3px;
-  border-radius: 3px;
-  border: solid 1px beige;
-  box-shadow: 1px 3px;
-  cursor: pointer;
-}
-
-.btn:hover{
-  background-color: aliceblue;
-  cursor: pointer;
-}
-
-.dark-theme .btn:hover{
-  background-color: rgb(161, 164, 167);
-}
-
-.cdk-high-contrast-theme .btn:hover{
-  background-color: rgb(196, 226, 253);
-}
-
-.keyboard-container{
-    width: 100%;
+  .btnVert{
+    background-color: blanchedalmond;
     display: inline-block;
+    width: 40px;
+    height: 50px;
+    line-height: 50px;
     text-align: center;
-}
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding-top: 1px;
+    margin: 3px;
+    border-radius: 3px;
+    border: solid 1px black;
+    box-shadow: 1px 3px;
+    writing-mode: vertical-lr;
+    vertical-align: text-top;
+    cursor: pointer;
+  }
 
-.keyboard-container ul{
-    padding-left: 0;
-    margin-top: 2px;
-    margin-bottom: 2px;
-}
+  .dark-theme .btnVert{
+    background-color: lightslategray;
+    display: inline-block;
+    width: 40px;
+    height: 50px;
+    color: #FFFF00;;
+    line-height: 50px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding-top: 1px;
+    margin: 3px;
+    border-radius: 3px;
+    border: solid 1px beige;
+    box-shadow: 1px 3px;
+    writing-mode: vertical-lr;
+    vertical-align: text-top;
+    cursor: pointer;
+  }
 
-.container{
-  background-color: #F8F8F8 ; 
-  display:inline-block; 
-  padding: 10px; 
-  text-align:center;
-}
+  .cdk-high-contrast-theme .btnVert{
+    background-color: cadetblue;
+    display: inline-block;
+    width: 40px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #FFFF00;;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding-top: 1px;
+    margin: 3px;
+    border-radius: 3px;
+    border: solid 1px beige;
+    box-shadow: 1px 3px;
+    writing-mode: vertical-lr;
+    vertical-align: text-top;
+    cursor: pointer;
+  }
 
-.mat-form-field-appearance-legacy .mat-form-field-label {
-  color: lightblue;
-}
+  .cdk-drag-preview {
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+                0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  }
 
-.mat-input-element:disabled {
-  color: darkgray;
-}
+  .cdk-drag-placeholder {
+    opacity: 0;
+  }
 
-.mat-select-arrow {
-  visibility: hidden;
-}
+  .cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
 
-.mat-tab-header-pagination-chevron{
-  border-color: lightblue;
-}
+  .btn .cdk-drop-list-dragging .btn:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
 
-.worldmapbkg{
-  background-image: url('./assets/images/World_Map.png');
-  background-repeat: no-repeat;
-  background-size: 70% 270px;
-  background-position: center top;
-  width: 100%;
-  height: 230px;
-  overflow: hidden;
+  .btn{
+    background-color: blanchedalmond;
+    display: inline-block;
+    width: 55px;
+    height: 40px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding-top: 5px;
+    margin: 3px;
+    border-radius: 3px;
+    border: solid 1px black;
+    box-shadow: 1px 3px;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+
+  .dark-theme .btn{
+    background-color: lightslategray;
+    display: inline-block;
+    width: 55px;
+    height: 40px;
+    color: beige;
+    line-height: 30px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding-top: 5px;
+    margin: 3px;
+    border-radius: 3px;
+    border: solid 1px beige;
+    box-shadow: 1px 3px;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+
+  .cdk-high-contrast-theme .btn{
+    background-color: cadetblue;
+    display: inline-block;
+    width: 55px;
+    height: 40px;
+    line-height: 30px;
+    text-align: center;
+    color: #FFFF00;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding-top: 5px;
+    margin: 3px;
+    border-radius: 3px;
+    border: solid 1px beige;
+    box-shadow: 1px 3px;
+    cursor: pointer;
+    vertical-align: middle;
+  }
+
+  .btnSelected {
+    background-color: rgb(211, 181, 136);
+  }
+
+  .dark-theme .btnSelected {
+    background-color: rgb(91, 104, 117);
+  }
+
+  .cdk-high-contrast-theme .btnSelected {
+    background-color: rgb(78, 128, 129);
+  }
+
+  .charSuper {
+    font-size: 50%;
+    vertical-align: top;
+    line-height: 0;
+    position: relative;
+    color: darkolivegreen;
+  }
+
+  .dark-theme .charSuper {
+    font-size: 50%;
+    vertical-align: top;
+    line-height: 0;
+    position: relative;
+    color: rgb(192, 192, 191);
+  }
+
+  .cdk-high-contrast-theme .charSuper {
+    font-size: 50%;
+    vertical-align: top;
+    line-height: 0;
+    position: relative;
+    color: rgb(70, 71, 65);
+  }
+  
+  .btn:hover{
+    background-color: aliceblue;
+    cursor: pointer;
+  }
+
+  .dark-theme .btn:hover{
+    background-color: rgb(161, 164, 167);
+  }
+
+  .cdk-high-contrast-theme .btn:hover{
+    background-color: rgb(196, 226, 253);
+  }
+
+  .keyboard-container{
+      width: 100%;
+      display: inline-block;
+      text-align: center;
+  }
+
+  .keyboard-container ul{
+      padding-left: 0;
+      margin-top: 2px;
+      margin-bottom: 2px;
+  }
+
+  .container{
+    background-color: #F8F8F8 ; 
+    display:inline-block; 
+    padding: 10px; 
+    text-align:center;
+  }
+
+  .mat-form-field-appearance-legacy .mat-form-field-label {
+    color: lightblue;
+  }
+
+  .mat-input-element:disabled {
+    color: darkgray;
+  }
+  
+  .mat-select-arrow {
+    visibility: hidden;
+  }
+
+  .mat-tab-header-pagination-chevron{
+    border-color: lightblue;
+  }
+
+  .worldmapbkg{
+    //background-image: url('./assets/images/World_Map.png');
+    //background-repeat: no-repeat;
+    //background-size: 70% 270px;
+    //background-position: center top;
+    height: 400px;
+    width: 100%;
+    //overflow: hidden;
 }

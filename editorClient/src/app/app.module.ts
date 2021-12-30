@@ -1,16 +1,21 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { BidiModule } from '@angular/cdk/bidi';
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule, APP_INITIALIZER, Pipe, PipeTransform } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatAutocompleteModule } from '@angular/material/autocomplete'; 
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
+import { DragDropModule } from '@angular/cdk/drag-drop'; 
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
+import { MatChipsModule } from '@angular/material/chips'; 
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -24,12 +29,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RichTextEditorComponent } from './rich-text-editor/rich-text-editor.component';
-import { TranslatorOptionsComponent } from './translator-options/translator-options.component';
+import { OptionsComponent } from './options/options.component';
 import { KeyboardLayoutsComponent } from './keyboard-layouts/keyboard-layouts.component';
-import { FormsModule } from '@angular/forms';
-//import { CKEditorModule } from 'ckeditor4-angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ng2-ckeditor';
-//import { CKEditorModule } from '@ckeditor/ckeditor5-build-classic';
+//import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceForKeyboardComponent } from './service-for-keyboard/service-for-keyboard.component';
 import { ToolBarActionsComponent } from './tool-bar-actions/tool-bar-actions.component';
@@ -40,7 +44,9 @@ import { TranslatePipe } from './core/services/translate.pipe';
 import { TranslateService } from './core/services/translate.service';
 import { SessionManagerService } from './core/services/session-manager.service';
 import { ThemeService } from './core/services/theme.service';
-import { KeyboardsTypesService } from './core/services/keyboards-types.service';
+import { SafePipe } from './core/services/safe.pipe';
+import { JwtInterceptor } from './core/services/jwt.interceptor';
+import { CustomiseKeyboardsComponent } from './customise-keyboards/customise-keyboards.component';
 
 export function setupTranslateFactory(service: TranslateService): Function {
   return () => service.use('en');
@@ -50,13 +56,15 @@ export function setupTranslateFactory(service: TranslateService): Function {
   declarations: [
     AppComponent,
     RichTextEditorComponent,
-    TranslatorOptionsComponent,
+    OptionsComponent,
     KeyboardLayoutsComponent,
     ServiceForKeyboardComponent,
     ToolBarActionsComponent,
     FootInfoBarComponent,
     TranslatePipe,
-    HelperComponent
+    HelperComponent,
+    SafePipe,
+    CustomiseKeyboardsComponent
   ],
   imports: [
     CommonModule,
@@ -65,13 +73,19 @@ export function setupTranslateFactory(service: TranslateService): Function {
     AppRoutingModule,
     CKEditorModule,
     FormsModule,
+    ReactiveFormsModule,
     MatTabsModule,
     MatCheckboxModule,
+    MatAutocompleteModule,
+    MatMenuModule,
     MatSlideToggleModule,
     MatSelectModule,
+    DragDropModule,
+    MatBadgeModule,
     MatButtonModule,
     MatInputModule,
     MatIconModule,
+    MatChipsModule,
     MatCardModule,
     MatDialogModule,
     MatToolbarModule,
@@ -84,8 +98,8 @@ export function setupTranslateFactory(service: TranslateService): Function {
     HttpClientModule
     //ColorPickerModule
   ],
-  entryComponents: [ToolBarActionsComponent, HelperComponent, RichTextEditorComponent, KeyboardLayoutsComponent, ServiceForKeyboardComponent, TranslatorOptionsComponent, FootInfoBarComponent],
-  providers: [KeyboardsTypesService, SessionManagerService, ThemeService, TranslateService,
+  entryComponents: [ToolBarActionsComponent, HelperComponent, RichTextEditorComponent, KeyboardLayoutsComponent, ServiceForKeyboardComponent, OptionsComponent, FootInfoBarComponent],
+  providers: [SessionManagerService, ThemeService, TranslateService,
     {
       provide: APP_INITIALIZER,
       useFactory: setupTranslateFactory,
@@ -93,7 +107,7 @@ export function setupTranslateFactory(service: TranslateService): Function {
         TranslateService
       ],
       multi: true
-    }],
+    },{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

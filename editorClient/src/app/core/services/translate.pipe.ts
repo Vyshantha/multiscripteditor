@@ -12,5 +12,4 @@ export class TranslatePipe implements PipeTransform {
   transform(key: any): any {
     return this.translate.data[key] || key;
   }
-
 }

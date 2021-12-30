@@ -19,18 +19,20 @@
                             (closed)="urlLanguageInfo = false">
         <mat-expansion-panel-header>
         <mat-panel-title>
-            <mat-icon>info</mat-icon> &nbsp;&nbsp;&nbsp; <b>How to access this Keyboard, what is my URL?</b>
+            <mat-icon style="font-size: 12px;">info</mat-icon> &nbsp;&nbsp;&nbsp; <b style="font-size: 12px;">{{ 'How to access this Keyboard, what is my URL?' | translate }}</b>
         </mat-panel-title>
         <mat-panel-description>
-            <b>How to see this page in my Language?</b>
+            <b style="font-size: 12px;">{{ 'How to see this page in my Language?' | translate }}</b>
         </mat-panel-description>
         </mat-expansion-panel-header> 
-        <mat-card style="font-size: 0.8rem;"><mat-icon>keyboard</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'Use this' | translate }} <a href="{{currentURL}}" target="_blank">{{currentURL}}</a> {{ 'or' | translate }} <a href="{{alternativeURL}}" target="_blank">{{alternativeURL}}</a> {{ 'URL to access this Keyboard directly next time' | translate }}. {{ 'Keyboard is build as per' | translate }} <a href="https://www.unicode.org/charts/PDF/U0900.pdf">Unicode</a></mat-card>
+        <mat-card style="font-size: 10px;"><mat-icon style="font-size: 10px;">keyboard</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'Use this' | translate }} <a href="{{currentURL}}" target="_blank">{{currentURL}}</a> {{ 'or' | translate }} <a href="{{alternativeURL}}" target="_blank">{{alternativeURL}}</a> URL {{ 'to access this Keyboard directly next time' | translate }}. {{ 'Keyboard is build as per' | translate }} <a href="{{keyboardLayouts[apiURL][9]}}">Unicode</a></mat-card>
 
-        <mat-card *ngIf="isSupportedLocale" style="font-size: 0.8rem;"><mat-icon>language</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'You may also access this URL' | translate }} <a href="{{alternativeURL}}" target="_blank">{{alternativeURL}}</a> {{ 'or' | translate }} <a href="{{alternativeURL}}" target="_blank">{{endemicURL}}</a> {{ 'to view screen and keyboard in that language' | translate }}.</mat-card>
+        <mat-card *ngIf="isSupportedLocale" style="font-size: 10px;"><mat-icon style="font-size: 10px;">language</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'You may also access this URL' | translate }} <a href="{{alternativeURL}}" target="_blank">{{alternativeURL}}</a> {{ 'or' | translate }} <a href="{{alternativeURL}}" target="_blank">{{endemicURL}}</a> {{ 'to view screen and keyboard in that language' | translate }}.</mat-card>
+
+        <mat-card style="font-size: 10px;"><mat-icon style="font-size: 10px;">api</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'Do you want to use this Keyboard Layout in your programme? Here is the REST ' | translate }} <a href="https://{{hostname}}:{{port}}/v1/multiscripteditor" target="_blank">API</a></mat-card>
     </mat-expansion-panel>
     <br/>
-    <app-translator-options *ngIf="onlineOnly"></app-translator-options>
+    <app-options *ngIf="onlineOnly"></app-options>
     
     <app-foot-info-bar *ngIf="footerVisible"></app-foot-info-bar>
 </div>

@@ -1,74 +1,146 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-32" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Multi Script Editor</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href="../client/images/editor-icon-large.png" sizes="32x32">
-    
-    <!--Include the JS & CSS https://richtexteditor.com/Demos/ -->
-    <link rel="stylesheet" href="/richtexteditor/rte_theme_default.css" />
-    <script type="text/javascript" src="/richtexteditor/rte.js"></script>
-    <script type="text/javascript" src='/richtexteditor/plugins/all_plugins.js'></script>
+    <head>
+        <base href="/">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>World Scripts Explorer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" type="image/x-icon" href="#">
+        <style>
+            code {
+                font-family: "Lucida Console";
+                color: brown;
+                background-color: #f1f1f1;
+                padding: 2px;
+                font-size: 18px;
+            }
+            samp { 
+                font-family: monospace;
+                color: turquoise;
+                font-size: 16px;
+                background-color: #333333;
+            }
+            body {
+                color: beige;
+                background-color: rgb(75, 74, 74);
+            }
+        </style>
+    </head>
+    <body>
+        <table><tr><td><h1 style="font-family: Arial, Helvetica, sans-serif;"> World Scripts Explorer : <span style="color:brown;background-color: #f1f1f1">REST API</span> - Developer Guide</h1></td><td> <img src="/fav" alt="World Script Explorer" width="150"> </td></tr></table>
 
-    <!-- Include Quill stylesheet -->
-    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
-    <!-- Main Quill library -->
-    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
-
-    <!-- Theme included stylesheets -->
-    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
-
-    <!-- Core build with no theme, formatting, non-essential modules -->
-    <link href="//cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">
-    <script src="//cdn.quilljs.com/1.3.6/quill.core.js"></script>
-</head>
-<body>
-    <h1> Multi Script Editor </h1>
-
-    &nbsp;&nbsp; Rich Text Editor 
-
-    <div id="div_editor1">
-        <p>This is a default toolbar demo of Rich text editor.</p>
-        <p><img src='/images/editor-image.png' /></p>
-    </div>
-
-    <script>
-        var editor1 = new RichTextEditor("#div_editor1");
-        //editor1.setHTMLCode("Use inline HTML or setHTMLCode to init the default content.");
-    </script>
-
-    <!-- Create the toolbar container -->
-    <div id="toolbar">
-        <button class="ql-bold">Bold</button>
-        <button class="ql-italic">Italic</button>
-    </div>
-    
-    <!-- Create the editor container -->
-    <div id="editor">
-        <p>Multi Script Editor!</p>
-    </div>
-
-    <!-- Include the Quill library -->
-    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
-
-    <!-- Initialize Quill editor -->
-    <script>
-        var editor = new Quill('#editor', {
-            modules: { toolbar: '#toolbar' },
-            theme: 'snow'
-        });
-    </script>
-    
-    <br/><br/>
-
-    &nbsp;&nbsp; Keyboards Typing
-
-    <br/><br/>
-
-    &nbsp;&nbsp; Translate, Tabs for different Info
-</body>
+        <table style="width: 100%">
+            <tbody>
+                <tr>
+                    <td>
+                        <h2> Token for using any of the REST APIs <h2>
+                        <h3>Reach out to <samp style="color:pink">everywriterschoice@gmail.com</samp> for instructions</h3>
+                    </td>
+                    <td>
+                        <h2> Collect all Sessions Data of the Website <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/allSessionData</samp>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="width:50%; border: solid">
+                        Allowed values for <samp><b style="color:pink">:Locale</b></samp> separated by comma <b>, </b>
+                        <p style="word-break: break-word; color: lightgreen; padding-right:10px;padding-left: 10px;">
+                            af, am, ar, az, be, bg, bn, brah, bs, ca, ceb, co, cs, cy, da, de, el, en, eo, es, et, eu, fa, fi, fr, fy, ga, gd, gl, gn, gu, ha, haw, he, hi, hmn, hr, ht, hu, hy, id, ig, is, it, ja, jv, ka, kk, km, kn, ko, ku, ky, la, lb, lo, lt, lv, mg, mk, ml, mn, mr, ms, mt, my, ne, nl, no, ny, or, pa, pl, ps, pt, ro, ru, rw, sa, sank, sd, si, sk, sl, sm, sn, so, sq, sr, st, su, sv, sw, ta, te, tfng, tg, th, tk, tl, tr, tt, ug, uk, ur, uz, vi, xh, yi, yo, zhcn, zhtw, zu
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2> Retrieve all the Word Suggestions for a particular script or language <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/GetWordsList/<b style="color:pink">:Locale</b>/suggestionWords</samp>
+                    </td>
+                    <td>
+                        <h2> Retrieve all the Word Suggestions for all languages <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/AllSuggestionsWordList/suggestionWords</samp>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="width:50%; border: solid">
+                        Allowed values for <samp><b style="color:pink">:UILocale</b></samp> separated by comma <b>, </b>
+                        <p style="word-break: break-word; color: lightgreen; padding-right:10px;padding-left: 10px;">
+                            af, am, ar, az, be, bg, bn, bs, ca, ceb, co, cs, cy, da, de, el, en, eo, es, et, eu, fa, fi, fr, fy, ga, gd, gl, gu, ha, haw, he, hi, hmn, hr, ht, hu, hy, id, ig, is, it, ja, jv, ka, kk, km, kn, ko, ku, ky, la, lb, lo, lt, lv, mg, mk, ml, mn, mr, ms, mt, my, ne, nl, no, ny, or, pa, pl, ps, pt, ro, ru, rw, sa, sank, sd, si, sk, sl, sm, sn, so, sq, sr, st, su, sv, sw, ta, te, tg, th, tk, tl, tr, tt, ug, uk, ur, uz, vi, xh, yi, yo, zhcn, zhtw, zu
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2> Get all Languages/Scripts of the Keyboards Layout type : Typewriter / QWERTY in the Supported Language <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/keyboard/typewriter/InSupportedLanguage/<b style="color:pink">:UILocale</b></samp>
+                    </td>
+                    <td>
+                        <h2> Get all Languages/Scripts of the Keyboards Layout type : Transliteration in the Supported Language <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/keyboard/transliterate/InSupportedLanguage/<b style="color:pink">:UILocale</b></samp>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2> Get all Endonym Languages/Scripts Names of the Keyboards Layout type : Typewriter / QWERTY <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/keyboard/typewriter/EndonymName</samp>
+                    </td>
+                    <td>
+                        <h2> Get all Endonym Languages/Scripts Names of the Keyboards Layout type : Transliteration <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/keyboard/transliterate/EndonymName</samp>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width:50%">
+                        <h2>Script Types Numbers (<samp style="color:pink">:Type</samp>) are as follows - </h2>
+                        <pre style="color: lightgreen">
+                        0 - Abjad   1 - Alphabet  2 - Abugida   3 - Syllabery<br/>
+                        4 - Ideogram-Logogram-Pictogram         5 - Braille  <br/>
+                        6 - Sign    7 - Code-Shorthand-Emojis   8 - Unclassified
+                        </pre>
+                    </td>
+                    <td style="width:50%">
+                        <h2> Retrieve the Keyboard Layouts DB <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/retrieveKeyboardsDB/InSupportedLanguage/<b style="color:pink">:UILocale</b></samp> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2> Get all Scripts of a particular Script Type  in the Supported Language <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/keyboard/<b style="color:pink">:Type</b>/InSupportedLanguage/<b style="color:pink">:UILocale</b></samp>
+                    </td>
+                    <td>
+                        <h2> Return all Languages that use Latin Alphabet in the Supported Language <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/languages/latin/InSupportedLanguage/<b style="color:pink">:UILocale</b></samp>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2> Get all Endonym Scripts Names of a particular Script Type <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/keyboard/<b style="color:pink">:Type</b>/EndonymName</samp>
+                    </td>
+                    <td>
+                        <h2> Return all Endonym Languages Names that use Latin Alphabet <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/languages/latin/EndonymName</samp>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="border: solid">
+                        Allowed values for <samp><b style="color:pink">:URLCode</b></samp> separated by comma <b>, </b>
+                        <p style="word-break: break-word; color: lightgreen; padding-left: 10px;padding-right:10px;">
+                            aa, aam, ab, abtak, ace, adin, adlm, af, ahom, aima, ajam, ak, alch, all, am, an, ang, anis, apu, ar, arc, ari, arold, arsign, as, asom, ast, avo, avst, awa, ay, ayma, az, aze, aztc, bact, bada, bak, bal, bali, bamu, ban, banp, banzsl, bar, barnig, bashu, bcl, be, befr, ber, bg, bhai, bharati, bhat, bhi, bhig, bho, bibi, bima, bin, bis, bish, bjn, bjyo, bla, blt, bm, bn, bopo, br, brah, brx, brxla, bs, bsk, bsla, btk, bug, bugla, buhd, bybl, ca, cakm, cana, cans, cari, carr, casign, cdd, ceb, ch, cham, cher, chik, chpi, chrs, chun, cjk, ckb, clsign, co, copt, cprt, cree, cret, crew, crs, cs, csb, cued, cy, cymin, cyrs, da, dag, dale, dana, danw, de, desisign, deva, dgabf, dgagh, dham, dhan, diak, dilm, din, ding, dipi, dite, dog, dogb, dogr, doi, dorab, dupl, dz, ee, egha, egyd, el, elba, elx, elym, en, end, engb, enin, enintl, enus, eo, es, esi, esk, esmx, essign, estr, esy, et, ett, eu, eurkey, evn, evncy, evnla, fa, ff, fi, fj, flag, fo, fon, fr, frca, frsign, fur, fy, ga, gael, gag, galk, gall, gama, gars, gbsign, gd, geba, geez, gil, gl, glag, gn, gon, gong, gonm, gor, goth, goyk, gran, gsw, gu, gup, gv, ha, haj, hampt, hang, hano, hanz, hatr, haw, he, hi, hier, hil, hira, hit, hmn, hmng, hmnp, hne, hr, ht, hu, hung, hurr, hy, iai, iast, iba, ibe, ics, id, idu, ig, ikom, iku, ilo, indus, ion, ipa, ipk, irsign, is, issy, isthm, it, ital, iu, iub, ja, jam, jasign, jaun, jawi, jer, jiag, jiah, jont, jpn, jurc, jv, ka, kaa, kab, kada, kaid, kali, kama, kan, kata, kawi, kaz, kbp, kca, kfa, kg, kha, kham, khar, khas, khat, khaz, khoj, khom, khud, ki, kir, kitl, kits, kk, kl, km, kmt, kn, ko, koch, kohi, kok, kom, komi, kon, kosan, kosign, kpe, ks, kthi, ku, kuli, kult, kw, ky, la, lad, ladla, laj, lamp, lana, land, latf, lb, lbj, leke, lepc, lepo, lfn, lg, li, lij, limb, linb, linea, lis, liv, ljp, lld, lmo, ln, lo, loma, lt, ltg, luo, luola, lus, luw, lv, lwo, lyci, lydi, lydpa, mad, madn, maga, maha, maka, malt, mamb, man, mand, mang, mani, marc, masu, math, maya, meen, mend, mer, mero, mfe, mg, mh, mi, mic, mikq, min, mixt, mk, ml, mn, mnc, mni, mnk, mnkar, mnla, mns, modi, mon, monn, moon, morse, mos, moss, mr, mroo, mrw, ms, mt, mult, mwan, mwl, mwr, my, na, nag, nand, nap, nask, nbat, nde, ndju, nds, ne, nesign, newa, ngyo, nia, njo, njz, nkoo, nl, nld, nlsign, no, nrf, nshu, nsi, numid, nusk, nv, nwa, ny, nya, oc, ogam, oira, oji, olck, oldel, olme, om, onw, opte, or, orkh, osge, osma, pa, pag, pal, pall, palm, pam, pap, parj, pau, pauc, pauo, pego, perm, phag, phais, phk, phn, phyg, pi, pice, pin, pit, pl, pln, plrd, plsign, pmh, pms, proel, ps, psal, pt, ptbr, qu, quip, raj, rally, ranj, rap, renc, rhg, rjng, rn, ro, rohg, rohon, rom, rongo, ru, runr, rw, sa, sabe, safa, sah, samr, sank, sasa, sat, saur, sc, scu, sd, se, seal, serap, sert, sgaw, sgnw, sgs, shali, shan, shrd, shui, si, sidd, sidet, sii, sikk, silbo, sina, siri, sito, sk, skr, sl, sm, sn, snd, so, sog, soom, sora, soyo, sq, sr, srm, ss, st, su, sun, sund, sux, suz, sv, svsign, sw, sylo, syrc, ta, tach, tagb, takr, tale, talu, tamu, tang, tart, tavt, taya, tcy, tdd, tdt, te, tfng, tg, tgk, tglg, th, thaa, thak, ti, tibt, tig, tiga, tika, tirh, tk, tl, tn, tnq, to, toch, todo, tokp, tolo, toto, tpi, tr, tso, tt, tuji, tuk, tusign, txg, txr, ty, uby, udi, ug, ugar, uk, unr, ur, ussign, usy, uyy, uz, uzb, vah, vaii, vatt, vec, ven, vi, vikra, vinc, vith, voyni, wa, wadh, war, wara, warg, warr, wbl, wcho, wen, wo, woal, wole, wolf, wym, xce, xh, xibe, xpeo, xpr, xpu, xsa, xsr, yezi, yi, yiii, yo, yoi, yugt, zag, zanb, zapo, zhcn, zhtw, zhua, zih, zou, zu, zza
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2> Retrieve the Keyboards Properties <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/<b style="color:pink">:URLCode</b>/properties</samp>
+                    </td>
+                    <td>
+                        <h2> Retrieve the Keyboards Layout <h2>
+                        <code>GET</code> <samp> /v1/multiscripteditor/<b style="color:pink">:URLCode</b>/keyboardLayout</samp>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
 </html>

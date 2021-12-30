@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';   
-
+import { HttpClient } from '@angular/common/http';
 import { SessionManagerService } from '../core/services/session-manager.service';
 
 import {
@@ -16,28 +16,41 @@ import {
 })
 export class ServiceForKeyboardComponent implements OnInit {
 
+  isMobile: Boolean = window.outerWidth < 500;
+  isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200;
+
   languageBased: Boolean = true;
   keyboardDisassociateLocale : Boolean = true;
   showAllInitially : Boolean = true;
   onlyKeyboardToggle : Boolean = false;
-  standardKeyboard : Boolean = true;
+  noTypewriterPresent : Boolean = true;
+  allowTransliterate: Boolean = true;
+  transliterateKeyboard: Boolean = false;
+
+  inExplorerMode: Boolean = false;
+
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-  allowTransliterate: Boolean = true;
-  transliterationScripts: string[] = ['kn', 'te', 'ta', 'ml', 'hi', 'mr', 'sa', 'bn', 'as', 'or', 'ur', 'pu', 'tirh', 'mni'];
+  transliterationScripts: string[] = ['as', 'bn', 'brx', 'gu', 'haj', 'hi', 'kn', 'ml', 'malt', 'mr', 'or', 'pa', 'sa', 'ta', 'te', 'ur', 'tirh', 'mni', 'hy', 'bg', 'km'];
 
-  constructor(private sessionManager: SessionManagerService, private _snackBar: MatSnackBar) {
+  constructor(private sessionManager: SessionManagerService, private http: HttpClient, private _snackBar: MatSnackBar) {
     if (localStorage.getItem('qwertyStyle') != undefined) {
-      if (localStorage.getItem('qwertyStyle') === 'true')
+      if (localStorage.getItem('qwertyStyle') === 'true') {
         this.languageBased = false;
-      else if (localStorage.getItem('qwertyStyle') === 'false')
+        this.sessionManager.setInSessionQwerty(true);
+      } else if (localStorage.getItem('qwertyStyle') === 'false') {
         this.languageBased = true;
+        this.sessionManager.setInSessionQwerty(false);
+      }
     }
     if (localStorage.getItem('transliterate') != undefined) {
-      if (localStorage.getItem('transliterate') === 'true')
-        this.standardKeyboard = true;
-      else if (localStorage.getItem('transliterate') === 'true')
-        this.standardKeyboard = false;
+      if (localStorage.getItem('transliterate') === 'true'){
+        this.transliterateKeyboard = true;
+        this.sessionManager.setTransliterate(true);
+      } else if (localStorage.getItem('transliterate') === 'false') {
+        this.transliterateKeyboard = false;
+        this.sessionManager.setTransliterate(false);
+      }
     }
     if (this.sessionManager.getFromSessionURL()) {
       this.showAllInitially = this.sessionManager.itemKeyboardOnly.value;
@@ -55,18 +68,43 @@ export class ServiceForKeyboardComponent implements OnInit {
         this.allowTransliterate = true;
       }
     });
+    this.sessionManager.itemTransliterate.subscribe((value)=> {
+      this.transliterateKeyboard = value;
+    });
   }
 
   ngOnInit(): void {
     this.sessionManager.itemKeyboardOnly.subscribe((flagValue) => {
       this.onlyKeyboardToggle = flagValue;
     });
-    /*this.sessionManager.itemQwertyType.subscribe(() => {
-      if (this.sessionManager.itemQwertyType.value == false)
-        this.languageBased = true;
-      else if (this.sessionManager.itemQwertyType.value == true)
+
+    this.sessionManager.itemTypewriterExists.subscribe((flagValue) => {
+      this.noTypewriterPresent = !flagValue;
+    });
+
+    this.sessionManager.nonExplorationMode.subscribe((flagvalue) => {
+      this.inExplorerMode = !flagvalue;
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.sessionManager.isMobileDevice.subscribe((value) => {
+      this.isMobile = value;
+    });
+
+    this.sessionManager.isTabletDevice.subscribe((value) => {
+      this.isTablet = value;
+    });
+
+    if (localStorage.getItem('qwertyStyle') != undefined) {
+      if (localStorage.getItem('qwertyStyle') === 'true') {
         this.languageBased = false;
-    });*/
+        this.sessionManager.setInSessionQwerty(true);
+      } else if (localStorage.getItem('qwertyStyle') === 'false') {
+        this.languageBased = true;
+        this.sessionManager.setInSessionQwerty(false);
+      }
+    }
   }
 
   showOnlyKeyboard() {
@@ -80,14 +118,18 @@ export class ServiceForKeyboardComponent implements OnInit {
 
   qwertyKeyboard() {
     // Switch Keyboard to Qwerty Style Keyboard
-    if (this.sessionManager.itemQwertyType.value == false)
+    if (this.sessionManager.itemQwertyType.value == false) {
       this.sessionManager.setInSessionQwerty(true);
-    else if (this.sessionManager.itemQwertyType.value == true)
+      this.transliterateKeyboard = false;
+    } else if (this.sessionManager.itemQwertyType.value == true) {
       this.sessionManager.setInSessionQwerty(false);
+      this.sessionManager.setTransliterate(false);
+      this.transliterateKeyboard = false;
+    }
   }
 
   minDeviceKeyboard() {
-    
+    // Minimise the OS Keyboard implementation
   }
 
   qwertyKeyboardMapping() {
@@ -96,32 +138,50 @@ export class ServiceForKeyboardComponent implements OnInit {
 
   transliterationKeysClicked() {
     // No Transliteration for Latin based Alphabets
-    if (this.standardKeyboard == false) {
-      this.standardKeyboard = true;
+    if (this.transliterateKeyboard == true) {
       this.sessionManager.setTransliterate(false);
-    } else if (this.standardKeyboard == true) { 
-      this.standardKeyboard = false;
+    } else if (this.transliterateKeyboard == false) {
       this.sessionManager.setTransliterate(true);
+    }
+    this.transliterateKeyboard = !this.transliterateKeyboard;
+  }
+
+  async switchTogther() {
+    let translateSet = ["Use Browser Set Language or Selected Language", "Done", "Overriding Browser\'s Default Language", "OK"];
+    let translationsForSet = await this.loadFromFile(this.sessionManager.getUILocale(), translateSet);
+    if (this.sessionManager.itemKeyboardDisassociateLocale.value == false) {
+      this.sessionManager.setKeyboardDisassociateLocale(true);
+      this._snackBar.open(translationsForSet[0], translationsForSet[1], {
+        duration: 5000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      });
+    } else if (this.sessionManager.itemKeyboardDisassociateLocale.value == true) {
+      this.sessionManager.setKeyboardDisassociateLocale(false);
+      this._snackBar.open(translationsForSet[2], translationsForSet[3], {
+        duration: 5000,
+        horizontalPosition: this.horizontalPosition,
+        verticalPosition: this.verticalPosition,
+      });
     }
   }
 
-  switchTogther() {
-    if (this.sessionManager.itemKeyboardDisassociateLocale.value == false) {
-      this.sessionManager.setKeyboardDisassociateLocale(true);
-      this._snackBar.open('Use Browser Set Language or Selected Language', 'Cool', {
-        duration: 5000,
-        horizontalPosition: this.horizontalPosition,
-        verticalPosition: this.verticalPosition,
-      });
-      // 
-    } else if (this.sessionManager.itemKeyboardDisassociateLocale.value == true) {
-      this.sessionManager.setKeyboardDisassociateLocale(false);
-      this._snackBar.open('Overriding Browser\'s Default Language', 'OK', {
-        duration: 5000,
-        horizontalPosition: this.horizontalPosition,
-        verticalPosition: this.verticalPosition,
-      });
-    }
+  loadFromFile(ISO_Code, translateSet) {
+    return new Promise<any>((resolve, reject)=> {
+      this.http.get<{}>(`assets/i18n/${ISO_Code}.json`).subscribe(
+        translation => {
+          if (translateSet && translation) {
+            let translationsForSet = [];
+            for (let i = 0; i < translateSet.length; i++) {
+              translationsForSet[i] = translation[translateSet[i]];
+            }
+            resolve(translationsForSet);
+          }
+          else
+            reject("");
+        }
+      );
+    });
   }
 
 }

@@ -1,0 +1,227 @@
+<mat-tab-group *ngIf="isMobile && !isTablet" (focusChange)="allOptionsTabs($event)" dynamicHeight>
+  <mat-tab label="{{ 'Wikipedia' | translate }}">
+    <iframe id="wikipediaId"
+        title="{{ 'Wikipedia' | translate }}"
+        width="99%"
+        height="500px"
+        [src]="cleanURL(wikipediaURL|safe)"
+        scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Linguistic' | translate }} {{ 'Information' | translate }}">
+    <iframe id="linguisticInfoId"
+        title="{{ 'Linguistic' | translate }} {{ 'Information' | translate }}"
+        width="99%"
+        height="500px"
+        [src]="cleanURL(omniglotURL|safe)"
+        scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Script' | translate }} {{ 'Information' | translate }}">
+    <iframe id="scriptInfoId"
+        title="{{ 'Script' | translate }} {{ 'Information' | translate }}"
+        width="99%"
+        height="500px"
+        [src]="cleanURL(endangerScriptURL|safe)"
+        scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Dictionary' | translate }}">
+    <iframe id="dictionaryId"
+      title="{{ 'Dictionary' | translate }}"
+      width="99%"
+      height="500px"
+      [src]="cleanURL(dictionaryURL|safe)"
+      scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Thesaurus' | translate }}">
+    <iframe id="thesaurusId"
+      title="{{ 'Thesaurus' | translate }}"
+      width="99%"
+      height="500px"
+      [src]="cleanURL(thesaurusURL|safe)"
+      scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Translate' | translate }}">
+    <iframe id="translateId"
+      title="{{ 'Translate' | translate }}"
+      width="99%"
+      height="500px"
+      [src]="cleanURL(translateURL|safe)"
+      scrolling="yes">
+    </iframe>
+  </mat-tab>
+</mat-tab-group>
+
+<!--div *ngIf="isMobile && !isTablet" class="keyboard-container" dir="ltr" style="overflow-y: scroll;overflow-x: scroll;">
+  <ul *ngFor="let rows of layoutCurrentKeys" style="list-style-type: none; display: inline-table;" class="keyboardTheming">
+    <li *ngFor="let character of ( isShiftKeyPress2 ? ( isAltGrKeyPress2 ? rows.altGrCaps : rows.qwertyShift ) : ( isAltGrKeyPress2 ? rows.altGr : rows.qwerty ) )" [ngClass]="{'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress2 && character.action == 'shift' || isAltGrKeyPress2 && character.action == 'altGr') }" [ngStyle]="{'display': 'inherit', 'color': (highlightKeys && (character.type == 'swara' || character.type == 'vowel'))? 'brown' : ((character.type == 'unused')? 'darkgrey' :'inherit'), 'margin': '1px','width' : ( (!isQwerty && !isTransliterate && character.action === 'enter') ? cells.value*3.4 + 'px' : ( ( (isQwerty || isTransliterate) &&  character.action === 'enter') ? cells.value*2.2 + 'px' : ( (character.action === 'space') ? cells.value*3.4 + 'px' : cells.value + 'px') ) ), 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : 'none'), 'font-size' : fonts.value + 'px', 'height' : keysToRotate? cells.value*40/50 + 'px' : cells.value*40/55 + 'px'}" (click)="keyPressed(character, character.value, character.action, character.type)">
+      {{character.value}}
+      <sup *ngIf="allowSuperScript && (isQwerty || isTransliterate) && character.action === 'char'" class="charSuper">{{showSuperScriptCharacter(character)}}</sup>
+    </li>
+  </ul>
+  <br/>
+  <mat-card dir="{{dirSet}}">
+    <mat-icon aria-hidden="false" aria-label="{{ 'Duplicate the Keyboard above' | translate }}" alt="{{ 'Duplicate the Keyboard above' | translate }}" matTooltip="{{ 'Duplicate the Keyboard above' | translate }}" style="cursor: pointer;" (click)="duplicateKeyboard()">content_copy</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-icon aria-label="{{ 'Superscript Off' | translate }}" *ngIf="allowSuperScript && (isQwerty || isTransliterate)" alt="{{ 'Superscript Off' | translate }}" style="cursor: pointer;" (click)="allowingSuperPositionKeys()" matTooltip="{{ 'Superscript Off' | translate }}"> font_download_off </mat-icon>
+    <mat-icon aria-label="{{ 'Superscript On' | translate }}" *ngIf="!allowSuperScript && (isQwerty || isTransliterate)" alt="{{ 'Superscript On' | translate }}" style="cursor: pointer;" (click)="allowingSuperPositionKeys()" matTooltip="{{ 'Superscript On' | translate }}"> font_download </mat-icon>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-icon aria-label="Font Size" alt="Font Size">format_size</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="fontSize2" #fonts tickInterval="1" min="5" max="50" value="{{defaultFontSize}}"></mat-slider>
+    <br/>
+    <mat-icon aria-label="Key Size" alt="Key Size" >aspect_ratio</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="cellSize2" #cells tickInterval="1" min="10" max="100" value="{{defaultCellSize}}"></mat-slider>
+  </mat-card>
+</div-->
+
+<mat-tab-group *ngIf="!isMobile && isTablet" (focusChange)="allOptionsTabs($event)" dynamicHeight>
+  <mat-tab label="{{ 'Wikipedia' | translate }}">
+    <iframe id="wikipediaId"
+        title="{{ 'Wikipedia' | translate }}"
+        width="99%"
+        height="500px"
+        [src]="cleanURL(wikipediaURL|safe)"
+        scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Linguistic' | translate }} {{ 'Information' | translate }}">
+    <iframe id="linguisticInfoId"
+        title="{{ 'Linguistic' | translate }} {{ 'Information' | translate }}"
+        width="99%"
+        height="500px"
+        [src]="cleanURL(omniglotURL|safe)"
+        scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Script' | translate }} {{ 'Information' | translate }}">
+    <iframe id="scriptInfoId"
+        title="{{ 'Script' | translate }} {{ 'Information' | translate }}"
+        width="99%"
+        height="500px"
+        [src]="cleanURL(endangerScriptURL|safe)"
+        scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Dictionary' | translate }}">
+    <iframe id="dictionaryId"
+      title="{{ 'Dictionary' | translate }}"
+      width="99%"
+      height="500px"
+      [src]="cleanURL(dictionaryURL|safe)"
+      scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Thesaurus' | translate }}">
+    <iframe id="thesaurusId"
+      title="{{ 'Thesaurus' | translate }}"
+      width="99%"
+      height="500px"
+      [src]="cleanURL(thesaurusURL|safe)"
+      scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Translate' | translate }}">
+    <iframe id="translateId"
+      title="{{ 'Translate' | translate }}"
+      width="99%"
+      height="500px"
+      [src]="cleanURL(translateURL|safe)"
+      scrolling="yes">
+    </iframe>
+  </mat-tab>
+</mat-tab-group>
+
+<!--div *ngIf="!isMobile && isTablet" class="keyboard-container" dir="ltr" style="overflow-y: scroll;overflow-x: scroll;">
+  <ul *ngFor="let rows of layoutCurrentKeys" style="list-style-type: none; display: inline-table;" class="keyboardTheming">
+    <li *ngFor="let character of ( isShiftKeyPress2 ? ( isAltGrKeyPress2 ? rows.altGrCaps : rows.qwertyShift ) : ( isAltGrKeyPress2 ? rows.altGr : rows.qwerty ) )" [ngClass]="{'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress2 && character.action == 'shift' || isAltGrKeyPress2 && character.action == 'altGr') }" [ngStyle]="{'display': 'inherit', 'color': (highlightKeys && (character.type == 'swara' || character.type == 'vowel'))? 'brown' : ((character.type == 'unused')? 'darkgrey' :'inherit'), 'margin': '2px','width' : ( (!isQwerty && !isTransliterate && character.action === 'enter') ? cells.value*3.4 + 'px' : ( ( (isQwerty || isTransliterate) &&  character.action === 'enter') ? cells.value*2.2 + 'px' : ( (character.action === 'space') ? cells.value*3.4 + 'px' : cells.value + 'px') ) ), 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : 'none'), 'font-size' : fonts.value + 'px', 'height' : keysToRotate? cells.value*40/50 + 'px' : cells.value*40/55 + 'px'}" (click)="keyPressed(character, character.value, character.action, character.type)">
+      {{character.value}}
+      <sup *ngIf="allowSuperScript && (isQwerty || isTransliterate) && character.action === 'char'" class="charSuper">{{showSuperScriptCharacter(character)}}</sup>
+    </li>
+  </ul>
+  <br/>
+  <mat-card dir="{{dirSet}}">
+    <mat-icon aria-hidden="false" aria-label="{{ 'Duplicate the Keyboard above' | translate }}" alt="{{ 'Duplicate the Keyboard above' | translate }}" matTooltip="{{ 'Duplicate the Keyboard above' | translate }}" style="cursor: pointer;" (click)="duplicateKeyboard()">content_copy</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-icon aria-label="{{ 'Superscript Off' | translate }}" *ngIf="allowSuperScript && (isQwerty || isTransliterate)" alt="{{ 'Superscript Off' | translate }}" style="cursor: pointer;" (click)="allowingSuperPositionKeys()" matTooltip="{{ 'Superscript Off' | translate }}"> font_download_off </mat-icon>
+    <mat-icon aria-label="{{ 'Superscript On' | translate }}" *ngIf="!allowSuperScript && (isQwerty || isTransliterate)" alt="{{ 'Superscript On' | translate }}" style="cursor: pointer;" (click)="allowingSuperPositionKeys()" matTooltip="{{ 'Superscript On' | translate }}"> font_download </mat-icon>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-icon aria-label="Font Size" alt="Font Size">format_size</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="fontSize2" #fonts tickInterval="1" min="5" max="50" value="{{defaultFontSize}}"></mat-slider>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    <mat-icon aria-label="Key Size" alt="Key Size" >aspect_ratio</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="cellSize2" #cells tickInterval="1" min="10" max="100" value="{{defaultCellSize}}"></mat-slider>
+  </mat-card>
+</div-->
+
+<mat-tab-group *ngIf="!isMobile && !isTablet" (focusChange)="allOptionsTabs($event)" dynamicHeight>
+  <mat-tab label="{{ 'Wikipedia' | translate }}">
+    <iframe id="wikipediaId"
+        title="{{ 'Wikipedia' | translate }}"
+        width="99%"
+        height="500px"
+        [src]="cleanURL(wikipediaURL|safe)"
+        scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Linguistic' | translate }} {{ 'Information' | translate }}">
+    <iframe id="linguisticInfoId"
+        title="{{ 'Linguistic' | translate }} {{ 'Information' | translate }}"
+        width="99%"
+        height="500px"
+        [src]="cleanURL(omniglotURL|safe)"
+        scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Script' | translate }} {{ 'Information' | translate }}">
+    <iframe id="scriptInfoId"
+        title="{{ 'Script' | translate }} {{ 'Information' | translate }}"
+        width="99%"
+        height="500px"
+        [src]="cleanURL(endangerScriptURL|safe)"
+        scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Dictionary' | translate }}">
+    <iframe id="dictionaryId"
+      title="{{ 'Dictionary' | translate }}"
+      width="99%"
+      height="500px"
+      [src]="cleanURL(dictionaryURL|safe)"
+      scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Thesaurus' | translate }}">
+    <iframe id="thesaurusId"
+      title="{{ 'Thesaurus' | translate }}"
+      width="99%"
+      height="500px"
+      [src]="cleanURL(thesaurusURL|safe)"
+      scrolling="yes">
+    </iframe>
+  </mat-tab>
+  <mat-tab label="{{ 'Translate' | translate }}">
+    <iframe id="translateId"
+      title="{{ 'Translate' | translate }}"
+      width="99%"
+      height="500px"
+      [src]="cleanURL(translateURL|safe)"
+      scrolling="yes">
+    </iframe>
+  </mat-tab>
+</mat-tab-group>
+<br/>
+<!--div *ngIf="!isMobile && !isTablet" class="keyboard-container" dir="ltr" style="overflow-y: scroll;overflow-x: scroll;">
+  <ul *ngFor="let rows of layoutCurrentKeys" style="list-style-type: none;" class="keyboardTheming">
+    <li *ngFor="let character of ( isShiftKeyPress2 ? ( isAltGrKeyPress2 ? rows.altGrCaps : rows.qwertyShift ) : ( isAltGrKeyPress2 ? rows.altGr : rows.qwerty ) )" [ngClass]="{'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress2 && character.action == 'shift' || isAltGrKeyPress2 && character.action == 'altGr') }" [ngStyle]="{'color': (highlightKeys && (character.type == 'swara' || character.type == 'vowel'))? 'brown' : ((character.type == 'unused')? 'darkgrey' :'inherit'), 'width' : ( (!isQwerty && !isTransliterate && character.action === 'enter') ? cells.value*3.4 + 'px' : ( ( (isQwerty || isTransliterate) &&  character.action === 'enter') ? cells.value*2.2 + 'px' : ( (character.action === 'space') ? cells.value*3.4 + 'px' : cells.value + 'px') ) ), 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : 'none'), 'font-size' : fonts.value + 'px', 'height' : keysToRotate? cells.value*40/50 + 'px' : cells.value*40/55 + 'px'}" (click)="keyPressed(character, character.value, character.action, character.type)">
+        {{character.value}}
+        <sup *ngIf="allowSuperScript && (isQwerty || isTransliterate) && character.action === 'char'" class="charSuper">{{showSuperScriptCharacter(character)}}</sup>
+    </li>
+  </ul>
+  <br/>
+  <mat-card dir="{{dirSet}}">
+    <mat-icon aria-hidden="false" aria-label="{{ 'Duplicate the Keyboard above' | translate }}" alt="{{ 'Duplicate the Keyboard above' | translate }}" matTooltip="{{ 'Duplicate the Keyboard above' | translate }}" style="cursor: pointer;" (click)="duplicateKeyboard()">content_copy</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-icon aria-label="{{ 'Superscript Off' | translate }}" *ngIf="allowSuperScript && (isQwerty || isTransliterate)" alt="{{ 'Superscript Off' | translate }}" style="cursor: pointer;" (click)="allowingSuperPositionKeys()" matTooltip="{{ 'Superscript Off' | translate }}"> font_download_off </mat-icon>
+    <mat-icon aria-label="{{ 'Superscript On' | translate }}" *ngIf="!allowSuperScript && (isQwerty || isTransliterate)" alt="{{ 'Superscript On' | translate }}" style="cursor: pointer;" (click)="allowingSuperPositionKeys()" matTooltip="{{ 'Superscript On' | translate }}"> font_download </mat-icon>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-icon aria-label="Font Size" alt="Font Size">format_size</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="fontSize2" #fonts tickInterval="1" min="5" max="50" value="{{defaultFontSize}}"></mat-slider>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+    <mat-icon aria-label="Key Size" alt="Key Size" >aspect_ratio</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="cellSize2" #cells tickInterval="1" min="10" max="100" value="{{defaultCellSize}}"></mat-slider>
+  </mat-card>
+</div-->
