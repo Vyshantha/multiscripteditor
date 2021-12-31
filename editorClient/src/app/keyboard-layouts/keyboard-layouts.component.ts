@@ -1556,6 +1556,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         return feature;
       });
       if (feature) {
+        document.getElementById('infoAbjadText').innerText = "";
         document.getElementById('showAbjadText').innerText = feature['values_']['name'].split("|")[0] + " | " + self.localisedKeyboardLayouts[feature['values_']['code']][2] + " | " + self.chronoTimelineAbjad(self.localisedKeyboardLayouts[feature['values_']['code']][7]);
         self.tabLoadShow(self, feature['values_']['code']);
         self.layoutCurrentKeys = self[self.keyboardLayouts[feature['values_']['code']][3]];
@@ -2116,7 +2117,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     });
 
     // Retain the tab index for the URL being loaded
-    this.sessionManager.setScriptTypeTab(this.allScriptTypesTabGroup.selectedIndex);
+    if (this.allScriptTypesTabGroup)
+      this.sessionManager.setScriptTypeTab(this.allScriptTypesTabGroup.selectedIndex);
 
     this.sessionManager.tabScriptType.subscribe((tabIndex) => {
       this.selectedAllScriptTab = tabIndex;
@@ -2457,6 +2459,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.zone.runOutsideAngular(() => this.initMap(type));
       }
       this.toggleAbjad = true;
+      document.getElementById('infoAbjadText').innerText = "";
+      document.getElementById('showAbjadText').innerText = "";
       this.abjadMap.setTarget('abjadWorldMap');
       setTimeout(()=> this.mapReady.emit(this.abjadMap));
     } else if (type == 'alphabet') {
@@ -2464,6 +2468,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.zone.runOutsideAngular(() => this.initMap(type));
       }
       this.toggleAlphabet = true;
+      document.getElementById('infoAlphabetText').innerText = "";
+      document.getElementById('showAlphabetText').innerText = "";
       this.alphabetMap.setTarget('alphabetWorldMap');
       setTimeout(()=> this.mapReady.emit(this.alphabetMap));
     } else if (type == 'latin') {
@@ -2471,6 +2477,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.zone.runOutsideAngular(() => this.initMap(type));
       }
       this.toggleLatin = true;
+      document.getElementById('infoLatinText').innerText = "";
+      document.getElementById('showLatinText').innerText = "";
       this.latinMap.setTarget('latinWorldMap');
       setTimeout(()=> this.mapReady.emit(this.latinMap));
     } else if (type == 'abugida') {
@@ -2478,6 +2486,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.zone.runOutsideAngular(() => this.initMap(type));
       }
       this.toggleAbugida = true;
+      document.getElementById('infoAbugidaText').innerText = "";
+      document.getElementById('showAbugidaText').innerText = "";
       this.abugidaMap.setTarget('abugidaWorldMap');
       setTimeout(()=> this.mapReady.emit(this.abugidaMap));
     } else if (type == 'syllabery') {
@@ -2485,6 +2495,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.zone.runOutsideAngular(() => this.initMap(type));
       }
       this.toggleSyllabery = true;
+      document.getElementById('infoSyllaberyText').innerText = "";
+      document.getElementById('showSyllaberyText').innerText = "";
       this.syllaberyMap.setTarget('syllaberyWorldMap');
       setTimeout(()=> this.mapReady.emit(this.syllaberyMap));
     } else if (type == 'grams') {
@@ -2492,6 +2504,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.zone.runOutsideAngular(() => this.initMap(type));
       }
       this.toggleGrams = true;
+      document.getElementById('infoGramsText').innerText = "";
+      document.getElementById('showGramsText').innerText = "";
       this.gramsMap.setTarget('gramsWorldMap');
       setTimeout(()=> this.mapReady.emit(this.gramsMap));
     } else if (type == 'signs') {
@@ -2513,6 +2527,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.zone.runOutsideAngular(() => this.initMap(type));
       }
       this.toggleUnclassified = true;
+      document.getElementById('infoUnclassifiedText').innerText = "";
+      document.getElementById('showUnclassifiedText').innerText = "";
       this.unclassifiedMap.setTarget('unclassifiedWorldMap');
       setTimeout(()=> this.mapReady.emit(this.unclassifiedMap));
     }
@@ -2735,6 +2751,9 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     this.resetForAKeyboard();
     this.sessionManager.setInSessionURL(scriptCode);
     this.panelAbjadState = !this.panelAbjadState;
+    if(this.toggleAbjad == false) {
+      document.getElementById('infoAbjadText').innerText = this.localisedKeyboardLayouts[scriptCode][5] + " | " + this.localisedKeyboardLayouts[scriptCode][2] + " | " + this.chronoTimelineAbjad(this.localisedKeyboardLayouts[scriptCode][7]) + " ";
+    }
   }
 
   alphabetType(tabChangeEvent: MatTabChangeEvent) {
@@ -2866,6 +2885,9 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     this.resetForAKeyboard();
     this.sessionManager.setInSessionURL(scriptCode);
     this.panelAlphabetState = !this.panelAlphabetState;
+    if(this.toggleAlphabet == false) {
+      document.getElementById('infoAlphabetText').innerText = this.localisedKeyboardLayouts[scriptCode][5] + " | " + this.localisedKeyboardLayouts[scriptCode][2] + " | " + this.chronoTimelineAlphabet(this.localisedKeyboardLayouts[scriptCode][7]) + " ";
+    }
   }
 
   abugidaType(tabChangeEvent: MatTabChangeEvent) {
@@ -3042,6 +3064,9 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     this.sessionManager.setInSessionURL(scriptCode);
     this.initSwara();
     this.panelAbugidaState = !this.panelAbugidaState;
+    if(this.toggleAbugida == false) {
+      document.getElementById('infoAbugidaText').innerText = this.localisedKeyboardLayouts[scriptCode][5] + " | " + this.localisedKeyboardLayouts[scriptCode][2] + " | " + this.chronoTimelineAbugida(this.localisedKeyboardLayouts[scriptCode][7]) + " ";
+    }
   }
 
   syllaberyType(tabChangeEvent: MatTabChangeEvent) {
@@ -3120,6 +3145,9 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     this.resetForAKeyboard();
     this.sessionManager.setInSessionURL(scriptCode);
     this.panelSyllaberyState = !this.panelSyllaberyState;
+    if(this.toggleSyllabery == false) {
+      document.getElementById('infoSyllaberyText').innerText = this.localisedKeyboardLayouts[scriptCode][5] + " | " + this.localisedKeyboardLayouts[scriptCode][2] + " | " + this.chronoTimelineSyllabery(this.localisedKeyboardLayouts[scriptCode][7]) + " ";
+    }
   }
 
   gramsType(tabChangeEvent: MatTabChangeEvent) {
@@ -3176,6 +3204,9 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     this.resetForAKeyboard();
     this.sessionManager.setInSessionURL(scriptCode);
     this.panelGramsState = !this.panelGramsState;
+    if(this.toggleGrams == false) {
+      document.getElementById('infoGramsText').innerText = this.localisedKeyboardLayouts[scriptCode][5] + " | " + this.localisedKeyboardLayouts[scriptCode][2] + " | " + this.chronoTimelineGrams(this.localisedKeyboardLayouts[scriptCode][7]) + " ";
+    }
   }
 
   unclassifiedType(tabChangeEvent: MatTabChangeEvent) {
@@ -3277,6 +3308,9 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     this.resetForAKeyboard();
     this.sessionManager.setInSessionURL(scriptCode);
     this.panelUnclassifiedState = !this.panelUnclassifiedState;
+    if(this.toggleUnclassified == false) {
+      document.getElementById('infoUnclassifiedText').innerText = this.localisedKeyboardLayouts[scriptCode][5] + " | " + this.localisedKeyboardLayouts[scriptCode][2] + " | " + this.chronoTimelineUnclassified(this.localisedKeyboardLayouts[scriptCode][7]) + " ";
+    }
   }
 
   populateMyBookmarks() {
@@ -3891,15 +3925,17 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
 
   verifyThisKeyboardHasQwerty() {
     var qwertyExists = false;
-    Object.keys(this.layoutCurrentKeys).map(element => {
-      Object.keys(this.layoutCurrentKeys[element]).map(key => {
-        if(this.layoutCurrentKeys[element][key].indexOf("qwerty")) {
-          qwertyExists = true;
-        }
+    if (this.layoutCurrentKeys) {
+      Object.keys(this.layoutCurrentKeys).map(element => {
+        Object.keys(this.layoutCurrentKeys[element]).map(key => {
+          if(this.layoutCurrentKeys[element][key].indexOf("qwerty")) {
+            qwertyExists = true;
+          }
+        });
       });
-    });
-    if (this.layoutCurrentKeys && qwertyExists == false)
-      this.sessionManager.setInSessionQwerty(false);
+    }
+    if (qwertyExists == false)
+      this.sessionManager.setInSessionQwerty(qwertyExists);
   }
 
   languageScriptClicked(code) {

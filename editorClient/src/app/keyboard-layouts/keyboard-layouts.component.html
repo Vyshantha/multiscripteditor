@@ -54,6 +54,11 @@
                             </td>
                         </tr>
                         <tr style="vertical-align: middle;">
+                            <td [ngStyle]="{'display': (!toggleAbjad)? 'visible': 'hidden'}">
+                                <div id="infoAbjadText" style="font-size: 12px;margin-top: 6px"></div>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: middle;">
                             <td [ngStyle]="{'visibility': (!toggleAbjad)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                 <mat-icon aria-label="{{ 'Present Day' | translate }}" alt="{{ 'Present Day' | translate }}" matTooltip="{{ 'Present Day' | translate }}">history</mat-icon>
                             </td>
@@ -253,6 +258,11 @@
                                 </td>
                             </tr>
                             <tr style="vertical-align: middle;">
+                                <td [ngStyle]="{'display': (!toggleAlphabet)? 'visible': 'hidden'}">
+                                    <div id="infoAlphabetText" style="font-size: 12px;margin-top: 6px"></div>
+                                </td>
+                            </tr>
+                            <tr style="vertical-align: middle;">
                                 <td [ngStyle]="{'visibility': (!toggleAlphabet)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                     <mat-icon aria-label="{{ 'Present Day' | translate }}" alt="{{ 'Present Day' | translate }}" matTooltip="{{ 'Present Day' | translate }}">history</mat-icon>
                                 </td>
@@ -393,6 +403,11 @@
                                         </td>
                                         <td [ngStyle]="{'visibility': (!toggleLatin)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                             <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('latin')">map</mat-icon> 
+                                        </td>
+                                    </tr>
+                                    <tr style="vertical-align: middle;">
+                                        <td [ngStyle]="{'display': (!toggleLatin)? 'visible': 'hidden'}">
+                                            <div id="infoLatinText" style="font-size: 12px;margin-top: 6px"></div>
                                         </td>
                                     </tr>
                                     <tr style="vertical-align: middle;">
@@ -1009,6 +1024,11 @@
                                 </td>
                             </tr>
                             <tr style="vertical-align: middle;">
+                                <td [ngStyle]="{'display': (!toggleAbugida)? 'visible': 'hidden'}">
+                                    <div id="infoAbugidaText" style="font-size: 12px;margin-top: 6px"></div>
+                                </td>
+                            </tr>
+                            <tr style="vertical-align: middle;">
                                 <td [ngStyle]="{'visibility': (!toggleAbugida)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                     <mat-icon aria-label="{{ 'Present Day' | translate }}" alt="{{ 'Present Day' | translate }}" matTooltip="{{ 'Present Day' | translate }}">history</mat-icon>
                                 </td>
@@ -1608,6 +1628,11 @@
                             </td>
                         </tr>
                         <tr style="vertical-align: middle;">
+                            <td [ngStyle]="{'display': (!toggleSyllabery)? 'visible': 'hidden'}">
+                                <div id="infoSyllaberyText" style="font-size: 12px;margin-top: 6px"></div>
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: middle;">
                             <td [ngStyle]="{'visibility': (!toggleSyllabery)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                 <mat-icon aria-label="{{ 'Present Day' | translate }}" alt="{{ 'Present Day' | translate }}" matTooltip="{{ 'Present Day' | translate }}">history</mat-icon>
                             </td>
@@ -1847,6 +1872,11 @@
                             </td>
                             <td [ngStyle]="{'visibility': (!toggleGrams)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                 <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('grams')">map</mat-icon> 
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: middle;">
+                            <td [ngStyle]="{'display': (!toggleGrams)? 'visible': 'hidden'}">
+                                <div id="infoGramsText" style="font-size: 12px;margin-top: 6px"></div>
                             </td>
                         </tr>
                         <tr style="vertical-align: middle;">
@@ -2203,6 +2233,11 @@
                             </td>
                             <td [ngStyle]="{'visibility': (!toggleUnclassified)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                 <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('unclassified')">map</mat-icon> 
+                            </td>
+                        </tr>
+                        <tr style="vertical-align: middle;">
+                            <td [ngStyle]="{'display': (!toggleUnclassified)? 'visible': 'hidden'}">
+                                <div id="infoUnclassifiedText" style="font-size: 12px;margin-top: 6px"></div>
                             </td>
                         </tr>
                         <tr style="vertical-align: middle;">
@@ -2813,6 +2848,9 @@
                             <td [ngStyle]="{'visibility': (!toggleAbjad)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                 <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('abjad')">map</mat-icon> 
                             </td>
+                            <td [ngStyle]="{'display': (!toggleAbjad)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
+                                <div id="infoAbjadText" style="font-size: 15px;margin-top: 8px"></div>
+                            </td>
                         </tr>
                     </table>
                 </span>
@@ -3011,6 +3049,9 @@
                                 <td [ngStyle]="{'visibility': (!toggleAlphabet)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                     <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('alphabet')">map</mat-icon> 
                                 </td>
+                                <td [ngStyle]="{'display': (!toggleAlphabet)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
+                                    <div id="infoAlphabetText" style="font-size: 15px;margin-top: 8px"></div>
+                                </td>
                             </tr>
                         </table>
                     </span>
@@ -3152,6 +3193,9 @@
                                         </td>
                                         <td [ngStyle]="{'visibility': (!toggleLatin)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                             <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('latin')">map</mat-icon> 
+                                        </td>
+                                        <td [ngStyle]="{'display': (!toggleLatin)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
+                                            <div id="infoLatinText" style="font-size: 15px;margin-top: 8px"></div>
                                         </td>
                                     </tr>
                                 </table>
@@ -3765,6 +3809,9 @@
                                 <td [ngStyle]="{'visibility': (!toggleAbugida)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                     <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('abugida')">map</mat-icon> 
                                 </td>
+                                <td [ngStyle]="{'display': (!toggleAbugida)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
+                                    <div id="infoAbugidaText" style="font-size: 15px;margin-top: 8px"></div>
+                                </td>
                             </tr>
                         </table>
                     </span>
@@ -4365,6 +4412,9 @@
                             <td [ngStyle]="{'visibility': (!toggleSyllabery)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                 <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('syllabery')">map</mat-icon> 
                             </td>
+                            <td [ngStyle]="{'display': (!toggleSyllabery)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
+                                <div id="infoSyllaberyText" style="font-size: 15px;margin-top: 8px"></div>
+                            </td>
                         </tr>
                     </table>
                 </span>
@@ -4606,6 +4656,9 @@
                             </td>
                             <td [ngStyle]="{'visibility': (!toggleGrams)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                 <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('grams')">map</mat-icon> 
+                            </td>
+                            <td [ngStyle]="{'display': (!toggleGrams)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
+                                <div id="infoGramsText" style="font-size: 15px;margin-top: 8px"></div>
                             </td>
                         </tr>
                     </table>
@@ -4961,6 +5014,9 @@
                             </td>
                             <td [ngStyle]="{'visibility': (!toggleUnclassified)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                 <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('unclassified')">map</mat-icon> 
+                            </td>
+                            <td [ngStyle]="{'display': (!toggleUnclassified)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
+                                <div id="infoUnclassifiedText" style="font-size: 15px;margin-top: 8px"></div>
                             </td>
                         </tr>
                     </table>
@@ -5607,6 +5663,9 @@
                             <td [ngStyle]="{'visibility': (!toggleAbjad)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                 <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('abjad')">map</mat-icon> 
                             </td>
+                            <td [ngStyle]="{'display': (!toggleAbjad)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right', 'margin-right': (isRTL) ? '0px': '20px', 'margin-left': (isRTL) ? '20px': '0px'}">
+                                <div id="infoAbjadText" style="font-size: 18px;margin-top: 10px"></div>
+                            </td>
                         </tr>
                     </table>
                 </span>
@@ -5853,6 +5912,9 @@
                                 </td>
                                 <td [ngStyle]="{'visibility': (!toggleAlphabet)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                     <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('alphabet')">map</mat-icon> 
+                                </td>
+                                <td [ngStyle]="{'display': (!toggleAlphabet)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right', 'margin-right': (isRTL) ? '0px': '20px', 'margin-left': (isRTL) ? '20px': '0px'}">
+                                    <div id="infoAlphabetText" style="font-size: 18px;margin-top: 10px"></div>
                                 </td>
                             </tr>
                         </table>
@@ -6117,6 +6179,9 @@
                                         </td>
                                         <td [ngStyle]="{'visibility': (!toggleLatin)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                             <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('latin')">map</mat-icon> 
+                                        </td>
+                                        <td [ngStyle]="{'display': (!toggleLatin)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right', 'margin-right': (isRTL) ? '0px': '20px', 'margin-left': (isRTL) ? '20px': '0px'}">
+                                            <div id="infoLatinText" style="font-size: 18px;margin-top: 10px"></div>
                                         </td>
                                     </tr>
                                 </table>
@@ -6648,6 +6713,9 @@
                                 <td [ngStyle]="{'visibility': (!toggleAbugida)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                     <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('abugida')">map</mat-icon> 
                                 </td>
+                                <td [ngStyle]="{'display': (!toggleAbugida)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right', 'margin-right': (isRTL) ? '0px': '20px', 'margin-left': (isRTL) ? '20px': '0px'}">
+                                    <div id="infoAbugidaText" style="font-size: 18px;margin-top: 10px"></div>
+                                </td>
                             </tr>
                         </table>
                     </span>
@@ -7151,6 +7219,9 @@
                             <td [ngStyle]="{'visibility': (!toggleSyllabery)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                 <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('syllabery')">map</mat-icon> 
                             </td>
+                            <td [ngStyle]="{'display': (!toggleSyllabery)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right', 'margin-right': (isRTL) ? '0px': '20px', 'margin-left': (isRTL) ? '20px': '0px'}">
+                                <div id="infoSyllaberyText" style="font-size: 18px;margin-top: 10px"></div>
+                            </td>
                         </tr>
                     </table>
                 </span>
@@ -7391,6 +7462,9 @@
                             </td>
                             <td [ngStyle]="{'visibility': (!toggleGrams)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                 <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('grams')">map</mat-icon> 
+                            </td>
+                            <td [ngStyle]="{'display': (!toggleGrams)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right', 'margin-right': (isRTL) ? '0px': '20px', 'margin-left': (isRTL) ? '20px': '0px'}">
+                                <div id="infoGramsText" style="font-size: 18px;margin-top: 10px"></div>
                             </td>
                         </tr>
                     </table>
@@ -7705,6 +7779,9 @@
                             </td>
                             <td [ngStyle]="{'visibility': (!toggleUnclassified)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right'}">
                                 <mat-icon aria-label="{{ 'Show Map' | translate }}" matTooltip="{{ 'Show Map' | translate }}" alt="{{ 'Show Map' | translate }}" style="cursor: pointer;" (click)="showMapPerScriptType('unclassified')">map</mat-icon> 
+                            </td>
+                            <td [ngStyle]="{'display': (!toggleUnclassified)? 'visible': 'hidden', 'float': (isRTL) ? 'left': 'right', 'margin-right': (isRTL) ? '0px': '20px', 'margin-left': (isRTL) ? '20px': '0px'}">
+                                <div id="infoUnclassifiedText" style="font-size: 18px;margin-top: 10px"></div>
                             </td>
                         </tr>
                     </table>

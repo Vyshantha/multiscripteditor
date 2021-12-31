@@ -353,9 +353,7 @@ export class AppComponent implements AfterViewInit {
   *                            NodeJS App : https://www.youtube.com/watch?v=Qnw2bO3ljZs (https://api.worldscriptsexplorer.web.app/)
   *                            When URL is available then setup Content-Security-Policy and the Certificate for the Node server : 
   *                               https://medium.com/skyshidigital/deploy-node-js-to-firebase-hosting-cdc44518fe21
-  *  3. [SEO CODING]           HTML Tags : https://www.searchenginejournal.com/html-tags-attributes-seo/389503/#close
-  *  4. [TIMELINE]             Display timeline when selection of keyboard in the "Show Text" mode
-  * 
+  *  3. [SEO CODING]           HTML Tags : https://www.searchenginejournal.com/html-tags-attributes-seo/389503/#close 
 */
 
 /* Lower Priority -
