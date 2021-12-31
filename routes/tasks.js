@@ -15,8 +15,8 @@ var properties = new PropertiesReader(path.join(__dirname, `./environments/sva_c
 const SignedToken = require('./jwt_utils').signedToken;
 const ValidateToken = require('./jwt_utils').validateToken;
 
-var portSSL = 5555 || process.env.PORT;
-var port = 5000 || process.env.PORT;
+var portSSL = process.env.PORT || 5555;
+var port = process.env.PORT || 5000;
 
 var app = express();
 var appSSL = express();
@@ -464,117 +464,124 @@ router.put('/v1/multiscripteditor/sentenceParsing', function(req, res, next) {
     // Sentence parsing using Python NLP - Stanza for determining parts of a sentence in any language
     const dateForLogging = new Date().toISOString()
     console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} NLP of a Statement in a Language `, req.body);
-    if (ValidateToken(req).iss === properties.get('token.self.bearer')) {
-        if (req.body && req.body.sentence && req.body.sentence != "") {
-            let language = req.body.language;
-            let locale = req.body.locale;
-            let sentence = req.body.sentence;
-            let sentenceMarker = req.body.sentenceMarker;
+    fs.stat(path.join(__dirname, './../nlpOnNode/nlpNode.py'), function(err) {
+        if(err == null) {
+            if (ValidateToken(req).iss === properties.get('token.self.bearer')) {
+                if (req.body && req.body.sentence && req.body.sentence != "") {
+                    let language = req.body.language;
+                    let locale = req.body.locale;
+                    let sentence = req.body.sentence;
+                    let sentenceMarker = req.body.sentenceMarker;
 
-            if(Object.getOwnPropertyNames(mappingForAdditionalLocales).indexOf(locale) > -1) {
-                locale = mappingForAdditionalLocales[locale];
-            }
-            if (language.indexOf("(") > -1 && locale != "zhcn" && locale != "zhtw") {
-                language = language.split("(")[0];
-            }
+                    if(Object.getOwnPropertyNames(mappingForAdditionalLocales).indexOf(locale) > -1) {
+                        locale = mappingForAdditionalLocales[locale];
+                    }
+                    if (language.indexOf("(") > -1 && locale != "zhcn" && locale != "zhtw") {
+                        language = language.split("(")[0];
+                    }
 
-            const nlpForNode = spawn('python3', [path.join(__dirname, './../nlpOnNode/nlpNode.py'), locale, language, sentence, sentenceMarker]);
+                    const nlpForNode = spawn('python3', [path.join(__dirname, './../nlpOnNode/nlpNode.py'), locale, language, sentence, sentenceMarker]);
 
-            nlpForNode.stdout.on('data', (data) => {
-                // Once the NLP is completed from Python side, then ensure to complete this copy process to synchronise data for Client-side
-                let suggestedWordSetForLanguage = []
-                try {
-                    suggestedWordSetForLanguage = JSON.parse(fs.readFileSync(path.join(__dirname, './suggestionWords/' + language.toLowerCase() + '.json')));
-                } catch (error) {
-                    console.error(`[MULTISCRIPTEDITOR] Word Suggestions file for ${language} does not exist `, error);
-                }
-                                    
-                let newWords = {};
-                // Supported & Processed Language included ⌘ while the Unsupported supported languages will have Word Separator
-                let currentSeparator = ""
-                if (locale == "la") 
-                    currentSeparator = "·";
-                else if (locale == "geez")
-                    currentSeparator = "፡";
-                else if (noSeparator.indexOf(locale) > -1)
-                    currentSeparator = "";
-                else if (visualSeparator.indexOf(locale) > -1)
-                    currentSeparator = "\u2009";
-                else if (syllabicSeparator.indexOf(locale) > -1)
-                    currentSeparator = " ";
-                else if (zeroWidthSeparator.indexOf(locale) > -1)
-                    currentSeparator = "\u202F";
-                else
-                    currentSeparator = " ";
+                    nlpForNode.stdout.on('data', (data) => {
+                        // Once the NLP is completed from Python side, then ensure to complete this copy process to synchronise data for Client-side
+                        let suggestedWordSetForLanguage = []
+                        try {
+                            suggestedWordSetForLanguage = JSON.parse(fs.readFileSync(path.join(__dirname, './suggestionWords/' + language.toLowerCase() + '.json')));
+                        } catch (error) {
+                            console.error(`[MULTISCRIPTEDITOR] Word Suggestions file for ${language} does not exist `, error);
+                        }
+                                            
+                        let newWords = {};
+                        // Supported & Processed Language included ⌘ while the Unsupported supported languages will have Word Separator
+                        let currentSeparator = ""
+                        if (locale == "la") 
+                            currentSeparator = "·";
+                        else if (locale == "geez")
+                            currentSeparator = "፡";
+                        else if (noSeparator.indexOf(locale) > -1)
+                            currentSeparator = "";
+                        else if (visualSeparator.indexOf(locale) > -1)
+                            currentSeparator = "\u2009";
+                        else if (syllabicSeparator.indexOf(locale) > -1)
+                            currentSeparator = " ";
+                        else if (zeroWidthSeparator.indexOf(locale) > -1)
+                            currentSeparator = "\u202F";
+                        else
+                            currentSeparator = " ";
 
-                let suggestions = [];
-                
-                if (data && data.toString().indexOf("⌘") > -1) {
-                    // NLP Stanza processed and updating Suggestion List
-                    suggestions = data.toString().split("⌘");
-                    for (let i = 0 ; i < suggestions.length ; i++) {
-                        if (wordSeparators.indexOf(suggestions[i]) == -1) {
-                            newWords["" + language.toLowerCase() + ""] = suggestions[i];
-                            if(suggestedWordSetForLanguage && _isContains(suggestedWordSetForLanguage, suggestions[i]) == false) {
-                                suggestedWordSetForLanguage.push(newWords);
-                            } else if (suggestedWordSetForLanguage == []) {
-                                suggestedWordSetForLanguage.push(newWords);
+                        let suggestions = [];
+                        
+                        if (data && data.toString().indexOf("⌘") > -1) {
+                            // NLP Stanza processed and updating Suggestion List
+                            suggestions = data.toString().split("⌘");
+                            for (let i = 0 ; i < suggestions.length ; i++) {
+                                if (wordSeparators.indexOf(suggestions[i]) == -1) {
+                                    newWords["" + language.toLowerCase() + ""] = suggestions[i];
+                                    if(suggestedWordSetForLanguage && _isContains(suggestedWordSetForLanguage, suggestions[i]) == false) {
+                                        suggestedWordSetForLanguage.push(newWords);
+                                    } else if (suggestedWordSetForLanguage == []) {
+                                        suggestedWordSetForLanguage.push(newWords);
+                                    }
+                                    newWords = {};
+                                }
                             }
-                            newWords = {};
-                        }
-                    }
-                } else if (data && data.toString().indexOf(currentSeparator) > -1) {
-                    // Non-supported NLP Stanza language updating Suggestion List
-                    suggestions = data.toString().split(currentSeparator);
-                    for (let i = 0 ; i < suggestions.length ; i++) {
-                        if (wordSeparators.indexOf(suggestions[i]) == -1) {
-                            newWords["" + language.toLowerCase() + ""] = suggestions[i];
-                            if(suggestedWordSetForLanguage && _isContains(suggestedWordSetForLanguage, suggestions[i]) == false) {
-                                suggestedWordSetForLanguage.push(newWords);
-                            } else if (suggestedWordSetForLanguage == []) {
-                                suggestedWordSetForLanguage.push(newWords);
+                        } else if (data && data.toString().indexOf(currentSeparator) > -1) {
+                            // Non-supported NLP Stanza language updating Suggestion List
+                            suggestions = data.toString().split(currentSeparator);
+                            for (let i = 0 ; i < suggestions.length ; i++) {
+                                if (wordSeparators.indexOf(suggestions[i]) == -1) {
+                                    newWords["" + language.toLowerCase() + ""] = suggestions[i];
+                                    if(suggestedWordSetForLanguage && _isContains(suggestedWordSetForLanguage, suggestions[i]) == false) {
+                                        suggestedWordSetForLanguage.push(newWords);
+                                    } else if (suggestedWordSetForLanguage == []) {
+                                        suggestedWordSetForLanguage.push(newWords);
+                                    }
+                                    newWords = {};
+                                }
                             }
-                            newWords = {};
+                        } else if (data) {
+                            // Non-supported language
+                            suggestions = data.toString();
+                            if (wordSeparators.indexOf(suggestions) == -1) {
+                                newWords["" + language.toLowerCase() + ""] = suggestions;
+                                if(suggestedWordSetForLanguage && _isContains(suggestedWordSetForLanguage, suggestions) == false) {
+                                    suggestedWordSetForLanguage.push(newWords);
+                                } else if (suggestedWordSetForLanguage == []) {
+                                    suggestedWordSetForLanguage.push(newWords);
+                                }
+                                newWords = {};
+                            }
                         }
-                    }
-                } else if (data) {
-                    // Non-supported language
-                    suggestions = data.toString();
-                    if (wordSeparators.indexOf(suggestions) == -1) {
-                        newWords["" + language.toLowerCase() + ""] = suggestions;
-                        if(suggestedWordSetForLanguage && _isContains(suggestedWordSetForLanguage, suggestions) == false) {
-                            suggestedWordSetForLanguage.push(newWords);
-                        } else if (suggestedWordSetForLanguage == []) {
-                            suggestedWordSetForLanguage.push(newWords);
-                        }
-                        newWords = {};
-                    }
+                    
+                        //let uniqueSuggestions = [...new Set(suggestedWordSetForLanguage.map(item => item["" + language + ""]))];
+                        //let uniqueSuggestions = [...new Map(suggestedWordSetForLanguage.map((x) => [x["" + language + ""], x])).values()];
+                        
+                        // Regular reloading of the Suggestion Words JSON file is done from Client-side via REST-API requests
+                        // Unsupported supported languages or where the suggestions do not exist so far
+                        fs.writeFileSync(path.join(__dirname, './suggestionWords/' + language.toLowerCase() + '.json'), JSON.stringify(suggestedWordSetForLanguage));
+
+                        res.status(200);
+                        res.send(data);
+                    });
+
+                    nlpForNode.stderr.on('data', (data) => {
+                        console.info(`spawn stderr: ${data}`);
+                    });
+
+                    nlpForNode.on('close', (code) => {
+                        console.info(`[MULTISCRIPTEDITOR] Spawn child process exited with code ${code}`);
+                    });
+                } else {
+                    res.status(300);
                 }
-            
-                //let uniqueSuggestions = [...new Set(suggestedWordSetForLanguage.map(item => item["" + language + ""]))];
-                //let uniqueSuggestions = [...new Map(suggestedWordSetForLanguage.map((x) => [x["" + language + ""], x])).values()];
-                
-                // Regular reloading of the Suggestion Words JSON file is done from Client-side via REST-API requests
-                // Unsupported supported languages or where the suggestions do not exist so far
-                fs.writeFileSync(path.join(__dirname, './suggestionWords/' + language.toLowerCase() + '.json'), JSON.stringify(suggestedWordSetForLanguage));
-
-                res.status(200);
-                res.send(data);
-            });
-
-            nlpForNode.stderr.on('data', (data) => {
-                console.info(`spawn stderr: ${data}`);
-            });
-
-            nlpForNode.on('close', (code) => {
-                console.info(`[MULTISCRIPTEDITOR] Spawn child process exited with code ${code}`);
-            });
-        } else {
-            res.status(300);
+            } else {
+                res.status(400);
+            }
+        } else if (err.code === 'ENOENT') {
+            // file does not exist
+            res.status(500);
         }
-    } else {
-        res.status(400);
-    }
+    });
 });
 
 // Backup process for Session-Info JSON file : Maximum 3MB

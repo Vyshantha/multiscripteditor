@@ -4,6 +4,7 @@
   "description": "Multi Script Editor",
   "main": "./routes/tasks.js",
   "scripts": {
+    "start": "nodemon ./routes/tasks.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

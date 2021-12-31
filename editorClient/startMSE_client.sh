@@ -1,5 +1,5 @@
 #!/bin/sh
-for id in $(ps -aef | grep -i 443 | awk '{print $2}'); do kill -9 $id; done
+for id in $(ps -aef | grep -i 4200 | awk '{print $2}'); do kill -9 $id; done
 
 export NODE_OPTIONS="--max-old-space-size=8192"
 
@@ -12,4 +12,4 @@ sed -i -e 's/^{"hostname" : ".*",/{"hostname" : "'$HOSTNAME'",/g' ./src/assets/e
 rm -rf ./src/assets/environments/sva_config.json-e
 
 # Start Client Side
-ng serve --host 0.0.0.0 --port 443 --ssl true --ssl-cert ./server.crt --ssl-key ./key.pem --liveReload=false &
+ng serve --host 0.0.0.0 --port 4200 --ssl true --ssl-cert ./server.crt --ssl-key ./key.pem --liveReload=false &

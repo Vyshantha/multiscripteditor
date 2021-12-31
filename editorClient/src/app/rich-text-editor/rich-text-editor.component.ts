@@ -242,13 +242,11 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     this.fullmodeCkEditor.instance.on( 'contentDom', (contentEvent) => {
       contentEvent.editor.editable().on('click', (event) => {
         event = event || window.event;
-        console.log("CURSOR ", event, event.data["$"].clientX, event.data["$"].clientY);
         self.menuShowEvent = event;
         self.mouseclickEvent = event;
         self.position = self.positionCalculator();
         self.rowPos = self.position.split(",")[0];
         self.colPos = self.position.split(",")[1];
-        console.log("POSTION ", self.rowPos, self.colPos)
       });
       const isBrowserTabInView = () => document.hidden;
       if (isBrowserTabInView()) {
@@ -523,7 +521,6 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
 
     this.fullmodeCkEditor.instance.on( 'change', function( event ) {
-      console.log("CHANGE ", event , self.fullmodeCkEditor.instance.getData(), self.pasteContentSetToEditor)
       let content = self.fullmodeCkEditor.instance.getData();
       if (typeof(content) == 'string' && self.mappedSpaceClicked == true && self.pasteContentSetToEditor == true && (self.sessionManager.itemKeyCharacter.value == null || self.sessionManager.itemKeyCharacter.value == "  " || self.sessionManager.itemKeyCharacter.value == " " || self.sessionManager.itemKeyCharacter.value == "")) {
         self.ckeditorContent = content;
