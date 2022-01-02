@@ -20,7 +20,7 @@ This website offers every writer all the tools necessary to ensure they are able
 15. Services Integrated through iFrames : 
 > Translation (https://tatoeba.org) 
 > Dictionary (https://glosbe.com/all-languages | https://bab.la/)
-> Theasaurus (https://synonyms.reverso.net/synonym/ | https://www.shabdkosh.com | https://www.khandbahale.com)
+> Thesaurus (https://synonyms.reverso.net/synonym/ | https://www.shabdkosh.com | https://www.khandbahale.com)
 > Script Information (https://www.endangeredalphabets.net | https://www.scriptsource.org/cms/scripts/page.php)
 > Linguistic Information (https://omniglot.com)
 > Wikipedia (https://wikipedia.org/wiki/)
