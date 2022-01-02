@@ -345,27 +345,6 @@ export class AppComponent implements AfterViewInit {
     })
   }
 
-/* Requirements -
-  *  1. [TRANSLATIONS]         Sankethi and Sanskrit translation for website
-  *  2. [PUBLISHING]           Publishing Website : https://console.firebase.google.com and UPDATE PROPERTIES FILES
-  *                                Run ./nlpOnNode/downloadNLP.py then include Hostname & Ports in with IHS/Proxy (on 80 & redirect)
-  *                                exec : ./startMSE.sh > ./logs/MultiScriptEditor.log &
-  *                            NodeJS App : https://www.youtube.com/watch?v=Qnw2bO3ljZs (https://api.worldscriptsexplorer.web.app/)
-  *                            When URL is available then setup Content-Security-Policy and the Certificate for the Node server : 
-  *                               https://medium.com/skyshidigital/deploy-node-js-to-firebase-hosting-cdc44518fe21
-  *  3. [SEO CODING]           HTML Tags : https://www.searchenginejournal.com/html-tags-attributes-seo/389503/#close 
-*/
-
-/* Lower Priority -
-  *  1. [CUSTOMISE]             Customise their own Keyboard by DnD of keys after a settings clicks, Suggestion of Keyboard layout to be (Email) as feedback, or switch back to original and Colour for Fonts
-  *  2. [PUBLISH URL]           Internationalized domain name - Multiple LANGUAGES URLS - https://url.spec.whatwg.org/  - 
-  *       https://kn.wikipedia.org/wiki/%E0%B2%B8%E0%B2%B9%E0%B2%BE%E0%B2%AF:%E0%B2%B2%E0%B2%BF%E0%B2%AA%E0%B3%8D%E0%B2%AF%E0%B2%82%E0%B2%A4%E0%B2%B0
-  *  3. [BUILD INTELLIGIENCE]   Predication of Word from DBs when "word-separator" encounter : https://towardsdatascience.com/next-word-prediction-with-nlp-and-deep-learning-48b9fe0a17bf
-  *  4. [EDITOR]                Unicode symbols - platform compatibility fonts during PDF export
-  *  5. [KEYBOARDS]             Include keyboards for the following : Quipu (Inca Knots), Khazarian, Counting Rods, Medefaidrin, Grantha-Pandya
-  *  6. [CLEANUP]               Remove unused CSS and club styles to CSS classes : https://www.keycdn.com/blog/remove-unused-css
-*/
-
 /* Use Case -
   *  [1] Writing a Paper with reasoning and frame of reference for use of different type of keyboard, layout etc.
   *  [2] API Home page on NodeJS with Keyboard examples
