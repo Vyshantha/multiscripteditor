@@ -5,7 +5,7 @@ This website offers every writer all the tools necessary to ensure they are able
 1. One could use the Keyboard Layouts which are seggregated over multiple **Script** or **Writing-System** types encompassing over 600 types from all over world including ancient, old, classical and constructed types) - 
 > **Abjad | Alphabet | Abugida | Syllabery | Ideogram Logogram Pictogram | Braille | Sign | Code-Shorthand-Emoji | Unclassified** 
 2. Types of Keyboard Layout : **Transliterate (Phonetic)** available for 15 language | **Typewriter (QWERTY)** available for 280 Languages & Scripts | **Language Learning (Default)** available for 600 Scripts & Languages
-3. Keyboard selection could be done through with searching through each type, or filtering capabilities using timeline or through the map
+3. Keyboard selection could be done through with searching through each type, or filtering capabilities using timeline or through the world map
 4. Providing Suggestion while Typing for 150 Scripts & Languages
 5. The suggestions are regularly updated based on Natural Language Process - NLP (build Python 3.7) after sentence completion for each language & script
 6. Mapping of Laptop/Device Keyboard for easy of typing
