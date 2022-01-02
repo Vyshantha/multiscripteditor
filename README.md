@@ -25,7 +25,7 @@ This website offers every writer all the tools necessary to ensure they are able
 > Linguistic Information (https://omniglot.com)
 > Wikipedia (https://wikipedia.org/wiki/)
 16. Session Management - The content and data typed by user is saved in the browser Local Storage for future use 
-17. Collect the Keyboard Layout data by using REST API - see Full Guide : https://worldscriptsexplorer.herokuapp.com
+17. Collect the World Scripts Explorer data by using REST API - see Full Guide : https://worldscriptsexplorer.herokuapp.com
 
 ## Server-side NodeJS 12.x based on Express server
   Hosted on Salesforce Cloud - **Heroku : https://worldscriptsexplorer.herokuapp.com**
