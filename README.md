@@ -15,7 +15,7 @@ This website offers every writer all the tools necessary to ensure they are able
 11. URL redirection capabilities to switch keyboards and override browser default language or locale 
 12. Mode of usage of SaaS offering (Online|Offline) for all the services available
 13. Generate Transliteration Content with Aksharamukha Output Script : https://aksharamukha.appspot.com/explore
-14. Services Integrated through iFrames : Translation (https://tatoeba.org) | Dictionary (https://glosbe.com/all-languages) | Theasaurus (https://synonyms.reverso.net/synonym/) | Script Information (https://www.endangeredalphabets.net) | Linguistic Information (https://omniglot.com) | Wikipedia (https://wikipedia.org/wiki/)
+14. Services Integrated through iFrames : Translation (https://tatoeba.org) | Dictionary (https://glosbe.com/all-languages | https://bab.la/) | Theasaurus (https://synonyms.reverso.net/synonym/ | https://www.shabdkosh.com | https://www.khandbahale.com) | Script Information (https://www.endangeredalphabets.net | https://www.scriptsource.org/cms/scripts/page.php) | Linguistic Information (https://omniglot.com) | Wikipedia (https://wikipedia.org/wiki/)
 15. Session Management - The content and data typed by user is saved in the browser Local Storage for future use 
 16. Collect the Keyboard Layout data by using REST API - see Full Guide : https://worldscriptsexplorer.herokuapp.com
 
