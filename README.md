@@ -10,7 +10,7 @@ This website offers every writer all the tools necessary to ensure they are able
 5. The suggestions are regularly updated based on Natural Language Process - NLP (build Python 3.7) after sentence completion for each language & script
 6. Mapping of Laptop/Device Keyboard for easy of typing
 7. Adjustable - size of keys & fonts of Character (or Images) in Keyboard
-8. Keysboards Layouts could be **Rotated** as well as for **Vertical Typing**, **Mirrored** (for **Bousphorden Typing**) and update the **Text Orientation** for **right-to-left** or **top-to-bottom** or **bottom-to-top** typing
+8. Keysboards Layouts could be **Rotated** as well as for **Vertical Typing**, **Mirrored** (for **Bousphorden Typing**) and update the **Text Orientation** for **left-to-right** or **right-to-left** or **top-to-bottom** or **bottom-to-top** typing
 9. Interface is scaled for Laptop, Tablet and Mobile screens
 10. There is selection available between - *Dark* | *Light* | *High Contrast* Themes
 11. It has a fully functional Rich-Text Editor (**CKEditor4**)
