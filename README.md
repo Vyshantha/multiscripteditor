@@ -20,12 +20,12 @@ This website offers every writer all the tools necessary to ensure they are able
 15. The offering in available in *Online* | *Offline* for the different services
 16. The Transliteration Content Generation is established using the APIs provided by Aksharamukha : https://aksharamukha.appspot.com/explore **@github/virtualvinodh** available here **https://github.com/virtualvinodh/aksharamukha**
 17. Services Integrated through iFrames : 
-> Translation (https://tatoeba.org) 
-> Dictionary (https://glosbe.com/all-languages | https://bab.la/)
-> Thesaurus (https://synonyms.reverso.net/synonym/ | https://www.shabdkosh.com | https://www.khandbahale.com)
-> Script Information (https://www.endangeredalphabets.net | https://www.scriptsource.org/cms/scripts/page.php)
-> Linguistic Information (https://omniglot.com)
-> Wikipedia (https://wikipedia.org/wiki/)
+> **Translation** (https://tatoeba.org) 
+> **Dictionary** (https://glosbe.com/all-languages | https://bab.la/)
+> **Thesaurus** (https://synonyms.reverso.net/synonym/ | https://www.shabdkosh.com | https://www.khandbahale.com)
+> **Script Information** (https://www.endangeredalphabets.net | https://www.scriptsource.org/cms/scripts/page.php)
+> **Linguistic Information** (https://omniglot.com)
+> **Wikipedia** (https://wikipedia.org/wiki/)
 18. Session Management - The content and data typed by user is saved in the browser Local Storage for future use 
 19. Collect the World Scripts Explorer data by using REST API - see Full Guide : https://worldscriptsexplorer.herokuapp.com
 
