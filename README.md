@@ -15,7 +15,7 @@ This website offers every writer all the tools necessary to ensure they are able
 2. Types of Keyboard Layout : `Language Learning (Default)` available for 600 Scripts & Languages | `Typewriter (QWERTY)` available for 280 Languages & Scripts | `Transliterate (Phonetic)` available for 15 language 
 3. Keyboard selection could be done using the search feature present in each script type, or filtering capabilities using historical timeline or even through the world map
 4. Providing Suggestion while Typing for 150 Scripts & Languages
-5. The suggestions are regularly updated based on Natural Language Process - NLP (build `Python 3.7`) after sentence completion for each language & script
+5. The suggestions are regularly updated based on Natural Language Process - Standford Stanza NLP (build `Python 3.7`) after sentence completion for each language or script
 6. Mapping of Laptop/Device Keyboard for easy of typing
 7. Adjustable - size of keys & fonts of Character (or Images) in Keyboard
 8. Keysboards Layouts could be **Rotated** as well as for **Vertical Typing**, **Mirrored** (for **Bousphorden Typing**) and update the **Text Orientation** for **left-to-right** or **right-to-left** or **top-to-bottom** or **bottom-to-top** typing
