@@ -51,3 +51,5 @@ This website offers every writer all the tools necessary to ensure they are able
   
 ### Requirements & Defects are tracking on Github
 https://github.com/Vyshantha/multiscripteditor/issues
+
+![](https://github.com/Vyshantha/multiscripteditor/blob/main/accessibility_icons/favicon.png)
