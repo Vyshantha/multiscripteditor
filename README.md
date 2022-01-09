@@ -1,4 +1,4 @@
-# Multi Script Editor
+## Multi Script Editor (Collaborators Welcome) 😊
 
 ## World Scripts Explorer - SaaS Offering
 This website offers every writer all the tools necessary to ensure they are able to construct their piece of work with ease.
