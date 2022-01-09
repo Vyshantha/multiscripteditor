@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Only single character - regex \{"lingua":"."\}, 
+# Large Set - "},{"lingua":"
+
 # Enumerate all files to *.png format
 ls -v | cat -n | while read n f; do mv -n "$f" "$n.png"; done
 
