@@ -1,10 +1,11 @@
 #!/bin/bash
-# Install NodeJS (on Windows, Linux or Mac) 
+# Install NodeJS (on Windows, Linux or Mac) 14.15 - https://nodejs.org/download/release/v14.15.0/
 npm install
-npm i -g nodemon
-npm install -g "@angular/cli"
+sudo npm i -g nodemon
 cd editorClient
+# AngularJS 11.x
+sudo npm install -g "@angular/cli" 
 npm install
 cd ..
 ./startMSE.sh # permission for executing startMSE.sh
-# https://hostname:4200/ (Multi-Script Editor)
+# https://$HOSTNAME:4200/ (Multi-Script Editor)
