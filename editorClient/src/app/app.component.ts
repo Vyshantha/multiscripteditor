@@ -344,40 +344,4 @@ export class AppComponent implements AfterViewInit {
       document.title = translation;
     })
   }
-
-/* Use Case -
-  *  [1] Writing a Paper with reasoning and frame of reference for use of different type of keyboard, layout etc.
-  *  [2] API Home page on NodeJS with Keyboard examples
-  *  [3] NPM page for the Keyboards being offered
-  *  [4] Layout Keyboard projected - using Projector when only Screen is present - export Keyboard as a modular - LASER VIRTUAL KEYBOARD
-  *  [5] Audio feature for tutor & listen on reach typed letter & suggestions (hide/on)
-  *  [6] Loading contents of Editor from file contents to edit
-  *  [7] Give access rather than demo / publish URL to have multi-interaction
-  *  [8] Requirements to be met after getting to problems from them (Linguist)
-*/
-
-/* Limitation or Known Issue -
-  *  VULNERABILITY : Editor Session Data saved in Local Storage and CKEditor : https://www.cvedetails.com/vulnerability-list/vendor_id-12058/product_id-23046/Ckeditor-Ckeditor.html
-  *  Mapping of Qwerty/Transliterate Keyboards based on German-DE Keyboard only
-  *  Typing Indus script fonts should be shown in the Editor https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html#cfg-contentsCss
-  *  Tab in RTL languages disappear on switching between keyboards for scripts/languages
-  *  Intermittently changing ltr to rtl and writting content takes up precedence with closest rtl word and then fixes itself when order is reversed
-  *  Kharosthi Vyanjana does not get modified with Swaras / Unicode Defects
-  *  Right-Click Event through Soft Keyboard - "TypeError: b.getDocumentPosition is not a function" is thrown and no menu is shown
-*/
-
-/* Queries before publication -
-  *  1. Can IBM Github source be published as an Opensource?
-  *  2. Given this is hosted on Github, IBM owns the work and it can't be published as Opensource?
-  *  3. The Dependencies and moving parts : CKEditor, AngularJS 11.x + Material Icon Libraries, Unicode 39.x, NodeJS 12.x + NPM modules, Python 3.x + Libraries , JavaScript 6.x / TypeScript 4.x
-  *  4. For UI Translation used Google Translate - self written automation scripts
-  *  5. Website used : Keyboard-Info / Omniglot / Wikipedia / Dictionaries / Thesaurus / ScriptSource / EndangeredAlphabet (shown as Tab) / Aksharamukha / Globe / OpenStreetMap , etc. does that have an impact on how publishing should be proceeded ?
-  *  6. Patent / White-paper / DeveloperForum Article / Medium Article - must & must nots?
-  *  7. Which Website to use to host the Content? IBM Cloud / AWS or others ? Does that come with SEO & Ranking help/assistance to maintain website?
-  *  8. Domain Acquiring option and would it be possible get one through IBM as a non-profit Website domain?
-  *  9. GDPR-Privacy / Non-Data Collection Disclaimer other that should be used a good practice?
-  *
-  *  Open-Source Participation Guidelines Training - IBM provides : https://developer.ibm.com/blogs/contribute-to-a-new-open-source-cloud-guide/#
-*/
-
 }
