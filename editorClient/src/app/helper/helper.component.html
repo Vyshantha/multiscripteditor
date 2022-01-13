@@ -27,21 +27,14 @@
 
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p style="height: 60px;overflow-y: scroll;">
-          {{ 'This website offers every writer all the tools necessary to ensure they are able to construct their piece of work with ease.' | translate }} <br/>
-            {{'1' | translate }}.  {{ 'Options for Write-up' | translate }} : {{ 'Full' | translate }} | {{ 'Classic' | translate }} | {{ 'Inline' | translate }} | {{ 'Block' | translate }} | {{ 'Balloon' | translate }} | {{ 'Document' | translate }} {{ 'along with Rich-Text Editing features' | translate }} <br/>
-            {{'2' | translate }}.  {{ 'Types of Scripts or Writing Systems' | translate }} ({{ 'Abjad' | translate }} | {{ 'Alphabet' | translate }} | {{ 'Abugida' | translate }} | {{ 'Syllabery' | translate }} | {{ 'Ideogram' | translate }} {{ 'Logogram' | translate }} {{ 'Pictogram' | translate }} | {{ 'Braille' | translate }} | {{ 'Sign' | translate }} | {{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }} | {{ 'Unclassified' | translate }} {{ 'encompassing over' | translate }} {{ '500' | translate }} {{ 'scripts' | translate }} {{ 'from all over world' | translate }} {{ 'including ancient and constructed' | translate }}) <br/>
-            {{'3' | translate }}.  {{ 'Types of Keyboard Layout' | translate }} : {{ 'Typewriter' | translate }} ({{ 'QWERTY' | translate }}) | {{ 'Transliterate' | translate }} ({{ 'Phonetic' | translate }}) | {{ 'Language Learning' | translate }} ({{ 'Default' | translate }}) <br/>
-            {{'4' | translate }}.  {{ 'Size of Keys on Keyboard and font size of Character' | translate }} ({{ 'or Images' | translate }}) {{ 'are adjustable' | translate }} <br/>
-            {{'5' | translate }}.  {{ 'Colour' | translate }} | {{ 'Rotation' | translate }} | {{ 'Mirroring' | translate }} | {{ 'Orientation' | translate }}  {{ 'of keys all are dynamically changeable' | translate }} <br/>
-            {{'6' | translate }}.  {{ 'Theming between 3 types' | translate }} - {{ 'Dark' | translate }} | {{ 'Light' | translate }} | {{ 'High Contrast' | translate }} <br/>
-            {{'7' | translate }}.  {{ 'Over' | translate }} {{ '110' | translate }} {{ 'Support Languages for the Interface' | translate }} - {{ 'capability to override browser default language or locale' | translate }} <br/>
-            {{'8' | translate }}.  {{ 'Mode of usage of SaaS offering' | translate }} ({{ 'Online' | translate }}|{{ 'Offline' | translate }}) <br/>
-            {{'9' | translate }}.  {{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}<br/>
-            {{'10' | translate }}. {{ 'Services Integrated' | translate }} : {{ 'Translation' | translate }} | {{ 'Dictionary' | translate }} | {{ 'Theasaurus' | translate }} | {{ 'Intellisense Typing for Language' | translate }} <br/>
-            {{'11' | translate }}. {{ 'Session Management' | translate }} - {{ 'The content or data typed by user is saved in the browser Local Storage for future use' | translate }} <br/>
-            {{'12' | translate }}. {{ 'Customiseable Keyboard Layouts and handy URL usability' | translate }} <br/>
-            {{'13' | translate }}. {{ 'Collect the Keyboard Layout data by using REST API' | translate }} - {{ 'see' | translate }} {{ 'Full Guide' | translate }} <a href="https://{{hostname}}:{{port}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a>. 
+        <p style="height: 100px;overflow-y: scroll;">
+          <iframe id="githubPages"
+            title="{{ 'Github' | translate }}"
+            width="99%"
+            height="100px"
+            [src]="cleanURL(githubPagesURL|safe)"
+            scrolling="yes">
+          </iframe> 
         </p>
       </mat-expansion-panel>
   </mat-accordion>
@@ -281,21 +274,14 @@
               <div style="font-size: 10px;">{{ 'Know what and how this SaaS offering can be used' | translate }}</div>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p style="height: 75px;overflow-y: scroll;">
-          {{ 'This website offers every writer all the tools necessary to ensure they are able to construct their piece of work with ease.' | translate }} <br/>
-            {{'1' | translate }}.  {{ 'Options for Write-up' | translate }} : {{ 'Full' | translate }} | {{ 'Classic' | translate }} | {{ 'Inline' | translate }} | {{ 'Block' | translate }} | {{ 'Balloon' | translate }} | {{ 'Document' | translate }} {{ 'along with Rich-Text Editing features' | translate }} <br/>
-            {{'2' | translate }}.  {{ 'Types of Scripts or Writing Systems' | translate }} ({{ 'Abjad' | translate }} | {{ 'Alphabet' | translate }} | {{ 'Abugida' | translate }} | {{ 'Syllabery' | translate }} | {{ 'Ideogram' | translate }} {{ 'Logogram' | translate }} {{ 'Pictogram' | translate }} | {{ 'Braille' | translate }} | {{ 'Sign' | translate }} | {{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }} | {{ 'Unclassified' | translate }} {{ 'encompassing over' | translate }} {{ '500' | translate }} {{ 'scripts' | translate }} {{ 'from all over world' | translate }} {{ 'including ancient and constructed' | translate }}) <br/>
-            {{'3' | translate }}.  {{ 'Types of Keyboard Layout' | translate }} : {{ 'Typewriter' | translate }} ({{ 'QWERTY' | translate }}) | {{ 'Transliterate' | translate }} ({{ 'Phonetic' | translate }}) | {{ 'Language Learning' | translate }} ({{ 'Default' | translate }}) <br/>
-            {{'4' | translate }}.  {{ 'Size of Keys on Keyboard and font size of Character' | translate }} ({{ 'or Images' | translate }}) {{ 'are adjustable' | translate }} <br/>
-            {{'5' | translate }}.  {{ 'Colour' | translate }} | {{ 'Rotation' | translate }} | {{ 'Mirroring' | translate }} | {{ 'Orientation' | translate }}  {{ 'of keys all are dynamically changeable' | translate }} <br/>
-            {{'6' | translate }}.  {{ 'Theming between 3 types' | translate }} - {{ 'Dark' | translate }} | {{ 'Light' | translate }} | {{ 'High Contrast' | translate }} <br/>
-            {{'7' | translate }}.  {{ 'Over' | translate }} {{ '110' | translate }} {{ 'Support Languages for the Interface' | translate }} - {{ 'capability to override browser default language or locale' | translate }} <br/>
-            {{'8' | translate }}.  {{ 'Mode of usage of SaaS offering' | translate }} ({{ 'Online' | translate }}|{{ 'Offline' | translate }}) <br/>
-            {{'9' | translate }}.  {{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}<br/>
-            {{'10' | translate }}. {{ 'Services Integrated' | translate }} : {{ 'Translation' | translate }} | {{ 'Dictionary' | translate }} | {{ 'Theasaurus' | translate }} | {{ 'Intellisense Typing for Language' | translate }} <br/>
-            {{'11' | translate }}. {{ 'Session Management' | translate }} - {{ 'The content or data typed by user is saved in the browser Local Storage for future use' | translate }} <br/>
-            {{'12' | translate }}. {{ 'Customiseable Keyboard Layouts and handy URL usability' | translate }} <br/>
-            {{'13' | translate }}. {{ 'Collect the Keyboard Layout data by using REST API' | translate }} - {{ 'see' | translate }} {{ 'Full Guide' | translate }} <a href="https://{{hostname}}:{{port}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a>. 
+        <p style="height: 150px;overflow-y: scroll;">
+          <iframe id="githubPages"
+            title="{{ 'Github' | translate }}"
+            width="99%"
+            height="150px"
+            [src]="cleanURL(githubPagesURL|safe)"
+            scrolling="yes">
+          </iframe> 
         </p>
       </mat-expansion-panel>
   </mat-accordion>
@@ -517,21 +503,14 @@
               <div style="font-size: 12px;">{{ 'Know what and how this SaaS offering can be used' | translate }}</div>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p style="height: 100px;overflow-y: scroll;">
-          {{ 'This website offers every writer all the tools necessary to ensure they are able to construct their piece of work with ease.' | translate }} <br/>
-            {{'1' | translate }}.  {{ 'Options for Write-up' | translate }} : {{ 'Full' | translate }} | {{ 'Classic' | translate }} | {{ 'Inline' | translate }} | {{ 'Block' | translate }} | {{ 'Balloon' | translate }} | {{ 'Document' | translate }} {{ 'along with Rich-Text Editing features' | translate }} <br/>
-            {{'2' | translate }}.  {{ 'Types of Scripts or Writing Systems' | translate }} ({{ 'Abjad' | translate }} | {{ 'Alphabet' | translate }} | {{ 'Abugida' | translate }} | {{ 'Syllabery' | translate }} | {{ 'Ideogram' | translate }} {{ 'Logogram' | translate }} {{ 'Pictogram' | translate }} | {{ 'Braille' | translate }} | {{ 'Sign' | translate }} | {{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }} | {{ 'Unclassified' | translate }} {{ 'encompassing over' | translate }} {{ '500' | translate }} {{ 'scripts' | translate }} {{ 'from all over world' | translate }} {{ 'including ancient and constructed' | translate }}) <br/>
-            {{'3' | translate }}.  {{ 'Types of Keyboard Layout' | translate }} : {{ 'Typewriter' | translate }} ({{ 'QWERTY' | translate }}) | {{ 'Transliterate' | translate }} ({{ 'Phonetic' | translate }}) | {{ 'Language Learning' | translate }} ({{ 'Default' | translate }}) <br/>
-            {{'4' | translate }}.  {{ 'Size of Keys on Keyboard and font size of Character' | translate }} ({{ 'or Images' | translate }}) {{ 'are adjustable' | translate }} <br/>
-            {{'5' | translate }}.  {{ 'Colour' | translate }} | {{ 'Rotation' | translate }} | {{ 'Mirroring' | translate }} | {{ 'Orientation' | translate }}  {{ 'of keys all are dynamically changeable' | translate }} <br/>
-            {{'6' | translate }}.  {{ 'Theming between 3 types' | translate }} - {{ 'Dark' | translate }} | {{ 'Light' | translate }} | {{ 'High Contrast' | translate }} <br/>
-            {{'7' | translate }}.  {{ 'Over' | translate }} {{ '110' | translate }} {{ 'Support Languages for the Interface' | translate }} - {{ 'capability to override browser default language or locale' | translate }} <br/>
-            {{'8' | translate }}.  {{ 'Mode of usage of SaaS offering' | translate }} ({{ 'Online' | translate }}|{{ 'Offline' | translate }}) <br/>
-            {{'9' | translate }}.  {{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}<br/>
-            {{'10' | translate }}. {{ 'Services Integrated' | translate }} : {{ 'Translation' | translate }} | {{ 'Dictionary' | translate }} | {{ 'Theasaurus' | translate }} | {{ 'Intellisense Typing for Language' | translate }} <br/>
-            {{'11' | translate }}. {{ 'Session Management' | translate }} - {{ 'The content or data typed by user is saved in the browser Local Storage for future use' | translate }} <br/>
-            {{'12' | translate }}. {{ 'Customiseable Keyboard Layouts and handy URL usability' | translate }} <br/>
-            {{'13' | translate }}. {{ 'Collect the Keyboard Layout data by using REST API' | translate }} - {{ 'see' | translate }} {{ 'Full Guide' | translate }} <a href="https://{{hostname}}:{{port}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a>. 
+        <p style="height: 200px;overflow-y: scroll;">
+          <iframe id="githubPages"
+            title="{{ 'Github' | translate }}"
+            width="99%"
+            height="200px"
+            [src]="cleanURL(githubPagesURL|safe)"
+            scrolling="yes">
+          </iframe> 
         </p>
       </mat-expansion-panel>
   </mat-accordion>
