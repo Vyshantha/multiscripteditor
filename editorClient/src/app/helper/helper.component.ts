@@ -1,4 +1,4 @@
-import { Component, ComponentRef, OnInit, AfterViewInit, ElementRef, ViewChild, Inject } from '@angular/core';
+import { Component, ComponentRef, OnInit, AfterViewInit, SecurityContext, ElementRef, ViewChild, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
 import { FormBuilder, FormGroup} from '@angular/forms';
@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {startWith, map} from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import * as SVAConfig from '../../assets/environments/sva_config.json';
 
@@ -81,6 +82,7 @@ export class HelperComponent implements OnInit, AfterViewInit {
   highlightInKeyboard: Boolean = true;
   unusedKeys: Boolean = false;
   urlOfKeyboard: string = '';
+  githubPagesURL: string = "https://vyshantha.github.io/multiscripteditor/";
 
   allQwertyKeyboards = ["ace", "adlm", "iai", "af", "ak", "sq", "gsw", "am", "njo", "ar", "an", "hy", "as", "ast", "az", "aze", "bjn", "ban", "bm", "bak", "eu", "bar", "be", "befr", "bn", "tfng", "bharati", "bcl", "bis", "brx", "brxla", "bopo", "bs", "bsla", "brah", "iub", "br", "bug", "bugla", "bg", "cans", "ca", "ceb", "cakm", "ch", "cher", "zhcn", "zhtw", "cjk", "kw", "co", "hr", "cs", "dgabf", "dgagh", "dag", "da", "de", "din", "nl", "dz", "bin", "engb", "enin", "enintl", "enus", "eo", "et", "eurkey", "evncy", "ee", "fo", "fa", "fj", "fi", "fon", "latf", "fr", "frca", "fy", "ff", "fur", "gd", "gag", "gl", "gall", "geez", "ka", "gor", "el", "kl", "apu", "gn", "gu", "ht", "haj", "ko", "rohg", "ha", "haw", "he", "hi", "hira", "hmn", "hu", "is", "ig", "ilo", "hil", "id", "esi", "iu", "esk", "ipa", "ga", "it", "jam", "jv", "lad", "ladla", "kbp", "ja", "pam", "csb", "kata", "kaz", "kk", "kha", "km", "ki", "rw", "gil", "rn", "kon", "ko", "ku", "ky", "lbj", "lld", "lo", "ltg", "la", "lv", "lij", "li", "ln", "lis", "lt", "liv", "lmo", "lg", "lb", "lwo", "mk", "mad", "mg", "ms", "ml", "mt", "malt", "mnc", "mnk", "mni", "gv", "mi", "mrw", "mr", "mh", "masu", "mfe", "mic", "min", "mwl", "lus", "mn", "mnla", "mon", "mos", "my", "nag", "na", "nv", "nde", "nap", "nia", "jpn", "njz", "nkoo", "nrf", "no", "ny", "oc", "or", "oira", "olck", "om", "osge", "osma", "pau", "pln", "pag", "pap", "ps", "phag", "pms", "pin", "pl", "pt", "ptbr", "pa", "kaa", "rally", "ranj", "rom", "ro", "ru", "se", "sm", "sgs", "iast", "sa", "srm", "sc", "nds", "sr", "st", "tn", "crs", "sii", "sn", "scu", "sd", "si", "ss", "sk", "sl", "so", "sora", "wen", "es", "esmx", "sun", "sw", "sv", "gsw", "syrc", "tl", "ty", "tale", "talu", "tg", "ta", "tt", "te", "tdt", "thaa", "th", "tibt", "tig", "ti", "tpi", "tokp", "to", "tso", "tr", "tk", "tuk", "uk", "ur", "ipk", "ug", "uz", "uzb", "ven", "vec", "vi", "wym", "wa", "war", "cy", "wo", "xh", "sah", "yi", "bjyo", "ngyo", "zza", "zu"];
   allTransliterateKeyboards = ['as', 'bn', 'brx', 'gu', 'haj', 'hi', 'kn', 'ml', 'malt', 'mr', 'or', 'pa', 'sa', 'ta', 'te', 'ur', 'tirh', 'mni', 'hy', 'bg', 'km'];
@@ -89,7 +91,7 @@ export class HelperComponent implements OnInit, AfterViewInit {
 
   translateForSnackBar: string[] = [];
 
-  constructor(private dialogRef: MatDialogRef<HelperComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: HelpOrPrivacy) { 
+  constructor(private dialogRef: MatDialogRef<HelperComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, private sanitizer: DomSanitizer, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: HelpOrPrivacy) { 
     if (this.data.show == 'privacy') {
       this.helpOrPrivacy = true;
     } else if (this.data.show == 'help') {
@@ -484,6 +486,10 @@ export class HelperComponent implements OnInit, AfterViewInit {
     } else if (type == 'unusedKeys') {
       this.sessionManager.setUnusedKeysShow((this.unusedKeys) ? 'false': 'true');
     }
+  }
+
+  cleanURL(url): SafeResourceUrl {
+    return this.sanitizer.sanitize(SecurityContext.RESOURCE_URL, this.sanitizer.bypassSecurityTrustResourceUrl(url));
   }
 
   async translateSnackBars() {
