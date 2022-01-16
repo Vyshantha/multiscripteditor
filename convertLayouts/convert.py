@@ -151,5 +151,5 @@ except FileNotFoundError:
     print ('No File present to Delete')
 open('./layout-template_alt.json', "x")
 
-with open('./layout-template_alt.json', 'w') as jsonFile:
-    json.dump(json.loads(myJSONLayout), jsonFile)
+with open('./layout-template_alt.json', 'w', encoding='utf-8') as jsonFile:
+    json.dump(json.loads(myJSONLayout), jsonFile, ensure_ascii=False)

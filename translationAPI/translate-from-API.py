@@ -58,5 +58,5 @@ for langCode in supportedLanguage:
 
     print('Compling the JSON for ', langCode)
     #with open('/Users/vyshanthasimha/Documents/Work_Related/workspace/MultiScriptEditor/translation_API/' + langCode + '.json', 'w') as outfile:
-    with open('/Users/vyshanthasimha/Documents/Work_Related/workspace/MultiScriptEditor/editorClient/src/assets/i18n/' + langCode + '.json', 'w') as outfile:
-        json.dump(translateFile, outfile)
+    with open('/Users/vyshanthasimha/Documents/Work_Related/workspace/MultiScriptEditor/editorClient/src/assets/i18n/' + langCode + '.json', 'w', encoding='utf-8') as outfile:
+        json.dump(translateFile, outfile, ensure_ascii=False)

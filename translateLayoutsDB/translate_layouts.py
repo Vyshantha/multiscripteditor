@@ -43,7 +43,7 @@ for langCode in supportedLanguage:
 
     print('Compling the JSON for ', langCode)
 
-    with open(fileName, 'w') as outfile:
-        json.dump(translateDB, outfile)
+    with open(fileName, 'w', encoding='utf-8') as outfile:
+        json.dump(translateDB, outfile, ensure_ascii=False)
 
 print('Finished Translation of DBs')

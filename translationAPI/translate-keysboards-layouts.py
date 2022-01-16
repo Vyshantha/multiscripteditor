@@ -58,5 +58,5 @@ for langCode in supportedLanguage:
             translateFile[keys][2] = translate_text(langCode, translateFile[keys][2])
             
     print('Compling the JSON for ', langCode)
-    with open('/Users/vyshanthasimha/Documents/Work_Related/workspace/MultiScriptEditor/translateLayoutsDB/keysboards-layouts_' + langCode + '.json', 'w') as outfile:
-        json.dump(translateFile, outfile)
+    with open('/Users/vyshanthasimha/Documents/Work_Related/workspace/MultiScriptEditor/translateLayoutsDB/keysboards-layouts_' + langCode + '.json', 'w', encoding='utf-8') as outfile:
+        json.dump(translateFile, outfile, ensure_ascii=False)
