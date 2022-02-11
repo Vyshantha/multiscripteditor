@@ -1,6 +1,4 @@
-# Multi Script Editor
-
-## World Scripts Explorer - SaaS Offering
+### World Scripts Explorer - SaaS Offering (Collaborators are Welcome!!!!...) 😊
 This website offers every writer all the tools necessary to ensure they are able to construct their piece of work with ease.
 1. One could use the Keyboard Layouts which are seggregated over multiple **Script** or **Writing-System** types encompassing over 600 types from all over world including ancient, old, classical and constructed types):
  - [Abjad](https://www.omniglot.com/writing/abjads.htm)
@@ -27,18 +25,30 @@ This website offers every writer all the tools necessary to ensure they are able
 14. Keyboard Layouts can be bookmarked and layouts could be customised 
 15. The offering in available in `Online` | `Offline` for the different services
 16. The Transliteration Content Generation is established using the APIs provided by Aksharamukha : https://aksharamukha.appspot.com/explore from [@github/virtualvinodh](https://github.com/virtualvinodh/aksharamukha)
-17. Webpage that are integrated through iFrames : 
+17. Integrated [@EasyOCR](https://github.com/JaidedAI/EasyOCR) to detect text in images for 88 Languages 
+18. Webpage that are integrated through iFrames : 
   - Translation (https://tatoeba.org) 
   - Dictionary (https://glosbe.com/all-languages | https://bab.la/)
   - Thesaurus (https://synonyms.reverso.net/synonym/ | https://www.shabdkosh.com | https://www.khandbahale.com)
   - Script Information (https://www.endangeredalphabets.net | https://www.scriptsource.org/cms/scripts/page.php)
   - Linguistic Information (https://omniglot.com)
   - Wikipedia (https://wikipedia.org/wiki/)
-18. Session Management - The content and data typed by user is saved in the browser Local Storage for future use 
-19. Collect the World Scripts Explorer data by using REST API - see [Full Guide](https://worldscriptsexplorer.herokuapp.com)
+19. Session Management - The content and data typed by user is saved in the browser Local Storage for future use 
+20. Collect the World Scripts Explorer data by using REST API - see [Full Guide](https://worldscriptsexplorer.herokuapp.com)
 
-## Server-side `NodeJS 12.x` based on Express server
+### Server-side `NodeJS 12.x` based on Express server
   Hosted on Salesforce Cloud - **Heroku : https://worldscriptsexplorer.herokuapp.com**
  
-## Webserver based on `AngularJS 11.x`
+### Webserver based on `AngularJS 11.x`
   Hosted on Firebase **Google : https://worldscriptsexplorer.page**
+
+### Generate the AngularJS & NodeJS Applications.
+
+  1. Run the installer.sh for installation of Node Modules for both AngularJS (webserver) & NodeJS (express server)
+  2. To initiate the servers run the startMSE.sh / startMSE.bat
+  3. To preempt the servers run the stopMSE.sh / stopMSE.bat
+  
+### Requirements & Defects are tracking on Github
+https://github.com/Vyshantha/multiscripteditor/issues
+
+![](https://github.com/Vyshantha/multiscripteditor/blob/main/accessibility_icons/favicon.png)
