@@ -205,10 +205,12 @@
         </td>
       </tr>
   </table>
-  <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>&nbsp;
-  <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></button>&nbsp;
-  <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon></button>&nbsp;
-  <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
+  <div mat-dialog-actions style="margin-bottom: 0px;flex-wrap:nowrap;">
+    <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
+    <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></button>
+    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon></button>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
+  </div>
 </div>
 
 <div *ngIf="isMobile && !isTablet && helpOrPrivacy && !uploadDialog" class="mat-typography" dir="auto">
@@ -238,21 +240,26 @@
     <br/>
   </mat-card>
   <br/>
-  <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>&nbsp;
-  <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></button>&nbsp;
-  <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon></button>&nbsp;
-  <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
+  <div mat-dialog-actions style="margin-bottom: 0px;flex-wrap:nowrap;">
+    <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
+    <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></button>
+    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon></button>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
+  </div>
 </div>
 
 <div *ngIf="isMobile && !isTablet && !helpOrPrivacy && uploadDialog" class="mat-typography" dir="auto">
-  <h1> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
-  <br/><br/>
+  <h3 style="height: 25px;"><div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}">{{ 'Every Writers Choice' | translate }}</div><div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon style="font-size: 12px;" aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h3>
+  <br/>
   <table>
     <tbody>
       <tr>
         <td style="width:25%">
           <span>{{ 'Choose Languages In Image' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
         </td>
+      </tr>
+      <br/>
+      <tr>
         <td style="width:10%">
           <button mat-icon-button mat-raised-button [matMenuTriggerFor]="supportedWriting">
             <mat-icon aria-label="{{ 'Supported Written Languages' | translate }}" matTooltip="{{ 'Supported Written Languages' | translate }}">language</mat-icon>
@@ -263,7 +270,9 @@
               </button>
           </mat-menu>
         </td>
-        <br/>
+      </tr>
+      <br/>
+      <tr>
         <td style="width:65%">
           <mat-form-field appearance="fill" style="width:100%">
             <mat-chip-list #chipList aria-label="{{ 'Language Selection' | translate }}">
@@ -285,19 +294,25 @@
     </tbody>
   </table>
   <span *ngIf="criteriaNotMet" style="color: brown; font-family: 'Times New Roman', Times, serif;">{{ 'Select Languages in Image' | translate }} {{ 'or' | translate }} {{ 'Choose either Method to Upload Image' | translate}}</span>
-  <br/><br/>
+  <br/>
   <span><b>{{ 'Choose either Method to Upload Image' | translate}}</b></span><br/><br/>
-  <table style="border: 1px solid beige; border-radius: 5px;">
+  <table style="border: 1px solid beige; border-radius: 5px;width:100%;">
     <tbody>
       <tr>
-        <td style="width:25%">
+        <td style="width:100%">
           <span>{{ 'Choose From URL' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
         </td>
-        <td style="width:60%">
-          <input matInput type="text" #imageInputURL placeholder="Type or Paste URL" [(ngModel)]="value">
+      </tr>
+      <br/>
+      <tr>
+        <td style="width:100%">
+          <input matInput type="text" #imageInputURL placeholder="Type or Paste URL" [(ngModel)]="value"> 
+          <mat-icon *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">close</mat-icon>
         </td>
-        <td>
-          <mat-icon *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">close</mat-icon> &nbsp;&nbsp;
+      </tr>
+      <br/>
+      <tr>
+        <td>&nbsp;&nbsp;
           <button mat-raised-button (click)="convertImage2Text('url', imageInputURL)">
             <mat-icon aria-label="{{ 'Done' | translate }}" matTooltip="{{ 'Done' | translate }}" style="cursor: pointer;">cloud_done</mat-icon>
           </button>
@@ -305,16 +320,22 @@
       </tr>
     </tbody>
   </table>
-  <br/><br/>
-  <table style="border: 1px solid beige; border-radius: 5px;">
+  <br/>
+  <table style="border: 1px solid beige; border-radius: 5px;width:100%;">
     <tbody>
       <tr>
         <td>
           <span>{{ 'Choose From File System' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
         </td>
+      </tr>
+      <br/>
+      <tr>
         <td>
             <input type="file" accept="image/*" #imageInputFile file-model="myFile" (change)="convertImage2Text('file', imageInputFile)"/>
         </td>
+      </tr>
+      <br/>
+      <tr>
         <td>
           <button mat-raised-button (click)="convertImage2Text('file', 'button')">
             <mat-icon aria-label="{{ 'Upload' | translate }}" matTooltip="{{ 'Upload' | translate }}" style="cursor: pointer;">upload_file</mat-icon>
@@ -323,18 +344,18 @@
       </tr>
     </tbody>
   </table>
-  <br/><br/>
-  <div mat-dialog-actions style="margin-bottom: 0px;">
-    <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon> {{ 'Close' | translate }}</button>
-    <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
-    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
-    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>
+  <br/>
+  <div mat-dialog-actions style="margin-bottom: 0px;flex-wrap:nowrap;">
+    <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
+    <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></button>
+    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon></button>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
     <mat-spinner *ngIf="runProgressIndicator" [color]="accent" [mode]="indeterminate"></mat-spinner>
   </div>
 </div>
 
 <div *ngIf="!isMobile && isTablet && !helpOrPrivacy && !uploadDialog" class="mat-typography" dir="auto">
-  <h1> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
+  <h2> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h2>
   <br/><br/>
   <mat-accordion>
       <mat-expansion-panel>
@@ -528,7 +549,7 @@
 </div>
 
 <div *ngIf="!isMobile && isTablet && helpOrPrivacy && !uploadDialog" class="mat-typography" dir="auto">
-  <h1> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
+  <h2> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h2>
 
   <br/><br/>
   <mat-card>
@@ -563,7 +584,7 @@
 </div>
 
 <div *ngIf="!isMobile && isTablet && !helpOrPrivacy && uploadDialog" class="mat-typography" dir="auto">
-  <h1> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
+  <h2> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h2>
   <br/><br/>
   <table>
     <tbody>
@@ -605,13 +626,13 @@
   <span *ngIf="criteriaNotMet" style="color: brown; font-family: 'Times New Roman', Times, serif;">{{ 'Select Languages in Image' | translate }} {{ 'or' | translate }} {{ 'Choose either Method to Upload Image' | translate}}</span>
   <br/><br/>
   <span><b>{{ 'Choose either Method to Upload Image' | translate}}</b></span><br/><br/>
-  <table style="border: 1px solid beige; border-radius: 5px;">
+  <table style="border: 1px solid beige; border-radius: 5px;width:100%;">
     <tbody>
       <tr>
         <td style="width:25%">
           <span>{{ 'Choose From URL' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
         </td>
-        <td style="width:60%">
+        <td style="width:50%">
           <input matInput type="text" #imageInputURL placeholder="Type or Paste URL" [(ngModel)]="value">
         </td>
         <td>
@@ -624,7 +645,7 @@
     </tbody>
   </table>
   <br/><br/>
-  <table style="border: 1px solid beige; border-radius: 5px;">
+  <table style="border: 1px solid beige; border-radius: 5px;width:100%;">
     <tbody>
       <tr>
         <td>
@@ -643,10 +664,10 @@
   </table>
   <br/><br/>
   <div mat-dialog-actions style="margin-bottom: 0px;">
-    <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon> {{ 'Close' | translate }}</button>
+    <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
     <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
     <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
-    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
     <mat-spinner *ngIf="runProgressIndicator" [color]="accent" [mode]="indeterminate"></mat-spinner>
   </div>
 </div>

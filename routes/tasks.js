@@ -597,13 +597,13 @@ router.post('/v1/multiscripteditor/convertImage2Text', function(req, res, next) 
                     let typeOfUpload = req.body.type;
                     let languagesInImage = req.body.languages;
                     let imageData = req.body.dataImageOrURL;
+                    var codesForEasyOCR = [];
+                    for(let language in languagesInImage) {
+                        codesForEasyOCR.push(languagesInImage[language]["code"]);
+                    }
                     const fileTimeStamp = dateForLogging.replace(/:/g,"-");
                     console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} Converting an Image To Text `, typeOfUpload, languagesInImage)
                     if (typeOfUpload == "url") {
-                        var codesForEasyOCR = [];
-                        for(let language in languagesInImage) {
-                            codesForEasyOCR.push(languagesInImage[language]["code"]);
-                        }
                         console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} Converting an Image To Text URL `, imageData, codesForEasyOCR.toString());
                         exec('curl -o ' + path.join(__dirname, `./image2text/image_${fileTimeStamp}.png`) + ' ' + imageData, function (error, stdout, stderr) {
                             console.log('stdout: ' + stdout);
@@ -634,7 +634,7 @@ router.post('/v1/multiscripteditor/convertImage2Text', function(req, res, next) 
                     } else if (typeOfUpload == "file") {
                         console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} Converting an Image To Text File `);
                         var base64ImageData = imageData.replace(/^data:image\/png;base64,/, "");
-                        require("fs").writeFile(path.join(__dirname, `./image2text/image_${dateForLogging}.png`), base64ImageData, 'base64', function(err) {
+                        require("fs").writeFile(path.join(__dirname, `./image2text/image_${fileTimeStamp}.png`), base64ImageData, 'base64', function(err) {
                             if (err == null) {
                                 const image2TextOnNode = spawn('python3', [path.join(__dirname, './image2text/convertimage2text.py'), typeOfUpload, codesForEasyOCR.toString(), path.join(__dirname, `./image2text/image_${fileTimeStamp}.png`)]);
 
