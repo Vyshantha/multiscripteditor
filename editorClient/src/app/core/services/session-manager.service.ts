@@ -776,4 +776,10 @@ export class SessionManagerService {
   integrateTransliteration(targetScript) {
     return this.http.get<any[]>(`https://aksharamukha-plugin.appspot.com/api/public?target=${targetScript}&text=${this.getSessionSavedContent()}`);
   }
+
+  // Image to Text sending image data to NodeJS server
+  image2TextConvert(type, supportedWrittenLanguage, dataImageOrURL) {
+    console.info("[MULTISCRIPTEDITOR] Convert Image To Text via API ", type.toUpperCase(), " ", supportedWrittenLanguage, " ", dataImageOrURL);
+    return this.http.post<any[]>(`${this.uri}/v1/multiscripteditor/convertImage2Text`, {"type": type, "languages": supportedWrittenLanguage, "dataImageOrURL": dataImageOrURL});
+  }
 }

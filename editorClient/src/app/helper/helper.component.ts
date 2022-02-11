@@ -1,6 +1,8 @@
 import { Component, ComponentRef, OnInit, AfterViewInit, SecurityContext, ElementRef, ViewChild, Inject } from '@angular/core';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -21,8 +23,13 @@ export interface AvailableKeyboards {
   scriptName: string[];
 }
 
+export interface SupportedWrittenLanguage {
+  name: string;
+  code: string;
+}
+
 export interface HelpOrPrivacy {
-  show: 'privacy' | 'help';
+  show: 'privacy' | 'help' | 'upload';
 }
 
 export const _filter = (opt: string[], value: string): string[] => {
@@ -53,6 +60,7 @@ export class HelperComponent implements OnInit, AfterViewInit {
   isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200;
 
   keyboardLayouts: any = (allLayoutPositions as any).default;
+
   localeUISelection : String = '';
   currentKeyboard: String = '';
   keyboardStyle: string = '';
@@ -62,6 +70,10 @@ export class HelperComponent implements OnInit, AfterViewInit {
   supportedLanguageColumn3 : any = [];
   supportedLanguageColumn4 : any = [];
   allSupportedLanguages : any = [];
+
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  supportedWrittenLanguage: SupportedWrittenLanguage[] = [];
 
   showEditor : Boolean = true;
 
@@ -74,6 +86,7 @@ export class HelperComponent implements OnInit, AfterViewInit {
 
   exploreOnly: Boolean = true;
   helpOrPrivacy: Boolean = false;
+  uploadDialog: Boolean = false;
   initialDataSend: Boolean = true;
   saveBrowser: Boolean = false;
   suggestionForUser: Boolean = true;
@@ -81,6 +94,7 @@ export class HelperComponent implements OnInit, AfterViewInit {
   shareWordsFromContent: Boolean = false;
   highlightInKeyboard: Boolean = true;
   unusedKeys: Boolean = false;
+  criteriaNotMet: Boolean = false;
   urlOfKeyboard: string = '';
   githubPagesURL: string = "https://vyshantha.github.io/multiscripteditor/";
 
@@ -89,12 +103,22 @@ export class HelperComponent implements OnInit, AfterViewInit {
   qwertyKeyboardNames : string = "";
   qwertyTransliterateKeyboards : string = "";
 
+  imageDataBase64: string = "";
+
   translateForSnackBar: string[] = [];
+
+  runProgressIndicator: Boolean = false;
+
+  // EasyOCR Supported Languages
+  supported_written_language = [];
 
   constructor(private dialogRef: MatDialogRef<HelperComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, private sanitizer: DomSanitizer, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: HelpOrPrivacy) { 
     if (this.data.show == 'privacy') {
       this.helpOrPrivacy = true;
     } else if (this.data.show == 'help') {
+      this.helpOrPrivacy = false;
+    } else if (this.data.show == 'upload') {
+      this.uploadDialog = true;
       this.helpOrPrivacy = false;
     }
     this.appStatus = this.sessionManager.itemOfflineOnly.value;
@@ -254,6 +278,38 @@ export class HelperComponent implements OnInit, AfterViewInit {
       return a.localeCompare(b);
     });
     this.qwertyTransliterateKeyboards = unSortedLocales.toString();
+  }
+
+  updateSortSupportedWrittenLanguage() {
+    this.supported_written_language = [{"easyocr":"Abaza","code":"abq"},{"easyocr":"Adyghe","code":"ady"},{"easyocr":this.keyboardLayouts['af'][2],"code":"af"},{"easyocr":"Angika","code":"ang"},{"easyocr":this.keyboardLayouts['ar'][2],"code":"ar"},{"easyocr":this.keyboardLayouts['as'][2],"code":"as"},{"easyocr":"Avar","code":"ava"},{"easyocr":this.keyboardLayouts['az'][2],"code":"az"},{"easyocr":this.keyboardLayouts['be'][2],"code":"be"},{"easyocr":this.keyboardLayouts['bg'][2],"code":"bg"},{"easyocr":"Bihari","code":"bh"},{"easyocr":this.keyboardLayouts['bho'][2],"code":"bho"},{"easyocr":this.keyboardLayouts['bn'][2],"code":"bn"},{"easyocr":this.keyboardLayouts['bs'][2],"code":"bs"},{"easyocr":this.keyboardLayouts['zhcn'][2],"code":"ch_sim"},{"easyocr":this.keyboardLayouts['zhtw'][2],"code":"ch_tra"},{"easyocr":"Chechen","code":"che"},{"easyocr":this.keyboardLayouts['cs'][2],"code":"cs"},{"easyocr":this.keyboardLayouts['cy'][2],"code":"cy"},{"easyocr":this.keyboardLayouts['da'][2],"code":"da"},{"easyocr":"Dargwa","code":"dar"},{"easyocr":this.keyboardLayouts['de'][2],"code":"de"},{"easyocr":this.keyboardLayouts['en'][2],"code":"en"},{"easyocr":this.keyboardLayouts['es'][2],"code":"es"},{"easyocr":this.keyboardLayouts['et'][2],"code":"et"},{"easyocr":this.keyboardLayouts['fa'][2],"code":"fa"},{"easyocr":this.keyboardLayouts['fr'][2],"code":"fr"},{"easyocr":this.keyboardLayouts['ga'][2],"code":"ga"},{"easyocr":this.keyboardLayouts['kom'][2],"code":"gom"},{"easyocr":this.keyboardLayouts['hi'][2],"code":"hi"},{"easyocr":this.keyboardLayouts['hr'][2],"code":"hr"},{"easyocr":this.keyboardLayouts['hu'][2],"code":"hu"},{"easyocr":this.keyboardLayouts['id'][2],"code":"id"},{"easyocr":"Ingush","code":"inh"},{"easyocr":this.keyboardLayouts['is'][2],"code":"is"},{"easyocr":this.keyboardLayouts['it'][2],"code":"it"},{"easyocr":this.keyboardLayouts['ja'][2],"code":"ja"},{"easyocr":"Kabardian","code":"kbd"},{"easyocr":this.keyboardLayouts['kn'][2],"code":"kn"},{"easyocr":this.keyboardLayouts['ko'][2],"code":"ko"},{"easyocr":this.keyboardLayouts['ku'][2],"code":"ku"},{"easyocr":this.keyboardLayouts['la'][2],"code":"la"},{"easyocr":"Lak","code":"lbe"},{"easyocr":"Lezghian","code":"lez"},{"easyocr":this.keyboardLayouts['lt'][2],"code":"lt"},{"easyocr":this.keyboardLayouts['lv'][2],"code":"lv"},{"easyocr":"Magahi","code":"mah"},{"easyocr":this.keyboardLayouts['tirh'][2],"code":"mai"},{"easyocr":this.keyboardLayouts['mi'][2],"code":"mi"},{"easyocr":this.keyboardLayouts['mn'][2],"code":"mn"},{"easyocr":this.keyboardLayouts['mr'][2],"code":"mr"},{"easyocr":this.keyboardLayouts['ms'][2],"code":"ms"},{"easyocr":this.keyboardLayouts['mt'][2],"code":"mt"},{"easyocr":this.keyboardLayouts['ne'][2],"code":"ne"},{"easyocr":"Newari","code":"new"},{"easyocr":this.keyboardLayouts['nl'][2],"code":"nl"},{"easyocr":this.keyboardLayouts['no'][2],"code":"no"},{"easyocr":this.keyboardLayouts['oc'][2],"code":"oc"},{"easyocr":this.keyboardLayouts['pi'][2],"code":"pi"},{"easyocr":this.keyboardLayouts['pl'][2],"code":"pl"},{"easyocr":this.keyboardLayouts['pt'][2],"code":"pt"},{"easyocr":this.keyboardLayouts['ro'][2],"code":"ro"},{"easyocr":this.keyboardLayouts['ru'][2],"code":"ru"},{"easyocr":this.keyboardLayouts['sr'][2],"code":"rs_cyrillic"},{"easyocr":"Serbian (latin)","code":"rs_latin"},{"easyocr":"Nagpuri","code":"sck"},{"easyocr":this.keyboardLayouts['sk'][2],"code":"sk"},{"easyocr":this.keyboardLayouts['sl'][2],"code":"sl"},{"easyocr":this.keyboardLayouts['sq'][2],"code":"sq"},{"easyocr":this.keyboardLayouts['sv'][2],"code":"sv"},{"easyocr":this.keyboardLayouts['sw'][2],"code":"sw"},{"easyocr":this.keyboardLayouts['ta'][2],"code":"ta"},{"easyocr":"Tabassaran","code":"tab"},{"easyocr":this.keyboardLayouts['te'][2],"code":"te"},{"easyocr":this.keyboardLayouts['th'][2],"code":"th"},{"easyocr":this.keyboardLayouts['tg'][2],"code":"tjk"},{"easyocr":this.keyboardLayouts['tl'][2],"code":"tl"},{"easyocr":this.keyboardLayouts['tr'][2],"code":"tr"},{"easyocr":this.keyboardLayouts['ug'][2],"code":"ug"},{"easyocr":this.keyboardLayouts['uk'][2],"code":"uk"},{"easyocr":this.keyboardLayouts['ur'][2],"code":"ur"},{"easyocr":this.keyboardLayouts['uz'][2],"code":"uz"},{"easyocr":this.keyboardLayouts['vi'][2],"code":"vi"}];
+
+    this.supported_written_language.sort((a, b)=>{
+      return a.easyocr.localeCompare(b.easyocr);
+    });
+  }
+
+  populateSupportedWrittenLanguage(language, code) {
+    this.criteriaNotMet = false;
+    this.supportedWrittenLanguage.push({name: language, code: code});
+  }
+
+  addLanguage(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+    let input = event.input;
+    if (value && this.supported_written_language.indexOf(value) > 0) {
+      this.supportedWrittenLanguage.push({name: value.split(" ")[0], code:  value.split(" ")[1]});
+    }
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  removeLanguage(language: SupportedWrittenLanguage): void {
+    const index = this.supportedWrittenLanguage.indexOf(language);
+
+    if (index >= 0) {
+      this.supportedWrittenLanguage.splice(index, 1);
+    }
   }
 
   loadMyKeyboard() {
@@ -419,6 +475,7 @@ export class HelperComponent implements OnInit, AfterViewInit {
         this.allSupportedLanguages.push({"value": this.keyboardLayouts[key][2], "url": key.valueOf().toString()});
       }
     }
+    this.updateSortSupportedWrittenLanguage();
     this.allSupportedLanguages = this.allSupportedLanguages.sort((a, b)=> {
       return a.value.localeCompare(b.value);
     });
@@ -490,6 +547,77 @@ export class HelperComponent implements OnInit, AfterViewInit {
 
   cleanURL(url): SafeResourceUrl {
     return this.sanitizer.sanitize(SecurityContext.RESOURCE_URL, this.sanitizer.bypassSecurityTrustResourceUrl(url));
+  }
+
+  convertImage2Text(type, imageInput: any) {
+    if (type == 'url' && imageInput) {
+      this.criteriaNotMet = false;
+      if (this.supportedWrittenLanguage.length > 0) {
+        this.runProgressIndicator = true;
+        this.sessionManager.image2TextConvert(type, this.supportedWrittenLanguage, imageInput.value).subscribe((result: any) => {
+          console.info("[MUlTISCRIPTEDITOR] Convert Image To Text URL ", result);
+          this.runProgressIndicator = false;
+        }, (error) => {
+          let convertedText = error.error.text;
+          convertedText = convertedText.replace(/\\"/g,"'").match(/'(.*?)'/g);
+          for(let i = 0; i < convertedText.length ; i++) {
+            if (convertedText[i].indexOf("', 0.") == -1 && convertedText[i].indexOf("([[") == -1 && convertedText[i].indexOf("]]") == -1) {
+              this.sessionManager.setCharFromKeyboard(convertedText[i].replace(/'/g, "").replace(/\\"/g, "").replace(/\\'/g, "") + " ");
+            }
+          }
+          console.info("[MUlTISCRIPTEDITOR] Convert Image To Text URL ", convertedText);
+          this.runProgressIndicator = false;
+        });
+      } else {
+        this.criteriaNotMet = true;
+      }
+    } else if (type == 'file' && (imageInput || this.imageDataBase64)) {
+      this.criteriaNotMet = false;
+      if (this.supportedWrittenLanguage.length > 0 && this.imageDataBase64 && this.imageDataBase64 != "" && imageInput == "button") {
+        this.runProgressIndicator = true;
+        this.sessionManager.image2TextConvert(type, this.supportedWrittenLanguage, this.imageDataBase64).subscribe((result: any) => {
+          console.info("[MUlTISCRIPTEDITOR] Convert Image To Text File ", result)
+          this.runProgressIndicator = false;
+        }, (error) => {
+          let convertedText = error.error.text;
+          convertedText = convertedText.replace(/\\"/g,"'").match(/'(.*?)'/g);
+          for(let i = 0; i < convertedText.length ; i++) {
+            if (convertedText[i].indexOf("', 0.") == -1 && convertedText[i].indexOf("([[") == -1 && convertedText[i].indexOf("]]") == -1) {
+              this.sessionManager.setCharFromKeyboard(convertedText[i].replace(/'/g, "").replace(/\\"/g, "").replace(/\\'/g, "") + " ");
+            }
+          }
+          console.info("[MUlTISCRIPTEDITOR] Convert Image To Text URL ", convertedText);
+          this.runProgressIndicator = false;
+        });
+      } else if (imageInput && imageInput.files){
+        const file: File = imageInput.files[0];
+        const reader = new FileReader();
+        reader.addEventListener('load', (event: any) => {
+          this.imageDataBase64 = event.target.result;
+          if (this.supportedWrittenLanguage.length > 0) {
+            this.runProgressIndicator = true;
+            this.sessionManager.image2TextConvert(type, this.supportedWrittenLanguage, event.target.result).subscribe((result: any) => {
+              console.info("[MUlTISCRIPTEDITOR] Convert Image To Text File & Memory ", result);
+              this.runProgressIndicator = false;
+            }, (error) => {
+              let convertedText = error.error.text;
+              convertedText = convertedText.replace(/\\"/g,"'").match(/'(.*?)'/g);
+              for(let i = 0; i < convertedText.length ; i++) {
+                if (convertedText[i].indexOf("', 0.") == -1 && convertedText[i].indexOf("([[") == -1 && convertedText[i].indexOf("]]") == -1) {
+                  this.sessionManager.setCharFromKeyboard(convertedText[i].replace(/'/g, "").replace(/\\"/g, "").replace(/\\'/g, "") + " ");
+                }
+              }
+              console.info("[MUlTISCRIPTEDITOR] Convert Image To Text URL ", convertedText);
+              this.runProgressIndicator = false;
+            });
+          } else {
+            this.criteriaNotMet = true;
+          }
+        });
+        reader.readAsDataURL(file);
+      }
+    } else
+      this.criteriaNotMet = true;
   }
 
   async translateSnackBars() {

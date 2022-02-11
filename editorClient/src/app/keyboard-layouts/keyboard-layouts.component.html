@@ -2508,7 +2508,7 @@
                 </button>
             </mat-menu>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button mat-icon-button [matMenuTriggerFor]="aksharamukhaselect" *ngIf="onlineService">
+            <button mat-icon-button mat-raised-button [matMenuTriggerFor]="aksharamukhaselect" *ngIf="onlineService">
                 <img src="https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-web-plugin/icon.png" aria-label="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" matTooltip="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" width="25px">
               </button>
             <mat-menu #aksharamukhaselect="matMenu">
@@ -2783,6 +2783,10 @@
                     <span (click)="selectTargetTransliteration($event, 'ZanabazarSquare')">{{localisedKeyboardLayouts['zanb'][2]}}</span>
                 </button>
             </mat-menu>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button mat-icon-button>
+                <mat-icon aria-label="{{ 'Convert Image to Text' | translate }}" matTooltip="{{ 'Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
+            </button>
         </p>
     </mat-card>       
 </div>
@@ -5275,7 +5279,7 @@
                 </button>
             </mat-menu>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button mat-icon-button [matMenuTriggerFor]="aksharamukhaselect" *ngIf="onlineService">
+            <button mat-icon-button mat-raised-button [matMenuTriggerFor]="aksharamukhaselect" *ngIf="onlineService">
                 <img src="https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-web-plugin/icon.png" aria-label="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" matTooltip="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" width="25px">
               </button>
             <mat-menu #aksharamukhaselect="matMenu">
@@ -5550,6 +5554,10 @@
                     <span (click)="selectTargetTransliteration($event, 'ZanabazarSquare')">{{localisedKeyboardLayouts['zanb'][2]}}</span>
                 </button>
             </mat-menu>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button mat-icon-button>
+                <mat-icon aria-label="{{ 'Convert Image to Text' | translate }}" matTooltip="{{ 'Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
+            </button>
         </p>
     </mat-card>   
 </div>
@@ -8040,7 +8048,7 @@
                 </button>
             </mat-menu>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button mat-icon-button [matMenuTriggerFor]="aksharamukhaselect" *ngIf="onlineService">
+            <button mat-icon-button mat-raised-button [matMenuTriggerFor]="aksharamukhaselect" *ngIf="onlineService">
                 <img src="https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-web-plugin/icon.png" aria-label="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" matTooltip="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" width="25px">
             </button>
             <mat-menu #aksharamukhaselect="matMenu">
@@ -8315,6 +8323,10 @@
                     <span (click)="selectTargetTransliteration($event, 'ZanabazarSquare')">{{localisedKeyboardLayouts['zanb'][2]}}</span>
                 </button>
             </mat-menu>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button mat-icon-button>
+                <mat-icon aria-label="{{ 'Convert Image to Text' | translate }}" matTooltip="{{ 'Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
+            </button>
         </p>
     </mat-card>      
 </div>

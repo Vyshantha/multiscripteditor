@@ -1,0 +1,41 @@
+✔ Compiled successfully.
+[MULTISCRIPTEDITOR] 2021-12-21T10:31:01.259Z Creating Token for a Session
+[MULTISCRIPTEDITOR] 2021-12-21T10:31:01.268Z Validating Token before providing Word Suggestions for  kn
+[MULTISCRIPTEDITOR] 2021-12-21T13:19:29.910Z Validating Token before providing Word Suggestions for  la
+[MULTISCRIPTEDITOR] 2021-12-21T13:19:32.113Z Validating Token before providing Word Suggestions for  la
+[MULTISCRIPTEDITOR] 2021-12-21T13:20:15.506Z Creating Token for a Session
+[MULTISCRIPTEDITOR] 2021-12-21T13:20:15.510Z Validating Token before providing Word Suggestions for  fi
+[MULTISCRIPTEDITOR] 2021-12-21T13:20:46.682Z Validating Token before providing Word Suggestions for  fi
+[MULTISCRIPTEDITOR] 2021-12-21T13:21:16.909Z Validating Token before providing Word Suggestions for  el
+[MULTISCRIPTEDITOR] 2021-12-21T13:21:21.970Z Creating Token for a Session
+[MULTISCRIPTEDITOR] 2021-12-21T13:21:21.977Z Validating Token before providing Word Suggestions for  el
+[MULTISCRIPTEDITOR] 2021-12-21T13:22:15.139Z Validating Token before providing Word Suggestions for  mon
+[MULTISCRIPTEDITOR] 2021-12-21T13:24:11.510Z Creating Token for a Session
+[MULTISCRIPTEDITOR] 2021-12-21T13:24:11.525Z Validating Token before providing Word Suggestions for  mon
+[MULTISCRIPTEDITOR] 2021-12-21T15:51:06.393Z Validating Token before providing Word Suggestions for  de
+[MULTISCRIPTEDITOR] 2021-12-21T15:52:25.073Z Creating Token for a Session
+[MULTISCRIPTEDITOR] 2021-12-21T15:52:25.075Z Validating Token before providing Word Suggestions for  kn
+[MULTISCRIPTEDITOR] 2021-12-21T15:52:33.541Z Creating Token for a Session
+[MULTISCRIPTEDITOR] 2021-12-21T15:52:33.543Z Validating Token before providing Word Suggestions for  zhcn
+[MULTISCRIPTEDITOR] 2021-12-21T15:52:48.085Z Creating Token for a Session
+[MULTISCRIPTEDITOR] 2021-12-23T15:45:56.425Z Request Collecting Initial Session Data  {
+  sessionCounter: 1,
+  browsersLocale: 'en-GB',
+  currentLocale: 'English',
+  overridenUILocale: 'None',
+  sessionURL: 'en',
+  sessionTheme: 'light',
+  cellSize: '56',
+  fontSize: '16.5',
+  qwertyUsed: 'false',
+  translateUsed: 'false',
+  deviceScreenSizeX: 1920,
+  deviceScreenSizeY: 1055,
+  browser: 'Mozilla Firefox',
+  token: '',
+  deviceType: 'MacIntel'
+}
+[32m[nodemon] restarting due to changes...[39m
+[32m[nodemon] starting `node ./routes/tasks.js`[39m
+[MULTISCRIPTEDITOR] Node.js Express HTTPS Server Listening on Port 5555
+[MULTISCRIPTEDITOR] 2021-12-23T15:46:14.048Z Validating Token before providing Word Suggestions for  el

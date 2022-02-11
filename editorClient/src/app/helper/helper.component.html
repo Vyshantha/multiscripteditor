@@ -1,4 +1,4 @@
-<div *ngIf="isMobile && !isTablet && !helpOrPrivacy" class="mat-typography" dir="auto">
+<div *ngIf="isMobile && !isTablet && !helpOrPrivacy && !uploadDialog" class="mat-typography" dir="auto">
   <h3 style="height: 25px;"><div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}">{{ 'Every Writers Choice' | translate }}</div><div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon style="font-size: 12px;" aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h3>
   <mat-accordion>
     <mat-expansion-panel>
@@ -14,7 +14,7 @@
         {{ 'What data is sent to store on server' | translate }} <br/> 
         {{ 'User Session counter' | translate }} | {{ 'Browser Locale & Type' | translate }} | {{ 'Languages used for Interface' | translate }} | {{ 'Keyboard Selected or URL' | translate }} | {{ 'Type & Size of Device' | translate }} | {{ 'Location of Internet Protocol' | translate }} | {{ 'Theme & Type of Keyboard' | translate }} <br/>
       <br/>{{ 'How to check data being sent' | translate }} <br/> 
-        {{ 'See that Information by Inspection' | translate }} ({{ 'Developer Options of Browser' | translate }}) > {{ 'Network' | translate }} ({{ 'Tab' | translate }}) > {{ 'Requests' | translate }} {{ 'to Multi-Script-Server' | translate }}.</p>
+        {{ 'See that Information by Inspection' | translate }} ({{ 'Developer Options of Browser' | translate }}) > {{ 'Network' | translate }} ({{ 'Tab' | translate }}) > {{ 'Requests' | translate }} : <b>https://{{hostname}}/v1/multiscripteditor</b>.</p>
     </mat-expansion-panel>
   </mat-accordion>
   <mat-accordion>
@@ -211,7 +211,7 @@
   <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
 </div>
 
-<div *ngIf="isMobile && !isTablet && helpOrPrivacy" class="mat-typography" dir="auto">
+<div *ngIf="isMobile && !isTablet && helpOrPrivacy && !uploadDialog" class="mat-typography" dir="auto">
   <h3 style="height: 25px;"><div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} </div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon style="font-size: 14px;" aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h3>
   <mat-card style="font-size: smaller;">
     <span>{{ 'This disconnects interface after loading and no data is sent to save nor services are used' | translate }}</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="offlineOnly()" [(ngModel)]="offlineUsage"></mat-slide-toggle></span>
@@ -220,7 +220,7 @@
     <br/><br/>
     <span>{{ 'Send Data At Initial Load' | translate }} :</span>  <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('initialData')" [(ngModel)]="initialDataSend"></mat-slide-toggle></span>
     <br/><br/>
-    <span>{{ 'Share non Personal Information while Typing Content in Editor' | translate }} <a href="https://{{hostname}}:{{port}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a> :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('shareWords')" [(ngModel)]="shareWordsFromContent"></mat-slide-toggle></span> 
+    <span>{{ 'Share non Personal Information while Typing Content in Editor' | translate }} <a href="https://{{hostname}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a> :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('shareWords')" [(ngModel)]="shareWordsFromContent"></mat-slide-toggle></span> 
     <br/><br/>
     <span>{{ 'Highlight Swara markers or Vowels in Keyboard' | translate }}</span> 
     <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('highlightKeys')" [(ngModel)]="highlightInKeyboard"></mat-slide-toggle></span><br/><br/>
@@ -244,7 +244,96 @@
   <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
 </div>
 
-<div *ngIf="!isMobile && isTablet && !helpOrPrivacy" class="mat-typography" dir="auto">
+<div *ngIf="isMobile && !isTablet && !helpOrPrivacy && uploadDialog" class="mat-typography" dir="auto">
+  <h1> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
+  <br/><br/>
+  <table>
+    <tbody>
+      <tr>
+        <td style="width:25%">
+          <span>{{ 'Choose Languages In Image' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </td>
+        <td style="width:10%">
+          <button mat-icon-button mat-raised-button [matMenuTriggerFor]="supportedWriting">
+            <mat-icon aria-label="{{ 'Supported Written Languages' | translate }}" matTooltip="{{ 'Supported Written Languages' | translate }}">language</mat-icon>
+          </button>
+          <mat-menu #supportedWriting="matMenu">
+              <button *ngFor="let language of supported_written_language" mat-menu-item>
+                  <span (click)="populateSupportedWrittenLanguage(language.easyocr, language.code)">{{language.easyocr}}</span>
+              </button>
+          </mat-menu>
+        </td>
+        <br/>
+        <td style="width:65%">
+          <mat-form-field appearance="fill" style="width:100%">
+            <mat-chip-list #chipList aria-label="{{ 'Language Selection' | translate }}">
+              <mat-chip *ngFor="let language of supportedWrittenLanguage" (removed)="removeLanguage(language)">
+                {{language.name}} {{language.code}}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input placeholder="{{ 'New Language Selection' | translate }}..."
+                    [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="addLanguage($event)">
+            </mat-chip-list>
+          </mat-form-field>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <span *ngIf="criteriaNotMet" style="color: brown; font-family: 'Times New Roman', Times, serif;">{{ 'Select Languages in Image' | translate }} {{ 'or' | translate }} {{ 'Choose either Method to Upload Image' | translate}}</span>
+  <br/><br/>
+  <span><b>{{ 'Choose either Method to Upload Image' | translate}}</b></span><br/><br/>
+  <table style="border: 1px solid beige; border-radius: 5px;">
+    <tbody>
+      <tr>
+        <td style="width:25%">
+          <span>{{ 'Choose From URL' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </td>
+        <td style="width:60%">
+          <input matInput type="text" #imageInputURL placeholder="Type or Paste URL" [(ngModel)]="value">
+        </td>
+        <td>
+          <mat-icon *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">close</mat-icon> &nbsp;&nbsp;
+          <button mat-raised-button (click)="convertImage2Text('url', imageInputURL)">
+            <mat-icon aria-label="{{ 'Done' | translate }}" matTooltip="{{ 'Done' | translate }}" style="cursor: pointer;">cloud_done</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br/><br/>
+  <table style="border: 1px solid beige; border-radius: 5px;">
+    <tbody>
+      <tr>
+        <td>
+          <span>{{ 'Choose From File System' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </td>
+        <td>
+            <input type="file" accept="image/*" #imageInputFile file-model="myFile" (change)="convertImage2Text('file', imageInputFile)"/>
+        </td>
+        <td>
+          <button mat-raised-button (click)="convertImage2Text('file', 'button')">
+            <mat-icon aria-label="{{ 'Upload' | translate }}" matTooltip="{{ 'Upload' | translate }}" style="cursor: pointer;">upload_file</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br/><br/>
+  <div mat-dialog-actions style="margin-bottom: 0px;">
+    <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon> {{ 'Close' | translate }}</button>
+    <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
+    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>
+    <mat-spinner *ngIf="runProgressIndicator" [color]="accent" [mode]="indeterminate"></mat-spinner>
+  </div>
+</div>
+
+<div *ngIf="!isMobile && isTablet && !helpOrPrivacy && !uploadDialog" class="mat-typography" dir="auto">
   <h1> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
   <br/><br/>
   <mat-accordion>
@@ -261,7 +350,7 @@
           {{ 'What data is sent to store on server' | translate }} <br/> 
           {{ 'User Session counter' | translate }} | {{ 'Browser Locale & Type' | translate }} | {{ 'Languages used for Interface' | translate }} | {{ 'Keyboard Selected or URL' | translate }} | {{ 'Type & Size of Device' | translate }} | {{ 'Location of Internet Protocol' | translate }} | {{ 'Theme & Type of Keyboard' | translate }} <br/>
         <br/>{{ 'How to check data being sent' | translate }} <br/> 
-          {{ 'See that Information by Inspection' | translate }} ({{ 'Developer Options of Browser' | translate }}) > {{ 'Network' | translate }} ({{ 'Tab' | translate }}) > {{ 'Requests' | translate }} {{ 'to Multi-Script-Server' | translate }}.</p>
+          {{ 'See that Information by Inspection' | translate }} ({{ 'Developer Options of Browser' | translate }}) > {{ 'Network' | translate }} ({{ 'Tab' | translate }}) > {{ 'Requests' | translate }} : <b>https://{{hostname}}/v1/multiscripteditor</b>.</p>
       </mat-expansion-panel>
   </mat-accordion>
   <mat-accordion>
@@ -438,7 +527,7 @@
   </div>
 </div>
 
-<div *ngIf="!isMobile && isTablet && helpOrPrivacy" class="mat-typography" dir="auto">
+<div *ngIf="!isMobile && isTablet && helpOrPrivacy && !uploadDialog" class="mat-typography" dir="auto">
   <h1> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
 
   <br/><br/>
@@ -453,7 +542,7 @@
     <br/><br/>
     <span>{{ 'Share non Personal Information while Typing Content in Editor' | translate }} ({{ 'If you wish to help us improve our suggestions' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('shareWords')" [(ngModel)]="shareWordsFromContent"></mat-slide-toggle> &nbsp;&nbsp;</span>
     <br/>
-    <span style="font-size: small;"><mat-icon style="font-size: 15px;">api</mat-icon> {{ 'All the Word Suggestions available for this Keyboard Script see ' | translate }} <a href="https://{{hostname}}:{{port}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a></span><br/><br/>
+    <span style="font-size: small;"><mat-icon style="font-size: 15px;">api</mat-icon> {{ 'All the Word Suggestions available for this Keyboard Script see ' | translate }} <a href="https://{{hostname}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a></span><br/><br/>
     <span>{{ 'Highlight Swara markers or Vowels in Keyboard' | translate }}</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('highlightKeys')" [(ngModel)]="highlightInKeyboard"></mat-slide-toggle> &nbsp;&nbsp;</span><br/><br/>
     <span>{{ 'Show (On) or Hide (Off) unused Letters in Script on Keyboard' | translate }}</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('unusedKeys')" [(ngModel)]="unusedKeys"></mat-slide-toggle> &nbsp;&nbsp;</span><br/><br/>
     <span>{{ 'Show Suggestions While Typing Content' | translate }} ({{ 'Words will be shown above the Keyboard' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('showSuggestions')" [(ngModel)]="suggestionForUser"></mat-slide-toggle> &nbsp;&nbsp;</span>
@@ -473,7 +562,96 @@
   </div>
 </div>
 
-<div *ngIf="!isMobile && !isTablet && !helpOrPrivacy" class="mat-typography" dir="auto">
+<div *ngIf="!isMobile && isTablet && !helpOrPrivacy && uploadDialog" class="mat-typography" dir="auto">
+  <h1> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
+  <br/><br/>
+  <table>
+    <tbody>
+      <tr>
+        <td style="width:25%">
+          <span>{{ 'Choose Languages In Image' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </td>
+        <td style="width:10%">
+          <button mat-icon-button mat-raised-button [matMenuTriggerFor]="supportedWriting">
+            <mat-icon aria-label="{{ 'Supported Written Languages' | translate }}" matTooltip="{{ 'Supported Written Languages' | translate }}">language</mat-icon>
+          </button>
+          <mat-menu #supportedWriting="matMenu">
+              <button *ngFor="let language of supported_written_language" mat-menu-item>
+                  <span (click)="populateSupportedWrittenLanguage(language.easyocr, language.code)">{{language.easyocr}}</span>
+              </button>
+          </mat-menu>
+        </td>
+        <br/>
+        <td style="width:65%">
+          <mat-form-field appearance="fill" style="width:100%">
+            <mat-chip-list #chipList aria-label="{{ 'Language Selection' | translate }}">
+              <mat-chip *ngFor="let language of supportedWrittenLanguage" (removed)="removeLanguage(language)">
+                {{language.name}} {{language.code}}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input placeholder="{{ 'New Language Selection' | translate }}..."
+                    [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="addLanguage($event)">
+            </mat-chip-list>
+          </mat-form-field>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <span *ngIf="criteriaNotMet" style="color: brown; font-family: 'Times New Roman', Times, serif;">{{ 'Select Languages in Image' | translate }} {{ 'or' | translate }} {{ 'Choose either Method to Upload Image' | translate}}</span>
+  <br/><br/>
+  <span><b>{{ 'Choose either Method to Upload Image' | translate}}</b></span><br/><br/>
+  <table style="border: 1px solid beige; border-radius: 5px;">
+    <tbody>
+      <tr>
+        <td style="width:25%">
+          <span>{{ 'Choose From URL' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </td>
+        <td style="width:60%">
+          <input matInput type="text" #imageInputURL placeholder="Type or Paste URL" [(ngModel)]="value">
+        </td>
+        <td>
+          <mat-icon *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">close</mat-icon> &nbsp;&nbsp;
+          <button mat-raised-button (click)="convertImage2Text('url', imageInputURL)">
+            <mat-icon aria-label="{{ 'Done' | translate }}" matTooltip="{{ 'Done' | translate }}" style="cursor: pointer;">cloud_done</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br/><br/>
+  <table style="border: 1px solid beige; border-radius: 5px;">
+    <tbody>
+      <tr>
+        <td>
+          <span>{{ 'Choose From File System' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </td>
+        <td>
+            <input type="file" accept="image/*" #imageInputFile file-model="myFile" (change)="convertImage2Text('file', imageInputFile)"/>
+        </td>
+        <td>
+          <button mat-raised-button (click)="convertImage2Text('file', 'button')">
+            <mat-icon aria-label="{{ 'Upload' | translate }}" matTooltip="{{ 'Upload' | translate }}" style="cursor: pointer;">upload_file</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br/><br/>
+  <div mat-dialog-actions style="margin-bottom: 0px;">
+    <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon> {{ 'Close' | translate }}</button>
+    <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
+    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>
+    <mat-spinner *ngIf="runProgressIndicator" [color]="accent" [mode]="indeterminate"></mat-spinner>
+  </div>
+</div>
+
+<div *ngIf="!isMobile && !isTablet && !helpOrPrivacy && !uploadDialog" class="mat-typography" dir="auto">
   <h1> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
   <br/><br/>
   <mat-accordion>
@@ -490,7 +668,7 @@
         {{ 'What data is sent to store on server' | translate }} <br/> 
         {{ 'User Session counter' | translate }} | {{ 'Browser Locale & Type' | translate }} | {{ 'Languages used for Interface' | translate }} | {{ 'Keyboard Selected or URL' | translate }} | {{ 'Type & Size of Device' | translate }} | {{ 'Location of Internet Protocol' | translate }} | {{ 'Theme & Type of Keyboard' | translate }} <br/>
       <br/>{{ 'How to check data being sent' | translate }} <br/> 
-        {{ 'See that Information by Inspection' | translate }} ({{ 'Developer Options of Browser' | translate }}) > {{ 'Network' | translate }} ({{ 'Tab' | translate }}) > {{ 'Requests' | translate }} {{ 'to Multi-Script-Server' | translate }}.</p>
+        {{ 'See that Information by Inspection' | translate }} ({{ 'Developer Options of Browser' | translate }}) > {{ 'Network' | translate }} ({{ 'Tab' | translate }}) > {{ 'Requests' | translate }} : <b>https://{{hostname}}/v1/multiscripteditor</b>.</p>
     </mat-expansion-panel>
   </mat-accordion>
   <mat-accordion>
@@ -666,7 +844,7 @@
   </div>
 </div>
 
-<div *ngIf="!isMobile && !isTablet && helpOrPrivacy" class="mat-typography" dir="auto">
+<div *ngIf="!isMobile && !isTablet && helpOrPrivacy && !uploadDialog" class="mat-typography" dir="auto">
   <h1> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
 
   <br/><br/>
@@ -681,7 +859,7 @@
     <br/><br/>
     <span>{{ 'Share non Personal Information while Typing Content in Editor' | translate }} ({{ 'If you wish to help us improve our suggestions' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('shareWords')" [(ngModel)]="shareWordsFromContent"></mat-slide-toggle> &nbsp;&nbsp;</span>
     <br/>
-    <span style="font-size: small;"><mat-icon style="font-size: 15px;">api</mat-icon> {{ 'All the Word Suggestions available for this Keyboard Script see ' | translate }} <a href="https://{{hostname}}:{{port}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a></span><br/><br/>
+    <span style="font-size: small;"><mat-icon style="font-size: 15px;">api</mat-icon> {{ 'All the Word Suggestions available for this Keyboard Script see ' | translate }} <a href="https://{{hostname}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a></span><br/><br/>
     <span>{{ 'Highlight Swara markers or Vowels in Keyboard' | translate }}</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('highlightKeys')" [(ngModel)]="highlightInKeyboard"></mat-slide-toggle> &nbsp;&nbsp;</span><br/><br/>
     <span>{{ 'Show (On) or Hide (Off) unused Letters in Script on Keyboard' | translate }}</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('unusedKeys')" [(ngModel)]="unusedKeys"></mat-slide-toggle> &nbsp;&nbsp;</span><br/><br/>
     <span>{{ 'Show Suggestions While Typing Content' | translate }} ({{ 'Words will be shown above the Keyboard' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('showSuggestions')" [(ngModel)]="suggestionForUser"></mat-slide-toggle> &nbsp;&nbsp;</span>
@@ -700,3 +878,93 @@
       <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>
   </div>
 </div>
+
+<div *ngIf="!isMobile && !isTablet && !helpOrPrivacy && uploadDialog" class="mat-typography" dir="auto">
+  <h1> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
+  <br/><br/>
+  <table>
+    <tbody>
+      <tr>
+        <td style="width:25%">
+          <span>{{ 'Choose Languages In Image' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </td>
+        <td style="width:10%">
+          <button mat-icon-button mat-raised-button [matMenuTriggerFor]="supportedWriting">
+            <mat-icon aria-label="{{ 'Supported Written Languages' | translate }}" matTooltip="{{ 'Supported Written Languages' | translate }}">language</mat-icon>
+          </button>
+          <mat-menu #supportedWriting="matMenu">
+              <button *ngFor="let language of supported_written_language" mat-menu-item>
+                  <span (click)="populateSupportedWrittenLanguage(language.easyocr, language.code)">{{language.easyocr}}</span>
+              </button>
+          </mat-menu>
+        </td>
+        <br/>
+        <td style="width:65%">
+          <mat-form-field appearance="fill" style="width:100%">
+            <mat-chip-list #chipList aria-label="{{ 'Language Selection' | translate }}">
+              <mat-chip *ngFor="let language of supportedWrittenLanguage" (removed)="removeLanguage(language)">
+                {{language.name}} {{language.code}}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input placeholder="{{ 'New Language Selection' | translate }}..."
+                    [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="addLanguage($event)">
+            </mat-chip-list>
+          </mat-form-field>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <span *ngIf="criteriaNotMet" style="color: brown; font-family: 'Times New Roman', Times, serif;">{{ 'Select Languages in Image' | translate }} {{ 'or' | translate }} {{ 'Choose either Method to Upload Image' | translate}}</span>
+  <br/><br/>
+  <span><b>{{ 'Choose either Method to Upload Image' | translate}}</b></span><br/><br/>
+  <table style="border: 1px solid beige; border-radius: 5px;">
+    <tbody>
+      <tr>
+        <td style="width:25%">
+          <span>{{ 'Choose From URL' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </td>
+        <td style="width:60%">
+          <input matInput type="text" #imageInputURL placeholder="Type or Paste URL" [(ngModel)]="value">
+        </td>
+        <td>
+          <mat-icon *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">close</mat-icon> &nbsp;&nbsp;
+          <button mat-raised-button (click)="convertImage2Text('url', imageInputURL)">
+            <mat-icon aria-label="{{ 'Done' | translate }}" matTooltip="{{ 'Done' | translate }}" style="cursor: pointer;">cloud_done</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br/><br/>
+  <table style="border: 1px solid beige; border-radius: 5px;">
+    <tbody>
+      <tr>
+        <td>
+          <span>{{ 'Choose From File System' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </td>
+        <td>
+            <input type="file" accept="image/*" #imageInputFile file-model="myFile" (change)="convertImage2Text('file', imageInputFile)"/>
+        </td>
+        <td>
+          <button mat-raised-button (click)="convertImage2Text('file', 'button')">
+            <mat-icon aria-label="{{ 'Upload' | translate }}" matTooltip="{{ 'Upload' | translate }}" style="cursor: pointer;">upload_file</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br/><br/>
+  <div mat-dialog-actions style="margin-bottom: 0px;">
+    <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon> {{ 'Close' | translate }}</button>
+    <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
+    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>
+    <mat-spinner *ngIf="runProgressIndicator" [color]="accent" [mode]="indeterminate"></mat-spinner>
+  </div>
+</div>
+

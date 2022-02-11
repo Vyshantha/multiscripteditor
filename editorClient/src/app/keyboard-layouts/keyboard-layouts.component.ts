@@ -2558,7 +2558,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       // The Angular Server isn't restarted and regular reloading of the Suggestion Words JSON file is done on Client-side
       if (ISO_Code == this.sessionManager.getFromSessionURL())
         self.populateSuggestionsForLanguage(ISO_Code);
-    }, 30000);
+    }, 3000);
   }
 
   loadSuggestionsFile(ISO_Code) {
@@ -3989,33 +3989,54 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   }
 
   helpForUser(type) {
-    localStorage.removeItem('multiIgnore')
-    const dialogProfile = this.helperDialog.open(this.HelperPopUp, {
-      width: (type == 'privacy') ? (
-        (!this.isMobile && !this.isTablet)?
-          '60%':
-          (
-            (!this.isMobile && this.isTablet)?
-              '85%':
-              '95%'
-          )
-      ):(
-        (!this.isMobile && !this.isTablet)?
-          '70%':
-          (
-            (!this.isMobile && this.isTablet)?
-              '85%':
-              '95%'
-          )
-        ),
-      data: {show: type}
-    });
+    if (type != 'upload') {
+      localStorage.removeItem('multiIgnore')
+      const dialogProfile = this.helperDialog.open(this.HelperPopUp, {
+        width: (type == 'privacy') ? (
+          (!this.isMobile && !this.isTablet)?
+            '60%':
+            (
+              (!this.isMobile && this.isTablet)?
+                '85%':
+                '95%'
+            )
+        ):(
+          (!this.isMobile && !this.isTablet)?
+            '70%':
+            (
+              (!this.isMobile && this.isTablet)?
+                '85%':
+                '95%'
+            )
+          ),
+        data: {show: type}
+      });
 
-    dialogProfile.afterClosed()
-      .subscribe(result => {
-        console.info('[MULTISCRIPTEDITOR] The dialog was closed ', result);
-      }
-    );
+      dialogProfile.afterClosed()
+        .subscribe(result => {
+          console.info('[MULTISCRIPTEDITOR] The dialog was closed ', result);
+        }
+      );
+    } else if (type == 'upload') {
+      const dialogProfile = this.helperDialog.open(this.HelperPopUp, {
+        width: (
+          (!this.isMobile && !this.isTablet)?
+            '60%':
+            (
+              (!this.isMobile && this.isTablet)?
+                '85%':
+                '95%'
+            )
+        ),
+        data: {show: type}
+      });
+
+      dialogProfile.afterClosed()
+        .subscribe(result => {
+          console.info('[MULTISCRIPTEDITOR] The dialog was closed ', result);
+        }
+      );
+    }
   }
 
   restoreDefaults() {

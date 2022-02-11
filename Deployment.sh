@@ -1,6 +1,7 @@
 #!/bin/sh
 
 ### Server-Deploy : Heroku
+### Remove/Comment out all SSL instances & NODE_TLS_REJECT_UNAUTHORIZED in tasks.js before deployment
 cd /Users/vyshanthasimha/Documents/Work_Related/workspace/MultiScriptEditor_server
 cp ./routes/environments/sva_config_prod.json ./routes/environments/sva_config.json
 cp ./routes/environments/sva_config_prod.properties ./routes/environments/sva_config.properties

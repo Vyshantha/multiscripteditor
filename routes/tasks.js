@@ -8,6 +8,7 @@ var fs = require('fs');
 var path = require('path');
 var PythonShell = require('python-shell');
 const { spawn } = require('child_process');
+var exec = require('child_process').exec;
 
 var PropertiesReader = require('properties-reader');
 var properties = new PropertiesReader(path.join(__dirname, `./environments/sva_config.properties`));
@@ -62,8 +63,8 @@ app.use(cors());
 appSSL.use(cors());
 
 // Body Parsing
-appSSL.use(bodyParser.json());
-appSSL.use(bodyParser.urlencoded({extended: true}));
+appSSL.use(bodyParser.json({limit: '50mb'}));
+appSSL.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
 appSSL.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", `https://${properties.get('client.app.hostname')}:${properties.get('client.angular.port')}`);
     res.header("Access-Control-Allow-Credentials", false);
@@ -84,8 +85,8 @@ app.use(
   })
 );
 
-app.use(express.static(path.join(__dirname + './../views')));
-app.set('views', path.join(__dirname + './../views'));
+app.use(express.static(path.join(__dirname + '/views')));
+app.set('views', path.join(__dirname + '/views'));
 app.set('view engine', 'html');
 
 app.use(function(req, res, next) {
@@ -97,15 +98,15 @@ app.use(function(req, res, next) {
 });
 
 router.get('/', function(req, res){
-    res.sendFile('favicon.ico', {root : __dirname + './../views'});
+    res.sendFile('favicon.ico', {root : __dirname + '/views'});
 });
 
 router.get('/fav', function(req, res){
-    res.sendFile('favicon.png', {root : __dirname + './../views'});
+    res.sendFile('favicon.png', {root : __dirname + '/views'});
 });
 
 router.get('/v1/multiscripteditor', function(req, res){
-    res.sendFile('index.html', {root : __dirname + './../views'});
+    res.sendFile('index.html', {root : __dirname + '/views'});
 });
 
 // Send Token for the current Session
@@ -465,7 +466,7 @@ router.put('/v1/multiscripteditor/sentenceParsing', function(req, res, next) {
     // Sentence parsing using Python NLP - Stanza for determining parts of a sentence in any language
     const dateForLogging = new Date().toISOString()
     console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} NLP of a Statement in a Language `, req.body);
-    fs.stat(path.join(__dirname, './../nlpOnNode/nlpNode.py'), function(err) {
+    fs.stat(path.join(__dirname, './nlpOnNode/nlpNode.py'), function(err) {
         if(err == null) {
             if (ValidateToken(req).iss === properties.get('token.self.bearer')) {
                 if (req.body && req.body.sentence && req.body.sentence != "") {
@@ -481,7 +482,7 @@ router.put('/v1/multiscripteditor/sentenceParsing', function(req, res, next) {
                         language = language.split("(")[0];
                     }
 
-                    const nlpForNode = spawn('python3', [path.join(__dirname, './../nlpOnNode/nlpNode.py'), locale, language, sentence, sentenceMarker]);
+                    const nlpForNode = spawn('python3', [path.join(__dirname, './nlpOnNode/nlpNode.py'), locale, language, sentence, sentenceMarker]);
 
                     nlpForNode.stdout.on('data', (data) => {
                         // Once the NLP is completed from Python side, then ensure to complete this copy process to synchronise data for Client-side
@@ -585,6 +586,92 @@ router.put('/v1/multiscripteditor/sentenceParsing', function(req, res, next) {
     });
 });
 
+// Converting an Image To Text and Returning back
+router.post('/v1/multiscripteditor/convertImage2Text', function(req, res, next) {
+    const dateForLogging = new Date().toISOString();
+    console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} Converting an Image To Text`);
+    fs.stat(path.join(__dirname, './image2text/convertimage2text.py'), function(err) {
+        if(err == null) {
+            if (ValidateToken(req).iss === properties.get('token.self.bearer')) {
+                if (req.body && req.body.type && req.body.languages && req.body.dataImageOrURL) {
+                    let typeOfUpload = req.body.type;
+                    let languagesInImage = req.body.languages;
+                    let imageData = req.body.dataImageOrURL;
+                    const fileTimeStamp = dateForLogging.replace(/:/g,"-");
+                    console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} Converting an Image To Text `, typeOfUpload, languagesInImage)
+                    if (typeOfUpload == "url") {
+                        var codesForEasyOCR = [];
+                        for(let language in languagesInImage) {
+                            codesForEasyOCR.push(languagesInImage[language]["code"]);
+                        }
+                        console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} Converting an Image To Text URL `, imageData, codesForEasyOCR.toString());
+                        exec('curl -o ' + path.join(__dirname, `./image2text/image_${fileTimeStamp}.png`) + ' ' + imageData, function (error, stdout, stderr) {
+                            console.log('stdout: ' + stdout);
+                            console.log('stderr: ' + stderr);
+                            if (error !== null) {
+                                console.log('exec error: ' + error);
+                            } else {
+                                const image2TextOnNode = spawn('python3', [path.join(__dirname, './image2text/convertimage2text.py'), typeOfUpload, codesForEasyOCR.toString(), path.join(__dirname, `./image2text/image_${fileTimeStamp}.png`)]);
+
+                                image2TextOnNode.stdout.on('data', (data) => {
+                                    res.status(200);
+                                    res.send(data);
+                                });
+
+                                image2TextOnNode.stderr.on('data', (data) => {
+                                    console.info(`spawn stderr: ${data}`);
+                                });
+
+                                image2TextOnNode.on('close', (code) => {
+                                    console.info(`[MULTISCRIPTEDITOR] Spawn child process exited with code ${code}`);
+                                    fs.stat(path.join(__dirname, `./image2text/image_${fileTimeStamp}.png`), function(err) {
+                                        if (err == null)
+                                            fs.unlinkSync(path.join(__dirname, `./image2text/image_${fileTimeStamp}.png`));
+                                    });
+                                });
+                            }
+                        });
+                    } else if (typeOfUpload == "file") {
+                        console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} Converting an Image To Text File `);
+                        var base64ImageData = imageData.replace(/^data:image\/png;base64,/, "");
+                        require("fs").writeFile(path.join(__dirname, `./image2text/image_${dateForLogging}.png`), base64ImageData, 'base64', function(err) {
+                            if (err == null) {
+                                const image2TextOnNode = spawn('python3', [path.join(__dirname, './image2text/convertimage2text.py'), typeOfUpload, codesForEasyOCR.toString(), path.join(__dirname, `./image2text/image_${fileTimeStamp}.png`)]);
+
+                                image2TextOnNode.stdout.on('data', (data) => {
+                                    res.status(200);
+                                    res.send(data);
+                                });
+
+                                image2TextOnNode.stderr.on('data', (data) => {
+                                    console.info(`spawn stderr: ${data}`);
+                                });
+
+                                image2TextOnNode.on('close', (code) => {
+                                    console.info(`[MULTISCRIPTEDITOR] Spawn child process exited with code ${code}`);
+                                    fs.stat(path.join(__dirname, `./image2text/image_${fileTimeStamp}.png`), function(err) {
+                                        if (err == null)
+                                            fs.unlinkSync(path.join(__dirname, `./image2text/image_${fileTimeStamp}.png`));
+                                    });
+                                });
+                            } else {
+                                console.log(err);
+                            }
+                        });
+                    }
+                } else {
+                    res.status(300);
+                }
+            } else {
+                res.status(400);
+            }
+        } else if (err.code === 'ENOENT') {
+            // file does not exist
+            res.status(500);
+        }
+    });
+});
+
 // Backup process for Session-Info JSON file : Maximum 3MB
 fs.stat(path.join(__dirname, './session-info', 'session-info.json'), (err, stats) => {
     if (err) {
@@ -608,20 +695,20 @@ fs.stat(path.join(__dirname, './session-info', 'session-info.json'), (err, stats
 });
 
 // Backup process for MultiScriptEditor Log file : Maximum 5MB
-fs.stat(path.join(__dirname, './../logs', 'MultiScriptEditor.log'), (err, stats) => {
+fs.stat(path.join(__dirname, './logs', 'MultiScriptEditor.log'), (err, stats) => {
     if (err) {
         console.info(`[MULTISCRIPTEDITOR] File MultiScriptEditor.log doesn't exist`);
     } else {
         var fileSizeInBytes = stats.size;
         var fileSizeInMegabytes = fileSizeInBytes / (1024*1024);
-        var fileContents = fs.readFileSync(path.join(__dirname, './../logs', 'MultiScriptEditor.log'));
+        var fileContents = fs.readFileSync(path.join(__dirname, './logs', 'MultiScriptEditor.log'));
         if (fileSizeInMegabytes >= 5000) {
             // Backup existing file with timestamp of "now"
             let now = new Date().toISOString();
             now = now.replace(":", "-").replace(":", "-").replace(".", "_");
-            fs.copyFileSync(path.join(__dirname, './../logs', 'MultiScriptEditor.log'), path.join(__dirname, './../logs', 'MultiScriptEditor' + now + '.log'));
+            fs.copyFileSync(path.join(__dirname, './logs', 'MultiScriptEditor.log'), path.join(__dirname, './logs', 'MultiScriptEditor' + now + '.log'));
             // Clear the existing file
-            fs.writeFile(path.join(__dirname, './../logs', 'MultiScriptEditor.log'), `[MULTISCRIPTEDITOR] Log file has been refreshed at ${now}`, (error) => {
+            fs.writeFile(path.join(__dirname, './logs', 'MultiScriptEditor.log'), `[MULTISCRIPTEDITOR] Log file has been refreshed at ${now}`, (error) => {
                 if (error)
                     console.error("[MULTISCRIPTEDITOR] Issue with File ", error);
             });
