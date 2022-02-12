@@ -1,6 +1,0 @@
-dispatch:
-  - url: "worldscriptsexplorer.info/"
-    service: default
-
-  - url: "www.worldscriptsexplorer.info/"
-    service: default
