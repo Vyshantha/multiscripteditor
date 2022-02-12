@@ -16,11 +16,11 @@ var properties = new PropertiesReader(path.join(__dirname, `./environments/sva_c
 const SignedToken = require('./jwt_utils').signedToken;
 const ValidateToken = require('./jwt_utils').validateToken;
 
-var portSSL = process.env.PORT || 5555;
+//var portSSL = process.env.PORT || 5555;
 var port = process.env.PORT || 5000;
 
 var app = express();
-var appSSL = express();
+//var appSSL = express();
 var router = express.Router();
 
 var keyboardsDB = JSON.parse(fs.readFileSync(path.join(__dirname, './keyboard-layouts/keysboards-layouts.json')));
@@ -60,12 +60,12 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 // Cross-Origin Resource Sharing being utilised
 app.use(cors());
-appSSL.use(cors());
+//appSSL.use(cors());
 
 // Body Parsing
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
-appSSL.use(bodyParser.json({limit: '50mb'}));
+/*appSSL.use(bodyParser.json({limit: '50mb'}));
 appSSL.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
 
 appSSL.use(function(req, res, next) {
@@ -74,10 +74,10 @@ appSSL.use(function(req, res, next) {
     res.header("Access-Control-Allow-Methods", "GET, PUT, POST, OPTIONS");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept");
     next();
-});
+});*/
 
 // Setting Content-Security-Policy
-app.use(helmet());
+/*app.use(helmet());
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
@@ -86,14 +86,14 @@ app.use(
       "style-src": null,
     },
   })
-);
+);*/
 
 app.use(express.static(path.join(__dirname + '/views')));
 app.set('views', path.join(__dirname + '/views'));
 app.set('view engine', 'html');
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", `https://${properties.get('client.app.hostname')}:${properties.get('client.angular.port')}`);
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Credentials", false);
     res.header("Access-Control-Allow-Methods", "GET, PUT, POST, OPTIONS");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept");
@@ -729,16 +729,16 @@ var server_config = {
 };
 
 // create the HTTPS server on port 5555
-var https_server = https.createServer(server_config, appSSL).listen(portSSL, function(err){
+/*var https_server = https.createServer(server_config, appSSL).listen(portSSL, function(err){
     console.info(`[MULTISCRIPTEDITOR] Node.js Express HTTPS Server Listening on Port ${portSSL}`);
-});
-
-/*var http_server = http.createServer(app).listen(port, function(err){
-    console.info(`[MULTISCRIPTEDITOR] Node.js Express HTTP Server Listening on Port ${port}`);
 });*/
+
+var http_server = http.createServer(app).listen(port, function(err){
+    console.info(`[MULTISCRIPTEDITOR] Node.js Express HTTP Server Listening on Port ${port}`);
+});
 
 // Fix for this problem : MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 exit listeners added. Use emitter.setMaxListeners() to increase limit
 process.setMaxListeners(0);
 
 app.use('/', router);
-appSSL.use('/', router);
+//appSSL.use('/', router);

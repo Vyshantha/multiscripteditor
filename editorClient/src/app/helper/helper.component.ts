@@ -561,13 +561,15 @@ export class HelperComponent implements OnInit, AfterViewInit {
           this.runProgressIndicator = false;
         }, (error) => {
           let convertedText = error.error.text;
-          convertedText = convertedText.replace(/\\"/g,"'").match(/'(.*?)'/g);
-          for(let i = 0; i < convertedText.length ; i++) {
-            if (convertedText[i].indexOf("', 0.") == -1 && convertedText[i].indexOf("([[") == -1 && convertedText[i].indexOf("]]") == -1) {
-              this.sessionManager.setCharFromKeyboard(convertedText[i].replace(/'/g, "").replace(/\\"/g, "").replace(/\\'/g, "") + " ");
+          if (convertedText && convertedText != null) {
+            convertedText = convertedText.replace(/\\"/g,"'").match(/'(.*?)'/g);
+            for(let i = 0; i < convertedText.length ; i++) {
+              if (convertedText[i].indexOf("', 0.") == -1 && convertedText[i].indexOf("([[") == -1 && convertedText[i].indexOf("]]") == -1) {
+                this.sessionManager.setCharFromKeyboard(convertedText[i].replace(/'/g, "").replace(/\\"/g, "").replace(/\\'/g, "") + " ");
+              }
             }
+            console.info("[MUlTISCRIPTEDITOR] Convert Image To Text URL ", convertedText);
           }
-          console.info("[MUlTISCRIPTEDITOR] Convert Image To Text URL ", convertedText);
           this.runProgressIndicator = false;
         });
       } else {
@@ -582,13 +584,15 @@ export class HelperComponent implements OnInit, AfterViewInit {
           this.runProgressIndicator = false;
         }, (error) => {
           let convertedText = error.error.text;
-          convertedText = convertedText.replace(/\\"/g,"'").match(/'(.*?)'/g);
-          for(let i = 0; i < convertedText.length ; i++) {
-            if (convertedText[i].indexOf("', 0.") == -1 && convertedText[i].indexOf("([[") == -1 && convertedText[i].indexOf("]]") == -1) {
-              this.sessionManager.setCharFromKeyboard(convertedText[i].replace(/'/g, "").replace(/\\"/g, "").replace(/\\'/g, "") + " ");
+          if (convertedText && convertedText != null) {
+            convertedText = convertedText.replace(/\\"/g,"'").match(/'(.*?)'/g);
+            for(let i = 0; i < convertedText.length ; i++) {
+              if (convertedText[i].indexOf("', 0.") == -1 && convertedText[i].indexOf("([[") == -1 && convertedText[i].indexOf("]]") == -1) {
+                this.sessionManager.setCharFromKeyboard(convertedText[i].replace(/'/g, "").replace(/\\"/g, "").replace(/\\'/g, "") + " ");
+              }
             }
+            console.info("[MUlTISCRIPTEDITOR] Convert Image To Text URL ", convertedText);
           }
-          console.info("[MUlTISCRIPTEDITOR] Convert Image To Text URL ", convertedText);
           this.runProgressIndicator = false;
         });
       } else if (imageInput && imageInput.files){
@@ -603,13 +607,15 @@ export class HelperComponent implements OnInit, AfterViewInit {
               this.runProgressIndicator = false;
             }, (error) => {
               let convertedText = error.error.text;
-              convertedText = convertedText.replace(/\\"/g,"'").match(/'(.*?)'/g);
-              for(let i = 0; i < convertedText.length ; i++) {
-                if (convertedText[i].indexOf("', 0.") == -1 && convertedText[i].indexOf("([[") == -1 && convertedText[i].indexOf("]]") == -1) {
-                  this.sessionManager.setCharFromKeyboard(convertedText[i].replace(/'/g, "").replace(/\\"/g, "").replace(/\\'/g, "") + " ");
+              if (convertedText && convertedText != null) {
+                convertedText = convertedText.replace(/\\"/g,"'").match(/'(.*?)'/g);
+                for(let i = 0; i < convertedText.length ; i++) {
+                  if (convertedText[i].indexOf("', 0.") == -1 && convertedText[i].indexOf("([[") == -1 && convertedText[i].indexOf("]]") == -1) {
+                    this.sessionManager.setCharFromKeyboard(convertedText[i].replace(/'/g, "").replace(/\\"/g, "").replace(/\\'/g, "") + " ");
+                  }
                 }
+                console.info("[MUlTISCRIPTEDITOR] Convert Image To Text URL ", convertedText);
               }
-              console.info("[MUlTISCRIPTEDITOR] Convert Image To Text URL ", convertedText);
               this.runProgressIndicator = false;
             });
           } else {
