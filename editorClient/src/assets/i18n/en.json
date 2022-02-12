@@ -254,5 +254,15 @@
     "Undo Action": "Undo Action", 
     "Selected Text Copied": "Selected Text Copied", 
     "Open New Document": "Open New Document", 
-    "Paste Selelected Text": "Paste Selelected Text"
+    "Paste Selelected Text": "Paste Selelected Text",
+    "Choose Languages In Image": "Choose Languages In Image",
+    "Supported Written Languages": "Supported Written Languages",
+    "Language Selection": "Language Selection",
+    "New Language Selection": "New Language Selection",
+    "Select Languages in Image": "Select Languages in Image",
+    "Choose either Method to Upload Image": "Choose either Method to Upload Image",
+    "Choose From URL": "Choose From URL",
+    "Type or Paste URL": "Type or Paste URL",
+    "Choose From File System": "Choose From File System",
+    "Upload": "Upload"
 }

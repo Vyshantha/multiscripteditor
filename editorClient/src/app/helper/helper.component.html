@@ -311,7 +311,7 @@
       </tr>
       <tr>
         <td style="width:100%" colspan="2">
-          <input matInput type="text" #imageInputURL placeholder="Type or Paste URL" [(ngModel)]="value"> 
+          <input matInput type="text" #imageInputURL placeholder="{{ 'Type or Paste URL' | translate }}" [(ngModel)]="value"> 
           <mat-icon *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">close</mat-icon>
         </td>
       </tr>
@@ -637,7 +637,7 @@
           <span>{{ 'Choose From URL' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
         </td>
         <td style="width:50%">
-          <input matInput type="text" #imageInputURL placeholder="Type or Paste URL" [(ngModel)]="value">
+          <input matInput type="text" #imageInputURL placeholder="{{ 'Type or Paste URL' | translate }}" [(ngModel)]="value">
         </td>
         <td>
           <mat-icon *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">close</mat-icon> &nbsp;&nbsp;
@@ -954,7 +954,7 @@
           <span>{{ 'Choose From URL' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
         </td>
         <td style="width:60%">
-          <input matInput type="text" #imageInputURL placeholder="Type or Paste URL" [(ngModel)]="value">
+          <input matInput type="text" #imageInputURL placeholder="{{ 'Type or Paste URL' | translate }}" [(ngModel)]="value">
         </td>
         <td>
           <mat-icon *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">close</mat-icon> &nbsp;&nbsp;
