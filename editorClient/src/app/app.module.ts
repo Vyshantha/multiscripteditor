@@ -85,6 +85,7 @@ export function setupTranslateFactory(service: TranslateService): Function {
     MatBadgeModule,
     MatButtonModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     MatIconModule,
     MatChipsModule,
     MatCardModule,

@@ -27,11 +27,11 @@
 
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p style="height: 100px;overflow-y: scroll;">
+        <p style="height: 150px;overflow-y: scroll;">
           <iframe id="githubPages"
             title="{{ 'Github' | translate }}"
             width="99%"
-            height="100px"
+            height="150px"
             [src]="cleanURL(githubPagesURL|safe)"
             scrolling="yes">
           </iframe> 
@@ -254,13 +254,12 @@
   <table>
     <tbody>
       <tr>
-        <td style="width:25%">
+        <td colspan="2">
           <span>{{ 'Choose Languages In Image' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
         </td>
       </tr>
-      <br/>
       <tr>
-        <td style="width:10%">
+        <td>
           <button mat-icon-button mat-raised-button [matMenuTriggerFor]="supportedWriting">
             <mat-icon aria-label="{{ 'Supported Written Languages' | translate }}" matTooltip="{{ 'Supported Written Languages' | translate }}">language</mat-icon>
           </button>
@@ -269,11 +268,19 @@
                   <span (click)="populateSupportedWrittenLanguage(language.easyocr, language.code)">{{language.easyocr}}</span>
               </button>
           </mat-menu>
+          &nbsp;&nbsp;&nbsp;&nbsp; 
+        </td>
+        <td>
+          <mat-spinner *ngIf="runProgressIndicator" diameter="30" [mode]="'indeterminate'" color="accent"></mat-spinner>
         </td>
       </tr>
-      <br/>
       <tr>
-        <td style="width:65%">
+        <td colspan="2">
+          <span *ngIf="criteriaNotMet" style="color: brown; font-family: 'Times New Roman', Times, serif;">{{ 'Select Languages in Image' | translate }} {{ 'or' | translate }} {{ 'Choose either Method to Upload Image' | translate}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
           <mat-form-field appearance="fill" style="width:100%">
             <mat-chip-list #chipList aria-label="{{ 'Language Selection' | translate }}">
               <mat-chip *ngFor="let language of supportedWrittenLanguage" (removed)="removeLanguage(language)">
@@ -293,7 +300,6 @@
       </tr>
     </tbody>
   </table>
-  <span *ngIf="criteriaNotMet" style="color: brown; font-family: 'Times New Roman', Times, serif;">{{ 'Select Languages in Image' | translate }} {{ 'or' | translate }} {{ 'Choose either Method to Upload Image' | translate}}</span>
   <br/>
   <span><b>{{ 'Choose either Method to Upload Image' | translate}}</b></span><br/><br/>
   <table style="border: 1px solid beige; border-radius: 5px;width:100%;">
@@ -303,9 +309,8 @@
           <span>{{ 'Choose From URL' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
         </td>
       </tr>
-      <br/>
       <tr>
-        <td style="width:100%">
+        <td style="width:100%" colspan="2">
           <input matInput type="text" #imageInputURL placeholder="Type or Paste URL" [(ngModel)]="value"> 
           <mat-icon *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">close</mat-icon>
         </td>
@@ -350,7 +355,6 @@
     <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></button>
     <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon></button>
     <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
-    <mat-spinner *ngIf="runProgressIndicator" [color]="accent" [mode]="indeterminate"></mat-spinner>
   </div>
 </div>
 
@@ -384,11 +388,11 @@
               <div style="font-size: 10px;">{{ 'Know what and how this SaaS offering can be used' | translate }}</div>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p style="height: 150px;overflow-y: scroll;">
+        <p style="height: 200px;overflow-y: scroll;">
           <iframe id="githubPages"
             title="{{ 'Github' | translate }}"
             width="99%"
-            height="150px"
+            height="200px"
             [src]="cleanURL(githubPagesURL|safe)"
             scrolling="yes">
           </iframe> 
@@ -667,8 +671,8 @@
     <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
     <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
     <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
-    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
-    <mat-spinner *ngIf="runProgressIndicator" [color]="accent" [mode]="indeterminate"></mat-spinner>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>&nbsp;&nbsp;&nbsp;&nbsp; 
+    <mat-spinner *ngIf="runProgressIndicator" diameter="30" [mode]="'indeterminate'" color="accent"></mat-spinner>
   </div>
 </div>
 
@@ -702,11 +706,11 @@
               <div style="font-size: 12px;">{{ 'Know what and how this SaaS offering can be used' | translate }}</div>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p style="height: 200px;overflow-y: scroll;">
+        <p style="height: 250px;overflow-y: scroll;">
           <iframe id="githubPages"
             title="{{ 'Github' | translate }}"
             width="99%"
-            height="200px"
+            height="250px"
             [src]="cleanURL(githubPagesURL|safe)"
             scrolling="yes">
           </iframe> 
@@ -984,8 +988,8 @@
     <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon> {{ 'Close' | translate }}</button>
     <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
     <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
-    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>
-    <mat-spinner *ngIf="runProgressIndicator" [color]="accent" [mode]="indeterminate"></mat-spinner>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>&nbsp;&nbsp;&nbsp;&nbsp; 
+    <mat-spinner *ngIf="runProgressIndicator" diameter="30" [mode]="'indeterminate'" color="accent"></mat-spinner>
   </div>
 </div>
 

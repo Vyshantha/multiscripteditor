@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {startWith, map} from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import * as SVAConfig from '../../assets/environments/sva_config.json';
@@ -425,6 +426,7 @@ export class HelperComponent implements OnInit, AfterViewInit {
     if (this.helpOrPrivacy) {
       this.sessionManager.setCountSuggestions(this.preventInputFieldForAttacks(this.suggestionsForDevice.nativeElement.value));
     }
+    this.supportedWrittenLanguage = [];
     this.dialogRef.close();
   }
 
@@ -552,7 +554,7 @@ export class HelperComponent implements OnInit, AfterViewInit {
   convertImage2Text(type, imageInput: any) {
     if (type == 'url' && imageInput) {
       this.criteriaNotMet = false;
-      if (this.supportedWrittenLanguage.length > 0) {
+      if (this.supportedWrittenLanguage.length > 0 && imageInput.value != "") {
         this.runProgressIndicator = true;
         this.sessionManager.image2TextConvert(type, this.supportedWrittenLanguage, imageInput.value).subscribe((result: any) => {
           console.info("[MUlTISCRIPTEDITOR] Convert Image To Text URL ", result);
@@ -615,6 +617,8 @@ export class HelperComponent implements OnInit, AfterViewInit {
           }
         });
         reader.readAsDataURL(file);
+      } else {
+        this.criteriaNotMet = true;
       }
     } else
       this.criteriaNotMet = true;

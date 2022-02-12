@@ -2465,40 +2465,6 @@
             <!--input [(colorPicker)]="color" [style.background]="color"/-->&nbsp;&nbsp;
             <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>
             <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-            <!--<mat-icon aria-hidden="false" aria-label="{{ 'Customise Keyboard' | translate }}" alt="{{ 'Customise Keyboard' | translate }}" matTooltip="{{ 'Customise Keyboard' | translate }}" style="cursor: pointer;" (click)="customiseMyKeyboardLayout()">settings_suggest</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-            <!--span *ngIf="(isQwerty || isTransliterate)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <mat-icon aria-label="{{ 'Superscript Off' | translate }}" *ngIf="allowSuperScript && (isQwerty || isTransliterate)" alt="{{ 'Superscript Off' | translate }}" style="cursor: pointer;" (click)="allowingSuperPositionKeys()" matTooltip="{{ 'Superscript Off' | translate }}"> font_download_off </mat-icon>
-            <mat-icon aria-label="{{ 'Superscript On' | translate }}" *ngIf="!allowSuperScript && (isQwerty || isTransliterate)" alt="{{ 'Superscript On' | translate }}" style="cursor: pointer;" (click)="allowingSuperPositionKeys()" matTooltip="{{ 'Superscript On' | translate }}"> font_download </mat-icon>
-            <span *ngIf="(isQwerty || isTransliterate)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span-->
-            <br/>
-            <mat-icon aria-label="{{ 'Modify Font Size' | translate }}" alt="{{ 'Modify Font Size' | translate }}" matTooltip="{{ 'Modify Font Size' | translate }}">format_size</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="fontSize" #fonts tickInterval="1" min="5" max="50" value="{{defaultFontSize}}"></mat-slider>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br/>
-            <mat-icon aria-label="{{ 'Modify Cell Size' | translate }}" alt="{{ 'Modify Cell Size' | translate }}" matTooltip="{{ 'Modify Cell Size' | translate }}">aspect_ratio</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="cellSize" #cells tickInterval="1" min="10" max="100" value="{{defaultCellSize}}"></mat-slider>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br/>
-            <span *ngIf="enableRotateKeyboard && layoutRotationPossible()" [ngStyle]="{'width': enableRotateKeyboard == true ? '33%' : '33%'}">
-                <mat-icon aria-hidden="false" *ngIf="enableRotateKeyboard && !(isQwerty || isTransliterate)" (click)="orientKeyboard()" matTooltip="{{ 'Rotate Keys' | translate }}" aria-label="{{ 'Rotate Keys' | translate }}" alt="{{ 'Rotate Keys' | translate }}" style="cursor: pointer;">loop</mat-icon> 
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </span> 
-            <mat-icon aria-hidden="false" *ngIf="(readingDir == 'subdirectory_arrow_right' || readingDir == 'subdirectory_arrow_left') && !(isQwerty || isTransliterate)" (click)="typeVertically()" matTooltip="{{ 'Type Vertically' | translate }}" aria-label="{{ 'Type Vertically' | translate }}" alt="{{ 'Type Vertically' | translate }}" style="cursor: pointer;">text_rotation_down</mat-icon> 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span *ngIf="bidiLetters" [ngStyle]="{'width': bidiLetters == true ? '33%' : '33%'}">
-                <mat-icon aria-hidden="false" aria-label="{{ 'Boustrophedon Writing ' | translate }}{{ 'Off' | translate }}" alt="{{ 'Boustrophedon Writing ' | translate }}{{ 'Off' | translate }}" style="cursor: pointer;" matTooltip="{{ 'Boustrophedon Writing ' | translate }}{{ 'Off' | translate }}" (click)="switchTypingDirection('ltr')">switch_left</mat-icon> 
-                <mat-icon aria-hidden="false" aria-label="{{ 'Switch Keys Direction' | translate }}" alt="{{ 'Switch Keys Direction' | translate }}" (click)="renderBiDi()"  matTooltip="{{ 'Switch Keys Direction' | translate }}" style="cursor: pointer;">swap_horiz</mat-icon>
-                <mat-icon aria-hidden="false"  aria-label="{{ 'Boustrophedon Writing ' | translate }}{{ 'On' | translate }}" alt="{{ 'Boustrophedon Writing ' | translate }}{{ 'On' | translate }}" style="cursor: pointer;" matTooltip="{{ 'Boustrophedon Writing ' | translate }}{{ 'On' | translate }}" (click)="switchTypingDirection('rtl')">switch_right</mat-icon>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </span>       
-            <span *ngIf="!isQwerty && !isTransliterate && unicode5AndHigher">
-                <mat-icon aria-label="{{ 'Alternative for Text' | translate }}" alt="{{ 'Alternative for Text' | translate }}" matTooltip="{{ 'Alternative for Text' | translate }}">format_strikethrough</mat-icon> &nbsp;&nbsp; 
-                <mat-slide-toggle (click)="toggleGlyphShow()"></mat-slide-toggle> &nbsp;&nbsp; 
-                <mat-icon aria-label="{{ 'Alternative for Image' | translate }}" alt="{{ 'Alternative for Image' | translate }}" matTooltip="{{ 'Alternative for Image' | translate }}">image_not_supported</mat-icon>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-            </span>
-            <br/>
-            <mat-icon aria-label="{{ 'Map the Keys on your Keyboard to the Soft Keyboard' | translate }} " *ngIf="!mappingKeysToSoft && (isQwerty || isTransliterate)" alt="{{ 'Map the Keys on your Keyboard to the Soft Keyboard' | translate }} " style="cursor: pointer;" (click)="usersChoice()" matTooltip="{{ 'Map the Keys on your Keyboard to the Soft Keyboard' | translate }} ">link</mat-icon>
-            <mat-icon aria-label="{{ 'Do not Map the Keys on your Keyboard to the Soft Keyboard' | translate }} " *ngIf="mappingKeysToSoft && (isQwerty || isTransliterate)" alt="{{ 'Do not Map the Keys on your Keyboard to the Soft Keyboard' | translate }} " style="cursor: pointer;" (click)="usersChoice()" matTooltip="{{ 'Do not Map the Keys on your Keyboard to the Soft Keyboard' | translate }} ">link_off</mat-icon>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <mat-icon aria-hidden="false" aria-label="{{ 'Restore To Defaults' | translate }}" alt="{{ 'Restore To Defaults' | translate }}" (click)="restoreDefaults()" matTooltip="{{ 'Restore To Defaults' | translate }}" style="cursor: pointer;">settings_backup_restore</mat-icon> 
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button [matMenuTriggerFor]="favouriteMenu" matBadge="{{populatingBookmarks.length}}" *ngIf="populatingBookmarks.length > 0">
                 <mat-icon aria-label="{{ 'Select From Favourite Keyboards' | translate }}" matTooltip="{{ 'Select From Favourite Keyboards' | translate }}" style="cursor: pointer;">bookmark</mat-icon>
@@ -2508,7 +2474,16 @@
                     <span (click)="selectKeyboardFromBookmark(valueOfBookmark)">{{valueOfBookmark}}</span>
                 </button>
             </mat-menu>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon aria-hidden="false" aria-label="{{ 'Restore To Defaults' | translate }}" alt="{{ 'Restore To Defaults' | translate }}" (click)="restoreDefaults()" matTooltip="{{ 'Restore To Defaults' | translate }}" style="cursor: pointer;">settings_backup_restore</mat-icon> 
+            <!--<mat-icon aria-hidden="false" aria-label="{{ 'Customise Keyboard' | translate }}" alt="{{ 'Customise Keyboard' | translate }}" matTooltip="{{ 'Customise Keyboard' | translate }}" style="cursor: pointer;" (click)="customiseMyKeyboardLayout()">settings_suggest</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+            <!--span *ngIf="(isQwerty || isTransliterate)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <mat-icon aria-label="{{ 'Superscript Off' | translate }}" *ngIf="allowSuperScript && (isQwerty || isTransliterate)" alt="{{ 'Superscript Off' | translate }}" style="cursor: pointer;" (click)="allowingSuperPositionKeys()" matTooltip="{{ 'Superscript Off' | translate }}"> font_download_off </mat-icon>
+            <mat-icon aria-label="{{ 'Superscript On' | translate }}" *ngIf="!allowSuperScript && (isQwerty || isTransliterate)" alt="{{ 'Superscript On' | translate }}" style="cursor: pointer;" (click)="allowingSuperPositionKeys()" matTooltip="{{ 'Superscript On' | translate }}"> font_download </mat-icon>
+            <span *ngIf="(isQwerty || isTransliterate)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span-->
             <br/>
+            <mat-icon aria-label="{{ 'Modify Font Size' | translate }}" alt="{{ 'Modify Font Size' | translate }}" matTooltip="{{ 'Modify Font Size' | translate }}">format_size</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="fontSize" #fonts tickInterval="1" min="5" max="50" value="{{defaultFontSize}}"></mat-slider>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button mat-raised-button [matMenuTriggerFor]="aksharamukhaselect" *ngIf="onlineService">
                 <img src="https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-web-plugin/icon.png" aria-label="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" matTooltip="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" width="25px">
               </button>
@@ -2784,10 +2759,33 @@
                     <span (click)="selectTargetTransliteration($event, 'ZanabazarSquare')">{{localisedKeyboardLayouts['zanb'][2]}}</span>
                 </button>
             </mat-menu>
+            <br/>
+            <mat-icon aria-label="{{ 'Modify Cell Size' | translate }}" alt="{{ 'Modify Cell Size' | translate }}" matTooltip="{{ 'Modify Cell Size' | translate }}">aspect_ratio</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="cellSize" #cells tickInterval="1" min="10" max="100" value="{{defaultCellSize}}"></mat-slider>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button mat-icon-button>
+            <button mat-icon-button mat-raised-button>
                 <mat-icon aria-label="{{ 'Convert Image to Text' | translate }}" matTooltip="{{ 'Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
             </button>
+            <br/>
+            <span *ngIf="enableRotateKeyboard && layoutRotationPossible()" [ngStyle]="{'width': enableRotateKeyboard == true ? '33%' : '33%'}">
+                <mat-icon aria-hidden="false" *ngIf="enableRotateKeyboard && !(isQwerty || isTransliterate)" (click)="orientKeyboard()" matTooltip="{{ 'Rotate Keys' | translate }}" aria-label="{{ 'Rotate Keys' | translate }}" alt="{{ 'Rotate Keys' | translate }}" style="cursor: pointer;">loop</mat-icon> 
+            </span> 
+            <mat-icon aria-hidden="false" *ngIf="(readingDir == 'subdirectory_arrow_right' || readingDir == 'subdirectory_arrow_left') && !(isQwerty || isTransliterate)" (click)="typeVertically()" matTooltip="{{ 'Type Vertically' | translate }}" aria-label="{{ 'Type Vertically' | translate }}" alt="{{ 'Type Vertically' | translate }}" style="cursor: pointer;">text_rotation_down</mat-icon> 
+            <span *ngIf="bidiLetters" [ngStyle]="{'width': bidiLetters == true ? '33%' : '33%'}">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <mat-icon aria-hidden="false" aria-label="{{ 'Boustrophedon Writing ' | translate }}{{ 'Off' | translate }}" alt="{{ 'Boustrophedon Writing ' | translate }}{{ 'Off' | translate }}" style="cursor: pointer;" matTooltip="{{ 'Boustrophedon Writing ' | translate }}{{ 'Off' | translate }}" (click)="switchTypingDirection('ltr')">switch_left</mat-icon> 
+                <mat-icon aria-hidden="false" aria-label="{{ 'Switch Keys Direction' | translate }}" alt="{{ 'Switch Keys Direction' | translate }}" (click)="renderBiDi()"  matTooltip="{{ 'Switch Keys Direction' | translate }}" style="cursor: pointer;">swap_horiz</mat-icon>
+                <mat-icon aria-hidden="false"  aria-label="{{ 'Boustrophedon Writing ' | translate }}{{ 'On' | translate }}" alt="{{ 'Boustrophedon Writing ' | translate }}{{ 'On' | translate }}" style="cursor: pointer;" matTooltip="{{ 'Boustrophedon Writing ' | translate }}{{ 'On' | translate }}" (click)="switchTypingDirection('rtl')">switch_right</mat-icon>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>       
+            <span *ngIf="!isQwerty && !isTransliterate && unicode5AndHigher">
+                <mat-icon aria-label="{{ 'Alternative for Text' | translate }}" alt="{{ 'Alternative for Text' | translate }}" matTooltip="{{ 'Alternative for Text' | translate }}">format_strikethrough</mat-icon> &nbsp;&nbsp; 
+                <mat-slide-toggle (click)="toggleGlyphShow()"></mat-slide-toggle> &nbsp;&nbsp; 
+                <mat-icon aria-label="{{ 'Alternative for Image' | translate }}" alt="{{ 'Alternative for Image' | translate }}" matTooltip="{{ 'Alternative for Image' | translate }}">image_not_supported</mat-icon>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            </span>
+            <br/><br/>
+            <mat-icon aria-label="{{ 'Map the Keys on your Keyboard to the Soft Keyboard' | translate }} " *ngIf="!mappingKeysToSoft && (isQwerty || isTransliterate)" alt="{{ 'Map the Keys on your Keyboard to the Soft Keyboard' | translate }} " style="cursor: pointer;" (click)="usersChoice()" matTooltip="{{ 'Map the Keys on your Keyboard to the Soft Keyboard' | translate }} ">link</mat-icon>
+            <mat-icon aria-label="{{ 'Do not Map the Keys on your Keyboard to the Soft Keyboard' | translate }} " *ngIf="mappingKeysToSoft && (isQwerty || isTransliterate)" alt="{{ 'Do not Map the Keys on your Keyboard to the Soft Keyboard' | translate }} " style="cursor: pointer;" (click)="usersChoice()" matTooltip="{{ 'Do not Map the Keys on your Keyboard to the Soft Keyboard' | translate }} ">link_off</mat-icon>
         </p>
     </mat-card>       
 </div>
@@ -5238,6 +5236,15 @@
             <!--input [(colorPicker)]="color" [style.background]="color"/-->&nbsp;&nbsp;
             <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>
             <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button mat-icon-button [matMenuTriggerFor]="favouriteMenu" matBadge="{{populatingBookmarks.length}}" *ngIf="populatingBookmarks.length > 0">
+                <mat-icon aria-label="{{ 'Select From Favourite Keyboards' | translate }}" matTooltip="{{ 'Select From Favourite Keyboards' | translate }}" style="cursor: pointer;">bookmark</mat-icon>
+            </button>
+            <mat-menu #favouriteMenu="matMenu">
+                <button *ngFor="let valueOfBookmark of populatingBookmarks" mat-menu-item>
+                    <span (click)="selectKeyboardFromBookmark(valueOfBookmark)">{{valueOfBookmark}}</span>
+                </button>
+            </mat-menu>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
             <!--<mat-icon aria-hidden="false" aria-label="{{ 'Customise Keyboard' | translate }}" alt="{{ 'Customise Keyboard' | translate }}" matTooltip="{{ 'Customise Keyboard' | translate }}" style="cursor: pointer;" (click)="customiseMyKeyboardLayout()">settings_suggest</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
             <!--span *ngIf="(isQwerty || isTransliterate)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -5252,8 +5259,8 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span> 
             <mat-icon aria-hidden="false" *ngIf="(readingDir == 'subdirectory_arrow_right' || readingDir == 'subdirectory_arrow_left') && !(isQwerty || isTransliterate)" (click)="typeVertically()" matTooltip="{{ 'Type Vertically' | translate }}" aria-label="{{ 'Type Vertically' | translate }}" alt="{{ 'Type Vertically' | translate }}" style="cursor: pointer;">text_rotation_down</mat-icon> 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span *ngIf="bidiLetters" [ngStyle]="{'width': bidiLetters == true ? '33%' : '33%'}">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <mat-icon aria-hidden="false" aria-label="{{ 'Boustrophedon Writing ' | translate }}{{ 'Off' | translate }}" alt="{{ 'Boustrophedon Writing ' | translate }}{{ 'Off' | translate }}" style="cursor: pointer;" matTooltip="{{ 'Boustrophedon Writing ' | translate }}{{ 'Off' | translate }}" (click)="switchTypingDirection('ltr')">switch_left</mat-icon> 
                 <mat-icon aria-hidden="false" aria-label="{{ 'Switch Keys Direction' | translate }}" alt="{{ 'Switch Keys Direction' | translate }}" (click)="renderBiDi()"  matTooltip="{{ 'Switch Keys Direction' | translate }}" style="cursor: pointer;">swap_horiz</mat-icon>
                 <mat-icon aria-hidden="false"  aria-label="{{ 'Boustrophedon Writing ' | translate }}{{ 'On' | translate }}" alt="{{ 'Boustrophedon Writing ' | translate }}{{ 'On' | translate }}" style="cursor: pointer;" matTooltip="{{ 'Boustrophedon Writing ' | translate }}{{ 'On' | translate }}" (click)="switchTypingDirection('rtl')">switch_right</mat-icon>
@@ -5269,15 +5276,6 @@
             <mat-icon aria-label="{{ 'Do not Map the Keys on your Keyboard to the Soft Keyboard' | translate }} " *ngIf="mappingKeysToSoft && (isQwerty || isTransliterate)" alt="{{ 'Do not Map the Keys on your Keyboard to the Soft Keyboard' | translate }} " style="cursor: pointer;" (click)="usersChoice()" matTooltip="{{ 'Do not Map the Keys on your Keyboard to the Soft Keyboard' | translate }} ">link_off</mat-icon>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <mat-icon aria-hidden="false" aria-label="{{ 'Restore To Defaults' | translate }}" alt="{{ 'Restore To Defaults' | translate }}" (click)="restoreDefaults()" matTooltip="{{ 'Restore To Defaults' | translate }}" style="cursor: pointer;">settings_backup_restore</mat-icon> 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-            <button mat-icon-button [matMenuTriggerFor]="favouriteMenu" matBadge="{{populatingBookmarks.length}}" *ngIf="populatingBookmarks.length > 0">
-                <mat-icon aria-label="{{ 'Select From Favourite Keyboards' | translate }}" matTooltip="{{ 'Select From Favourite Keyboards' | translate }}" style="cursor: pointer;">bookmark</mat-icon>
-            </button>
-            <mat-menu #favouriteMenu="matMenu">
-                <button *ngFor="let valueOfBookmark of populatingBookmarks" mat-menu-item>
-                    <span (click)="selectKeyboardFromBookmark(valueOfBookmark)">{{valueOfBookmark}}</span>
-                </button>
-            </mat-menu>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button mat-raised-button [matMenuTriggerFor]="aksharamukhaselect" *ngIf="onlineService">
                 <img src="https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-web-plugin/icon.png" aria-label="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" matTooltip="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" width="25px">
@@ -5555,7 +5553,7 @@
                 </button>
             </mat-menu>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button mat-icon-button>
+            <button mat-icon-button mat-raised-button>
                 <mat-icon aria-label="{{ 'Convert Image to Text' | translate }}" matTooltip="{{ 'Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
             </button>
         </p>
@@ -8324,7 +8322,7 @@
                 </button>
             </mat-menu>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button mat-icon-button>
+            <button mat-icon-button mat-raised-button>
                 <mat-icon aria-label="{{ 'Convert Image to Text' | translate }}" matTooltip="{{ 'Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
             </button>
         </p>
