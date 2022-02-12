@@ -56,7 +56,7 @@ _isContains = function(json, value) {
 process.env.NODE_ENV = 'production';
 
 // WARNING - does not validity and accept self signed certificates
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+//process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 // Cross-Origin Resource Sharing being utilised
 app.use(cors());
@@ -719,14 +719,14 @@ fs.stat(path.join(__dirname, './logs', 'MultiScriptEditor.log'), (err, stats) =>
     }
 });
 
-const keyPath = path.join(__dirname, `${properties.get('ssl.key.path')}`);
+/*const keyPath = path.join(__dirname, `${properties.get('ssl.key.path')}`);
 const certPath = path.join(__dirname, `${properties.get('ssl.cert.path')}`);
 
 // set up a config object
 var server_config = {
     key : fs.readFileSync(keyPath, 'utf8'), // file location of private key
     cert: fs.readFileSync(certPath, 'utf8') // file location of SSL cert
-};
+};*/
 
 // create the HTTPS server on port 5555
 /*var https_server = https.createServer(server_config, appSSL).listen(portSSL, function(err){

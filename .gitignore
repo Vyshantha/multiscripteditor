@@ -1,2 +1,4 @@
 node_modules
 editorClient/node_modules
+editorClient/dist
+editorClient/.firebase
