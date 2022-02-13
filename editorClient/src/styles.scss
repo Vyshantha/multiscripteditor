@@ -4,44 +4,44 @@
 
 @include mat-core();
 
-.light-theme {
-  color: $dark-primary-text;
-  $light-primary: mat-palette($mat-purple);
-  $light-accent: mat-palette($mat-green, A200, A100, A400);
-  $light-warn: mat-palette($mat-red);
-  $light-theme: mat-light-theme($light-primary, $light-accent, $light-warn);
+  .light-theme {
+    color: $dark-primary-text;
+    $light-primary: mat-palette($mat-purple);
+    $light-accent: mat-palette($mat-green, A200, A100, A400);
+    $light-warn: mat-palette($mat-red);
+    $light-theme: mat-light-theme($light-primary, $light-accent, $light-warn);
 
-  @include angular-material-theme($light-theme);
-}
+    @include angular-material-theme($light-theme);
+  }
 
-.dark-theme {
-  $dark-primary: mat-palette($mat-green);
-  $dark-accent: mat-palette($mat-orange, A400, A100, A700);
-  $dark-warn: mat-palette($mat-red);
-  $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+  .dark-theme {
+    $dark-primary: mat-palette($mat-green);
+    $dark-accent: mat-palette($mat-orange, A400, A100, A700);
+    $dark-warn: mat-palette($mat-red);
+    $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
 
-  @include angular-material-theme($dark-theme);
-}
+    @include angular-material-theme($dark-theme);
+  }
 
-.cdk-high-contrast-theme {
-  $cdk-high-contrast-primary: mat-palette($mat-blue);
-  $cdk-high-contrast-accent: mat-palette($mat-pink, A400, A100, A700);
-  $cdk-high-contrast-warn: mat-palette($mat-red);
-  $cdk-high-contrast-theme: mat-dark-theme($cdk-high-contrast-primary, $cdk-high-contrast-accent, $cdk-high-contrast-warn);
+  .cdk-high-contrast-theme {
+    $cdk-high-contrast-primary: mat-palette($mat-blue);
+    $cdk-high-contrast-accent: mat-palette($mat-pink, A400, A100, A700);
+    $cdk-high-contrast-warn: mat-palette($mat-red);
+    $cdk-high-contrast-theme: mat-dark-theme($cdk-high-contrast-primary, $cdk-high-contrast-accent, $cdk-high-contrast-warn);
 
-  @include angular-material-theme($cdk-high-contrast-theme);
-}
+    @include angular-material-theme($cdk-high-contrast-theme);
+  }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans", "Noto Sans", "Noto Sans CJK JP", sans-serif; }
+  html, body { height: 100%; }
+  body { margin: 0; font-family: Roboto, "Helvetica Neue", "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", sans-serif; }
 
-:host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  :host {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      font-size: 14px;
+      color: #333;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
   }
 
   h1,

@@ -8,7 +8,6 @@ import {Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {startWith, map} from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import * as SVAConfig from '../../assets/environments/sva_config.json';

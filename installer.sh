@@ -1,4 +1,7 @@
 #!/bin/bash
+# Local Hostname
+HOSTNAME=`ifconfig -a | grep -i "inet " | awk 'NR==2{print $2}'`
+
 # Install NodeJS (on Windows, Linux or Mac) 14.15 - https://nodejs.org/download/release/v14.15.0/
 npm install
 sudo npm i -g nodemon
@@ -18,4 +21,6 @@ pip install stanza
 
 ./startMSE.sh # permission for executing startMSE.sh
 
-# open https://$HOSTNAME:4200/ (Multi-Script Editor)
+# Open this in Default Browser & Self-Signed Certificates from both Client (AngularJS) & Server (NodeJS) should be excempted
+open https://$HOSTNAME:4200/
+open https://$HOSTNAME:5555/v1/multiscripteditor

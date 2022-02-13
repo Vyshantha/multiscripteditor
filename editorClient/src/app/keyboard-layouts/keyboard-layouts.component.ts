@@ -5,6 +5,24 @@ import { Router } from '@angular/router';
 import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
 import { MatDialog } from '@angular/material/dialog';
 
+// Including All Fonts here : except Indus & SignWriting
+import "@fontsource/noto-sans";
+import "@fontsource/noto-serif-dogra";
+import "@fontsource/noto-sans-zanabazar-square";
+import "@fontsource/noto-sans-mahajani";
+import "@fontsource/noto-sans-old-sogdian";
+import "@fontsource/noto-sans-sogdian";
+import "@fontsource/noto-serif-nyiakeng-puachue-hmong";
+import "@fontsource/noto-traditional-nushu";
+import "@fontsource/noto-sans-nushu";
+import "@fontsource/noto-serif-tangut";
+import "@fontsource/noto-sans-elymaic";
+import "@fontsource/noto-sans-masaram-gondi";
+import "@fontsource/noto-sans-gunjala-gondi";
+import "@fontsource/noto-sans-soyombo";
+import "@fontsource/noto-serif-yezidi";
+import "@fontsource/noto-nastaliq-urdu";
+
 import "ol/ol.css";
 import {View, Feature, Map, Overlay } from 'ol';
 import {Coordinate} from 'ol/coordinate';
@@ -1157,6 +1175,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   highlightKeys: Boolean = true;
   unusedKeys: Boolean = false;
 
+  runProgressIndicator: Boolean = false;
+
   defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 22 : ((!this.isMobile && this.isTablet)? 46 : 55 );
   defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 12 : ((!this.isMobile && this.isTablet)? 16 : 21 );
   
@@ -1180,7 +1200,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   keyOrientationSwitch: string[] = ['ogam', 'phag', 'oira', 'mnc', 'mon', 'galk', 'soyo', 'evn'];
   keyDoNotRotate: string[] = ['vaii', 'geez', 'am', 'dite', 'iba', 'ndju'];
   swaraAbugidaType : string [] = ['ahom', 'bada', 'bali', 'batk', 'tglg', 'bn', 'bhai', 'bla', 'brah', 'bug', 'buhd', 'cakm', 'cree', 'dham', 'dite', 'diak', 'dogr', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kthi', 'kn', 'kawi', 'kali', 'khar', 'tang', 'km', 'khoj', 'khud', 'kuli', 'lo', 'lepc', 'limb', 'loma', 'maga', 'maha', 'ml', 'mani', 'mni', 'mr', 'modi', 'mult', 'my', 'nand', 'or', 'phag', 'newa', 'pa', 'rjng', 'renc', 'sa', 'saur', 'shan', 'shrd', 'sn', 'sidd', 'snd', 'si', 'bhat', 'leke', 'ari', 'sora', 'sund', 'sylo', 'tagb', 'talu', 'lana', 'takr', 'ta', 'tamu', 'tach', 'te', 'thaa', 'th', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'zanb'];
-  imageAlternativeScript: string[] = ['cans', 'esk', 'esi', 'ipk', 'dhan', 'safa', 'txr', 'ibe', 'avo', 'ranj', 'gup', 'pall', 'toch', 'moon', 'tiga', 'xce', 'vith', 'nand', 'kada', 'sog', 'kult', 'estr', 'sert', 'madn', 'diak', 'ber', 'tach', 'gael', 'mwan', 'maha', 'wole', 'moss', 'iba', 'hmnp', 'komi', 'dogr', 'maya', 'nshu', 'egyd', 'bhat', 'bug', 'renc', 'kuli', 'sina', 'zou', 'cana', 'kaid', 'dham', 'tamu', 'geba', 'esy', 'maka', 'lad', 'kama', 'ndju', 'aztc', 'elym', 'txg', 'jiag', 'indus', 'bada', 'vatt', 'mikq', 'gong', 'gonm', 'kpe', 'gars', 'dale', 'goyk', 'wolf', 'zag', 'kawi', 'loma', 'nsi', 'ion', 'tika', 'mamb', 'land', 'khat', 'leke', 'ari', 'soyo', 'sabe', 'dite', 'toto', 'chrs', 'tang', 'zanb', 'maga', 'luo', 'chik', 'adin', 'khom', 'kits', 'kitl', 'khaz', 'yezi', 'tnq', 'ics', 'flag', 'ussign', 'desisign', 'banzsl'];
+  imageAlternativeScript: string[] = ['cans', 'esk', 'esi', 'ipk', 'dhan', 'safa', 'txr', 'ibe', 'avo', 'ranj', 'gup', 'pall', 'toch', 'moon', 'tiga', 'xce', 'vith', 'nand', 'kada', 'sog', 'kult', 'estr', 'sert', 'madn', 'diak', 'ber', 'tach', 'gael', 'mwan', 'maha', 'wole', 'moss', 'iba', 'hmnp', 'dogr', 'maya', 'nshu', 'egyd', 'bhat', 'renc', 'kuli', 'sina', 'zou', 'cana', 'kaid', 'dham', 'tamu', 'geba', 'esy', 'maka', 'lad', 'kama', 'ndju', 'aztc', 'elym', 'txg', 'jiag', 'indus', 'bada', 'vatt', 'mikq', 'gong', 'gonm', 'kpe', 'gars', 'dale', 'goyk', 'wolf', 'zag', 'kawi', 'loma', 'nsi', 'ion', 'tika', 'mamb', 'land', 'khat', 'leke', 'ari', 'soyo', 'sabe', 'dite', 'toto', 'chrs', 'tang', 'zanb', 'maga', 'luo', 'chik', 'adin', 'khom', 'kits', 'kitl', 'yezi', 'tnq', 'ics', 'flag', 'ussign', 'desisign', 'banzsl'];
 
   // Words Suggestion for All Supported Languages
   supportedLanguages : string[] = ['af','am','ar','az','bak','be','befr','bg','bn','bopo','br','brah','bs','bsk','ca','ceb','co','cs','cy','da','de','el','en','engb','enin','enintl','enus','eo','es','esmx','et','eu','fa','fi','fj','fo','fr','frca','fy','ga','gd','gl','gn','goth','gu','gv','ha','haw','he','hi','hmn','hr','ht','hu','hy','id','ig','ilo','is','it','ja','jv','ka','kk','km','kn','ko','kom','kon','ku','kw','ky','la','lb','lfn','ln','lo','lt','lv','mg','mi','mk','ml','mn','mr','ms','mt','my','nag','ne','nl','nld','no','ny','nya','oji','or','pa','pin','pl','ps','pt','ptbr','qu','rn','ro','rom','ru','rw','sa','sank','sd','si','sk','sl','sm','sn','so','sq','sr','st','su','sun','sv','sw','ta','te','tfng','tg','th','tk','tl','tpi','tr','tt','ty','ug','uk','ur','uz','vi','xh','yi','yo','zhcn','zhtw','zu'];
@@ -3743,15 +3763,18 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   }
 
   selectTargetTransliteration(event, targetScript) {
+    this.runProgressIndicator = true;
     if (targetScript && targetScript != "" && targetScript != null && this.sessionManager.getSessionSavedContent() != null && this.sessionManager.getSessionSavedContent() != "" && this.sessionManager.getSessionSavedContent() != undefined && this.sessionManager.getOfflineOnly() == false) {
       this.sessionManager.integrateTransliteration(targetScript).subscribe((resultContent: any) => {
         this.sessionManager.pasteIntegrationOutput.next(true);
         console.info("[MUlTISCRIPTEDITOR] Transliteration through Aksharamukha Integration to Target Script ", targetScript);
         this.keyPressed(event, resultContent, 'false', 'word', '');
+        this.runProgressIndicator = false;
       }, (error) => {
         this.sessionManager.pasteIntegrationOutput.next(true);
         console.info("[MUlTISCRIPTEDITOR] Transliteration through Aksharamukha Integration to Target Script ", targetScript);
         this.keyPressed(event, error.error.text, 'false', 'word', '');
+        this.runProgressIndicator = false;
       });
     }
   }

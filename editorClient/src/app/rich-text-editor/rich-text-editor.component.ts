@@ -3,6 +3,24 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
+// Including All Fonts here : except Indus & SignWriting
+import "@fontsource/noto-sans";
+import "@fontsource/noto-serif-dogra";
+import "@fontsource/noto-sans-zanabazar-square";
+import "@fontsource/noto-sans-mahajani";
+import "@fontsource/noto-sans-old-sogdian";
+import "@fontsource/noto-sans-sogdian";
+import "@fontsource/noto-serif-nyiakeng-puachue-hmong";
+import "@fontsource/noto-traditional-nushu";
+import "@fontsource/noto-sans-nushu";
+import "@fontsource/noto-serif-tangut";
+import "@fontsource/noto-sans-elymaic";
+import "@fontsource/noto-sans-masaram-gondi";
+import "@fontsource/noto-sans-gunjala-gondi";
+import "@fontsource/noto-sans-soyombo";
+import "@fontsource/noto-serif-yezidi";
+import "@fontsource/noto-nastaliq-urdu";
+
 import { SessionManagerService } from '../core/services/session-manager.service';
 
 import * as allLayoutPositions from './../../assets/keyboard-layouts/keysboards-layouts.json';
@@ -73,7 +91,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
 
   swaraAbugidaType : string [] = ['ahom', 'bada', 'bali', 'batk', 'tglg', 'bn', 'bhai', 'bla', 'brah', 'bug', 'buhd', 'cakm', 'cree', 'dham', 'dite', 'diak', 'dogr', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kthi', 'kn', 'kawi', 'kali', 'khar', 'tang', 'km', 'khoj', 'khud', 'kuli', 'lo', 'lepc', 'limb', 'loma', 'maga', 'maha', 'ml', 'mani', 'mni', 'mr', 'modi', 'mult', 'my', 'nand', 'or', 'phag', 'newa', 'pa', 'rjng', 'renc', 'sa', 'saur', 'shan', 'shrd', 'sn', 'sidd', 'snd', 'si', 'bhat', 'leke', 'ari', 'sora', 'sund', 'sylo', 'tagb', 'talu', 'lana', 'takr', 'ta', 'tamu', 'tach', 'te', 'thaa', 'th', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'zanb'];
 
-  imageAlternativeScript: string[] = ['cans', 'esk', 'esi', 'ipk', 'dhan', 'safa', 'txr', 'ibe', 'avo', 'ranj', 'gup', 'pall', 'toch', 'moon', 'tiga', 'xce', 'vith', 'nand', 'kada', 'sog', 'kult', 'estr', 'sert', 'madn', 'diak', 'ber', 'tach', 'gael', 'mwan', 'maha', 'wole', 'moss', 'iba', 'hmnp', 'komi', 'dogr', 'maya', 'nshu', 'egyd', 'bhat', 'bug', 'renc', 'kuli', 'sina', 'zou', 'cana', 'kaid', 'dham', 'tamu', 'geba', 'esy', 'maka', 'lad', 'kama', 'ndju', 'aztc', 'elym', 'txg', 'jiag', 'indus', 'bada', 'vatt', 'mikq', 'gong', 'gonm', 'kpe', 'gars', 'dale', 'goyk', 'wolf', 'zag', 'kawi', 'loma', 'nsi', 'ion', 'tika', 'mamb', 'land', 'khat', 'leke', 'ari', 'soyo', 'sabe', 'dite', 'toto', 'chrs', 'tang', 'zanb', 'maga', 'luo', 'chik', 'adin', 'khom', 'kits', 'kitl', 'khaz', 'yezi', 'tnq', 'ics', 'flag', 'ussign', 'desisign', 'banzsl'];
+  imageAlternativeScript: string[] = ['cans', 'esk', 'esi', 'ipk', 'dhan', 'safa', 'txr', 'ibe', 'avo', 'ranj', 'gup', 'pall', 'toch', 'moon', 'tiga', 'xce', 'vith', 'nand', 'kada', 'sog', 'kult', 'estr', 'sert', 'madn', 'diak', 'ber', 'tach', 'gael', 'mwan', 'maha', 'wole', 'moss', 'iba', 'hmnp', 'dogr', 'maya', 'nshu', 'egyd', 'bhat', 'renc', 'kuli', 'sina', 'zou', 'cana', 'kaid', 'dham', 'tamu', 'geba', 'esy', 'maka', 'lad', 'kama', 'ndju', 'aztc', 'elym', 'txg', 'jiag', 'indus', 'bada', 'vatt', 'mikq', 'gong', 'gonm', 'kpe', 'gars', 'dale', 'goyk', 'wolf', 'zag', 'kawi', 'loma', 'nsi', 'ion', 'tika', 'mamb', 'land', 'khat', 'leke', 'ari', 'soyo', 'sabe', 'dite', 'toto', 'chrs', 'tang', 'zanb', 'maga', 'luo', 'chik', 'adin', 'khom', 'kits', 'kitl', 'yezi', 'tnq', 'ics', 'flag', 'ussign', 'desisign', 'banzsl'];
 
   /* KeyCode for Keyboard - Qwerty 'Mac' keyboard ONLY - TODO Generic
     229 (process) 49 50 51 52 53 54 55 56 57 48 63 192 (dead) 8 (backspace)

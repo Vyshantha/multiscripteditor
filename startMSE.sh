@@ -32,10 +32,5 @@ ng serve --host 0.0.0.0 --port 4200 --ssl true --ssl-cert ./../routes/server.crt
 sleep 10s
 cd ..
 
-# Local Tunnel for Reverse Proxy
-#lt --port 3333 --subdomain anywriteschoice &
-
-#open https://$HOSTNAME:4200/sva
-
 # Start the Server-Side
 nodemon &
