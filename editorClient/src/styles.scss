@@ -33,7 +33,10 @@
   }
 
   html, body { height: 100%; }
-  body { margin: 0; font-family: Roboto, "Helvetica Neue", "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", sans-serif; }
+  body { 
+    margin: 0; 
+    font-family: "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", Roboto, "Helvetica Neue", sans-serif; 
+  }
 
   :host {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -582,4 +585,221 @@
     height: 400px;
     width: 100%;
     //overflow: hidden;
-}
+  }
+
+  @font-face {
+    font-family: 'Noto Serif Dogra';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-serif-dogra/files/noto-serif-dogra-dogra-400-normal.woff2') format('woff2'), url('./assets/font-families/noto-serif-dogra/files/noto-serif-dogra-dogra-400-normal.woff') format('woff');
+  }
+  
+  .dogr {
+    font-family: 'Noto Serif Dogra' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Zanabazar Square';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-zanabazar-square/files/noto-sans-zanabazar-square-zanabazar-square-400-normal.woff2') format('woff2'), url('./assets/font-families/noto-sans-zanabazar-square/files/noto-sans-zanabazar-square-zanabazar-square-400-normal.woff') format('woff');
+  }
+
+  .zanb {
+    font-family: 'Noto Sans Zanabazar Square' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Mahajani';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-mahajani/files/noto-sans-mahajani-mahajani-400-normal.woff2') format('woff2'), url('./assets/font-families/noto-sans-mahajani/files/noto-sans-mahajani-mahajani-400-normal.woff') format('woff');
+  }
+
+  .maha {
+    font-family: 'Noto Sans Mahajani' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Sogdian';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-sogdian/files/noto-sans-sogdian-sogdian-400-normal.woff2') format('woff2'), url('./assets/font-families/noto-sans-sogdian/files/noto-sans-sogdian-sogdian-400-normal.woff') format('woff');
+  }
+
+  .sog {
+    font-family: 'Noto Sans Sogdian' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Old Sogdian';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-old-sogdian/files/noto-sans-old-sogdian-old-sogdian-400-normal.woff2') format('woff2'), url('./assets/font-families/noto-sans-old-sogdian/files/noto-sans-old-sogdian-old-sogdian-400-normal.woff') format('woff');
+  }
+
+  .kult {
+    font-family: 'Noto Sans Old Sogdian' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Serif Nyiakeng Puachue Hmong';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-serif-nyiakeng-puachue-hmong/files/noto-serif-nyiakeng-puachue-hmong-nyiakeng-puachue-hmong-400-normal.woff2') format('woff2'), url('./assets/font-families/noto-serif-nyiakeng-puachue-hmong/files/noto-serif-nyiakeng-puachue-hmong-nyiakeng-puachue-hmong-400-normal.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'Noto Serif Nyiakeng Puachue Hmong';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 500;
+    src: url('./assets/font-families/noto-serif-nyiakeng-puachue-hmong/files/noto-serif-nyiakeng-puachue-hmong-nyiakeng-puachue-hmong-500-normal.woff2') format('woff2'), url('./assets/font-families/noto-serif-nyiakeng-puachue-hmong/files/noto-serif-nyiakeng-puachue-hmong-nyiakeng-puachue-hmong-500-normal.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'Noto Serif Nyiakeng Puachue Hmong';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 600;
+    src: url('./assets/font-families/noto-serif-nyiakeng-puachue-hmong/files/noto-serif-nyiakeng-puachue-hmong-nyiakeng-puachue-hmong-600-normal.woff2') format('woff2'), url('./assets/font-families/noto-serif-nyiakeng-puachue-hmong/files/noto-serif-nyiakeng-puachue-hmong-nyiakeng-puachue-hmong-600-normal.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'Noto Serif Nyiakeng Puachue Hmong';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 700;
+    src: url('./assets/font-families/noto-serif-nyiakeng-puachue-hmong/files/noto-serif-nyiakeng-puachue-hmong-nyiakeng-puachue-hmong-700-normal.woff2') format('woff2'), url('./assets/font-families/noto-serif-nyiakeng-puachue-hmong/files/noto-serif-nyiakeng-puachue-hmong-nyiakeng-puachue-hmong-700-normal.woff') format('woff');
+  }
+
+  .hmnp {
+    font-family: 'Noto Serif Nyiakeng Puachue Hmong' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Nushu';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-nushu/files/noto-sans-nushu-nushu-400-normal.woff') format('woff'), url('./assets/font-families/noto-sans-nushu/files/noto-sans-nushu-nushu-400-normal.woff') format('woff');
+  }
+
+  .nshu {
+    font-family: 'Noto Sans Nushu' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Serif Tangut';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-serif-tangut/files/noto-serif-tangut-tangut-400-normal.woff2') format('woff2'), url('./assets/font-families/noto-serif-tangut/files/noto-serif-tangut-tangut-400-normal.woff') format('woff');
+  }
+
+  .txg {
+    font-family: 'Noto Serif Tangut' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Elymaic';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-elymaic/files/noto-sans-elymaic-elymaic-400-normal.woff') format('woff'), url('./assets/font-families/noto-sans-elymaic/files/noto-sans-elymaic-elymaic-400-normal.woff') format('woff');
+  }  
+
+  .elym {
+    font-family: 'Noto Sans Elymaic' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Masaram Gondi';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-masaram-gondi/files/noto-sans-masaram-gondi-masaram-gondi-400-normal.woff') format('woff'), url('./assets/font-families/noto-sans-masaram-gondi/files/noto-sans-masaram-gondi-masaram-gondi-400-normal.woff') format('woff');
+  }
+
+  .gonm {
+    font-family: 'Noto Sans Masaram Gondi' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Gunjala Gondi';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-gunjala-gondi/files/noto-sans-gunjala-gondi-gunjala-gondi-400-normal.woff') format('woff'), url('./assets/font-families/noto-sans-gunjala-gondi/files/noto-sans-gunjala-gondi-gunjala-gondi-400-normal.woff') format('woff');
+  }
+
+  .gong {
+    font-family: 'Noto Sans Gunjala Gondi' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Soyombo';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-soyombo/files/noto-sans-soyombo-soyombo-400-normal.woff2') format('woff2'), url('./assets/font-families/noto-sans-soyombo/files/noto-sans-soyombo-soyombo-400-normal.woff') format('woff');
+  }
+
+  .soyo {
+    font-family: 'Noto Sans Soyombo' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Serif Yezidi';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-serif-yezidi/files/noto-serif-yezidi-yezidi-400-normal.woff2') format('woff2'), url('./assets/font-families/noto-serif-yezidi/files/noto-serif-yezidi-yezidi-400-normal.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'Noto Serif Yezidi';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 500;
+    src: url('./assets/font-families/noto-serif-yezidi/files/noto-serif-yezidi-yezidi-500-normal.woff2') format('woff2'), url('./assets/font-families/noto-serif-yezidi/files/noto-serif-yezidi-yezidi-500-normal.woff') format('woff'); 
+  }
+  @font-face {
+    font-family: 'Noto Serif Yezidi';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 600;
+    src: url('./assets/font-families/noto-serif-yezidi/files/noto-serif-yezidi-yezidi-600-normal.woff2') format('woff2'), url('./assets/font-families/noto-serif-yezidi/files/noto-serif-yezidi-yezidi-600-normal.woff') format('woff');
+  }
+  @font-face {
+    font-family: 'Noto Serif Yezidi';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 700;
+    src: url('./assets/font-families/noto-serif-yezidi/files/noto-serif-yezidi-yezidi-700-normal.woff2') format('woff2'), url('./assets/font-families/noto-serif-yezidi/files/noto-serif-yezidi-yezidi-700-normal.woff') format('woff'); 
+  }
+
+  .yezi {
+    font-family: 'Noto Serif Yezidi' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Nastaliq Urdu';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-nastaliq-urdu/files/noto-nastaliq-urdu-arabic-400-normal.woff') format('woff'), url('./assets/font-families/noto-nastaliq-urdu/files/noto-nastaliq-urdu-arabic-400-normal.woff') format('woff'); 
+  }
+  @font-face {
+    font-family: 'Noto Nastaliq Urdu';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 700;
+    src: url('./assets/font-families/noto-nastaliq-urdu/files/noto-nastaliq-urdu-arabic-700-normal.woff2') format('woff2'), url('./assets/font-families/noto-nastaliq-urdu/files/noto-nastaliq-urdu-arabic-700-normal.woff') format('woff');  
+  }  
+
+  .ur {
+    font-family: 'Noto Nastaliq Urdu' !important;
+  }

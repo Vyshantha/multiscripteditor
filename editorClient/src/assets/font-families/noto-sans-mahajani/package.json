@@ -1,0 +1,63 @@
+{
+  "_from": "@fontsource/noto-sans-mahajani",
+  "_id": "@fontsource/noto-sans-mahajani@4.5.3",
+  "_inBundle": false,
+  "_integrity": "sha512-X5Eiipu9PBKS2MEEHdWh2NU+yIE+YRhhGb/FvbGSeVfQTe/KIbIqWOpLKLhuncUYssS37ntyJnUc91Wzqsy0+g==",
+  "_location": "/@fontsource/noto-sans-mahajani",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@fontsource/noto-sans-mahajani",
+    "name": "@fontsource/noto-sans-mahajani",
+    "escapedName": "@fontsource%2fnoto-sans-mahajani",
+    "scope": "@fontsource",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@fontsource/noto-sans-mahajani/-/noto-sans-mahajani-4.5.3.tgz",
+  "_shasum": "e89024bed7365e16045b156a32ebd586706c9fd9",
+  "_spec": "@fontsource/noto-sans-mahajani",
+  "_where": "/Users/yshant/Documents/GitHub/multiscripteditor/editorClient",
+  "author": {
+    "name": "Lotus",
+    "email": "declininglotus@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fontsource/fontsource/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Self-host the Noto Sans Mahajani font in a neatly bundled NPM package.",
+  "homepage": "https://github.com/fontsource/fontsource/tree/master/packages/noto-sans-mahajani#readme",
+  "keywords": [
+    "fontsource",
+    "font",
+    "font family",
+    "google fonts",
+    "Noto Sans Mahajani",
+    "noto-sans-mahajani",
+    "css",
+    "sass",
+    "front-end",
+    "web",
+    "typeface"
+  ],
+  "license": "MIT",
+  "main": "index.css",
+  "name": "@fontsource/noto-sans-mahajani",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fontsource/fontsource.git",
+    "directory": "packages/noto-sans-mahajani"
+  },
+  "version": "4.5.3"
+}

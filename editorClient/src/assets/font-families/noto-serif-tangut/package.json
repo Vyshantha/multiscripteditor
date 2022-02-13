@@ -1,0 +1,63 @@
+{
+  "_from": "@fontsource/noto-serif-tangut",
+  "_id": "@fontsource/noto-serif-tangut@4.5.3",
+  "_inBundle": false,
+  "_integrity": "sha512-ENqyuszu/yTE6oszMNDky9qXYe1X+OWq6Em7oAQwrsOmxqy5utS7Df/x7uWDiz2oYaIVcl9/a9lnqdNPjsRevw==",
+  "_location": "/@fontsource/noto-serif-tangut",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@fontsource/noto-serif-tangut",
+    "name": "@fontsource/noto-serif-tangut",
+    "escapedName": "@fontsource%2fnoto-serif-tangut",
+    "scope": "@fontsource",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@fontsource/noto-serif-tangut/-/noto-serif-tangut-4.5.3.tgz",
+  "_shasum": "2f022e07d99ee45b6e63ccce14e6b54667cd9f29",
+  "_spec": "@fontsource/noto-serif-tangut",
+  "_where": "/Users/yshant/Documents/GitHub/multiscripteditor/editorClient",
+  "author": {
+    "name": "Lotus",
+    "email": "declininglotus@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fontsource/fontsource/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Self-host the Noto Serif Tangut font in a neatly bundled NPM package.",
+  "homepage": "https://github.com/fontsource/fontsource/tree/master/packages/noto-serif-tangut#readme",
+  "keywords": [
+    "fontsource",
+    "font",
+    "font family",
+    "google fonts",
+    "Noto Serif Tangut",
+    "noto-serif-tangut",
+    "css",
+    "sass",
+    "front-end",
+    "web",
+    "typeface"
+  ],
+  "license": "MIT",
+  "main": "index.css",
+  "name": "@fontsource/noto-serif-tangut",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fontsource/fontsource.git",
+    "directory": "packages/noto-serif-tangut"
+  },
+  "version": "4.5.3"
+}

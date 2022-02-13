@@ -1,0 +1,63 @@
+{
+  "_from": "@fontsource/noto-traditional-nushu",
+  "_id": "@fontsource/noto-traditional-nushu@4.5.3",
+  "_inBundle": false,
+  "_integrity": "sha512-JzJNItFCp65M9RYkNrTTVWqzux2oDZ6gjPil89kK+kfUyJxkYLm/RiewQ8vH22T1UvkW1pwGJUesveZOqw7u8Q==",
+  "_location": "/@fontsource/noto-traditional-nushu",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@fontsource/noto-traditional-nushu",
+    "name": "@fontsource/noto-traditional-nushu",
+    "escapedName": "@fontsource%2fnoto-traditional-nushu",
+    "scope": "@fontsource",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@fontsource/noto-traditional-nushu/-/noto-traditional-nushu-4.5.3.tgz",
+  "_shasum": "135ff728fef329e7f5c9b13b2ccd6e55a1e2bba7",
+  "_spec": "@fontsource/noto-traditional-nushu",
+  "_where": "/Users/yshant/Documents/GitHub/multiscripteditor/editorClient",
+  "author": {
+    "name": "Lotus",
+    "email": "declininglotus@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fontsource/fontsource/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Self-host the Noto Traditional Nushu font in a neatly bundled NPM package.",
+  "homepage": "https://github.com/fontsource/fontsource/tree/master/packages/noto-traditional-nushu#readme",
+  "keywords": [
+    "fontsource",
+    "font",
+    "font family",
+    "google fonts",
+    "Noto Traditional Nushu",
+    "noto-traditional-nushu",
+    "css",
+    "sass",
+    "front-end",
+    "web",
+    "typeface"
+  ],
+  "license": "MIT",
+  "main": "index.css",
+  "name": "@fontsource/noto-traditional-nushu",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fontsource/fontsource.git",
+    "directory": "packages/noto-traditional-nushu"
+  },
+  "version": "4.5.3"
+}

@@ -1,0 +1,63 @@
+{
+  "_from": "@fontsource/noto-sans-nushu",
+  "_id": "@fontsource/noto-sans-nushu@4.5.3",
+  "_inBundle": false,
+  "_integrity": "sha512-ipuMlTS9BQHAwN9ck+I41IE6OlTw03dyVHYg8HW4x/oYSXSzSxdOcdLrVXDWfYj05q+WFonInD2/W5zkH31CEg==",
+  "_location": "/@fontsource/noto-sans-nushu",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@fontsource/noto-sans-nushu",
+    "name": "@fontsource/noto-sans-nushu",
+    "escapedName": "@fontsource%2fnoto-sans-nushu",
+    "scope": "@fontsource",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@fontsource/noto-sans-nushu/-/noto-sans-nushu-4.5.3.tgz",
+  "_shasum": "6ef2fd539336c2e6317b1f0087d36194ab4c9455",
+  "_spec": "@fontsource/noto-sans-nushu",
+  "_where": "/Users/yshant/Documents/GitHub/multiscripteditor/editorClient",
+  "author": {
+    "name": "Lotus",
+    "email": "declininglotus@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fontsource/fontsource/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Self-host the Noto Sans Nushu font in a neatly bundled NPM package.",
+  "homepage": "https://github.com/fontsource/fontsource/tree/master/packages/noto-sans-nushu#readme",
+  "keywords": [
+    "fontsource",
+    "font",
+    "font family",
+    "google fonts",
+    "Noto Sans Nushu",
+    "noto-sans-nushu",
+    "css",
+    "sass",
+    "front-end",
+    "web",
+    "typeface"
+  ],
+  "license": "MIT",
+  "main": "index.css",
+  "name": "@fontsource/noto-sans-nushu",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fontsource/fontsource.git",
+    "directory": "packages/noto-sans-nushu"
+  },
+  "version": "4.5.3"
+}

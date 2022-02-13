@@ -1,0 +1,63 @@
+{
+  "_from": "@fontsource/noto-serif-nyiakeng-puachue-hmong",
+  "_id": "@fontsource/noto-serif-nyiakeng-puachue-hmong@4.5.4",
+  "_inBundle": false,
+  "_integrity": "sha512-sIW56+H4HROQHlpKAo/oMofDNy1ny3vnZzLlOh0oi35beO5WKrwLHl6GHHK3+xrwGPmtU57yNut4zl2FFT3kqg==",
+  "_location": "/@fontsource/noto-serif-nyiakeng-puachue-hmong",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@fontsource/noto-serif-nyiakeng-puachue-hmong",
+    "name": "@fontsource/noto-serif-nyiakeng-puachue-hmong",
+    "escapedName": "@fontsource%2fnoto-serif-nyiakeng-puachue-hmong",
+    "scope": "@fontsource",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@fontsource/noto-serif-nyiakeng-puachue-hmong/-/noto-serif-nyiakeng-puachue-hmong-4.5.4.tgz",
+  "_shasum": "307fa459a71135d68ee07d4f104f25e46bc1b49a",
+  "_spec": "@fontsource/noto-serif-nyiakeng-puachue-hmong",
+  "_where": "/Users/yshant/Documents/GitHub/multiscripteditor/editorClient",
+  "author": {
+    "name": "Lotus",
+    "email": "declininglotus@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fontsource/fontsource/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Self-host the Noto Serif Nyiakeng Puachue Hmong font in a neatly bundled NPM package.",
+  "homepage": "https://github.com/fontsource/fontsource/tree/master/packages/noto-serif-nyiakeng-puachue-hmong#readme",
+  "keywords": [
+    "fontsource",
+    "font",
+    "font family",
+    "google fonts",
+    "Noto Serif Nyiakeng Puachue Hmong",
+    "noto-serif-nyiakeng-puachue-hmong",
+    "css",
+    "sass",
+    "front-end",
+    "web",
+    "typeface"
+  ],
+  "license": "MIT",
+  "main": "index.css",
+  "name": "@fontsource/noto-serif-nyiakeng-puachue-hmong",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fontsource/fontsource.git",
+    "directory": "packages/noto-serif-nyiakeng-puachue-hmong"
+  },
+  "version": "4.5.4"
+}

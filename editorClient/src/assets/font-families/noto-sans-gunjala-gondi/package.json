@@ -1,0 +1,63 @@
+{
+  "_from": "@fontsource/noto-sans-gunjala-gondi",
+  "_id": "@fontsource/noto-sans-gunjala-gondi@4.5.3",
+  "_inBundle": false,
+  "_integrity": "sha512-F9riJNPBi0s2R+Rs9/SeGkc1E6e1+vOEKo2DtonHgYHxLbcL69DnoUU0WjS+cNIal73VKdaRi27I/GuSwe/sow==",
+  "_location": "/@fontsource/noto-sans-gunjala-gondi",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@fontsource/noto-sans-gunjala-gondi",
+    "name": "@fontsource/noto-sans-gunjala-gondi",
+    "escapedName": "@fontsource%2fnoto-sans-gunjala-gondi",
+    "scope": "@fontsource",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@fontsource/noto-sans-gunjala-gondi/-/noto-sans-gunjala-gondi-4.5.3.tgz",
+  "_shasum": "f423b1cf1a4f5b2792e929aafe9b158cc7f6f9d3",
+  "_spec": "@fontsource/noto-sans-gunjala-gondi",
+  "_where": "/Users/yshant/Documents/GitHub/multiscripteditor/editorClient",
+  "author": {
+    "name": "Lotus",
+    "email": "declininglotus@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fontsource/fontsource/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Self-host the Noto Sans Gunjala Gondi font in a neatly bundled NPM package.",
+  "homepage": "https://github.com/fontsource/fontsource/tree/master/packages/noto-sans-gunjala-gondi#readme",
+  "keywords": [
+    "fontsource",
+    "font",
+    "font family",
+    "google fonts",
+    "Noto Sans Gunjala Gondi",
+    "noto-sans-gunjala-gondi",
+    "css",
+    "sass",
+    "front-end",
+    "web",
+    "typeface"
+  ],
+  "license": "MIT",
+  "main": "index.css",
+  "name": "@fontsource/noto-sans-gunjala-gondi",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fontsource/fontsource.git",
+    "directory": "packages/noto-sans-gunjala-gondi"
+  },
+  "version": "4.5.3"
+}

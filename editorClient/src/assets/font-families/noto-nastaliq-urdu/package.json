@@ -1,0 +1,63 @@
+{
+  "_from": "@fontsource/noto-nastaliq-urdu",
+  "_id": "@fontsource/noto-nastaliq-urdu@4.5.2",
+  "_inBundle": false,
+  "_integrity": "sha512-oYJIgjzXFAggBT5GnwD6YPrD4yxHm4YpBowU4aLvIQH181tat8TblPOQmEpsZkBVasPVfNY17+8HgPQ4O6C3AA==",
+  "_location": "/@fontsource/noto-nastaliq-urdu",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@fontsource/noto-nastaliq-urdu",
+    "name": "@fontsource/noto-nastaliq-urdu",
+    "escapedName": "@fontsource%2fnoto-nastaliq-urdu",
+    "scope": "@fontsource",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@fontsource/noto-nastaliq-urdu/-/noto-nastaliq-urdu-4.5.2.tgz",
+  "_shasum": "eb24922a8c962604bf593d71f5ce4b3b8c492b1f",
+  "_spec": "@fontsource/noto-nastaliq-urdu",
+  "_where": "/Users/yshant/Documents/GitHub/multiscripteditor/editorClient",
+  "author": {
+    "name": "Lotus",
+    "email": "declininglotus@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fontsource/fontsource/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Self-host the Noto Nastaliq Urdu font in a neatly bundled NPM package.",
+  "homepage": "https://github.com/fontsource/fontsource/tree/master/packages/noto-nastaliq-urdu#readme",
+  "keywords": [
+    "fontsource",
+    "font",
+    "font family",
+    "google fonts",
+    "Noto Nastaliq Urdu",
+    "noto-nastaliq-urdu",
+    "css",
+    "sass",
+    "front-end",
+    "web",
+    "typeface"
+  ],
+  "license": "MIT",
+  "main": "index.css",
+  "name": "@fontsource/noto-nastaliq-urdu",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fontsource/fontsource.git",
+    "directory": "packages/noto-nastaliq-urdu"
+  },
+  "version": "4.5.2"
+}

@@ -1,0 +1,63 @@
+{
+  "_from": "@fontsource/noto-sans-old-sogdian",
+  "_id": "@fontsource/noto-sans-old-sogdian@4.5.3",
+  "_inBundle": false,
+  "_integrity": "sha512-rwIxfgG+iQNedvdT+FgHbK0P+lozBTA9XOnCZI77HYXFUuNrHzSQRLsWuYLiwbRNcmuRTL/iNuPHRfQPvGoV8g==",
+  "_location": "/@fontsource/noto-sans-old-sogdian",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@fontsource/noto-sans-old-sogdian",
+    "name": "@fontsource/noto-sans-old-sogdian",
+    "escapedName": "@fontsource%2fnoto-sans-old-sogdian",
+    "scope": "@fontsource",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@fontsource/noto-sans-old-sogdian/-/noto-sans-old-sogdian-4.5.3.tgz",
+  "_shasum": "77d89ed6854db43992195ebe6f50ef6689bd3840",
+  "_spec": "@fontsource/noto-sans-old-sogdian",
+  "_where": "/Users/yshant/Documents/GitHub/multiscripteditor/editorClient",
+  "author": {
+    "name": "Lotus",
+    "email": "declininglotus@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fontsource/fontsource/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Self-host the Noto Sans Old Sogdian font in a neatly bundled NPM package.",
+  "homepage": "https://github.com/fontsource/fontsource/tree/master/packages/noto-sans-old-sogdian#readme",
+  "keywords": [
+    "fontsource",
+    "font",
+    "font family",
+    "google fonts",
+    "Noto Sans Old Sogdian",
+    "noto-sans-old-sogdian",
+    "css",
+    "sass",
+    "front-end",
+    "web",
+    "typeface"
+  ],
+  "license": "MIT",
+  "main": "index.css",
+  "name": "@fontsource/noto-sans-old-sogdian",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fontsource/fontsource.git",
+    "directory": "packages/noto-sans-old-sogdian"
+  },
+  "version": "4.5.3"
+}

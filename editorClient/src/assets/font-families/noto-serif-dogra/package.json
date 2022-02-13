@@ -1,0 +1,63 @@
+{
+  "_from": "@fontsource/noto-serif-dogra",
+  "_id": "@fontsource/noto-serif-dogra@4.5.3",
+  "_inBundle": false,
+  "_integrity": "sha512-WsWz2dZq8IjLSj4dtabVQKI4Tjn42zZluDHvHPzDNPiWraIuSk3o3if6bl8D2VoWSewUHWYtG0FuVD0rZ6mHhw==",
+  "_location": "/@fontsource/noto-serif-dogra",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@fontsource/noto-serif-dogra",
+    "name": "@fontsource/noto-serif-dogra",
+    "escapedName": "@fontsource%2fnoto-serif-dogra",
+    "scope": "@fontsource",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@fontsource/noto-serif-dogra/-/noto-serif-dogra-4.5.3.tgz",
+  "_shasum": "60cac874773526e28074e4f4a7d0a469360f3cf9",
+  "_spec": "@fontsource/noto-serif-dogra",
+  "_where": "/Users/yshant/Documents/GitHub/multiscripteditor/editorClient",
+  "author": {
+    "name": "Lotus",
+    "email": "declininglotus@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fontsource/fontsource/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Self-host the Noto Serif Dogra font in a neatly bundled NPM package.",
+  "homepage": "https://github.com/fontsource/fontsource/tree/master/packages/noto-serif-dogra#readme",
+  "keywords": [
+    "fontsource",
+    "font",
+    "font family",
+    "google fonts",
+    "Noto Serif Dogra",
+    "noto-serif-dogra",
+    "css",
+    "sass",
+    "front-end",
+    "web",
+    "typeface"
+  ],
+  "license": "MIT",
+  "main": "index.css",
+  "name": "@fontsource/noto-serif-dogra",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fontsource/fontsource.git",
+    "directory": "packages/noto-serif-dogra"
+  },
+  "version": "4.5.3"
+}

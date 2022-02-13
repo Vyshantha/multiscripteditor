@@ -1,0 +1,63 @@
+{
+  "_from": "@fontsource/noto-sans-zanabazar-square",
+  "_id": "@fontsource/noto-sans-zanabazar-square@4.5.3",
+  "_inBundle": false,
+  "_integrity": "sha512-XtVpNoJY4zefnl8IEGcameJKUr7s32GuSfCAWaxE0Wlvs/Gy+YexhVztRZapBRLBHSgQmoQ4gb6ciM/PSSYzPw==",
+  "_location": "/@fontsource/noto-sans-zanabazar-square",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@fontsource/noto-sans-zanabazar-square",
+    "name": "@fontsource/noto-sans-zanabazar-square",
+    "escapedName": "@fontsource%2fnoto-sans-zanabazar-square",
+    "scope": "@fontsource",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@fontsource/noto-sans-zanabazar-square/-/noto-sans-zanabazar-square-4.5.3.tgz",
+  "_shasum": "9934790a6eceb559a7d2b8d985e644739f1f7bc5",
+  "_spec": "@fontsource/noto-sans-zanabazar-square",
+  "_where": "/Users/yshant/Documents/GitHub/multiscripteditor/editorClient",
+  "author": {
+    "name": "Lotus",
+    "email": "declininglotus@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fontsource/fontsource/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Self-host the Noto Sans Zanabazar Square font in a neatly bundled NPM package.",
+  "homepage": "https://github.com/fontsource/fontsource/tree/master/packages/noto-sans-zanabazar-square#readme",
+  "keywords": [
+    "fontsource",
+    "font",
+    "font family",
+    "google fonts",
+    "Noto Sans Zanabazar Square",
+    "noto-sans-zanabazar-square",
+    "css",
+    "sass",
+    "front-end",
+    "web",
+    "typeface"
+  ],
+  "license": "MIT",
+  "main": "index.css",
+  "name": "@fontsource/noto-sans-zanabazar-square",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fontsource/fontsource.git",
+    "directory": "packages/noto-sans-zanabazar-square"
+  },
+  "version": "4.5.3"
+}

@@ -1,0 +1,63 @@
+{
+  "_from": "@fontsource/noto-sans-masaram-gondi",
+  "_id": "@fontsource/noto-sans-masaram-gondi@4.5.3",
+  "_inBundle": false,
+  "_integrity": "sha512-0jg3scmXnWiK60mWtBUUvWGc9y/JHHGkXyG2D70AmPLKmtUNoZJflgAVcBhYwEvUH0hFtZFA0TIFEMc2jdr+Yg==",
+  "_location": "/@fontsource/noto-sans-masaram-gondi",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@fontsource/noto-sans-masaram-gondi",
+    "name": "@fontsource/noto-sans-masaram-gondi",
+    "escapedName": "@fontsource%2fnoto-sans-masaram-gondi",
+    "scope": "@fontsource",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@fontsource/noto-sans-masaram-gondi/-/noto-sans-masaram-gondi-4.5.3.tgz",
+  "_shasum": "fae382dcae6b6f872341214ace42b07f5da98c79",
+  "_spec": "@fontsource/noto-sans-masaram-gondi",
+  "_where": "/Users/yshant/Documents/GitHub/multiscripteditor/editorClient",
+  "author": {
+    "name": "Lotus",
+    "email": "declininglotus@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fontsource/fontsource/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Self-host the Noto Sans Masaram Gondi font in a neatly bundled NPM package.",
+  "homepage": "https://github.com/fontsource/fontsource/tree/master/packages/noto-sans-masaram-gondi#readme",
+  "keywords": [
+    "fontsource",
+    "font",
+    "font family",
+    "google fonts",
+    "Noto Sans Masaram Gondi",
+    "noto-sans-masaram-gondi",
+    "css",
+    "sass",
+    "front-end",
+    "web",
+    "typeface"
+  ],
+  "license": "MIT",
+  "main": "index.css",
+  "name": "@fontsource/noto-sans-masaram-gondi",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fontsource/fontsource.git",
+    "directory": "packages/noto-sans-masaram-gondi"
+  },
+  "version": "4.5.3"
+}

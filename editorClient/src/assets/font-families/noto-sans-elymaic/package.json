@@ -1,0 +1,63 @@
+{
+  "_from": "@fontsource/noto-sans-elymaic",
+  "_id": "@fontsource/noto-sans-elymaic@4.5.3",
+  "_inBundle": false,
+  "_integrity": "sha512-pnRUdJxx5+u0ZQBKTy9DXRQkZW93dFz9JFrJQKEKV4GEHMC9IjoGYX4COpxr4ooTxgfdLs6lTz5WNR1bFt9FyQ==",
+  "_location": "/@fontsource/noto-sans-elymaic",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@fontsource/noto-sans-elymaic",
+    "name": "@fontsource/noto-sans-elymaic",
+    "escapedName": "@fontsource%2fnoto-sans-elymaic",
+    "scope": "@fontsource",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@fontsource/noto-sans-elymaic/-/noto-sans-elymaic-4.5.3.tgz",
+  "_shasum": "26f3bdb4470f20c921dd720a73c948752676f2b7",
+  "_spec": "@fontsource/noto-sans-elymaic",
+  "_where": "/Users/yshant/Documents/GitHub/multiscripteditor/editorClient",
+  "author": {
+    "name": "Lotus",
+    "email": "declininglotus@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/fontsource/fontsource/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Self-host the Noto Sans Elymaic font in a neatly bundled NPM package.",
+  "homepage": "https://github.com/fontsource/fontsource/tree/master/packages/noto-sans-elymaic#readme",
+  "keywords": [
+    "fontsource",
+    "font",
+    "font family",
+    "google fonts",
+    "Noto Sans Elymaic",
+    "noto-sans-elymaic",
+    "css",
+    "sass",
+    "front-end",
+    "web",
+    "typeface"
+  ],
+  "license": "MIT",
+  "main": "index.css",
+  "name": "@fontsource/noto-sans-elymaic",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fontsource/fontsource.git",
+    "directory": "packages/noto-sans-elymaic"
+  },
+  "version": "4.5.3"
+}
