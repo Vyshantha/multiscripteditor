@@ -261,7 +261,7 @@ router.get('/v1/multiscripteditor/keyboard/:Type/InSupportedLanguage/:UILocale',
 });
 
 // Get all Endonym Scripts Name of a particular Script Type
-router.get('/v1/multiscripteditor/keyboard/:Type/EndonymName', function(req, res, next) {
+router.get('/v1/multiscripteditor/keyboardsWith/:Type/EndonymName', function(req, res, next) {
     const dateForLogging = new Date().toISOString()
     console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} Validating Token before retrieving all Scripts of a particular Script Type ${req.params.Type}`);
     if (ValidateToken(req).iss === properties.get('token.self.bearer')) {
@@ -328,7 +328,7 @@ router.get('/v1/multiscripteditor/languages/latin/EndonymName', function(req, re
 });
 
 // Get all Languages/Scripts of the Keyboards Layout type : Typewriter / QWERTY in the Supported Language
-router.get('/v1/multiscripteditor/keyboard/typewriter/InSupportedLanguage/:UILocale', function(req, res, next) {
+router.get('/v1/multiscripteditor/keyboardsOf/typewriter/InSupportedLanguage/:UILocale', function(req, res, next) {
     const dateForLogging = new Date().toISOString()
     console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} Validating Token before retrieving all Languages/Scripts of the Typewriter / QWERTY type for ${req.params.UILocale}`);
     if (ValidateToken(req).iss === properties.get('token.self.bearer')) {
@@ -350,7 +350,7 @@ router.get('/v1/multiscripteditor/keyboard/typewriter/InSupportedLanguage/:UILoc
 });
 
 // Get all Endonym Names Languages/Scripts of the Keyboards Layout type : Typewriter / QWERTY
-router.get('/v1/multiscripteditor/keyboard/typewriter/EndonymName', function(req, res, next) {
+router.get('/v1/multiscripteditor/keyboardsIn/typewriter/EndonymName', function(req, res, next) {
     const dateForLogging = new Date().toISOString()
     console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} Validating Token before retrieving all Endonym Languages/Scripts names of the Typewriter / QWERTY type`);
     if (ValidateToken(req).iss === properties.get('token.self.bearer')) {
@@ -371,7 +371,7 @@ router.get('/v1/multiscripteditor/keyboard/typewriter/EndonymName', function(req
 });
 
 // Get all Languages/Scripts of the Keyboards Layout type : Transliteration in the Supported Language
-router.get('/v1/multiscripteditor/keyboard/transliterate/InSupportedLanguage/:UILocale', function(req, res, next) {
+router.get('/v1/multiscripteditor/keyboardsOf/transliterate/InSupportedLanguage/:UILocale', function(req, res, next) {
     const dateForLogging = new Date().toISOString()
     console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} Validating Token before retrieving all Languages/Scripts of the Transliteration type for ${req.params.UILocale}`);
     if (ValidateToken(req).iss === properties.get('token.self.bearer')) {
@@ -393,7 +393,7 @@ router.get('/v1/multiscripteditor/keyboard/transliterate/InSupportedLanguage/:UI
 });
 
 // Get all Endonym Names Languages/Scripts of the Keyboards Layout type : Transliteration
-router.get('/v1/multiscripteditor/keyboard/transliterate/EndonymName', function(req, res, next) {
+router.get('/v1/multiscripteditor/keyboardsIn/transliterate/EndonymName', function(req, res, next) {
     const dateForLogging = new Date().toISOString()
     console.info(`[MULTISCRIPTEDITOR] ${dateForLogging} Validating Token before retrieving all Endonym Languages/Scripts Names of the Transliteration type`);
     if (ValidateToken(req).iss === properties.get('token.self.bearer')) {

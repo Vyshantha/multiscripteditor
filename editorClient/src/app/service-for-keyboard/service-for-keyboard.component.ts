@@ -36,20 +36,22 @@ export class ServiceForKeyboardComponent implements OnInit {
   constructor(private sessionManager: SessionManagerService, private http: HttpClient, private _snackBar: MatSnackBar) {
     if (localStorage.getItem('qwertyStyle') != undefined) {
       if (localStorage.getItem('qwertyStyle') === 'true') {
-        this.languageBased = false;
-        this.sessionManager.setInSessionQwerty(true);
+        if (localStorage.getItem('transliterate') != undefined) {
+          if (localStorage.getItem('transliterate') === 'true'){
+            this.transliterateKeyboard = true;
+            this.sessionManager.setTransliterate(true);
+          } else if (localStorage.getItem('transliterate') === 'false') {
+            this.transliterateKeyboard = false;
+            this.sessionManager.setTransliterate(false);
+            this.languageBased = false;
+            this.sessionManager.setInSessionQwerty(true);
+          }
+        }
       } else if (localStorage.getItem('qwertyStyle') === 'false') {
-        this.languageBased = true;
-        this.sessionManager.setInSessionQwerty(false);
-      }
-    }
-    if (localStorage.getItem('transliterate') != undefined) {
-      if (localStorage.getItem('transliterate') === 'true'){
-        this.transliterateKeyboard = true;
-        this.sessionManager.setTransliterate(true);
-      } else if (localStorage.getItem('transliterate') === 'false') {
         this.transliterateKeyboard = false;
         this.sessionManager.setTransliterate(false);
+        this.languageBased = true;
+        this.sessionManager.setInSessionQwerty(false);
       }
     }
     if (this.sessionManager.getFromSessionURL()) {
@@ -98,9 +100,20 @@ export class ServiceForKeyboardComponent implements OnInit {
 
     if (localStorage.getItem('qwertyStyle') != undefined) {
       if (localStorage.getItem('qwertyStyle') === 'true') {
-        this.languageBased = false;
-        this.sessionManager.setInSessionQwerty(true);
+        if (localStorage.getItem('transliterate') != undefined) {
+          if (localStorage.getItem('transliterate') === 'true'){
+            this.transliterateKeyboard = true;
+            this.sessionManager.setTransliterate(true);
+          } else if (localStorage.getItem('transliterate') === 'false') {
+            this.transliterateKeyboard = false;
+            this.sessionManager.setTransliterate(false);
+            this.languageBased = false;
+            this.sessionManager.setInSessionQwerty(true);
+          }
+        }
       } else if (localStorage.getItem('qwertyStyle') === 'false') {
+        this.transliterateKeyboard = false;
+        this.sessionManager.setTransliterate(false);
         this.languageBased = true;
         this.sessionManager.setInSessionQwerty(false);
       }
