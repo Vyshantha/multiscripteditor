@@ -1281,11 +1281,6 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     ы: [{"¨": "ӹ"}],
   };
 
-  noSeparator: string[] = ["zhcn", "zhtw", "ja", "bopo", "pin"];
-  visualSeparator: string[] = ["am", "tig", "ti"];
-  zeroWidthSeparator: string[] = ["bali", "jv", "km", "th", "lo", "shan", "tdd", "talu", "my"];
-  syllabicSeparator: string[] = ["lis", "tibt"];
-
   isSuggestionRequested: Boolean = true;
   languageSuggestion: FormGroup = this._formBuilder.group({
     setOfWords: ''
@@ -2224,6 +2219,10 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     // Required for updating Syllables in Qwerty Row 2
     if (this.isQwerty && !this.isTransliterate && (this.sessionManager.itemSessionURL.value == "ti" || this.sessionManager.itemSessionURL.value == "tig" || this.sessionManager.itemSessionURL.value == "am" || this.sessionManager.itemSessionURL.value == "geez"))
       this.setSuperPosition();
+
+    this.sessionManager.continousIntegrationComplete.subscribe((value) => {
+      this.runProgressIndicator = !value;
+    });
   }
 
   keysResizePerDeviceWidth() {
@@ -3588,6 +3587,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   }
 
   keyPressed(element, value, action, type, src) {
+    this.sessionManager.detectWordTyped = false;
     if (action === "shift") {
       if (this.sessionManager.itemAltGrKeyPressed.value == false) {
         if (this.sessionManager.itemShiftKeyPressed.value == false)
@@ -3625,7 +3625,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setCharFromKeyboard("");
     } else if (action === "space" && value === "\u00A0") {
       this.resetSwara();
-      this.sessionManager.setCharFromKeyboard(value + this.wordSeparator());
+      this.sessionManager.setCharFromKeyboard(value + this.sessionManager.wordSeparator());
       this.typedWord.next("");
     } else if (action === "delAlt") {
       this.sessionManager.setActionFromKeyboard(action);
@@ -3659,26 +3659,33 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.typedWord.next(this.typedWord.value + value);
       this.lastCharVyanjana = true;
     } else if (type === "word") {
+      if (this.sessionManager.isIntegrationContinous() == 'true') {
+        this.runProgressIndicator = true;
+      }
       // Keys pressed from Soft Keyboard
       for(let count in this.typedWord.value) {
         this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
       }
       if (this.lastCharVyanjana == true && action == 'char') {
         this.lastCharVyanjana = false;
-        this.sessionManager.setCharFromKeyboard(value);
+      this.sessionManager.detectWordTyped = true;
+      this.sessionManager.setCharFromKeyboard(value);
       } else if (action == 'false') {
         if (this.typedWord.value && value.includes(this.typedWord.value) > -1 && value[0].toUpperCase() === this.typedWord.value[0] && this.sessionManager.getFromSessionURL() != "pin" && this.sessionManager.getFromSessionURL() != "bopo"){
           value = this.typedWord.value[0] + value.substr(1, value.length);
           this.typedWord.next("");
-          this.sessionManager.setCharFromKeyboard(this.wordSeparator() + value + this.wordSeparator());
+          this.sessionManager.detectWordTyped = true;
+          this.sessionManager.setCharFromKeyboard(this.sessionManager.wordSeparator() + value + this.sessionManager.wordSeparator());
           this.resetSwara();
         } else if (this.sessionManager.getFromSessionURL() == "pin" || this.sessionManager.getFromSessionURL() == "bopo" || (this.sessionManager.getFromSessionURL() == "zhtw" && this.sessionManager.getInSessionQwerty() == true) || (this.sessionManager.getFromSessionURL() == "zhcn" && this.sessionManager.getInSessionQwerty() == true)) {
           this.typedWord.next("");
-          this.sessionManager.setCharFromKeyboard(value.split(" ")[1] + this.wordSeparator());
+          this.sessionManager.detectWordTyped = true;
+          this.sessionManager.setCharFromKeyboard(value.split(" ")[1] + this.sessionManager.wordSeparator());
           this.resetSwara();
         } else {
           this.typedWord.next("");
-          this.sessionManager.setCharFromKeyboard(value + this.wordSeparator()); 
+          this.sessionManager.detectWordTyped = true;
+          this.sessionManager.setCharFromKeyboard(value + this.sessionManager.wordSeparator()); 
           this.resetSwara();
         }
       }
@@ -3770,6 +3777,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
 
   selectTargetTransliteration(event, targetScript) {
     this.runProgressIndicator = true;
+    this.sessionManager.targetIntegrationScript = targetScript;
     if (targetScript && targetScript != "" && targetScript != null && this.sessionManager.getSessionSavedContent() != null && this.sessionManager.getSessionSavedContent() != "" && this.sessionManager.getSessionSavedContent() != undefined && this.sessionManager.getOfflineOnly() == false) {
       this.sessionManager.integrateTransliteration(targetScript).subscribe((resultContent: any) => {
         this.sessionManager.pasteIntegrationOutput.next(true);
@@ -3783,32 +3791,6 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.runProgressIndicator = false;
       });
     }
-  }
-
-  wordSeparator() {
-    /* Word-Separator https://r12a.github.io/scripts/featurelist/
-      [space] " "
-      [interpunct] "·" (la)
-      [visually separate] "\u2009" bzw. "፡" (am, geez)
-      [no separator] "" (zhcn, zhtw, ja)
-      [syllabic] (lisu, tibetan)
-      [0 width space] "\u202F" (khmer, bali, burmese, javanese, lao, thai, shan, tai lü, tai nüa)
-      */
-
-    if (this.sessionManager.getFromSessionURL() == "la") 
-      return "·";
-    else if (this.sessionManager.getFromSessionURL() == "geez")
-      return "፡";
-    else if (this.noSeparator.indexOf(this.sessionManager.getFromSessionURL()) > -1)
-      return "";
-    else if (this.visualSeparator.indexOf(this.sessionManager.getFromSessionURL()) > -1)
-      return "\u2009";
-    else if (this.syllabicSeparator.indexOf(this.sessionManager.getFromSessionURL()) > -1)
-      return " ";
-    else if (this.zeroWidthSeparator.indexOf(this.sessionManager.getFromSessionURL()) > -1)
-      return "\u202F";
-    else
-      return " ";
   }
 
   // Diacritics for Latin/Cyrillic/Greek-based/Pinyin/Zhuyin languages - https://en.wikipedia.org/wiki/List_of_Unicode_characters

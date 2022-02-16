@@ -92,6 +92,7 @@ export class HelperComponent implements OnInit, AfterViewInit {
   suggestionForUser: Boolean = true;
   countOfSuggestions: Number = (this.isMobile)? 4 : ((this.isTablet)? 7 : 14);
   shareWordsFromContent: Boolean = false;
+  continousIntegration: Boolean = false;
   highlightInKeyboard: Boolean = true;
   unusedKeys: Boolean = false;
   criteriaNotMet: Boolean = false;
@@ -142,6 +143,7 @@ export class HelperComponent implements OnInit, AfterViewInit {
     this.saveBrowser = (this.sessionManager.retrieveSaveSessionAllowed() == 'true') ? true : false;
     this.suggestionForUser = (this.sessionManager.suggestionForLanguage() == 'true') ? true : false;
     this.shareWordsFromContent = (this.sessionManager.isShareContentWordSuggestionsAllowed() == 'true') ? true : false;
+    this.continousIntegration = (this.sessionManager.isIntegrationContinous() == 'true') ? true : false;
     this.highlightInKeyboard = (this.sessionManager.isHighlightKeysSet() == 'true') ? true : false;
     this.unusedKeys = (this.sessionManager.areUnusedKeysToBeShown() == 'true') ? true : false;
     this.urlOfKeyboard = this.sessionManager.getFromSessionURL();
@@ -539,6 +541,8 @@ export class HelperComponent implements OnInit, AfterViewInit {
       this.sessionManager.configSuggesionForLanguage((this.suggestionForUser) ? 'false' : 'true');
     } else if (type == 'shareWords') {
       this.sessionManager.shareContentWordSuggestions((this.shareWordsFromContent) ? 'false': 'true');
+    } else if (type == 'continous') {
+      this.sessionManager.shouldIntegrationBeContinous((this.continousIntegration)? 'false': 'true')
     } else if (type == 'highlightKeys') {
       this.sessionManager.highlightOrNot((this.highlightInKeyboard) ? 'false': 'true');
     } else if (type == 'unusedKeys') {

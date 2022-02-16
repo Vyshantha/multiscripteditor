@@ -60,10 +60,18 @@ export class SessionManagerService {
   textOrientationMode = new BehaviorSubject(false);
   triggerWindowsKeys = new BehaviorSubject(false);
   pasteIntegrationOutput = new BehaviorSubject(false);
+  continousIntegrationComplete = new BehaviorSubject(false);
+  targetIntegrationScript = new BehaviorSubject('IAST');
+  detectWordTyped = false;
 
   internalSession : string = '';
 
   sentenceSeparator : string[] = [".", "·", "։", "՝","~", "՞", "。", "｡", "︒", "、", "?", "!", "‽", ";", ":", ",", "¿", "¡", "؟", "⹁", "⸴", "⸲", "ʻ", "︐", "،", "︑", "﹐", "﹑", "，", "､", "।", "॥", "෴", "⸼", "∘","۔", "።", "└", "▄", "჻", "߸", "፣", "᠂", "᠈", "꓾", "꘍", "꛵", "𑑍", "𝪇", "᭞", "᭟", "᭟᭜᭟", "꧈", "꧉", "꧊", "꧋", "꧋꧆꧋", "꧉꧆꧉", "\u2E4C", "\uD805\uDC5A", "\uD81B\uDE97"];
+
+  noSeparator: string[] = ["zhcn", "zhtw", "ja", "bopo", "pin"];
+  visualSeparator: string[] = ["am", "tig", "ti"];
+  zeroWidthSeparator: string[] = ["bali", "jv", "km", "th", "lo", "shan", "tdd", "talu", "my"];
+  syllabicSeparator: string[] = ["lis", "tibt"];
 
   uri = 'https://' + SVAConfig.hostname + ':' + SVAConfig.port + '';
 
@@ -257,11 +265,53 @@ export class SessionManagerService {
   setCharFromKeyboard(whichCharacter) {
     if (this.sentenceSeparator.indexOf(whichCharacter) > -1) {
       this.sentenceComplete(whichCharacter).subscribe((storagedSentence) => {
-        // Session Manager Service sends these Device, Browser, Locale & User Interface Data
         console.info("[MUlTISCRIPTEDITOR] Sentence Written is being processed by back-end NLP and no personal data is stored ", storagedSentence);
       });;
     }
-    this.itemKeyCharacter.next(whichCharacter);
+    if (this.isIntegrationContinous() == 'true' && this.sentenceSeparator.indexOf(whichCharacter) == -1 && this.detectWordTyped == true && this.targetIntegrationScript.value && this.targetIntegrationScript.value != "" && this.targetIntegrationScript.value != null && this.getOfflineOnly() == false) {
+      this.integrateContinous(this.targetIntegrationScript.value, whichCharacter).subscribe((resultContent: any) => {
+        this.pasteIntegrationOutput.next(true);
+        console.info("[MUlTISCRIPTEDITOR] Transliteration through Aksharamukha Integration to Target Script ", this.targetIntegrationScript.value);
+        whichCharacter = resultContent;
+        this.itemKeyCharacter.next(whichCharacter);
+        this.continousIntegrationComplete.next(true);
+      }, (error) => {
+        this.pasteIntegrationOutput.next(true);
+        console.info("[MUlTISCRIPTEDITOR] Transliteration through Aksharamukha Integration to Target Script ", this.targetIntegrationScript.value);
+        whichCharacter = error.error.text;
+        this.itemKeyCharacter.next(whichCharacter);
+        this.continousIntegrationComplete.next(true);
+      });
+    } else {
+      this.itemKeyCharacter.next(whichCharacter);
+      this.continousIntegrationComplete.next(false);
+    }
+  }
+
+  wordSeparator() {
+    /* Word-Separator https://r12a.github.io/scripts/featurelist/
+      [space] " "
+      [interpunct] "·" (la)
+      [visually separate] "\u2009" bzw. "፡" (am, geez)
+      [no separator] "" (zhcn, zhtw, ja)
+      [syllabic] (lisu, tibetan)
+      [0 width space] "\u202F" (khmer, bali, burmese, javanese, lao, thai, shan, tai lü, tai nüa)
+      */
+
+    if (this.getFromSessionURL() == "la") 
+      return "·";
+    else if (this.getFromSessionURL() == "geez")
+      return "፡";
+    else if (this.noSeparator.indexOf(this.getFromSessionURL()) > -1)
+      return "";
+    else if (this.visualSeparator.indexOf(this.getFromSessionURL()) > -1)
+      return "\u2009";
+    else if (this.syllabicSeparator.indexOf(this.getFromSessionURL()) > -1)
+      return " ";
+    else if (this.zeroWidthSeparator.indexOf(this.getFromSessionURL()) > -1)
+      return "\u202F";
+    else
+      return " ";
   }
 
   // Keyboard Font Size is saved for session
@@ -498,6 +548,19 @@ export class SessionManagerService {
       return this.preventInputFieldForAttacks(localStorage.getItem('highlightKeys'));
     else
       return this.highlightOrNot('true');
+  }
+
+  // Aksharamukha Integration Type Defined
+  shouldIntegrationBeContinous(set) {
+    localStorage.setItem('continousIntegration', set);
+  }
+  
+  // Is continous integration with Aksharamukha setup
+  isIntegrationContinous () {
+    if (localStorage.getItem('continousIntegration') && (localStorage.getItem('continousIntegration') == 'false' || localStorage.getItem('continousIntegration') == 'true'))
+      return this.preventInputFieldForAttacks(localStorage.getItem('continousIntegration'));
+    else
+      return this.shouldIntegrationBeContinous('false');
   }
 
   // Allow Sharing non-PII data from Content of Editor
@@ -772,9 +835,13 @@ export class SessionManagerService {
     return this.http.get<any[]>(`${this.uri}/v1/multiscripteditor/GetWordsList/${lang_code}/suggestionWords`);
   }
 
+  // Aksharamukha Integration for Transliteration of every word
+  integrateContinous(targetScript, word) {
+    return this.http.get<any[]>(`https://aksharamukha-plugin.appspot.com/api/public?target=${targetScript}&text=${word}`);
+  }
   // Aksharamukha Integration for Transliteration of all Session Data
   integrateTransliteration(targetScript) {
-    return this.http.get<any[]>(`https://aksharamukha-plugin.appspot.com/api/public?target=${targetScript}&text=${this.getSessionSavedContent()}`);
+      return this.http.get<any[]>(`https://aksharamukha-plugin.appspot.com/api/public?target=${targetScript}&text=${this.getSessionSavedContent()}`);
   }
 
   // Image to Text sending image data to NodeJS server
