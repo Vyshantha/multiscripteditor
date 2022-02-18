@@ -4,8 +4,7 @@
   font-style: normal;
   font-display: swap;
   font-weight: 400;
-  src: url('./files/noto-serif-yezidi-yezidi-400-normal.woff2') format('woff2'), url('./files/noto-serif-yezidi-yezidi-400-normal.woff') format('woff');
-  
+  src: url('./../../assets/font-families/noto-serif-yezidi-yezidi-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-serif-yezidi-yezidi-400-normal.woff') format('woff');
 }
 /* noto-serif-yezidi-yezidi-500-normal*/
 @font-face {
@@ -13,8 +12,7 @@
   font-style: normal;
   font-display: swap;
   font-weight: 500;
-  src: url('./files/noto-serif-yezidi-yezidi-500-normal.woff2') format('woff2'), url('./files/noto-serif-yezidi-yezidi-500-normal.woff') format('woff');
-  
+  src: url('./../../assets/font-families/noto-serif-yezidi-yezidi-500-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-serif-yezidi-yezidi-500-normal.woff') format('woff');
 }
 /* noto-serif-yezidi-yezidi-600-normal*/
 @font-face {
@@ -22,8 +20,7 @@
   font-style: normal;
   font-display: swap;
   font-weight: 600;
-  src: url('./files/noto-serif-yezidi-yezidi-600-normal.woff2') format('woff2'), url('./files/noto-serif-yezidi-yezidi-600-normal.woff') format('woff');
-  
+  src: url('./../../assets/font-families/noto-serif-yezidi-yezidi-600-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-serif-yezidi-yezidi-600-normal.woff') format('woff');
 }
 /* noto-serif-yezidi-yezidi-700-normal*/
 @font-face {
@@ -31,6 +28,5 @@
   font-style: normal;
   font-display: swap;
   font-weight: 700;
-  src: url('./files/noto-serif-yezidi-yezidi-700-normal.woff2') format('woff2'), url('./files/noto-serif-yezidi-yezidi-700-normal.woff') format('woff');
-  
+  src: url('./../../assets/font-families/noto-serif-yezidi-yezidi-700-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-serif-yezidi-yezidi-700-normal.woff') format('woff');
 }

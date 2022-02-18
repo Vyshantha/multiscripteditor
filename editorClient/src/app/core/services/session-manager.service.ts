@@ -271,13 +271,13 @@ export class SessionManagerService {
     if (this.isIntegrationContinous() == 'true' && this.sentenceSeparator.indexOf(whichCharacter) == -1 && this.detectWordTyped == true && this.targetIntegrationScript.value && this.targetIntegrationScript.value != "" && this.targetIntegrationScript.value != null && this.getOfflineOnly() == false) {
       this.integrateContinous(this.targetIntegrationScript.value, whichCharacter).subscribe((resultContent: any) => {
         this.pasteIntegrationOutput.next(true);
-        console.info("[MUlTISCRIPTEDITOR] Transliteration through Aksharamukha Integration to Target Script ", this.targetIntegrationScript.value);
+        console.info("[MUlTISCRIPTEDITOR] Continous transliteration through Aksharamukha Integration to Target Script ", this.targetIntegrationScript.value);
         whichCharacter = resultContent;
         this.itemKeyCharacter.next(whichCharacter);
         this.continousIntegrationComplete.next(true);
       }, (error) => {
         this.pasteIntegrationOutput.next(true);
-        console.info("[MUlTISCRIPTEDITOR] Transliteration through Aksharamukha Integration to Target Script ", this.targetIntegrationScript.value);
+        console.info("[MUlTISCRIPTEDITOR] Continous transliteration through Aksharamukha Integration to Target Script ", this.targetIntegrationScript.value);
         whichCharacter = error.error.text;
         this.itemKeyCharacter.next(whichCharacter);
         this.continousIntegrationComplete.next(true);

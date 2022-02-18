@@ -67,6 +67,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       removeButtons: 'Paste,PasteText,PasteFromWord', 
       pasteFilter: null,                                  // 'plain-text'
       contentsCss: '',                                    // TODO : with X-Content-Type-Options set to 'nosniff'
+      extraCss: 'p {font-family: "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", Roboto, "Helvetica Neue", sans-serif }',
       startupFocus: 'end',
       //extraPlugins: ''                                  // Plugins for CKEditor https://ckeditor.com/cke4/presets-all
   };
@@ -779,9 +780,9 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         this.fullmodeCkEditor.instance.config.contentsLangDirection = (this.rtlLocales.indexOf(url_code) !== -1)? 'rtl' : 'ltr';
       }
       this.ckEditorConfiguration.contentsLangDirection = (this.rtlLocales.indexOf(this.sessionManager.getFromSessionURL()) !== -1)? 'rtl' : 'ltr';
-      if(this.fonts.indexOf(url_code) > -1) {
+      //if(this.fonts.indexOf(url_code) > -1) {
         this.bindFontSource(this.fontsSourcesCSS[this.fonts.indexOf(url_code)]);
-      }
+      //}
     });
 
     this.sessionManager.itemUILocale.subscribe((iso_code) => {
@@ -1009,9 +1010,9 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     const isBrowserTabInView = () => document.hidden;
     if (isBrowserTabInView()) {
       let cssLink = document.createElement("link");
-      cssLink.rel = "stylesheet";
-      cssLink.type = "text/html"; 
-      cssLink.href = "./" + file + ".css"; 
+      //cssLink.rel = "stylesheet";
+      cssLink.type = "text/css"; 
+      cssLink.href = "./../../styles.scss"; 
 
       setTimeout(() => {
         document.getElementsByClassName("cke_wysiwyg_frame cke_reset")[0].ownerDocument.head.appendChild(cssLink);

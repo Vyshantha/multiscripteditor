@@ -3949,7 +3949,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         });
       });
     }
-    if (qwertyExists == false)
+    if (qwertyExists == false && this.layoutCurrentKeys.length > 0)
       this.sessionManager.setInSessionQwerty(qwertyExists);
   }
 
