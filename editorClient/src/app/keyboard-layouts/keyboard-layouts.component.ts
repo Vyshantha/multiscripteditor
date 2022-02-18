@@ -2167,7 +2167,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.isSuggestionRequested = valueSet;
     });
     this.typedWord.subscribe((characterTyped) => {
-      if (characterTyped && this.allSuggestionsForLanguage.length > 0) {
+      if (characterTyped && characterTyped != " " && characterTyped != "  " && this.allSuggestionsForLanguage.length > 0) {
         this.languageSuggestion.get('setOfWords').setValue(characterTyped);
         this.listOfWordsChips[0] = characterTyped;
       } else if (this.listOfWordsChips) {
@@ -3625,7 +3625,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setCharFromKeyboard("");
     } else if (action === "space" && value === "\u00A0") {
       this.resetSwara();
-      this.sessionManager.setCharFromKeyboard(value + this.sessionManager.wordSeparator());
+      this.sessionManager.setCharFromKeyboard(this.sessionManager.wordSeparator());
       this.typedWord.next("");
     } else if (action === "delAlt") {
       this.sessionManager.setActionFromKeyboard(action);

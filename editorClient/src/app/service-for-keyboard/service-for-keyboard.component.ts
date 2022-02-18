@@ -34,26 +34,6 @@ export class ServiceForKeyboardComponent implements OnInit {
   transliterationScripts: string[] = ['as', 'bn', 'brx', 'gu', 'haj', 'hi', 'kn', 'ml', 'malt', 'mr', 'or', 'pa', 'sa', 'ta', 'te', 'ur', 'tirh', 'mni', 'hy', 'bg', 'km'];
 
   constructor(private sessionManager: SessionManagerService, private http: HttpClient, private _snackBar: MatSnackBar) {
-    /*if (localStorage.getItem('qwertyStyle') != undefined) {
-      if (localStorage.getItem('qwertyStyle') === 'true') {
-        if (localStorage.getItem('transliterate') != undefined) {
-          if (localStorage.getItem('transliterate') === 'true'){
-            this.transliterateKeyboard = true;
-            this.sessionManager.setTransliterate(true);
-          } else if (localStorage.getItem('transliterate') === 'false') {
-            this.transliterateKeyboard = false;
-            this.sessionManager.setTransliterate(false);
-            this.languageBased = false;
-            this.sessionManager.setInSessionQwerty(true);
-          }
-        }
-      } else if (localStorage.getItem('qwertyStyle') === 'false') {
-        this.transliterateKeyboard = false;
-        this.sessionManager.setTransliterate(false);
-        this.languageBased = true;
-        this.sessionManager.setInSessionQwerty(false);
-      }
-    }*/
     if (this.sessionManager.getFromSessionURL()) {
       this.showAllInitially = this.sessionManager.itemKeyboardOnly.value;
       this.onlyKeyboardToggle = !this.sessionManager.itemKeyboardOnly.value;

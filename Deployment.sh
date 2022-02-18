@@ -16,9 +16,7 @@ git push heroku master
 
 ### Client-Deploy - Firebase Deploy https://console.firebase.google.com/u/0/project/worldscriptsexplorer/hosting/sites
 cd /Users/yshant/Documents/GitHub/multiscripteditor/editorClient
-cp ./src/assets/environments/sva_config_prod.json ./src/assets/environments/sva_config.json
 sudo npm install -g firebase-tools # ONLY first time
 firebase login # ONLY first time
 firebase init # ONLY first time
-ng build --prod --build-optimizer
-firebase deploy --project worldscriptsexplorer
+cp ./src/assets/environments/sva_config_prod.json ./src/assets/environments/sva_config.json && ng build --prod --build-optimizer && firebase deploy --project worldscriptsexplorer
