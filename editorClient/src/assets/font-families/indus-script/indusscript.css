@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: "indus-script";
-  src:url("IS/indus-script.eot");
-  src:url("IS/indus-script.eot?#iefix") format("embedded-opentype"),
-    url("IS/indus-script.woff") format("woff"),
-    url("IS/indus-script.ttf") format("truetype"),
-    url("IS/indus-script.svg#indus-script") format("svg");
+  src:url("./IS/indus-script.eot");
+  src:url("./IS/indus-script.eot?#iefix") format("embedded-opentype"),
+    url("./IS/indus-script.woff") format("woff"),
+    url("./IS/indus-script.ttf") format("truetype"),
+    url("./IS/indus-script.svg#indus-script") format("svg");
   font-weight: normal;
   font-style: normal;
 }

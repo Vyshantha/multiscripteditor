@@ -49,7 +49,6 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       removeButtons: 'Paste,PasteText,PasteFromWord', 
       pasteFilter: null,                                  // 'plain-text'
       contentsCss: '',                                    
-      extraCss: 'body {font-family: "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", Roboto, "Helvetica Neue", sans-serif }',
       startupFocus: 'end',
       //extraPlugins: ''                                  // Plugins for CKEditor https://ckeditor.com/cke4/presets-all
   };
@@ -114,19 +113,21 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
   translateForSnackBar: string[] = [];
 
   fontFamily: any = {
-    "dogr": ["@font-face {font-family: 'Noto Serif Dogra';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-serif-dogra/files/noto-serif-dogra-dogra-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-serif-dogra/files/noto-serif-dogra-dogra-400-normal.woff') format('woff');}"],
-    "zanb": ["body {font-family: 'Noto Sans Zanabazar Square';}"],
-    "kult": ["body {font-family: 'Noto Sans Old Sogdian';}"],
-    "sog": ["body {font-family: 'Noto Sans Sogdian';}"],
-    "hmnp": ["body {font-family: 'Noto Serif Nyiakeng Puachue Hmong';}"],
-    "nshu": ["body {font-family: 'Noto Sans Nushu';}"],
-    "txg": ["body {font-family: 'Noto Serif Tangut';}"],
-    "elym": ["body {font-family: 'Noto Sans Elymaic';}"],
-    "gonm": ["body {font-family: 'Noto Sans Masaram Gondi';}"],
-    "gong": ["body {font-family: 'Noto Sans Gunjala Gondi';}"],
-    "soyo": ["body {font-family: 'Noto Sans Soyombo';}"],
-    "yezi": ["body {font-family: 'Noto Serif Yezidi';}"],
-    "ur": ["body {font-family: 'Noto Nastaliq Urdu';}"]
+    "dogr": ["@font-face {font-family: 'Noto Serif Dogra';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-serif-dogra/files/noto-serif-dogra-dogra-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-serif-dogra/files/noto-serif-dogra-dogra-400-normal.woff') format('woff');} body {font-family: 'Noto Serif Dogra'}"],
+    "maha": ["@font-face {font-family: 'Noto Sans Mahajani';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-sans-mahajani/files/noto-sans-mahajani-mahajani-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-sans-mahajani/files/noto-sans-mahajani-mahaji-400-normal.woff') format('woff');} body {font-family: 'Noto Sans Mahajani'}"],
+    "zanb": ["@font-face {font-family: 'Noto Sans Zanabazar Square';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-sans-zanabazar-square/files/noto-sans-zanabazar-square-zanabazar-square-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-sans-zanabazar-square/files/noto-sans-zanabazar-square-zanabazar-square-400-normal.woff') format('woff');} body {font-family: 'Noto Sans Zanabazar Square'}"],
+    "kult": ["@font-face {font-family: 'Noto Sans Old Sogdian';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-sans-old-sogdian/files/noto-sans-old-sogdian-old-sogdian-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-sans-old-sogdian/files/noto-sans-old-sogdian-old-sogdian-400-normal.woff') format('woff');} body {font-family: 'Noto Sans Old Sogdian'}"],
+    "sog": ["@font-face {font-family: 'Noto Sans Sogdian';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-sans-sogdian/files/noto-sans-sogdian-sogdian-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-sans-sogdian/files/noto-sans-sogdian-sogdian-400-normal.woff') format('woff')} body {font-family: 'Noto Sans Sogdian'}"],
+    "hmnp": ["@font-face {font-family: 'Noto Serif Nyiakeng Puachue Hmong';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-serif-nyiakeng-puachue-hmong/files/noto-serif-nyiakeng-puachue-hmong-nyiakeng-puachue-hmong-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-serif-nyiakeng-puachue-hmong/files/noto-serif-nyiakeng-puachue-hmong-nyiakeng-puachue-hmong-400-normal.woff') format('woff');} body {font-family: 'Noto Serif Nyiakeng Puachue Hmong'}"],
+    "nshu": ["@font-face {font-family: 'Noto Sans Nushu';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-sans-nushu/files/noto-sans-nushu-nushu-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-sans-nushu/files/noto-sans-nushu-nushu-400-normal.woff') format('woff');} body {font-family: 'Noto Sans Nushu'}"],
+    "txg": ["@font-face {font-family: 'Noto Serif Tangut';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-serif-tangut/files/noto-serif-tangut-tangut-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-serif-tangut/files/noto-serif-tangut-tangut-400-normal.woff') format('woff');} body {font-family: 'Noto Serif Tangut'}"],
+    "elym": ["@font-face {font-family: 'Noto Sans Elymaic';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-sans-elymaic/files/noto-sans-elymaic-elymaic-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-sans-elymaic/files/noto-sans-elymaic-elymaic-400-normal.woff') format('woff');} body {font-family: 'Noto Sans Elymaic'}"],
+    "gonm": ["@font-face {font-family: 'Noto Sans Masaram Gondi';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-sans-masaram-gondi/files/noto-sans-masaram-gondi-masaram-gondi-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-sans-masaram-gondi/files/noto-sans-masaram-gondi-masaram-gondi-400-normal.woff') format('woff');} body {font-family: 'Noto Sans Masaram Gondi'}"],
+    "gong": ["@font-face {font-family: 'Noto Sans Gunjala Gondi';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-sans-gunjala-gondi/files/noto-sans-gunjala-gondi-gunjala-gondi-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-sans-gunjala-gondi/files/noto-sans-gunjala-gondi-gunjala-gondi-400-normal.woff') format('woff');} body {font-family: 'Noto Sans Gunjala Gondi'}"],
+    "soyo": ["@font-face {font-family: 'Noto Sans Soyombo';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-sans-soyombo/files/noto-sans-soyombo-soyombo-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-sans-soyombo/files/noto-sans-soyombo-soyombo-400-normal.woff') format('woff')} body {font-family: 'Noto Sans Soyombo'}"],
+    "yezi": ["@font-face {font-family: 'Noto Serif Yezidi';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-serif-yezidi/files/noto-serif-yezidi-yezidi-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-serif-yezidi/files/noto-serif-yezidi-yezidi-400-normal.woff') format('woff');} body {font-family: 'Noto Serif Yezidi'}"],
+    "ur": ["@font-face {font-family: 'Noto Nastaliq Urdu';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-nastaliq-urdu/files/noto-nastaliq-urdu-arabic-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-nastaliq-urdu/files/noto-nastaliq-urdu-arabic-400-normal.woff') format('woff');} body {font-family: 'Noto Nastaliq Urdu'}"],
+    "indus": ["@font-face {font-family: 'indus-script'; src:url('./../../assets/font-families/indus-script/IS/indus-script.eot');src:url('./../../assets/font-families/indus-script/IS/indus-script.eot?#iefix') format('embedded-opentype'),url('./../../assets/font-families/indus-script/IS/indus-script.woff') format('woff'),url('./../../assets/font-families/indus-script/IS/indus-script.ttf') format('truetype'),url('./../../assets/font-families/indus-script/IS/indus-script.svg#indus-script') format('svg');font-weight: normal;font-style: normal;} body {font-family: 'indus-script'}"]
   };
 
   constructor(private sessionManager: SessionManagerService, private http: HttpClient, private _snackBar: MatSnackBar) { 
@@ -187,7 +188,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     }
     
     let URL_Code = this.sessionManager.getFromSessionURL();
-    this.ckEditorConfiguration.contentsLangDirection = (this.rtlLocales.indexOf(URL_Code) !== -1)? 'rtl' : 'ltr';
+    this.ckEditorConfiguration.contentsLangDirection = (this.rtlLocales.indexOf(URL_Code) > -1)? 'rtl' : 'ltr';
 
     let ISO_Code = this.sessionManager.getUILocale();
     let isoCode = ISO_Code;
@@ -536,7 +537,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     this.fullmodeCkEditor.instance.on( 'menuShow', function (event) {
       self.menuShowEvent = event;
       if (self.menuShowEvent && self.menuKeyPressed == true && event.editor.contextMenu && event.data["$"]) {
-        event.editor.contextMenu.show( event.editor.element["$"].parentElement, (self.rtlLocales.indexOf(self.sessionManager.getFromSessionURL()) !== -1)? 2 : 1, event.data["$"].clientX, event.data["$"].clientY );
+        event.editor.contextMenu.show( event.editor.element["$"].parentElement, (self.rtlLocales.indexOf(self.sessionManager.getFromSessionURL()) > -1)? 2 : 1, event.data["$"].clientX, event.data["$"].clientY );
         self.menuKeyPressed = false;
         self.menuShowEvent = null;
       }
@@ -771,7 +772,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
             duration: 3000,
           });
         }
-      } else if (action != undefined && action.includes("/")) {
+      }/* else if (action != undefined && action.includes("/")) {
         // action contains an image that needs to be rendered
         if (action.indexOf("class") == -1)
           this.ckeditorContent = this.ckeditorContent + "<img width='20px' height='20px' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
@@ -781,14 +782,14 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
           this.fullmodeCkEditor.instance.setData(this.sessionManager.getSessionSavedContent());
         }, 100);
-      }
+      }*/
     });
 
     this.sessionManager.itemSessionURL.subscribe((url_code) => {
       if (this.fullmodeCkEditor) {
-        this.fullmodeCkEditor.instance.config.contentsLangDirection = (this.rtlLocales.indexOf(url_code) !== -1)? 'rtl' : 'ltr';
+        this.fullmodeCkEditor.instance.config.contentsLangDirection = (this.rtlLocales.indexOf(url_code) > -1)? 'rtl' : 'ltr';
       }
-      this.ckEditorConfiguration.contentsLangDirection = (this.rtlLocales.indexOf(this.sessionManager.getFromSessionURL()) !== -1)? 'rtl' : 'ltr';
+      this.ckEditorConfiguration.contentsLangDirection = (this.rtlLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1)? 'rtl' : 'ltr';
       if(this.fontFamily[url_code]) {
         window.frames["CKEDITOR"].addCss(this.fontFamily[url_code][0]);
       }
@@ -830,14 +831,14 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
           if (scriptBoustrophedon == false) {
             for (let i = 0; i < splitContent.length; i++) {
               if (i == (splitContent.length - 2)) {
-                renderBiDiContent = renderBiDiContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='direction: rtl;unicode-bidi: bidi-override;transform: " + ((this.fullmodeCkEditor.instance.config.contentsLangDirection == 'ltr')? "none" : "scaleX(-1)") + ";'>");
+                renderBiDiContent = renderBiDiContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='direction: rtl;unicode-bidi: bidi-override;transform: " + ((this.ckEditorConfiguration.contentsLangDirection == 'ltr')? "none" : "scaleX(-1)") + ";'>");
               } else
                 renderBiDiContent = renderBiDiContent + splitContent[i];
             }
           } else if (scriptBoustrophedon == true) {
             for (let i = 0; i < splitContent.length; i++) {
               if (i == (splitContent.length - 2)) {
-                renderBiDiContent = renderBiDiContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='direction: ltr;unicode-bidi: bidi-override;transform: " + ((this.fullmodeCkEditor.instance.config.contentsLangDirection == 'rtl')? "scaleX(-1)" : "none") + "'>");
+                renderBiDiContent = renderBiDiContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='direction: ltr;unicode-bidi: bidi-override;transform: " + ((this.ckEditorConfiguration.contentsLangDirection == 'rtl')? "scaleX(-1)" : "none") + "'>");
               } else
                 renderBiDiContent = renderBiDiContent + splitContent[i];
             }
