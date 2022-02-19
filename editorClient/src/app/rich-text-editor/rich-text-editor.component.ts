@@ -3,24 +3,6 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-// Including All Fonts here : except Indus & SignWriting
-import "@fontsource/noto-sans";
-import "@fontsource/noto-serif-dogra";
-import "@fontsource/noto-sans-zanabazar-square";
-import "@fontsource/noto-sans-mahajani";
-import "@fontsource/noto-sans-old-sogdian";
-import "@fontsource/noto-sans-sogdian";
-import "@fontsource/noto-serif-nyiakeng-puachue-hmong";
-import "@fontsource/noto-traditional-nushu";
-import "@fontsource/noto-sans-nushu";
-import "@fontsource/noto-serif-tangut";
-import "@fontsource/noto-sans-elymaic";
-import "@fontsource/noto-sans-masaram-gondi";
-import "@fontsource/noto-sans-gunjala-gondi";
-import "@fontsource/noto-sans-soyombo";
-import "@fontsource/noto-serif-yezidi";
-import "@fontsource/noto-nastaliq-urdu";
-
 import { SessionManagerService } from '../core/services/session-manager.service';
 
 import * as allLayoutPositions from './../../assets/keyboard-layouts/keysboards-layouts.json';
@@ -66,8 +48,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       forcePasteAsPlainText: true,                        // Paste prevention on browser side 
       removeButtons: 'Paste,PasteText,PasteFromWord', 
       pasteFilter: null,                                  // 'plain-text'
-      contentsCss: '',                                    // TODO : with X-Content-Type-Options set to 'nosniff'
-      extraCss: 'p {font-family: "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", Roboto, "Helvetica Neue", sans-serif }',
+      contentsCss: '',                                    
+      extraCss: 'body {font-family: "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", Roboto, "Helvetica Neue", sans-serif }',
       startupFocus: 'end',
       //extraPlugins: ''                                  // Plugins for CKEditor https://ckeditor.com/cke4/presets-all
   };
@@ -82,6 +64,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
   menuKeyPressed: Boolean = false;
   deletePressed: Boolean = false;
   charInserted: Boolean = false;
+  fireOnce: Boolean = true;
+  exploreOnly: Boolean = false;
 
   // Two letter locales - https://www.transifex.com/ckeditor/ckeditor/
   supportedCDKEditorLocales = ['cs', 'fr', 'gsw', 'de', 'it', 'sr', 'sr-ba', 'sr-sp', 'zh-cn', 'zh-hk', 'zh-sg', 'zh-mo', 'zh-tw', 'zh', 'hr', 'en-au', 'et', 'gl', 'hu', 'pl', 'pt', 'pt-br', 'sv', 'tr', 'uk', 'sq', 'da', 'no', 'nb', 'ckb', 'fa', 'ru', 'sk', 'az', 'nl', 'eo', 'vi', 'ko', 'es', 'es-mx', 'ja', 'lv', 'oc', 'ca', 'el', 'ro', 'sl', 'uyy', 'ug', 'en-gb', 'cy', 'eu', 'he', 'fr-ca', 'tt', 'bg', 'af', 'ar', 'fi', 'km', 'lt', 'fo', 'gu', 'ka', 'th', 'id', 'mn', 'hi', 'si-ta', 'is', 'en-ca', 'bn', 'ms', 'bs', 'mk', 'ast', 'lu', 'tg', 'ne', 'ti', 'si', 'tl'];
@@ -129,8 +113,21 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
 
   translateForSnackBar: string[] = [];
 
-  fontsSourcesCSS: string[] = ['dogra', 'zanabazar-square', 'sogdian', 'old-sogdian', 'nyiakeng-puachue-hmong', 'nushu', 'tangut', 'elymaic', 'masaram-gondi', 'gunjala-gondi', 'soyombo', 'yezidi', 'arabic'];
-  fonts: string[] = ['dogr', 'zanb', 'sog', 'kult', 'hmnp', 'nshu', 'txg', 'elym', 'gonm', 'gong', 'soyo', 'yezi', 'ur'];
+  fontFamily: any = {
+    "dogr": ["@font-face {font-family: 'Noto Serif Dogra';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-serif-dogra/files/noto-serif-dogra-dogra-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-serif-dogra/files/noto-serif-dogra-dogra-400-normal.woff') format('woff');}"],
+    "zanb": ["body {font-family: 'Noto Sans Zanabazar Square';}"],
+    "kult": ["body {font-family: 'Noto Sans Old Sogdian';}"],
+    "sog": ["body {font-family: 'Noto Sans Sogdian';}"],
+    "hmnp": ["body {font-family: 'Noto Serif Nyiakeng Puachue Hmong';}"],
+    "nshu": ["body {font-family: 'Noto Sans Nushu';}"],
+    "txg": ["body {font-family: 'Noto Serif Tangut';}"],
+    "elym": ["body {font-family: 'Noto Sans Elymaic';}"],
+    "gonm": ["body {font-family: 'Noto Sans Masaram Gondi';}"],
+    "gong": ["body {font-family: 'Noto Sans Gunjala Gondi';}"],
+    "soyo": ["body {font-family: 'Noto Sans Soyombo';}"],
+    "yezi": ["body {font-family: 'Noto Serif Yezidi';}"],
+    "ur": ["body {font-family: 'Noto Nastaliq Urdu';}"]
+  };
 
   constructor(private sessionManager: SessionManagerService, private http: HttpClient, private _snackBar: MatSnackBar) { 
     // The toolbar groups arrangement, optimized for two toolbar rows.
@@ -253,6 +250,10 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
     this.sessionManager.isTabletDevice.subscribe((value) => {
       this.isTablet = value;
+    });
+
+    this.sessionManager.nonExplorationMode.subscribe((value) => {
+      this.exploreOnly = value;
     });
 
     this.sessionManager.pasteIntegrationOutput.subscribe((value) => {
@@ -649,6 +650,14 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       this.sessionManager.setSessionSavingOfContent(this.ckeditorContent);
       this.fullmodeCkEditor.instance.setData(this.ckeditorContent);
       this.fullmodeCkEditor.instance.insertText(character);
+      if (this.exploreOnly && this.fireOnce && character != "") {
+        this.fireOnce = false;
+        setTimeout(()=>{
+          this.sessionManager.setCharFromKeyboard("");
+        },100);
+      } else {
+        this.fireOnce = true;
+      }
     });
 
     this.sessionManager.itemKeyAction.subscribe((action) => {
@@ -780,9 +789,9 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         this.fullmodeCkEditor.instance.config.contentsLangDirection = (this.rtlLocales.indexOf(url_code) !== -1)? 'rtl' : 'ltr';
       }
       this.ckEditorConfiguration.contentsLangDirection = (this.rtlLocales.indexOf(this.sessionManager.getFromSessionURL()) !== -1)? 'rtl' : 'ltr';
-      //if(this.fonts.indexOf(url_code) > -1) {
-        this.bindFontSource(this.fontsSourcesCSS[this.fonts.indexOf(url_code)]);
-      //}
+      if(this.fontFamily[url_code]) {
+        window.frames["CKEDITOR"].addCss(this.fontFamily[url_code][0]);
+      }
     });
 
     this.sessionManager.itemUILocale.subscribe((iso_code) => {
@@ -1003,21 +1012,5 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       return "\u202F";
     else
       return " ";
-  }
-
-  // Indus & other Unicode v39 Script ./*.css
-  bindFontSource(file): void {
-    const isBrowserTabInView = () => document.hidden;
-    if (isBrowserTabInView()) {
-      let cssLink = document.createElement("link");
-      //cssLink.rel = "stylesheet";
-      cssLink.type = "text/css"; 
-      cssLink.href = "./../../styles.scss"; 
-
-      setTimeout(() => {
-        document.getElementsByClassName("cke_wysiwyg_frame cke_reset")[0].ownerDocument.head.appendChild(cssLink);
-        //document.getElementsByClassName("cke_wysiwyg_frame cke_reset")[0].ownerDocument.head.ownerDocument.children[0].children[0].appendChild(cssLink);
-      }, 5000);
-    }
   }
 }

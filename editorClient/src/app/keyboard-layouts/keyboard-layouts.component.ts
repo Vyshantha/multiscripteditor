@@ -5,24 +5,6 @@ import { Router } from '@angular/router';
 import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
 import { MatDialog } from '@angular/material/dialog';
 
-// Including All Fonts here : except Indus & SignWriting
-import "@fontsource/noto-sans";
-import "@fontsource/noto-serif-dogra";
-import "@fontsource/noto-sans-zanabazar-square";
-import "@fontsource/noto-sans-mahajani";
-import "@fontsource/noto-sans-old-sogdian";
-import "@fontsource/noto-sans-sogdian";
-import "@fontsource/noto-serif-nyiakeng-puachue-hmong";
-import "@fontsource/noto-traditional-nushu";
-import "@fontsource/noto-sans-nushu";
-import "@fontsource/noto-serif-tangut";
-import "@fontsource/noto-sans-elymaic";
-import "@fontsource/noto-sans-masaram-gondi";
-import "@fontsource/noto-sans-gunjala-gondi";
-import "@fontsource/noto-sans-soyombo";
-import "@fontsource/noto-serif-yezidi";
-import "@fontsource/noto-nastaliq-urdu";
-
 import "ol/ol.css";
 import {View, Feature, Map, Overlay } from 'ol';
 import {Coordinate} from 'ol/coordinate';
@@ -3623,7 +3605,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     } else if (action === "char" && value === "\u00A0") {
       this.resetSwara();
       this.sessionManager.setCharFromKeyboard("");
-    } else if (action === "space" && value === "\u00A0") {
+    } else if (action === "space" && (value === "\u00A0" || value == " ")) {
       this.resetSwara();
       this.sessionManager.setCharFromKeyboard(this.sessionManager.wordSeparator());
       this.typedWord.next("");
