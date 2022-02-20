@@ -551,29 +551,9 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         self.sessionManager.setSessionSavingOfContent(self.ckeditorContent);
         self.fullmodeCkEditor.instance.setData(self.ckeditorContent);
       } else {
-        event.stop();
-      }
-      // Ensure Cursor focus moved back to Editor
-      setTimeout(() => {
-        // Do action based on Cursor position
-        if (self.pasteContentSetToEditor == false) {
-          self.sessionManager.setSessionSavingOfContent(self.ckeditorContent);
-          self.fullmodeCkEditor.instance.setData(self.ckeditorContent);
-        } else {
-          self.ckeditorContent = self.fullmodeCkEditor.instance.getData();
-          self.sessionManager.setSessionSavingOfContent(self.fullmodeCkEditor.instance.getData());
-          self.fullmodeCkEditor.instance.setData(self.fullmodeCkEditor.instance.getData());
-        }
-        if (self.ckeditorContent == "") {
-          self.position = "∞";
-          self.mouseclickEvent = null;
-          self.rowPos = 0;
-          self.colPos = 0;
-        }
-        self.mappedSpaceClicked = false;
-        self.pasteContentSetToEditor = false;
+        event.editor.focus();
         setTimeout(() => { 
-          event.editor.focus();
+          //event.editor.focus();
           if (self.position == "∞") {
             // Moves the cursor focus to end of the sentence
             var range = event.editor.createRange();
@@ -587,6 +567,24 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
             self.charInserted = false;
           }
         }, 100);
+        event.stop();
+      }
+      // Ensure Cursor focus moved back to Editor
+      setTimeout(() => {
+        // Do action based on Cursor position
+        if (self.pasteContentSetToEditor)  {
+          self.ckeditorContent = self.fullmodeCkEditor.instance.getData();
+          self.sessionManager.setSessionSavingOfContent(self.fullmodeCkEditor.instance.getData());
+          self.fullmodeCkEditor.instance.setData(self.fullmodeCkEditor.instance.getData());
+        }
+        if (self.ckeditorContent == "") {
+          self.position = "∞";
+          self.mouseclickEvent = null;
+          self.rowPos = 0;
+          self.colPos = 0;
+        }
+        self.mappedSpaceClicked = false;
+        self.pasteContentSetToEditor = false;
       }, 100);
     });
     
