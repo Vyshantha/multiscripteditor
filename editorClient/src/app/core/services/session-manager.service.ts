@@ -263,11 +263,11 @@ export class SessionManagerService {
 
   // Transfer Character Typed from Keyboard to Editor
   setCharFromKeyboard(whichCharacter) {
-    if (this.sentenceSeparator.indexOf(whichCharacter) > -1) {
+    /*if (this.sentenceSeparator.indexOf(whichCharacter) > -1) {
       this.sentenceComplete(whichCharacter).subscribe((storagedSentence) => {
         console.info("[MUlTISCRIPTEDITOR] Sentence Written is being processed by back-end NLP and no personal data is stored ", storagedSentence);
       });;
-    }
+    }*/
     if (this.isIntegrationContinous() == 'true' && this.sentenceSeparator.indexOf(whichCharacter) == -1 && this.detectWordTyped == true && this.targetIntegrationScript.value && this.targetIntegrationScript.value != "" && this.targetIntegrationScript.value != null && this.getOfflineOnly() == false) {
       this.integrateContinous(this.targetIntegrationScript.value, whichCharacter).subscribe((resultContent: any) => {
         this.pasteIntegrationOutput.next(true);
