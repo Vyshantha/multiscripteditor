@@ -9,6 +9,9 @@ cp ./routes/environments/sva_config_prod.properties ./routes/environments/sva_co
 curl https://cli-assets.heroku.com/install.sh | sh # ONLY first time
 heroku login # ONLY first time
 git init # ONLY first time
+# Python and Pip package setup
+curl -o get-pip.py https://bootstrap.pypa.io/get-pip.py # ONLY first time
+python get-pip.py  # ONLY first time
 heroku git:remote -a worldscriptsexplorer
 git add .
 git commit -am "*-WSEv1"

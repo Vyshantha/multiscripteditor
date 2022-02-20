@@ -12,8 +12,8 @@ sudo npm install -g "@angular/cli"
 npm install
 cd ..
 
-# Python 3.4 and above is installed
-pip install easyocr
+# Python 3.10 install for Heroku
+pip install easyocr #1.4.1
 pip install gibberish_detector
 pip install stanza
 # To Fix - <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1049)>

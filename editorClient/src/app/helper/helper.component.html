@@ -222,8 +222,8 @@
     <br/><br/>
     <span>{{ 'Send Data At Initial Load' | translate }} :</span>  <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('initialData')" [(ngModel)]="initialDataSend"></mat-slide-toggle></span>
     <br/><br/>
-    <span>{{ 'Share non Personal Information while Typing Content in Editor' | translate }} <a href="https://{{hostname}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a> :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('shareWords')" [(ngModel)]="shareWordsFromContent"></mat-slide-toggle></span> 
-    <br/><br/>
+    <!--span>{{ 'Share non Personal Information while Typing Content in Editor' | translate }} <a href="https://{{hostname}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a> :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('shareWords')" [(ngModel)]="shareWordsFromContent"></mat-slide-toggle></span> 
+    <br/><br/-->
     <span>{{ 'Continous Aksharamukha integration after every word' | translate }}</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('continous')" [(ngModel)]="continousIntegration"></mat-slide-toggle> &nbsp;&nbsp;</span>
     <br/>
     <span>{{ 'Highlight Swara markers or Vowels in Keyboard' | translate }}</span> 
@@ -567,9 +567,8 @@
     <br/>
     <span style="font-size: small;"><mat-icon style="font-size: 15px;">info</mat-icon> {{ 'Device, Browser, Keyboard, Type of Layout, Language, Locale, Theme, Location & Screen, Cell and Font Sizes' | translate }}</span>
     <br/><br/>
-    <span>{{ 'Share non Personal Information while Typing Content in Editor' | translate }} ({{ 'If you wish to help us improve our suggestions' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('shareWords')" [(ngModel)]="shareWordsFromContent"></mat-slide-toggle> &nbsp;&nbsp;</span>
-    <br/>
-    <span style="font-size: small;"><mat-icon style="font-size: 15px;">api</mat-icon> {{ 'All the Word Suggestions available for this Keyboard Script see ' | translate }} <a href="https://{{hostname}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a></span><br/><br/>
+    <!--span>{{ 'Share non Personal Information while Typing Content in Editor' | translate }} ({{ 'If you wish to help us improve our suggestions' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('shareWords')" [(ngModel)]="shareWordsFromContent"></mat-slide-toggle> &nbsp;&nbsp;</span>
+    <br/-->
     <span>{{ 'Continous Aksharamukha integration after every word' | translate }}</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('continous')" [(ngModel)]="continousIntegration"></mat-slide-toggle> &nbsp;&nbsp;</span>
     <br/><br/>
     <span>{{ 'Highlight Swara markers or Vowels in Keyboard' | translate }}</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('highlightKeys')" [(ngModel)]="highlightInKeyboard"></mat-slide-toggle> &nbsp;&nbsp;</span><br/><br/>
@@ -580,7 +579,8 @@
       <mat-form-field style="width: 50px;" appearance="fill">
         <input matInput #countOfSuggestionPerDevice maxlength="20" value="{{countOfSuggestions}}">
       </mat-form-field>
-    </span>
+    </span><br/>
+    <span style="font-size: small;"><mat-icon style="font-size: 15px;">api</mat-icon> {{ 'All the Word Suggestions available for this Keyboard Script see ' | translate }} <a href="https://{{hostname}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a></span>
   </mat-card>
 
   <div mat-dialog-actions style="margin-bottom: 0px;">
@@ -886,9 +886,8 @@
     <br/>
     <span style="font-size: small;"><mat-icon style="font-size: 15px;">info</mat-icon> {{ 'Device, Browser, Keyboard, Type of Layout, Language, Locale, Theme, Location & Screen, Cell and Font Sizes' | translate }}</span>
     <br/><br/>
-    <span>{{ 'Share non Personal Information while Typing Content in Editor' | translate }} ({{ 'If you wish to help us improve our suggestions' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('shareWords')" [(ngModel)]="shareWordsFromContent"></mat-slide-toggle> &nbsp;&nbsp;</span>
-    <br/>
-    <span style="font-size: small;"><mat-icon style="font-size: 15px;">api</mat-icon> {{ 'All the Word Suggestions available for this Keyboard Script see ' | translate }} <a href="https://{{hostname}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a></span><br/><br/>
+    <!--span>{{ 'Share non Personal Information while Typing Content in Editor' | translate }} ({{ 'If you wish to help us improve our suggestions' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('shareWords')" [(ngModel)]="shareWordsFromContent"></mat-slide-toggle> &nbsp;&nbsp;</span>
+    <br/-->
     <span>{{ 'Continous Aksharamukha integration after every word' | translate }}</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('continous')" [(ngModel)]="continousIntegration"></mat-slide-toggle> &nbsp;&nbsp;</span>
     <br/><br/>
     <span>{{ 'Highlight Swara markers or Vowels in Keyboard' | translate }}</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('highlightKeys')" [(ngModel)]="highlightInKeyboard"></mat-slide-toggle> &nbsp;&nbsp;</span><br/><br/>
@@ -899,7 +898,8 @@
       <mat-form-field style="width: 50px;" appearance="fill">
         <input matInput #countOfSuggestionPerDevice maxlength="20" value="{{countOfSuggestions}}">
       </mat-form-field>
-    </span>
+    </span><br/>
+    <span style="font-size: small;"><mat-icon style="font-size: 15px;">api</mat-icon> {{ 'All the Word Suggestions available for this Keyboard Script see ' | translate }} <a href="https://{{hostname}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a></span>
   </mat-card>
 
   <div mat-dialog-actions style="margin-bottom: 0px;">
