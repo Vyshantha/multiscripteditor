@@ -1181,7 +1181,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   layoutsSwitchHV: string[] = ['ogam', 'phag', 'oira', 'mnc', 'mon', 'galk', 'soyo', 'evn', 'hira', 'kata', 'vaii', 'geez', 'dite', 'iba', 'ndju', 'cree', 'crew', 'oji', 'iku', 'carr', 'bla', 'cans', 'nask', 'aztc', 'maya', 'am'];
   keyOrientationSwitch: string[] = ['ogam', 'phag', 'oira', 'mnc', 'mon', 'galk', 'soyo', 'evn'];
   keyDoNotRotate: string[] = ['vaii', 'geez', 'am', 'dite', 'iba', 'ndju'];
-  swaraAbugidaType : string [] = ['ahom', 'bada', 'bali', 'batk', 'tglg', 'bn', 'bhai', 'bla', 'brah', 'bug', 'buhd', 'cakm', 'cree', 'dham', 'dite', 'diak', 'dogr', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kthi', 'kn', 'kawi', 'kali', 'khar', 'tang', 'km', 'khoj', 'khud', 'kuli', 'lo', 'lepc', 'limb', 'loma', 'maga', 'maha', 'ml', 'mani', 'mni', 'mr', 'modi', 'mult', 'my', 'nand', 'or', 'phag', 'newa', 'pa', 'rjng', 'renc', 'sa', 'saur', 'shan', 'shrd', 'sn', 'sidd', 'snd', 'si', 'bhat', 'leke', 'ari', 'sora', 'sund', 'sylo', 'tagb', 'talu', 'lana', 'takr', 'ta', 'tamu', 'tach', 'te', 'thaa', 'th', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'zanb'];
+  swaraAbugidaType : string [] = ['ahom', 'bada', 'bali', 'batk', 'tglg', 'bn', 'bhai', 'bla', 'brah', 'bug', 'buhd', 'cakm', 'cree', 'dham', 'dite', 'diak', 'dogr', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kthi', 'kn', 'kawi', 'kali', 'khar', 'tang', 'km', 'khoj', 'khud', 'kuli', 'lo', 'lepc', 'limb', 'loma', 'maga', 'maha', 'ml', 'mani', 'mni', 'mr', 'modi', 'mult', 'my', 'nand', 'or', 'phag', 'newa', 'pa', 'rjng', 'renc', 'sa', 'saur', 'shan', 'shrd', 'sn', 'sidd', 'snd', 'si', 'bhat', 'leke', 'ari', 'sora', 'sund', 'sylo', 'tagb', 'talu', 'lana', 'takr', 'ta', 'tamu', 'tach', 'te', 'thaa', 'th', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'gonm', 'gong', 'soyo', 'zanb'];
   imageAlternativeScript: string[] = ['cans', 'esk', 'esi', 'ipk', 'dhan', 'safa', 'txr', 'ibe', 'avo', 'ranj', 'gup', 'pall', 'toch', 'moon', 'tiga', 'xce', 'vith', 'nand', 'kada', 'estr', 'sert', 'madn', 'diak', 'ber', 'tach', 'gael', 'mwan', 'wole', 'moss', 'iba', 'maya', 'egyd', 'bhat', 'renc', 'kuli', 'sina', 'zou', 'cana', 'kaid', 'dham', 'tamu', 'geba', 'esy', 'maka', 'lad', 'kama', 'ndju', 'aztc', 'jiag', 'indus', 'bada', 'vatt', 'mikq', 'kpe', 'gars', 'dale', 'goyk', 'wolf', 'zag', 'kawi', 'loma', 'nsi', 'ion', 'tika', 'mamb', 'land', 'khat', 'leke', 'ari', 'sabe', 'dite', 'toto', 'chrs', 'tang', 'maga', 'luo', 'chik', 'adin', 'khom', 'kits', 'kitl', 'tnq', 'maha', 'ics', 'flag', 'ussign', 'desisign', 'banzsl'];
 
   fontsSources: string[] = ['dogr', 'zanb', 'sog', 'kult', 'hmnp', 'nshu', 'txg', 'elym', 'gonm', 'gong', 'soyo', 'yezi', 'ur'];
@@ -2725,7 +2725,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionURL('arc');
     } else if (tabChangeEvent.index == 4 && tabChangeEvent.tab.textLabel == "𐭯𐭠𐭫𐭮𐭩𐭪") {
       this.sessionManager.setInSessionURL('pal');
-    } else if (tabChangeEvent.index == 5 && tabChangeEvent.tab.textLabel == "suγδīk") {
+    } else if (tabChangeEvent.index == 5 && tabChangeEvent.tab.textLabel == "𐼼𐼴𐼶𐼹𐼷𐼸‎") {
       this.sessionManager.setInSessionURL('sog');
     } else if (tabChangeEvent.index == 6 && tabChangeEvent.tab.textLabel == "ࡓࡀࡈࡍࡀ") {
       this.sessionManager.setInSessionURL('mand');
@@ -2867,7 +2867,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionURL('avo');
     } else if (tabChangeEvent.index == 48 && tabChangeEvent.tab.textLabel == "An Cló Ᵹaelach") {
       this.sessionManager.setInSessionURL('gael');
-    } else if (tabChangeEvent.index == 49 && tabChangeEvent.tab.textLabel == "Nyiakeng-Puachue") {
+    } else if (tabChangeEvent.index == 49 && tabChangeEvent.tab.textLabel == "𞄀𞄩𞄰𞄁𞄓𞄱𞄂𞄤𞄳𞄬𞄃𞄤𞄳‎") {
       this.sessionManager.setInSessionURL('hmnp');
     } else if (tabChangeEvent.index == 50 && tabChangeEvent.tab.textLabel == "Wolofal") {
       this.sessionManager.setInSessionURL('woal');
@@ -2974,7 +2974,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionURL('tagb');
     } else if (tabChangeEvent.index == 34 && tabChangeEvent.tab.textLabel == "𐱅𐰭𐰼𐰃") {
       this.sessionManager.setInSessionURL('orkh');
-    } else if (tabChangeEvent.index == 35 && tabChangeEvent.tab.textLabel == "Dogri") {
+    } else if (tabChangeEvent.index == 35 && tabChangeEvent.tab.textLabel == "𑠖𑠵𑠌𑠤𑠮") {
       this.sessionManager.setInSessionURL('dogr');
     } else if (tabChangeEvent.index == 36 && tabChangeEvent.tab.textLabel == "ᨲ᩠ᩅᩫᨾᩮᩥᩬᨦ") {
       this.sessionManager.setInSessionURL('lana');
@@ -3008,7 +3008,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionURL('cham');
     } else if (tabChangeEvent.index == 51 && tabChangeEvent.tab.textLabel == "𑊠𑊣𑊖𑊚") {
       this.sessionManager.setInSessionURL('mult');
-    } else if (tabChangeEvent.index == 52 && tabChangeEvent.tab.textLabel == "𑅬𑅱𑅛𑅧𑅑") {
+    } else if (tabChangeEvent.index == 52 && tabChangeEvent.tab.textLabel == "𑅬𑅱𑅐𑅛𑅧𑅑") {
       this.sessionManager.setInSessionURL('maha');
     } else if (tabChangeEvent.index == 53 && tabChangeEvent.tab.textLabel == "𑚔𑚭𑚊𑚤𑚯") {
       this.sessionManager.setInSessionURL('takr');
@@ -3044,7 +3044,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionURL('lis');
     } else if (tabChangeEvent.index == 73 && tabChangeEvent.tab.textLabel == "Miao") {
       this.sessionManager.setInSessionURL('plrd');
-    } else if (tabChangeEvent.index == 74 && tabChangeEvent.tab.textLabel == "Gunjala Gondi") {
+    } else if (tabChangeEvent.index == 74 && tabChangeEvent.tab.textLabel == "𑵶𑶍𑶕𑶀𑵵𑶊 𑵶𑶓𑶕𑶂𑶋 𑵵𑶋𑶅𑶋‎") {
       this.sessionManager.setInSessionURL('gong');
     } else if (tabChangeEvent.index == 75 && tabChangeEvent.tab.textLabel == "Ariyaka") {
       this.sessionManager.setInSessionURL('ari');
@@ -3094,7 +3094,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionURL('yiii');
     } else if (tabChangeEvent.index == 6 && tabChangeEvent.tab.textLabel == "ꕙꔤ") {
       this.sessionManager.setInSessionURL('vaii');
-    } else if (tabChangeEvent.index == 8 && tabChangeEvent.tab.textLabel == "女书") {
+    } else if (tabChangeEvent.index == 8 && tabChangeEvent.tab.textLabel == "𛆁𛈬") {
       this.sessionManager.setInSessionURL('nshu');
     } else if (tabChangeEvent.index == 9 && tabChangeEvent.tab.textLabel == "𞠀𞠁𞠂") {
       this.sessionManager.setInSessionURL('mend');
@@ -3177,7 +3177,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionURL('mer');
     } else if (tabChangeEvent.index == 6 && tabChangeEvent.tab.textLabel == "Luwian") {
       this.sessionManager.setInSessionURL('luw');
-    } else if (tabChangeEvent.index == 9 && tabChangeEvent.tab.textLabel == "Tangut") {
+    } else if (tabChangeEvent.index == 9 && tabChangeEvent.tab.textLabel == "𗼇𗟲") {
       this.sessionManager.setInSessionURL('txg');
     } else if (tabChangeEvent.index == 11 && tabChangeEvent.tab.textLabel == "Geba") {
       this.sessionManager.setInSessionURL('geba');
