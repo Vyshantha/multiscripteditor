@@ -546,14 +546,13 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
 
     this.fullmodeCkEditor.instance.on( 'change', function( event ) {
       let content = self.fullmodeCkEditor.instance.getData();
-      if (typeof(content) == 'string' && self.mappedSpaceClicked == true && self.pasteContentSetToEditor == true && (self.sessionManager.itemKeyCharacter.value == null || self.sessionManager.itemKeyCharacter.value == "  " || self.sessionManager.itemKeyCharacter.value == " " || self.sessionManager.itemKeyCharacter.value == "")) {
+      if (typeof(content) == 'string' && self.mappedSpaceClicked == true && self.pasteContentSetToEditor == true && (self.sessionManager.itemKeyCharacter.value == null || self.sessionManager.itemKeyCharacter.value == "  " || self.sessionManager.itemKeyCharacter.value == " " || self.sessionManager.itemKeyCharacter.value == "")) {
         self.ckeditorContent = content;
         self.sessionManager.setSessionSavingOfContent(self.ckeditorContent);
         self.fullmodeCkEditor.instance.setData(self.ckeditorContent);
       } else {
-        event.editor.focus();
         setTimeout(() => { 
-          //event.editor.focus();
+          event.editor.focus();
           if (self.position == "∞") {
             // Moves the cursor focus to end of the sentence
             var range = event.editor.createRange();
@@ -646,6 +645,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         this.charInserted = false;
         this.mouseclickEvent = null;
       }
+      //if (this.fontFamily[this.sessionManager.getFromSessionURL()]) // This is latest Unicode v39
+      //  this.ckeditorContent = this.ckeditorContent.replace("�", "").replace(/\uFFFD/,"")
       this.sessionManager.setSessionSavingOfContent(this.ckeditorContent);
       this.fullmodeCkEditor.instance.setData(this.ckeditorContent);
       this.fullmodeCkEditor.instance.insertText(character);

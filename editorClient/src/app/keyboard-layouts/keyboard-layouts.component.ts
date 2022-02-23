@@ -2158,7 +2158,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     });
     // When Keyboard keys are mapped to Soft Keyboard
     this.sessionManager.typedKeysMap.subscribe((typingMappedKeys) => {
-      if (this.mappingKeysToSoft && (this.isQwerty || this.isTransliterate) && this.sessionManager.typedKeysMap.value != null && this.sessionManager.typedKeysMap.value != "")
+      if (this.mappingKeysToSoft && (this.isQwerty || this.isTransliterate) && typingMappedKeys != null && typingMappedKeys != "")
         this.typedWord.next(typingMappedKeys);
     });
 

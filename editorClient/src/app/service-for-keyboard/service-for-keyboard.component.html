@@ -1,7 +1,7 @@
 <table *ngIf="isMobile && !isTablet" style="width: 100%;text-align: center;">
   <tr>
     <td *ngIf="!inExplorerMode">
-      <mat-slide-toggle (click)="showOnlyKeyboard()" [(ngModel)]="onlyKeyboardToggle"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></mat-slide-toggle> 
+      <mat-slide-toggle (click)="showOnlyKeyboard()" [(ngModel)]="onlyKeyboardToggle"><img src="./../assets/images/favicon.png" matTooltip="{{ 'Power to Write Every Word in the World' | translate }}" alt="{{ 'Power to Write Every Word in the World' | translate }}" width="40"></mat-slide-toggle> 
     </td>
     <td><mat-icon aria-label="{{ 'Switch Keyboards with Language Change' | translate }}" alt="{{ 'Switch Keyboards with Language Change' | translate }}" matTooltip="{{ 'Switch Keyboards with Language Change' | translate }}">model_training</mat-icon>&nbsp;&nbsp;
       <mat-slide-toggle (click)="switchTogther()" [(ngModel)]="keyboardDisassociateLocale"></mat-slide-toggle>&nbsp;&nbsp;
@@ -21,7 +21,7 @@
     <td *ngIf="!inExplorerMode">
       &nbsp;&nbsp; 
       <mat-icon aria-label="{{ 'All' | translate }}" alt="{{ 'All' | translate }}" matTooltip="{{ 'All' | translate }}">travel_explore</mat-icon> &nbsp;&nbsp; 
-      <mat-slide-toggle (click)="showOnlyKeyboard()" [(ngModel)]="onlyKeyboardToggle"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></mat-slide-toggle> &nbsp;&nbsp; 
+      <mat-slide-toggle (click)="showOnlyKeyboard()" [(ngModel)]="onlyKeyboardToggle"><img src="./../assets/images/favicon.png" matTooltip="{{ 'Power to Write Every Word in the World' | translate }}" alt="{{ 'Power to Write Every Word in the World' | translate }}" width="40"></mat-slide-toggle> &nbsp;&nbsp; 
     </td>
     <td><mat-icon aria-label="{{ 'Switch Keyboards with Language Change' | translate }}" alt="{{ 'Switch Keyboards with Language Change' | translate }}" matTooltip="{{ 'Switch Keyboards with Language Change' | translate }}">model_training</mat-icon>&nbsp;&nbsp;
       <mat-slide-toggle (click)="switchTogther()" [(ngModel)]="keyboardDisassociateLocale"><mat-icon>highlight_off</mat-icon></mat-slide-toggle>
@@ -41,7 +41,7 @@
     <td *ngIf="!inExplorerMode">
       &nbsp;&nbsp; 
       <span [ngStyle]="{'font-weight': showAllInitially == true ? 'bold' : 'normal'}"><mat-icon aria-label="{{ 'All' | translate }}" alt="{{ 'All' | translate }}" matTooltip="{{ 'All' | translate }}">travel_explore</mat-icon></span> &nbsp;&nbsp; 
-      <mat-slide-toggle (click)="showOnlyKeyboard()" [(ngModel)]="onlyKeyboardToggle"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></mat-slide-toggle> 
+      <mat-slide-toggle (click)="showOnlyKeyboard()" [(ngModel)]="onlyKeyboardToggle"><img src="./../assets/images/favicon.png" matTooltip="{{ 'Power to Write Every Word in the World' | translate }}" alt="{{ 'Power to Write Every Word in the World' | translate }}" width="40"></mat-slide-toggle> 
     </td>
     <td>
       {{ 'Switch Keyboards with Language Change' | translate }} : &nbsp; 
