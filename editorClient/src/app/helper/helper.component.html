@@ -11,8 +11,6 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <p style="height: 60px;overflow-y: scroll;"> {{ 'Website abids by Privacy Laws and no Personal Information or any content while editing are collected' | translate }} <br/><br/>
-        {{ 'What data is sent to store on server' | translate }} <br/> 
-        {{ 'User Session counter' | translate }} | {{ 'Browser Locale & Type' | translate }} | {{ 'Languages used for Interface' | translate }} | {{ 'Keyboard Selected or URL' | translate }} | {{ 'Type & Size of Device' | translate }} | {{ 'Location of Internet Protocol' | translate }} | {{ 'Theme & Type of Keyboard' | translate }} <br/>
       <br/>{{ 'How to check data being sent' | translate }} <br/> 
         {{ 'See that Information by Inspection' | translate }} ({{ 'Developer Options of Browser' | translate }}) > {{ 'Network' | translate }} ({{ 'Tab' | translate }}) > {{ 'Requests' | translate }} : <b>https://{{hostname}}/v1/multiscripteditor</b>.</p>
     </mat-expansion-panel>
@@ -96,10 +94,10 @@
       <mat-tab label="{{ 'Abugida' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/syllabic.htm" target="_blank">{{ 'Abugida' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(2)" style="cursor: pointer;" matTooltip="{{ 'Abugida' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
       <mat-tab label="{{ 'Syllabery' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/syllabaries.htm" target="_blank">{{ 'Syllabery' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(3)" style="cursor: pointer;" matTooltip="{{ 'Syllabery' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
       <mat-tab label="{{ 'Ideogram' | translate }}-{{ 'Logogram' | translate }}-{{ 'Pictogram' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/semanto-phonetic.php" target="_blank">{{ 'Ideogram' | translate }} {{ 'Logogram' | translate }} {{ 'Pictogram' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(4)" style="cursor: pointer;" matTooltip="{{ 'Ideogram' | translate }} {{ 'Logogram' | translate }} {{ 'Pictogram' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Braille' | translate }}">{{ 'Show' | translate }} <a href="https://en.wikipedia.org/wiki/International_uniformity_of_braille_alphabets" target="_blank">{{ 'Braille' | translate }}</a> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(5)" style="cursor: pointer;" matTooltip="{{ 'Braille' | translate }} Scripts">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Sign' | translate }}">{{ 'Show' | translate }} <b>Sign</b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(6)" style="cursor: pointer;" matTooltip="Sign {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
+      <mat-tab label="{{ 'Braille' | translate }}">{{ 'Show' | translate }} <a href="https://en.wikipedia.org/wiki/International_uniformity_of_braille_alphabets" target="_blank">{{ 'Braille' | translate }}﹖</a> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(5)" style="cursor: pointer;" matTooltip="{{ 'Braille' | translate }} Scripts">menu_open</mat-icon></mat-tab>
+      <mat-tab label="{{ 'Sign' | translate }}">{{ 'Show' | translate }} <b><a href="https://en.wikipedia.org/wiki/SignWriting" target="_blank">{{ 'Sign' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(6)" style="cursor: pointer;" matTooltip="{{ 'Sign' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
       <mat-tab label="{{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }}">{{ 'Show' | translate }} <b>{{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }}</b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(7)" style="cursor: pointer;" matTooltip="{{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Unclassified' | translate }}">{{ 'Show' | translate }} <a href="https://omniglot.com/writing/undeciphered.htm" target="_blank"><b>{{ 'Unclassified' | translate }}</b></a> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(8)" style="cursor: pointer;" matTooltip="{{ 'Unclassified' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
+      <mat-tab label="{{ 'Unclassified' | translate }}">{{ 'Show' | translate }} <a href="https://omniglot.com/writing/undeciphered.htm" target="_blank"><b>{{ 'Unclassified' | translate }}﹖</b></a> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(8)" style="cursor: pointer;" matTooltip="{{ 'Unclassified' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
   </mat-tab-group>
   <br/> 
   <mat-accordion>
@@ -370,12 +368,10 @@
               <b style="font-size: 14px;">{{ 'About Privacy!' | translate }}</b>
           </mat-panel-title>
           <mat-panel-description>
-            <div style="font-size: 10px;">{{ 'What data is sent to store on server' | translate }}. {{ 'How to check data being sent' | translate }}.</div>
+            <div style="font-size: 10px;">{{ 'How to check data being sent' | translate }}?</div>
           </mat-panel-description>
         </mat-expansion-panel-header>
-        <p style="height: 70px;overflow-y: scroll;"> {{ 'Website abids by Privacy Laws and no Personal Information or any content while editing are collected' | translate }} <br/><br/>
-          {{ 'What data is sent to store on server' | translate }} <br/> 
-          {{ 'User Session counter' | translate }} | {{ 'Browser Locale & Type' | translate }} | {{ 'Languages used for Interface' | translate }} | {{ 'Keyboard Selected or URL' | translate }} | {{ 'Type & Size of Device' | translate }} | {{ 'Location of Internet Protocol' | translate }} | {{ 'Theme & Type of Keyboard' | translate }} <br/>
+        <p style="height: 70px;overflow-y: scroll;"> {{ 'Website abids by Privacy Laws and no Personal Information or any content while editing are collected' | translate }} <br/>
         <br/>{{ 'How to check data being sent' | translate }} <br/> 
           {{ 'See that Information by Inspection' | translate }} ({{ 'Developer Options of Browser' | translate }}) > {{ 'Network' | translate }} ({{ 'Tab' | translate }}) > {{ 'Requests' | translate }} : <b>https://{{hostname}}/v1/multiscripteditor</b>.</p>
       </mat-expansion-panel>
@@ -440,10 +436,10 @@
       <mat-tab label="{{ 'Abugida' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/syllabic.htm" target="_blank">{{ 'Abugida' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(2)" style="cursor: pointer;" matTooltip="{{ 'Abugida' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
       <mat-tab label="{{ 'Syllabery' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/syllabaries.htm" target="_blank">{{ 'Syllabery' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(3)" style="cursor: pointer;" matTooltip="{{ 'Syllabery' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
       <mat-tab label="{{ 'Ideogram' | translate }}-{{ 'Logogram' | translate }}-{{ 'Pictogram' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/semanto-phonetic.php" target="_blank">{{ 'Ideogram' | translate }} {{ 'Logogram' | translate }} {{ 'Pictogram' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(4)" style="cursor: pointer;" matTooltip="{{ 'Ideogram' | translate }} {{ 'Logogram' | translate }} {{ 'Pictogram' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Braille' | translate }}">{{ 'Show' | translate }} <a href="https://en.wikipedia.org/wiki/International_uniformity_of_braille_alphabets" target="_blank">{{ 'Braille' | translate }}</a> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(5)" style="cursor: pointer;" matTooltip="{{ 'Braille' | translate }} Scripts">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Sign' | translate }}">{{ 'Show' | translate }} <b>Sign</b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(6)" style="cursor: pointer;" matTooltip="Sign {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
+      <mat-tab label="{{ 'Braille' | translate }}">{{ 'Show' | translate }} <a href="https://en.wikipedia.org/wiki/International_uniformity_of_braille_alphabets" target="_blank">{{ 'Braille' | translate }}﹖</a> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(5)" style="cursor: pointer;" matTooltip="{{ 'Braille' | translate }} Scripts">menu_open</mat-icon></mat-tab>
+      <mat-tab label="{{ 'Sign' | translate }}">{{ 'Show' | translate }} <b><a href="https://en.wikipedia.org/wiki/SignWriting" target="_blank">{{ 'Sign' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(6)" style="cursor: pointer;" matTooltip="{{ 'Sign' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
       <mat-tab label="{{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }}">{{ 'Show' | translate }} <b>{{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }}</b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(7)" style="cursor: pointer;" matTooltip="{{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Unclassified' | translate }}">{{ 'Show' | translate }} <a href="https://omniglot.com/writing/undeciphered.htm" target="_blank"><b>{{ 'Unclassified' | translate }}</b></a> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(8)" style="cursor: pointer;" matTooltip="{{ 'Unclassified' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
+      <mat-tab label="{{ 'Unclassified' | translate }}">{{ 'Show' | translate }} <a href="https://omniglot.com/writing/undeciphered.htm" target="_blank"><b>{{ 'Unclassified' | translate }}﹖</b></a> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(8)" style="cursor: pointer;" matTooltip="{{ 'Unclassified' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
   </mat-tab-group>
   <br/>
   <mat-accordion>
@@ -690,12 +686,10 @@
             <b style="font-size: 14px;">{{ 'About Privacy!' | translate }}</b>
         </mat-panel-title>
         <mat-panel-description>
-          <div style="font-size: 12px;">{{ 'What data is sent to store on server' | translate }}. {{ 'How to check data being sent' | translate }}.</div>
+          <div style="font-size: 12px;">{{ 'How to check data being sent' | translate }}?</div>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p style="height: 100px;overflow-y: scroll;"> {{ 'Website abids by Privacy Laws and no Personal Information or any content while editing are collected' | translate }} <br/><br/>
-        {{ 'What data is sent to store on server' | translate }} <br/> 
-        {{ 'User Session counter' | translate }} | {{ 'Browser Locale & Type' | translate }} | {{ 'Languages used for Interface' | translate }} | {{ 'Keyboard Selected or URL' | translate }} | {{ 'Type & Size of Device' | translate }} | {{ 'Location of Internet Protocol' | translate }} | {{ 'Theme & Type of Keyboard' | translate }} <br/>
+      <p style="height: 100px;overflow-y: scroll;"> {{ 'Website abids by Privacy Laws and no Personal Information or any content while editing are collected' | translate }} <br/>
       <br/>{{ 'How to check data being sent' | translate }} <br/> 
         {{ 'See that Information by Inspection' | translate }} ({{ 'Developer Options of Browser' | translate }}) > {{ 'Network' | translate }} ({{ 'Tab' | translate }}) > {{ 'Requests' | translate }} : <b>https://{{hostname}}/v1/multiscripteditor</b>.</p>
     </mat-expansion-panel>
@@ -722,53 +716,91 @@
       </mat-expansion-panel>
   </mat-accordion>
   <br/>
-  <p style="text-align: center;">
-    {{ 'Theming selection options' | translate }} :
-    <button mat-button style="color: black;font-size: 0.8rem;" (click)="swapToDarkTheme()">{{ 'Dark' | translate }}</button> 
-    <button mat-button style="font-size: 0.8rem; color: azure;" (click)="swapToLightTheme()">{{ 'Light' | translate }}</button> 
-    <button mat-button style="color: greenyellow;font-size: 0.8rem;" (click)="swapToHighContrastTheme()">{{ 'High Contrast' | translate }}</button>
-  </p>
-  <p style="text-align: center;">
-    <b>{{ 'Current Locale' | translate }}</b> : {{localeUISelection}} &nbsp;&nbsp;&nbsp;
-    <b>{{ 'Default Locale' | translate }}</b> : {{overridenUILocale}} &nbsp;&nbsp;&nbsp; 
-    <b>{{ 'Browser Locale' | translate }}</b> : {{defaultLocale}} &nbsp;&nbsp;&nbsp; 
-  </p>
-  <p style="text-align: center;">
-    <i>{{ 'Language selection for Interface' | translate }}</i> &nbsp;&nbsp;&nbsp; 
-    <mat-form-field class="menuselect">
-        <mat-label>{{ 'Select' | translate }}...</mat-label>
-        <mat-select style="width: 450px;" [(value)]="localeUISelection">
-          <table>
+  <table style="text-align: center;">
+    <tr style="width:100%">
+      <td style="width:30%;">
+        <mat-card>
+          <mat-card-subtitle><b>{{ 'Theming selection options' | translate }}</b></mat-card-subtitle>
+          <table style="text-align: center;">
             <tr>
               <td>
-                <mat-option *ngFor="let language of supportedLanguageColumn1" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
+                <button mat-button style="color: black;font-size: 0.8rem;" (click)="swapToDarkTheme()">{{ 'Dark' | translate }}</button> 
               </td>
               <td>
-                <mat-option *ngFor="let language of supportedLanguageColumn2" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
+                <button mat-button style="font-size: 0.8rem; color: azure;" (click)="swapToLightTheme()">{{ 'Light' | translate }}</button> 
               </td>
               <td>
-                <mat-option *ngFor="let language of supportedLanguageColumn3" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
-              </td>
-              <td>
-                <mat-option *ngFor="let language of supportedLanguageColumn4" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
+                <button mat-button style="color: greenyellow;font-size: 0.8rem;" (click)="swapToHighContrastTheme()">{{ 'High Contrast' | translate }}</button>
               </td>
             </tr>
           </table>
-        </mat-select>
-    </mat-form-field> &nbsp;&nbsp;&nbsp;
-  </p>
-  <b>{{ 'Type of Writing Styles' | translate }}</b> 
-  <mat-tab-group mat-align-tabs="center">
-      <mat-tab label="{{ 'Abjad' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/alphabetic.htm" target="_blank">{{ 'Abjad' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(0)" style="cursor: pointer;" matTooltip="{{ 'Abjad' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Alphabet' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/alphabets.htm" target="_blank">{{ 'Alphabet' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(1)" style="cursor: pointer;" matTooltip="{{ 'Alphabet' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Abugida' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/syllabic.htm" target="_blank">{{ 'Abugida' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(2)" style="cursor: pointer;" matTooltip="{{ 'Abugida' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Syllabery' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/syllabaries.htm" target="_blank">{{ 'Syllabery' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(3)" style="cursor: pointer;" matTooltip="{{ 'Syllabery' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Ideogram' | translate }}-{{ 'Logogram' | translate }}-{{ 'Pictogram' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/semanto-phonetic.php" target="_blank">{{ 'Ideogram' | translate }} {{ 'Logogram' | translate }} {{ 'Pictogram' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(4)" style="cursor: pointer;" matTooltip="{{ 'Ideogram' | translate }} {{ 'Logogram' | translate }} {{ 'Pictogram' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Braille' | translate }}">{{ 'Show' | translate }} <a href="https://en.wikipedia.org/wiki/International_uniformity_of_braille_alphabets" target="_blank">{{ 'Braille' | translate }}</a> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(5)" style="cursor: pointer;" matTooltip="{{ 'Braille' | translate }} Scripts">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Sign' | translate }}">{{ 'Show' | translate }} <b>Sign</b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(6)" style="cursor: pointer;" matTooltip="Sign {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }}">{{ 'Show' | translate }} <b>{{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }}</b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(7)" style="cursor: pointer;" matTooltip="{{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
-      <mat-tab label="{{ 'Unclassified' | translate }}">{{ 'Show' | translate }} <a href="https://omniglot.com/writing/undeciphered.htm" target="_blank"><b>{{ 'Unclassified' | translate }}</b></a> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(8)" style="cursor: pointer;" matTooltip="{{ 'Unclassified' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
-  </mat-tab-group>
+        </mat-card>
+      </td>
+      <td style="width:70%;">
+        <mat-card>
+          <mat-card-subtitle><b>{{ 'Language selection for Interface' | translate }}</b></mat-card-subtitle>
+          <table style="text-align: center;">
+            <tr style="display:inline">
+              <td style="width:60%">
+                <mat-form-field class="menuselect_laptop">
+                  <mat-label>{{ 'Select' | translate }}...</mat-label>
+                  <mat-select style="width: 450px;" [(value)]="localeUISelection">
+                    <table>
+                      <tr>
+                        <td>
+                          <mat-option *ngFor="let language of supportedLanguageColumn1" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
+                        </td>
+                        <td>
+                          <mat-option *ngFor="let language of supportedLanguageColumn2" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
+                        </td>
+                        <td>
+                          <mat-option *ngFor="let language of supportedLanguageColumn3" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
+                        </td>
+                        <td>
+                          <mat-option *ngFor="let language of supportedLanguageColumn4" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
+                        </td>
+                      </tr>
+                    </table>
+                  </mat-select>
+              </mat-form-field>
+              </td>
+              <td style="width:20%">
+                <b>{{ 'Current Locale' | translate }}</b>
+              </td>
+              <td style="width:20%">
+                {{localeUISelection}}
+              </td>
+            </tr>
+            <tr style="display:inline">
+              <td style="width:60%">
+                <b>{{ 'Default Locale' | translate }}</b> : {{overridenUILocale}}
+              </td>
+              <td style="width:20%">
+                <b>{{ 'Browser Locale' | translate }}</b>
+              </td>
+              <td style="width:20%">
+                {{defaultLocale}}
+              </td>
+            </tr>
+          </table>
+        </mat-card>
+      </td>
+    </tr>
+  </table>
+  <mat-card>
+    <mat-card-subtitle><b>{{ 'Type of Writing Styles' | translate }}</b></mat-card-subtitle>
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="{{ 'Abjad' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/alphabetic.htm" target="_blank">{{ 'Abjad' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(0)" style="cursor: pointer;" matTooltip="{{ 'Abjad' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
+        <mat-tab label="{{ 'Alphabet' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/alphabets.htm" target="_blank">{{ 'Alphabet' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(1)" style="cursor: pointer;" matTooltip="{{ 'Alphabet' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
+        <mat-tab label="{{ 'Abugida' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/syllabic.htm" target="_blank">{{ 'Abugida' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(2)" style="cursor: pointer;" matTooltip="{{ 'Abugida' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
+        <mat-tab label="{{ 'Syllabery' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/syllabaries.htm" target="_blank">{{ 'Syllabery' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(3)" style="cursor: pointer;" matTooltip="{{ 'Syllabery' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
+        <mat-tab label="{{ 'Ideogram' | translate }}-{{ 'Logogram' | translate }}-{{ 'Pictogram' | translate }}">{{ 'Show' | translate }} <b><a href="https://omniglot.com/writing/semanto-phonetic.php" target="_blank">{{ 'Ideogram' | translate }} {{ 'Logogram' | translate }} {{ 'Pictogram' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(4)" style="cursor: pointer;" matTooltip="{{ 'Ideogram' | translate }} {{ 'Logogram' | translate }} {{ 'Pictogram' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
+        <mat-tab label="{{ 'Braille' | translate }}">{{ 'Show' | translate }} <a href="https://en.wikipedia.org/wiki/International_uniformity_of_braille_alphabets" target="_blank">{{ 'Braille' | translate }}﹖</a> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(5)" style="cursor: pointer;" matTooltip="{{ 'Braille' | translate }} Scripts">menu_open</mat-icon></mat-tab>
+        <mat-tab label="{{ 'Sign' | translate }}">{{ 'Show' | translate }} <b><a href="https://en.wikipedia.org/wiki/SignWriting" target="_blank">{{ 'Sign' | translate }}﹖</a></b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(6)" style="cursor: pointer;" matTooltip="{{ 'Sign' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
+        <mat-tab label="{{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }}">{{ 'Show' | translate }} <b>{{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }}</b> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(7)" style="cursor: pointer;" matTooltip="{{ 'Code' | translate }}-{{ 'Shorthand' | translate }}-{{ 'Emoji' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
+        <mat-tab label="{{ 'Unclassified' | translate }}">{{ 'Show' | translate }} <a href="https://omniglot.com/writing/undeciphered.htm" target="_blank"><b>{{ 'Unclassified' | translate }}﹖</b></a> {{ 'scripts' | translate }} &nbsp;&nbsp;&nbsp; <mat-icon aria-label="Open Menu" alt="Open Menu" (click)="switchType(8)" style="cursor: pointer;" matTooltip="{{ 'Unclassified' | translate }} {{ 'scripts' | translate }}">menu_open</mat-icon></mat-tab>
+    </mat-tab-group>
+  </mat-card>
   <br/>
   <mat-accordion>
       <mat-expansion-panel>
@@ -825,46 +857,44 @@
           </mat-accordion>
       </mat-expansion-panel>
   </mat-accordion>
-  <table>
+  <br/>
+  <mat-card>
+    <mat-card-subtitle><b>{{ 'Search for Language or Script or Locale' | translate }}</b></mat-card-subtitle>
+    <table style="text-align: center;">
       <tr>
-        <td style="width: 10%; word-wrap: break-word; text-align: center;">
-          <b>{{ 'Current Keyboard' | translate }}</b>
+        <td>
+          <form [formGroup]="supportedScripts">
+            <mat-form-field>
+              <input type="search"
+                      aria-label="{{ 'Search for my Keyboard' | translate }}"
+                      matInput
+                      formControlName="script"
+                      required
+                      [matAutocomplete]="autoScriptSelect"
+                      placeholder="{{ 'Search for my Keyboard' | translate }}"
+                      #searchAllScripts
+                      (paste)="pasteInputFieldForAttacks($event)"
+                      (keydown)="preventInputFieldForAttacks($event)">
+                <mat-autocomplete #autoScriptSelect="matAutocomplete" panelWidth="300px">
+                  <mat-optgroup *ngFor="let locale of supportedScriptsOptions | async" [label]="locale.scriptType">
+                    <mat-option *ngFor="let exonym of locale.scriptName" [value]="exonym">
+                      {{exonym}}
+                    </mat-option>
+                  </mat-optgroup>
+                </mat-autocomplete>
+            </mat-form-field>
+          </form> 
         </td>
-        <td style="width: 20%; word-wrap: break-word; text-align: center;">
-          &nbsp;&nbsp;&nbsp;<b> {{currentKeyboard}} </b> &nbsp;&nbsp;&nbsp; ( {{keyboardStyle}} ) &nbsp;&nbsp;&nbsp;
+        <td>
+          &nbsp;&nbsp;&nbsp; <button mat-raised-button color="primary" matTooltip="Load Keyboard" aria-label="Load Keyboard" (click)="loadMyKeyboard()">{{ 'Load Keyboard' | translate }}</button>
         </td>
-        <td style="width: 25%; word-wrap: break-word; text-align: center;">
-          &nbsp;&nbsp;&nbsp; <b>{{ 'Search for Language or Script or Locale' | translate }}</b> 
-        </td>
-        <td style="width: 20%;">
-          &nbsp;&nbsp;&nbsp;
-              <form [formGroup]="supportedScripts">
-              <mat-form-field>
-                <input type="search"
-                        aria-label="{{ 'Search for my Keyboard' | translate }}"
-                        matInput
-                        formControlName="script"
-                        required
-                        [matAutocomplete]="autoScriptSelect"
-                        placeholder="{{ 'Search for my Keyboard' | translate }}"
-                        #searchAllScripts
-                        (paste)="pasteInputFieldForAttacks($event)"
-                        (keydown)="preventInputFieldForAttacks($event)">
-                  <mat-autocomplete #autoScriptSelect="matAutocomplete" panelWidth="300px">
-                    <mat-optgroup *ngFor="let locale of supportedScriptsOptions | async" [label]="locale.scriptType">
-                      <mat-option *ngFor="let exonym of locale.scriptName" [value]="exonym">
-                        {{exonym}}
-                      </mat-option>
-                    </mat-optgroup>
-                  </mat-autocomplete>
-              </mat-form-field>
-            </form>         
-        </td>
-        <td style="width: 10%;">
-          <button mat-raised-button color="primary" matTooltip="Load Keyboard" aria-label="Load Keyboard" (click)="loadMyKeyboard()">{{ 'Load Keyboard' | translate }}</button>
+        <td>
+          &nbsp;&nbsp;&nbsp; <b>{{ 'Current Keyboard' | translate }}</b> : &nbsp;&nbsp;&nbsp; <b> {{currentKeyboard}} </b> &nbsp;&nbsp;&nbsp; ( {{keyboardStyle}} )
         </td>
       </tr>
-  </table>
+    </table>
+  </mat-card>
+
   <div mat-dialog-actions style="margin-bottom: 0px;">
       <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon> {{ 'Close' | translate }}</button>
       <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
