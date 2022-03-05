@@ -271,7 +271,7 @@
     <tbody>
       <tr>
         <td colspan="2">
-          <span>{{ 'Choose Languages In Image' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span>{{ '1' | translate }}.{{ 'Choose Languages In Image' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
         </td>
       </tr>
       <tr>
@@ -292,7 +292,7 @@
       </tr>
       <tr>
         <td colspan="2">
-          <span *ngIf="criteriaNotMet" style="color: brown; font-family: 'Times New Roman', Times, serif;">{{ 'Select Languages in Image' | translate }} {{ 'or' | translate }} {{ 'Choose either Method to Upload Image' | translate}}</span>
+          <span *ngIf="criteriaNotMet" style="color: brown; font-family: 'Times New Roman', Times, serif;">{{ 'Select Languages in Image' | translate }} {{ 'or' | translate }} {{ 'Choose any Option to Upload Image' | translate}}</span>
         </td>
       </tr>
       <tr>
@@ -317,54 +317,95 @@
     </tbody>
   </table>
   <br/>
-  <span><b>{{ 'Choose either Method to Upload Image' | translate}}</b></span><br/><br/>
-  <table style="border: 1px solid beige; border-radius: 5px;width:100%;">
-    <tbody>
-      <tr>
-        <td style="width:100%">
-          <span>{{ 'Choose From URL' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
-        </td>
-      </tr>
-      <tr>
-        <td style="width:100%" colspan="2">
-          <input matInput type="text" #imageInputURL placeholder="{{ 'Type or Paste URL' | translate }}" [(ngModel)]="value"> 
-          <mat-icon *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">close</mat-icon>
-        </td>
-      </tr>
-      <br/>
-      <tr>
-        <td>&nbsp;&nbsp;
-          <button mat-raised-button (click)="convertImage2Text('url', imageInputURL)">
-            <mat-icon aria-label="{{ 'Done' | translate }}" matTooltip="{{ 'Done' | translate }}" style="cursor: pointer;">cloud_done</mat-icon>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <span>{{ '2' | translate }}.<b>{{ 'Choose any Option to Upload Image' | translate}}</b></span><br/><br/>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ 'Choose to Write on Canvas' | translate }}
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        {{ 'If you do not choose language, then it defaults to keyboard script' | translate }}<br/>
+        <app-canvas></app-canvas> 
+        <table style="width:100%">
+          <tr>
+            <td [ngStyle]="{'float': (isRTL) ? 'right': 'left'}">
+              <button mat-raised-button (click)="clearCanvas()">
+                <mat-icon aria-hidden="false" aria-label="{{ 'Clear Canvas' | translate }}" alt="{{ 'Clear Canvas' | translate }}" matTooltip="{{ 'Clear Canvas' | translate }}" style="cursor: pointer;vertical-align: middle;">format_color_reset</mat-icon>
+              </button>
+            </td>
+            <td [ngStyle]="{'float': (isRTL) ? 'left': 'right'}">
+              <button mat-raised-button (click)="convertImage2Text('draw', '')">
+                <mat-icon aria-label="{{ 'Done' | translate }}" matTooltip="{{ 'Done' | translate }}" style="cursor: pointer;">draw</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </table>
+    </mat-expansion-panel>
+  </mat-accordion>
   <br/>
-  <table style="border: 1px solid beige; border-radius: 5px;width:100%;">
-    <tbody>
-      <tr>
-        <td>
-          <span>{{ 'Choose From File System' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
-        </td>
-      </tr>
-      <br/>
-      <tr>
-        <td>
-            <input type="file" accept="image/*" #imageInputFile file-model="myFile" (change)="convertImage2Text('file', imageInputFile)"/>
-        </td>
-      </tr>
-      <br/>
-      <tr>
-        <td>
-          <button mat-raised-button (click)="convertImage2Text('file', 'button')">
-            <mat-icon aria-label="{{ 'Upload' | translate }}" matTooltip="{{ 'Upload' | translate }}" style="cursor: pointer;">upload_file</mat-icon>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ 'Choose From URL' | translate }}
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        <table style="border: 1px solid beige; border-radius: 5px;width:100%;">
+          <tbody>
+            <tr>
+              <td style="width:100%" colspan="2">
+                <input matInput type="text" #imageInputURL placeholder="{{ 'Type or Paste URL' | translate }}" [(ngModel)]="value"> 
+                <mat-icon *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">close</mat-icon>
+              </td>
+            </tr>
+            <br/>
+            <tr>
+              <td>&nbsp;&nbsp;
+                <button mat-raised-button (click)="convertImage2Text('url', imageInputURL)">
+                  <mat-icon aria-label="{{ 'Done' | translate }}" matTooltip="{{ 'Done' | translate }}" style="cursor: pointer;">cloud_done</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <br/>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ 'Choose From File System' | translate }}
+        </mat-panel-title>
+        <mat-panel-description>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        <table style="border: 1px solid beige; border-radius: 5px;width:100%;">
+          <tbody>
+            <br/>
+            <tr>
+              <td>
+                  <input type="file" accept="image/*" #imageInputFile file-model="myFile" (change)="convertImage2Text('file', imageInputFile)"/>
+              </td>
+            </tr>
+            <br/>
+            <tr>
+              <td>
+                <button mat-raised-button (click)="convertImage2Text('file', 'button')">
+                  <mat-icon aria-label="{{ 'Upload' | translate }}" matTooltip="{{ 'Upload' | translate }}" style="cursor: pointer;">upload_file</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </mat-expansion-panel>
+  </mat-accordion>
+
   <br/>
   <div mat-dialog-actions style="margin-bottom: 0px;flex-wrap:nowrap;">
     <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
@@ -636,7 +677,7 @@
     <tbody>
       <tr>
         <td style="width:25%">
-          <span>{{ 'Choose Languages In Image' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span>{{ '1' | translate }}.{{ 'Choose Languages In Image' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
         </td>
         <td style="width:10%">
           <button mat-icon-button mat-raised-button [matMenuTriggerFor]="supportedWriting">
@@ -669,9 +710,26 @@
       </tr>
     </tbody>
   </table>
-  <span *ngIf="criteriaNotMet" style="color: brown; font-family: 'Times New Roman', Times, serif;">{{ 'Select Languages in Image' | translate }} {{ 'or' | translate }} {{ 'Choose either Method to Upload Image' | translate}}</span>
-  <br/><br/>
-  <span><b>{{ 'Choose either Method to Upload Image' | translate}}</b></span><br/><br/>
+  <span *ngIf="criteriaNotMet" style="color: brown; font-family: 'Times New Roman', Times, serif;">{{ 'Select Languages in Image' | translate }} {{ 'or' | translate }} {{ 'Choose any Option to Upload Image' | translate}}</span>
+  <br/>
+  <span>{{ '2' | translate }}.<b>{{ 'Choose any Option to Upload Image' | translate}}</b></span><br/><br/>
+  <span>{{ 'Choose to Write on Canvas' | translate }} &nbsp;&nbsp;({{ 'If you do not choose language, then it defaults to keyboard script' | translate }})</span><br/>
+  <app-canvas></app-canvas> 
+  <table style="width:100%">
+    <tr>
+      <td [ngStyle]="{'float': (isRTL) ? 'right': 'left'}">
+        <button mat-raised-button (click)="clearCanvas()">
+          <mat-icon aria-hidden="false" aria-label="{{ 'Clear Canvas' | translate }}" alt="{{ 'Clear Canvas' | translate }}" matTooltip="{{ 'Clear Canvas' | translate }}" style="cursor: pointer;vertical-align: middle;">format_color_reset</mat-icon>
+        </button>
+      </td>
+      <td [ngStyle]="{'float': (isRTL) ? 'left': 'right'}">
+        <button mat-raised-button (click)="convertImage2Text('draw', '')">
+          <mat-icon aria-label="{{ 'Done' | translate }}" matTooltip="{{ 'Done' | translate }}" style="cursor: pointer;">draw</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </table>
+  <br/> <br/>
   <table style="border: 1px solid beige; border-radius: 5px;width:100%;">
     <tbody>
       <tr>
@@ -988,7 +1046,7 @@
     <tbody>
       <tr>
         <td style="width:25%">
-          <span>{{ 'Choose Languages In Image' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <span>{{ '1' | translate }}.{{ 'Choose Languages In Image' | translate }} &nbsp;&nbsp;&nbsp;&nbsp;</span>
         </td>
         <td style="width:10%">
           <button mat-icon-button mat-raised-button [matMenuTriggerFor]="supportedWriting">
@@ -1021,9 +1079,26 @@
       </tr>
     </tbody>
   </table>
-  <span *ngIf="criteriaNotMet" style="color: brown; font-family: 'Times New Roman', Times, serif;">{{ 'Select Languages in Image' | translate }} {{ 'or' | translate }} {{ 'Choose either Method to Upload Image' | translate}}</span>
-  <br/><br/>
-  <span><b>{{ 'Choose either Method to Upload Image' | translate}}</b></span><br/><br/>
+  <span *ngIf="criteriaNotMet" style="color: brown; font-family: 'Times New Roman', Times, serif;">{{ 'Select Languages in Image' | translate }} {{ 'or' | translate }} {{ 'Choose any Option to Upload Image' | translate}}</span>
+  <br/>
+  <span>{{ '2' | translate }}.<b>{{ 'Choose any Option to Upload Image' | translate}}</b></span><br/><br/>
+  <span>{{ 'Choose to Write on Canvas' | translate }} &nbsp;&nbsp; ({{ 'If you do not choose language, then it defaults to keyboard script' | translate }})</span><br/>
+  <app-canvas></app-canvas> 
+  <table style="width:100%">
+    <tr>
+      <td [ngStyle]="{'float': (isRTL) ? 'right': 'left'}">
+        <button mat-raised-button (click)="clearCanvas()">
+          <mat-icon aria-hidden="false" aria-label="{{ 'Clear Canvas' | translate }}" alt="{{ 'Clear Canvas' | translate }}" matTooltip="{{ 'Clear Canvas' | translate }}" style="cursor: pointer;vertical-align: middle;">format_color_reset</mat-icon>
+        </button>
+      </td>
+      <td [ngStyle]="{'float': (isRTL) ? 'left': 'right'}">
+        <button mat-raised-button (click)="convertImage2Text('draw', '')">
+          <mat-icon aria-label="{{ 'Done' | translate }}" matTooltip="{{ 'Done' | translate }}" style="cursor: pointer;">draw</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </table>
+  <br/> <br/>
   <table style="border: 1px solid beige; border-radius: 5px;">
     <tbody>
       <tr>

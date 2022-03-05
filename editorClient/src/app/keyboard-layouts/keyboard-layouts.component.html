@@ -2764,7 +2764,7 @@
             <mat-icon aria-label="{{ 'Modify Cell Size' | translate }}" alt="{{ 'Modify Cell Size' | translate }}" matTooltip="{{ 'Modify Cell Size' | translate }}" style="vertical-align: middle;">aspect_ratio</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="cellSize" #cells tickInterval="1" min="10" max="100" value="{{defaultCellSize}}"></mat-slider>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button mat-raised-button>
-                <mat-icon aria-label="{{ 'Convert Image to Text' | translate }}" matTooltip="{{ 'Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
+                <mat-icon aria-label="{{ 'Write On Canvas and Convert Image to Text' | translate }}" matTooltip="{{ 'Write On Canvas and Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
             </button>
             <br/>
             <span *ngIf="enableRotateKeyboard && layoutRotationPossible()" [ngStyle]="{'width': enableRotateKeyboard == true ? '33%' : '33%'}">
@@ -5279,7 +5279,7 @@
             <mat-icon aria-hidden="false" aria-label="{{ 'Restore To Defaults' | translate }}" alt="{{ 'Restore To Defaults' | translate }}" (click)="restoreDefaults()" matTooltip="{{ 'Restore To Defaults' | translate }}" style="cursor: pointer;vertical-align: middle;">settings_backup_restore</mat-icon> 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button mat-raised-button>
-                <mat-icon aria-label="{{ 'Convert Image to Text' | translate }}" matTooltip="{{ 'Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
+                <mat-icon aria-label="{{ 'Write On Canvas and Convert Image to Text' | translate }}" matTooltip="{{ 'Write On Canvas and Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
             </button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button mat-raised-button [matMenuTriggerFor]="aksharamukhaselect" *ngIf="onlineService">
@@ -8011,6 +8011,12 @@
                 <mat-icon aria-label="{{ 'Select From Favourite Keyboards' | translate }}" matTooltip="{{ 'Select From Favourite Keyboards' | translate }}" style="cursor: pointer;">bookmark</mat-icon>
             </button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            <mat-menu #favouriteMenu="matMenu">
+                <button *ngFor="let valueOfBookmark of populatingBookmarks" mat-menu-item>
+                    <span (click)="selectKeyboardFromBookmark(valueOfBookmark)">{{valueOfBookmark}}</span>
+                </button>
+            </mat-menu>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
             <!--<mat-icon aria-hidden="false" aria-label="{{ 'Customise Keyboard' | translate }}" alt="{{ 'Customise Keyboard' | translate }}" matTooltip="{{ 'Customise Keyboard' | translate }}" style="cursor: pointer;" (click)="customiseMyKeyboardLayout()">settings_suggest</mat-icon> 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
             <!--mat-icon aria-label="{{ 'Superscript Off' | translate }}" *ngIf="allowSuperScript && (isQwerty || isTransliterate)" alt="{{ 'Superscript Off' | translate }}" style="cursor: pointer;" (click)="allowingSuperPositionKeys()" matTooltip="{{ 'Superscript Off' | translate }}"> font_download_off </mat-icon>
@@ -8042,15 +8048,9 @@
             <mat-icon aria-label="{{ 'Do not Map the Keys on your Keyboard to the Soft Keyboard' | translate }} " *ngIf="mappingKeysToSoft && (isQwerty || isTransliterate)" alt="{{ 'Do not Map the Keys on your Keyboard to the Soft Keyboard' | translate }} " style="cursor: pointer;vertical-align: middle;" (click)="usersChoice()" matTooltip="{{ 'Do not Map the Keys on your Keyboard to the Soft Keyboard' | translate }} ">link_off</mat-icon>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <mat-icon aria-hidden="false" aria-label="{{ 'Restore To Defaults' | translate }}" alt="{{ 'Restore To Defaults' | translate }}" (click)="restoreDefaults()" matTooltip="{{ 'Restore To Defaults' | translate }}" style="cursor: pointer;vertical-align: middle;">settings_backup_restore</mat-icon> 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-            <mat-menu #favouriteMenu="matMenu">
-                <button *ngFor="let valueOfBookmark of populatingBookmarks" mat-menu-item>
-                    <span (click)="selectKeyboardFromBookmark(valueOfBookmark)">{{valueOfBookmark}}</span>
-                </button>
-            </mat-menu>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button mat-raised-button>
-                <mat-icon aria-label="{{ 'Convert Image to Text' | translate }}" matTooltip="{{ 'Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
+                <mat-icon aria-label="{{ 'Write On Canvas and Convert Image to Text' | translate }}" matTooltip="{{ 'Write On Canvas and Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
             </button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button mat-raised-button [matMenuTriggerFor]="aksharamukhaselect" *ngIf="onlineService">

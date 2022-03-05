@@ -629,8 +629,43 @@ export class HelperComponent implements OnInit, AfterViewInit {
       } else {
         this.criteriaNotMet = true;
       }
-    } else
-      this.criteriaNotMet = true;
+    } else if (type == 'draw' && imageInput == '') {
+      // Convert Drawn Image to Text with EasyOCR
+      this.criteriaNotMet = false;
+      if (this.supportedWrittenLanguage.length == 0) {
+        // If you do not choose language, then it defaults to keyboard script
+        this.supportedWrittenLanguage.push({"code": this.sessionManager.getFromSessionURL(), "name": this.keyboardLayouts[this.sessionManager.getFromSessionURL()][5]});
+      }
+      var canvas = <HTMLCanvasElement> document.getElementById("canvasDraw");        
+      this.imageDataBase64 = canvas.toDataURL("image/png");      
+      if (this.supported_written_language.findIndex(obj => obj.code==this.supportedWrittenLanguage[0]["code"]) > -1 && this.imageDataBase64 && this.imageDataBase64 != "") {
+        this.runProgressIndicator = true;
+        this.sessionManager.image2TextConvert('file', this.supportedWrittenLanguage, this.imageDataBase64).subscribe((result: any) => {
+          console.info("[MUlTISCRIPTEDITOR] Convert Image To Text File ", result)
+          this.runProgressIndicator = false;
+        }, (error) => {
+          let convertedText = error.error.text;
+          if (convertedText && convertedText != null) {
+            convertedText = convertedText.replace(/\\"/g,"'").match(/'(.*?)'/g);
+            for(let i = 0; i < convertedText.length ; i++) {
+              if (convertedText[i].indexOf("', 0.") == -1 && convertedText[i].indexOf("([[") == -1 && convertedText[i].indexOf("]]") == -1) {
+                this.sessionManager.setCharFromKeyboard(convertedText[i].replace(/'/g, "").replace(/\\"/g, "").replace(/\\'/g, "") + " ");
+              }
+            }
+            console.info("[MUlTISCRIPTEDITOR] Convert Image To Text URL ", convertedText);
+          }
+          this.runProgressIndicator = false;
+        });
+      } else {
+        // If it is not an Easy OCR Supported Language then just send that to editor
+        // Pass the Image via SessionManager API to Editor
+        this.sessionManager.setActionFromKeyboard(this.imageDataBase64)
+      }
+    }
+  }
+
+  clearCanvas() {
+    this.sessionManager.clearCanvas.next(true);
   }
 
   async translateSnackBars() {

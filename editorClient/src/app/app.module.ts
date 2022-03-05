@@ -1,6 +1,6 @@
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { BidiModule } from '@angular/cdk/bidi';
-import { NgModule, APP_INITIALIZER, Pipe, PipeTransform } from '@angular/core';
+import { NgModule, APP_INITIALIZER, Pipe, PipeTransform, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -40,6 +40,7 @@ import { ServiceForKeyboardComponent } from './service-for-keyboard/service-for-
 import { ToolBarActionsComponent } from './tool-bar-actions/tool-bar-actions.component';
 import { FootInfoBarComponent } from './foot-info-bar/foot-info-bar.component';
 import { HelperComponent } from './helper/helper.component';
+import { CanvasComponent } from './helper/canvas.component';
 
 import { TranslatePipe } from './core/services/translate.pipe';
 import { TranslateService } from './core/services/translate.service';
@@ -59,6 +60,7 @@ export function setupTranslateFactory(service: TranslateService): Function {
     RichTextEditorComponent,
     OptionsComponent,
     KeyboardLayoutsComponent,
+    CanvasComponent,
     ServiceForKeyboardComponent,
     ToolBarActionsComponent,
     FootInfoBarComponent,
@@ -100,6 +102,7 @@ export function setupTranslateFactory(service: TranslateService): Function {
     HttpClientModule
     //ColorPickerModule
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
   entryComponents: [ToolBarActionsComponent, HelperComponent, RichTextEditorComponent, KeyboardLayoutsComponent, ServiceForKeyboardComponent, OptionsComponent, FootInfoBarComponent],
   providers: [SessionManagerService, ThemeService, TranslateService,
     {

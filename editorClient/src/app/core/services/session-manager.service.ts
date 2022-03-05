@@ -60,6 +60,7 @@ export class SessionManagerService {
   textOrientationMode = new BehaviorSubject(false);
   triggerWindowsKeys = new BehaviorSubject(false);
   pasteIntegrationOutput = new BehaviorSubject(false);
+  clearCanvas = new BehaviorSubject(false);
   continousIntegrationComplete = new BehaviorSubject(false);
   targetIntegrationScript = new BehaviorSubject('IAST');
   detectWordTyped = false;

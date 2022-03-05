@@ -773,9 +773,11 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         }
       } else if (action != undefined && action.includes("/")) {
         // action contains an image that needs to be rendered
-        if (action.indexOf("class") == -1)
+        if (action.indexOf("data:image/png;base64,") > -1) {
+          this.ckeditorContent = this.ckeditorContent + "<img width='50px' height='50px' src='" + action + "'/> ";
+        } else if (action.indexOf("class") == -1) {
           this.ckeditorContent = this.ckeditorContent + "<img width='20px' height='20px' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
-        else {
+        } else {
           // Indus Script Font inclusion - Hex Conversion of IS font number
           let hexNum = Number(parseInt(action.split("/")[1].split("-")[1]) + 29).toString(16);
           this.ckeditorContent = this.ckeditorContent + "<span class='icon icon-" + action.split("/")[1] + "'>`</span>";
