@@ -264,7 +264,7 @@
   </div>
 </div>
 
-<div *ngIf="isMobile && !isTablet && !helpOrPrivacy && uploadDialog" class="mat-typography" dir="auto">
+<div *ngIf="isMobile && !isTablet && !helpOrPrivacy && uploadDialog" class="mat-typography" dir="auto" id="uploadDataPopup">
   <h3 style="height: 25px;"><div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}">{{ 'Every Writers Choice' | translate }}</div><div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon style="font-size: 12px;" aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h3>
   <br/>
   <table>
@@ -670,7 +670,7 @@
   </div>
 </div>
 
-<div *ngIf="!isMobile && isTablet && !helpOrPrivacy && uploadDialog" class="mat-typography" dir="auto">
+<div *ngIf="!isMobile && isTablet && !helpOrPrivacy && uploadDialog" class="mat-typography" dir="auto" id="uploadDataPopup">
   <h2> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h2>
   <br/><br/>
   <table>
@@ -1039,7 +1039,7 @@
   </div>
 </div>
 
-<div *ngIf="!isMobile && !isTablet && !helpOrPrivacy && uploadDialog" class="mat-typography" dir="auto">
+<div *ngIf="!isMobile && !isTablet && !helpOrPrivacy && uploadDialog" class="mat-typography" dir="auto" id="uploadDataPopup">
   <h1> <div [ngStyle]="{'float': (isRTL) ? 'right': 'left'}"> {{ 'Every Writers Choice' | translate }} <img width="50" alt="{{ 'Every Writers Choice' | translate }}" src="./../assets/images/favicon.png"/></div> <div [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-icon aria-label="Close" alt="Close" (click)="done()" style="cursor: pointer;">close</mat-icon></div></h1>
   <br/><br/>
   <table>

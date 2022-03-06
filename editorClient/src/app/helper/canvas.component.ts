@@ -17,9 +17,6 @@ export class CanvasComponent implements AfterViewInit {
   isMobile: Boolean = window.outerWidth < 500;
   isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200;
 
-  @Input() public width = this.isMobile && !this.isTablet? 250 : !this.isMobile && this.isTablet? 600 : 900;
-  @Input() public height = 250;
-
   public cx: CanvasRenderingContext2D | null | undefined;
 
   constructor(private sessionManager: SessionManagerService) {
@@ -34,8 +31,8 @@ export class CanvasComponent implements AfterViewInit {
     
     this.cx = canvasEl.getContext('2d');
 
-    canvasEl.width = this.width;
-    canvasEl.height = this.height;
+    canvasEl.width = this.isMobile && !this.isTablet? document.getElementById("uploadDataPopup").clientWidth * 0.84 : !this.isMobile && this.isTablet? document.getElementById("uploadDataPopup").clientWidth * 0.99 : document.getElementById("uploadDataPopup").clientWidth * 0.99;
+    canvasEl.height = 250;
 
     if (!this.cx) throw 'Cannot get context';
 
@@ -87,7 +84,7 @@ export class CanvasComponent implements AfterViewInit {
   }
 
   clearContent() {
-      this.cx.clearRect(0, 0, this.width, this.height);
+      this.cx.clearRect(0, 0, this.isMobile && !this.isTablet? document.getElementById("uploadDataPopup").clientWidth * 0.84 : !this.isMobile && this.isTablet? document.getElementById("uploadDataPopup").clientWidth * 0.99 : document.getElementById("uploadDataPopup").clientWidth * 0.99, 250);
   }
 
   private drawOnCanvas(prevPos: { x: number; y: number }, currentPos: { x: number; y: number }) {
