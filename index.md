@@ -1,4 +1,6 @@
-### World Scripts Explorer - SaaS Offering (Collaborators are Welcome!!!!...) 😊
+### Multi Script Editor (Collaborators are Welcome!!!!...) 😊
+
+### World Scripts Explorer - SaaS Offering
 This website offers every writer all the tools necessary to ensure they are able to construct their piece of work with ease.
 1. One could use the Keyboard Layouts which are seggregated over multiple **Script** or **Writing-System** types encompassing over 600 types from all over world including ancient, old, classical and constructed types):
  - [Abjad](https://www.omniglot.com/writing/abjads.htm)
@@ -26,15 +28,16 @@ This website offers every writer all the tools necessary to ensure they are able
 15. The offering in available in `Online` | `Offline` for the different services
 16. The Transliteration Content Generation is established using the APIs provided by Aksharamukha : https://aksharamukha.appspot.com/explore from [@github/virtualvinodh](https://github.com/virtualvinodh/aksharamukha)
 17. Integrated [@EasyOCR](https://github.com/JaidedAI/EasyOCR) to detect text in images for 88 Languages 
-18. Webpage that are integrated through iFrames : 
+18. Use canvas to scribble or write or draw any Content and include in Editor
+19. Webpage that are integrated through iFrames : 
   - Translation (https://tatoeba.org) 
   - Dictionary (https://glosbe.com/all-languages | https://bab.la/)
   - Thesaurus (https://synonyms.reverso.net/synonym/ | https://www.shabdkosh.com | https://www.khandbahale.com)
   - Script Information (https://www.endangeredalphabets.net | https://www.scriptsource.org/cms/scripts/page.php)
   - Linguistic Information (https://omniglot.com)
   - Wikipedia (https://wikipedia.org/wiki/)
-19. Session Management - The content and data typed by user is saved in the browser Local Storage for future use 
-20. Collect the World Scripts Explorer data by using REST API - see [Full Guide](https://worldscriptsexplorer.herokuapp.com)
+20. Session Management - The content and data typed by user is saved in the browser Local Storage for future use 
+21. Collect the World Scripts Explorer data by using REST API - see [Full Guide](https://worldscriptsexplorer.herokuapp.com)
 
 ### Server-side `NodeJS 12.x` based on Express server
   Hosted on Salesforce Cloud - **Heroku : https://worldscriptsexplorer.herokuapp.com**
