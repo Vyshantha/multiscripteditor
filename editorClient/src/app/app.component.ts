@@ -220,12 +220,6 @@ export class AppComponent implements AfterViewInit {
         this.sessionManager.itemKeyboardOnly.next(false); 
       }, 100);
     }
-
-    setTimeout(() => {
-      this._snackBar.open(this.translateForSnackBar[1], this.translateForSnackBar[0], {
-        duration: 10000,
-      });
-    }, 1000);
   }
 
   ngAfterViewInit(): void {
@@ -291,6 +285,12 @@ export class AppComponent implements AfterViewInit {
       let optionsLayoutCurrentKeys = await self.populateKeyboard(self.sessionManager.getUILocale());
       self.sessionManager.perfectFontCellMatch("qwerty", self.isMobile, self.isTablet, 4, optionsLayoutCurrentKeys, self.sessionManager.cellSize2.value, self.sessionManager.fontSize2.value, "options");
     };
+
+    setTimeout(() => {
+      this._snackBar.open(this.translateForSnackBar[1], this.translateForSnackBar[0], {
+        duration: 10000,
+      });
+    }, 2000);
   }
 
   populateKeyboard(ISO_Code) {

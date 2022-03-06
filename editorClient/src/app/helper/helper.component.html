@@ -15,7 +15,7 @@
         {{ 'See that Information by Inspection' | translate }} ({{ 'Developer Options of Browser' | translate }}) > {{ 'Network' | translate }} ({{ 'Tab' | translate }}) > {{ 'Requests' | translate }} : <b>https://{{hostname}}/v1/multiscripteditor</b>.</p>
     </mat-expansion-panel>
   </mat-accordion>
-
+  <br/>
   <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -37,7 +37,7 @@
         </p>
       </mat-expansion-panel>
   </mat-accordion>
-
+  <br/>
   <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
@@ -63,43 +63,52 @@
     </mat-expansion-panel>
   </mat-accordion>
   <br/>
-  <mat-card>
-    <mat-card-subtitle><b>{{ 'Language selection for Interface' | translate }}</b></mat-card-subtitle>
-    <table style="text-align: center;width: 100%;">
-      <tr style="display:inline">
-        <td style="width:40%">
-          <mat-form-field class="menuselect_phone">
-            <mat-label>{{ 'Select' | translate }}...</mat-label>
-            <mat-select style="width: 300;" [(value)]="localeUISelection">
-              <table style="table-layout: fixed;width: 100%;">
-                <tr>
-                  <td>
-                    <mat-option *ngFor="let language of supportedLanguageColumn1" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
-                    <mat-option *ngFor="let language of supportedLanguageColumn2" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
-                  </td>
-                  <td>
-                    <mat-option *ngFor="let language of supportedLanguageColumn3" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
-                    <mat-option *ngFor="let language of supportedLanguageColumn4" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
-                  </td>
-                </tr>
-              </table>
-            </mat-select>
-        </mat-form-field>
-        </td>
-        <td style="white-space: nowrap; width: 60%; height: 35px;">
-          {{localeUISelection}} &nbsp;&nbsp;&nbsp;
-        </td>
-      </tr>
-      <tr style="display:inline">
-        <td style="white-space: nowrap; height: 35px;">
-          <mat-icon style="font-size: 17px;">model_training</mat-icon> : {{overridenUILocale}} &nbsp;&nbsp;&nbsp;
-        </td>
-        <td style="white-space: nowrap; height: 35px;">
-          <mat-icon style="font-size: 17px;">web</mat-icon> : {{defaultLocale}} &nbsp;&nbsp;&nbsp;
-        </td>
-      </tr>
-    </table>
-  </mat-card>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            <b style="font-size: 12px;">{{ 'Language selection for Interface' | translate }}</b>
+        </mat-panel-title>
+        <mat-panel-description>
+
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        <table style="text-align: center;width: 100%;">
+          <tr style="display:inline">
+            <td style="width:40%">
+              <mat-form-field class="menuselect_phone">
+                <mat-label>{{ 'Select' | translate }}...</mat-label>
+                <mat-select style="width: 300;" [(value)]="localeUISelection">
+                  <table style="table-layout: fixed;width: 100%;">
+                    <tr>
+                      <td>
+                        <mat-option *ngFor="let language of supportedLanguageColumn1" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
+                        <mat-option *ngFor="let language of supportedLanguageColumn2" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
+                      </td>
+                      <td>
+                        <mat-option *ngFor="let language of supportedLanguageColumn3" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
+                        <mat-option *ngFor="let language of supportedLanguageColumn4" value="language.value" (click)="localeForUI(language.url)"> {{language.value}} </mat-option>
+                      </td>
+                    </tr>
+                  </table>
+                </mat-select>
+            </mat-form-field>
+            </td>
+            <td style="white-space: nowrap; width: 60%; height: 35px;">
+              {{localeUISelection}} &nbsp;&nbsp;&nbsp;
+            </td>
+          </tr>
+          <tr style="display:inline">
+            <td style="white-space: nowrap; height: 35px;">
+              <mat-icon style="font-size: 17px;">model_training</mat-icon> : {{overridenUILocale}} &nbsp;&nbsp;&nbsp;
+            </td>
+            <td style="white-space: nowrap; height: 35px;">
+              <mat-icon style="font-size: 17px;">web</mat-icon> : {{defaultLocale}} &nbsp;&nbsp;&nbsp;
+            </td>
+          </tr>
+        </table>
+    </mat-expansion-panel>
+  </mat-accordion>
   <br/>
   <mat-accordion>
     <mat-expansion-panel>
@@ -179,46 +188,55 @@
       </mat-expansion-panel>
   </mat-accordion>
   <br/>
-  <mat-card>
-    <mat-card-subtitle><b>{{ 'Search for Language or Script or Locale' | translate }}</b></mat-card-subtitle>
-    <table style="text-align: center;">
-      <tr>
-        <td style="width: 50%;">
-          <form [formGroup]="supportedScripts">
-            <mat-form-field style="width: 100px;">
-              <input type="search"
-                      aria-label="{{ 'Search for my Keyboard' | translate }}"
-                      matInput
-                      formControlName="script"
-                      required
-                      [matAutocomplete]="autoScriptSelect"
-                      placeholder="{{ 'Search for my Keyboard' | translate }}"
-                      #searchAllScripts
-                      (paste)="pasteInputFieldForAttacks($event)"
-                      (keydown)="preventInputFieldForAttacks($event)">
-                <mat-autocomplete #autoScriptSelect="matAutocomplete" panelWidth="300px">
-                  <mat-optgroup *ngFor="let locale of supportedScriptsOptions | async" [label]="locale.scriptType">
-                    <mat-option *ngFor="let exonym of locale.scriptName" [value]="exonym">
-                      {{exonym}}
-                    </mat-option>
-                  </mat-optgroup>
-                </mat-autocomplete>
-            </mat-form-field>
-          </form> 
-        </td>
-        <td style="width: 50%;">
-          &nbsp;&nbsp;&nbsp; <button style="font-size: 12px;" mat-raised-button color="primary" matTooltip="Load Keyboard" aria-label="Load Keyboard" (click)="loadMyKeyboard()">{{ 'Load Keyboard' | translate }}</button>
-        </td>
-      </tr>
-      <br/>
-      <tr>
-        <td style="width: 100%; word-wrap: break-word; text-align: center;" colspan="2">
-          &nbsp;&nbsp;&nbsp; <b>{{ 'Current Keyboard' | translate }}</b> : &nbsp;&nbsp;&nbsp; <b> {{currentKeyboard}} </b> &nbsp;&nbsp;&nbsp; ( {{keyboardStyle}} )
-        </td>
-      </tr>
-    </table>
-  </mat-card>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            <b style="font-size: 12px;">{{ 'Search for Language or Script or Locale' | translate }}</b>
+        </mat-panel-title>
+        <mat-panel-description>
 
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <table style="text-align: center;">
+        <tr>
+          <td style="width: 50%;">
+            <form [formGroup]="supportedScripts">
+              <mat-form-field style="width: 100px;">
+                <input type="search"
+                        aria-label="{{ 'Search for my Keyboard' | translate }}"
+                        matInput
+                        formControlName="script"
+                        required
+                        [matAutocomplete]="autoScriptSelect"
+                        placeholder="{{ 'Search for my Keyboard' | translate }}"
+                        #searchAllScripts
+                        (paste)="pasteInputFieldForAttacks($event)"
+                        (keydown)="preventInputFieldForAttacks($event)">
+                  <mat-autocomplete #autoScriptSelect="matAutocomplete" panelWidth="300px">
+                    <mat-optgroup *ngFor="let locale of supportedScriptsOptions | async" [label]="locale.scriptType">
+                      <mat-option *ngFor="let exonym of locale.scriptName" [value]="exonym">
+                        {{exonym}}
+                      </mat-option>
+                    </mat-optgroup>
+                  </mat-autocomplete>
+              </mat-form-field>
+            </form> 
+          </td>
+          <td style="width: 50%;">
+            &nbsp;&nbsp;&nbsp; <button style="font-size: 12px;" mat-raised-button color="primary" matTooltip="Load Keyboard" aria-label="Load Keyboard" (click)="loadMyKeyboard()">{{ 'Load Keyboard' | translate }}</button>
+          </td>
+        </tr>
+        <br/>
+        <tr>
+          <td style="width: 100%; word-wrap: break-word; text-align: center;" colspan="2">
+            &nbsp;&nbsp;&nbsp; <b>{{ 'Current Keyboard' | translate }}</b> : &nbsp;&nbsp;&nbsp; <b> {{currentKeyboard}} </b> &nbsp;&nbsp;&nbsp; ( {{keyboardStyle}} )
+          </td>
+        </tr>
+      </table>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <br/>
   <div mat-dialog-actions style="margin-bottom: 0px;flex-wrap:nowrap;">
     <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
     <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></button>
