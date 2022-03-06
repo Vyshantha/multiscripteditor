@@ -81,6 +81,42 @@ export class CanvasComponent implements AfterViewInit {
         // this method we'll implement soon to do the actual drawing
         this.drawOnCanvas(prevPos, currentPos);
       });
+
+    fromEvent(canvasEl, 'touchstart')
+      .pipe(
+        switchMap(e => {
+          // after a touch down, we'll record all touch moves
+          return fromEvent(canvasEl, 'touchmove').pipe(
+            // we'll stop (and unsubscribe) once the user releases the touch
+            // this will trigger a 'touch up' event
+            takeUntil(fromEvent(canvasEl, 'touchend')),
+            // we'll also stop (and unsubscribe) once the touch leaves the canvas (touchleave event)
+            //takeUntil(fromEvent(canvasEl, 'touchleave')),
+            // pairwise lets us get the previous value to draw a line from
+            // the previous point to the current point
+            pairwise()
+          );
+        })
+      )
+      .subscribe((res) => {
+        const rect = canvasEl.getBoundingClientRect();
+        const prevTouchEvent = res[0] as TouchEvent;
+        const currTouchEvent = res[1] as TouchEvent;
+
+        // previous and current position with the offset
+        const prevPos = {
+          x: prevTouchEvent.touches[0].clientX - rect.left,
+          y: prevTouchEvent.touches[0].clientY - rect.top
+        };
+
+        const currentPos = {
+          x: currTouchEvent.touches[0].clientX - rect.left,
+          y: currTouchEvent.touches[0].clientY - rect.top
+        };
+
+        // this method we'll implement soon to do the actual drawing
+        this.drawOnCanvas(prevPos, currentPos);
+      });
   }
 
   clearContent() {
