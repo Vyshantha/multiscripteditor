@@ -2565,6 +2565,26 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     var self = this;
     if (localStorage.getItem("ltpaToken") && ISO_Code == this.sessionManager.getFromSessionURL() && this.sessionManager.getOfflineOnly() == false)
       this.allSuggestionsForLanguage = await this.loadSuggestionsFile(ISO_Code);
+    else if (this.sessionManager.getOfflineOnly()) {
+      var self = this;
+      var language_script_name = (this.keyboardLayouts[ISO_Code][2].indexOf("(") > -1 && ISO_Code != "zhcn" && ISO_Code != "zhtw") ? this.keyboardLayouts[ISO_Code][2].toLowerCase().split("(")[0] : this.keyboardLayouts[ISO_Code][2].toLowerCase();
+      language_script_name = (language_script_name.indexOf(" ") > -1) ? language_script_name.split(" ")[0] : language_script_name;
+      this.http.get<[]>(`assets/suggestionWords/${language_script_name}.json`).subscribe(
+        suggestionlist => {
+          if (suggestionlist) {
+            let myLanguageWordList = [{"words":[]}];
+            for(let i = 0; i < suggestionlist.length; i++) {
+              myLanguageWordList[0]["words"][i] = suggestionlist[i][language_script_name];
+            }
+            self.allSuggestionsForLanguage = myLanguageWordList;
+          } else
+          self.allSuggestionsForLanguage = [];
+        },
+        errorLocal => {
+          console.error("[MUlTISCRIPTEDITOR] Loading Suggestions File - Data yet to be Included for", self.keyboardLayouts[ISO_Code][2], errorLocal);
+          self.allSuggestionsForLanguage = [];
+        });
+    }
     setTimeout(async ()=>{      
       // The Angular Server isn't restarted and regular reloading of the Suggestion Words JSON file is done on Client-side
       if (ISO_Code == this.sessionManager.getFromSessionURL())

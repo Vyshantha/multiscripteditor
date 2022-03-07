@@ -2763,7 +2763,7 @@
             <br/>
             <mat-icon aria-label="{{ 'Modify Cell Size' | translate }}" alt="{{ 'Modify Cell Size' | translate }}" matTooltip="{{ 'Modify Cell Size' | translate }}" style="vertical-align: middle;">aspect_ratio</mat-icon> &nbsp;&nbsp; <mat-slider thumbLabel [displayWith]="cellSize" #cells tickInterval="1" min="10" max="100" value="{{defaultCellSize}}"></mat-slider>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button mat-icon-button mat-raised-button>
+            <button mat-icon-button mat-raised-button *ngIf="onlineService">
                 <mat-icon aria-label="{{ 'Write On Canvas and Convert Image to Text' | translate }}" matTooltip="{{ 'Write On Canvas and Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
             </button>
             <br/>
@@ -5278,7 +5278,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <mat-icon aria-hidden="false" aria-label="{{ 'Restore To Defaults' | translate }}" alt="{{ 'Restore To Defaults' | translate }}" (click)="restoreDefaults()" matTooltip="{{ 'Restore To Defaults' | translate }}" style="cursor: pointer;vertical-align: middle;">settings_backup_restore</mat-icon> 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button mat-icon-button mat-raised-button>
+            <button mat-icon-button mat-raised-button *ngIf="onlineService">
                 <mat-icon aria-label="{{ 'Write On Canvas and Convert Image to Text' | translate }}" matTooltip="{{ 'Write On Canvas and Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
             </button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -8049,7 +8049,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <mat-icon aria-hidden="false" aria-label="{{ 'Restore To Defaults' | translate }}" alt="{{ 'Restore To Defaults' | translate }}" (click)="restoreDefaults()" matTooltip="{{ 'Restore To Defaults' | translate }}" style="cursor: pointer;vertical-align: middle;">settings_backup_restore</mat-icon> 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button mat-icon-button mat-raised-button>
+            <button mat-icon-button mat-raised-button *ngIf="onlineService">
                 <mat-icon aria-label="{{ 'Write On Canvas and Convert Image to Text' | translate }}" matTooltip="{{ 'Write On Canvas and Convert Image to Text' | translate }}" (click)="helpForUser('upload')" style="cursor: pointer;">art_track</mat-icon>
             </button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
