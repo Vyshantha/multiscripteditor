@@ -250,8 +250,8 @@
   <mat-card style="font-size: smaller;">
     <span>{{ 'This disconnects interface after loading and no data is sent to save nor services are used' | translate }}</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="offlineOnly()" [(ngModel)]="offlineUsage"></mat-slide-toggle></span>
     <br/><br/>
-    <!--span>{{ 'Save Content In Editor To Browser' | translate }} :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('saveContent')" [(ngModel)]="saveBrowser"></mat-slide-toggle></span>
-    <br/><br/-->
+    <span>{{ 'Save Content In Editor To Browser' | translate }} :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('saveContent')" [(ngModel)]="saveBrowser"></mat-slide-toggle></span>
+    <br/><br/>
     <span>{{ 'Send Data At Initial Load' | translate }} :</span>  <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('initialData')" [(ngModel)]="initialDataSend"></mat-slide-toggle></span>
     <br/><br/>
     <!--span>{{ 'Share non Personal Information while Typing Content in Editor' | translate }} <a href="https://{{hostname}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a> :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('shareWords')" [(ngModel)]="shareWordsFromContent"></mat-slide-toggle></span> 
@@ -658,8 +658,8 @@
   <mat-card>
     {{ 'This disconnects interface after loading and no data is sent to save nor services are used' | translate }} - {{ 'click icon to go' | translate }} <span *ngIf="!appStatus">{{ 'Offline' | translate }}</span><span *ngIf="appStatus">{{ 'Online' | translate }}</span> &nbsp;&nbsp; <mat-icon aria-label="{{ 'Offline Mode' | translate }}" alt="{{ 'Offline Mode' | translate }}" *ngIf="!appStatus" matTooltip="{{ 'Go Offline' | translate }}" style="font-size: small;">cloud_off</mat-icon> <mat-icon aria-label="{{ 'Online Mode' | translate }}" alt="{{ 'Online Mode' | translate }}" *ngIf="appStatus" matTooltip="{{ 'Go Online' | translate }}" style="font-size: small;">cloud_on</mat-icon> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="offlineOnly()" [(ngModel)]="offlineUsage"></mat-slide-toggle> &nbsp;&nbsp;</span>
     <br/><br/>
-    <!--span>{{ 'Save Content In Editor To Browser' | translate }} ({{ 'Local Storage' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('saveContent')" [(ngModel)]="saveBrowser"></mat-slide-toggle> &nbsp;&nbsp;</span>
-    <br/><br/-->
+    <span>{{ 'Save Content In Editor To Browser' | translate }} ({{ 'Local Storage' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('saveContent')" [(ngModel)]="saveBrowser"></mat-slide-toggle> &nbsp;&nbsp;</span>
+    <br/><br/>
     <span>{{ 'Send Data At Initial Load' | translate }} ({{ 'If you wish to help us improve this product' | translate }}) :</span>  <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('initialData')" [(ngModel)]="initialDataSend"></mat-slide-toggle> &nbsp;&nbsp;</span>
     <br/>
     <span style="font-size: small;"><mat-icon style="font-size: 15px;">info</mat-icon> {{ 'Device, Browser, Keyboard, Type of Layout, Language, Locale, Theme, Location & Screen, Cell and Font Sizes' | translate }}</span>
@@ -1027,8 +1027,8 @@
   <mat-card>
     {{ 'This disconnects interface after loading and no data is sent to save nor services are used' | translate }} - {{ 'click icon to go' | translate }} <span *ngIf="!appStatus">{{ 'Offline' | translate }}</span><span *ngIf="appStatus">{{ 'Online' | translate }}</span> &nbsp;&nbsp; <mat-icon aria-label="{{ 'Offline Mode' | translate }}" alt="{{ 'Offline Mode' | translate }}" *ngIf="!appStatus" matTooltip="{{ 'Go Offline' | translate }}" style="font-size: small;">cloud_off</mat-icon> <mat-icon aria-label="{{ 'Online Mode' | translate }}" alt="{{ 'Online Mode' | translate }}" *ngIf="appStatus" matTooltip="{{ 'Go Online' | translate }}" style="font-size: small;">cloud_on</mat-icon> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="offlineOnly()" [(ngModel)]="offlineUsage"></mat-slide-toggle> &nbsp;&nbsp;</span>
     <br/><br/>
-    <!--span>{{ 'Save Content In Editor To Browser' | translate }} ({{ 'Local Storage' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('saveContent')" [(ngModel)]="saveBrowser"></mat-slide-toggle> &nbsp;&nbsp;</span>
-    <br/><br/-->
+    <span>{{ 'Save Content In Editor To Browser' | translate }} ({{ 'Local Storage' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('saveContent')" [(ngModel)]="saveBrowser"></mat-slide-toggle> &nbsp;&nbsp;</span>
+    <br/><br/>
     <span>{{ 'Send Data At Initial Load' | translate }} ({{ 'If you wish to help us improve this product' | translate }}) :</span>  <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('initialData')" [(ngModel)]="initialDataSend"></mat-slide-toggle> &nbsp;&nbsp;</span>
     <br/>
     <span style="font-size: small;"><mat-icon style="font-size: 15px;">info</mat-icon> {{ 'Device, Browser, Keyboard, Type of Layout, Language, Locale, Theme, Location & Screen, Cell and Font Sizes' | translate }}</span>

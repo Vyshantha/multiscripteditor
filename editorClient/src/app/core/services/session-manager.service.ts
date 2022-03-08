@@ -269,17 +269,17 @@ export class SessionManagerService {
         console.info("[MUlTISCRIPTEDITOR] Sentence Written is being processed by back-end NLP and no personal data is stored ", storagedSentence);
       });;
     }*/
-    if (this.isIntegrationContinous() == 'true' && this.sentenceSeparator.indexOf(whichCharacter) == -1 && this.detectWordTyped == true && this.targetIntegrationScript.value && this.targetIntegrationScript.value != "" && this.targetIntegrationScript.value != null && this.getOfflineOnly() == false) {
+    if (this.isIntegrationContinous() == 'true' && whichCharacter != "" && this.sentenceSeparator.indexOf(whichCharacter) == -1 && this.detectWordTyped == true && this.targetIntegrationScript.value && this.targetIntegrationScript.value != "" && this.targetIntegrationScript.value != null && this.getOfflineOnly() == false) {
       this.integrateContinous(this.targetIntegrationScript.value, whichCharacter).subscribe((resultContent: any) => {
         this.pasteIntegrationOutput.next(true);
         console.info("[MUlTISCRIPTEDITOR] Continous transliteration through Aksharamukha Integration to Target Script ", this.targetIntegrationScript.value);
-        whichCharacter = resultContent;
+        whichCharacter = resultContent + this.wordSeparator();
         this.itemKeyCharacter.next(whichCharacter);
         this.continousIntegrationComplete.next(true);
       }, (error) => {
         this.pasteIntegrationOutput.next(true);
         console.info("[MUlTISCRIPTEDITOR] Continous transliteration through Aksharamukha Integration to Target Script ", this.targetIntegrationScript.value);
-        whichCharacter = error.error.text;
+        whichCharacter = error.error.text + this.wordSeparator();
         this.itemKeyCharacter.next(whichCharacter);
         this.continousIntegrationComplete.next(true);
       });
@@ -838,7 +838,7 @@ export class SessionManagerService {
 
   // Aksharamukha Integration for Transliteration of every word
   integrateContinous(targetScript, word) {
-    return this.http.get<any[]>(`https://aksharamukha-plugin.appspot.com/api/public?target=${targetScript}&text=${word}`);
+    return this.http.get<any[]>(`https://aksharamukha-plugin.appspot.com/api/public?target=${targetScript}&text=${word.trim()}`);
   }
   // Aksharamukha Integration for Transliteration of all Session Data
   integrateTransliteration(targetScript) {
