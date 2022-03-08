@@ -53,7 +53,6 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       //extraPlugins: ''                                  // Plugins for CKEditor https://ckeditor.com/cke4/presets-all
   };
 
-  whenKeyIsPressed: Boolean = false;
   mappedSpaceClicked: Boolean = false;
   pasteContentSetToEditor: Boolean = false;
   upArrowKeyPressed: Boolean = false;
@@ -428,7 +427,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
             // Blur and Focus invent to change Shift layout for Keyboard
             self.fullmodeCkEditor.instance.focusManager.blur(true);
           }
-          if (event.data.domEvent["$"].key != "Meta" && event.data.domEvent["$"].key != "Shift" && event.data.domEvent["$"].key != "CapsLock" && event.data.domEvent["$"].key != "Alt" && event.data.domEvent["$"].key != "Tab" && event.data.domEvent["$"].key != "Backspace" && event.data.domEvent["$"].key != "Enter" && event.data.domEvent["$"].key != "Control" && event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && event.data.domEvent["$"].key != " ") {
+          if (event.data.domEvent["$"].key != "Meta" && event.data.domEvent["$"].key != "Shift" && event.data.domEvent["$"].key != "CapsLock" && event.data.domEvent["$"].key != "Alt" && event.data.domEvent["$"].key != "Tab" && event.data.domEvent["$"].key != "Backspace" && event.data.domEvent["$"].key != "Enter" && event.data.domEvent["$"].key != "Control" && event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && event.data.domEvent["$"].key != " " && event.data.domEvent["$"].key != "Unidentified") {
             let rowForSoftKey = 0, columnForSoftKey = 0;
             if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
               rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyPos;
@@ -617,7 +616,6 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     }
 
     this.sessionManager.itemKeyCharacter.subscribe((character) => {
-      this.whenKeyIsPressed = false;
       // Inserting Character at Cursor Position
       if (this.sessionManager.getSessionSavedContent() && parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) == 0 && this.position != "∞") {
         this.ckeditorContent = this.sessionManager.getSessionSavedContent().substring(0, parseFloat(this.rowPos) + 1) + character + this.sessionManager.getSessionSavedContent().substring(parseFloat(this.rowPos) + 1, this.sessionManager.getSessionSavedContent().length);

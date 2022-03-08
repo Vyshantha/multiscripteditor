@@ -230,7 +230,7 @@
         <br/>
         <tr>
           <td style="width: 100%; word-wrap: break-word; text-align: center;" colspan="2">
-            &nbsp;&nbsp;&nbsp; <b>{{ 'Current Keyboard' | translate }}</b> : &nbsp;&nbsp;&nbsp; <b> {{currentKeyboard}} </b> &nbsp;&nbsp;&nbsp; ( {{keyboardStyle}} )
+            &nbsp;&nbsp;&nbsp; <b>{{ 'Current Keyboard' | translate }}</b> : &nbsp;&nbsp;&nbsp; <b style='font-family: "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", Roboto, "Helvetica Neue", sans-serif;'> {{currentKeyboard}} </b> &nbsp;&nbsp;&nbsp; ( {{keyboardStyle}} )
           </td>
         </tr>
       </table>
@@ -250,8 +250,8 @@
   <mat-card style="font-size: smaller;">
     <span>{{ 'This disconnects interface after loading and no data is sent to save nor services are used' | translate }}</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="offlineOnly()" [(ngModel)]="offlineUsage"></mat-slide-toggle></span>
     <br/><br/>
-    <span>{{ 'Save Content In Editor To Browser' | translate }} :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('saveContent')" [(ngModel)]="saveBrowser"></mat-slide-toggle></span>
-    <br/><br/>
+    <!--span>{{ 'Save Content In Editor To Browser' | translate }} :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('saveContent')" [(ngModel)]="saveBrowser"></mat-slide-toggle></span>
+    <br/><br/-->
     <span>{{ 'Send Data At Initial Load' | translate }} :</span>  <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('initialData')" [(ngModel)]="initialDataSend"></mat-slide-toggle></span>
     <br/><br/>
     <!--span>{{ 'Share non Personal Information while Typing Content in Editor' | translate }} <a href="https://{{hostname}}/v1/multiscripteditor" target="_blank">{{ 'here' | translate }}</a> :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('shareWords')" [(ngModel)]="shareWordsFromContent"></mat-slide-toggle></span> 
@@ -315,7 +315,7 @@
       </tr>
       <tr>
         <td colspan="2">
-          <mat-form-field appearance="fill" style="width:100%">
+          <mat-form-field appearance="fill" style='width:100%;font-family: "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", Roboto, "Helvetica Neue", sans-serif;'>
             <mat-chip-list #chipList aria-label="{{ 'Language Selection' | translate }}">
               <mat-chip *ngFor="let language of supportedWrittenLanguage" (removed)="removeLanguage(language)">
                 {{language.name}} {{language.code}}
@@ -638,7 +638,7 @@
           &nbsp;&nbsp;&nbsp; <button mat-raised-button color="primary" matTooltip="Load Keyboard" aria-label="Load Keyboard" (click)="loadMyKeyboard()">{{ 'Load Keyboard' | translate }}</button>
         </td>
         <td>
-          &nbsp;&nbsp;&nbsp; <b>{{ 'Current Keyboard' | translate }}</b> : &nbsp;&nbsp;&nbsp; <b> {{currentKeyboard}} </b> &nbsp;&nbsp;&nbsp; ( {{keyboardStyle}} )
+          &nbsp;&nbsp;&nbsp; <b>{{ 'Current Keyboard' | translate }}</b> : &nbsp;&nbsp;&nbsp; <b style='font-family: "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", Roboto, "Helvetica Neue", sans-serif;'> {{currentKeyboard}} </b> &nbsp;&nbsp;&nbsp; ( {{keyboardStyle}} )
         </td>
       </tr>
     </table>
@@ -658,8 +658,8 @@
   <mat-card>
     {{ 'This disconnects interface after loading and no data is sent to save nor services are used' | translate }} - {{ 'click icon to go' | translate }} <span *ngIf="!appStatus">{{ 'Offline' | translate }}</span><span *ngIf="appStatus">{{ 'Online' | translate }}</span> &nbsp;&nbsp; <mat-icon aria-label="{{ 'Offline Mode' | translate }}" alt="{{ 'Offline Mode' | translate }}" *ngIf="!appStatus" matTooltip="{{ 'Go Offline' | translate }}" style="font-size: small;">cloud_off</mat-icon> <mat-icon aria-label="{{ 'Online Mode' | translate }}" alt="{{ 'Online Mode' | translate }}" *ngIf="appStatus" matTooltip="{{ 'Go Online' | translate }}" style="font-size: small;">cloud_on</mat-icon> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="offlineOnly()" [(ngModel)]="offlineUsage"></mat-slide-toggle> &nbsp;&nbsp;</span>
     <br/><br/>
-    <span>{{ 'Save Content In Editor To Browser' | translate }} ({{ 'Local Storage' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('saveContent')" [(ngModel)]="saveBrowser"></mat-slide-toggle> &nbsp;&nbsp;</span>
-    <br/><br/>
+    <!--span>{{ 'Save Content In Editor To Browser' | translate }} ({{ 'Local Storage' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('saveContent')" [(ngModel)]="saveBrowser"></mat-slide-toggle> &nbsp;&nbsp;</span>
+    <br/><br/-->
     <span>{{ 'Send Data At Initial Load' | translate }} ({{ 'If you wish to help us improve this product' | translate }}) :</span>  <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('initialData')" [(ngModel)]="initialDataSend"></mat-slide-toggle> &nbsp;&nbsp;</span>
     <br/>
     <span style="font-size: small;"><mat-icon style="font-size: 15px;">info</mat-icon> {{ 'Device, Browser, Keyboard, Type of Layout, Language, Locale, Theme, Location & Screen, Cell and Font Sizes' | translate }}</span>
@@ -709,7 +709,7 @@
         </td>
         <br/>
         <td style="width:65%">
-          <mat-form-field appearance="fill" style="width:100%">
+          <mat-form-field appearance="fill" style='width:100%;font-family: "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", Roboto, "Helvetica Neue", sans-serif;'>
             <mat-chip-list #chipList aria-label="{{ 'Language Selection' | translate }}">
               <mat-chip *ngFor="let language of supportedWrittenLanguage" (removed)="removeLanguage(language)">
                 {{language.name}} {{language.code}}
@@ -1007,7 +1007,7 @@
           &nbsp;&nbsp;&nbsp; <button mat-raised-button color="primary" matTooltip="Load Keyboard" aria-label="Load Keyboard" (click)="loadMyKeyboard()">{{ 'Load Keyboard' | translate }}</button>
         </td>
         <td>
-          &nbsp;&nbsp;&nbsp; <b>{{ 'Current Keyboard' | translate }}</b> : &nbsp;&nbsp;&nbsp; <b> {{currentKeyboard}} </b> &nbsp;&nbsp;&nbsp; ( {{keyboardStyle}} )
+          &nbsp;&nbsp;&nbsp; <b>{{ 'Current Keyboard' | translate }}</b> : &nbsp;&nbsp;&nbsp; <b style='font-family: "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", Roboto, "Helvetica Neue", sans-serif;'> {{currentKeyboard}} </b> &nbsp;&nbsp;&nbsp; ( {{keyboardStyle}} )
         </td>
       </tr>
     </table>
@@ -1027,8 +1027,8 @@
   <mat-card>
     {{ 'This disconnects interface after loading and no data is sent to save nor services are used' | translate }} - {{ 'click icon to go' | translate }} <span *ngIf="!appStatus">{{ 'Offline' | translate }}</span><span *ngIf="appStatus">{{ 'Online' | translate }}</span> &nbsp;&nbsp; <mat-icon aria-label="{{ 'Offline Mode' | translate }}" alt="{{ 'Offline Mode' | translate }}" *ngIf="!appStatus" matTooltip="{{ 'Go Offline' | translate }}" style="font-size: small;">cloud_off</mat-icon> <mat-icon aria-label="{{ 'Online Mode' | translate }}" alt="{{ 'Online Mode' | translate }}" *ngIf="appStatus" matTooltip="{{ 'Go Online' | translate }}" style="font-size: small;">cloud_on</mat-icon> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="offlineOnly()" [(ngModel)]="offlineUsage"></mat-slide-toggle> &nbsp;&nbsp;</span>
     <br/><br/>
-    <span>{{ 'Save Content In Editor To Browser' | translate }} ({{ 'Local Storage' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('saveContent')" [(ngModel)]="saveBrowser"></mat-slide-toggle> &nbsp;&nbsp;</span>
-    <br/><br/>
+    <!--span>{{ 'Save Content In Editor To Browser' | translate }} ({{ 'Local Storage' | translate }}) :</span> <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('saveContent')" [(ngModel)]="saveBrowser"></mat-slide-toggle> &nbsp;&nbsp;</span>
+    <br/><br/-->
     <span>{{ 'Send Data At Initial Load' | translate }} ({{ 'If you wish to help us improve this product' | translate }}) :</span>  <span [ngStyle]="{'float': (isRTL) ? 'left': 'right'}"><mat-slide-toggle (click)="usersChoice('initialData')" [(ngModel)]="initialDataSend"></mat-slide-toggle> &nbsp;&nbsp;</span>
     <br/>
     <span style="font-size: small;"><mat-icon style="font-size: 15px;">info</mat-icon> {{ 'Device, Browser, Keyboard, Type of Layout, Language, Locale, Theme, Location & Screen, Cell and Font Sizes' | translate }}</span>
@@ -1078,7 +1078,7 @@
         </td>
         <br/>
         <td style="width:65%">
-          <mat-form-field appearance="fill" style="width:100%">
+          <mat-form-field appearance="fill" style='width:100%;font-family: "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", Roboto, "Helvetica Neue", sans-serif;'>
             <mat-chip-list #chipList aria-label="{{ 'Language Selection' | translate }}">
               <mat-chip *ngFor="let language of supportedWrittenLanguage" (removed)="removeLanguage(language)">
                 {{language.name}} {{language.code}}
