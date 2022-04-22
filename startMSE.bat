@@ -1,16 +1,18 @@
 @echo off
 
-for /f "tokens=1-2 delims=:" %%a in ('ipconfig^|find "IPv4"') do set ip=%%b
-set ip=%ip:~1%
+for /F "tokens=14" %%i in ('"ipconfig | findstr IPv4"') do SET ip=%%i
 echo %ip%
 
 for /f %%A in (./env/sva_config.json) do (
     SET HOSTNAME = %ip%
 )
 
+
+cd editorClient
+
 nodemon &
 
-cd client
 ng serve --host %ip% --port 4200 --ssl true --ssl-cert ./routes/server.crt --ssl-key ./routes/key.pem &
 
-start 'https://%ip%:4200/sva'
+start 'https://%ip%:4200/'
+
