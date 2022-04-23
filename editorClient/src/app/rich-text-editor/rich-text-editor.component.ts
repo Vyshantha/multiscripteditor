@@ -64,6 +64,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
   charInserted: Boolean = false;
   fireOnce: Boolean = true;
   exploreOnly: Boolean = false;
+  noSoftKeyboard: Boolean = false; 
 
   // Two letter locales - https://www.transifex.com/ckeditor/ckeditor/
   supportedCDKEditorLocales = ['cs', 'fr', 'gsw', 'de', 'it', 'sr', 'sr-ba', 'sr-sp', 'zh-cn', 'zh-hk', 'zh-sg', 'zh-mo', 'zh-tw', 'zh', 'hr', 'en-au', 'et', 'gl', 'hu', 'pl', 'pt', 'pt-br', 'sv', 'tr', 'uk', 'sq', 'da', 'no', 'nb', 'ckb', 'fa', 'ru', 'sk', 'az', 'nl', 'eo', 'vi', 'ko', 'es', 'es-mx', 'ja', 'lv', 'oc', 'ca', 'el', 'ro', 'sl', 'uyy', 'ug', 'en-gb', 'cy', 'eu', 'he', 'fr-ca', 'tt', 'bg', 'af', 'ar', 'fi', 'km', 'lt', 'fo', 'gu', 'ka', 'th', 'id', 'mn', 'hi', 'si-ta', 'is', 'en-ca', 'bn', 'ms', 'bs', 'mk', 'ast', 'lu', 'tg', 'ne', 'ti', 'si', 'tl'];
@@ -239,6 +240,9 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         }
       }, 500);
     });
+    this.sessionManager.softKeyboardState.subscribe((value)=>{
+      this.noSoftKeyboard = value;
+    })
   }
 
   ngAfterViewInit(): void {
@@ -261,6 +265,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
 
     var self = this;
+    // TODO - save to session regularly not necessarily to localstorage
+
     // On content 'dom' of Editor attach handler for the click event of the document
     this.fullmodeCkEditor.instance.on( 'contentDom', (contentEvent) => {
       contentEvent.editor.editable().on('click', (event) => {
@@ -290,243 +296,245 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
 
     this.fullmodeCkEditor.instance.on( 'key', function( event ) {
-      let controlActionKey = false;
-      // Ensure Cursor focus moved back to Editor
-      if (event.data.keyCode == 1114129 || event.data.keyCode == 1114336) {
-        self.sessionManager.itemCtrlKeyPressed.next(true);
-        self._snackBar.open(self.translateForSnackBar[6], "OK", {
-          duration: 3000,
-        });
-      }
-      setTimeout(() => {
-        event.editor.focus();
-        if (self.sessionManager.itemCtrlKeyPressed.value == false && event.data.domEvent["$"].key != "ArrowDown" && self.downArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowRight" && self.rightArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowUp" && self.upArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowLeft" && self.leftArrowKeyPressed == false) {
-          var range = event.editor.createRange();
-          if (range) {
-            range.moveToPosition( range.root, 2 );
-            if (event.editor.getSelection()) 
-              event.editor.getSelection().selectRanges( [ range ] );
-          }
+      if (this.noSoftKeyboard == false) {
+        let controlActionKey = false;
+        // Ensure Cursor focus moved back to Editor
+        if (event.data.keyCode == 1114129 || event.data.keyCode == 1114336) {
+          self.sessionManager.itemCtrlKeyPressed.next(true);
+          self._snackBar.open(self.translateForSnackBar[6], "OK", {
+            duration: 3000,
+          });
         }
-      }, 100);
-      if (self.sessionManager.itemCtrlKeyPressed.value == true) {
-        // Action to be done after Control
-        if (event.data.keyCode == 88 || event.data.keyCode == 1114200) {
-          // Ctrl + X
-          self._snackBar.open(self.translateForSnackBar[13], self.translateForSnackBar[0], {
-            duration: 3000,
-          });
-          self.fullmodeCkEditor.instance.fire('cut', event);
-          self.sessionManager.itemCtrlKeyPressed.next(false);
-          controlActionKey = true;
-        } else if (event.data.keyCode == 65 || event.data.keyCode == 1114177) {
-          // Ctrl + A
-          self._snackBar.open(self.translateForSnackBar[14], self.translateForSnackBar[0], {
-            duration: 3000,
-          });
-          self.fullmodeCkEditor.instance.fire('selectAll', event);
-          self.sessionManager.itemCtrlKeyPressed.next(false);
-          controlActionKey = true;
-        } else if (event.data.keyCode == 88 || event.data.keyCode == 1114202) {
-          // Ctrl + Z
-          self._snackBar.open(self.translateForSnackBar[15], self.translateForSnackBar[0], {
-            duration: 3000,
-          });
-          self.fullmodeCkEditor.instance.fire('undo', event);
-          self.sessionManager.itemCtrlKeyPressed.next(false);
-          controlActionKey = true;
-        } else if (event.data.keyCode == 67 || event.data.keyCode == 1114179) {
-          // Ctrl + C
-          self._snackBar.open(self.translateForSnackBar[16], self.translateForSnackBar[0], {
-            duration: 3000,
-          });
-          self.fullmodeCkEditor.instance.fire('copy', event);
-          self.sessionManager.itemCtrlKeyPressed.next(false);
-          controlActionKey = true;
-        } else if (event.data.keyCode == 78 || event.data.keyCode == 1114190) {
-          // Ctrl + N
-          self._snackBar.open(self.translateForSnackBar[17], self.translateForSnackBar[0], {
-            duration: 3000,
-          });
-          self.ckeditorContent = "";
-          self.position = "∞";
-          self.mouseclickEvent = null;
-          self.rowPos = 0;
-          self.colPos = 0;
-          self.sessionManager.setSessionSavingOfContent(self.ckeditorContent);
-          self.fullmodeCkEditor.instance.setData(self.ckeditorContent);
-          self.sessionManager.itemCtrlKeyPressed.next(false);
-          controlActionKey = true;
-        } else if (event.data.keyCode == 86 || event.data.keyCode == 1114198) {
-          // Ctrl + V
-          self._snackBar.open(self.translateForSnackBar[18], self.translateForSnackBar[0], {
-            duration: 3000,
-          });
-          self.pasteContentSetToEditor = true;
-          self.sessionManager.itemCtrlKeyPressed.next(false);
-          controlActionKey = true;
-        }
-        event.stop();
-      }
-      if (controlActionKey == false) {
-        // Mapping Soft Keyboard events with Keyboard 
-        if (event.data.domEvent["$"].key == "ArrowLeft") {
-          self.leftArrowEvent = event;
-        } else if (event.data.domEvent["$"].key == "ArrowUp") {
-          self.upArrowEvent = event;
-        } else if (event.data.domEvent["$"].key == "ArrowRight") {
-          self.rightArrowEvent = event;
-        } else if (event.data.domEvent["$"].key == "ArrowDown") {
-          self.downArrowEvent = event;
-        }
-        // insert & delete at cursor position
-        if (self.sessionManager.mappingKeyboard.value == true && (self.sessionManager.itemQwertyType.value == true || self.sessionManager.itemTransliterate.value == true)) {
-          if ((event.data.domEvent["$"].key == "Shift" && event.data.keyCode == 2228240) || (event.data.domEvent["$"].key == "CapsLock" && event.data.keyCode == 20)) {
-            if (self.sessionManager.itemShiftKeyPressed.value == false) {
-              setTimeout(() => {
-                self.sessionManager.setShiftKeyPressed(true);
-                self._snackBar.open(self.translateForSnackBar[2], self.translateForSnackBar[0], {
-                  duration: 1000,
-                  horizontalPosition: self.horizontalPosition,
-                  verticalPosition: self.verticalPosition,
-                });
-              }, 100);
-            } else if (self.sessionManager.itemShiftKeyPressed.value == true) {
-              setTimeout(() => {
-                self.sessionManager.setShiftKeyPressed(false);
-                self._snackBar.open(self.translateForSnackBar[3], self.translateForSnackBar[0], {
-                  duration: 1000,
-                  horizontalPosition: self.horizontalPosition,
-                  verticalPosition: self.verticalPosition,
-                });
-              }, 100);
+        setTimeout(() => {
+          event.editor.focus();
+          if (self.sessionManager.itemCtrlKeyPressed.value == false && event.data.domEvent["$"].key != "ArrowDown" && self.downArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowRight" && self.rightArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowUp" && self.upArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowLeft" && self.leftArrowKeyPressed == false) {
+            var range = event.editor.createRange();
+            if (range) {
+              range.moveToPosition( range.root, 2 );
+              if (event.editor.getSelection()) 
+                event.editor.getSelection().selectRanges( [ range ] );
             }
-            // Blur and Focus invent to change Shift layout for Keyboard
-            self.fullmodeCkEditor.instance.focusManager.blur(true);
           }
-          if ((event.data.domEvent["$"].key == "Alt" && event.data.keyCode == 4456466) && self.sessionManager.itemAltGrExists.value == true) {
-            if (self.sessionManager.itemAltGrKeyPressed.value == false) {
-              setTimeout(() => {
-                self.sessionManager.setAltGrKeyPressed(true);
-                self._snackBar.open(self.translateForSnackBar[4], self.translateForSnackBar[0], {
-                  duration: 1000,
-                  horizontalPosition: self.horizontalPosition,
-                  verticalPosition: self.verticalPosition,
-                });
-              }, 100);
-            } else if (self.sessionManager.itemAltGrKeyPressed.value == true) {
-              setTimeout(() => {
-                self.sessionManager.setAltGrKeyPressed(false);
-                self._snackBar.open(self.translateForSnackBar[5], self.translateForSnackBar[0], {
-                  duration: 1000,
-                  horizontalPosition: self.horizontalPosition,
-                  verticalPosition: self.verticalPosition,
-                });
-              }, 100);
-            }
-            // Blur and Focus invent to change Shift layout for Keyboard
-            self.fullmodeCkEditor.instance.focusManager.blur(true);
+        }, 100);
+        if (self.sessionManager.itemCtrlKeyPressed.value == true) {
+          // Action to be done after Control
+          if (event.data.keyCode == 88 || event.data.keyCode == 1114200) {
+            // Ctrl + X
+            self._snackBar.open(self.translateForSnackBar[13], self.translateForSnackBar[0], {
+              duration: 3000,
+            });
+            self.fullmodeCkEditor.instance.fire('cut', event);
+            self.sessionManager.itemCtrlKeyPressed.next(false);
+            controlActionKey = true;
+          } else if (event.data.keyCode == 65 || event.data.keyCode == 1114177) {
+            // Ctrl + A
+            self._snackBar.open(self.translateForSnackBar[14], self.translateForSnackBar[0], {
+              duration: 3000,
+            });
+            self.fullmodeCkEditor.instance.fire('selectAll', event);
+            self.sessionManager.itemCtrlKeyPressed.next(false);
+            controlActionKey = true;
+          } else if (event.data.keyCode == 88 || event.data.keyCode == 1114202) {
+            // Ctrl + Z
+            self._snackBar.open(self.translateForSnackBar[15], self.translateForSnackBar[0], {
+              duration: 3000,
+            });
+            self.fullmodeCkEditor.instance.fire('undo', event);
+            self.sessionManager.itemCtrlKeyPressed.next(false);
+            controlActionKey = true;
+          } else if (event.data.keyCode == 67 || event.data.keyCode == 1114179) {
+            // Ctrl + C
+            self._snackBar.open(self.translateForSnackBar[16], self.translateForSnackBar[0], {
+              duration: 3000,
+            });
+            self.fullmodeCkEditor.instance.fire('copy', event);
+            self.sessionManager.itemCtrlKeyPressed.next(false);
+            controlActionKey = true;
+          } else if (event.data.keyCode == 78 || event.data.keyCode == 1114190) {
+            // Ctrl + N
+            self._snackBar.open(self.translateForSnackBar[17], self.translateForSnackBar[0], {
+              duration: 3000,
+            });
+            self.ckeditorContent = "";
+            self.position = "∞";
+            self.mouseclickEvent = null;
+            self.rowPos = 0;
+            self.colPos = 0;
+            self.sessionManager.setSessionSavingOfContent(self.ckeditorContent);
+            self.fullmodeCkEditor.instance.setData(self.ckeditorContent);
+            self.sessionManager.itemCtrlKeyPressed.next(false);
+            controlActionKey = true;
+          } else if (event.data.keyCode == 86 || event.data.keyCode == 1114198) {
+            // Ctrl + V
+            self._snackBar.open(self.translateForSnackBar[18], self.translateForSnackBar[0], {
+              duration: 3000,
+            });
+            self.pasteContentSetToEditor = true;
+            self.sessionManager.itemCtrlKeyPressed.next(false);
+            controlActionKey = true;
           }
-          if (event.data.domEvent["$"].key != "Meta" && event.data.domEvent["$"].key != "Shift" && event.data.domEvent["$"].key != "CapsLock" && event.data.domEvent["$"].key != "Alt" && event.data.domEvent["$"].key != "Tab" && event.data.domEvent["$"].key != "Backspace" && event.data.domEvent["$"].key != "Enter" && event.data.domEvent["$"].key != "Control" && event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && event.data.domEvent["$"].key != " " && event.data.domEvent["$"].key != "Unidentified") {
-            let rowForSoftKey = 0, columnForSoftKey = 0;
-            if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
-              rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyPos;
-              columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-              if (self.typedWord.value != null)
-                self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
-              else 
-                self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
-              self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
-              self.sessionManager.typedKeysMap.next(self.typedWord.value);
-            } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
-              rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyPos + 5;
-              columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-              if (self.typedWord.value != null)
-                self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
-              else 
-                self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
-              self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
-              self.sessionManager.typedKeysMap.next(self.typedWord.value);
-            } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == true && event.data.keyCode < 2228224) {
-              rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.altGrPos;
-              columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-              if (self.typedWord.value != null)
-                self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
-              else 
-                self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
-              self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
-              self.sessionManager.typedKeysMap.next(self.typedWord.value);
-            } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == true && event.data.keyCode < 2228224) {
-              rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.altGrPos + 5;
-              columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-              if (self.typedWord.value != null)
-                self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
-              else 
-                self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
-              self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
-              self.sessionManager.typedKeysMap.next(self.typedWord.value);
-            } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == false && self.sessionManager.itemTransliterate.value == true && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
-              rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyTranPos;
-              columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-              if (self.typedWord.value != null)
-                self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
-              else 
-                self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
-              self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
-              self.sessionManager.typedKeysMap.next(self.typedWord.value);
-            } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == false && self.sessionManager.itemTransliterate.value == true && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
-              rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyTranPos + 5;
-              columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-              if (self.typedWord.value != null)
-                self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
-              else 
-                self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
-              self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
-              self.sessionManager.typedKeysMap.next(self.typedWord.value);
+          event.stop();
+        }
+        if (controlActionKey == false) {
+          // Mapping Soft Keyboard events with Keyboard 
+          if (event.data.domEvent["$"].key == "ArrowLeft") {
+            self.leftArrowEvent = event;
+          } else if (event.data.domEvent["$"].key == "ArrowUp") {
+            self.upArrowEvent = event;
+          } else if (event.data.domEvent["$"].key == "ArrowRight") {
+            self.rightArrowEvent = event;
+          } else if (event.data.domEvent["$"].key == "ArrowDown") {
+            self.downArrowEvent = event;
+          }
+          // insert & delete at cursor position
+          if (self.sessionManager.mappingKeyboard.value == true && (self.sessionManager.itemQwertyType.value == true || self.sessionManager.itemTransliterate.value == true)) {
+            if ((event.data.domEvent["$"].key == "Shift" && event.data.keyCode == 2228240) || (event.data.domEvent["$"].key == "CapsLock" && event.data.keyCode == 20)) {
+              if (self.sessionManager.itemShiftKeyPressed.value == false) {
+                setTimeout(() => {
+                  self.sessionManager.setShiftKeyPressed(true);
+                  self._snackBar.open(self.translateForSnackBar[2], self.translateForSnackBar[0], {
+                    duration: 1000,
+                    horizontalPosition: self.horizontalPosition,
+                    verticalPosition: self.verticalPosition,
+                  });
+                }, 100);
+              } else if (self.sessionManager.itemShiftKeyPressed.value == true) {
+                setTimeout(() => {
+                  self.sessionManager.setShiftKeyPressed(false);
+                  self._snackBar.open(self.translateForSnackBar[3], self.translateForSnackBar[0], {
+                    duration: 1000,
+                    horizontalPosition: self.horizontalPosition,
+                    verticalPosition: self.verticalPosition,
+                  });
+                }, 100);
+              }
+              // Blur and Focus invent to change Shift layout for Keyboard
+              self.fullmodeCkEditor.instance.focusManager.blur(true);
             }
-          } else if (event.data.domEvent["$"].key == " ") {
-            self.typedWord.next("");
-            self.mappedSpaceClicked = true;
-            setTimeout(() => {
-              self.sessionManager.setCharFromKeyboard(self.wordSeparator());
-            }, 100);
-          } else if (event.data.domEvent["$"].key == "Backspace") {
-            // Do action based on Cursor position
-            self.sessionManager.setActionFromKeyboard("del");
-            if (self.sessionManager.typedKeysMap.value && self.sessionManager.typedKeysMap.value != null) {
-              self.sessionManager.typedKeysMap.next("");
+            if ((event.data.domEvent["$"].key == "Alt" && event.data.keyCode == 4456466) && self.sessionManager.itemAltGrExists.value == true) {
+              if (self.sessionManager.itemAltGrKeyPressed.value == false) {
+                setTimeout(() => {
+                  self.sessionManager.setAltGrKeyPressed(true);
+                  self._snackBar.open(self.translateForSnackBar[4], self.translateForSnackBar[0], {
+                    duration: 1000,
+                    horizontalPosition: self.horizontalPosition,
+                    verticalPosition: self.verticalPosition,
+                  });
+                }, 100);
+              } else if (self.sessionManager.itemAltGrKeyPressed.value == true) {
+                setTimeout(() => {
+                  self.sessionManager.setAltGrKeyPressed(false);
+                  self._snackBar.open(self.translateForSnackBar[5], self.translateForSnackBar[0], {
+                    duration: 1000,
+                    horizontalPosition: self.horizontalPosition,
+                    verticalPosition: self.verticalPosition,
+                  });
+                }, 100);
+              }
+              // Blur and Focus invent to change Shift layout for Keyboard
+              self.fullmodeCkEditor.instance.focusManager.blur(true);
+            }
+            if (event.data.domEvent["$"].key != "Meta" && event.data.domEvent["$"].key != "Shift" && event.data.domEvent["$"].key != "CapsLock" && event.data.domEvent["$"].key != "Alt" && event.data.domEvent["$"].key != "Tab" && event.data.domEvent["$"].key != "Backspace" && event.data.domEvent["$"].key != "Enter" && event.data.domEvent["$"].key != "Control" && event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && event.data.domEvent["$"].key != " " && event.data.domEvent["$"].key != "Unidentified") {
+              let rowForSoftKey = 0, columnForSoftKey = 0;
+              if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
+                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyPos;
+                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
+                if (self.typedWord.value != null)
+                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
+                else 
+                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
+                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
+                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+              } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
+                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyPos + 5;
+                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
+                if (self.typedWord.value != null)
+                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
+                else 
+                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
+                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
+                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+              } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == true && event.data.keyCode < 2228224) {
+                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.altGrPos;
+                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
+                if (self.typedWord.value != null)
+                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
+                else 
+                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
+                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
+                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+              } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == true && event.data.keyCode < 2228224) {
+                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.altGrPos + 5;
+                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
+                if (self.typedWord.value != null)
+                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
+                else 
+                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
+                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
+                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+              } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == false && self.sessionManager.itemTransliterate.value == true && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
+                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyTranPos;
+                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
+                if (self.typedWord.value != null)
+                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
+                else 
+                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
+                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
+                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+              } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == false && self.sessionManager.itemTransliterate.value == true && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
+                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyTranPos + 5;
+                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
+                if (self.typedWord.value != null)
+                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
+                else 
+                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
+                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
+                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+              }
+            } else if (event.data.domEvent["$"].key == " ") {
               self.typedWord.next("");
+              self.mappedSpaceClicked = true;
+              setTimeout(() => {
+                self.sessionManager.setCharFromKeyboard(self.wordSeparator());
+              }, 100);
+            } else if (event.data.domEvent["$"].key == "Backspace") {
+              // Do action based on Cursor position
+              self.sessionManager.setActionFromKeyboard("del");
+              if (self.sessionManager.typedKeysMap.value && self.sessionManager.typedKeysMap.value != null) {
+                self.sessionManager.typedKeysMap.next("");
+                self.typedWord.next("");
+              }
+            } else if (event.data.domEvent["$"].key == "Enter") {
+              self.sessionManager.setCharFromKeyboard("<br/>");
+              if (self.sessionManager.typedKeysMap.value && self.sessionManager.typedKeysMap.value != null) {
+                self.sessionManager.typedKeysMap.next(self.sessionManager.typedKeysMap.value.substring(0, self.sessionManager.typedKeysMap.value.length - 1));
+                self.typedWord.next(self.sessionManager.typedKeysMap.value);
+              }
             }
-          } else if (event.data.domEvent["$"].key == "Enter") {
-            self.sessionManager.setCharFromKeyboard("<br/>");
-            if (self.sessionManager.typedKeysMap.value && self.sessionManager.typedKeysMap.value != null) {
-              self.sessionManager.typedKeysMap.next(self.sessionManager.typedKeysMap.value.substring(0, self.sessionManager.typedKeysMap.value.length - 1));
-              self.typedWord.next(self.sessionManager.typedKeysMap.value);
-            }
-          }
-        } else {
-          if (event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && self.menuKeyPressed == false)
-            event.stop();
-          if (event.data.domEvent["$"].key != "Meta" && event.data.domEvent["$"].key != "Shift" && event.data.domEvent["$"].key != "CapsLock" && event.data.domEvent["$"].key != "Alt" && event.data.domEvent["$"].key != "Tab" && event.data.domEvent["$"].key != "Backspace" && event.data.domEvent["$"].key != "Enter" && event.data.domEvent["$"].key != "Control" && event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && event.data.domEvent["$"].key != " " && event.data.domEvent["$"].key != "Unidentified") {
-            self.sessionManager.setCharFromKeyboard(event.data.domEvent["$"].key);
-          } else if (event.data.domEvent["$"].key == " ") {
-            self.typedWord.next("");
-            self.mappedSpaceClicked = true;
-            setTimeout(() => {
-              self.sessionManager.setCharFromKeyboard(self.wordSeparator());
-            }, 100);
-          } else if (event.data.domEvent["$"].key == "Backspace") {
-            // Do action based on Cursor position
-            self.sessionManager.setActionFromKeyboard("del");
-            if (self.sessionManager.typedKeysMap != null && self.sessionManager.typedKeysMap.value != null) {
-              self.sessionManager.typedKeysMap.next(self.sessionManager.typedKeysMap.value.substring(0, self.sessionManager.typedKeysMap.value.length - 1));
-              self.typedWord.next(self.sessionManager.typedKeysMap.value);
-            }
-          } else if (event.data.domEvent["$"].key == "Enter") {
-            self.sessionManager.setCharFromKeyboard("<br/>");
-            if (self.sessionManager.typedKeysMap.value && self.sessionManager.typedKeysMap.value != null) {
-              self.sessionManager.typedKeysMap.next("");
+          } else {
+            if (event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && self.menuKeyPressed == false)
+              event.stop();
+            if (event.data.domEvent["$"].key != "Meta" && event.data.domEvent["$"].key != "Shift" && event.data.domEvent["$"].key != "CapsLock" && event.data.domEvent["$"].key != "Alt" && event.data.domEvent["$"].key != "Tab" && event.data.domEvent["$"].key != "Backspace" && event.data.domEvent["$"].key != "Enter" && event.data.domEvent["$"].key != "Control" && event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && event.data.domEvent["$"].key != " " && event.data.domEvent["$"].key != "Unidentified") {
+              self.sessionManager.setCharFromKeyboard(event.data.domEvent["$"].key);
+            } else if (event.data.domEvent["$"].key == " ") {
               self.typedWord.next("");
+              self.mappedSpaceClicked = true;
+              setTimeout(() => {
+                self.sessionManager.setCharFromKeyboard(self.wordSeparator());
+              }, 100);
+            } else if (event.data.domEvent["$"].key == "Backspace") {
+              // Do action based on Cursor position
+              self.sessionManager.setActionFromKeyboard("del");
+              if (self.sessionManager.typedKeysMap != null && self.sessionManager.typedKeysMap.value != null) {
+                self.sessionManager.typedKeysMap.next(self.sessionManager.typedKeysMap.value.substring(0, self.sessionManager.typedKeysMap.value.length - 1));
+                self.typedWord.next(self.sessionManager.typedKeysMap.value);
+              }
+            } else if (event.data.domEvent["$"].key == "Enter") {
+              self.sessionManager.setCharFromKeyboard("<br/>");
+              if (self.sessionManager.typedKeysMap.value && self.sessionManager.typedKeysMap.value != null) {
+                self.sessionManager.typedKeysMap.next("");
+                self.typedWord.next("");
+              }
             }
           }
         }
@@ -544,46 +552,48 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
 
     this.fullmodeCkEditor.instance.on( 'change', function( event ) {
-      let content = self.fullmodeCkEditor.instance.getData();
-      if (typeof(content) == 'string' && self.mappedSpaceClicked == true && self.pasteContentSetToEditor == true && (self.sessionManager.itemKeyCharacter.value == null || self.sessionManager.itemKeyCharacter.value == "  " || self.sessionManager.itemKeyCharacter.value == " " || self.sessionManager.itemKeyCharacter.value == "")) {
-        self.ckeditorContent = content;
-        self.sessionManager.setSessionSavingOfContent(self.ckeditorContent);
-        self.fullmodeCkEditor.instance.setData(self.ckeditorContent);
-      } else {
-        setTimeout(() => { 
-          event.editor.focus();
-          if (self.position == "∞") {
-            // Moves the cursor focus to end of the sentence
-            var range = event.editor.createRange();
-            if (range) {
-              range.moveToPosition( range.root, 2 );
-              if (event.editor.getSelection())
-                event.editor.getSelection().selectRanges( [ range ] );
+      if (this.noSoftKeyboard == false) {
+        let content = self.fullmodeCkEditor.instance.getData();
+        if (typeof(content) == 'string' && self.mappedSpaceClicked == true && self.pasteContentSetToEditor == true && (self.sessionManager.itemKeyCharacter.value == null || self.sessionManager.itemKeyCharacter.value == "  " || self.sessionManager.itemKeyCharacter.value == " " || self.sessionManager.itemKeyCharacter.value == "")) {
+          self.ckeditorContent = content;
+          self.sessionManager.setSessionSavingOfContent(self.ckeditorContent);
+          self.fullmodeCkEditor.instance.setData(self.ckeditorContent);
+        } else {
+          setTimeout(() => { 
+            event.editor.focus();
+            if (self.position == "∞") {
+              // Moves the cursor focus to end of the sentence
+              var range = event.editor.createRange();
+              if (range) {
+                range.moveToPosition( range.root, 2 );
+                if (event.editor.getSelection())
+                  event.editor.getSelection().selectRanges( [ range ] );
+              }
+            } else {
+              self.deletePressed = false;
+              self.charInserted = false;
             }
-          } else {
-            self.deletePressed = false;
-            self.charInserted = false;
+          }, 100);
+          event.stop();
+        }
+        // Ensure Cursor focus moved back to Editor
+        setTimeout(() => {
+          // Do action based on Cursor position
+          if (self.pasteContentSetToEditor)  {
+            self.ckeditorContent = self.fullmodeCkEditor.instance.getData();
+            self.sessionManager.setSessionSavingOfContent(self.fullmodeCkEditor.instance.getData());
+            self.fullmodeCkEditor.instance.setData(self.fullmodeCkEditor.instance.getData());
           }
+          if (self.ckeditorContent == "") {
+            self.position = "∞";
+            self.mouseclickEvent = null;
+            self.rowPos = 0;
+            self.colPos = 0;
+          }
+          self.mappedSpaceClicked = false;
+          self.pasteContentSetToEditor = false;
         }, 100);
-        event.stop();
       }
-      // Ensure Cursor focus moved back to Editor
-      setTimeout(() => {
-        // Do action based on Cursor position
-        if (self.pasteContentSetToEditor)  {
-          self.ckeditorContent = self.fullmodeCkEditor.instance.getData();
-          self.sessionManager.setSessionSavingOfContent(self.fullmodeCkEditor.instance.getData());
-          self.fullmodeCkEditor.instance.setData(self.fullmodeCkEditor.instance.getData());
-        }
-        if (self.ckeditorContent == "") {
-          self.position = "∞";
-          self.mouseclickEvent = null;
-          self.rowPos = 0;
-          self.colPos = 0;
-        }
-        self.mappedSpaceClicked = false;
-        self.pasteContentSetToEditor = false;
-      }, 100);
     });
     
     // Handling the "Paste" prevention code into Browser
@@ -616,45 +626,47 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     }
 
     this.sessionManager.itemKeyCharacter.subscribe((character) => {
-      // Inserting Character at Cursor Position
-      if (this.sessionManager.getSessionSavedContent() && parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) == 0 && this.position != "∞") {
-        this.ckeditorContent = this.sessionManager.getSessionSavedContent().substring(0, parseFloat(this.rowPos) + 1) + character + this.sessionManager.getSessionSavedContent().substring(parseFloat(this.rowPos) + 1, this.sessionManager.getSessionSavedContent().length);
-        this.charInserted = true;
-      } else if (this.sessionManager.getSessionSavedContent() && parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) > 0 && this.position != "∞") {
-        // Line-break encountered and this has to be handled separately
-        let splitContent = this.sessionManager.getSessionSavedContent().split("<br />");
-        let content = "";
-        if (splitContent && splitContent.length > 0) {
-          for (let i = 0; i < splitContent.length; i++) {
-            if (i == parseInt(this.colPos))
-              content = splitContent[i] + splitContent[i].substring(0, parseFloat(this.rowPos) + 1) + character + splitContent[i].substring(parseFloat(this.rowPos) + 1, splitContent[i].length);
-            else
-              content = splitContent[i]; 
-          }
-          this.ckeditorContent = content;
+      if (this.noSoftKeyboard == false) {
+        // Inserting Character at Cursor Position
+        if (this.sessionManager.getSessionSavedContent() && parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) == 0 && this.position != "∞") {
+          this.ckeditorContent = this.sessionManager.getSessionSavedContent().substring(0, parseFloat(this.rowPos) + 1) + character + this.sessionManager.getSessionSavedContent().substring(parseFloat(this.rowPos) + 1, this.sessionManager.getSessionSavedContent().length);
           this.charInserted = true;
-        } else {
+        } else if (this.sessionManager.getSessionSavedContent() && parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) > 0 && this.position != "∞") {
+          // Line-break encountered and this has to be handled separately
+          let splitContent = this.sessionManager.getSessionSavedContent().split("<br />");
+          let content = "";
+          if (splitContent && splitContent.length > 0) {
+            for (let i = 0; i < splitContent.length; i++) {
+              if (i == parseInt(this.colPos))
+                content = splitContent[i] + splitContent[i].substring(0, parseFloat(this.rowPos) + 1) + character + splitContent[i].substring(parseFloat(this.rowPos) + 1, splitContent[i].length);
+              else
+                content = splitContent[i]; 
+            }
+            this.ckeditorContent = content;
+            this.charInserted = true;
+          } else {
+            this.ckeditorContent = this.sessionManager.getSessionSavedContent() + character;
+            this.charInserted = false;
+            this.mouseclickEvent = null;
+          }
+        } else if (this.position == "∞") {
           this.ckeditorContent = this.sessionManager.getSessionSavedContent() + character;
           this.charInserted = false;
           this.mouseclickEvent = null;
         }
-      } else if (this.position == "∞") {
-        this.ckeditorContent = this.sessionManager.getSessionSavedContent() + character;
-        this.charInserted = false;
-        this.mouseclickEvent = null;
-      }
-      //if (this.fontFamily[this.sessionManager.getFromSessionURL()]) // This is latest Unicode v39
-      //  this.ckeditorContent = this.ckeditorContent.replace("�", "").replace(/\uFFFD/,"")
-      this.sessionManager.setSessionSavingOfContent(this.ckeditorContent);
-      this.fullmodeCkEditor.instance.setData(this.ckeditorContent);
-      this.fullmodeCkEditor.instance.insertText(character);
-      if (this.exploreOnly && this.fireOnce && character != "") {
-        this.fireOnce = false;
-        setTimeout(()=>{
-          this.sessionManager.setCharFromKeyboard("");
-        },100);
-      } else {
-        this.fireOnce = true;
+        //if (this.fontFamily[this.sessionManager.getFromSessionURL()]) // This is latest Unicode v39
+        //  this.ckeditorContent = this.ckeditorContent.replace("�", "").replace(/\uFFFD/,"")
+        this.sessionManager.setSessionSavingOfContent(this.ckeditorContent);
+        this.fullmodeCkEditor.instance.setData(this.ckeditorContent);
+        this.fullmodeCkEditor.instance.insertText(character);
+        if (this.exploreOnly && this.fireOnce && character != "") {
+          this.fireOnce = false;
+          setTimeout(()=>{
+            this.sessionManager.setCharFromKeyboard("");
+          },100);
+        } else {
+          this.fireOnce = true;
+        }
       }
     });
 

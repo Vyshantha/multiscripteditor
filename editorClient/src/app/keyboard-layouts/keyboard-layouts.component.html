@@ -3,10 +3,11 @@
         <br/> 
         <span style="width: 100%;text-align: center;" #typeIntellisense>
             <mat-chip-list aria-label="Typed Intelligence">
-                <span style="width: 10%; float: left; position: relative;">
-                    &nbsp; <mat-icon aria-hidden="false" aria-label="{{ 'Open Settings' | translate }}" alt="{{ 'Open Settings' | translate }}" matTooltip="{{ 'Open Settings' | translate }}" style="cursor: pointer;" (click)="openSettings()">travel_explore</mat-icon>
+                <span style="width: 16%; float: left; position: relative;">
+                    &nbsp; <mat-icon aria-hidden="false" aria-label="{{ 'Open Settings' | translate }}" alt="{{ 'Open Settings' | translate }}" matTooltip="{{ 'Open Settings' | translate }}" style="cursor: pointer;" (click)="openSettings()">travel_explore</mat-icon> &nbsp; 
+                    <mat-icon aria-label="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" alt="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" (click)="hideSoftKeyboard()">keyboard_hide</mat-icon>
                 </span>
-                <span style="position: relative; width: 80%;height: 40px;">
+                <span style="position: relative; width: 74%;height: 40px;">
                     <mat-chip *ngFor="let wordChip of listOfWordsChips" color="primary" style="cursor: pointer;" (click)="keyPressed($event, wordChip, 'false', 'word', '')" selected>{{wordChip}}</mat-chip>
                 </span>
                 <span style="width: 10%; float: right; position: relative;">
@@ -2796,11 +2797,12 @@
         <br/> 
         <span style="width: 100%;text-align: center;" #typeIntellisense>
             <mat-chip-list aria-label="Typed Intelligence">
-                <span style="width: 12%; float: left; position: relative;">
-                    &nbsp;&nbsp; <mat-icon aria-hidden="false" aria-label="{{ 'Open Settings' | translate }}" alt="{{ 'Open Settings' | translate }}" matTooltip="{{ 'Open Settings' | translate }}" style="cursor: pointer;" (click)="openSettings()">travel_explore</mat-icon> &nbsp;&nbsp;&nbsp;
+                <span style="width: 14%; float: left; position: relative;">
+                    &nbsp;&nbsp; <mat-icon aria-hidden="false" aria-label="{{ 'Open Settings' | translate }}" alt="{{ 'Open Settings' | translate }}" matTooltip="{{ 'Open Settings' | translate }}" style="cursor: pointer;" (click)="openSettings()">travel_explore</mat-icon> &nbsp;&nbsp;
+                    <mat-icon aria-label="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" alt="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" (click)="hideSoftKeyboard()">keyboard_hide</mat-icon>&nbsp;&nbsp;
                     <mat-icon aria-hidden="false" aria-label="{{ 'Reading Direction' | translate }}" alt="{{ 'Reading Direction' | translate }}" matTooltip="{{ 'Reading Direction' | translate }}" [ngStyle]="{'transform': (bottomToTopRL.indexOf(sessionManager.itemSessionURL.value) > -1)? 'rotate(-180deg)' : ( (bottomToTopLR.indexOf(sessionManager.itemSessionURL.value) > -1) ? 'rotate(-180deg)' : 'none')  }">{{readingDir}}</mat-icon>
                 </span>
-                <span style="position: relative; width: 76%;height: 40px;">
+                <span style="position: relative; width: 74%;height: 40px;">
                     <mat-chip *ngFor="let wordChip of listOfWordsChips" color="primary" style="cursor: pointer;" (click)="keyPressed($event, wordChip, 'false', 'word', '')" selected>{{wordChip}}</mat-chip>
                 </span>
                 <span style="width: 12%; float: right; position: relative;">
@@ -5567,11 +5569,12 @@
         <br/> 
         <span style="width: 100%;text-align: center;" #typeIntellisense>
             <mat-chip-list aria-label="Typed Intelligence">
-                <span style="width: 6%; float: left; position: relative;">
-                    &nbsp;&nbsp; <mat-icon aria-hidden="false" aria-label="{{ 'Open Settings' | translate }}" alt="{{ 'Open Settings' | translate }}" matTooltip="{{ 'Open Settings' | translate }}" style="cursor: pointer;" (click)="openSettings()">travel_explore</mat-icon> &nbsp;&nbsp;&nbsp;
-                    <mat-icon aria-hidden="false" aria-label="{{ 'Reading Direction' | translate }}" alt="{{ 'Reading Direction' | translate }}" matTooltip="{{ 'Reading Direction' | translate }}" [ngStyle]="{'transform': (bottomToTopRL.indexOf(sessionManager.itemSessionURL.value) > -1)? 'rotate(-180deg)' : ( (bottomToTopLR.indexOf(sessionManager.itemSessionURL.value) > -1) ? 'rotate(-180deg)' : 'none')  }">{{readingDir}}</mat-icon>
+                <span style="width: 8%; float: left; position: relative;">
+                    &nbsp;&nbsp; <mat-icon aria-hidden="false" aria-label="{{ 'Open Settings' | translate }}" alt="{{ 'Open Settings' | translate }}" matTooltip="{{ 'Open Settings' | translate }}" style="cursor: pointer;" (click)="openSettings()">travel_explore</mat-icon> &nbsp;&nbsp;
+                    <mat-icon aria-label="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" alt="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" (click)="hideSoftKeyboard()">keyboard_hide</mat-icon>&nbsp;&nbsp;
+                    <mat-icon aria-hidden="false" aria-label="{{ 'Reading Direction' | translate }}" alt="{{ 'Reading Direction' | translate }}" matTooltip="{{ 'Reading Direction' | translate }}" [ngStyle]="{'transform': (bottomToTopRL.indexOf(sessionManager.itemSessionURL.value) > -1)? 'rotate(-180deg)' : ( (bottomToTopLR.indexOf(sessionManager.itemSessionURL.value) > -1) ? 'rotate(-180deg)' : 'none')  }">{{readingDir}}</mat-icon>&nbsp;&nbsp; 
                 </span>
-                <span style="position: relative; width: 88%;height: 40px;">
+                <span style="position: relative; width: 86%;height: 40px;">
                     <mat-chip *ngFor="let wordChip of listOfWordsChips" color="primary" style="cursor: pointer" (click)="keyPressed($event, wordChip, 'false', 'word', '')" selected>{{wordChip}}</mat-chip>
                 </span>
                 <span style="width: 6%; float: right; position: relative;">

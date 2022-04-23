@@ -1117,6 +1117,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   layoutMorseKeys: any = (layoutMorseCode as any).default;
 
   layoutCurrentKeys: any = [];
+  previousLayout: any = [];
   
   selectedAllScriptTab : number = 0;
   selectKeysTabs : number = 0;
@@ -3725,25 +3726,22 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         value = (value.indexOf("-") > -1) ? value.split('-')[1].split(' ')[1] : (value.indexOf(" ") > -1) ? value.split(' ')[1] : value;
       }
       if (this.isQwerty && !this.isTransliterate && (this.sessionManager.itemSessionURL.value == "ti" || this.sessionManager.itemSessionURL.value == "tig" || this.sessionManager.itemSessionURL.value == "am" || this.sessionManager.itemSessionURL.value == "geez")) {
-        if (this.syllablicTyping == true) {
-          this.keyPressed(this.sessionManager.typedKeysMap.value, "⌫", "del", "", "");
-          this.sessionManager.setElementForCharacterSelection(element);
-          this.sessionManager.setCharFromKeyboard(value);
-          this.sessionManager.setActionFromKeyboard(action);
-          if (this.typedWord.value == null || this.typedWord.value === "")
-            this.typedWord.next(value);
-          else
-            this.typedWord.next(this.typedWord.value + value);
-          this.syllablicTyping = false;
-          this.resetAllSyllables();
-        }
         if(type == "syllabic") {
           this.keyPressed(this.sessionManager.typedKeysMap.value, "⌫", "del", "", "");
           this.syllablicTyping = false;
-          this.resetAllSyllables();
         }
+        this.sessionManager.setElementForCharacterSelection(element);
+        this.sessionManager.setCharFromKeyboard(value);
+        this.sessionManager.setActionFromKeyboard(action);
+        if (this.typedWord.value == null || this.typedWord.value === "")
+          this.typedWord.next(value);
+        else
+          this.typedWord.next(this.typedWord.value + value);
         if (type != undefined && type != "diacritic" && type != "word" && type != "vyanjana" && type != "syllabic")
           this.showItsSyllables(type);
+        else if (type == "syllabic") {
+          this.resetAllSyllables();
+        }
       }
       if (type == "swara") {
         this.lastCharVyanjana = true;
@@ -3764,15 +3762,6 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.sessionManager.setActionFromKeyboard(action);
         this.typedWord.next(this.typedWord.value.substring(0, this.typedWord.value.length - 1) + this.diacriticsInclusion(value));
         this.diacriticTyped = "";
-      } else if (this.syllablicTyping == false) {
-        this.resetSwara();
-        this.sessionManager.setElementForCharacterSelection(element);
-        this.sessionManager.setCharFromKeyboard(value);
-        this.sessionManager.setActionFromKeyboard(action);
-        if (this.typedWord.value == null || this.typedWord.value === "")
-          this.typedWord.next(value);
-        else
-          this.typedWord.next(this.typedWord.value + value);
       }
     }
   }
@@ -3804,6 +3793,17 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       if (this.diacritics[characterTyped] != undefined && this.diacritics[characterTyped][key][this.diacriticTyped]) {
         return this.diacritics[characterTyped][key][this.diacriticTyped];
       }
+    }
+  }
+
+  hideSoftKeyboard() {
+    if (this.layoutCurrentKeys.length > 0 && this.sessionManager.softKeyboardState.value == false) {
+      this.previousLayout = this.layoutCurrentKeys;
+      this.layoutCurrentKeys = [];
+      this.sessionManager.softKeyboardState.next(true);
+    } else if (this.sessionManager.softKeyboardState.value == true) {
+      this.layoutCurrentKeys = (this.layoutCurrentKeys.length == 0) ? this.previousLayout : this.layoutCurrentKeys;
+      this.sessionManager.softKeyboardState.next(false);
     }
   }
 
