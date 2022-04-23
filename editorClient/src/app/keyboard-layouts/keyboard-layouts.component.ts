@@ -2023,8 +2023,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.sessionManager.setTransliterate(false);
         this.isTransliterate = false;
       } 
-      //if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
-      //    this.setSuperPosition();
+      if (this.allowSuperScript || (this.sessionManager.itemSessionURL.value == "ti" || this.sessionManager.itemSessionURL.value == "tig" || this.sessionManager.itemSessionURL.value == "am" || this.sessionManager.itemSessionURL.value == "geez") && (this.isQwerty || this.isTransliterate))
+        this.setSuperPosition();
     });
     this.sessionManager.itemTransliterate.subscribe((flagForTrans) => {
       this.isTransliterate = flagForTrans;
@@ -2590,7 +2590,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       // The Angular Server isn't restarted and regular reloading of the Suggestion Words JSON file is done on Client-side
       if (ISO_Code == this.sessionManager.getFromSessionURL())
         self.populateSuggestionsForLanguage(ISO_Code);
-    }, 3000);
+    }, 30000);
   }
 
   loadSuggestionsFile(ISO_Code) {
@@ -3727,7 +3727,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       }
       if (this.isQwerty && !this.isTransliterate && (this.sessionManager.itemSessionURL.value == "ti" || this.sessionManager.itemSessionURL.value == "tig" || this.sessionManager.itemSessionURL.value == "am" || this.sessionManager.itemSessionURL.value == "geez")) {
         if(type == "syllabic") {
-          this.keyPressed(this.sessionManager.typedKeysMap.value, "⌫", "del", "", "");
+          this.keyPressed(this.sessionManager.typedKeysMap.value, "⌫", "del", "letter", "");
           this.syllablicTyping = false;
         }
         this.sessionManager.setElementForCharacterSelection(element);
