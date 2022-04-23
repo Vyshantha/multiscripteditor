@@ -2034,18 +2034,18 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
           console.info("[MUlTISCRIPTEDITOR] User's Choice Session Data is sent to server");
         });
       }
-      //if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
-      //  this.setSuperPosition();
+      if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
+        this.setSuperPosition();
     });
     this.sessionManager.itemShiftKeyPressed.subscribe((flagForShift) => {
       this.isShiftKeyPress = flagForShift;
-      //if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
-      //  this.setSuperPosition();
+      if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
+        this.setSuperPosition();
     });
     this.sessionManager.itemAltGrKeyPressed.subscribe((flagForAltGr) => {
       this.isAltGrKeyPress = flagForAltGr;
-      //if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
-      //  this.setSuperPosition();
+      if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
+        this.setSuperPosition();
     });
     this.altGrCapsExists = (this.layoutCurrentKeys)? this.layoutCurrentKeys.some(x => x.hasOwnProperty('altGrCaps')) : false;
     if (this.altGrCapsExists == true)
@@ -2058,8 +2058,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     } else {
       this.sessionManager.setAvalabilityOfTypewriter(false);
     }
-    //if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
-    //  this.setSuperPosition();
+    if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
+      this.setSuperPosition();
     
     this.sessionManager.itemOfflineOnly.subscribe((value)=> {
       this.onlineService = !value;

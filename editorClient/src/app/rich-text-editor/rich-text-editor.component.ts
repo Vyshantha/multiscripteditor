@@ -132,7 +132,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
 
   constructor(private sessionManager: SessionManagerService, private http: HttpClient, private _snackBar: MatSnackBar) { 
     // The toolbar groups arrangement, optimized for two toolbar rows.
-    if (this.isMobile && !this.isTablet) {
+    if (this.isMobile && !this.isTablet) {
       this.ckEditorConfiguration.toolbarGroups = [
         { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
         { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
@@ -151,7 +151,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         '/',
         { name: 'styles' }
       ];
-    } else if (!this.isMobile && this.isTablet) {
+    } else if (!this.isMobile && this.isTablet) {
       this.ckEditorConfiguration.toolbarGroups = [
         { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
         { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
@@ -168,7 +168,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         { name: 'about' },
         { name: 'styles' }
       ];
-    } else if (!this.isMobile && !this.isTablet) {
+    } else if (!this.isMobile && !this.isTablet) {
       this.ckEditorConfiguration.toolbarGroups = [
         { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
         { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
@@ -307,7 +307,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         }
         setTimeout(() => {
           event.editor.focus();
-          if (self.sessionManager.itemCtrlKeyPressed.value == false && event.data.domEvent["$"].key != "ArrowDown" && self.downArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowRight" && self.rightArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowUp" && self.upArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowLeft" && self.leftArrowKeyPressed == false) {
+          if (self.sessionManager.itemCtrlKeyPressed.value == false && event.data.domEvent["$"].key != "ArrowDown" && self.downArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowRight" && self.rightArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowUp" && self.upArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowLeft" && self.leftArrowKeyPressed == false) {
             var range = event.editor.createRange();
             if (range) {
               range.moveToPosition( range.root, 2 );
@@ -318,7 +318,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         }, 100);
         if (self.sessionManager.itemCtrlKeyPressed.value == true) {
           // Action to be done after Control
-          if (event.data.keyCode == 88 || event.data.keyCode == 1114200) {
+          if (event.data.keyCode == 88 || event.data.keyCode == 1114200) {
             // Ctrl + X
             self._snackBar.open(self.translateForSnackBar[13], self.translateForSnackBar[0], {
               duration: 3000,
@@ -334,7 +334,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
             self.fullmodeCkEditor.instance.fire('selectAll', event);
             self.sessionManager.itemCtrlKeyPressed.next(false);
             controlActionKey = true;
-          } else if (event.data.keyCode == 88 || event.data.keyCode == 1114202) {
+          } else if (event.data.keyCode == 88 || event.data.keyCode == 1114202) {
             // Ctrl + Z
             self._snackBar.open(self.translateForSnackBar[15], self.translateForSnackBar[0], {
               duration: 3000,
@@ -342,7 +342,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
             self.fullmodeCkEditor.instance.fire('undo', event);
             self.sessionManager.itemCtrlKeyPressed.next(false);
             controlActionKey = true;
-          } else if (event.data.keyCode == 67 || event.data.keyCode == 1114179) {
+          } else if (event.data.keyCode == 67 || event.data.keyCode == 1114179) {
             // Ctrl + C
             self._snackBar.open(self.translateForSnackBar[16], self.translateForSnackBar[0], {
               duration: 3000,
@@ -350,7 +350,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
             self.fullmodeCkEditor.instance.fire('copy', event);
             self.sessionManager.itemCtrlKeyPressed.next(false);
             controlActionKey = true;
-          } else if (event.data.keyCode == 78 || event.data.keyCode == 1114190) {
+          } else if (event.data.keyCode == 78 || event.data.keyCode == 1114190) {
             // Ctrl + N
             self._snackBar.open(self.translateForSnackBar[17], self.translateForSnackBar[0], {
               duration: 3000,
@@ -869,7 +869,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
 
     this.sessionManager.typeVertically.subscribe((verticalOrient) => {
-      if (this.topToBottomLR.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.topToBottomRL.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.bottomToTopLR.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.bottomToTopRL.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+      if (this.topToBottomLR.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.topToBottomRL.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.bottomToTopLR.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.bottomToTopRL.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
         let content = this.fullmodeCkEditor.instance.getData();
         // element is 'p' or 'div' or 'span' : Character insert at cursor position
         let textOrientatedContent = "";
@@ -905,7 +905,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
             }
           }
         } else if (content.indexOf("<p>") > -1 && verticalOrient == false) {
-          if (this.topToBottomRL.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.topToBottomLR.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.bottomToTopLR.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.bottomToTopRL.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+          if (this.topToBottomRL.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.topToBottomLR.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.bottomToTopLR.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.bottomToTopRL.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
             textOrientatedContent = content.replace(/<p>/g, "<p style='writing-mode: vertical-lr; text-orientation: upright;'>");
           }
         } else {
@@ -952,15 +952,15 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     let spacePerChar = 7;
     if (this.sessionManager.getFromSessionURL() == "thaa")
       spacePerChar = 5;
-    else if (this.sessionManager.getFromSessionURL() == "el" || this.sessionManager.getFromSessionURL() == "ru" || this.sessionManager.getFromSessionURL() == "uk")
+    else if (this.sessionManager.getFromSessionURL() == "el" || this.sessionManager.getFromSessionURL() == "ru" || this.sessionManager.getFromSessionURL() == "uk")
       spacePerChar = 8;
     else if (this.swaraAbugidaType.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
       spacePerChar = 10;
       if (this.sessionManager.getFromSessionURL() == "ta" || this.sessionManager.getFromSessionURL() == "ml" || this.sessionManager.getFromSessionURL() == "sylo")
         spacePerChar = 12;
-      else if (this.sessionManager.getFromSessionURL() == "bali" || this.sessionManager.getFromSessionURL() == "jv")
+      else if (this.sessionManager.getFromSessionURL() == "bali" || this.sessionManager.getFromSessionURL() == "jv")
         spacePerChar = 14;
-    } else if (this.sessionManager.getFromSessionURL() == "zhcn" || this.sessionManager.getFromSessionURL() == "zhtw" || this.sessionManager.getFromSessionURL() == "ko" || this.sessionManager.getFromSessionURL() == "ja")
+    } else if (this.sessionManager.getFromSessionURL() == "zhcn" || this.sessionManager.getFromSessionURL() == "zhtw" || this.sessionManager.getFromSessionURL() == "ko" || this.sessionManager.getFromSessionURL() == "ja")
       spacePerChar = 11;
     else if (this.imageAlternativeScript.indexOf(this.sessionManager.getFromSessionURL()) > -1)
       spacePerChar = 20;    
