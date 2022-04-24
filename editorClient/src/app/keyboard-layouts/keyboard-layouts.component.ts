@@ -2023,8 +2023,10 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.sessionManager.setTransliterate(false);
         this.isTransliterate = false;
       } 
-      if (this.allowSuperScript || (this.sessionManager.itemSessionURL.value == "ti" || this.sessionManager.itemSessionURL.value == "tig" || this.sessionManager.itemSessionURL.value == "am" || this.sessionManager.itemSessionURL.value == "geez") && (this.isQwerty || this.isTransliterate))
+      if (this.allowSuperScript || (this.sessionManager.itemSessionURL.value == "ti" || this.sessionManager.itemSessionURL.value == "tig" || this.sessionManager.itemSessionURL.value == "am" || this.sessionManager.itemSessionURL.value == "geez") && (this.isQwerty || this.isTransliterate)) {
         this.setSuperPosition();
+        this.setSuperScriptInLayout();
+      }
     });
     this.sessionManager.itemTransliterate.subscribe((flagForTrans) => {
       this.isTransliterate = flagForTrans;
@@ -2034,18 +2036,24 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
           console.info("[MUlTISCRIPTEDITOR] User's Choice Session Data is sent to server");
         });
       }
-      if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
+      if (this.allowSuperScript && (this.isQwerty || this.isTransliterate)) {
         this.setSuperPosition();
+        this.setSuperScriptInLayout();
+      }
     });
     this.sessionManager.itemShiftKeyPressed.subscribe((flagForShift) => {
       this.isShiftKeyPress = flagForShift;
-      if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
+      if (this.allowSuperScript && (this.isQwerty || this.isTransliterate)) {
         this.setSuperPosition();
+        this.setSuperScriptInLayout();
+      }
     });
     this.sessionManager.itemAltGrKeyPressed.subscribe((flagForAltGr) => {
       this.isAltGrKeyPress = flagForAltGr;
-      if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
+      if (this.allowSuperScript && (this.isQwerty || this.isTransliterate)) {
         this.setSuperPosition();
+        this.setSuperScriptInLayout();
+      }
     });
     this.altGrCapsExists = (this.layoutCurrentKeys)? this.layoutCurrentKeys.some(x => x.hasOwnProperty('altGrCaps')) : false;
     if (this.altGrCapsExists == true)
@@ -2349,8 +2357,10 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   allowingSuperPositionKeys() {
     if (this.isQwerty || this.isTransliterate) {
       this.allowSuperScript = !this.allowSuperScript;
-      if (this.allowSuperScript) 
-        this.setSuperPosition()
+      if (this.allowSuperScript) {
+        this.setSuperPosition();
+        this.setSuperScriptInLayout();
+      }
     }
   }
 
@@ -2409,6 +2419,59 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.rowPositions["tabPos"] = this.rowSuper + 1;
       this.rowPositions["enterPos"] = this.rowSuper + 2;
       this.rowPositions["shiftPos"] = this.rowSuper + 3;
+    }
+  }
+
+  setSuperScriptInLayout() {
+    // Keyboard Layout with push "sup": showSuperScriptCharacter(character)
+    for(let i = this.rowSuper; i < (this.rowSuper + 4); i++) {
+      Object.keys(this.layoutCurrentKeys[i]).map((key) => {
+        if (!this.isShiftKeyPress) {
+          if (this.isQwerty && !this.isTransliterate) {
+            if (this.isAltGrKeyPress && this.altGrCapsExists) {
+              if (key == "altGr") {
+                this.layoutCurrentKeys[i][key].map((element)=>{
+                  element["sup"] = this.showSuperScriptCharacter(element);
+                });
+              }
+            } else {
+              if (key == "qwerty") {
+                this.layoutCurrentKeys[i][key].map((element)=>{
+                  element["sup"] = this.showSuperScriptCharacter(element);
+                });
+              }
+            }
+          } else if (this.isQwerty && this.isTransliterate) {
+            if (key == "qwertyTrans") {
+              this.layoutCurrentKeys[i][key].map((element)=>{
+                element["sup"] = this.showSuperScriptCharacter(element);
+              });
+            }
+          }
+        } else {
+          if (this.isQwerty && !this.isTransliterate) {
+            if (this.isAltGrKeyPress && this.altGrCapsExists) {
+              if (key == "altGrCaps") {
+                this.layoutCurrentKeys[i][key].map((element)=>{
+                  element["sup"] = this.showSuperScriptCharacter(element);
+                });
+              }
+            } else {
+              if (key == "qwertyShift") {
+                this.layoutCurrentKeys[i][key].map((element)=>{
+                  element["sup"] = this.showSuperScriptCharacter(element);
+                });
+              }
+            }
+          } else if (this.isQwerty && this.isTransliterate) {
+            if (key == "qwertyShiftTrans") {
+              this.layoutCurrentKeys[i][key].map((element)=>{
+                element["sup"] = this.showSuperScriptCharacter(element);
+              });
+            }
+          }
+        }
+      });
     }
   }
 
