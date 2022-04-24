@@ -2423,55 +2423,57 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   }
 
   setSuperScriptInLayout() {
-    // Keyboard Layout with push "sup": showSuperScriptCharacter(character)
-    for(let i = this.rowSuper; i < (this.rowSuper + 4); i++) {
-      Object.keys(this.layoutCurrentKeys[i]).map((key) => {
-        if (!this.isShiftKeyPress) {
-          if (this.isQwerty && !this.isTransliterate) {
-            if (this.isAltGrKeyPress && this.altGrCapsExists) {
-              if (key == "altGr") {
-                this.layoutCurrentKeys[i][key].map((element)=>{
-                  element["sup"] = this.showSuperScriptCharacter(element);
-                });
+    if (this.layoutCurrentKeys) {
+      // Keyboard Layout with push "sup": showSuperScriptCharacter(character)
+      for(let i = this.rowSuper; i < (this.rowSuper + 4); i++) {
+        Object.keys(this.layoutCurrentKeys[i]).map((key) => {
+          if (!this.isShiftKeyPress) {
+            if (this.isQwerty && !this.isTransliterate) {
+              if (this.isAltGrKeyPress && this.altGrCapsExists) {
+                if (key == "altGr") {
+                  this.layoutCurrentKeys[i][key].map((element)=>{
+                    element["sup"] = this.showSuperScriptCharacter(element);
+                  });
+                }
+              } else {
+                if (key == "qwerty") {
+                  this.layoutCurrentKeys[i][key].map((element)=>{
+                    element["sup"] = this.showSuperScriptCharacter(element);
+                  });
+                }
               }
-            } else {
-              if (key == "qwerty") {
+            } else if (this.isQwerty && this.isTransliterate) {
+              if (key == "qwertyTrans") {
                 this.layoutCurrentKeys[i][key].map((element)=>{
                   element["sup"] = this.showSuperScriptCharacter(element);
                 });
               }
             }
-          } else if (this.isQwerty && this.isTransliterate) {
-            if (key == "qwertyTrans") {
-              this.layoutCurrentKeys[i][key].map((element)=>{
-                element["sup"] = this.showSuperScriptCharacter(element);
-              });
+          } else {
+            if (this.isQwerty && !this.isTransliterate) {
+              if (this.isAltGrKeyPress && this.altGrCapsExists) {
+                if (key == "altGrCaps") {
+                  this.layoutCurrentKeys[i][key].map((element)=>{
+                    element["sup"] = this.showSuperScriptCharacter(element);
+                  });
+                }
+              } else {
+                if (key == "qwertyShift") {
+                  this.layoutCurrentKeys[i][key].map((element)=>{
+                    element["sup"] = this.showSuperScriptCharacter(element);
+                  });
+                }
+              }
+            } else if (this.isQwerty && this.isTransliterate) {
+              if (key == "qwertyShiftTrans") {
+                this.layoutCurrentKeys[i][key].map((element)=>{
+                  element["sup"] = this.showSuperScriptCharacter(element);
+                });
+              }
             }
           }
-        } else {
-          if (this.isQwerty && !this.isTransliterate) {
-            if (this.isAltGrKeyPress && this.altGrCapsExists) {
-              if (key == "altGrCaps") {
-                this.layoutCurrentKeys[i][key].map((element)=>{
-                  element["sup"] = this.showSuperScriptCharacter(element);
-                });
-              }
-            } else {
-              if (key == "qwertyShift") {
-                this.layoutCurrentKeys[i][key].map((element)=>{
-                  element["sup"] = this.showSuperScriptCharacter(element);
-                });
-              }
-            }
-          } else if (this.isQwerty && this.isTransliterate) {
-            if (key == "qwertyShiftTrans") {
-              this.layoutCurrentKeys[i][key].map((element)=>{
-                element["sup"] = this.showSuperScriptCharacter(element);
-              });
-            }
-          }
-        }
-      });
+        });
+      }
     }
   }
 
