@@ -3810,7 +3810,15 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       }
       if (type == "swara") {
         this.lastCharVyanjana = true;
-      } 
+      } else if (type == undefined && value && action == "char") {
+        this.sessionManager.setElementForCharacterSelection(element);
+        this.sessionManager.setCharFromKeyboard(value);
+        this.sessionManager.setActionFromKeyboard(action);
+        if (this.typedWord.value == null || this.typedWord.value === "")
+          this.typedWord.next(value);
+        else
+          this.typedWord.next(this.typedWord.value + value);
+      }
       if (this.lastCharVyanjana == true) {
         if (value.includes(this.typedWord.value[this.typedWord.value.length - 1])) {
           this.typedWord.next(this.typedWord.value.substring(0, this.typedWord.value.length - 1) + value);
