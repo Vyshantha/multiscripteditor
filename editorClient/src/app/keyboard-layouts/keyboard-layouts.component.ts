@@ -3827,6 +3827,12 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         } else {
           this.typedWord.next(value);
         }
+        // This is latest Unicode v39 - Invalid or Replacement Characters
+        if (this.sessionManager.getFromSessionURL() == "gran" && this.typedWord.value.indexOf("\ud804") > -1) 
+          this.typedWord.next(this.typedWord.value.replace("\ud804",""))
+        //else if (this.typedWord.value.indexOf("\ud806") > -1 || this.typedWord.value.indexOf("�") > -1 || this.typedWord.value.indexOf("\uFFFD") > -1)
+        //  this.typedWord.next(this.typedWord.value.replace("�", "").replace("\uFFFD","").replace("\ud806",""));
+
         this.keyPressed(element, " " + this.typedWord.value, action, "word", "");
       } else if (this.diacriticTyped != "" && this.diacriticsInclusion(value) != undefined) {
         this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
