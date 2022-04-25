@@ -1,0 +1,1 @@
+worker: python3 convertimage2text.py
