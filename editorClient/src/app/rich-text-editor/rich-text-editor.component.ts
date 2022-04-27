@@ -654,8 +654,6 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
           this.charInserted = false;
           this.mouseclickEvent = null;
         }
-        //if (this.fontFamily[this.sessionManager.getFromSessionURL()]) // This is latest Unicode v39
-        //  this.ckeditorContent = this.ckeditorContent.replace("�", "").replace(/\uFFFD/,"")
         this.sessionManager.setSessionSavingOfContent(this.ckeditorContent);
         this.fullmodeCkEditor.instance.setData(this.ckeditorContent);
         this.fullmodeCkEditor.instance.insertText(character);

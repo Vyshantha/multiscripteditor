@@ -2426,53 +2426,55 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     if (this.layoutCurrentKeys) {
       // Keyboard Layout with push "sup": showSuperScriptCharacter(character)
       for(let i = this.rowSuper; i < (this.rowSuper + 4); i++) {
-        Object.keys(this.layoutCurrentKeys[i]).map((key) => {
-          if (!this.isShiftKeyPress) {
-            if (this.isQwerty && !this.isTransliterate) {
-              if (this.isAltGrKeyPress && this.altGrCapsExists) {
-                if (key == "altGr") {
-                  this.layoutCurrentKeys[i][key].map((element)=>{
-                    element["sup"] = this.showSuperScriptCharacter(element);
-                  });
+        if (this.layoutCurrentKeys[i]) {
+          Object.keys(this.layoutCurrentKeys[i]).map((key) => {
+            if (!this.isShiftKeyPress) {
+              if (this.isQwerty && !this.isTransliterate) {
+                if (this.isAltGrKeyPress && this.altGrCapsExists) {
+                  if (key == "altGr") {
+                    this.layoutCurrentKeys[i][key].map((element)=>{
+                      element["sup"] = this.showSuperScriptCharacter(element);
+                    });
+                  }
+                } else {
+                  if (key == "qwerty") {
+                    this.layoutCurrentKeys[i][key].map((element)=>{
+                      element["sup"] = this.showSuperScriptCharacter(element);
+                    });
+                  }
                 }
-              } else {
-                if (key == "qwerty") {
+              } else if (this.isQwerty && this.isTransliterate) {
+                if (key == "qwertyTrans") {
                   this.layoutCurrentKeys[i][key].map((element)=>{
                     element["sup"] = this.showSuperScriptCharacter(element);
                   });
                 }
               }
-            } else if (this.isQwerty && this.isTransliterate) {
-              if (key == "qwertyTrans") {
-                this.layoutCurrentKeys[i][key].map((element)=>{
-                  element["sup"] = this.showSuperScriptCharacter(element);
-                });
+            } else {
+              if (this.isQwerty && !this.isTransliterate) {
+                if (this.isAltGrKeyPress && this.altGrCapsExists) {
+                  if (key == "altGrCaps") {
+                    this.layoutCurrentKeys[i][key].map((element)=>{
+                      element["sup"] = this.showSuperScriptCharacter(element);
+                    });
+                  }
+                } else {
+                  if (key == "qwertyShift") {
+                    this.layoutCurrentKeys[i][key].map((element)=>{
+                      element["sup"] = this.showSuperScriptCharacter(element);
+                    });
+                  }
+                }
+              } else if (this.isQwerty && this.isTransliterate) {
+                if (key == "qwertyShiftTrans") {
+                  this.layoutCurrentKeys[i][key].map((element)=>{
+                    element["sup"] = this.showSuperScriptCharacter(element);
+                  });
+                }
               }
             }
-          } else {
-            if (this.isQwerty && !this.isTransliterate) {
-              if (this.isAltGrKeyPress && this.altGrCapsExists) {
-                if (key == "altGrCaps") {
-                  this.layoutCurrentKeys[i][key].map((element)=>{
-                    element["sup"] = this.showSuperScriptCharacter(element);
-                  });
-                }
-              } else {
-                if (key == "qwertyShift") {
-                  this.layoutCurrentKeys[i][key].map((element)=>{
-                    element["sup"] = this.showSuperScriptCharacter(element);
-                  });
-                }
-              }
-            } else if (this.isQwerty && this.isTransliterate) {
-              if (key == "qwertyShiftTrans") {
-                this.layoutCurrentKeys[i][key].map((element)=>{
-                  element["sup"] = this.showSuperScriptCharacter(element);
-                });
-              }
-            }
-          }
-        });
+          });
+        }
       }
     }
   }
@@ -3736,8 +3738,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       }
       if (this.lastCharVyanjana == true && action == 'char') {
         this.lastCharVyanjana = false;
-      this.sessionManager.detectWordTyped = true;
-      this.sessionManager.setCharFromKeyboard(value);
+        this.sessionManager.detectWordTyped = true;
+        this.sessionManager.setCharFromKeyboard(value);
       } else if (action == 'false') {
         if (this.typedWord.value && value.includes(this.typedWord.value) > -1 && value[0].toUpperCase() === this.typedWord.value[0] && this.sessionManager.getFromSessionURL() != "pin" && this.sessionManager.getFromSessionURL() != "bopo"){
           value = this.typedWord.value[0] + value.substr(1, value.length);
@@ -3847,7 +3849,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
 
   selectTargetTransliteration(event, targetScript) {
     this.runProgressIndicator = true;
-    this.sessionManager.targetIntegrationScript = targetScript;
+    this.sessionManager.targetIntegrationScript.next(targetScript);
     if (targetScript && targetScript != "" && targetScript != null && this.sessionManager.getSessionSavedContent() != null && this.sessionManager.getSessionSavedContent() != "" && this.sessionManager.getSessionSavedContent() != undefined && this.sessionManager.getOfflineOnly() == false) {
       this.sessionManager.integrateTransliteration(targetScript).subscribe((resultContent: any) => {
         this.sessionManager.pasteIntegrationOutput.next(true);
