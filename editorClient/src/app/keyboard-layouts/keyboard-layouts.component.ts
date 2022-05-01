@@ -3812,7 +3812,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       }
       if (type == "swara") {
         this.lastCharVyanjana = true;
-      } else if (type == undefined && value && action == "char") {
+      } else if ((type == undefined || (type == "vowel" && !this.diacriticTyped)) && value && action == "char") {
         this.sessionManager.setElementForCharacterSelection(element);
         this.sessionManager.setCharFromKeyboard(value);
         this.sessionManager.setActionFromKeyboard(action);
