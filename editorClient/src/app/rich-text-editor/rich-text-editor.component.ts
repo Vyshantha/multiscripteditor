@@ -296,7 +296,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
 
     this.fullmodeCkEditor.instance.on( 'key', function( event ) {
-      if (this.noSoftKeyboard == false) {
+      if (self.noSoftKeyboard == false) {
         let controlActionKey = false;
         // Ensure Cursor focus moved back to Editor
         if (event.data.keyCode == 1114129 || event.data.keyCode == 1114336) {
@@ -552,7 +552,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
 
     this.fullmodeCkEditor.instance.on( 'change', function( event ) {
-      if (this.noSoftKeyboard == false) {
+      if (self.noSoftKeyboard == false) {
         let content = self.fullmodeCkEditor.instance.getData();
         if (typeof(content) == 'string' && self.mappedSpaceClicked == true && self.pasteContentSetToEditor == true && (self.sessionManager.itemKeyCharacter.value == null || self.sessionManager.itemKeyCharacter.value == "  " || self.sessionManager.itemKeyCharacter.value == " " || self.sessionManager.itemKeyCharacter.value == "")) {
           self.ckeditorContent = content;
