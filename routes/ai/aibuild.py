@@ -10,15 +10,14 @@ from tensorflow.keras.optimizers import RMSprop
 # export TF_ENABLE_ONEDNN_OPTS=1 : Intel chip - https://www.intel.com/content/www/us/en/developer/articles/guide/optimization-for-tensorflow-installation-guide.html
 
 WORD_LENGTH = 5
-
-SUPPORTED_LANGUAGE = ["de"]
+SUPPORTED_LANGUAGE = ['en','ar','fa','ur','ps','sd','ug','he','yi','cs','af','sq','az','eu','ca','bs','ceb','hr','da','de','nl','eo','et','fi','fr','fy','gl','ha','haw','hu','is','ig','id','ga','it','rw','ku','lv','lt','lb','mg','ms','mt','no','pl','pt','ro','gd','sn','sk','sl','so','es','su','sw','sv','tg','tr','tk','uz','vi','cy','xh','yo','zu','be','bg','mk','ru','uk','tt','kk','sr','ky','mn','el','hy','ka','ko','mr','ne','hi','kn','te','ta','ml','pa','gu','or','bn','am','th','lo','km','my','jv','zh','zh-TW','ja','si','la','co','ht','hmn','ny','sm','st','tl','sa','sank']
 
 # Reading the Data-Sets
 path = 'data_' + SUPPORTED_LANGUAGE[0] + '.txt'                                        # create data_##.txt for supported languages
 text = open(path).read().lower()
 
 # Use Tokeniser
-tokenizer = RegexpTokenizer(r'\w+|$[0-9]+|\S+')
+tokenizer = RegexpTokenizer(r'\w+|$[0-9]+|\S+')                                      # " " is a type of Word Delimiter or Punctuation like , : ;
 words = tokenizer.tokenize(text)
 
 # Determine Unique Words

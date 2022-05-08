@@ -5,7 +5,7 @@ from keras.models import load_model
 import pickle
 
 WORD_LENGTH = 5
-SUPPORTED_LANGUAGE = ["de"]
+SUPPORTED_LANGUAGE = ['en','ar','fa','ur','ps','sd','ug','he','yi','cs','af','sq','az','eu','ca','bs','ceb','hr','da','de','nl','eo','et','fi','fr','fy','gl','ha','haw','hu','is','ig','id','ga','it','rw','ku','lv','lt','lb','mg','ms','mt','no','pl','pt','ro','gd','sn','sk','sl','so','es','su','sw','sv','tg','tr','tk','uz','vi','cy','xh','yo','zu','be','bg','mk','ru','uk','tt','kk','sr','ky','mn','el','hy','ka','ko','mr','ne','hi','kn','te','ta','ml','pa','gu','or','bn','am','th','lo','km','my','jv','zh','zh-TW','ja','si','la','co','ht','hmn','ny','sm','st','tl','sa','sank']
 
 # Loading the Model
 model = load_model('next_word_model_' + SUPPORTED_LANGUAGE[0] + '.h5')           # load the model next_word_model_##.h5 as per NodeJS call
@@ -18,11 +18,17 @@ unique_word_index = np.load('unique_word_index_' + SUPPORTED_LANGUAGE[0])
 # Testing next word
 def prepare_input(text):
     x = np.zeros((1, WORD_LENGTH, len(unique_words)))
+    word = ""
     for t, char in enumerate(text):
+        # Build 'word' until Word Delimiter
+        word = (word + char) if " " not in char else ""
         try:
-            x[0, t, unique_word_index[char]] = 1.
+            print("Value ", t, char, word)
+            x[0, t, unique_word_index[word]] = 1.
         except KeyError:
-            print("Continue ", t, char)
+            print("Key ", t, char, word)
+        except IndexError:
+            print("Index ", t, char, word)
     return x
 
 def sample(preds, top_n):

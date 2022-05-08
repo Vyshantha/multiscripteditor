@@ -11,20 +11,19 @@ from tensorflow.keras.optimizers import RMSprop
 # export TF_ENABLE_ONEDNN_OPTS=1 : Intel chip - https://www.intel.com/content/www/us/en/developer/articles/guide/optimization-for-tensorflow-installation-guide.html
 
 WORD_LENGTH = 7
-SUPPORTED_LANGUAGE = ["en"]
+SUPPORTED_LANGUAGE = ['de','ar','fa','ur','ps','sd','ug','he','yi','cs','af','sq','az','eu','ca','bs','ceb','hr','da','en','nl','eo','et','fi','fr','fy','gl','ha','haw','hu','is','ig','id','ga','it','rw','ku','lv','lt','lb','mg','ms','mt','no','pl','pt','ro','gd','sn','sk','sl','so','es','su','sw','sv','tg','tr','tk','uz','vi','cy','xh','yo','zu','be','bg','mk','ru','uk','tt','kk','sr','ky','mn','el','hy','ka','ko','mr','ne','hi','kn','te','ta','ml','pa','gu','or','bn','am','th','lo','km','my','jv','zh','zh-TW','ja','si','la','co','ht','hmn','ny','sm','st','tl','sa','sank']
 
 # Reading the Data-Sets
 path = 'data_' + SUPPORTED_LANGUAGE[0] + '.txt'                                        # generate data_##.txt for supported languages
 text = open(path).read().lower()
 
 # Use Tokeniser
-tokenizer = RegexpTokenizer(r'\w+|$[0-9]+|\S+')
+tokenizer = RegexpTokenizer(r'\w+|$[0-9]+|\S+')                                    # " " is a type of Word Delimiter or Punctuation like , : ;
 words = tokenizer.tokenize(text)
 
 # Determine Unique Words
 unique_words = np.unique(words)
 unique_word_index = dict((c, i) for i, c in enumerate(unique_words))
-
 '''
 # Feature Engineering
 next_words = []
@@ -50,13 +49,12 @@ model.add(Activation('softmax'))
 # Model Training
 optimizer = RMSprop(learning_rate=0.01)
 model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=['accuracy'])
-history = model.fit(X, Y, validation_split=0.05, batch_size=128, epochs=50, shuffle=True).history
+history = model.fit(X, Y, validation_split=0.05, batch_size=128, epochs=30, shuffle=True).history
 
 # Saving the Model
 model.save('next_word_model_' + SUPPORTED_LANGUAGE[0] + '.h5')                           # save next_word_model_##.h5 per supported language
 pickle.dump(history, open("history_" + SUPPORTED_LANGUAGE[0] + ".p", "wb"))              # save history_##.p per supported language
 '''
-
 # Loading the Model
 model = load_model('next_word_model_' + SUPPORTED_LANGUAGE[0] + '.h5')           # load the model next_word_model_##.h5 as per NodeJS call
 history = pickle.load(open("history_" + SUPPORTED_LANGUAGE[0] + ".p", "rb"))     # load the history_##.p as per NodeJS call
@@ -64,13 +62,17 @@ history = pickle.load(open("history_" + SUPPORTED_LANGUAGE[0] + ".p", "rb"))    
 # Testing next word
 def prepare_input(text):
     x = np.zeros((1, WORD_LENGTH, len(unique_words)))
+    word = ""
     for t, char in enumerate(text):
+        # Build 'word' until Word Delimiter
+        word = (word + char) if " " not in char else ""
         try:
-            x[0, t, unique_word_index[char]] = 1.
+            print("Value ", t, char, word)
+            x[0, t, unique_word_index[word]] = 1.
         except KeyError:
-            print("Continue ", t, char)
+            print("Key ", t, char, word)
         except IndexError:
-            print("Continue ", t, char)
+            print("Index ", t, char, word)
     return x
 
 def sample(preds, top_n):
@@ -88,7 +90,7 @@ def predict_completions(text, n):
     return [unique_words[idx] for idx in next_indices]
 
 # Test Trained Data
-sentence = "plenty of times "                                             # Sentence provided by NodeJS
+sentence = "Kann er die Arbeit "                                             # Sentence provided by NodeJS
 UI_SIZE = 10
 print("Unique Words ", unique_words)                                    # unique_words should be exported to a file while using with NodeJS
 print("Unique Word Indices ", unique_word_index)                        # unique_word_index should be exported to a file while using with NodeJS
