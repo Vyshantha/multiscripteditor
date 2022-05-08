@@ -10,7 +10,7 @@ for /f %%A in (./env/sva_config.json) do (
 
 nodemon &
 
-cd client
+cd editorClient
 ng serve --host %ip% --port 4200 --ssl true --ssl-cert ./routes/server.crt --ssl-key ./routes/key.pem &
 
-start 'https://%ip%:4200/sva'
+start 'https://%ip%:4200/'
