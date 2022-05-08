@@ -4,18 +4,23 @@ HOSTNAME=`ifconfig -a | grep -i "inet " | awk 'NR==2{print $2}'`
 
 # Install NodeJS (on Windows, Linux or Mac) 14.15 - https://nodejs.org/download/release/v14.15.0/
 npm install
-sudo npm i -g nodemon
+npm i -g nodemon
 
 # AngularJS 11.x
 cd editorClient
-sudo npm install -g "@angular/cli" 
+npm install -g "@angular/cli" 
 npm install
 cd ..
 
 # Python 3.10 install for Heroku
-pip install easyocr #1.4.1
-pip install gibberish_detector
-pip install stanza
+pip3 install easyocr #1.4.1
+pip3 install gibberish_detector
+pip3 install stanza
+pip3 install numpy
+pip3 install matplotlib
+pip3 install nltk
+pip3 install keras
+pip3 install tensorflow
 # To Fix - <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1049)>
 # Open or Double-Click /Applications/Python 3.x/Install Certificates.command && /Applications/Python 3.x/Update Shell Profile.command
 
