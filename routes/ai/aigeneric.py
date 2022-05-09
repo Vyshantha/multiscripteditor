@@ -13,13 +13,9 @@ from tensorflow.keras.optimizers import RMSprop
 WORD_LENGTH = 7
 SUPPORTED_LANGUAGE = ['de','ar','fa','ur','ps','sd','ug','he','yi','cs','af','sq','az','eu','ca','bs','ceb','hr','da','en','nl','eo','et','fi','fr','fy','gl','ha','haw','hu','is','ig','id','ga','it','rw','ku','lv','lt','lb','mg','ms','mt','no','pl','pt','ro','gd','sn','sk','sl','so','es','su','sw','sv','tg','tr','tk','uz','vi','cy','xh','yo','zu','be','bg','mk','ru','uk','tt','kk','sr','ky','mn','el','hy','ka','ko','mr','ne','hi','kn','te','ta','ml','pa','gu','or','bn','am','th','lo','km','my','jv','zh','zh-TW','ja','si','la','co','ht','hmn','ny','sm','st','tl','sa','sank']
 
-# Reading the Data-Sets
-path = 'data_' + SUPPORTED_LANGUAGE[0] + '.txt'                                        # generate data_##.txt for supported languages
-text = open(path).read().lower()
-
-# Use Tokeniser
-tokenizer = RegexpTokenizer(r'\w+|$[0-9]+|\S+')                                    # " " is a type of Word Delimiter or Punctuation like , : ;
-words = tokenizer.tokenize(text)
+# Reading the Data-Sets & Use Tokeniser
+tokenizer = RegexpTokenizer(r'\w+|$[0-9]+|\S+')                                  # " " is a type of Word Delimiter or Punctuation like , : ;
+words = tokenizer.tokenize(open('data_' + SUPPORTED_LANGUAGE[0] + '.txt').read().lower())       # create data_##.txt for supported languages
 
 # Determine Unique Words
 unique_words = np.unique(words)
@@ -63,16 +59,18 @@ history = pickle.load(open("history_" + SUPPORTED_LANGUAGE[0] + ".p", "rb"))    
 def prepare_input(text):
     x = np.zeros((1, WORD_LENGTH, len(unique_words)))
     word = ""
-    for t, char in enumerate(text):
+    for t, char in enumerate(text + " "):                           # " " is a type of Word Delimiter 
         # Build 'word' until Word Delimiter
-        word = (word + char) if " " not in char else ""
-        try:
-            print("Value ", t, char, word)
-            x[0, t, unique_word_index[word]] = 1.
-        except KeyError:
-            print("Key ", t, char, word)
-        except IndexError:
-            print("Index ", t, char, word)
+        word = (word + char) if " " not in char else word
+        if (word != "" and char == " "):
+            try:
+                print("Value ", t, char, word)
+                x[0, t, unique_word_index[word]] = 1.
+            except KeyError:
+                print("Key ", t, char, word)
+            except IndexError:
+                print("Index ", t, char, word)
+            word = ""
     return x
 
 def sample(preds, top_n):
@@ -90,7 +88,7 @@ def predict_completions(text, n):
     return [unique_words[idx] for idx in next_indices]
 
 # Test Trained Data
-sentence = "Kann er die Arbeit "                                             # Sentence provided by NodeJS
+sentence = "das Wehrmacht war"                                             # Sentence provided by NodeJS
 UI_SIZE = 10
 print("Unique Words ", unique_words)                                    # unique_words should be exported to a file while using with NodeJS
 print("Unique Word Indices ", unique_word_index)                        # unique_word_index should be exported to a file while using with NodeJS

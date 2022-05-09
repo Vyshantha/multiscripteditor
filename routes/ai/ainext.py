@@ -19,16 +19,18 @@ unique_word_index = np.load('unique_word_index_' + SUPPORTED_LANGUAGE[0])
 def prepare_input(text):
     x = np.zeros((1, WORD_LENGTH, len(unique_words)))
     word = ""
-    for t, char in enumerate(text):
+    for t, char in enumerate(text + " "):                           # " " is a type of Word Delimiter 
         # Build 'word' until Word Delimiter
-        word = (word + char) if " " not in char else ""
-        try:
-            print("Value ", t, char, word)
-            x[0, t, unique_word_index[word]] = 1.
-        except KeyError:
-            print("Key ", t, char, word)
-        except IndexError:
-            print("Index ", t, char, word)
+        word = (word + char) if " " not in char else word
+        if (word != "" and char == " "):
+            try:
+                print("Value ", t, char, word)
+                x[0, t, unique_word_index[word]] = 1.
+            except KeyError:
+                print("Key ", t, char, word)
+            except IndexError:
+                print("Index ", t, char, word)
+            word = ""
     return x
 
 def sample(preds, top_n):
