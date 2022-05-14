@@ -7,7 +7,7 @@ import { TranslateService } from './translate.service';
 
 import * as allLayoutPositions from './../../../assets/keyboard-layouts/keysboards-layouts.json';
 
-import * as SVAConfig from '../../../assets/environments/sva_config.json';
+import SVAConfig from '../../../assets/environments/sva_config.json';
 
 @Injectable({
   providedIn: 'root'

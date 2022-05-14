@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HelperComponent } from './helper/helper.component';
 import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
 
-import * as SVAConfig from '../assets/environments/sva_config.json';
+import SVAConfig from '../assets/environments/sva_config.json';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 

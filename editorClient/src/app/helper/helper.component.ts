@@ -10,7 +10,7 @@ import {startWith, map} from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
-import * as SVAConfig from '../../assets/environments/sva_config.json';
+import SVAConfig from '../../assets/environments/sva_config.json';
 
 import * as allLayoutPositions from './../../assets/keyboard-layouts/keysboards-layouts.json';
 

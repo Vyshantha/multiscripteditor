@@ -1,1 +1,1 @@
-{"hostname" : "worldscriptsexplorer.herokuapp.com", "port" : 443, "clientPort": 443, "isProd" : true}
+{"hostname" : "worldscriptsexplorer.herokuapp.com", "port" : 5555, "clientPort": 4200, "isProd" : true}
