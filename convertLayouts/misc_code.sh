@@ -6,6 +6,11 @@
 # Enumerate all files to *.png format
 ls -v | cat -n | while read n f; do mv -n "$f" "$n.png"; done
 
+# Search for between Quotes Regular Expression
+# '[^']*' 
+# ,'[^']*'*'[^']*',
+# ,'[^,']*'?'[^',]*',
+
 # Python execution of conversion of XML-CLDR to Layout-Keyboard JSON
 python3 layouts-convert.py
 sed -i '' 's/qwerty*/qwerty/g' ./layout-template.json

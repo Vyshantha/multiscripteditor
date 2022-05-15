@@ -1117,6 +1117,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   layoutMorseKeys: any = (layoutMorseCode as any).default;
 
   layoutCurrentKeys: any = [];
+  previousLayout: any = [];
   
   selectedAllScriptTab : number = 0;
   selectKeysTabs : number = 0;
@@ -2022,8 +2023,10 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.sessionManager.setTransliterate(false);
         this.isTransliterate = false;
       } 
-      //if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
-      //    this.setSuperPosition();
+      if (this.allowSuperScript || (this.sessionManager.itemSessionURL.value == "ti" || this.sessionManager.itemSessionURL.value == "tig" || this.sessionManager.itemSessionURL.value == "am" || this.sessionManager.itemSessionURL.value == "geez") && (this.isQwerty || this.isTransliterate)) {
+        this.setSuperPosition();
+        this.setSuperScriptInLayout();
+      }
     });
     this.sessionManager.itemTransliterate.subscribe((flagForTrans) => {
       this.isTransliterate = flagForTrans;
@@ -2033,18 +2036,24 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
           console.info("[MUlTISCRIPTEDITOR] User's Choice Session Data is sent to server");
         });
       }
-      //if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
-      //  this.setSuperPosition();
+      if (this.allowSuperScript && (this.isQwerty || this.isTransliterate)) {
+        this.setSuperPosition();
+        this.setSuperScriptInLayout();
+      }
     });
     this.sessionManager.itemShiftKeyPressed.subscribe((flagForShift) => {
       this.isShiftKeyPress = flagForShift;
-      //if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
-      //  this.setSuperPosition();
+      if (this.allowSuperScript && (this.isQwerty || this.isTransliterate)) {
+        this.setSuperPosition();
+        this.setSuperScriptInLayout();
+      }
     });
     this.sessionManager.itemAltGrKeyPressed.subscribe((flagForAltGr) => {
       this.isAltGrKeyPress = flagForAltGr;
-      //if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
-      //  this.setSuperPosition();
+      if (this.allowSuperScript && (this.isQwerty || this.isTransliterate)) {
+        this.setSuperPosition();
+        this.setSuperScriptInLayout();
+      }
     });
     this.altGrCapsExists = (this.layoutCurrentKeys)? this.layoutCurrentKeys.some(x => x.hasOwnProperty('altGrCaps')) : false;
     if (this.altGrCapsExists == true)
@@ -2057,8 +2066,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     } else {
       this.sessionManager.setAvalabilityOfTypewriter(false);
     }
-    //if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
-    //  this.setSuperPosition();
+    if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
+      this.setSuperPosition();
     
     this.sessionManager.itemOfflineOnly.subscribe((value)=> {
       this.onlineService = !value;
@@ -2348,8 +2357,10 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   allowingSuperPositionKeys() {
     if (this.isQwerty || this.isTransliterate) {
       this.allowSuperScript = !this.allowSuperScript;
-      if (this.allowSuperScript) 
-        this.setSuperPosition()
+      if (this.allowSuperScript) {
+        this.setSuperPosition();
+        this.setSuperScriptInLayout();
+      }
     }
   }
 
@@ -2408,6 +2419,63 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.rowPositions["tabPos"] = this.rowSuper + 1;
       this.rowPositions["enterPos"] = this.rowSuper + 2;
       this.rowPositions["shiftPos"] = this.rowSuper + 3;
+    }
+  }
+
+  setSuperScriptInLayout() {
+    if (this.layoutCurrentKeys) {
+      // Keyboard Layout with push "sup": showSuperScriptCharacter(character)
+      for(let i = this.rowSuper; i < (this.rowSuper + 4); i++) {
+        if (this.layoutCurrentKeys[i]) {
+          Object.keys(this.layoutCurrentKeys[i]).map((key) => {
+            if (!this.isShiftKeyPress) {
+              if (this.isQwerty && !this.isTransliterate) {
+                if (this.isAltGrKeyPress && this.altGrCapsExists) {
+                  if (key == "altGr") {
+                    this.layoutCurrentKeys[i][key].map((element)=>{
+                      element["sup"] = this.showSuperScriptCharacter(element);
+                    });
+                  }
+                } else {
+                  if (key == "qwerty") {
+                    this.layoutCurrentKeys[i][key].map((element)=>{
+                      element["sup"] = this.showSuperScriptCharacter(element);
+                    });
+                  }
+                }
+              } else if (this.isQwerty && this.isTransliterate) {
+                if (key == "qwertyTrans") {
+                  this.layoutCurrentKeys[i][key].map((element)=>{
+                    element["sup"] = this.showSuperScriptCharacter(element);
+                  });
+                }
+              }
+            } else {
+              if (this.isQwerty && !this.isTransliterate) {
+                if (this.isAltGrKeyPress && this.altGrCapsExists) {
+                  if (key == "altGrCaps") {
+                    this.layoutCurrentKeys[i][key].map((element)=>{
+                      element["sup"] = this.showSuperScriptCharacter(element);
+                    });
+                  }
+                } else {
+                  if (key == "qwertyShift") {
+                    this.layoutCurrentKeys[i][key].map((element)=>{
+                      element["sup"] = this.showSuperScriptCharacter(element);
+                    });
+                  }
+                }
+              } else if (this.isQwerty && this.isTransliterate) {
+                if (key == "qwertyShiftTrans") {
+                  this.layoutCurrentKeys[i][key].map((element)=>{
+                    element["sup"] = this.showSuperScriptCharacter(element);
+                  });
+                }
+              }
+            }
+          });
+        }
+      }
     }
   }
 
@@ -2589,7 +2657,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       // The Angular Server isn't restarted and regular reloading of the Suggestion Words JSON file is done on Client-side
       if (ISO_Code == this.sessionManager.getFromSessionURL())
         self.populateSuggestionsForLanguage(ISO_Code);
-    }, 3000);
+    }, 30000);
   }
 
   loadSuggestionsFile(ISO_Code) {
@@ -3670,8 +3738,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       }
       if (this.lastCharVyanjana == true && action == 'char') {
         this.lastCharVyanjana = false;
-      this.sessionManager.detectWordTyped = true;
-      this.sessionManager.setCharFromKeyboard(value);
+        this.sessionManager.detectWordTyped = true;
+        this.sessionManager.setCharFromKeyboard(value);
       } else if (action == 'false') {
         if (this.typedWord.value && value.includes(this.typedWord.value) > -1 && value[0].toUpperCase() === this.typedWord.value[0] && this.sessionManager.getFromSessionURL() != "pin" && this.sessionManager.getFromSessionURL() != "bopo"){
           value = this.typedWord.value[0] + value.substr(1, value.length);
@@ -3725,47 +3793,26 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         value = (value.indexOf("-") > -1) ? value.split('-')[1].split(' ')[1] : (value.indexOf(" ") > -1) ? value.split(' ')[1] : value;
       }
       if (this.isQwerty && !this.isTransliterate && (this.sessionManager.itemSessionURL.value == "ti" || this.sessionManager.itemSessionURL.value == "tig" || this.sessionManager.itemSessionURL.value == "am" || this.sessionManager.itemSessionURL.value == "geez")) {
-        if (this.syllablicTyping == true) {
-          this.keyPressed(this.sessionManager.typedKeysMap.value, "⌫", "del", "", "");
-          this.sessionManager.setElementForCharacterSelection(element);
-          this.sessionManager.setCharFromKeyboard(value);
-          this.sessionManager.setActionFromKeyboard(action);
-          if (this.typedWord.value == null || this.typedWord.value === "")
-            this.typedWord.next(value);
-          else
-            this.typedWord.next(this.typedWord.value + value);
-          this.syllablicTyping = false;
-          this.resetAllSyllables();
-        }
         if(type == "syllabic") {
-          this.keyPressed(this.sessionManager.typedKeysMap.value, "⌫", "del", "", "");
+          this.keyPressed(this.sessionManager.typedKeysMap.value, "⌫", "del", "letter", "");
           this.syllablicTyping = false;
-          this.resetAllSyllables();
         }
+        this.sessionManager.setElementForCharacterSelection(element);
+        this.sessionManager.setCharFromKeyboard(value);
+        this.sessionManager.setActionFromKeyboard(action);
+        if (this.typedWord.value == null || this.typedWord.value === "")
+          this.typedWord.next(value);
+        else
+          this.typedWord.next(this.typedWord.value + value);
         if (type != undefined && type != "diacritic" && type != "word" && type != "vyanjana" && type != "syllabic")
           this.showItsSyllables(type);
+        else if (type == "syllabic") {
+          this.resetAllSyllables();
+        }
       }
       if (type == "swara") {
         this.lastCharVyanjana = true;
-      } 
-      if (this.lastCharVyanjana == true) {
-        if (value.includes(this.typedWord.value[this.typedWord.value.length - 1])) {
-          this.typedWord.next(this.typedWord.value.substring(0, this.typedWord.value.length - 1) + value);
-        } else if (this.isQwerty || this.isTransliterate) {
-          this.typedWord.next(this.typedWord.value + value);
-        } else {
-          this.typedWord.next(value);
-        }
-        this.keyPressed(element, " " + this.typedWord.value, action, "word", "");
-      } else if (this.diacriticTyped != "" && this.diacriticsInclusion(value) != undefined) {
-        this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
-        this.sessionManager.setElementForCharacterSelection(this.diacriticsInclusion(value));
-        this.sessionManager.setCharFromKeyboard(this.diacriticsInclusion(value));
-        this.sessionManager.setActionFromKeyboard(action);
-        this.typedWord.next(this.typedWord.value.substring(0, this.typedWord.value.length - 1) + this.diacriticsInclusion(value));
-        this.diacriticTyped = "";
-      } else if (this.syllablicTyping == false) {
-        this.resetSwara();
+      } else if ((type == undefined || (type == "vowel" && !this.diacriticTyped)) && value && action == "char") {
         this.sessionManager.setElementForCharacterSelection(element);
         this.sessionManager.setCharFromKeyboard(value);
         this.sessionManager.setActionFromKeyboard(action);
@@ -3774,12 +3821,35 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         else
           this.typedWord.next(this.typedWord.value + value);
       }
+      if (this.lastCharVyanjana == true) {
+        if (value.includes(this.typedWord.value[this.typedWord.value.length - 1])) {
+          this.typedWord.next(this.typedWord.value.substring(0, this.typedWord.value.length - 1) + value);
+        } else if (this.isQwerty || this.isTransliterate) {
+          this.typedWord.next(this.typedWord.value + value);
+        } else {
+          this.typedWord.next(value);
+        }
+        // This is latest Unicode v39 - Invalid or Replacement Characters
+        if (this.sessionManager.getFromSessionURL() == "gran" && this.typedWord.value.indexOf("\ud804") > -1) 
+          this.typedWord.next(this.typedWord.value.replace("\ud804",""))
+        //else if (this.typedWord.value.indexOf("\ud806") > -1 || this.typedWord.value.indexOf("�") > -1 || this.typedWord.value.indexOf("\uFFFD") > -1)
+        //  this.typedWord.next(this.typedWord.value.replace("�", "").replace("\uFFFD","").replace("\ud806",""));
+
+        this.keyPressed(element, " " + this.typedWord.value, action, "word", "");
+      } else if (this.diacriticTyped != "" && this.diacriticsInclusion(value) != undefined) {
+        this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
+        this.sessionManager.setElementForCharacterSelection(this.diacriticsInclusion(value));
+        this.sessionManager.setCharFromKeyboard(this.diacriticsInclusion(value));
+        this.sessionManager.setActionFromKeyboard(action);
+        this.typedWord.next(this.typedWord.value.substring(0, this.typedWord.value.length - 1) + this.diacriticsInclusion(value));
+        this.diacriticTyped = "";
+      }
     }
   }
 
   selectTargetTransliteration(event, targetScript) {
     this.runProgressIndicator = true;
-    this.sessionManager.targetIntegrationScript = targetScript;
+    this.sessionManager.targetIntegrationScript.next(targetScript);
     if (targetScript && targetScript != "" && targetScript != null && this.sessionManager.getSessionSavedContent() != null && this.sessionManager.getSessionSavedContent() != "" && this.sessionManager.getSessionSavedContent() != undefined && this.sessionManager.getOfflineOnly() == false) {
       this.sessionManager.integrateTransliteration(targetScript).subscribe((resultContent: any) => {
         this.sessionManager.pasteIntegrationOutput.next(true);
@@ -3804,6 +3874,17 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       if (this.diacritics[characterTyped] != undefined && this.diacritics[characterTyped][key][this.diacriticTyped]) {
         return this.diacritics[characterTyped][key][this.diacriticTyped];
       }
+    }
+  }
+
+  hideSoftKeyboard() {
+    if (this.layoutCurrentKeys.length > 0 && this.sessionManager.softKeyboardState.value == false) {
+      this.previousLayout = this.layoutCurrentKeys;
+      this.layoutCurrentKeys = [];
+      this.sessionManager.softKeyboardState.next(true);
+    } else if (this.sessionManager.softKeyboardState.value == true) {
+      this.layoutCurrentKeys = (this.layoutCurrentKeys.length == 0) ? this.previousLayout : this.layoutCurrentKeys;
+      this.sessionManager.softKeyboardState.next(false);
     }
   }
 

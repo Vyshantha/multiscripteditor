@@ -15,4 +15,3 @@ nodemon &
 ng serve --host %ip%% --port 4200 --ssl true --ssl-cert ./../routes/server.crt --ssl-key ./../routes/key.pem &
 
 start 'https://%ip%:4200/'
-
