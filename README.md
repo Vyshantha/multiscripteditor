@@ -50,7 +50,7 @@ This website offers every writer all the tools necessary to ensure they are able
 
   1. Run the installer.sh for installation of Node Modules for both AngularJS (webserver) & NodeJS (express server)
   2. To initiate the servers run the startMSE.sh / startMSE.bat
-  3. To preempt the servers run the stopMSE.sh / stopMSE.bat
+  3. To preempt the servers run the stopMSE.sh
   
 ### Requirements & Defects are tracking on Github
 https://github.com/Vyshantha/multiscripteditor/issues
