@@ -305,7 +305,7 @@ export class SessionManagerService {
     else if (this.getFromSessionURL() == "geez")
       return "፡";
     else if (this.noSeparator.indexOf(this.getFromSessionURL()) > -1)
-      return "";
+      return "　";
     else if (this.visualSeparator.indexOf(this.getFromSessionURL()) > -1)
       return "\u2009";
     else if (this.syllabicSeparator.indexOf(this.getFromSessionURL()) > -1)
