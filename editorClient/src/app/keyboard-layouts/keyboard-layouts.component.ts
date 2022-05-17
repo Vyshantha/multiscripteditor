@@ -3820,6 +3820,14 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
           this.typedWord.next(value);
         else
           this.typedWord.next(this.typedWord.value + value);
+      } else if (type == "iso" || type == "ini" || type == "med" || type == "fin") {
+        this.sessionManager.setElementForCharacterSelection(element);
+        this.sessionManager.setCharFromKeyboard(value);
+        this.sessionManager.setActionFromKeyboard(action);
+        if (this.typedWord.value == null || this.typedWord.value === "")
+          this.typedWord.next(value);
+        else
+          this.typedWord.next(this.typedWord.value + value);
       }
       if (this.lastCharVyanjana == true) {
         if (value.includes(this.typedWord.value[this.typedWord.value.length - 1])) {
