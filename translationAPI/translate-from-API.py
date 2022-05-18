@@ -35,9 +35,10 @@ def translate_text(target, text):
     return result["translatedText"]
 
 ## Loop here for all the Supported Languages ## 
-supportedLanguage = ['ar','fa','ur','ps','sd','ug','he','yi','cs','af','sq','az','eu','ca','bs','ceb','hr','da','de','nl','eo','et','fi','fr','fy','gl','ha','haw','hu','is','ig','id','ga','it','rw','ku','lv','lt','lb','mg','ms','mt','no','pl','pt','ro','gd','sn','sk','sl','so','es','su','sw','sv','tg','tr','tk','uz','vi','cy','xh','yo','zu','be','bg','mk','ru','uk','tt','kk','sr','ky','mn','el','hy','ka','ko','mr','ne','hi','kn','te','ta','ml','pa','gu','or','bn','am','th','lo','km','my','jv','zh','zh-TW','ja','si','la','co','ht','hmn','ny','sm','st','tl']
+supportedLanguage = ['ar','fa','ur','ps','sd','ug','he','yi','cs','af','sq','az','eu','ca','bs','ceb','hr','da','de','nl','eo','et','fi','fr','fy','gl','ha','haw','hu','is','ig','id','ga','it','rw','ku','lv','lt','lb','mg','ms','mt','no','pl','pt','ro','gd','sn','sk','sl','so','es','su','sw','sv','tg','tr','tk','uz','vi','cy','xh','yo','zu','be','bg','mk','ru','uk','tt','kk','sr','ky','mn','el','hy','ka','ko','mr','ne','hi','kn','te','ta','ml','pa','gu','or','bn','am','th','lo','km','my','jv','zh','zh-TW','ja','si','la','co','ht','hmn','ny','sm','st','tl', 'as', 'ay', 'bm', 'bho', 'dv', 'doi', 'ee', 'gn', 'ilo', 'gom', 'kri', 'ckb', 'ln', 'lg', 'mai', 'mni', 'lus', 'om', 'qu', 'sa', 'nso', 'ti', 'ts', 'ak']
 # removed 'en','sa','sank'
 ## Note - locale : rename files zh = zhcn && zh-TW = zhtw
+### v3 - 'as', 'ay', 'bm', 'bho', 'dv', 'doi', 'ee', 'gn', 'ilo', 'gom', 'kri', 'ckb', 'ln', 'lg', 'mai', 'mni', 'lus', 'om', 'qu', 'sa', 'nso', 'ti', 'ts', 'ak'  
 
 
 # var allKeyboardCodes = "";

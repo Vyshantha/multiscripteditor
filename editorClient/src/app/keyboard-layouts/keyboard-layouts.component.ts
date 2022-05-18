@@ -53,7 +53,7 @@ import * as layoutPiedmontesePms from './../../assets/keyboard-layouts/layout-pi
 import * as layoutLombardLmo from './../../assets/keyboard-layouts/layout-lombard-lmo.json';
 import * as layoutVendaVen from './../../assets/keyboard-layouts/layout-venda-ven.json';
 import * as layoutPapiamentoPap from './../../assets/keyboard-layouts/layout-papiamento-pap.json';
-import * as layoutTsongaTso from './../../assets/keyboard-layouts/layout-tsonga-tso.json';
+import * as layoutTsongaTs from './../../assets/keyboard-layouts/layout-tsonga-ts.json';
 import * as layoutLwoLwo from './../../assets/keyboard-layouts/layout-lwo-lwo.json';
 import * as layoutAriyakaAri from './../../assets/keyboard-layouts/layout-ariyaka-ari.json';
 import * as layoutNauruanNa from './../../assets/keyboard-layouts/layout-nauruan-na.json';
@@ -72,6 +72,7 @@ import * as layoutMalayalamMl from './../../assets/keyboard-layouts/layout-malay
 import * as layoutTigalariTiga from './../../assets/keyboard-layouts/layout-tigalari-tiga.json';
 import * as layoutSanskritSa from './../../assets/keyboard-layouts/layout-sanskrit-sa.json';
 import * as layoutSanskritIAST from './../../assets/keyboard-layouts/layout-sanskrit-iast.json';
+import * as layoutPaliPli from './../../assets/keyboard-layouts/layout-pali-pli.json';
 import * as layoutDhimalDham from './../../assets/keyboard-layouts/layout-dhimal-dham.json';
 import * as layoutGalikGalk from './../../assets/keyboard-layouts/layout-galik-galk.json';
 import * as layoutPalenqueroPln from './../../assets/keyboard-layouts/layout-palenquero-pln.json';
@@ -102,6 +103,7 @@ import * as layoutSharadaShrd from './../../assets/keyboard-layouts/layout-shara
 import * as layoutSaramaccanSrm from './../../assets/keyboard-layouts/layout-saramaccan-srm.json';
 import * as layoutKiribatiGil from './../../assets/keyboard-layouts/layout-kiribati-gil.json';
 import * as layoutHindiHi from './../../assets/keyboard-layouts/layout-hindi-hi.json';
+import * as layoutMaithiliMai from './../../assets/keyboard-layouts/layout-maithili-mai.json';
 import * as layoutSindhiSnd from './../../assets/keyboard-layouts/layout-sindhi-snd.json';
 import * as layoutMarathiMr from './../../assets/keyboard-layouts/layout-marathi-mr.json';
 import * as layoutModiModi from './../../assets/keyboard-layouts/layout-modi-modi.json';
@@ -112,6 +114,7 @@ import * as layoutPallavaPall from './../../assets/keyboard-layouts/layout-palla
 import * as layoutEvenkiEvnLa from './../../assets/keyboard-layouts/layout-evenki-evnla.json';
 import * as layoutEvenkiEvnCy from './../../assets/keyboard-layouts/layout-evenki-evncy.json';
 import * as layoutEvenkiEvn from './../../assets/keyboard-layouts/layout-evenki-evn.json';
+import * as layoutOduduwaOdu from './../../assets/keyboard-layouts/layout-oduduwa-odu.json';
 import * as layoutTocharianToch from './../../assets/keyboard-layouts/layout-tocharian-toch.json';
 import * as layoutSaurashtraSaur from './../../assets/keyboard-layouts/layout-saurashtra-saur.json';
 import * as layoutHmongHmn from './../../assets/keyboard-layouts/layout-hmong-hmn.json';
@@ -148,6 +151,7 @@ import * as layoutLadakhiLbj from './../../assets/keyboard-layouts/layout-ladakh
 import * as layoutMultaniMult from './../../assets/keyboard-layouts/layout-multani-mult.json';
 import * as layoutMahajaniMaha from './../../assets/keyboard-layouts/layout-mahajani-maha.json';
 import * as layoutThaanaThaa from './../../assets/keyboard-layouts/layout-thaana-thaa.json';
+import * as layoutDhivehiDv from './../../assets/keyboard-layouts/layout-dhivehi-dv.json';
 import * as layoutDivesAkuruDiak from './../../assets/keyboard-layouts/layout-divesakuru-diak.json';
 import * as layoutGeezGeez from './../../assets/keyboard-layouts/layout-geez-geez.json';
 import * as layoutLepchaLepc from './../../assets/keyboard-layouts/layout-lepcha-lepc.json';
@@ -297,10 +301,12 @@ import * as layoutSpanishEs from './../../assets/keyboard-layouts/layout-spanish
 import * as layoutSpanishEsMX from './../../assets/keyboard-layouts/layout-spanish-esmx.json';
 import * as layoutIcelandicIs from './../../assets/keyboard-layouts/layout-icelandic-is.json';
 import * as layoutEdoBin from './../../assets/keyboard-layouts/layout-edo-bin.json';
+import * as layoutKrioKri from './../../assets/keyboard-layouts/layout-krio-kri.json';
 import * as layoutPortuguesePt from './../../assets/keyboard-layouts/layout-portuguese-pt.json';
 import * as layoutPortuguesePtBR from './../../assets/keyboard-layouts/layout-portuguese-ptbr.json';
 import * as layoutSwedishSv from './../../assets/keyboard-layouts/layout-swedish-sv.json';
 import * as layoutSesotholeboaSt from './../../assets/keyboard-layouts/layout-sesotholeboa-st.json';
+import * as layoutSepediNso from './../../assets/keyboard-layouts/layout-sepedi-nso.json';
 import * as layoutSetswanaTn from './../../assets/keyboard-layouts/layout-setswana-tn.json';
 import * as layoutScotsGaelicGd from './../../assets/keyboard-layouts/layout-gaelic-gd.json';
 import * as layoutGaelicGael from './../../assets/keyboard-layouts/layout-gaelic-gael.json';
@@ -622,7 +628,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   layoutLombardKeys: any = (layoutLombardLmo as any).default;
   layoutVendaKeys: any = (layoutVendaVen as any).default;
   layoutPapiamentoKeys: any = (layoutPapiamentoPap as any).default;
-  layoutTsongaKeys: any = (layoutTsongaTso as any).default;
+  layoutTsongaKeys: any = (layoutTsongaTs as any).default;
   layoutLwoKeys: any = (layoutLwoLwo as any).default;
   layoutAriyakaKeys: any = (layoutAriyakaAri as any).default;
   layoutNauruanKeys: any = (layoutNauruanNa as any).default;
@@ -641,6 +647,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   layoutTigalariKeys: any = (layoutTigalariTiga as any).default;
   layoutSanskritKeys: any = (layoutSanskritSa as any).default;
   layoutSanskritLaKeys: any = (layoutSanskritIAST as any).default;
+  layoutPaliLaKeys: any = (layoutPaliPli as any).default;
   layoutDhamKeys: any = (layoutDhimalDham as any).default;
   layoutGalikKeys: any = (layoutGalikGalk as any).default;
   layoutPalenqueroKeys: any = (layoutPalenqueroPln as any).default;
@@ -671,6 +678,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   layoutSaramaccanKeys: any = (layoutSaramaccanSrm as any).default;
   layoutKiribatiKeys: any = (layoutKiribatiGil as any).default;
   layoutHindiKeys: any = (layoutHindiHi as any).default;
+  layoutMaithiliKeys: any = (layoutMaithiliMai as any).default;
   layoutSindhiSndKeys: any = (layoutSindhiSnd as any).default;
   layoutMarathiKeys: any = (layoutMarathiMr as any).default;
   layoutModiKeys: any = (layoutModiModi as any).default;
@@ -681,6 +689,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   layoutEvenkiLaKeys: any = (layoutEvenkiEvnLa as any).default;
   layoutEvenkiCyKeys: any = (layoutEvenkiEvnCy as any).default;
   layoutEvenkiKeys: any = (layoutEvenkiEvn as any).default;
+  layoutOduduwaKeys: any = (layoutOduduwaOdu as any).default;
   layoutTocharianKeys: any = (layoutTocharianToch as any).default;
   layoutSaurashtraKeys: any = (layoutSaurashtraSaur as any).default;
   layoutHmongKeys: any = (layoutHmongHmn as any).default;
@@ -715,6 +724,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   layoutMultaniKeys: any = (layoutMultaniMult as any).default;
   layoutMahajaniKeys: any = (layoutMahajaniMaha as any).default;
   layoutThaanaKeys: any = (layoutThaanaThaa as any).default;
+  layoutDhivehiKeys: any = (layoutDhivehiDv as any).default;
   layoutDivesAkuruKeys: any = (layoutDivesAkuruDiak as any).default;
   layoutGeezKeys: any = (layoutGeezGeez as any).default;
   layoutLepchaKeys: any = (layoutLepchaLepc as any).default;
@@ -863,10 +873,12 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   layoutSpanishMXKeys: any = (layoutSpanishEsMX as any).default;
   layoutIcelandicKeys: any = (layoutIcelandicIs as any).default;
   layoutEdoKeys: any = (layoutEdoBin as any).default;
+  layoutKrioKeys: any = (layoutKrioKri as any).default;
   layoutPortugueseKeys: any = (layoutPortuguesePt as any).default;
   layoutPortugueseBRKeys: any = (layoutPortuguesePtBR as any).default;
   layoutSwedishKeys: any = (layoutSwedishSv as any).default;
   layoutSesotholeboaKeys: any = (layoutSesotholeboaSt as any).default;
+  layoutSepediKeys: any = (layoutSepediNso as any).default;
   layoutSetswanaKeys: any = (layoutSetswanaTn as any).default;
   layoutScotsGaelicKeys: any = (layoutScotsGaelicGd as any).default;
   layoutGaelicKeys: any = (layoutGaelicGael as any).default;
@@ -1173,7 +1185,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   dirSet: string = "rtl";
   isRTL: Boolean = false;
   
-  rtlLocales : string[] = ['ar', 'he', 'ur', 'fa', 'syrc', 'rhg', 'sd', 'bal', 'bsk', 'yi', 'jrb', 'ps', 'ckb', 'ks', 'ett', 'avst', 'khar', 'phn', 'xpu', 'samr', 'mand', 'sog', 'arc', 'skr', 'pal', 'xpr', 'xsa', 'mnkar', 'jawi', 'nkoo', 'thaa', 'orkh', 'lydi', 'adlm', 'ajam', 'wolf', 'woal', 'chrs', 'elym', 'palm', 'hatr', 'ber', 'mani', 'mer', 'psal', 'kult', 'egyd', 'safa', 'nshu', 'txr', 'rohg', 'estr', 'sert', 'madn', 'lad', 'nbat', 'pice', 'gars', 'cprt', 'lepo', 'sabe', 'phyg', 'khaz', 'mero', 'cana', 'sina', 'yezi', 'ug', 'mend', 'linb', 'idu', 'chun', 'kuli', 'txg', 'indus', 'hung'];
+  rtlLocales : string[] = ['ar', 'he', 'ur', 'fa', 'syrc', 'rhg', 'sd', 'bal', 'bsk', 'yi', 'jrb', 'ps', 'ckb', 'ks', 'ett', 'avst', 'khar', 'phn', 'xpu', 'samr', 'mand', 'sog', 'arc', 'skr', 'pal', 'xpr', 'xsa', 'mnkar', 'jawi', 'nkoo', 'thaa', 'orkh', 'lydi', 'adlm', 'ajam', 'wolf', 'woal', 'chrs', 'elym', 'palm', 'hatr', 'ber', 'mani', 'mer', 'psal', 'kult', 'egyd', 'safa', 'nshu', 'txr', 'rohg', 'estr', 'sert', 'madn', 'lad', 'nbat', 'pice', 'gars', 'cprt', 'lepo', 'sabe', 'phyg', 'khaz', 'mero', 'cana', 'sina', 'yezi', 'ug', 'mend', 'linb', 'idu', 'chun', 'kuli', 'txg', 'indus', 'hung', 'dv', 'odu'];
   boustrophedonScripts: string[] = ['ett', 'sabe', 'maya', 'txr', 'wole', 'phyg', 'pice', 'asom', 'luw', 'moon', 'sina', 'kmt', 'hung', 'safa', 'xsa', 'egyd', 'avo', 'lepo'];
   topToBottomLR: string[] = ['sog', 'oira', 'mon', 'phag', 'mnc', 'galk', 'shui', 'soyo', 'kits', 'kitl', 'sgnw'];
   topToBottomRL: string[] = ['zhcn', 'zhtw', 'ja', 'ko', 'nshu', 'idu', 'mero', 'chun', 'kuli', 'txg', 'indus', 'khit'];
@@ -1182,14 +1194,14 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   layoutsSwitchHV: string[] = ['ogam', 'phag', 'oira', 'mnc', 'mon', 'galk', 'soyo', 'evn', 'hira', 'kata', 'vaii', 'geez', 'dite', 'iba', 'ndju', 'cree', 'crew', 'oji', 'iku', 'carr', 'bla', 'cans', 'nask', 'aztc', 'maya', 'am'];
   keyOrientationSwitch: string[] = ['ogam', 'phag', 'oira', 'mnc', 'mon', 'galk', 'soyo', 'evn'];
   keyDoNotRotate: string[] = ['vaii', 'geez', 'am', 'dite', 'iba', 'ndju'];
-  swaraAbugidaType : string [] = ['ahom', 'bada', 'bali', 'batk', 'tglg', 'bn', 'bhai', 'bla', 'brah', 'bug', 'buhd', 'cakm', 'cree', 'dham', 'dite', 'diak', 'dogr', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kthi', 'kn', 'kawi', 'kali', 'khar', 'tang', 'km', 'khoj', 'khud', 'kuli', 'lo', 'lepc', 'limb', 'loma', 'maga', 'maha', 'ml', 'mani', 'mni', 'mr', 'modi', 'mult', 'my', 'nand', 'or', 'phag', 'newa', 'pa', 'rjng', 'renc', 'sa', 'saur', 'shan', 'shrd', 'sn', 'sidd', 'snd', 'si', 'bhat', 'leke', 'ari', 'sora', 'sund', 'sylo', 'tagb', 'talu', 'lana', 'takr', 'ta', 'tamu', 'tach', 'te', 'thaa', 'th', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'gonm', 'gong', 'soyo', 'zanb'];
-  imageAlternativeScript: string[] = ['cans', 'esk', 'esi', 'ipk', 'dhan', 'safa', 'txr', 'ibe', 'avo', 'ranj', 'gup', 'pall', 'toch', 'moon', 'tiga', 'xce', 'vith', 'nand', 'kada', 'estr', 'sert', 'madn', 'diak', 'ber', 'tach', 'gael', 'mwan', 'wole', 'moss', 'iba', 'maya', 'egyd', 'bhat', 'renc', 'kuli', 'sina', 'zou', 'cana', 'kaid', 'dham', 'tamu', 'geba', 'esy', 'maka', 'lad', 'kama', 'ndju', 'aztc', 'jiag', 'indus', 'bada', 'vatt', 'mikq', 'kpe', 'gars', 'dale', 'goyk', 'wolf', 'zag', 'kawi', 'loma', 'nsi', 'ion', 'tika', 'mamb', 'land', 'khat', 'leke', 'ari', 'sabe', 'dite', 'toto', 'chrs', 'tang', 'maga', 'luo', 'chik', 'adin', 'khom', 'kits', 'kitl', 'tnq', 'maha', 'ics', 'flag', 'ussign', 'desisign', 'banzsl'];
+  swaraAbugidaType : string [] = ['ahom', 'bada', 'bali', 'batk', 'tglg', 'bn', 'bhai', 'bla', 'brah', 'bug', 'buhd', 'cakm', 'cree', 'dham', 'dite', 'diak', 'dogr', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kthi', 'kn', 'kawi', 'kali', 'khar', 'tang', 'km', 'khoj', 'khud', 'kuli', 'lo', 'lepc', 'limb', 'loma', 'maga', 'maha', 'ml', 'mani', 'mni', 'mr', 'modi', 'mult', 'my', 'nand', 'or', 'phag', 'newa', 'pa', 'rjng', 'renc', 'sa', 'saur', 'shan', 'shrd', 'sn', 'sidd', 'snd', 'si', 'bhat', 'leke', 'ari', 'sora', 'sund', 'sylo', 'tagb', 'talu', 'lana', 'takr', 'ta', 'tamu', 'tach', 'te', 'thaa', 'th', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'gonm', 'gong', 'soyo', 'zanb', 'dv', 'mai'];
+  imageAlternativeScript: string[] = ['cans', 'esk', 'esi', 'ipk', 'dhan', 'safa', 'txr', 'ibe', 'avo', 'ranj', 'gup', 'pall', 'toch', 'moon', 'tiga', 'xce', 'vith', 'nand', 'kada', 'estr', 'sert', 'madn', 'diak', 'ber', 'tach', 'gael', 'mwan', 'wole', 'moss', 'iba', 'maya', 'egyd', 'bhat', 'renc', 'kuli', 'sina', 'zou', 'cana', 'kaid', 'dham', 'tamu', 'geba', 'esy', 'maka', 'lad', 'kama', 'ndju', 'aztc', 'jiag', 'indus', 'bada', 'vatt', 'mikq', 'kpe', 'gars', 'dale', 'goyk', 'wolf', 'zag', 'kawi', 'loma', 'nsi', 'ion', 'tika', 'mamb', 'land', 'khat', 'leke', 'ari', 'sabe', 'dite', 'toto', 'chrs', 'tang', 'maga', 'luo', 'chik', 'adin', 'khom', 'kits', 'kitl', 'tnq', 'maha', 'ics', 'flag', 'ussign', 'desisign', 'banzsl', 'odu'];
 
   fontsSources: string[] = ['dogr', 'zanb', 'sog', 'kult', 'hmnp', 'nshu', 'txg', 'elym', 'gonm', 'gong', 'soyo', 'yezi', 'ur'];
   fontClass: string = "";
 
   // Words Suggestion for All Supported Languages
-  supportedLanguages : string[] = ['af','am','ar','az','bak','be','befr','bg','bn','bopo','br','brah','bs','bsk','ca','ceb','co','cs','cy','da','de','el','en','engb','enin','enintl','enus','eo','es','esmx','et','eu','fa','fi','fj','fo','fr','frca','fy','ga','gd','gl','gn','goth','gu','gv','ha','haw','he','hi','hmn','hr','ht','hu','hy','id','ig','ilo','is','it','ja','jv','ka','kk','km','kn','ko','kom','kon','ku','kw','ky','la','lb','lfn','ln','lo','lt','lv','mg','mi','mk','ml','mn','mr','ms','mt','my','nag','ne','nl','nld','no','ny','nya','oji','or','pa','pin','pl','ps','pt','ptbr','qu','rn','ro','rom','ru','rw','sa','sank','sd','si','sk','sl','sm','sn','so','sq','sr','st','su','sun','sv','sw','ta','te','tfng','tg','th','tk','tl','tpi','tr','tt','ty','ug','uk','ur','uz','vi','xh','yi','yo','zhcn','zhtw','zu'];
+  supportedLanguages : string[] = ['af','am','ar','az','bak','be','befr','bg','bn','bopo','br','brah','bs','bsk','ca','ceb','co','cs','cy','da','de','el','en','engb','enin','enintl','enus','eo','es','esmx','et','eu','fa','fi','fj','fo','fr','frca','fy','ga','gd','gl','gn','goth','gu','gv','ha','haw','he','hi','hmn','hr','ht','hu','hy','id','ig','ilo','is','it','ja','jv','ka','kk','km','kn','ko','gom','kon','ku','kw','ky','la','lb','lfn','ln','lo','lt','lv','mg','mi','mk','ml','mn','mr','ms','mt','my','nag','ne','nl','nld','no','ny','nya','oji','or','pa','pin','pl','ps','pt','ptbr','qu','rn','ro','rom','ru','rw','sa','sank','sd','si','sk','sl','sm','sn','so','sq','sr','st','su','sun','sv','sw','ta','te','tfng','tg','th','tk','tl','tpi','tr','tt','ty','ug','uk','ur','uz','vi','xh','yi','yo','zhcn','zhtw','zu'];
 
   diacritics: any = {
     a: [{"˝": "a̋"},{"˵": "ȁ"},{"`": "à"},{"´": "á"},{"^": "â"},{"˚": "å"},{"~": "ã"},{"ˉ": "ā"},{"˛": "ą"},{"¨": "ä"},{"ˇ": "ǎ"}],
@@ -2963,6 +2975,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionURL('arold');
     } else if (tabChangeEvent.index == 53 && tabChangeEvent.tab.textLabel == "𑫀𑫕𑫢𑫯𑫍𑫗𑫠𑫦𑫈𑫕𑫢𑫴𑫂𑫕𑫤𑫷") {
       this.sessionManager.setInSessionURL('pauc');
+    } else if (tabChangeEvent.index == 54 && tabChangeEvent.tab.textLabel == "Odùduwà") {
+      this.sessionManager.setInSessionURL('odu');
     }
     this.layoutCurrentKeys = this[this.keyboardLayouts[this.sessionManager.getFromSessionURL()][3]];
     this.resetForAKeyboard();
