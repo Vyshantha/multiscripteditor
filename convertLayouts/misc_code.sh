@@ -19,7 +19,7 @@ sed -i '' 's/altGr*/altGr/g' ./layout-template.json
 sed -i '' 's/altGrCaps*/altGrCaps/g' ./layout-template.json
 
 # Sync up the Keyboard-Layouts folder between client & server instances
-cp -R /Users/vyshanthasimha/Documents/Work_Related/workspace/MultiScriptEditor/editorClient/src/assets/keyboard-layouts/ /Users/vyshanthasimha/Documents/Work_Related/workspace/MultiScriptEditor/routes/keyboard-layouts
+cp -R ./editorClient/src/assets/keyboard-layouts/ ./routes/keyboard-layouts
 
 # Regular Expression for Letters between ( ) :  \(([^)]+)\)
 # List of All Keyboards which have QWERTY style Typewriter :

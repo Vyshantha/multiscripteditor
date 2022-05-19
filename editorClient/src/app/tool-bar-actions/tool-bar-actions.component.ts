@@ -229,25 +229,24 @@ export class ToolBarActionsComponent implements OnInit, AfterViewInit {
     });
     if (!this.isMobile && this.isTablet) {
       for(let index = 0 ; index < this.allSupportedLanguages.length ; index++) {
-        if(index < 37)
+        if(index < 44)
           this.supportedLanguageColumn1[index] = this.allSupportedLanguages[index];
-        else if(index > 36 && index < 74)
-          this.supportedLanguageColumn2[index - 37] = this.allSupportedLanguages[index];
-        else if(index > 73 && index < 110)
-          this.supportedLanguageColumn3[index - 74] = this.allSupportedLanguages[index];
+        else if(index > 43 && index < 89)
+          this.supportedLanguageColumn2[index - 44] = this.allSupportedLanguages[index];
+        else if(index > 88 && index < 134)
+          this.supportedLanguageColumn3[index - 89] = this.allSupportedLanguages[index];
       }
     } else {
       for(let index = 0 ; index < this.allSupportedLanguages.length ; index++) {
-        if(index < 27)
+        if(index < 34)
           this.supportedLanguageColumn1[index] = this.allSupportedLanguages[index];
-        else if(index > 26 && index < 55)
-          this.supportedLanguageColumn2[index - 27] = this.allSupportedLanguages[index];
-        else if(index > 54 && index < 82)
-          this.supportedLanguageColumn3[index - 55] = this.allSupportedLanguages[index];
-        else if(index > 81 && index < 110)
-          this.supportedLanguageColumn4[index - 82] = this.allSupportedLanguages[index];
+        else if(index > 33 && index < 66)
+          this.supportedLanguageColumn2[index - 34] = this.allSupportedLanguages[index];
+        else if(index > 65 && index < 100)
+          this.supportedLanguageColumn3[index - 66] = this.allSupportedLanguages[index];
+        else if(index > 99 && index < 134)
+          this.supportedLanguageColumn4[index - 100] = this.allSupportedLanguages[index];
       }
-
     }
   }
 
