@@ -535,6 +535,28 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                 self.sessionManager.typedKeysMap.next("");
                 self.typedWord.next("");
               }
+            } else if ((event.data.domEvent["$"].key == "Shift" && event.data.keyCode == 2228240) || (event.data.domEvent["$"].key == "CapsLock" && event.data.keyCode == 20)) {
+              if (self.sessionManager.itemShiftKeyPressed.value == false) {
+                setTimeout(() => {
+                  self.sessionManager.setShiftKeyPressed(true);
+                  self._snackBar.open(self.translateForSnackBar[2], self.translateForSnackBar[0], {
+                    duration: 1000,
+                    horizontalPosition: self.horizontalPosition,
+                    verticalPosition: self.verticalPosition,
+                  });
+                }, 100);
+              } else if (self.sessionManager.itemShiftKeyPressed.value == true) {
+                setTimeout(() => {
+                  self.sessionManager.setShiftKeyPressed(false);
+                  self._snackBar.open(self.translateForSnackBar[3], self.translateForSnackBar[0], {
+                    duration: 1000,
+                    horizontalPosition: self.horizontalPosition,
+                    verticalPosition: self.verticalPosition,
+                  });
+                }, 100);
+              }
+              // Blur and Focus invent to change Shift layout for Keyboard
+              self.fullmodeCkEditor.instance.focusManager.blur(true);
             }
           }
         }

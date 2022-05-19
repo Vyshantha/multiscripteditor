@@ -505,6 +505,7 @@ export class OptionsComponent implements OnInit, AfterViewInit {
     //this.keyboardLayouts = await this.localisedKeyboardLayoutDB("");
   }
 
+  /*
   keyPressed(element, value, action, type) {
     if (action === "shift") {
       if (this.sessionManager.itemAltGrKeyPressed2.value == false) {
@@ -535,26 +536,27 @@ export class OptionsComponent implements OnInit, AfterViewInit {
     } else if (action === "tab") {
       // No action
     } else if (action === "enter") {
-      /*this.sessionManager.setElementForCharacterSelection(element);
-      this.sessionManager.setCharFromKeyboard(value + "<br/>");
-      this.sessionManager.setActionFromKeyboard(action);*/
+      //this.sessionManager.setElementForCharacterSelection(element);
+      //this.sessionManager.setCharFromKeyboard(value + "<br/>");
+      //this.sessionManager.setActionFromKeyboard(action);
     } else if (action === "char" && value === "\u00A0") {
       //this.sessionManager.setCharFromKeyboard("");
     } else if (action === "space" && value === "\u00A0") {
       //this.sessionManager.setCharFromKeyboard(value + " ");
     } else if (type == "vyanjana") {
-      /*this.sessionManager.setElementForCharacterSelection(element);
-      this.sessionManager.setCharFromKeyboard(value);
-      this.sessionManager.setActionFromKeyboard(action);*/
+      //this.sessionManager.setElementForCharacterSelection(element);
+      //this.sessionManager.setCharFromKeyboard(value);
+      //this.sessionManager.setActionFromKeyboard(action);
     } else {
-      /*if (this.sessionManager.itemSessionURL.value == "iub") {
-        value = value.split(' ')[1];
-      }
-      this.sessionManager.setElementForCharacterSelection(element);
-      this.sessionManager.setCharFromKeyboard(value);
-      this.sessionManager.setActionFromKeyboard(action);*/
+      //if (this.sessionManager.itemSessionURL.value == "iub") {
+      //  value = value.split(' ')[1];
+      //}
+      //this.sessionManager.setElementForCharacterSelection(element);
+      //this.sessionManager.setCharFromKeyboard(value);
+      //this.sessionManager.setActionFromKeyboard(action);
     }
   }
+  */
 
   swapLanguage() {
     let localeForSwap = this.localeOfUI;
