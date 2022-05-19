@@ -2798,7 +2798,7 @@
             </span>       
             <span *ngIf="!isQwerty && !isTransliterate && unicode5AndHigher">
                 <mat-icon aria-label="{{ 'Alternative for Image' | translate }}" alt="{{ 'Alternative for Image' | translate }}" matTooltip="{{ 'Alternative for Image' | translate }}" style="vertical-align: middle;">format_strikethrough</mat-icon> &nbsp;&nbsp; 
-                <mat-slide-toggle (click)="toggleGlyphShow()"></mat-slide-toggle> &nbsp;&nbsp; 
+                <mat-slide-toggle (click)="toggleGlyphShow()" [(ngModel)]="shiftKeyToggle"></mat-slide-toggle> &nbsp;&nbsp; 
                 <mat-icon aria-label="{{ 'Alternative for Text' | translate }}" alt="{{ 'Alternative for Text' | translate }}" matTooltip="{{ 'Alternative for Text' | translate }}" style="vertical-align: middle;">image_not_supported</mat-icon>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
             </span>
@@ -5305,7 +5305,7 @@
             </span>       
             <span *ngIf="!isQwerty && !isTransliterate && unicode5AndHigher">
                 <mat-icon aria-label="{{ 'Alternative for Image' | translate }}" alt="{{ 'Alternative for Image' | translate }}" matTooltip="{{ 'Alternative for Image' | translate }}" style="vertical-align: middle;">format_strikethrough</mat-icon> &nbsp;&nbsp; 
-                <mat-slide-toggle (click)="toggleGlyphShow()"></mat-slide-toggle> &nbsp;&nbsp; 
+                <mat-slide-toggle (click)="toggleGlyphShow()" [(ngModel)]="shiftKeyToggle"></mat-slide-toggle> &nbsp;&nbsp; 
                 <mat-icon aria-label="{{ 'Alternative for Text' | translate }}" alt="{{ 'Alternative for Text' | translate }}" matTooltip="{{ 'Alternative for Text' | translate }}" style="vertical-align: middle;">image_not_supported</mat-icon>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
             </span> 
@@ -8094,7 +8094,7 @@
             </span>       
             <span *ngIf="!isQwerty && !isTransliterate && unicode5AndHigher">
                 <mat-icon aria-label="{{ 'Alternative for Image' | translate }}" alt="{{ 'Alternative for Image' | translate }}" matTooltip="{{ 'Alternative for Image' | translate }}" style="vertical-align: middle;">format_strikethrough</mat-icon> &nbsp;&nbsp; 
-                <mat-slide-toggle (click)="toggleGlyphShow()"></mat-slide-toggle> &nbsp;&nbsp; 
+                <mat-slide-toggle (click)="toggleGlyphShow()" [(ngModel)]="shiftKeyToggle"></mat-slide-toggle> &nbsp;&nbsp; 
                 <mat-icon aria-label="{{ 'Alternative for Text' | translate }}" alt="{{ 'Alternative for Text' | translate }}" matTooltip="{{ 'Alternative for Text' | translate }}" style="vertical-align: middle;">image_not_supported</mat-icon>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
             </span>

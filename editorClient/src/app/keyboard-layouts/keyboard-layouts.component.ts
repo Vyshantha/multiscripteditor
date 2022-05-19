@@ -1169,6 +1169,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   unicode5AndHigher : Boolean = false;
   highlightKeys: Boolean = true;
   unusedKeys: Boolean = false;
+  shiftKeyToggle: Boolean = false;
+  initialLoad: Boolean = true;
 
   runProgressIndicator: Boolean = false;
 
@@ -2058,6 +2060,14 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       if (this.allowSuperScript && (this.isQwerty || this.isTransliterate)) {
         this.setSuperPosition();
         this.setSuperScriptInLayout();
+      }
+      if (this.unicode5AndHigher){
+        if (!this.initialLoad) {
+          this.shiftKeyToggle = !this.shiftKeyToggle;
+          this.toggleGlyphShow();
+        } else {
+          this.initialLoad = false;
+        }
       }
     });
     this.sessionManager.itemAltGrKeyPressed.subscribe((flagForAltGr) => {
