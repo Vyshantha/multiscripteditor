@@ -3719,7 +3719,10 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setCharFromKeyboard("");
     } else if (action === "space" && (value === "\u00A0" || value == " ")) {
       this.resetSwara();
-      this.sessionManager.setCharFromKeyboard(this.sessionManager.wordSeparator());
+      if (this.unicode5AndHigher)
+        this.sessionManager.setCharFromKeyboard("　");
+      else
+        this.sessionManager.setCharFromKeyboard(this.sessionManager.wordSeparator());
       this.typedWord.next("");
     } else if (action === "delAlt") {
       this.sessionManager.setActionFromKeyboard(action);

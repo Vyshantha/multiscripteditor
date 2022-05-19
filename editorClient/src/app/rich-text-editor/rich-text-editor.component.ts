@@ -806,7 +806,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         if (action.indexOf("data:image/png;base64,") > -1) {
           this.ckeditorContent = this.ckeditorContent + "<img width='50px' height='50px' src='" + action + "'/> ";
         } else if (action.indexOf("class") == -1) {
-          this.ckeditorContent = this.ckeditorContent + "<img width='20px' height='20px' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
+          this.ckeditorContent = this.ckeditorContent + "<img width='15px' height='20px' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
         } else {
           // Indus Script Font inclusion - Hex Conversion of IS font number
           let hexNum = Number(parseInt(action.split("/")[1].split("-")[1]) + 29).toString(16);
