@@ -710,32 +710,32 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         // TODO : Validate Bi-Di or Not - Delete character/image to the right (for LTR Language) of a character or left (for RTL Language) of a character
       } else if (action === "del") {
         // Validate Bi-Di or Not - Delete character/image to the left (for LTR Language) of a character or right (for RTL Language) of a character
-        if (this.ckeditorContent.lastIndexOf("<img") > -1 && this.ckeditorContent.lastIndexOf("/>") > -1 && this.ckeditorContent.lastIndexOf("/>") == this.ckeditorContent.length - 7) {
-          this.ckeditorContent = this.ckeditorContent.substring(3, this.ckeditorContent.lastIndexOf("<img"));
-          // Deleting an Image : TODO at cursor position
-        } else {
-          if (parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) == 0 && this.position != "∞") {
-            this.ckeditorContent = this.ckeditorContent.substring(0, parseFloat(this.rowPos) - 1) + this.ckeditorContent.substring(parseFloat(this.rowPos) + 1, this.ckeditorContent.length);
-            this.deletePressed = true;
-          } else if (parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) > 0 && this.position != "∞") {
-            // Line-break encountered and this has to be handled separately
-            let splitContent = this.ckeditorContent.split("<br />");
-            let content = "";
-            if (splitContent && splitContent.length > 0) {
-              for (let i = 0; i < splitContent.length; i++) {
-                if (i == parseInt(this.colPos))
-                  content = splitContent[i] + splitContent[i].substring(0, parseFloat(this.rowPos) - 1) + splitContent[i].substring(parseFloat(this.rowPos) + 1, splitContent[i].length);
-                else
-                  content = splitContent[i]; 
-              }
-              this.ckeditorContent = content;
-              this.deletePressed = true;
-            } else {
-              this.ckeditorContent = this.ckeditorContent.slice(0, this.ckeditorContent.length - 1);
-              this.deletePressed = false;
-              this.mouseclickEvent = null;
+        if (parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) == 0 && this.position != "∞") {
+          this.ckeditorContent = this.ckeditorContent.substring(0, parseFloat(this.rowPos) - 1) + this.ckeditorContent.substring(parseFloat(this.rowPos) + 1, this.ckeditorContent.length);
+          this.deletePressed = true;
+        } else if (parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) > 0 && this.position != "∞") {
+          // Line-break encountered and this has to be handled separately
+          let splitContent = this.ckeditorContent.split("<br />");
+          let content = "";
+          if (splitContent && splitContent.length > 0) {
+            for (let i = 0; i < splitContent.length; i++) {
+              if (i == parseInt(this.colPos))
+                content = splitContent[i] + splitContent[i].substring(0, parseFloat(this.rowPos) - 1) + splitContent[i].substring(parseFloat(this.rowPos) + 1, splitContent[i].length);
+              else
+                content = splitContent[i]; 
             }
-          } else if (this.position == "∞") {
+            this.ckeditorContent = content;
+            this.deletePressed = true;
+          } else {
+            this.ckeditorContent = this.ckeditorContent.slice(0, this.ckeditorContent.length - 1);
+            this.deletePressed = false;
+            this.mouseclickEvent = null;
+          }
+        } else if (this.position == "∞") {
+          if (this.ckeditorContent.lastIndexOf("<img") > -1 && this.ckeditorContent.lastIndexOf("/>") > -1 && this.ckeditorContent.lastIndexOf("/>") == this.ckeditorContent.length - 3) {
+            this.ckeditorContent = this.ckeditorContent.substring(0, this.ckeditorContent.lastIndexOf("<img"));
+            // Deleting an Image : TODO at cursor position
+          } else {
             this.ckeditorContent = this.ckeditorContent.slice(0, this.ckeditorContent.length - 1);
             this.deletePressed = false;
             this.mouseclickEvent = null;
@@ -1038,7 +1038,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     else if (this.sessionManager.getFromSessionURL() == "geez")
       return "፡";
     else if (this.noSeparator.indexOf(this.sessionManager.getFromSessionURL()) > -1)
-      return "";
+      return "　";
     else if (this.visualSeparator.indexOf(this.sessionManager.getFromSessionURL()) > -1)
       return "\u2009";
     else if (this.syllabicSeparator.indexOf(this.sessionManager.getFromSessionURL()) > -1)
