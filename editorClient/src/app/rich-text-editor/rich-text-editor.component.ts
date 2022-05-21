@@ -187,7 +187,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       ];
     }
     
-    let URL_Code = this.sessionManager.getFromSessionURL();
+    let URL_Code = (window.location.href.split('/')[3] && window.location.href.split('/')[3] != "") ? window.location.href.split('/')[3] : this.sessionManager.getFromSessionURL();
     this.ckEditorConfiguration.contentsLangDirection = (this.rtlLocales.indexOf(URL_Code) > -1)? 'rtl' : 'ltr';
 
     let ISO_Code = this.sessionManager.getUILocale();
