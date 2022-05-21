@@ -65,6 +65,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
   fireOnce: Boolean = true;
   exploreOnly: Boolean = false;
   noSoftKeyboard: Boolean = false; 
+  unicode5AndHigher: Boolean = false;
 
   // Two letter locales - https://www.transifex.com/ckeditor/ckeditor/
   supportedCDKEditorLocales = ['cs', 'fr', 'gsw', 'de', 'it', 'sr', 'sr-ba', 'sr-sp', 'zh-cn', 'zh-hk', 'zh-sg', 'zh-mo', 'zh-tw', 'zh', 'hr', 'en-au', 'et', 'gl', 'hu', 'pl', 'pt', 'pt-br', 'sv', 'tr', 'uk', 'sq', 'da', 'no', 'nb', 'ckb', 'fa', 'ru', 'sk', 'az', 'nl', 'eo', 'vi', 'ko', 'es', 'es-mx', 'ja', 'lv', 'oc', 'ca', 'el', 'ro', 'sl', 'uyy', 'ug', 'en-gb', 'cy', 'eu', 'he', 'fr-ca', 'tt', 'bg', 'af', 'ar', 'fi', 'km', 'lt', 'fo', 'gu', 'ka', 'th', 'id', 'mn', 'hi', 'si-ta', 'is', 'en-ca', 'bn', 'ms', 'bs', 'mk', 'ast', 'lu', 'tg', 'ne', 'ti', 'si', 'tl'];
@@ -202,6 +203,12 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       this.ckEditorConfiguration.defaultLanguage = ISO_Code;
     }
 
+    if (this.imageAlternativeScript.indexOf(this.sessionManager.getFromSessionURL()) != -1) {
+      this.unicode5AndHigher = true;
+    } else {
+      this.unicode5AndHigher = false;
+    }
+
     // LocalStorage limit 5MB : https://dev.to/rdegges/please-stop-using-local-storage-1i04
     if (this.sessionManager.getSessionSavedContent() && this.sessionManager.retrieveSaveSessionAllowed() == 'true') {
       this.ckeditorContent = this.sessionManager.getSessionSavedContent();
@@ -276,6 +283,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         self.position = self.positionCalculator();
         self.rowPos = self.position.split(",")[0];
         self.colPos = self.position.split(",")[1];
+        console.log(event)
       });
       const isBrowserTabInView = () => document.hidden;
       if (isBrowserTabInView()) {
@@ -295,7 +303,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       }
     });
 
-    this.fullmodeCkEditor.instance.on( 'key', function( event ) {
+    this.fullmodeCkEditor.instance.on( 'key', ( event ) => {
       if (self.noSoftKeyboard == false) {
         let controlActionKey = false;
         // Ensure Cursor focus moved back to Editor
@@ -439,57 +447,81 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
               if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyPos;
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-                if (self.typedWord.value != null)
-                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
-                else 
-                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
-                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
-                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]) {
+                  self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]);
+                } else {
+                  if (self.typedWord.value != null) {
+                      self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
+                  } else 
+                    self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
+                  self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
+                  self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                }
               } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyPos + 5;
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-                if (self.typedWord.value != null)
-                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
-                else 
-                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
-                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
-                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]) {
+                  self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]);
+                } else {
+                  if (self.typedWord.value != null)
+                    self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
+                  else 
+                    self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
+                  self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
+                  self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                }
               } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == true && event.data.keyCode < 2228224) {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.altGrPos;
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-                if (self.typedWord.value != null)
-                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
-                else 
-                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
-                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
-                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]) {
+                  self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]);
+                } else {
+                  if (self.typedWord.value != null)
+                    self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
+                  else 
+                    self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
+                  self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
+                  self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                }
               } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == true && event.data.keyCode < 2228224) {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.altGrPos + 5;
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-                if (self.typedWord.value != null)
-                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
-                else 
-                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
-                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
-                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]) {
+                  self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]);
+                } else {
+                  if (self.typedWord.value != null)
+                    self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
+                  else 
+                    self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
+                  self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
+                  self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                }
               } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == false && self.sessionManager.itemTransliterate.value == true && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyTranPos;
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-                if (self.typedWord.value != null)
-                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
-                else 
-                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
-                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
-                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]) {
+                  self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]);
+                } else {
+                  if (self.typedWord.value != null)
+                    self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
+                  else 
+                    self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
+                  self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
+                  self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                }
               } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == false && self.sessionManager.itemTransliterate.value == true && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyTranPos + 5;
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-                if (self.typedWord.value != null)
-                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
-                else 
-                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
-                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
-                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]) {
+                  self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]);
+                } else {
+                  if (self.typedWord.value != null)
+                    self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
+                  else 
+                    self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
+                  self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
+                  self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                }
               }
             } else if (event.data.domEvent["$"].key == " ") {
               self.typedWord.next("");
@@ -563,7 +595,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       }
     });
 
-    this.fullmodeCkEditor.instance.on( 'menuShow', function (event) {
+    this.fullmodeCkEditor.instance.on( 'menuShow', (event) => {
       self.menuShowEvent = event;
       if (self.menuShowEvent && self.menuKeyPressed == true && event.editor.contextMenu && event.data["$"]) {
         event.editor.contextMenu.show( event.editor.element["$"].parentElement, (self.rtlLocales.indexOf(self.sessionManager.getFromSessionURL()) > -1)? 2 : 1, event.data["$"].clientX, event.data["$"].clientY );
@@ -573,7 +605,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       // TODO - Right-Click Event through Soft Keyboard - "TypeError: b.getDocumentPosition is not a function" is thrown and no menu is shown
     });
 
-    this.fullmodeCkEditor.instance.on( 'change', function( event ) {
+    this.fullmodeCkEditor.instance.on( 'change', ( event ) => {
       if (self.noSoftKeyboard == false) {
         let content = self.fullmodeCkEditor.instance.getData();
         if (typeof(content) == 'string' && self.mappedSpaceClicked == true && self.pasteContentSetToEditor == true && (self.sessionManager.itemKeyCharacter.value == null || self.sessionManager.itemKeyCharacter.value == "  " || self.sessionManager.itemKeyCharacter.value == " " || self.sessionManager.itemKeyCharacter.value == "")) {
@@ -619,7 +651,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
     
     // Handling the "Paste" prevention code into Browser
-    this.fullmodeCkEditor.instance.on( 'instanceReady', function(event) {
+    this.fullmodeCkEditor.instance.on( 'instanceReady', (event) => {
       event.editor.on("beforeCommandExec", function(event) {
           // Show the paste dialog for the paste buttons and right-click paste
           if (event.data.name == "paste") {
@@ -805,17 +837,15 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         // action contains an image that needs to be rendered
         if (action.indexOf("data:image/png;base64,") > -1) {
           this.ckeditorContent = this.ckeditorContent + "<img width='50px' height='50px' src='" + action + "'/> ";
+          this.contentToEditor();
         } else if (action.indexOf("class") == -1) {
-          this.ckeditorContent = this.ckeditorContent + "<img width='15px' height='20px' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
+          this.imageAsContent(action);
         } else {
           // Indus Script Font inclusion - Hex Conversion of IS font number
           let hexNum = Number(parseInt(action.split("/")[1].split("-")[1]) + 29).toString(16);
           this.ckeditorContent = this.ckeditorContent + "<span class='icon icon-" + action.split("/")[1] + "'>`</span>";
+          this.contentToEditor();
         }
-        this.sessionManager.setSessionSavingOfContent(this.ckeditorContent);
-        setTimeout(() => {
-          this.fullmodeCkEditor.instance.setData(this.sessionManager.getSessionSavedContent());
-        }, 100);
       }
     });
 
@@ -940,6 +970,20 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
   }
 
+  imageAsContent(action) {
+    if (action) {
+      this.ckeditorContent = this.ckeditorContent + "<img width='15px' height='20px' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
+      this.contentToEditor();
+    }
+  }
+
+  contentToEditor() {
+    this.sessionManager.setSessionSavingOfContent(this.ckeditorContent);
+    setTimeout(() => {
+      this.fullmodeCkEditor.instance.setData(this.sessionManager.getSessionSavedContent());
+    }, 100);
+  }
+
   async translateSnackBars() {
     let translateSet = ["OK", "Shift Key Pressed", "Shift Key is Clicked", "Shift Key is Unclicked", "AltGr Key is Clicked", "AltGr Key is Unclicked", "Control Key Pressed", "AltGr Key Pressed", "Right-Click with Mouse for Mapping", "Press ← Arrow on Keyboard for Mapping", "Press ↑ Arrow on Keyboard for Mapping", "Press → Arrow on Keyboard for Mapping", "Press ↓ Arrow on Keyboard for Mapping", "Selected Text Cut", "All Text Selected", "Undo Action", "Selected Text Copied", "Open New Document", "Paste Selelected Text"];
     this.translateForSnackBar = await this.loadFromFile(this.sessionManager.getUILocale(), translateSet);
@@ -1037,7 +1081,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       return "·";
     else if (this.sessionManager.getFromSessionURL() == "geez")
       return "፡";
-    else if (this.noSeparator.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+    else if (this.noSeparator.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.unicode5AndHigher)
       return "　";
     else if (this.visualSeparator.indexOf(this.sessionManager.getFromSessionURL()) > -1)
       return "\u2009";
