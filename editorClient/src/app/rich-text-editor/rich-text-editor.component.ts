@@ -286,7 +286,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         console.log(event)
       });
       const isBrowserTabInView = () => document.hidden;
-      if (isBrowserTabInView()) {
+      if (isBrowserTabInView() && !this.isMobile && !this.isTablet) {
         setTimeout(() => { 
           contentEvent.editor.focus();
           if (self.position == "∞") {
@@ -315,7 +315,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         }
         setTimeout(() => {
           event.editor.focus();
-          if (self.sessionManager.itemCtrlKeyPressed.value == false && event.data.domEvent["$"].key != "ArrowDown" && self.downArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowRight" && self.rightArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowUp" && self.upArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowLeft" && self.leftArrowKeyPressed == false) {
+          if (self.sessionManager.itemCtrlKeyPressed.value == false && event.data.domEvent["$"].key != "ArrowDown" && self.downArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowRight" && self.rightArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowUp" && self.upArrowKeyPressed == false && event.data.domEvent["$"].key != "ArrowLeft" && self.leftArrowKeyPressed == false && !this.isMobile && !this.isTablet) {
             var range = event.editor.createRange();
             if (range) {
               range.moveToPosition( range.root, 2 );
@@ -612,7 +612,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
           self.ckeditorContent = content;
           self.sessionManager.setSessionSavingOfContent(self.ckeditorContent);
           self.fullmodeCkEditor.instance.setData(self.ckeditorContent);
-        } else {
+        } else if (!this.isMobile && !this.isTablet) {
           setTimeout(() => { 
             event.editor.focus();
             if (self.position == "∞") {
@@ -1059,7 +1059,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     setTimeout(() => { 
       event.editor.focus();
       var range = event.editor.createRange();
-      if (range) {
+      if (range && !this.isMobile && !this.isTablet) {
         range.moveToPosition( range.root, 2 );
         if (event.editor.getSelection())
           event.editor.getSelection().selectRanges( [ range ] );  
