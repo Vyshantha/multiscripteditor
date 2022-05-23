@@ -87,6 +87,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
   */
   keyCodeMap = [{"229": ["0", "0"], "160": ["0", "0"], "49": ["1", "0"], "50": ["2", "0"], "51": ["3", "0"], "52": ["4", "0"], "53": ["5", "0"], "54": ["6", "0"], "55": ["7", "0"], "56": ["8", "0"], "57": ["9", "0"], "48": ["10", "0"], "63": ["11", "0"], "192": ["12", "0"], "8": ["13", "0"], "9": ["0", "1"], "81": ["1", "1"], "87": ["2", "1"], "69": ["3", "1"], "82": ["4", "1"], "84": ["5", "1"], "90": ["6", "1"], "85": ["7", "1"], "73": ["8", "1"], "79": ["9", "1"], "80": ["10", "1"], "219": ["11", "1"], "171": ["12", "1"], "20": ["-1", "2"], "65": ["0", "2"], "83": ["1", "2"], "68": ["2", "2"], "70": ["3", "2"], "71": ["4", "2"], "72": ["5", "2"], "74": ["6", "2"], "75": ["7", "2"], "76": ["8", "2"], "59": ["9", "2"], "222": ["10", "2"], "163": ["11", "2"], "13": ["12", "2"], "2228240": ["0", "3"], "60": ["1", "3"], "89": ["2", "3"], "88": ["3", "3"], "67": ["4", "3"], "86": ["5", "3"], "66": ["6", "3"], "78": ["7", "3"], "77": ["8", "3"], "188": ["9", "3"], "190": ["10", "3"], "173": ["11", "3"], "1114129": ["0", "4"], "4456466": ["1", "4"], "32": ["2", "4"], "37": ["5", "4"], "38": ["6", "4"], "39": ["7", "4"], "40": ["8", "4"]}];
 
+  diphthongsMappingOduduwa : string[] = ["diba","die̱","dilo̱","dio̱","dire","diu","diwu","eba","ee̱","elo̱","eo̱","ere","eu","ewu","huba","hue̱","hulo̱","huo̱","hure","huu","huwu","iba","ie̱","ilo̱","io̱","ire","iu","iwu","miba","mie̱","milo̱","mio̱","mire","miu","miwu","niba","nie̱","nilo̱","nio̱","nire","niu","niwu","oba","oe̱","olo̱","oo̱","ore","ou","owu"];
+
   topToBottomLR: string[] = ['sog', 'oira', 'mon', 'phag', 'mnc', 'galk', 'shui', 'soyo', 'kits', 'kitl', 'sgnw'];
   topToBottomRL: string[] = ['zhcn', 'zhtw', 'ja', 'ko', 'nshu', 'idu', 'mero', 'chun', 'kuli', 'txg', 'indus', 'khit'];
   bottomToTopLR: string[] = ['ogam', 'btk', 'hano', 'tagb'];
@@ -106,6 +108,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
   leftArrowEvent: any;
   menuShowEvent: any;
   mouseclickEvent: any;
+
+  previousTypedKey =  "";
 
   position: any = "∞";
   rowPos: any;
@@ -448,7 +452,18 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyPos;
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
                 if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]) {
-                  self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]);
+                  var src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"];
+                  if (self.sessionManager.getFromSessionURL() == "odu" && self.previousTypedKey == "" && /[a-ze̱o̱]+/i.test(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"])) {
+                    self.previousTypedKey = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"];
+                  } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) > -1){
+                    // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
+                    src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"].split("odu")[0] + "odu/" + self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"] + ".png";
+                    self.sessionManager.setActionFromKeyboard("del");
+                    self.previousTypedKey = "";
+                  } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) == -1 && /[a-ze̱o̱]+/i.test(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"])) {
+                    self.previousTypedKey = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"];
+                  }
+                  self.imageAsContent(src);
                 } else {
                   if (self.typedWord.value != null) {
                       self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
