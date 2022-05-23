@@ -1159,6 +1159,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   toggleCodes: Boolean = true;
   toggleUnclassified: Boolean = true;
 
+  onlineService: Boolean = true;
   mappingKeysToSoft: Boolean = true;
   keysToRotate: Boolean = false;
   notToRotateKeys: Boolean = false;
@@ -1204,6 +1205,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
 
   // Words Suggestion for All Supported Languages
   supportedLanguages : string[] = ['af','am','ar','az','bak','be','befr','bg','bn','bopo','br','brah','bs','bsk','ca','ceb','co','cs','cy','da','de','el','en','engb','enin','enintl','enus','eo','es','esmx','et','eu','fa','fi','fj','fo','fr','frca','fy','ga','gd','gl','gn','goth','gu','gv','ha','haw','he','hi','hmn','hr','ht','hu','hy','id','ig','ilo','is','it','ja','jv','ka','kk','km','kn','ko','gom','kon','ku','kw','ky','la','lb','lfn','ln','lo','lt','lv','mg','mi','mk','ml','mn','mr','ms','mt','my','nag','ne','nl','nld','no','ny','nya','oji','or','pa','pin','pl','ps','pt','ptbr','qu','rn','ro','rom','ru','rw','sa','sank','sd','si','sk','sl','sm','sn','so','sq','sr','st','su','sun','sv','sw','ta','te','tfng','tg','th','tk','tl','tpi','tr','tt','ty','ug','uk','ur','uz','vi','xh','yi','yo','zhcn','zhtw','zu'];
+
+  diphthongsMappingOduduwa : string[] = ["diba","die̱","dilo̱","dio̱","dire","diu","diwu","eba","ee̱","elo̱","eo̱","ere","eu","ewu","huba","hue̱","hulo̱","huo̱","hure","huu","huwu","iba","ie̱","ilo̱","io̱","ire","iu","iwu","miba","mie̱","milo̱","mio̱","mire","miu","miwu","niba","nie̱","nilo̱","nio̱","nire","niu","niwu","oba","oe̱","olo̱","oo̱","ore","ou","owu"];
 
   diacritics: any = {
     a: [{"˝": "a̋"},{"˵": "ȁ"},{"`": "à"},{"´": "á"},{"^": "â"},{"˚": "å"},{"~": "ã"},{"ˉ": "ā"},{"˛": "ą"},{"¨": "ä"},{"ˇ": "ǎ"}],
@@ -1313,8 +1316,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   unclassifiedLayer: any;
 
   sliderWidth: string = "0px";
-
-  onlineService: Boolean = true;
+  previousTypedKey =  "";
 
   @Output() mapReady = new EventEmitter<Map>();
 
@@ -3805,6 +3807,16 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     } else if (action === "contextmenu" && value === "☰") {
       this.sessionManager.setActionFromKeyboard(action);
     } else if (src != "" && src != undefined && this.showImageGlyph) {
+      if (this.sessionManager.getFromSessionURL() == "odu" && this.previousTypedKey == "") {
+        this.previousTypedKey = value;
+      } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.previousTypedKey + value) > -1){
+        // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
+        src = src.split("odu")[0] + "odu/" + this.previousTypedKey + value + ".png";
+        this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
+        this.previousTypedKey = "";
+      } else if (this.sessionManager.getFromSessionURL() == "odu") {
+        this.previousTypedKey = "";
+      }
       this.sessionManager.setActionFromKeyboard(src);
     } else if (type === "diacritic") {
       this.diacriticTyped = value;
