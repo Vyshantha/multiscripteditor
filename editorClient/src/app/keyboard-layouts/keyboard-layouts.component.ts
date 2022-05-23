@@ -3807,15 +3807,15 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     } else if (action === "contextmenu" && value === "☰") {
       this.sessionManager.setActionFromKeyboard(action);
     } else if (src != "" && src != undefined && this.showImageGlyph) {
-      if (this.sessionManager.getFromSessionURL() == "odu" && this.previousTypedKey == "") {
+      if (this.sessionManager.getFromSessionURL() == "odu" && this.previousTypedKey == "" && /[a-ze̱o̱][a-ze̱o̱]/i.test(value)) {
         this.previousTypedKey = value;
       } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.previousTypedKey + value) > -1){
         // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
         src = src.split("odu")[0] + "odu/" + this.previousTypedKey + value + ".png";
         this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
         this.previousTypedKey = "";
-      } else if (this.sessionManager.getFromSessionURL() == "odu") {
-        this.previousTypedKey = "";
+      } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.previousTypedKey + value) == -1) {
+        this.previousTypedKey = value;
       }
       this.sessionManager.setActionFromKeyboard(src);
     } else if (type === "diacritic") {
