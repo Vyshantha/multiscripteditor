@@ -527,8 +527,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
               // Do action based on Cursor position
               self.sessionManager.setActionFromKeyboard("del");
               if (self.sessionManager.typedKeysMap.value && self.sessionManager.typedKeysMap.value != null) {
-                self.sessionManager.typedKeysMap.next("");
-                self.typedWord.next("");
+                self.sessionManager.typedKeysMap.next(self.sessionManager.typedKeysMap.value.substring(0, self.sessionManager.typedKeysMap.value.length - 1));
+                self.typedWord.next(self.sessionManager.typedKeysMap.value);
               }
             } else if (event.data.domEvent["$"].key == "Enter") {
               self.sessionManager.setCharFromKeyboard("<br/>");
