@@ -78,19 +78,10 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
 
   imageAlternativeScript: string[] = ['cans', 'esk', 'esi', 'ipk', 'dhan', 'safa', 'txr', 'ibe', 'avo', 'ranj', 'gup', 'pall', 'toch', 'moon', 'tiga', 'xce', 'vith', 'nand', 'kada', 'estr', 'sert', 'madn', 'diak', 'ber', 'tach', 'gael', 'mwan', 'wole', 'moss', 'iba', 'maya', 'egyd', 'bhat', 'renc', 'kuli', 'sina', 'zou', 'cana', 'kaid', 'dham', 'tamu', 'geba', 'esy', 'maka', 'lad', 'kama', 'ndju', 'aztc', 'jiag', 'indus', 'bada', 'vatt', 'mikq', 'kpe', 'gars', 'dale', 'goyk', 'wolf', 'zag', 'kawi', 'loma', 'nsi', 'ion', 'tika', 'mamb', 'land', 'khat', 'leke', 'ari', 'sabe', 'dite', 'toto', 'chrs', 'tang', 'maga', 'luo', 'chik', 'adin', 'khom', 'kits', 'kitl', 'tnq', 'maha', 'ics', 'flag', 'ussign', 'desisign', 'banzsl', 'odu'];
 
-  /* KeyCode for Keyboard - Qwerty 'Mac' keyboard ONLY - TODO Generic
-    229 (process) 49 50 51 52 53 54 55 56 57 48 63 192 (dead) 8 (backspace)
-    9 (tab) 81 87 69 82 84 90 85 73 79 80 219 171
-    20 (capslock) 65 83 68 70 71 72 74 75 76 59 222 163 13 (enter)
-    2228240 (shift) 60 89 88 67 86 66 78 77 188 190 173 2228240 (shift)
-    1114129 (control) 4456466 (alt) 32 1114336 (cmd) 37 (left) 38 (up) 40 (down) 39 (right)
-  */
-  keyCodeMap = [{"229": ["0", "0"], "160": ["0", "0"], "49": ["1", "0"], "50": ["2", "0"], "51": ["3", "0"], "52": ["4", "0"], "53": ["5", "0"], "54": ["6", "0"], "55": ["7", "0"], "56": ["8", "0"], "57": ["9", "0"], "48": ["10", "0"], "63": ["11", "0"], "192": ["12", "0"], "8": ["13", "0"], "9": ["0", "1"], "81": ["1", "1"], "87": ["2", "1"], "69": ["3", "1"], "82": ["4", "1"], "84": ["5", "1"], "90": ["6", "1"], "85": ["7", "1"], "73": ["8", "1"], "79": ["9", "1"], "80": ["10", "1"], "219": ["11", "1"], "171": ["12", "1"], "20": ["-1", "2"], "65": ["0", "2"], "83": ["1", "2"], "68": ["2", "2"], "70": ["3", "2"], "71": ["4", "2"], "72": ["5", "2"], "74": ["6", "2"], "75": ["7", "2"], "76": ["8", "2"], "59": ["9", "2"], "222": ["10", "2"], "163": ["11", "2"], "13": ["12", "2"], "2228240": ["0", "3"], "60": ["1", "3"], "89": ["2", "3"], "88": ["3", "3"], "67": ["4", "3"], "86": ["5", "3"], "66": ["6", "3"], "78": ["7", "3"], "77": ["8", "3"], "188": ["9", "3"], "190": ["10", "3"], "173": ["11", "3"], "1114129": ["0", "4"], "4456466": ["1", "4"], "32": ["2", "4"], "37": ["5", "4"], "38": ["6", "4"], "39": ["7", "4"], "40": ["8", "4"]}];
-
   // Keyboard Mapping Template based on https://www.w3.org/TR/uievents-code/#key-alphanumeric-writing-system
-  keyCodeMap2 = [{"Backquote": ["0", "0"], "Digit1": ["1", "0"], "Digit2": ["2", "0"], "Digit3": ["3", "0"], "Digit4": ["4", "0"], "Digit5": ["5", "0"], "Digit6": ["6", "0"], "Digit7": ["7", "0"], "Digit8": ["8", "0"], "Digit9": ["9", "0"], "Digit0": ["10", "0"], "Minus": ["11", "0"], "Equal": ["12", "0"], "IntlYen": ["13", "0"], "Backspace": ["14", "0"], "Tab": ["0", "1"], "KeyQ": ["1", "1"], "KeyW": ["2", "1"], "KeyE": ["3", "1"], "KeyR": ["4", "1"], "KeyT": ["5", "1"], "KeyY": ["6", "1"], "KeyU": ["7", "1"], "KeyI": ["8", "1"], "KeyO": ["9", "1"], "KeyP": ["10", "1"], "BracketLeft": ["11", "1"], "BracketRight": ["12", "1"], "Backslash": ["13", "1"], "CapsLock": ["-1", "2"], "KeyA": ["0", "2"], "KeyS": ["1", "2"], "KeyD": ["2", "2"], "KeyF": ["3", "2"], "KeyG": ["4", "2"], "KeyH": ["5", "2"], "KeyJ": ["6", "2"], "KeyK": ["7", "2"], "KeyL": ["8", "2"], "Semicolon": ["9", "2"], "Quote": ["10", "2"], "Back slash": ["11", "2"], "Enter": ["12", "2"], "ShiftLeft": ["0", "3"], "IntlBackslash": ["1", "3"], "KeyZ": ["2", "3"], "KeyX": ["3", "3"], "KeyC": ["4", "3"], "KeyV": ["5", "3"], "KeyB": ["6", "3"], "KeyN": ["7", "3"], "KeyM": ["8", "3"], "Comma": ["9", "3"], "Period": ["10", "3"], "Slash": ["11", "3"], "ShiftRight": ["0", "3"], "ControlLeft": ["0", "4"], "AltLeft": ["1", "4"], "Space": ["2", "4"], "ArrowLeft": ["5", "4"], "ArrowUp": ["6", "4"], "ArrowRight": ["7", "4"], "ArrowDown": ["8", "4"], "AltRight": ["1", "4"], "ControlRight": ["0", "4"]}];
+  keyCodeMap = [{"Backquote": ["0", "0"], "Digit1": ["1", "0"], "Digit2": ["2", "0"], "Digit3": ["3", "0"], "Digit4": ["4", "0"], "Digit5": ["5", "0"], "Digit6": ["6", "0"], "Digit7": ["7", "0"], "Digit8": ["8", "0"], "Digit9": ["9", "0"], "Digit0": ["10", "0"], "Minus": ["11", "0"], "Equal": ["12", "0"], "IntlYen": ["13", "0"], "Backspace": ["14", "0"], "Tab": ["0", "1"], "KeyQ": ["1", "1"], "KeyW": ["2", "1"], "KeyE": ["3", "1"], "KeyR": ["4", "1"], "KeyT": ["5", "1"], "KeyY": ["6", "1"], "KeyU": ["7", "1"], "KeyI": ["8", "1"], "KeyO": ["9", "1"], "KeyP": ["10", "1"], "BracketLeft": ["11", "1"], "BracketRight": ["12", "1"], "Backslash": ["13", "1"], "CapsLock": ["-1", "2"], "KeyA": ["0", "2"], "KeyS": ["1", "2"], "KeyD": ["2", "2"], "KeyF": ["3", "2"], "KeyG": ["4", "2"], "KeyH": ["5", "2"], "KeyJ": ["6", "2"], "KeyK": ["7", "2"], "KeyL": ["8", "2"], "Semicolon": ["9", "2"], "Quote": ["10", "2"], "Back slash": ["11", "2"], "Enter": ["12", "2"], "ShiftLeft": ["0", "3"], "IntlBackslash": ["1", "3"], "KeyZ": ["2", "3"], "KeyX": ["3", "3"], "KeyC": ["4", "3"], "KeyV": ["5", "3"], "KeyB": ["6", "3"], "KeyN": ["7", "3"], "KeyM": ["8", "3"], "Comma": ["9", "3"], "Period": ["10", "3"], "Slash": ["11", "3"], "ShiftRight": ["0", "3"], "ControlLeft": ["0", "4"], "AltLeft": ["1", "4"], "Space": ["2", "4"], "ArrowLeft": ["5", "4"], "ArrowUp": ["6", "4"], "ArrowRight": ["7", "4"], "ArrowDown": ["8", "4"], "AltRight": ["1", "4"], "ControlRight": ["0", "4"]}];
 
-  diphthongsMappingOduduwa : string[] = ["diba","die̱","dilo̱","dio̱","dire","diu","diwu","eba","ee̱","elo̱","eo̱","ere","eu","ewu","huba","hue̱","hulo̱","huo̱","hure","huu","huwu","iba","ie̱","ilo̱","io̱","ire","iu","iwu","miba","mie̱","milo̱","mio̱","mire","miu","miwu","niba","nie̱","nilo̱","nio̱","nire","niu","niwu","oba","oe̱","olo̱","oo̱","ore","ou","owu"];
+  diphthongsMappingOduduwa : string[] = ["diba","die̱","dilo̱","dio̱","dire","diu","diwu","eba","ee̱","elo̱","eo̱","ere","eu","ewu","huba","hue̱","hulo̱","huo̱","hure","huu","huwu","iba","ie̱","ilo̱","io̱","ire","iu","iwu","miba","mie̱","milo̱","mio̱","mire","miu","miwu","niba","nie̱","nilo̱","nio̱","nire","niu","niwu","oba","oe̱","olo̱","oo̱","ore","ou","owu","´a","a´","`a","a`","´e","e´","`e","e`","´e̱","e̱´","`e̱","e̱`","´i","i´","i`","`i","mi´","´mi","`mi","mi`","´ni","ni´","`ni","ni`","´o","o´","`o","o`","´o̱","o̱´","`o̱","o̱`","´u","u´","`u","u`"];
 
   topToBottomLR: string[] = ['sog', 'oira', 'mon', 'phag', 'mnc', 'galk', 'shui', 'soyo', 'kits', 'kitl', 'sgnw'];
   topToBottomRL: string[] = ['zhcn', 'zhtw', 'ja', 'ko', 'nshu', 'idu', 'mero', 'chun', 'kuli', 'txg', 'indus', 'khit'];
@@ -404,7 +395,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
           // insert & delete at cursor position
           if (self.sessionManager.mappingKeyboard.value == true && (self.sessionManager.itemQwertyType.value == true || self.sessionManager.itemTransliterate.value == true)) {
             if ((event.data.domEvent["$"].key == "Shift" && event.data.keyCode == 2228240) || (event.data.domEvent["$"].key == "CapsLock" && event.data.keyCode == 20)) {
-              if (self.sessionManager.itemShiftKeyPressed.value == false) {
+              if (self.sessionManager.itemShiftKeyPressed.value == false && ((self.sessionManager.itemAltGrKeyPressed.value == true && self.sessionManager.itemAltGrCapsExists.value == true) || (self.sessionManager.itemAltGrKeyPressed.value == false && self.sessionManager.itemAltGrCapsExists.value == true) || (self.sessionManager.itemAltGrKeyPressed.value == false && self.sessionManager.itemAltGrCapsExists.value == false))) {
                 setTimeout(() => {
                   self.sessionManager.setShiftKeyPressed(true);
                   self._snackBar.open(self.translateForSnackBar[2], self.translateForSnackBar[0], {
@@ -426,8 +417,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
               // Blur and Focus invent to change Shift layout for Keyboard
               self.fullmodeCkEditor.instance.focusManager.blur(true);
             }
-            if ((event.data.domEvent["$"].key == "Alt" && event.data.keyCode == 4456466) && self.sessionManager.itemAltGrExists.value == true) {
-              if (self.sessionManager.itemAltGrKeyPressed.value == false) {
+            if (event.data.domEvent["$"].key == "Alt" && event.data.keyCode == 4456466) {
+              if (self.sessionManager.itemAltGrKeyPressed.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrCapsExists.value == false) {
                 setTimeout(() => {
                   self.sessionManager.setAltGrKeyPressed(true);
                   self._snackBar.open(self.translateForSnackBar[4], self.translateForSnackBar[0], {
@@ -451,23 +442,24 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
             }
             if (event.data.domEvent["$"].key != "Meta" && event.data.domEvent["$"].key != "Shift" && event.data.domEvent["$"].key != "CapsLock" && event.data.domEvent["$"].key != "Alt" && event.data.domEvent["$"].key != "Tab" && event.data.domEvent["$"].key != "Backspace" && event.data.domEvent["$"].key != "Enter" && event.data.domEvent["$"].key != "Control" && event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && event.data.domEvent["$"].key != " " && event.data.domEvent["$"].key != "Unidentified") {
               let rowForSoftKey = 0, columnForSoftKey = 0;
-              if (self.keyCodeMap2[0][event.data.domEvent["$"].code] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
-                rowForSoftKey = parseInt(self.keyCodeMap2[0][event.data.domEvent["$"].code][1]) + self.qwertyPos;
-                columnForSoftKey = parseInt(self.keyCodeMap2[0][event.data.domEvent["$"].code][0]);
+              if (self.keyCodeMap[0][event.data.domEvent["$"].code] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
+                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][1]) + self.qwertyPos;
+                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
                 if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]) {
                   var src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"];
-                  if (self.sessionManager.getFromSessionURL() == "odu" && self.previousTypedKey == "" && /[a-ze̱o̱]+/i.test(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"])) {
+                  if (self.sessionManager.getFromSessionURL() == "odu" && self.previousTypedKey == "" && /[a-ze̱o̱`´]+/i.test(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"])) {
                     self.previousTypedKey = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"];
                   } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) > -1){
                     // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
                     src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"].split("odu")[0] + "odu/" + self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"] + ".png";
+                    //if (/[`´]+/i.test(self.previousTypedKey))
                     self.sessionManager.setActionFromKeyboard("del");
                     self.previousTypedKey = "";
-                  } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) == -1 && /[a-ze̱o̱]+/i.test(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"])) {
+                  } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) == -1 && /[a-ze̱o̱`´]+/i.test(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"])) {
                     self.previousTypedKey = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"];
                   }
                   self.imageAsContent(src);
-                } else {
+                } else if (self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["action"] != "shift") {
                   if (self.typedWord.value != null) {
                       self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
                   } else 
@@ -475,12 +467,12 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                   self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
                   self.sessionManager.typedKeysMap.next(self.typedWord.value);
                 }
-              } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
-                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyPos + 5;
-                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
+              } else if (self.keyCodeMap[0][event.data.domEvent["$"].code] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
+                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][1]) + self.qwertyPos + 5;
+                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
                 if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["src"]) {
                   self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["src"]);
-                } else {
+                } else if (self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["action"] != "shift"){
                   if (self.typedWord.value != null)
                     self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
                   else 
@@ -488,58 +480,42 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                   self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
                   self.sessionManager.typedKeysMap.next(self.typedWord.value);
                 }
-              } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == true && event.data.keyCode < 2228224) {
-                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.altGrPos;
-                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-                if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["src"]) {
-                  self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["src"]);
-                } else {
-                  if (self.typedWord.value != null)
-                    self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
-                  else 
-                    self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
-                  self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
-                  self.sessionManager.typedKeysMap.next(self.typedWord.value);
-                }
-              } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == true && event.data.keyCode < 2228224) {
-                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.altGrPos + 5;
-                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-                if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["src"]) {
-                  self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["src"]);
-                } else {
-                  if (self.typedWord.value != null)
-                    self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
-                  else 
-                    self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
-                  self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
-                  self.sessionManager.typedKeysMap.next(self.typedWord.value);
-                }
-              } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == false && self.sessionManager.itemTransliterate.value == true && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
-                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyTranPos;
-                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-                if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["src"]) {
-                  self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["src"]);
-                } else {
-                  if (self.typedWord.value != null)
-                    self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
-                  else 
-                    self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
-                  self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
-                  self.sessionManager.typedKeysMap.next(self.typedWord.value);
-                }
-              } else if (self.keyCodeMap[0][event.data.keyCode] && self.sessionManager.itemQwertyType.value == false && self.sessionManager.itemTransliterate.value == true && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
-                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][1]) + self.qwertyTranPos + 5;
-                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.keyCode][0]);
-                if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["src"]) {
-                  self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["src"]);
-                } else {
-                  if (self.typedWord.value != null)
-                    self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
-                  else 
-                    self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
-                  self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
-                  self.sessionManager.typedKeysMap.next(self.typedWord.value);
-                }
+              } else if (self.keyCodeMap[0][event.data.domEvent["$"].code] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == true && event.data.keyCode < 2228224) {
+                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][1]) + self.altGrPos;
+                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
+                if (self.typedWord.value != null)
+                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
+                else 
+                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
+                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
+                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+              } else if (self.keyCodeMap[0][event.data.domEvent["$"].code] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == true && event.data.keyCode < 2228224) {
+                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][1]) + self.altGrPos + 5;
+                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
+                if (self.typedWord.value != null)
+                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
+                else 
+                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
+                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
+                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+              } else if (self.keyCodeMap[0][event.data.domEvent["$"].code] && self.sessionManager.itemQwertyType.value == false && self.sessionManager.itemTransliterate.value == true && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
+                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][1]) + self.qwertyTranPos;
+                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
+                if (self.typedWord.value != null)
+                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
+                else 
+                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
+                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
+                self.sessionManager.typedKeysMap.next(self.typedWord.value);
+              } else if (self.keyCodeMap[0][event.data.domEvent["$"].code] && self.sessionManager.itemQwertyType.value == false && self.sessionManager.itemTransliterate.value == true && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
+                rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][1]) + self.qwertyTranPos + 5;
+                columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
+                if (self.typedWord.value != null)
+                  self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
+                else 
+                  self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
+                self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
+                self.sessionManager.typedKeysMap.next(self.typedWord.value);
               }
             } else if (event.data.domEvent["$"].key == " ") {
               self.typedWord.next("");
@@ -737,6 +713,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         } else {
           this.fireOnce = true;
         }
+        if (this.sessionManager.getFromSessionURL() == "odu" && /[`´]/.test(character))
+          this.previousTypedKey = character;
       }
     });
 
@@ -990,7 +968,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
 
   imageAsContent(action) {
     if (action) {
-      this.ckeditorContent = this.ckeditorContent + "<img width='15px' height='20px' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
+      this.ckeditorContent = this.ckeditorContent + "<img width='15px' height=" + (/[`´]+/i.test(action) ? '23px' : '20px') + " src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
       this.contentToEditor();
     }
   }

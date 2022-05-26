@@ -30,7 +30,7 @@ export class SessionManagerService {
   itemAltGrKeyPressed = new BehaviorSubject(false);
   itemShiftKeyPressed2 = new BehaviorSubject(false);
   itemAltGrKeyPressed2 = new BehaviorSubject(false);
-  itemAltGrExists = new BehaviorSubject(false);
+  itemAltGrCapsExists = new BehaviorSubject(false);
   itemCtrlKeyPressed = new BehaviorSubject(false);
   itemTransliterate = new BehaviorSubject(false);
   itemTypewriterExists = new BehaviorSubject(false);
@@ -800,7 +800,7 @@ export class SessionManagerService {
       fontSize: this.preventInputFieldForAttacks(localStorage.getItem('fontSize')),
       qwertyUsed: (localStorage.getItem('qwertyStyle')? this.preventInputFieldForAttacks(localStorage.getItem('qwertyStyle')): 'false'),
       translateUsed: (localStorage.getItem('transliterate')? this.preventInputFieldForAttacks(localStorage.getItem('transliterate')): 'false'),
-      locationOfSession: getLocation(),
+      //locationOfSession: getLocation(),
       deviceScreenSizeX: window.outerWidth,
       deviceScreenSizeY: window.outerHeight,
       browser: sBrowser,

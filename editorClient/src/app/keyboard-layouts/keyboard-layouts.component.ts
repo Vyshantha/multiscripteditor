@@ -1206,7 +1206,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   // Words Suggestion for All Supported Languages
   supportedLanguages : string[] = ['af','am','ar','az','bak','be','befr','bg','bn','bopo','br','brah','bs','bsk','ca','ceb','co','cs','cy','da','de','el','en','engb','enin','enintl','enus','eo','es','esmx','et','eu','fa','fi','fj','fo','fr','frca','fy','ga','gd','gl','gn','goth','gu','gv','ha','haw','he','hi','hmn','hr','ht','hu','hy','id','ig','ilo','is','it','ja','jv','ka','kk','km','kn','ko','gom','kon','ku','kw','ky','la','lb','lfn','ln','lo','lt','lv','mg','mi','mk','ml','mn','mr','ms','mt','my','nag','ne','nl','nld','no','ny','nya','oji','or','pa','pin','pl','ps','pt','ptbr','qu','rn','ro','rom','ru','rw','sa','sank','sd','si','sk','sl','sm','sn','so','sq','sr','st','su','sun','sv','sw','ta','te','tfng','tg','th','tk','tl','tpi','tr','tt','ty','ug','uk','ur','uz','vi','xh','yi','yo','zhcn','zhtw','zu'];
 
-  diphthongsMappingOduduwa : string[] = ["diba","die̱","dilo̱","dio̱","dire","diu","diwu","eba","ee̱","elo̱","eo̱","ere","eu","ewu","huba","hue̱","hulo̱","huo̱","hure","huu","huwu","iba","ie̱","ilo̱","io̱","ire","iu","iwu","miba","mie̱","milo̱","mio̱","mire","miu","miwu","niba","nie̱","nilo̱","nio̱","nire","niu","niwu","oba","oe̱","olo̱","oo̱","ore","ou","owu"];
+  diphthongsMappingOduduwa : string[] = ["diba","die̱","dilo̱","dio̱","dire","diu","diwu","eba","ee̱","elo̱","eo̱","ere","eu","ewu","huba","hue̱","hulo̱","huo̱","hure","huu","huwu","iba","ie̱","ilo̱","io̱","ire","iu","iwu","miba","mie̱","milo̱","mio̱","mire","miu","miwu","niba","nie̱","nilo̱","nio̱","nire","niu","niwu","oba","oe̱","olo̱","oo̱","ore","ou","owu","´a","a´","`a","a`","´e","e´","`e","e`","´e̱","e̱´","`e̱","e̱`","´i","i´","i`","`i","mi´","´mi","`mi","mi`","´ni","ni´","`ni","ni`","´o","o´","`o","o`","´o̱","o̱´","`o̱","o̱`","´u","u´","`u","u`"];
 
   diacritics: any = {
     a: [{"˝": "a̋"},{"˵": "ȁ"},{"`": "à"},{"´": "á"},{"^": "â"},{"˚": "å"},{"~": "ã"},{"ˉ": "ā"},{"˛": "ą"},{"¨": "ä"},{"ˇ": "ǎ"}],
@@ -2081,9 +2081,9 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     });
     this.altGrCapsExists = (this.layoutCurrentKeys)? this.layoutCurrentKeys.some(x => x.hasOwnProperty('altGrCaps')) : false;
     if (this.altGrCapsExists == true)
-      this.sessionManager.itemAltGrExists.next(true);
+      this.sessionManager.itemAltGrCapsExists.next(true);
     else
-      this.sessionManager.itemAltGrExists.next(false);
+      this.sessionManager.itemAltGrCapsExists.next(false);
 
     if (this.layoutCurrentKeys && this.layoutCurrentKeys.some(x => x.hasOwnProperty('qwerty')) == true) {
       this.sessionManager.setAvalabilityOfTypewriter(true);
@@ -3698,9 +3698,9 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       }
     } else if (action === "altGr") {
       if (this.sessionManager.itemShiftKeyPressed.value == false) {
-        if (this.sessionManager.itemAltGrKeyPressed.value == false && this.altGrCapsExists)
+        if (this.sessionManager.itemAltGrKeyPressed.value == false)
           this.sessionManager.setAltGrKeyPressed(true);
-        else if (this.sessionManager.itemAltGrKeyPressed.value == true && this.altGrCapsExists)
+        else if (this.sessionManager.itemAltGrKeyPressed.value == true)
           this.sessionManager.setAltGrKeyPressed(false);
       } else if (this.sessionManager.itemShiftKeyPressed.value == true) {
         if (this.sessionManager.itemAltGrKeyPressed.value == false && this.altGrCapsExists)
@@ -3806,15 +3806,16 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setActionFromKeyboard(action);
     } else if (action === "contextmenu" && value === "☰") {
       this.sessionManager.setActionFromKeyboard(action);
-    } else if (src != "" && src != undefined && this.showImageGlyph) {
-      if (this.sessionManager.getFromSessionURL() == "odu" && this.previousTypedKey == "" && /[a-ze̱o̱]+/i.test(value)) {
+    } else if (src && this.showImageGlyph) {
+      if (this.sessionManager.getFromSessionURL() == "odu" && this.previousTypedKey == "" && /[a-ze̱o̱`´]+/i.test(value)) {
         this.previousTypedKey = value;
       } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.previousTypedKey + value) > -1){
         // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
         src = src.split("odu")[0] + "odu/" + this.previousTypedKey + value + ".png";
+        //if (/[`´]+/i.test(this.previousTypedKey))
         this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
         this.previousTypedKey = "";
-      } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.previousTypedKey + value) == -1 && /[a-ze̱o̱]+/i.test(value)) {
+      } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.previousTypedKey + value) == -1 && /[a-ze̱o̱`´]+/i.test(value)) {
         this.previousTypedKey = value;
       }
       this.sessionManager.setActionFromKeyboard(src);
@@ -3824,6 +3825,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setCharFromKeyboard(value);
       this.sessionManager.setActionFromKeyboard(action);
       this.typedWord.next(this.typedWord.value + value);
+      if (this.sessionManager.getFromSessionURL() == "odu" && /[`´]/.test(value))
+        this.previousTypedKey = value;
     } else {
       if (this.sessionManager.itemSessionURL.value == "iub") {
         value = (value.indexOf(" ") > -1) ? value.split(' ')[1] : value;
