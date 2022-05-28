@@ -302,7 +302,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
 
     this.fullmodeCkEditor.instance.on( 'key', ( event ) => {
-      if (self.noSoftKeyboard == false) {
+      if (event.data.domEvent["$"].key != "Escape" && self.noSoftKeyboard == false) {
         let controlActionKey = false;
         // Ensure Cursor focus moved back to Editor
         if (event.data.keyCode == 1114129 || event.data.keyCode == 1114336) {
@@ -675,7 +675,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
 
     this.sessionManager.itemKeyCharacter.subscribe((character) => {
       if (this.noSoftKeyboard == false) {
-        // Inserting Character at Cursor Position
+        // Inserting Character at Cursor Position : TODO Cursor position
         if (this.sessionManager.getSessionSavedContent() && parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) == 0 && this.position != "∞") {
           this.ckeditorContent = this.sessionManager.getSessionSavedContent().substring(0, parseFloat(this.rowPos) + 1) + character + this.sessionManager.getSessionSavedContent().substring(parseFloat(this.rowPos) + 1, this.sessionManager.getSessionSavedContent().length);
           this.charInserted = true;
