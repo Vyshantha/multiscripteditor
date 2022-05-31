@@ -27,6 +27,7 @@ export class SessionManagerService {
   itemKeyAction = new BehaviorSubject('');
   imageWidthAction = new BehaviorSubject('16px');
   itemElement = new BehaviorSubject([]);
+  currentPressedKey = new BehaviorSubject('');
   itemShiftKeyPressed = new BehaviorSubject(false);
   itemAltGrKeyPressed = new BehaviorSubject(false);
   itemShiftKeyPressed2 = new BehaviorSubject(false);

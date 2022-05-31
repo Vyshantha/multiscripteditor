@@ -514,6 +514,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                   self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
                   self.sessionManager.typedKeysMap.next(self.typedWord.value);
                 }
+                self.sessionManager.currentPressedKey.next(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
               } else if (self.keyCodeMap[0][event.data.domEvent["$"].code] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][1]) + self.qwertyPos + 5;
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
@@ -527,6 +528,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                   self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
                   self.sessionManager.typedKeysMap.next(self.typedWord.value);
                 }
+                self.sessionManager.currentPressedKey.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
               } else if (self.keyCodeMap[0][event.data.domEvent["$"].code] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == true && event.data.keyCode < 2228224) {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][1]) + self.altGrPos;
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
@@ -536,6 +538,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                   self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
                 self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
                 self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                self.sessionManager.currentPressedKey.next(self.layoutCurrentKeys[rowForSoftKey]["altGr"][columnForSoftKey]["value"]);
               } else if (self.keyCodeMap[0][event.data.domEvent["$"].code] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == true && event.data.keyCode < 2228224) {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][1]) + self.altGrPos + 5;
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
@@ -545,6 +548,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                   self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
                 self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
                 self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                self.sessionManager.currentPressedKey.next(self.layoutCurrentKeys[rowForSoftKey]["altGrCaps"][columnForSoftKey]["value"]);
               } else if (self.keyCodeMap[0][event.data.domEvent["$"].code] && self.sessionManager.itemQwertyType.value == false && self.sessionManager.itemTransliterate.value == true && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][1]) + self.qwertyTranPos;
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
@@ -554,6 +558,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                   self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
                 self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
                 self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                self.sessionManager.currentPressedKey.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyTrans"][columnForSoftKey]["value"]);
               } else if (self.keyCodeMap[0][event.data.domEvent["$"].code] && self.sessionManager.itemQwertyType.value == false && self.sessionManager.itemTransliterate.value == true && self.sessionManager.itemShiftKeyPressed.value == true && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][1]) + self.qwertyTranPos + 5;
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
@@ -563,12 +568,14 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                   self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
                 self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
                 self.sessionManager.typedKeysMap.next(self.typedWord.value);
+                self.sessionManager.currentPressedKey.next(self.layoutCurrentKeys[rowForSoftKey]["qwertyShiftTrans"][columnForSoftKey]["value"]);
               }
             } else if (event.data.domEvent["$"].key == " ") {
               self.typedWord.next("");
               self.possibleCombine = "";
               self.previousTypedKey = "";
               self.mappedSpaceClicked = true;
+              self.sessionManager.currentPressedKey.next(" ");
               setTimeout(() => {
                 self.sessionManager.setCharFromKeyboard(self.wordSeparator());
               }, self.FOCUS_TIMEOUT);
@@ -579,12 +586,14 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                 self.sessionManager.typedKeysMap.next(self.sessionManager.typedKeysMap.value.substring(0, self.sessionManager.typedKeysMap.value.length - 1));
                 self.typedWord.next(self.sessionManager.typedKeysMap.value);
               }
+              self.sessionManager.currentPressedKey.next("⌫");
             } else if (event.data.domEvent["$"].key == "Enter") {
               self.sessionManager.setCharFromKeyboard("<br/>");
               if (self.sessionManager.typedKeysMap.value && self.sessionManager.typedKeysMap.value != null) {
                 self.sessionManager.typedKeysMap.next(self.sessionManager.typedKeysMap.value.substring(0, self.sessionManager.typedKeysMap.value.length - 1));
                 self.typedWord.next(self.sessionManager.typedKeysMap.value);
               }
+              self.sessionManager.currentPressedKey.next("⏎");
             }
           } else {
             if (event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && self.menuKeyPressed == false)

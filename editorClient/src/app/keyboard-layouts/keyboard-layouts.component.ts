@@ -1316,6 +1316,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   unclassifiedLayer: any;
 
   sliderWidth: string = "0px";
+  whichMappedKey: string = "";
   previousTypedKey =  "";
   possibleCombine = "";
 
@@ -2094,8 +2095,12 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     if (this.allowSuperScript && (this.isQwerty || this.isTransliterate))
       this.setSuperPosition();
     
-    this.sessionManager.itemOfflineOnly.subscribe((value)=> {
+    this.sessionManager.itemOfflineOnly.subscribe((value) => {
       this.onlineService = !value;
+    });
+
+    this.sessionManager.currentPressedKey.subscribe((value) => {
+      this.whichMappedKey = value;
     });
   }
 
@@ -3918,6 +3923,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.diacriticTyped = "";
       }
     }
+    this.whichMappedKey = "";
   }
 
   selectTargetTransliteration(event, targetScript) {
