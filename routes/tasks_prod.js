@@ -726,10 +726,10 @@ const certPath = path.join(__dirname, `${properties.get('ssl.cert.path')}`);
 var server_config = {
     key : fs.readFileSync(keyPath, 'utf8'), // file location of private key
     cert: fs.readFileSync(certPath, 'utf8') // file location of SSL cert
-};*/
+};
 
 // create the HTTPS server on port 5555
-/*var https_server = https.createServer(server_config, appSSL).listen(portSSL, function(err){
+var https_server = https.createServer(server_config, appSSL).listen(portSSL, function(err){
     console.info(`[MULTISCRIPTEDITOR] Node.js Express HTTPS Server Listening on Port ${portSSL}`);
 });*/
 

@@ -81,7 +81,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
   // Keyboard Mapping Template based on https://www.w3.org/TR/uievents-code/#key-alphanumeric-writing-system
   keyCodeMap = [{"Backquote": ["0", "0"], "Digit1": ["1", "0"], "Digit2": ["2", "0"], "Digit3": ["3", "0"], "Digit4": ["4", "0"], "Digit5": ["5", "0"], "Digit6": ["6", "0"], "Digit7": ["7", "0"], "Digit8": ["8", "0"], "Digit9": ["9", "0"], "Digit0": ["10", "0"], "Minus": ["11", "0"], "Equal": ["12", "0"], "IntlYen": ["13", "0"], "Backspace": ["14", "0"], "Tab": ["0", "1"], "KeyQ": ["1", "1"], "KeyW": ["2", "1"], "KeyE": ["3", "1"], "KeyR": ["4", "1"], "KeyT": ["5", "1"], "KeyY": ["6", "1"], "KeyU": ["7", "1"], "KeyI": ["8", "1"], "KeyO": ["9", "1"], "KeyP": ["10", "1"], "BracketLeft": ["11", "1"], "BracketRight": ["12", "1"], "Backslash": ["13", "1"], "CapsLock": ["-1", "2"], "KeyA": ["0", "2"], "KeyS": ["1", "2"], "KeyD": ["2", "2"], "KeyF": ["3", "2"], "KeyG": ["4", "2"], "KeyH": ["5", "2"], "KeyJ": ["6", "2"], "KeyK": ["7", "2"], "KeyL": ["8", "2"], "Semicolon": ["9", "2"], "Quote": ["10", "2"], "Back slash": ["11", "2"], "Enter": ["12", "2"], "ShiftLeft": ["0", "3"], "IntlBackslash": ["1", "3"], "KeyZ": ["2", "3"], "KeyX": ["3", "3"], "KeyC": ["4", "3"], "KeyV": ["5", "3"], "KeyB": ["6", "3"], "KeyN": ["7", "3"], "KeyM": ["8", "3"], "Comma": ["9", "3"], "Period": ["10", "3"], "Slash": ["11", "3"], "ShiftRight": ["0", "3"], "ControlLeft": ["0", "4"], "AltLeft": ["1", "4"], "Space": ["2", "4"], "ArrowLeft": ["5", "4"], "ArrowUp": ["6", "4"], "ArrowRight": ["7", "4"], "ArrowDown": ["8", "4"], "AltRight": ["1", "4"], "ControlRight": ["0", "4"]}];
 
-  diphthongsMappingOduduwa : string[] = ["diba","die̱","dilo̱","dio̱","dire","diu","diwu","eba","ee̱","elo̱","eo̱","ere","eu","ewu","huba","hue̱","hulo̱","huo̱","hure","huu","huwu","iba","ie̱","ilo̱","io̱","ire","iu","iwu","miba","mie̱","milo̱","mio̱","mire","miu","miwu","niba","nie̱","nilo̱","nio̱","nire","niu","niwu","oba","oe̱","olo̱","oo̱","ore","ou","owu","´a","a´","`a","a`","´e","e´","`e","e`","´e̱","e̱´","`e̱","e̱`","´i","i´","i`","`i","mi´","´mi","`mi","mi`","´ni","ni´","`ni","ni`","´o","o´","`o","o`","´o̱","o̱´","`o̱","o̱`","´u","u´","`u","u`"];
+  diphthongsMappingOduduwa : string[] = ["diba","die̱","dilo̱","dio̱","dire","diu","diwu","eba","ee̱","elo̱","eo̱","ere","eu","ewu","huba","hue̱","hulo̱","huo̱","hure","huu","huwu","iba","ie̱","ilo̱","io̱","ire","iu","iwu","miba","mie̱","milo̱","mio̱","mire","miu","miwu","niba","nie̱","nilo̱","nio̱","nire","niu","niwu","oba","oe̱","olo̱","oo̱","ore","ou","owu","´a","a´","`a","a`","´e","e´","`e","e`","´e̱","e̱´","`e̱","e̱`","´i","i´","i`","`i","mi´","´mi","`mi","mi`","´ni","ni´","`ni","ni`","´o","o´","`o","o`","´o̱","o̱´","`o̱","o̱`","´u","u´","`u","u`","`eba","`ee̱","`elo̱","`eo̱","`ere","`eu","`ewu","´e´e̱","´e´o̱","´e´u","´e´wu","´eba","´ee̱","´elo̱","´eo̱","´ere","´eu","´ewu","´oba","´oe̱","´olo̱","´oo̱","´ore","´ou","´owu"];
 
   topToBottomLR: string[] = ['sog', 'oira', 'mon', 'phag', 'mnc', 'galk', 'shui', 'soyo', 'kits', 'kitl', 'sgnw'];
   topToBottomRL: string[] = ['zhcn', 'zhtw', 'ja', 'ko', 'nshu', 'idu', 'mero', 'chun', 'kuli', 'txg', 'indus', 'khit'];
@@ -104,10 +104,15 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
   mouseclickEvent: any;
 
   previousTypedKey =  "";
+  possibleCombine = "";
 
   position: any = "∞";
   rowPos: any;
   colPos: any;
+  FOCUS_TIMEOUT : number = 100;
+  POPUP_TIMEOUT : number = 100;
+  SHOW_POPUP_TIMEOUT : number = 1000;
+  INITIAL_LOAD_TIMEOUT : number = 1000;
 
   translateForSnackBar: string[] = [];
 
@@ -128,6 +133,26 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     "ur": ["@font-face {font-family: 'Noto Nastaliq Urdu';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-nastaliq-urdu/files/noto-nastaliq-urdu-arabic-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-nastaliq-urdu/files/noto-nastaliq-urdu-arabic-400-normal.woff') format('woff');} body {font-family: 'Noto Nastaliq Urdu'}"],
     "indus": ["@font-face {font-family: 'indus-script'; src:url('./../../assets/font-families/indus-script/IS/indus-script.eot');src:url('./../../assets/font-families/indus-script/IS/indus-script.eot?#iefix') format('embedded-opentype'),url('./../../assets/font-families/indus-script/IS/indus-script.woff') format('woff'),url('./../../assets/font-families/indus-script/IS/indus-script.ttf') format('truetype'),url('./../../assets/font-families/indus-script/IS/indus-script.svg#indus-script') format('svg');font-weight: normal;font-style: normal;} body {font-family: 'indus-script'}"]
   };
+
+  /* CKEditor functionality
+    * Scenario 1 : Input with Mouse Click > Event Flow for both Soft Keyboard or Suggestions
+      character action > change event > change (conditional)
+
+    * Scenario 2 : Input with Keyboard Press > Event Flow
+      key event > character action >  change event > change (conditional)
+
+    * Scenario 3 : Modify Size or Style of Letter or Word in Editor
+      change event > change (conditional)
+
+    * Scenario 4 : Click on Editor
+      contentdom/click event > change event > cursor position map update : TODO
+
+    * Data Storage & While Events occur
+      this.fullmodeCkEditor.instance.getData() / setData(data)
+      this.sessionManager.getSessionSavedContent()
+      this.ckeditorContent
+      event.editor["_"]["data"]
+  */
 
   constructor(private sessionManager: SessionManagerService, private http: HttpClient, private _snackBar: MatSnackBar) { 
     // The toolbar groups arrangement, optimized for two toolbar rows.
@@ -281,6 +306,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         self.position = self.positionCalculator();
         self.rowPos = self.position.split(",")[0];
         self.colPos = self.position.split(",")[1];
+        // TODO - Cursor Position Map Update
         console.log(event)
       });
       const isBrowserTabInView = () => document.hidden;
@@ -297,11 +323,12 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
             self.deletePressed = false;
             self.charInserted = false;
           }
-        }, 100);
+        }, self.FOCUS_TIMEOUT);
       }
     });
 
     this.fullmodeCkEditor.instance.on( 'key', ( event ) => {
+      // TODO - Cursor Position Map Update
       if (event.data.domEvent["$"].key != "Escape" && self.noSoftKeyboard == false) {
         let controlActionKey = false;
         // Ensure Cursor focus moved back to Editor
@@ -321,7 +348,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                 event.editor.getSelection().selectRanges( [ range ] );
             }
           }
-        }, 100);
+        }, self.FOCUS_TIMEOUT);
         if (self.sessionManager.itemCtrlKeyPressed.value == true) {
           // Action to be done after Control
           if (event.data.keyCode == 88 || event.data.keyCode == 1114200) {
@@ -399,20 +426,20 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                 setTimeout(() => {
                   self.sessionManager.setShiftKeyPressed(true);
                   self._snackBar.open(self.translateForSnackBar[2], self.translateForSnackBar[0], {
-                    duration: 1000,
+                    duration: self.SHOW_POPUP_TIMEOUT,
                     horizontalPosition: self.horizontalPosition,
                     verticalPosition: self.verticalPosition,
                   });
-                }, 100);
+                }, self.POPUP_TIMEOUT);
               } else if (self.sessionManager.itemShiftKeyPressed.value == true) {
                 setTimeout(() => {
                   self.sessionManager.setShiftKeyPressed(false);
                   self._snackBar.open(self.translateForSnackBar[3], self.translateForSnackBar[0], {
-                    duration: 1000,
+                    duration: self.SHOW_POPUP_TIMEOUT,
                     horizontalPosition: self.horizontalPosition,
                     verticalPosition: self.verticalPosition,
                   });
-                }, 100);
+                }, self.POPUP_TIMEOUT);
               }
               // Blur and Focus invent to change Shift layout for Keyboard
               self.fullmodeCkEditor.instance.focusManager.blur(true);
@@ -422,20 +449,20 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                 setTimeout(() => {
                   self.sessionManager.setAltGrKeyPressed(true);
                   self._snackBar.open(self.translateForSnackBar[4], self.translateForSnackBar[0], {
-                    duration: 1000,
+                    duration: self.SHOW_POPUP_TIMEOUT,
                     horizontalPosition: self.horizontalPosition,
                     verticalPosition: self.verticalPosition,
                   });
-                }, 100);
+                }, self.POPUP_TIMEOUT);
               } else if (self.sessionManager.itemAltGrKeyPressed.value == true) {
                 setTimeout(() => {
                   self.sessionManager.setAltGrKeyPressed(false);
                   self._snackBar.open(self.translateForSnackBar[5], self.translateForSnackBar[0], {
-                    duration: 1000,
+                    duration: self.SHOW_POPUP_TIMEOUT,
                     horizontalPosition: self.horizontalPosition,
                     verticalPosition: self.verticalPosition,
                   });
-                }, 100);
+                }, self.POPUP_TIMEOUT);
               }
               // Blur and Focus invent to change Shift layout for Keyboard
               self.fullmodeCkEditor.instance.focusManager.blur(true);
@@ -447,12 +474,18 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
                 if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]) {
                   var src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"];
-                  if (self.sessionManager.getFromSessionURL() == "odu" && self.previousTypedKey == "" && /[a-ze̱o̱`´]+/i.test(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"])) {
+                  if (self.sessionManager.getFromSessionURL() == "odu" && self.previousTypedKey == "" && /[a-ze̱o̱`´]+/i.test(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) && self.possibleCombine == "") {
                     self.previousTypedKey = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"];
+                  } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.possibleCombine + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) > -1 && self.possibleCombine != ""){
+                    // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
+                    src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"].split("odu")[0] + "odu/" + self.possibleCombine + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"] + ".png";
+                    self.sessionManager.setActionFromKeyboard("del");
+                    self.possibleCombine = "";
                   } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) > -1){
                     // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
                     src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"].split("odu")[0] + "odu/" + self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"] + ".png";
-                    //if (/[`´]+/i.test(self.previousTypedKey))
+                    if (/[`´]+/i.test(self.previousTypedKey))
+                      self.possibleCombine = self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"];
                     self.sessionManager.setActionFromKeyboard("del");
                     self.previousTypedKey = "";
                   } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) == -1 && /[a-ze̱o̱`´]+/i.test(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"])) {
@@ -522,7 +555,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
               self.mappedSpaceClicked = true;
               setTimeout(() => {
                 self.sessionManager.setCharFromKeyboard(self.wordSeparator());
-              }, 100);
+              }, self.FOCUS_TIMEOUT);
             } else if (event.data.domEvent["$"].key == "Backspace") {
               // Do action based on Cursor position
               self.sessionManager.setActionFromKeyboard("del");
@@ -547,7 +580,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
               self.mappedSpaceClicked = true;
               setTimeout(() => {
                 self.sessionManager.setCharFromKeyboard(self.wordSeparator());
-              }, 100);
+              }, self.FOCUS_TIMEOUT);
             } else if (event.data.domEvent["$"].key == "Backspace") {
               // Do action based on Cursor position
               self.sessionManager.setActionFromKeyboard("del");
@@ -566,20 +599,20 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                 setTimeout(() => {
                   self.sessionManager.setShiftKeyPressed(true);
                   self._snackBar.open(self.translateForSnackBar[2], self.translateForSnackBar[0], {
-                    duration: 1000,
+                    duration: self.SHOW_POPUP_TIMEOUT,
                     horizontalPosition: self.horizontalPosition,
                     verticalPosition: self.verticalPosition,
                   });
-                }, 100);
+                }, self.POPUP_TIMEOUT);
               } else if (self.sessionManager.itemShiftKeyPressed.value == true) {
                 setTimeout(() => {
                   self.sessionManager.setShiftKeyPressed(false);
                   self._snackBar.open(self.translateForSnackBar[3], self.translateForSnackBar[0], {
-                    duration: 1000,
+                    duration: self.SHOW_POPUP_TIMEOUT,
                     horizontalPosition: self.horizontalPosition,
                     verticalPosition: self.verticalPosition,
                   });
-                }, 100);
+                }, self.POPUP_TIMEOUT);
               }
               // Blur and Focus invent to change Shift layout for Keyboard
               self.fullmodeCkEditor.instance.focusManager.blur(true);
@@ -600,6 +633,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
 
     this.fullmodeCkEditor.instance.on( 'change', ( event ) => {
+      // TODO - Cursor Position Map Update
       if (self.noSoftKeyboard == false) {
         let content = self.fullmodeCkEditor.instance.getData();
         if (typeof(content) == 'string' && self.mappedSpaceClicked == true && self.pasteContentSetToEditor == true && (self.sessionManager.itemKeyCharacter.value == null || self.sessionManager.itemKeyCharacter.value == "  " || self.sessionManager.itemKeyCharacter.value == " " || self.sessionManager.itemKeyCharacter.value == "")) {
@@ -621,7 +655,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
               self.deletePressed = false;
               self.charInserted = false;
             }
-          }, 100);
+          }, self.FOCUS_TIMEOUT);
           event.stop();
         }
         // Ensure Cursor focus moved back to Editor
@@ -640,12 +674,13 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
           }
           self.mappedSpaceClicked = false;
           self.pasteContentSetToEditor = false;
-        }, 100);
+        }, self.FOCUS_TIMEOUT);
       }
     });
     
     // Handling the "Paste" prevention code into Browser
     this.fullmodeCkEditor.instance.on( 'instanceReady', (event) => {
+      // TODO - Cursor Position Map Update
       event.editor.on("beforeCommandExec", function(event) {
           // Show the paste dialog for the paste buttons and right-click paste
           if (event.data.name == "paste") {
@@ -968,7 +1003,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
 
   imageAsContent(action) {
     if (action) {
-      this.ckeditorContent = this.ckeditorContent + "<img width='15px' height=" + (/[`´]+/i.test(action) ? '23px' : '20px') + " src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
+      this.ckeditorContent = this.ckeditorContent + "<img width='15px' height='" + (/[`´]+/i.test(action) ? "23px" : "20px") + "' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
       this.contentToEditor();
     }
   }
@@ -977,7 +1012,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     this.sessionManager.setSessionSavingOfContent(this.ckeditorContent);
     setTimeout(() => {
       this.fullmodeCkEditor.instance.setData(this.sessionManager.getSessionSavedContent());
-    }, 100);
+    }, this.FOCUS_TIMEOUT);
   }
 
   async translateSnackBars() {
@@ -1060,7 +1095,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         if (event.editor.getSelection())
           event.editor.getSelection().selectRanges( [ range ] );  
       }
-    }, 1000);
+    }, this.INITIAL_LOAD_TIMEOUT);
   }
 
   wordSeparator() {
