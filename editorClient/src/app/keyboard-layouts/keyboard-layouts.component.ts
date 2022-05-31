@@ -3810,6 +3810,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     } else if (action === "contextmenu" && value === "☰") {
       this.sessionManager.setActionFromKeyboard(action);
     } else if (src && this.showImageGlyph) {
+      this.sessionManager.imageWidthAction.next("16px");
       if (this.sessionManager.getFromSessionURL() == "odu" && this.previousTypedKey == "" && /[a-ze̱o̱`´]+/i.test(value) && this.possibleCombine == "") {
         this.previousTypedKey = value;
       } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.possibleCombine + value) > -1 && this.possibleCombine != "" && /[a-ze̱o̱`´]+/i.test(this.previousTypedKey) == false){
@@ -3817,6 +3818,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         src = src.split("odu")[0] + "odu/" + this.possibleCombine + value + ".png";
         this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
         this.possibleCombine = "";
+        this.sessionManager.imageWidthAction.next("24px");
       } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.possibleCombine + this.previousTypedKey + value) > -1 && this.possibleCombine != "" && /[a-ze̱o̱`´]+/i.test(this.previousTypedKey)){
         // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
         src = src.split("odu")[0] + "odu/" + this.possibleCombine + this.previousTypedKey + value + ".png";
@@ -3824,11 +3826,16 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
         this.possibleCombine = "";
         this.previousTypedKey = "";
+        this.sessionManager.imageWidthAction.next("24px");
       } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.previousTypedKey + value) > -1){
         // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
         src = src.split("odu")[0] + "odu/" + this.previousTypedKey + value + ".png";
-        if (/[`´]+/i.test(this.previousTypedKey))
+        if (/[`´]+/i.test(this.previousTypedKey)) {
           this.possibleCombine = this.previousTypedKey + value;
+          this.sessionManager.imageWidthAction.next("16px");
+        } else {
+          this.sessionManager.imageWidthAction.next("24px");
+        }
         this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
         this.previousTypedKey = "";
       } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.previousTypedKey + value) == -1 && /[a-ze̱o̱`´]+/i.test(value)) {

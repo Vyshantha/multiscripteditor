@@ -25,6 +25,7 @@ export class SessionManagerService {
   itemUILocale = new BehaviorSubject('English');
   itemKeyCharacter = new BehaviorSubject('');
   itemKeyAction = new BehaviorSubject('');
+  imageWidthAction = new BehaviorSubject('16px');
   itemElement = new BehaviorSubject([]);
   itemShiftKeyPressed = new BehaviorSubject(false);
   itemAltGrKeyPressed = new BehaviorSubject(false);

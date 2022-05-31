@@ -474,6 +474,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
                 if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"]) {
                   var src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"];
+                  let wide = "16px";
                   if (self.sessionManager.getFromSessionURL() == "odu" && self.previousTypedKey == "" && /[a-ze̱o̱`´]+/i.test(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) && self.possibleCombine == "") {
                     self.previousTypedKey = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"];
                   } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.possibleCombine + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) > -1 && self.possibleCombine != "" && /[a-ze̱o̱`´]+/i.test(self.previousTypedKey) == false){
@@ -481,6 +482,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                     src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"].split("odu")[0] + "odu/" + self.possibleCombine + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"] + ".png";
                     self.sessionManager.setActionFromKeyboard("del");
                     self.possibleCombine = "";
+                    wide = "24px";
                   } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.possibleCombine + self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) > -1 && self.possibleCombine != "" && /[a-ze̱o̱`´]+/i.test(self.previousTypedKey)){
                     // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
                     src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"].split("odu")[0] + "odu/" + self.possibleCombine + self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"] + ".png";
@@ -488,17 +490,22 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                     self.sessionManager.setActionFromKeyboard("del");
                     self.possibleCombine = "";
                     self.previousTypedKey = "";
+                    wide = "24px";
                   } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) > -1){
                     // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
                     src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"].split("odu")[0] + "odu/" + self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"] + ".png";
-                    if (/[`´]+/i.test(self.previousTypedKey))
+                    if (/[`´]+/i.test(self.previousTypedKey)) {
                       self.possibleCombine = self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"];
+                      wide = "16px";
+                    } else {
+                      wide = "24px";
+                    }
                     self.sessionManager.setActionFromKeyboard("del");
                     self.previousTypedKey = "";
                   } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) == -1 && /[a-ze̱o̱`´]+/i.test(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"])) {
                     self.previousTypedKey = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"];
                   }
-                  self.imageAsContent(src);
+                  self.imageAsContent(src, wide);
                 } else if (self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["action"] != "shift") {
                   if (self.typedWord.value != null) {
                       self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
@@ -511,7 +518,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][1]) + self.qwertyPos + 5;
                 columnForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][0]);
                 if (self.unicode5AndHigher == true && self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["src"]) {
-                  self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["src"]);
+                  self.imageAsContent(self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["src"], "15px");
                 } else if (self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["action"] != "shift"){
                   if (self.typedWord.value != null)
                     self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwertyShift"][columnForSoftKey]["value"]);
@@ -881,7 +888,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
           this.ckeditorContent = this.ckeditorContent + "<img width='50px' height='50px' src='" + action + "'/> ";
           this.contentToEditor();
         } else if (action.indexOf("class") == -1) {
-          this.imageAsContent(action);
+          this.imageAsContent(action, this.sessionManager.imageWidthAction.value);
         } else {
           // Indus Script Font inclusion - Hex Conversion of IS font number
           let hexNum = Number(parseInt(action.split("/")[1].split("-")[1]) + 29).toString(16);
@@ -1012,9 +1019,9 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
   }
 
-  imageAsContent(action) {
+  imageAsContent(action, wide) {
     if (action) {
-      this.ckeditorContent = this.ckeditorContent + "<img width='15px' height='" + (/[`´]+/i.test(action) ? "23px" : "20px") + "' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
+      this.ckeditorContent = this.ckeditorContent + "<img width='" + wide + "' height='" + (/[`´]+/i.test(action) ? "25px" : "20px") + "' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
       this.contentToEditor();
     }
   }
