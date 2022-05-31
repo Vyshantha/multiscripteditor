@@ -476,11 +476,18 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                   var src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"];
                   if (self.sessionManager.getFromSessionURL() == "odu" && self.previousTypedKey == "" && /[a-ze̱o̱`´]+/i.test(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) && self.possibleCombine == "") {
                     self.previousTypedKey = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"];
-                  } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.possibleCombine + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) > -1 && self.possibleCombine != ""){
+                  } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.possibleCombine + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) > -1 && self.possibleCombine != "" && /[a-ze̱o̱`´]+/i.test(self.previousTypedKey) == false){
                     // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
                     src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"].split("odu")[0] + "odu/" + self.possibleCombine + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"] + ".png";
                     self.sessionManager.setActionFromKeyboard("del");
                     self.possibleCombine = "";
+                  } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.possibleCombine + self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) > -1 && self.possibleCombine != "" && /[a-ze̱o̱`´]+/i.test(self.previousTypedKey)){
+                    // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
+                    src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"].split("odu")[0] + "odu/" + self.possibleCombine + self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"] + ".png";
+                    self.sessionManager.setActionFromKeyboard("del");
+                    self.sessionManager.setActionFromKeyboard("del");
+                    self.possibleCombine = "";
+                    self.previousTypedKey = "";
                   } else if (self.sessionManager.getFromSessionURL() == "odu" && self.diphthongsMappingOduduwa.indexOf(self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]) > -1){
                     // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
                     src = self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["src"].split("odu")[0] + "odu/" + self.previousTypedKey + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"] + ".png";
@@ -552,6 +559,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
               }
             } else if (event.data.domEvent["$"].key == " ") {
               self.typedWord.next("");
+              self.possibleCombine = "";
+              self.previousTypedKey = "";
               self.mappedSpaceClicked = true;
               setTimeout(() => {
                 self.sessionManager.setCharFromKeyboard(self.wordSeparator());
@@ -577,6 +586,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
               self.sessionManager.setCharFromKeyboard(event.data.domEvent["$"].key);
             } else if (event.data.domEvent["$"].key == " ") {
               self.typedWord.next("");
+              self.possibleCombine = "";
+              self.previousTypedKey = "";
               self.mappedSpaceClicked = true;
               setTimeout(() => {
                 self.sessionManager.setCharFromKeyboard(self.wordSeparator());

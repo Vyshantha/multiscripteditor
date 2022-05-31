@@ -3727,6 +3727,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       else
         this.sessionManager.setCharFromKeyboard(this.sessionManager.wordSeparator());
       this.typedWord.next("");
+      this.possibleCombine = "";
+      this.previousTypedKey = "";
     } else if (action === "delAlt") {
       this.sessionManager.setActionFromKeyboard(action);
       if (type == "letter")
@@ -3810,11 +3812,18 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     } else if (src && this.showImageGlyph) {
       if (this.sessionManager.getFromSessionURL() == "odu" && this.previousTypedKey == "" && /[a-ze̱o̱`´]+/i.test(value) && this.possibleCombine == "") {
         this.previousTypedKey = value;
-      } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.possibleCombine + value) > -1 && this.possibleCombine != ""){
+      } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.possibleCombine + value) > -1 && this.possibleCombine != "" && /[a-ze̱o̱`´]+/i.test(this.previousTypedKey) == false){
         // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
         src = src.split("odu")[0] + "odu/" + this.possibleCombine + value + ".png";
         this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
         this.possibleCombine = "";
+      } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.possibleCombine + this.previousTypedKey + value) > -1 && this.possibleCombine != "" && /[a-ze̱o̱`´]+/i.test(this.previousTypedKey)){
+        // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
+        src = src.split("odu")[0] + "odu/" + this.possibleCombine + this.previousTypedKey + value + ".png";
+        this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
+        this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
+        this.possibleCombine = "";
+        this.previousTypedKey = "";
       } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.previousTypedKey + value) > -1){
         // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
         src = src.split("odu")[0] + "odu/" + this.previousTypedKey + value + ".png";
