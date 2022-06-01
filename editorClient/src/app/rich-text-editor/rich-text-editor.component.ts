@@ -81,7 +81,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
   // Keyboard Mapping Template based on https://www.w3.org/TR/uievents-code/#key-alphanumeric-writing-system
   keyCodeMap = [{"Backquote": ["0", "0"], "Digit1": ["1", "0"], "Digit2": ["2", "0"], "Digit3": ["3", "0"], "Digit4": ["4", "0"], "Digit5": ["5", "0"], "Digit6": ["6", "0"], "Digit7": ["7", "0"], "Digit8": ["8", "0"], "Digit9": ["9", "0"], "Digit0": ["10", "0"], "Minus": ["11", "0"], "Equal": ["12", "0"], "IntlYen": ["13", "0"], "Backspace": ["14", "0"], "Tab": ["0", "1"], "KeyQ": ["1", "1"], "KeyW": ["2", "1"], "KeyE": ["3", "1"], "KeyR": ["4", "1"], "KeyT": ["5", "1"], "KeyY": ["6", "1"], "KeyU": ["7", "1"], "KeyI": ["8", "1"], "KeyO": ["9", "1"], "KeyP": ["10", "1"], "BracketLeft": ["11", "1"], "BracketRight": ["12", "1"], "Backslash": ["13", "1"], "CapsLock": ["-1", "2"], "KeyA": ["0", "2"], "KeyS": ["1", "2"], "KeyD": ["2", "2"], "KeyF": ["3", "2"], "KeyG": ["4", "2"], "KeyH": ["5", "2"], "KeyJ": ["6", "2"], "KeyK": ["7", "2"], "KeyL": ["8", "2"], "Semicolon": ["9", "2"], "Quote": ["10", "2"], "Back slash": ["11", "2"], "Enter": ["12", "2"], "ShiftLeft": ["0", "3"], "IntlBackslash": ["1", "3"], "KeyZ": ["2", "3"], "KeyX": ["3", "3"], "KeyC": ["4", "3"], "KeyV": ["5", "3"], "KeyB": ["6", "3"], "KeyN": ["7", "3"], "KeyM": ["8", "3"], "Comma": ["9", "3"], "Period": ["10", "3"], "Slash": ["11", "3"], "ShiftRight": ["0", "3"], "ControlLeft": ["0", "4"], "AltLeft": ["1", "4"], "Space": ["2", "4"], "ArrowLeft": ["5", "4"], "ArrowUp": ["6", "4"], "ArrowRight": ["7", "4"], "ArrowDown": ["8", "4"], "AltRight": ["1", "4"], "ControlRight": ["0", "4"]}];
 
-  diphthongsMappingOduduwa : string[] = ["diba","die̱","dilo̱","dio̱","dire","diu","diwu","eba","ee̱","elo̱","eo̱","ere","eu","ewu","huba","hue̱","hulo̱","huo̱","hure","huu","huwu","iba","ie̱","ilo̱","io̱","ire","iu","iwu","miba","mie̱","milo̱","mio̱","mire","miu","miwu","niba","nie̱","nilo̱","nio̱","nire","niu","niwu","oba","oe̱","olo̱","oo̱","ore","ou","owu","´a","a´","`a","a`","´e","e´","`e","e`","´e̱","e̱´","`e̱","e̱`","´i","i´","i`","`i","mi´","´mi","`mi","mi`","´ni","ni´","`ni","ni`","´o","o´","`o","o`","´o̱","o̱´","`o̱","o̱`","´u","u´","`u","u`","`eba","`ee̱","`elo̱","`eo̱","`ere","`eu","`ewu","´e´e̱","´e´o̱","´e´u","´e´wu","´eba","´ee̱","´elo̱","´eo̱","´ere","´eu","´ewu","´oba","´oe̱","´olo̱","´oo̱","´ore","´ou","´owu"];
+  diphthongsMappingOduduwa : string[] = ["diba","die̱","dilo̱","dio̱","dire","diu","diwu","eba","ee̱","elo̱","eo̱","ere","eu","ewu","huba","hue̱","hulo̱","huo̱","hure","huu","huwu","iba","ie̱","ilo̱","io̱","ire","iu","iwu","miba","mie̱","milo̱","mio̱","mire","miu","miwu","niba","nie̱","nilo̱","nio̱","nire","niu","niwu","oba","oe̱","olo̱","oo̱","ore","ou","owu","´a","a´","`a","a`","´e","e´","`e","e`","´e̱","e̱´","`e̱","e̱`","´i","i´","i`","`i","mi´","´mi","`mi","mi`","´ni","ni´","`ni","ni`","´o","o´","`o","o`","´o̱","o̱´","`o̱","o̱`","´u","u´","`u","u`","`eba","`ee̱","`elo̱","`eo̱","`ere","`eu","`ewu","´e´e̱","´e´o̱","´e´u","´e´wu","´eba","´ee̱","´elo̱","´eo̱","´ere","´eu","´ewu","´oba","´oe̱","´olo̱","´oo̱","´ore","´ou","´owu","`oba","`oe̱","`olo̱","`oo̱","`ore","`ou","`owu","e´e̱","e´o̱","e´u","e´wu","di`e̱","di`o̱","di`u","di`wu","e`e̱","e`o̱","e`u","e`wu","`e´e̱","`e´o̱","`e´u","`e´wu","`o´e̱","`o´o̱","`o´u","`o´wu","´o`e̱","´o`o̱","´o`u","´o`wu","o`e̱","o`o̱","o`u","o`wu","´o´e̱","´o´o̱","´o´u","´o´wu","o´e̱","o´o̱","o´u","o´wu","`mi`e̱","`mi`o̱","`mi`u","`mi`wu","`mi´e̱","`mi´o̱","`mi´u","`mi´wu","`miba","`mie̱","`milo̱","`mio̱","`mire","`miu","`miwu","´mi`e̱","´mi`o̱","´mi`u","´mi`wu","´mi´e̱","´mi´o̱","´mi´u","´mi´wu","´miba","´mie̱","´milo̱","´mio̱","´mire","´miu","´miwu","mi`e̱","mi`o̱","mi`u","mi`wu","mi´e̱","mi´o̱","mi´u","mi´wu","`ni`e̱","`ni`o̱","`ni`u","`ni`wu","`ni´e̱","`ni´o̱","`ni´u","`ni´wu","`niba","`nie̱","`nilo̱","`nio̱","`nire","`niu","`niwu","´ni´e̱","´ni´o̱","´ni´u","´ni´wu","´niba","´nie̱","´nilo̱","´nio̱","´nire","´niu","´niwu","ni`e̱","ni`o̱","ni`u","ni`wu","ni´e̱","ni´o̱","ni´u","ni´wu","`i`e̱","`i`o̱","`i`u","`i`wu","`i´e̱","`i´o̱","`i´u","`i´wu","`iba","`ie̱","`ilo̱","`io̱","`ire","`iu","`iwu","´i`e̱","´i`o̱","´i`u","´i`wu","´i´e̱","´i´o̱","´i´u","´i´wu","´iba","´ie̱","´ilo̱","´io̱","´ire","´iu","´iwu","i`e̱","i`o̱","i`u","i`wu","i´e̱","i´o̱","i´u","i´wu","`o`e̱","`o`o̱","`o`u","`o`wu","´e`e̱","´e`o̱","´e`u","´e`wu","di´e̱","hu`e̱","hu`o̱","hu`u","hu`wu","hu´e̱","hu´o̱","hu´u","hu´wu","di´o̱","di´u","di´wu"];
 
   topToBottomLR: string[] = ['sog', 'oira', 'mon', 'phag', 'mnc', 'galk', 'shui', 'soyo', 'kits', 'kitl', 'sgnw'];
   topToBottomRL: string[] = ['zhcn', 'zhtw', 'ja', 'ko', 'nshu', 'idu', 'mero', 'chun', 'kuli', 'txg', 'indus', 'khit'];
@@ -272,7 +272,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
     this.sessionManager.softKeyboardState.subscribe((value)=>{
       this.noSoftKeyboard = value;
-    })
+    });
   }
 
   ngAfterViewInit(): void {
@@ -308,6 +308,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         self.colPos = self.position.split(",")[1];
         // TODO - Cursor Position Map Update
         console.log(event)
+        if (this.unicode5AndHigher)
+          event.data["$"].originalTarget.style.letterSpacing = "-5px"; 
       });
       const isBrowserTabInView = () => document.hidden;
       if (isBrowserTabInView() && !this.isMobile && !this.isTablet) {
@@ -775,8 +777,12 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         } else {
           this.fireOnce = true;
         }
-        if (this.sessionManager.getFromSessionURL() == "odu" && /[`´]/.test(character))
+        if (this.sessionManager.getFromSessionURL() == "odu" && /[`´]/.test(character) && this.possibleCombine == ""){
+          this.possibleCombine = this.previousTypedKey;
           this.previousTypedKey = character;
+        } else if (this.sessionManager.getFromSessionURL() == "odu" && /[`´]/.test(character)){
+          this.previousTypedKey = character;
+        }
       }
     });
 
