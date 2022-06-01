@@ -81,7 +81,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
   // Keyboard Mapping Template based on https://www.w3.org/TR/uievents-code/#key-alphanumeric-writing-system
   keyCodeMap = [{"Backquote": ["0", "0"], "Digit1": ["1", "0"], "Digit2": ["2", "0"], "Digit3": ["3", "0"], "Digit4": ["4", "0"], "Digit5": ["5", "0"], "Digit6": ["6", "0"], "Digit7": ["7", "0"], "Digit8": ["8", "0"], "Digit9": ["9", "0"], "Digit0": ["10", "0"], "Minus": ["11", "0"], "Equal": ["12", "0"], "IntlYen": ["13", "0"], "Backspace": ["14", "0"], "Tab": ["0", "1"], "KeyQ": ["1", "1"], "KeyW": ["2", "1"], "KeyE": ["3", "1"], "KeyR": ["4", "1"], "KeyT": ["5", "1"], "KeyY": ["6", "1"], "KeyU": ["7", "1"], "KeyI": ["8", "1"], "KeyO": ["9", "1"], "KeyP": ["10", "1"], "BracketLeft": ["11", "1"], "BracketRight": ["12", "1"], "Backslash": ["13", "1"], "CapsLock": ["-1", "2"], "KeyA": ["0", "2"], "KeyS": ["1", "2"], "KeyD": ["2", "2"], "KeyF": ["3", "2"], "KeyG": ["4", "2"], "KeyH": ["5", "2"], "KeyJ": ["6", "2"], "KeyK": ["7", "2"], "KeyL": ["8", "2"], "Semicolon": ["9", "2"], "Quote": ["10", "2"], "Back slash": ["11", "2"], "Enter": ["12", "2"], "ShiftLeft": ["0", "3"], "IntlBackslash": ["1", "3"], "KeyZ": ["2", "3"], "KeyX": ["3", "3"], "KeyC": ["4", "3"], "KeyV": ["5", "3"], "KeyB": ["6", "3"], "KeyN": ["7", "3"], "KeyM": ["8", "3"], "Comma": ["9", "3"], "Period": ["10", "3"], "Slash": ["11", "3"], "ShiftRight": ["0", "3"], "ControlLeft": ["0", "4"], "AltLeft": ["1", "4"], "Space": ["2", "4"], "ArrowLeft": ["5", "4"], "ArrowUp": ["6", "4"], "ArrowRight": ["7", "4"], "ArrowDown": ["8", "4"], "AltRight": ["1", "4"], "ControlRight": ["0", "4"]}];
 
-  diphthongsMappingOduduwa : string[] = ["diba","die̱","dilo̱","dio̱","dire","diu","diwu","eba","ee̱","elo̱","eo̱","ere","eu","ewu","huba","hue̱","hulo̱","huo̱","hure","huu","huwu","iba","ie̱","ilo̱","io̱","ire","iu","iwu","miba","mie̱","milo̱","mio̱","mire","miu","miwu","niba","nie̱","nilo̱","nio̱","nire","niu","niwu","oba","oe̱","olo̱","oo̱","ore","ou","owu","´a","a´","`a","a`","´e","e´","`e","e`","´e̱","e̱´","`e̱","e̱`","´i","i´","i`","`i","mi´","´mi","`mi","mi`","´ni","ni´","`ni","ni`","´o","o´","`o","o`","´o̱","o̱´","`o̱","o̱`","´u","u´","`u","u`","`eba","`ee̱","`elo̱","`eo̱","`ere","`eu","`ewu","´e´e̱","´e´o̱","´e´u","´e´wu","´eba","´ee̱","´elo̱","´eo̱","´ere","´eu","´ewu","´oba","´oe̱","´olo̱","´oo̱","´ore","´ou","´owu","`oba","`oe̱","`olo̱","`oo̱","`ore","`ou","`owu","e´e̱","e´o̱","e´u","e´wu","di`e̱","di`o̱","di`u","di`wu","e`e̱","e`o̱","e`u","e`wu","`e´e̱","`e´o̱","`e´u","`e´wu","`o´e̱","`o´o̱","`o´u","`o´wu","´o`e̱","´o`o̱","´o`u","´o`wu","o`e̱","o`o̱","o`u","o`wu","´o´e̱","´o´o̱","´o´u","´o´wu","o´e̱","o´o̱","o´u","o´wu","`mi`e̱","`mi`o̱","`mi`u","`mi`wu","`mi´e̱","`mi´o̱","`mi´u","`mi´wu","`miba","`mie̱","`milo̱","`mio̱","`mire","`miu","`miwu","´mi`e̱","´mi`o̱","´mi`u","´mi`wu","´mi´e̱","´mi´o̱","´mi´u","´mi´wu","´miba","´mie̱","´milo̱","´mio̱","´mire","´miu","´miwu","mi`e̱","mi`o̱","mi`u","mi`wu","mi´e̱","mi´o̱","mi´u","mi´wu","`ni`e̱","`ni`o̱","`ni`u","`ni`wu","`ni´e̱","`ni´o̱","`ni´u","`ni´wu","`niba","`nie̱","`nilo̱","`nio̱","`nire","`niu","`niwu","´ni´e̱","´ni´o̱","´ni´u","´ni´wu","´niba","´nie̱","´nilo̱","´nio̱","´nire","´niu","´niwu","ni`e̱","ni`o̱","ni`u","ni`wu","ni´e̱","ni´o̱","ni´u","ni´wu","`i`e̱","`i`o̱","`i`u","`i`wu","`i´e̱","`i´o̱","`i´u","`i´wu","`iba","`ie̱","`ilo̱","`io̱","`ire","`iu","`iwu","´i`e̱","´i`o̱","´i`u","´i`wu","´i´e̱","´i´o̱","´i´u","´i´wu","´iba","´ie̱","´ilo̱","´io̱","´ire","´iu","´iwu","i`e̱","i`o̱","i`u","i`wu","i´e̱","i´o̱","i´u","i´wu","`o`e̱","`o`o̱","`o`u","`o`wu","´e`e̱","´e`o̱","´e`u","´e`wu","di´e̱","hu`e̱","hu`o̱","hu`u","hu`wu","hu´e̱","hu´o̱","hu´u","hu´wu","di´o̱","di´u","di´wu"];
+  diphthongsMappingOduduwa : string[] = ["diba","die̱","dilo̱","dio̱","dire","diu","diwu","eba","ee̱","elo̱","eo̱","ere","eu","ewu","huba","hue̱","hulo̱","huo̱","hure","huu","huwu","iba","ie̱","ilo̱","io̱","ire","iu","iwu","miba","mie̱","milo̱","mio̱","mire","miu","miwu","niba","nie̱","nilo̱","nio̱","nire","niu","niwu","oba","oe̱","olo̱","oo̱","ore","ou","owu","´a","`a","´e","`e","´e̱","`e̱","´i","`i","´mi","`mi","´ni","`ni","´o","`o","´o̱","`o̱","´u","`u","´wu","`wu","`eba","`ee̱","`elo̱","`eo̱","`ere","`eu","`ewu","´e´e̱","´e´o̱","´e´u","´e´wu","´eba","´ee̱","´elo̱","´eo̱","´ere","´eu","´ewu","´oba","´oe̱","´olo̱","´oo̱","´ore","´ou","´owu","`oba","`oe̱","`olo̱","`oo̱","`ore","`ou","`owu","e´e̱","e´o̱","e´u","e´wu","di`e̱","di`o̱","di`u","di`wu","e`e̱","e`o̱","e`u","e`wu","`e´e̱","`e´o̱","`e´u","`e´wu","`o´e̱","`o´o̱","`o´u","`o´wu","´o`e̱","´o`o̱","´o`u","´o`wu","o`e̱","o`o̱","o`u","o`wu","´o´e̱","´o´o̱","´o´u","´o´wu","o´e̱","o´o̱","o´u","o´wu","`mi`e̱","`mi`o̱","`mi`u","`mi`wu","`mi´e̱","`mi´o̱","`mi´u","`mi´wu","`miba","`mie̱","`milo̱","`mio̱","`mire","`miu","`miwu","´mi`e̱","´mi`o̱","´mi`u","´mi`wu","´mi´e̱","´mi´o̱","´mi´u","´mi´wu","´miba","´mie̱","´milo̱","´mio̱","´mire","´miu","´miwu","mi`e̱","mi`o̱","mi`u","mi`wu","mi´e̱","mi´o̱","mi´u","mi´wu","`ni`e̱","`ni`o̱","`ni`u","`ni`wu","`ni´e̱","`ni´o̱","`ni´u","`ni´wu","`niba","`nie̱","`nilo̱","`nio̱","`nire","`niu","`niwu","´ni´e̱","´ni´o̱","´ni´u","´ni´wu","´niba","´nie̱","´nilo̱","´nio̱","´nire","´niu","´niwu","ni`e̱","ni`o̱","ni`u","ni`wu","ni´e̱","ni´o̱","ni´u","ni´wu","`i`e̱","`i`o̱","`i`u","`i`wu","`i´e̱","`i´o̱","`i´u","`i´wu","`iba","`ie̱","`ilo̱","`io̱","`ire","`iu","`iwu","´i`e̱","´i`o̱","´i`u","´i`wu","´i´e̱","´i´o̱","´i´u","´i´wu","´iba","´ie̱","´ilo̱","´io̱","´ire","´iu","´iwu","i`e̱","i`o̱","i`u","i`wu","i´e̱","i´o̱","i´u","i´wu","`o`e̱","`o`o̱","`o`u","`o`wu","´e`e̱","´e`o̱","´e`u","´e`wu","di´e̱","hu`e̱","hu`o̱","hu`u","hu`wu","hu´e̱","hu´o̱","hu´u","hu´wu","di´o̱","di´u","di´wu"];
 
   topToBottomLR: string[] = ['sog', 'oira', 'mon', 'phag', 'mnc', 'galk', 'shui', 'soyo', 'kits', 'kitl', 'sgnw'];
   topToBottomRL: string[] = ['zhcn', 'zhtw', 'ja', 'ko', 'nshu', 'idu', 'mero', 'chun', 'kuli', 'txg', 'indus', 'khit'];
@@ -133,26 +133,6 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     "ur": ["@font-face {font-family: 'Noto Nastaliq Urdu';font-style: normal;font-display: swap;font-weight: 400;src: url('./../../assets/font-families/noto-nastaliq-urdu/files/noto-nastaliq-urdu-arabic-400-normal.woff2') format('woff2'), url('./../../assets/font-families/noto-nastaliq-urdu/files/noto-nastaliq-urdu-arabic-400-normal.woff') format('woff');} body {font-family: 'Noto Nastaliq Urdu'}"],
     "indus": ["@font-face {font-family: 'indus-script'; src:url('./../../assets/font-families/indus-script/IS/indus-script.eot');src:url('./../../assets/font-families/indus-script/IS/indus-script.eot?#iefix') format('embedded-opentype'),url('./../../assets/font-families/indus-script/IS/indus-script.woff') format('woff'),url('./../../assets/font-families/indus-script/IS/indus-script.ttf') format('truetype'),url('./../../assets/font-families/indus-script/IS/indus-script.svg#indus-script') format('svg');font-weight: normal;font-style: normal;} body {font-family: 'indus-script'}"]
   };
-
-  /* CKEditor functionality
-    * Scenario 1 : Input with Mouse Click > Event Flow for both Soft Keyboard or Suggestions
-      character action > change event > change (conditional)
-
-    * Scenario 2 : Input with Keyboard Press > Event Flow
-      key event > character action >  change event > change (conditional)
-
-    * Scenario 3 : Modify Size or Style of Letter or Word in Editor
-      change event > change (conditional)
-
-    * Scenario 4 : Click on Editor
-      contentdom/click event > change event > cursor position map update : TODO
-
-    * Data Storage & While Events occur
-      this.fullmodeCkEditor.instance.getData() / setData(data)
-      this.sessionManager.getSessionSavedContent()
-      this.ckeditorContent
-      event.editor["_"]["data"]
-  */
 
   constructor(private sessionManager: SessionManagerService, private http: HttpClient, private _snackBar: MatSnackBar) { 
     // The toolbar groups arrangement, optimized for two toolbar rows.
@@ -740,17 +720,17 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     this.sessionManager.itemKeyCharacter.subscribe((character) => {
       if (this.noSoftKeyboard == false) {
         // Inserting Character at Cursor Position : TODO Cursor position
-        if (this.sessionManager.getSessionSavedContent() && parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) == 0 && this.position != "∞") {
-          this.ckeditorContent = this.sessionManager.getSessionSavedContent().substring(0, parseFloat(this.rowPos) + 1) + character + this.sessionManager.getSessionSavedContent().substring(parseFloat(this.rowPos) + 1, this.sessionManager.getSessionSavedContent().length);
+        if (this.sessionManager.getSessionSavedContent() && parseInt(this.rowPos) > 0 && parseInt(this.colPos) == 0 && this.position != "∞") {
+          this.ckeditorContent = this.sessionManager.getSessionSavedContent().substring(0, parseInt(this.rowPos) + 1) + character + this.sessionManager.getSessionSavedContent().substring(parseInt(this.rowPos) + 1, this.sessionManager.getSessionSavedContent().length);
           this.charInserted = true;
-        } else if (this.sessionManager.getSessionSavedContent() && parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) > 0 && this.position != "∞") {
+        } else if (this.sessionManager.getSessionSavedContent() && parseInt(this.rowPos) > 0 && parseInt(this.colPos) > 0 && this.position != "∞") {
           // Line-break encountered and this has to be handled separately
           let splitContent = this.sessionManager.getSessionSavedContent().split("<br />");
           let content = "";
           if (splitContent && splitContent.length > 0) {
             for (let i = 0; i < splitContent.length; i++) {
               if (i == parseInt(this.colPos))
-                content = splitContent[i] + splitContent[i].substring(0, parseFloat(this.rowPos) + 1) + character + splitContent[i].substring(parseFloat(this.rowPos) + 1, splitContent[i].length);
+                content = splitContent[i] + splitContent[i].substring(0, parseInt(this.rowPos) + 1) + character + splitContent[i].substring(parseInt(this.rowPos) + 1, splitContent[i].length);
               else
                 content = splitContent[i]; 
             }
@@ -806,17 +786,17 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         // TODO : Validate Bi-Di or Not - Delete character/image to the right (for LTR Language) of a character or left (for RTL Language) of a character
       } else if (action === "del") {
         // Validate Bi-Di or Not - Delete character/image to the left (for LTR Language) of a character or right (for RTL Language) of a character
-        if (parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) == 0 && this.position != "∞") {
-          this.ckeditorContent = this.ckeditorContent.substring(0, parseFloat(this.rowPos) - 1) + this.ckeditorContent.substring(parseFloat(this.rowPos) + 1, this.ckeditorContent.length);
+        if (parseInt(this.rowPos) > 0 && parseInt(this.colPos) == 0 && this.position != "∞") {
+          this.ckeditorContent = this.ckeditorContent.substring(0, parseInt(this.rowPos) - 1) + this.ckeditorContent.substring(parseInt(this.rowPos) + 1, this.ckeditorContent.length);
           this.deletePressed = true;
-        } else if (parseFloat(this.rowPos) > 0 && parseFloat(this.colPos) > 0 && this.position != "∞") {
+        } else if (parseInt(this.rowPos) > 0 && parseInt(this.colPos) > 0 && this.position != "∞") {
           // Line-break encountered and this has to be handled separately
           let splitContent = this.ckeditorContent.split("<br />");
           let content = "";
           if (splitContent && splitContent.length > 0) {
             for (let i = 0; i < splitContent.length; i++) {
               if (i == parseInt(this.colPos))
-                content = splitContent[i] + splitContent[i].substring(0, parseFloat(this.rowPos) - 1) + splitContent[i].substring(parseFloat(this.rowPos) + 1, splitContent[i].length);
+                content = splitContent[i] + splitContent[i].substring(0, parseInt(this.rowPos) - 1) + splitContent[i].substring(parseInt(this.rowPos) + 1, splitContent[i].length);
               else
                 content = splitContent[i]; 
             }
@@ -1038,7 +1018,24 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     if (action) {
       this.ckeditorContent = this.ckeditorContent + "<img width='" + wide + "' height='" + (/[`´]+/i.test(action) ? "25px" : "20px") + "' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
       this.contentToEditor();
-    }
+    }/* else if (this.unicode5AndHigher && this.ckeditorContent.indexOf("/> <img") > -1 && parseInt(this.rowPos) > 0 && parseInt(this.colPos) == 0 && this.position != "∞") {
+      let insertImage = this.ckeditorContent.split("/> <img", this.rowPos).join("/> <img").length + 3;
+      let determineSpaces = this.ckeditorContent.substr(0, insertImage);
+      let intermediateImagesCount = this.rowPos - determineSpaces.split("　").length + 2;
+      insertImage = this.ckeditorContent.split("/> <img", intermediateImagesCount).join("/> <img").length + 3;
+      let lengthOfContent = this.ckeditorContent.length;
+      this.ckeditorContent = this.ckeditorContent.substr(0, insertImage) + "<img width='" + wide + "' height='" + (/[`´]+/i.test(action) ? "25px" : "20px") + "' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> " + this.ckeditorContent.substr(insertImage, lengthOfContent);
+      this.contentToEditor();
+    } else if (this.unicode5AndHigher && this.ckeditorContent.indexOf("/> <img") > -1 && parseInt(this.rowPos) > 0 && parseInt(this.colPos) > 0 && this.position != "∞") {
+      let insertImage = this.ckeditorContent.split("/> <img", this.rowPos).join("/> <img").length + 3;
+      let determineSpaces = this.ckeditorContent.substr(0, insertImage);
+      let intermediateImagesCount = this.rowPos - determineSpaces.split("　").length + 2;
+      insertImage = this.ckeditorContent.split("/> <img", intermediateImagesCount).join("/> <img").length + 3;
+      let lengthOfContent = this.ckeditorContent.length;
+      this.ckeditorContent.split("<br />")[this.colPos] = this.ckeditorContent.split("<br />")[this.colPos].substr(0, insertImage) + "<img width='" + wide + "' height='" + (/[`´]+/i.test(action) ? "25px" : "20px") + "' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> " + this.ckeditorContent.split("<br />")[this.colPos].substr(insertImage, lengthOfContent);
+      this.ckeditorContent = this.ckeditorContent.split("<br />").join("");
+      this.contentToEditor();
+    }*/
   }
 
   contentToEditor() {
@@ -1070,6 +1067,26 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       );
     });
   }
+
+  /* TODO Positioning Cursor
+    * Scenario 1 : Input with Mouse Click > Event Flow for both Soft Keyboard or Suggestions
+      character action > change event > change (conditional)
+
+    * Scenario 2 : Input with Keyboard Press > Event Flow
+      key event > character action >  change event > change (conditional)
+
+    * Scenario 3 : Modify Size or Style of Letter or Word in Editor
+      change event > change (conditional)
+
+    * Scenario 4 : Click on Editor
+      contentdom/click event > change event > cursor position map update
+
+    * Data Storage & While Events occur
+      this.fullmodeCkEditor.instance.getData() / setData(data)
+      this.sessionManager.getSessionSavedContent()
+      this.ckeditorContent
+      event.editor["_"]["data"]
+  */
 
   positionCalculator(): any {
     /* Cursor position Row-Column Mapping    
@@ -1113,6 +1130,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
           y = y + 17;
         }
       }
+      if (this.ckeditorContent.split("<br />").length == 1)
+        returnY = 0;
       return `${returnX},${returnY}`;
     } else {
       return "∞";   // End of Text 
