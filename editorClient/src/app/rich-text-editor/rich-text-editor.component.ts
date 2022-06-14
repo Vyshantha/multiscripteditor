@@ -287,12 +287,10 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         self.rowPos = self.position.split(",")[0];
         self.colPos = self.position.split(",")[1];
         // TODO - Cursor Position Map Update
-        console.log(event)
-        if (this.unicode5AndHigher)
-          event.data["$"].originalTarget.style.letterSpacing = "-5px"; 
+        console.log(event);
       });
       const isBrowserTabInView = () => document.hidden;
-      if (isBrowserTabInView() && !this.isMobile && !this.isTablet) {
+      if (isBrowserTabInView() && !self.isMobile && !self.isTablet) {
         setTimeout(() => { 
           contentEvent.editor.focus();
           if (self.position == "∞") {
@@ -307,6 +305,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
           }
         }, self.FOCUS_TIMEOUT);
       }
+      if (self.unicode5AndHigher && self.fullmodeCkEditor.instance.getData().indexOf("<p>") > -1)
+        self.fullmodeCkEditor.instance.setData(self.fullmodeCkEditor.instance.getData().replace("<p>","<p style='letter-spacing:-5px'>"));
     });
 
     this.fullmodeCkEditor.instance.on( 'key', ( event ) => {
