@@ -22,6 +22,8 @@ def black_and_white_img(dir_name):
     path = './characters/' + dir_name
 
     for i in os.listdir(path):
+        if i == '.DS_Store':
+            continue
         img_path = path + '/' + i
 
         image = cv2.imread(img_path)
