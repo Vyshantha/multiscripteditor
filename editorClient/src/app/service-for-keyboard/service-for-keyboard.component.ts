@@ -56,6 +56,8 @@ export class ServiceForKeyboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sessionManager.shouldKeyboardBeMapped();
+
     this.sessionManager.itemKeyboardOnly.subscribe((flagValue) => {
       this.onlyKeyboardToggle = flagValue;
     });
