@@ -253,6 +253,10 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     this.sessionManager.softKeyboardState.subscribe((value)=>{
       this.noSoftKeyboard = value;
     });
+    if (this.unicode5AndHigher && this.sessionManager.itemQwertyType.value == true)
+      this.sessionManager.nonUnicodeScript.next(true);
+    else if (this.sessionManager.itemQwertyType.value == true)
+      this.sessionManager.nonUnicodeScript.next(false);
   }
 
   ngAfterViewInit(): void {
@@ -423,6 +427,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                   });
                 }, self.POPUP_TIMEOUT);
               }
+              self.sessionManager.nonUnicodeScript.next(false);
               // Blur and Focus invent to change Shift layout for Keyboard
               self.fullmodeCkEditor.instance.focusManager.blur(true);
             }
@@ -623,6 +628,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                   });
                 }, self.POPUP_TIMEOUT);
               }
+              self.sessionManager.nonUnicodeScript.next(false);
               // Blur and Focus invent to change Shift layout for Keyboard
               self.fullmodeCkEditor.instance.focusManager.blur(true);
             }

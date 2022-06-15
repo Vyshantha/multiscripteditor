@@ -2216,6 +2216,12 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.highlightKeys = highlightOrNot;
     });
 
+    if (this.unicode5AndHigher && this.sessionManager.itemQwertyType.value == true) {
+      this.sessionManager.nonUnicodeScript.subscribe((value)=>{
+        this.showImageGlyph = value;
+      });
+    }
+
     this.keysResizePerDeviceWidth();
 
     this.sessionManager.fontSize.subscribe((size) => {
@@ -3702,6 +3708,10 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         else if (this.sessionManager.itemShiftKeyPressed.value == true && this.altGrCapsExists)
           this.sessionManager.setShiftKeyPressed(false);
       }
+      if (this.unicode5AndHigher && this.sessionManager.itemQwertyType.value == true)
+        this.showImageGlyph = true;
+      else if (this.sessionManager.itemQwertyType.value == true)
+        this.showImageGlyph = false;
     } else if (action === "altGr") {
       if (this.sessionManager.itemShiftKeyPressed.value == false) {
         if (this.sessionManager.itemAltGrKeyPressed.value == false)

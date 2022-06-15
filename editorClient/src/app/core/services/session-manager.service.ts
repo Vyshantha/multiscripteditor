@@ -66,6 +66,7 @@ export class SessionManagerService {
   continousIntegrationComplete = new BehaviorSubject(false);
   targetIntegrationScript = new BehaviorSubject('IAST');
   softKeyboardState = new BehaviorSubject(false);
+  nonUnicodeScript = new BehaviorSubject(false);
   detectWordTyped = false;
 
   internalSession : string = '';
