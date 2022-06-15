@@ -223,8 +223,10 @@ export class SessionManagerService {
 
   // Get the URL/***** Language ISO-639-1/2/3 or BCP-47 code (2 to 5 char code) from Session
   getFromSessionURL() {
-    if (localStorage.getItem('anywriterschoiceURL'))
+    if (localStorage.getItem('anywriterschoiceURL') == window.location.href.split('/')[3])
       return this.preventInputFieldForAttacks(localStorage.getItem('anywriterschoiceURL'));
+    else if (window.location.href.split('/').length == 4)
+      return this.setInSessionURL(window.location.href.split('/')[3]);
     else
       return "";
   }

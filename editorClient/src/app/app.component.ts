@@ -50,7 +50,7 @@ export class AppComponent implements AfterViewInit {
   translateForSnackBar: string[] = [];
   
   constructor(private translate: TranslateService, private http: HttpClient, private sessionManager: SessionManagerService, private helperDialog: MatDialog, private themeService: ThemeService, private _snackBar: MatSnackBar) {
-    if (!this.sessionManager.getFromSessionURL())
+    if (!this.sessionManager.getFromSessionURL() && window.location.href.split('/').length != 4)
       this.sessionManager.setInSessionURL(this.sessionManager.getUILocale());
     
     if(this.sessionManager.getThemeFromSession() == "dark") {
