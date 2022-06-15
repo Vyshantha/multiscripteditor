@@ -431,7 +431,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
               // Blur and Focus invent to change Shift layout for Keyboard
               self.fullmodeCkEditor.instance.focusManager.blur(true);
             }
-            if (event.data.domEvent["$"].key == "Alt" && event.data.keyCode == 4456466) {
+            if ((event.data.domEvent["$"].key == "Alt" || event.data.domEvent["$"].key == "AltGraph" || event.data.domEvent["$"].key == "AltGr") && event.data.keyCode == 4456466 && self.layoutCurrentKeys.some(x => x.hasOwnProperty('altGr'))) {
               if (self.sessionManager.itemAltGrKeyPressed.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrCapsExists.value == false) {
                 setTimeout(() => {
                   self.sessionManager.setAltGrKeyPressed(true);
@@ -454,7 +454,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
               // Blur and Focus invent to change Shift layout for Keyboard
               self.fullmodeCkEditor.instance.focusManager.blur(true);
             }
-            if (event.data.domEvent["$"].key != "Meta" && event.data.domEvent["$"].key != "Shift" && event.data.domEvent["$"].key != "CapsLock" && event.data.domEvent["$"].key != "Alt" && event.data.domEvent["$"].key != "Tab" && event.data.domEvent["$"].key != "Backspace" && event.data.domEvent["$"].key != "Enter" && event.data.domEvent["$"].key != "Control" && event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && event.data.domEvent["$"].key != " " && event.data.domEvent["$"].key != "Unidentified") {
+            if (event.data.domEvent["$"].key != "Meta" && event.data.domEvent["$"].key != "Shift" && event.data.domEvent["$"].key != "CapsLock" && event.data.domEvent["$"].key != "Alt" && event.data.domEvent["$"].key != "AltGraph" && event.data.domEvent["$"].key != "AltGr" && event.data.domEvent["$"].key != "Tab" && event.data.domEvent["$"].key != "Backspace" && event.data.domEvent["$"].key != "Enter" && event.data.domEvent["$"].key != "Control" && event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && event.data.domEvent["$"].key != " " && event.data.domEvent["$"].key != "Unidentified") {
               let rowForSoftKey = 0, columnForSoftKey = 0;
               if (self.keyCodeMap[0][event.data.domEvent["$"].code] && self.sessionManager.itemQwertyType.value == true && self.sessionManager.itemTransliterate.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrKeyPressed.value == false && event.data.keyCode < 2228224) {
                 rowForSoftKey = parseInt(self.keyCodeMap[0][event.data.domEvent["$"].code][1]) + self.qwertyPos;
@@ -585,7 +585,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
           } else {
             if (event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && self.menuKeyPressed == false)
               event.stop();
-            if (event.data.domEvent["$"].key != "Meta" && event.data.domEvent["$"].key != "Shift" && event.data.domEvent["$"].key != "CapsLock" && event.data.domEvent["$"].key != "Alt" && event.data.domEvent["$"].key != "Tab" && event.data.domEvent["$"].key != "Backspace" && event.data.domEvent["$"].key != "Enter" && event.data.domEvent["$"].key != "Control" && event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && event.data.domEvent["$"].key != " " && event.data.domEvent["$"].key != "Unidentified") {
+            if (event.data.domEvent["$"].key != "Meta" && event.data.domEvent["$"].key != "Shift" && event.data.domEvent["$"].key != "CapsLock" && event.data.domEvent["$"].key != "Alt" && event.data.domEvent["$"].key != "AltGraph" && event.data.domEvent["$"].key != "AltGr" && event.data.domEvent["$"].key != "Tab" && event.data.domEvent["$"].key != "Backspace" && event.data.domEvent["$"].key != "Enter" && event.data.domEvent["$"].key != "Control" && event.data.domEvent["$"].key != "ArrowLeft" && event.data.domEvent["$"].key != "ArrowUp" && event.data.domEvent["$"].key != "ArrowRight" && event.data.domEvent["$"].key != "ArrowDown" && event.data.domEvent["$"].key != " " && event.data.domEvent["$"].key != "Unidentified") {
               self.sessionManager.setCharFromKeyboard(event.data.domEvent["$"].key);
             } else if (event.data.domEvent["$"].key == " ") {
               self.typedWord.next("");
