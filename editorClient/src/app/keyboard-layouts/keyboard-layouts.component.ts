@@ -534,6 +534,7 @@ import * as layoutTaniTani from './../../assets/keyboard-layouts/layout-tani-tan
 import * as layoutKhitanKits from './../../assets/keyboard-layouts/layout-khitans-kits.json';
 import * as layoutKhitanKitl from './../../assets/keyboard-layouts/layout-khitanl-kitl.json';
 import * as layoutNubianOnw from './../../assets/keyboard-layouts/layout-nubian-onw.json';
+import * as layoutAimaAima from './../../assets/keyboard-layouts/layout-aima-aima.json';
 import * as layoutLinearALinea from './../../assets/keyboard-layouts/layout-lineara-linea.json';
 import * as layoutKpelleKpe from './../../assets/keyboard-layouts/layout-kpelle-kpe.json';
 import * as layoutTigrinyaTi from './../../assets/keyboard-layouts/layout-tigrinya-ti.json';
@@ -1115,6 +1116,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   layoutKhitanSKeys: any = (layoutKhitanKits as any).default;
   layoutKhitanLKeys: any = (layoutKhitanKitl as any).default;
   layoutNubianKeys: any = (layoutNubianOnw as any).default;
+  layoutAimaKeys: any = (layoutAimaAima as any).default;
   layoutLinearAKeys: any = (layoutLinearALinea as any).default;
   layoutKpelleKeys: any = (layoutKpelleKpe as any).default;
   layoutTigrinyaKeys: any = (layoutTigrinyaTi as any).default;
@@ -1209,8 +1211,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   layoutsSwitchHV: string[] = ['ogam', 'phag', 'oira', 'mnc', 'mon', 'galk', 'soyo', 'evn', 'hira', 'kata', 'vaii', 'geez', 'dite', 'iba', 'ndju', 'cree', 'crew', 'oji', 'iku', 'carr', 'bla', 'cans', 'nask', 'aztc', 'maya', 'am'];
   keyOrientationSwitch: string[] = ['ogam', 'phag', 'oira', 'mnc', 'mon', 'galk', 'soyo', 'evn'];
   keyDoNotRotate: string[] = ['vaii', 'geez', 'am', 'dite', 'iba', 'ndju'];
-  swaraAbugidaType : string [] = ['ahom', 'bada', 'bali', 'batk', 'tglg', 'bn', 'bhai', 'bla', 'brah', 'bug', 'buhd', 'cakm', 'cree', 'dham', 'dite', 'diak', 'dogr', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kthi', 'kn', 'kawi', 'kali', 'khar', 'tang', 'km', 'khoj', 'khud', 'kuli', 'lo', 'lepc', 'limb', 'loma', 'maga', 'maha', 'ml', 'mani', 'mni', 'mr', 'modi', 'mult', 'my', 'nand', 'or', 'phag', 'newa', 'pa', 'rjng', 'renc', 'sa', 'saur', 'shan', 'shrd', 'sn', 'sidd', 'snd', 'si', 'bhat', 'leke', 'ari', 'sora', 'sund', 'sylo', 'tagb', 'talu', 'lana', 'takr', 'ta', 'tamu', 'tach', 'te', 'thaa', 'th', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'gonm', 'gong', 'soyo', 'zanb', 'dv', 'mai', 'mguj', 'kru', 'scha', 'koch', 'bya', 'khor'];
-  imageAlternativeScript: string[] = ['cans', 'esk', 'esi', 'ipk', 'dhan', 'safa', 'txr', 'ibe', 'avo', 'ranj', 'gup', 'pall', 'toch', 'moon', 'tiga', 'xce', 'vith', 'nand', 'kada', 'estr', 'sert', 'madn', 'diak', 'ber', 'tach', 'gael', 'mwan', 'wole', 'moss', 'iba', 'maya', 'egyd', 'bhat', 'renc', 'kuli', 'sina', 'zou', 'cana', 'kaid', 'dham', 'tamu', 'geba', 'esy', 'maka', 'lad', 'kama', 'ndju', 'aztc', 'jiag', 'indus', 'bada', 'vatt', 'mikq', 'kpe', 'gars', 'dale', 'goyk', 'wolf', 'zag', 'kawi', 'loma', 'nsi', 'ion', 'tika', 'mamb', 'land', 'khat', 'leke', 'ari', 'sabe', 'dite', 'toto', 'chrs', 'tang', 'maga', 'luo', 'chik', 'adin', 'khom', 'kits', 'kitl', 'tnq', 'maha', 'ics', 'flag', 'ussign', 'desisign', 'banzsl', 'odu', 'tani', 'mguj', 'kru', 'scha', 'koch', 'bya', 'chis', 'suz', 'nagm', 'khor'];
+  swaraAbugidaType : string [] = ['ahom', 'bada', 'bali', 'batk', 'tglg', 'bn', 'bhai', 'bla', 'brah', 'bug', 'buhd', 'cakm', 'cree', 'dham', 'dite', 'diak', 'dogr', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kthi', 'kn', 'kawi', 'kali', 'khar', 'tang', 'km', 'khoj', 'khud', 'kuli', 'lo', 'lepc', 'limb', 'loma', 'maga', 'maha', 'ml', 'mani', 'mni', 'mr', 'modi', 'mult', 'my', 'nand', 'or', 'phag', 'newa', 'pa', 'rjng', 'renc', 'sa', 'saur', 'shan', 'shrd', 'sn', 'sidd', 'snd', 'si', 'bhat', 'leke', 'ari', 'sora', 'sund', 'sylo', 'tagb', 'talu', 'lana', 'takr', 'ta', 'tamu', 'tach', 'te', 'thaa', 'th', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'gonm', 'gong', 'soyo', 'zanb', 'dv', 'mai', 'mguj', 'kru', 'scha', 'koch', 'bya', 'khor', 'aima'];
+  imageAlternativeScript: string[] = ['cans', 'esk', 'esi', 'ipk', 'dhan', 'safa', 'txr', 'ibe', 'avo', 'ranj', 'gup', 'pall', 'toch', 'moon', 'tiga', 'xce', 'vith', 'nand', 'kada', 'estr', 'sert', 'madn', 'diak', 'ber', 'tach', 'gael', 'mwan', 'wole', 'moss', 'iba', 'maya', 'egyd', 'bhat', 'renc', 'kuli', 'sina', 'zou', 'cana', 'kaid', 'dham', 'tamu', 'geba', 'esy', 'maka', 'lad', 'kama', 'ndju', 'aztc', 'jiag', 'indus', 'bada', 'vatt', 'mikq', 'kpe', 'gars', 'dale', 'goyk', 'wolf', 'zag', 'kawi', 'loma', 'nsi', 'ion', 'tika', 'mamb', 'land', 'khat', 'leke', 'ari', 'sabe', 'dite', 'toto', 'chrs', 'tang', 'maga', 'luo', 'chik', 'adin', 'khom', 'kits', 'kitl', 'tnq', 'maha', 'ics', 'flag', 'ussign', 'desisign', 'banzsl', 'odu', 'tani', 'mguj', 'kru', 'scha', 'koch', 'bya', 'chis', 'suz', 'nagm', 'khor', 'aima'];
 
   fontsSources: string[] = ['dogr', 'zanb', 'sog', 'kult', 'hmnp', 'nshu', 'txg', 'elym', 'gonm', 'gong', 'soyo', 'yezi', 'ur'];
   fontClass: string = "";
@@ -3196,6 +3198,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionURL('marc');
     } else if (tabChangeEvent.index == 78 && tabChangeEvent.tab.textLabel == "Khorpa") {
       this.sessionManager.setInSessionURL('khor');
+    } else if (tabChangeEvent.index == 80 && tabChangeEvent.tab.textLabel == "Aima-ককবরক") {
+      this.sessionManager.setInSessionURL('aima');
     } else if (tabChangeEvent.index == 81 && tabChangeEvent.tab.textLabel == "Kurukh Banna") {
       this.sessionManager.setInSessionURL('kru');
     } else if (tabChangeEvent.index == 82 && tabChangeEvent.tab.textLabel == "Leke") {
