@@ -846,6 +846,7 @@ export class SessionManagerService {
   integrateContinous(targetScript, word) {
     return this.http.get<any[]>(`https://aksharamukha-plugin.appspot.com/api/public?target=${targetScript}&text=${word.trim()}`);
   }
+  
   // Aksharamukha Integration for Transliteration of all Session Data
   integrateTransliteration(targetScript) {
       return this.http.get<any[]>(`https://aksharamukha-plugin.appspot.com/api/public?target=${targetScript}&text=${this.getSessionSavedContent()}`);
