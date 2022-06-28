@@ -31,7 +31,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RichTextEditorComponent } from './rich-text-editor/rich-text-editor.component';
 import { OptionsComponent } from './options/options.component';
-import { KeyboardLayoutsComponent } from './keyboard-layouts/keyboard-layouts.component';
+import { KeyboardLayoutsComponent, FloatKeyboardDialogContent } from './keyboard-layouts/keyboard-layouts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ng2-ckeditor';
 //import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
@@ -60,6 +60,7 @@ export function setupTranslateFactory(service: TranslateService): Function {
     RichTextEditorComponent,
     OptionsComponent,
     KeyboardLayoutsComponent,
+    FloatKeyboardDialogContent,
     CanvasComponent,
     ServiceForKeyboardComponent,
     ToolBarActionsComponent,
@@ -103,7 +104,7 @@ export function setupTranslateFactory(service: TranslateService): Function {
     //ColorPickerModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
-  entryComponents: [ToolBarActionsComponent, HelperComponent, RichTextEditorComponent, KeyboardLayoutsComponent, ServiceForKeyboardComponent, OptionsComponent, FootInfoBarComponent],
+  entryComponents: [ToolBarActionsComponent, HelperComponent, RichTextEditorComponent, KeyboardLayoutsComponent, FloatKeyboardDialogContent, ServiceForKeyboardComponent, OptionsComponent, FootInfoBarComponent],
   providers: [SessionManagerService, ThemeService, TranslateService,
     {
       provide: APP_INITIALIZER,

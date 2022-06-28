@@ -1431,7 +1431,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     return value;
   }
 
-  constructor(private router: Router, private sessionManager: SessionManagerService, private zone: NgZone, private cd: ChangeDetectorRef, private _formBuilder: FormBuilder, private http: HttpClient, private helperDialog: MatDialog, private customKeyboardDialog: MatDialog, private _snackBar: MatSnackBar, abjadSearchField: ElementRef, alphabetSearchField: ElementRef, latinSearchField: ElementRef, abugidaSearchField: ElementRef, syllaberySearchField: ElementRef, gramsSearchField: ElementRef, unclassifiedSearchField: ElementRef) {
+  constructor(private router: Router, private sessionManager: SessionManagerService, private zone: NgZone, private cd: ChangeDetectorRef, private _formBuilder: FormBuilder, private http: HttpClient, private helperDialog: MatDialog, private customKeyboardDialog: MatDialog, private _snackBar: MatSnackBar, abjadSearchField: ElementRef, alphabetSearchField: ElementRef, latinSearchField: ElementRef, abugidaSearchField: ElementRef, syllaberySearchField: ElementRef, gramsSearchField: ElementRef, unclassifiedSearchField: ElementRef, public floatKeyboardDialog: MatDialog) {
     if (localStorage.getItem('qwertyStyle') != undefined) {
       if (this.sessionManager.getInSessionQwerty() === 'true')
         this.isQwerty = false;
@@ -4306,6 +4306,18 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  floatKeyboard() {
+    const dialogRef = this.floatKeyboardDialog.open(FloatKeyboardDialogContent, {
+      hasBackdrop: false
+    });
+    this.hideSoftKeyboard();
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.hideSoftKeyboard();
+    });
+  }
+
   async translateSnackBars() {
     let translateSet = ["OK", "These characters < > ( ) { } $ % = ! ? & * are not allowed in this field", "Keyboard Already Bookmarks", "Added Keyboard To My Bookmarks", "Keyboard not in Bookmarks to Remove", "Remove Keyboard From My Bookmarks", ];
     this.translateForSnackBar = await this.loadFromFileForPopup(this.sessionManager.getUILocale(), translateSet);
@@ -4347,3 +4359,9 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     });
   }
 }
+
+@Component({
+  selector: 'float-keyboard-dialog-content',
+  templateUrl: 'float-keyboard-dialog-content.html',
+})
+export class FloatKeyboardDialogContent {}
