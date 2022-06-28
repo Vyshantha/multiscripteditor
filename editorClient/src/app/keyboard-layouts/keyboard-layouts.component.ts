@@ -1431,7 +1431,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     return value;
   }
 
-  constructor(private router: Router, private sessionManager: SessionManagerService, private zone: NgZone, private cd: ChangeDetectorRef, private _formBuilder: FormBuilder, private http: HttpClient, private helperDialog: MatDialog, private customKeyboardDialog: MatDialog, private _snackBar: MatSnackBar, abjadSearchField: ElementRef, alphabetSearchField: ElementRef, latinSearchField: ElementRef, abugidaSearchField: ElementRef, syllaberySearchField: ElementRef, gramsSearchField: ElementRef, unclassifiedSearchField: ElementRef, public floatKeyboardDialog: MatDialog) {
+  constructor(private router: Router, private sessionManager: SessionManagerService, private zone: NgZone, private cd: ChangeDetectorRef, private _formBuilder: FormBuilder, private http: HttpClient, private helperDialog: MatDialog, private customKeyboardDialog: MatDialog, private _snackBar: MatSnackBar, abjadSearchField: ElementRef, alphabetSearchField: ElementRef, latinSearchField: ElementRef, abugidaSearchField: ElementRef, syllaberySearchField: ElementRef, gramsSearchField: ElementRef, unclassifiedSearchField: ElementRef) {
     if (localStorage.getItem('qwertyStyle') != undefined) {
       if (this.sessionManager.getInSessionQwerty() === 'true')
         this.isQwerty = false;
@@ -2141,7 +2141,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         this.keysAbove.nativeElement.style.display = 'block';
       } else if (flagValue == false) {
         this.keysAbove.nativeElement.style.display = 'none';
-        this.allTabGroups.nativeElement.style.display = 'block';
+        if (this.allTabGroups)
+          this.allTabGroups.nativeElement.style.display = 'block';
       }
     });
     
@@ -2190,7 +2191,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
 
     this.sessionManager.tabScriptType.subscribe((tabIndex) => {
       this.selectedAllScriptTab = tabIndex;
-      this.allScriptTypesTabGroup.selectedIndex = Number(this.selectedAllScriptTab);
+      if (this.allScriptTypesTabGroup)
+        this.allScriptTypesTabGroup.selectedIndex = Number(this.selectedAllScriptTab);
     });
 
     this.sessionManager.selectedKeyboard.subscribe((keyboardSelection) => {
@@ -4207,16 +4209,21 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionOnlyKeyboard(false);
   }
 
-  customiseMyKeyboardLayout() {
-    const dialogProfile = this.customKeyboardDialog.open(this.CustomKeyboardPopUp, {
-      width: '95'
-    });
-
-    dialogProfile.afterClosed()
-      .subscribe(result => {
-        console.info('[MULTISCRIPTEDITOR] The dialog was closed ', result);
-      }
-    );
+  customiseMyKeyboardLayout(type) {
+    if (!type) {
+      const dialogProfile = this.customKeyboardDialog.open(this.CustomKeyboardPopUp, {
+        width: '95',
+        data: {show: "custom"}
+      });
+  
+      dialogProfile.afterClosed()
+        .subscribe(result => {
+          console.info('[MULTISCRIPTEDITOR] The dialog was closed ', result);
+        }
+      );
+    } else {
+      this.floatKeyboard();
+    }
   }
 
   helpForUser(type) {
@@ -4307,8 +4314,10 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   }
 
   floatKeyboard() {
-    const dialogRef = this.floatKeyboardDialog.open(FloatKeyboardDialogContent, {
-      hasBackdrop: false
+    const dialogRef = this.customKeyboardDialog.open(this.CustomKeyboardPopUp, {
+      width: '50',
+      hasBackdrop: false,
+      data: {show: "float"}
     });
     this.hideSoftKeyboard();
 
@@ -4359,9 +4368,3 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     });
   }
 }
-
-@Component({
-  selector: 'float-keyboard-dialog-content',
-  templateUrl: 'float-keyboard-dialog-content.html',
-})
-export class FloatKeyboardDialogContent {}

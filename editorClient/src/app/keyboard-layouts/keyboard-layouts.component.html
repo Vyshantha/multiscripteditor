@@ -8238,7 +8238,7 @@
     <br/>
     <mat-card dir="{{dirSet}}">
         <p style="text-align: center;">
-            <!--input [(colorPicker)]="color" [style.background]="color"/--><mat-icon aria-label="{{ 'Float Keyboard' | translate }}" *ngIf="isQwerty || isTransliterate"  alt="{{ 'Float Keyboard' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Float Keyboard' | translate }}" (click)="floatKeyboard()">launch</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp; 
+            <!--input [(colorPicker)]="color" [style.background]="color"/--><mat-icon aria-label="{{ 'Float Keyboard' | translate }}" *ngIf="isQwerty || isTransliterate"  alt="{{ 'Float Keyboard' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Float Keyboard' | translate }}" (click)="customiseMyKeyboardLayout('float')">launch</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp; 
             <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>
             <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
             &nbsp;&nbsp;&nbsp;&nbsp;

@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import * as allLayoutPositions from './../../assets/keyboard-layouts/keysboards-layouts.json';
-
 import * as layoutReligionAll from './../../assets/keyboard-layouts/layout-religion-all.json';
 import * as layoutKannadaKn from './../../assets/keyboard-layouts/layout-kannada-kn.json';
 import * as layoutKadambaKada from './../../assets/keyboard-layouts/layout-kadamba-kada.json';
@@ -193,6 +192,7 @@ import * as layoutLimbuLimb from './../../assets/keyboard-layouts/layout-limbu-l
 import * as layoutKawiKawi from './../../assets/keyboard-layouts/layout-kawi-kawi.json';
 import * as layoutAvestanAvst from './../../assets/keyboard-layouts/layout-avestan-avst.json';
 import * as layoutWolofWolf from './../../assets/keyboard-layouts/layout-wolof-wolf.json';
+import * as layoutKhorpaKhor from './../../assets/keyboard-layouts/layout-khorpa-khor.json';
 import * as layoutMansiMns from './../../assets/keyboard-layouts/layout-mansi-mns.json';
 import * as layoutKhantyKca from './../../assets/keyboard-layouts/layout-khanty-kca.json';
 import * as layoutSaraikiSkr from './../../assets/keyboard-layouts/layout-saraiki-skr.json';
@@ -447,6 +447,8 @@ import * as layoutRallyRally from './../../assets/keyboard-layouts/layout-rally-
 import * as layoutBamanankanBm from './../../assets/keyboard-layouts/layout-bamanankan-bm.json';
 import * as layoutLuxembourgishLb from './../../assets/keyboard-layouts/layout-luxembourgish-lb.json';
 import * as layoutUrduUr from './../../assets/keyboard-layouts/layout-urdu-ur.json';
+import * as layoutChisoiChis from './../../assets/keyboard-layouts/layout-chisoi-chis.json';
+import * as layoutNagMundariNagm from './../../assets/keyboard-layouts/layout-nagmundari-nagm.json';
 import * as layoutVietnameseVi from './../../assets/keyboard-layouts/layout-vietnamese-vi.json';
 import * as layoutYorubaBjYo from './../../assets/keyboard-layouts/layout-yoruba-bjyo.json';
 import * as layoutYorubaNgYo from './../../assets/keyboard-layouts/layout-yoruba-ngyo.json';
@@ -462,8 +464,10 @@ import * as layoutUgariticUgar from './../../assets/keyboard-layouts/layout-ugar
 import * as layoutTainoTnq from './../../assets/keyboard-layouts/layout-taino-tnq.json';
 import * as layoutMayanMaya from './../../assets/keyboard-layouts/layout-mayan-maya.json';
 import * as layoutNosuYiii from './../../assets/keyboard-layouts/layout-nosu-yiii.json';
+import * as layoutKochiKoch from './../../assets/keyboard-layouts/layout-kochi-koch.json';
 import * as layoutChokweCjk from './../../assets/keyboard-layouts/layout-chokwe-cjk.json';
 import * as layoutMaltoMalt from './../../assets/keyboard-layouts/layout-malto-malt.json';
+import * as layoutKurukhKru from './../../assets/keyboard-layouts/layout-kurukh-kru.json';
 import * as layoutShompenSii from './../../assets/keyboard-layouts/layout-shompen-sii.json';
 import * as layoutMeroiticGlyph from './../../assets/keyboard-layouts/layout-meroiticglyph-mer.json';
 import * as layoutMeroiticMero from './../../assets/keyboard-layouts/layout-meriotic-mero.json';
@@ -476,6 +480,7 @@ import * as layoutHaitianCreoleHt from './../../assets/keyboard-layouts/layout-h
 import * as layoutPersianXpeo from './../../assets/keyboard-layouts/layout-persian-xpeo.json';
 import * as layoutDemoticEgyd from './../../assets/keyboard-layouts/layout-demotic-egyd.json';
 import * as layoutNKoNKoo from './../../assets/keyboard-layouts/layout-nko-nkoo.json';
+import * as layoutUmweroUmw from './../../assets/keyboard-layouts/layout-umwero-umw.json';
 import * as layoutSundaneseSun from './../../assets/keyboard-layouts/layout-sundanese-sun.json';
 import * as layoutCebuanoCeb from './../../assets/keyboard-layouts/layout-cebuano-ceb.json';
 import * as layoutAfricaIai from './../../assets/keyboard-layouts/layout-africa-iai.json';
@@ -483,6 +488,7 @@ import * as layoutPinyinPin from './../../assets/keyboard-layouts/layout-pinyin-
 import * as layoutLomaLoma from './../../assets/keyboard-layouts/layout-loma-loma.json';
 import * as layoutNihongoJpn from './../../assets/keyboard-layouts/layout-nihongo-jpn.json';
 import * as layoutAoNjo from './../../assets/keyboard-layouts/layout-ao-njo.json';
+import * as layoutOldUyghurOugr from './../../assets/keyboard-layouts/layout-olduyghur-ougr.json';
 import * as layoutNishiNjz from './../../assets/keyboard-layouts/layout-nishi-njz.json';
 import * as layoutDinkaDin from './../../assets/keyboard-layouts/layout-dinka-din.json';
 import * as layoutBugisBugla from './../../assets/keyboard-layouts/layout-bugis-bugla.json';
@@ -505,9 +511,11 @@ import * as layoutMasaramGondiGonm from './../../assets/keyboard-layouts/layout-
 import * as layoutGunjalaGondiGong from './../../assets/keyboard-layouts/layout-gondi-gong.json';
 import * as layoutKapampanganPam from './../../assets/keyboard-layouts/layout-kapampangan-pam.json';
 import * as layoutPollardMiao from './../../assets/keyboard-layouts/layout-miao-plrd.json';
+import * as layoutTaniTani from './../../assets/keyboard-layouts/layout-tani-tani.json';
 import * as layoutKhitanKits from './../../assets/keyboard-layouts/layout-khitans-kits.json';
 import * as layoutKhitanKitl from './../../assets/keyboard-layouts/layout-khitanl-kitl.json';
 import * as layoutNubianOnw from './../../assets/keyboard-layouts/layout-nubian-onw.json';
+import * as layoutAimaAima from './../../assets/keyboard-layouts/layout-aima-aima.json';
 import * as layoutLinearALinea from './../../assets/keyboard-layouts/layout-lineara-linea.json';
 import * as layoutKpelleKpe from './../../assets/keyboard-layouts/layout-kpelle-kpe.json';
 import * as layoutTigrinyaTi from './../../assets/keyboard-layouts/layout-tigrinya-ti.json';
@@ -518,11 +526,13 @@ import * as layoutSyriacWesternSert from './../../assets/keyboard-layouts/layout
 import * as layoutSyriacEasternMadn from './../../assets/keyboard-layouts/layout-syriaceastern-madn.json';
 import * as layoutKhazarianKhaz from './../../assets/keyboard-layouts/layout-khazarian-khaz.json';
 import * as layoutIndusIndus from './../../assets/keyboard-layouts/layout-indusscript-indus.json';
+import * as layoutSunuwarSuz from './../../assets/keyboard-layouts/layout-jenticha-suz.json';
 import * as layoutSignUS from './../../assets/keyboard-layouts/layout-fingers-ussign.json';
 import * as layoutBANZSL from './../../assets/keyboard-layouts/layout-fingers-banzsl.json';
 import * as layoutNaskapiNask from './../../assets/keyboard-layouts/layout-naskapi-nask.json';
 import * as layoutCarrierCarr from './../../assets/keyboard-layouts/layout-carrier-carr.json';
 import * as layoutOjibweOji from './../../assets/keyboard-layouts/layout-ojibwe-oji.json';
+import * as layoutBearyBya from './../../assets/keyboard-layouts/layout-beary-bya.json';
 import * as layoutDesiSign from './../../assets/keyboard-layouts/layout-fingers-desisign.json';
 import * as layoutNsibidiNsi from './../../assets/keyboard-layouts/layout-nsibidi-nsi.json';
 import * as layoutSignWritingSgnw from './../../assets/keyboard-layouts/layout-signwriting-sgnw.json';
@@ -539,6 +549,10 @@ import { SessionManagerService } from '../core/services/session-manager.service'
 export interface AvailableKeyboards {
   scriptType: string;
   scriptName: string[];
+}
+
+export interface TypeOfLayout {
+  show: 'custom' | 'float';
 }
 
 export const _filter = (opt: string[], value: string): string[] => {
@@ -1000,10 +1014,13 @@ export class CustomiseKeyboardsComponent implements OnInit {
   layoutBamanankanKeys: any = (layoutBamanankanBm as any).default;
   layoutLuxembourgishKeys: any = (layoutLuxembourgishLb as any).default;
   layoutUrduKeys: any = (layoutUrduUr as any).default;
+  layoutChisoiKeys: any = (layoutChisoiChis as any).default;
+  layoutNagMundariKeys: any = (layoutNagMundariNagm as any).default;
   layoutVietnameseKeys: any = (layoutVietnameseVi as any).default;
   layoutYorubaBjKeys: any = (layoutYorubaBjYo as any).default;
   layoutYorubaNgKeys: any = (layoutYorubaNgYo as any).default;
   layoutWolofLaKeys: any = (layoutWolofWo as any).default;
+  layoutKhorpaKeys: any = (layoutKhorpaKhor as any).default;
   layoutMansiKeys: any = (layoutMansiMns as any).default;
   layoutKhantyKeys: any = (layoutKhantyKca as any).default;
   layoutSaraikiKeys: any = (layoutSaraikiSkr as any).default;
@@ -1018,8 +1035,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
   layoutTainoKeys: any = (layoutTainoTnq as any).default;
   layoutMayaGlyphKeys: any = (layoutMayanMaya as any).default;
   layoutYiKeys: any = (layoutNosuYiii as any).default;
+  layoutKochiKeys: any = (layoutKochiKoch as any).default;
   layoutChokweKeys: any = (layoutChokweCjk as any).default;
   layoutMaltoKeys: any = (layoutMaltoMalt as any).default;
+  layoutKurukhKeys: any = (layoutKurukhKru as any).default;
   layoutShompenKeys: any = (layoutShompenSii as any).default;
   layoutMeroiticGlyphKeys: any = (layoutMeroiticGlyph as any).default;
   layoutMeroiticKeys: any = (layoutMeroiticMero as any).default;
@@ -1032,6 +1051,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   layoutPersianKeys: any = (layoutPersianXpeo as any).default;
   layoutDemoticKeys: any = (layoutDemoticEgyd as any).default;
   layoutNKoKeys: any = (layoutNKoNKoo as any).default;
+  layoutUmweroKeys: any = (layoutUmweroUmw as any).default;
   layoutSundaKeys: any = (layoutSundaneseSun as any).default;
   layoutCebuanoKeys: any = (layoutCebuanoCeb as any).default;
   layoutAfricaKeys: any = (layoutAfricaIai as any).default;
@@ -1039,6 +1059,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   layoutLomaKeys: any = (layoutLomaLoma as any).default;
   layoutNihongoKeys: any = (layoutNihongoJpn as any).default;
   layoutAoKeys: any = (layoutAoNjo as any).default;
+  layoutOldUyghurKeys: any = (layoutOldUyghurOugr as any).default;
   layoutNishiKeys: any = (layoutNishiNjz as any).default;
   layoutDinkaKeys: any = (layoutDinkaDin as any).default;
   layoutBugisKeys: any = (layoutBugisBugla as any).default;
@@ -1061,9 +1082,11 @@ export class CustomiseKeyboardsComponent implements OnInit {
   layoutGunjalaGondiKeys: any = (layoutGunjalaGondiGong as any).default;
   layoutKapampanganKeys: any = (layoutKapampanganPam as any).default;
   layoutMiaoKeys: any = (layoutPollardMiao as any).default;
+  layoutTaniKeys: any = (layoutTaniTani as any).default;
   layoutKhitanSKeys: any = (layoutKhitanKits as any).default;
   layoutKhitanLKeys: any = (layoutKhitanKitl as any).default;
   layoutNubianKeys: any = (layoutNubianOnw as any).default;
+  layoutAimaKeys: any = (layoutAimaAima as any).default;
   layoutLinearAKeys: any = (layoutLinearALinea as any).default;
   layoutKpelleKeys: any = (layoutKpelleKpe as any).default;
   layoutTigrinyaKeys: any = (layoutTigrinyaTi as any).default;
@@ -1075,10 +1098,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
   layoutKhazarianKeys: any = (layoutKhazarianKhaz as any).default;
   layoutSignUSKeys: any = (layoutSignUS as any).default;
   layoutIndusScriptKeys: any = (layoutIndusIndus as any).default;
+  layoutJentichaKeys: any = (layoutSunuwarSuz as any).default;
   layoutBANZSLKeys: any = (layoutBANZSL as any).default;
   layoutNaskapiKeys: any = (layoutNaskapiNask as any).default;
   layoutCarrierKeys: any = (layoutCarrierCarr as any).default;
   layoutOjibweKeys: any = (layoutOjibweOji as any).default;
+  layoutBearyKeys: any = (layoutBearyBya as any).default;
   layoutDesiSignKeys: any = (layoutDesiSign as any).default;
   layoutNsibidiKeys: any = (layoutNsibidiNsi as any).default;
   layoutSignWritingKeys: any = (layoutSignWritingSgnw as any).default;
@@ -1121,13 +1146,19 @@ export class CustomiseKeyboardsComponent implements OnInit {
   switchScriptDirection: Boolean = false;
   unicode5AndHigher : Boolean = false;
   highlightKeys: Boolean = true;
+  floatDialogOnly: Boolean = false;
 
   defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 18 : ((!this.isMobile && this.isTablet)? 38 : 48 );
   defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 11 : ((!this.isMobile && this.isTablet)? 13 : 15 );
 
   translateForSnackBar: string[] = [];
 
-  constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar) { 
+  constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout) { 
+    if (this.data.show == 'custom') {
+      this.floatDialogOnly = false;
+    } else if (this.data.show == 'float') {
+      this.floatDialogOnly = true;
+    }
     if (localStorage.getItem('qwertyStyle') != undefined) {
       if (this.sessionManager.getInSessionQwerty() === 'true')
         this.isQwerty = false;
