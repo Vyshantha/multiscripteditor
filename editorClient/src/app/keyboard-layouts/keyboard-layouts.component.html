@@ -2565,7 +2565,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button mat-raised-button [matMenuTriggerFor]="aksharamukhaselect" *ngIf="onlineService">
                 <img src="https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-web-plugin/icon.png" aria-label="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" matTooltip="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" width="25px">
-              </button>
+            </button>
             <mat-menu #aksharamukhaselect="matMenu">
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'IAST')">IAST</span>
@@ -2581,9 +2581,6 @@
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'IPA')">IPA</span>
-                </button>
-                <button mat-menu-item>
-                    <span (click)="selectTargetTransliteration($event, 'RussianCyrillic')">{{localisedKeyboardLayouts['ru'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Ahom')">{{localisedKeyboardLayouts['ahom'][2]}}</span>
@@ -2640,10 +2637,19 @@
                     <span (click)="selectTargetTransliteration($event, 'Cham')">{{localisedKeyboardLayouts['cham'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'RussianCyrillic')">{{localisedKeyboardLayouts['ru'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Devanagari')">{{localisedKeyboardLayouts['deva'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Dogra')">{{localisedKeyboardLayouts['dog'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Elym')">{{localisedKeyboardLayouts['elym'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Ethi')">{{localisedKeyboardLayouts['geez'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'GunjalaGondi')">{{localisedKeyboardLayouts['gong'][2]}}</span>
@@ -2662,6 +2668,30 @@
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Hanunoo')">{{localisedKeyboardLayouts['hano'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Hatr')">{{localisedKeyboardLayouts['hatr'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Hebrew')">{{localisedKeyboardLayouts['he'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Hebr-Ar')">{{localisedKeyboardLayouts['lad'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Armi')">{{localisedKeyboardLayouts['arc'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Phli')">{{localisedKeyboardLayouts['pal'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Prti')">{{localisedKeyboardLayouts['xpr'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Hiragana')">{{localisedKeyboardLayouts['hira'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Katakana')">{{localisedKeyboardLayouts['kata'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Javanese')">{{localisedKeyboardLayouts['jv'][2]}}</span>
@@ -2703,10 +2733,16 @@
                     <span (click)="selectTargetTransliteration($event, 'Limbu')">{{localisedKeyboardLayouts['limb'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Makasar')">{{localisedKeyboardLayouts['maka'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Malayalam')">{{localisedKeyboardLayouts['ml'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Mahajani')">{{localisedKeyboardLayouts['maha'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Mani')">{{localisedKeyboardLayouts['mani'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Marchen')">{{localisedKeyboardLayouts['marc'][2]}}</span>
@@ -2730,16 +2766,46 @@
                     <span (click)="selectTargetTransliteration($event, 'Multani')">{{localisedKeyboardLayouts['mult'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Nbat')">{{localisedKeyboardLayouts['nbat'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Nandinagari')">{{localisedKeyboardLayouts['nand'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Newa')">{{localisedKeyboardLayouts['newa'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Narb')">{{localisedKeyboardLayouts['safa'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'OldPersian')">{{localisedKeyboardLayouts['xpeo'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Sogo')">{{localisedKeyboardLayouts['kult'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Sarb')">{{localisedKeyboardLayouts['xsa'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Oriya')">{{localisedKeyboardLayouts['or'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Pallava')">{{localisedKeyboardLayouts['pall'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Palm')">{{localisedKeyboardLayouts['palm'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Arab-Fa')">{{localisedKeyboardLayouts['fa'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'PhagsPa')">{{localisedKeyboardLayouts['phag'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Phnx')">{{localisedKeyboardLayouts['phn'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Phlp')">{{localisedKeyboardLayouts['psal'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Gurmukhi')">{{localisedKeyboardLayouts['pa'][2]}}</span>
@@ -2754,6 +2820,54 @@
                     <span (click)="selectTargetTransliteration($event, 'HanifiRohingya')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'BarahaNorth')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'BarahaSouth')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'RomanColloquial')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'HK')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'ISOPali')">ISO Pāḷi</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'ISO233')">Roman (ISO 233 Arabic)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'ISO259')">Roman (ISO 259 Hebrew)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Itrans')">Roman (ITRANS)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'IASTLOC')">Roman (LoC Burmese)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'HebrewSBL')">Roman (SBL Hebrew)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'SLP1')">Roman (SLP1)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Type')">Roman (Semitic Typeable)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Latn')">Roman (Semitic)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Titus')">Roman (Titus)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Velthuis')">Roman (Velthuis)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'WX')">Roman (WX)</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Santali')">{{localisedKeyboardLayouts['olck'][2]}}</span>
                 </button>
                 <button mat-menu-item>
@@ -2763,6 +2877,9 @@
                     <span (click)="selectTargetTransliteration($event, 'Siddham')">{{localisedKeyboardLayouts['sidd'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Shahmukhi')">Shahmukhi</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Shan')">{{localisedKeyboardLayouts['shan'][2]}}</span>
                 </button>
                 <button mat-menu-item>
@@ -2770,6 +2887,9 @@
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Sinhala')">{{localisedKeyboardLayouts['si'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Sogd')">{{localisedKeyboardLayouts['sog'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'SoraSompeng')">{{localisedKeyboardLayouts['sora'][2]}}</span>
@@ -2782,6 +2902,15 @@
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'SylotiNagri')">{{localisedKeyboardLayouts['sylo'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Syrn')">{{localisedKeyboardLayouts['madn'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Syre')">{{localisedKeyboardLayouts['estr'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Syrj')">{{localisedKeyboardLayouts['sert'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Tagbanwa')">{{localisedKeyboardLayouts['tagb'][2]}}</span>
@@ -2817,10 +2946,28 @@
                     <span (click)="selectTargetTransliteration($event, 'Thai')">{{localisedKeyboardLayouts['th'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'TaiTham')">{{localisedKeyboardLayouts['lana'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'LaoTham')">Tham (Lao)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'KhuenTham')">Tham (Tai Khuen)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'LueTham')">{{localisedKeyboardLayouts['talu'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Tibetan')">{{localisedKeyboardLayouts['tibt'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Tirhuta')">{{localisedKeyboardLayouts['tirh'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'ugar')">{{localisedKeyboardLayouts['ugar'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Urdu')">{{localisedKeyboardLayouts['ur'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Urdu')">{{localisedKeyboardLayouts['ur'][2]}}</span>
@@ -5441,7 +5588,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button mat-raised-button [matMenuTriggerFor]="aksharamukhaselect" *ngIf="onlineService">
                 <img src="https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-web-plugin/icon.png" aria-label="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" matTooltip="{{ 'Generate Transliteration Content with Aksharamukha Output Script' | translate }}" width="25px">
-              </button>
+            </button>
             <mat-menu #aksharamukhaselect="matMenu">
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'IAST')">IAST</span>
@@ -5457,9 +5604,6 @@
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'IPA')">IPA</span>
-                </button>
-                <button mat-menu-item>
-                    <span (click)="selectTargetTransliteration($event, 'RussianCyrillic')">{{localisedKeyboardLayouts['ru'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Ahom')">{{localisedKeyboardLayouts['ahom'][2]}}</span>
@@ -5516,10 +5660,19 @@
                     <span (click)="selectTargetTransliteration($event, 'Cham')">{{localisedKeyboardLayouts['cham'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'RussianCyrillic')">{{localisedKeyboardLayouts['ru'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Devanagari')">{{localisedKeyboardLayouts['deva'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Dogra')">{{localisedKeyboardLayouts['dog'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Elym')">{{localisedKeyboardLayouts['elym'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Ethi')">{{localisedKeyboardLayouts['geez'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'GunjalaGondi')">{{localisedKeyboardLayouts['gong'][2]}}</span>
@@ -5538,6 +5691,30 @@
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Hanunoo')">{{localisedKeyboardLayouts['hano'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Hatr')">{{localisedKeyboardLayouts['hatr'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Hebrew')">{{localisedKeyboardLayouts['he'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Hebr-Ar')">{{localisedKeyboardLayouts['lad'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Armi')">{{localisedKeyboardLayouts['arc'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Phli')">{{localisedKeyboardLayouts['pal'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Prti')">{{localisedKeyboardLayouts['xpr'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Hiragana')">{{localisedKeyboardLayouts['hira'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Katakana')">{{localisedKeyboardLayouts['kata'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Javanese')">{{localisedKeyboardLayouts['jv'][2]}}</span>
@@ -5579,10 +5756,16 @@
                     <span (click)="selectTargetTransliteration($event, 'Limbu')">{{localisedKeyboardLayouts['limb'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Makasar')">{{localisedKeyboardLayouts['maka'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Malayalam')">{{localisedKeyboardLayouts['ml'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Mahajani')">{{localisedKeyboardLayouts['maha'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Mani')">{{localisedKeyboardLayouts['mani'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Marchen')">{{localisedKeyboardLayouts['marc'][2]}}</span>
@@ -5606,16 +5789,46 @@
                     <span (click)="selectTargetTransliteration($event, 'Multani')">{{localisedKeyboardLayouts['mult'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Nbat')">{{localisedKeyboardLayouts['nbat'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Nandinagari')">{{localisedKeyboardLayouts['nand'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Newa')">{{localisedKeyboardLayouts['newa'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Narb')">{{localisedKeyboardLayouts['safa'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'OldPersian')">{{localisedKeyboardLayouts['xpeo'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Sogo')">{{localisedKeyboardLayouts['kult'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Sarb')">{{localisedKeyboardLayouts['xsa'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Oriya')">{{localisedKeyboardLayouts['or'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Pallava')">{{localisedKeyboardLayouts['pall'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Palm')">{{localisedKeyboardLayouts['palm'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Arab-Fa')">{{localisedKeyboardLayouts['fa'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'PhagsPa')">{{localisedKeyboardLayouts['phag'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Phnx')">{{localisedKeyboardLayouts['phn'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Phlp')">{{localisedKeyboardLayouts['psal'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Gurmukhi')">{{localisedKeyboardLayouts['pa'][2]}}</span>
@@ -5630,6 +5843,54 @@
                     <span (click)="selectTargetTransliteration($event, 'HanifiRohingya')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'BarahaNorth')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'BarahaSouth')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'RomanColloquial')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'HK')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'ISOPali')">ISO Pāḷi</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'ISO233')">Roman (ISO 233 Arabic)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'ISO259')">Roman (ISO 259 Hebrew)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Itrans')">Roman (ITRANS)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'IASTLOC')">Roman (LoC Burmese)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'HebrewSBL')">Roman (SBL Hebrew)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'SLP1')">Roman (SLP1)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Type')">Roman (Semitic Typeable)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Latn')">Roman (Semitic)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Titus')">Roman (Titus)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Velthuis')">Roman (Velthuis)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'WX')">Roman (WX)</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Santali')">{{localisedKeyboardLayouts['olck'][2]}}</span>
                 </button>
                 <button mat-menu-item>
@@ -5639,6 +5900,9 @@
                     <span (click)="selectTargetTransliteration($event, 'Siddham')">{{localisedKeyboardLayouts['sidd'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Shahmukhi')">Shahmukhi</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Shan')">{{localisedKeyboardLayouts['shan'][2]}}</span>
                 </button>
                 <button mat-menu-item>
@@ -5646,6 +5910,9 @@
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Sinhala')">{{localisedKeyboardLayouts['si'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Sogd')">{{localisedKeyboardLayouts['sog'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'SoraSompeng')">{{localisedKeyboardLayouts['sora'][2]}}</span>
@@ -5658,6 +5925,15 @@
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'SylotiNagri')">{{localisedKeyboardLayouts['sylo'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Syrn')">{{localisedKeyboardLayouts['madn'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Syre')">{{localisedKeyboardLayouts['estr'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Syrj')">{{localisedKeyboardLayouts['sert'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Tagbanwa')">{{localisedKeyboardLayouts['tagb'][2]}}</span>
@@ -5693,10 +5969,28 @@
                     <span (click)="selectTargetTransliteration($event, 'Thai')">{{localisedKeyboardLayouts['th'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'TaiTham')">{{localisedKeyboardLayouts['lana'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'LaoTham')">Tham (Lao)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'KhuenTham')">Tham (Tai Khuen)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'LueTham')">{{localisedKeyboardLayouts['talu'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Tibetan')">{{localisedKeyboardLayouts['tibt'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Tirhuta')">{{localisedKeyboardLayouts['tirh'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'ugar')">{{localisedKeyboardLayouts['ugar'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Urdu')">{{localisedKeyboardLayouts['ur'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Urdu')">{{localisedKeyboardLayouts['ur'][2]}}</span>
@@ -8238,7 +8532,7 @@
     <br/>
     <mat-card dir="{{dirSet}}">
         <p style="text-align: center;">
-            <!--input [(colorPicker)]="color" [style.background]="color"/--><mat-icon aria-label="{{ 'Float Keyboard' | translate }}" *ngIf="isQwerty || isTransliterate"  alt="{{ 'Float Keyboard' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Float Keyboard' | translate }}" (click)="customiseMyKeyboardLayout('float')">launch</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp; 
+            <!--input [(colorPicker)]="color" [style.background]="color"/--><!--mat-icon aria-label="{{ 'Float Keyboard' | translate }}" *ngIf="isQwerty || isTransliterate"  alt="{{ 'Float Keyboard' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Float Keyboard' | translate }}" (click)="customiseMyKeyboardLayout('float')">launch</mat-icon-->&nbsp;&nbsp;&nbsp;&nbsp; 
             <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>
             <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
             &nbsp;&nbsp;&nbsp;&nbsp;
@@ -8308,9 +8602,6 @@
                     <span (click)="selectTargetTransliteration($event, 'IPA')">IPA</span>
                 </button>
                 <button mat-menu-item>
-                    <span (click)="selectTargetTransliteration($event, 'RussianCyrillic')">{{localisedKeyboardLayouts['ru'][2]}}</span>
-                </button>
-                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Ahom')">{{localisedKeyboardLayouts['ahom'][2]}}</span>
                 </button>
                 <button mat-menu-item>
@@ -8365,10 +8656,19 @@
                     <span (click)="selectTargetTransliteration($event, 'Cham')">{{localisedKeyboardLayouts['cham'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'RussianCyrillic')">{{localisedKeyboardLayouts['ru'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Devanagari')">{{localisedKeyboardLayouts['deva'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Dogra')">{{localisedKeyboardLayouts['dog'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Elym')">{{localisedKeyboardLayouts['elym'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Ethi')">{{localisedKeyboardLayouts['geez'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'GunjalaGondi')">{{localisedKeyboardLayouts['gong'][2]}}</span>
@@ -8387,6 +8687,30 @@
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Hanunoo')">{{localisedKeyboardLayouts['hano'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Hatr')">{{localisedKeyboardLayouts['hatr'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Hebrew')">{{localisedKeyboardLayouts['he'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Hebr-Ar')">{{localisedKeyboardLayouts['lad'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Armi')">{{localisedKeyboardLayouts['arc'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Phli')">{{localisedKeyboardLayouts['pal'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Prti')">{{localisedKeyboardLayouts['xpr'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Hiragana')">{{localisedKeyboardLayouts['hira'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Katakana')">{{localisedKeyboardLayouts['kata'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Javanese')">{{localisedKeyboardLayouts['jv'][2]}}</span>
@@ -8428,10 +8752,16 @@
                     <span (click)="selectTargetTransliteration($event, 'Limbu')">{{localisedKeyboardLayouts['limb'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Makasar')">{{localisedKeyboardLayouts['maka'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Malayalam')">{{localisedKeyboardLayouts['ml'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Mahajani')">{{localisedKeyboardLayouts['maha'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Mani')">{{localisedKeyboardLayouts['mani'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Marchen')">{{localisedKeyboardLayouts['marc'][2]}}</span>
@@ -8455,16 +8785,46 @@
                     <span (click)="selectTargetTransliteration($event, 'Multani')">{{localisedKeyboardLayouts['mult'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Nbat')">{{localisedKeyboardLayouts['nbat'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Nandinagari')">{{localisedKeyboardLayouts['nand'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Newa')">{{localisedKeyboardLayouts['newa'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Narb')">{{localisedKeyboardLayouts['safa'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'OldPersian')">{{localisedKeyboardLayouts['xpeo'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Sogo')">{{localisedKeyboardLayouts['kult'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Sarb')">{{localisedKeyboardLayouts['xsa'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Oriya')">{{localisedKeyboardLayouts['or'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Pallava')">{{localisedKeyboardLayouts['pall'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Palm')">{{localisedKeyboardLayouts['palm'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Arab-Fa')">{{localisedKeyboardLayouts['fa'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'PhagsPa')">{{localisedKeyboardLayouts['phag'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Phnx')">{{localisedKeyboardLayouts['phn'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Phlp')">{{localisedKeyboardLayouts['psal'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Gurmukhi')">{{localisedKeyboardLayouts['pa'][2]}}</span>
@@ -8479,6 +8839,54 @@
                     <span (click)="selectTargetTransliteration($event, 'HanifiRohingya')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'BarahaNorth')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'BarahaSouth')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'RomanColloquial')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'HK')">{{localisedKeyboardLayouts['rohg'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'ISOPali')">ISO Pāḷi</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'ISO233')">Roman (ISO 233 Arabic)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'ISO259')">Roman (ISO 259 Hebrew)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Itrans')">Roman (ITRANS)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'IASTLOC')">Roman (LoC Burmese)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'HebrewSBL')">Roman (SBL Hebrew)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'SLP1')">Roman (SLP1)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Type')">Roman (Semitic Typeable)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Latn')">Roman (Semitic)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Titus')">Roman (Titus)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Velthuis')">Roman (Velthuis)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'WX')">Roman (WX)</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Santali')">{{localisedKeyboardLayouts['olck'][2]}}</span>
                 </button>
                 <button mat-menu-item>
@@ -8488,6 +8896,9 @@
                     <span (click)="selectTargetTransliteration($event, 'Siddham')">{{localisedKeyboardLayouts['sidd'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Shahmukhi')">Shahmukhi</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Shan')">{{localisedKeyboardLayouts['shan'][2]}}</span>
                 </button>
                 <button mat-menu-item>
@@ -8495,6 +8906,9 @@
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Sinhala')">{{localisedKeyboardLayouts['si'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Sogd')">{{localisedKeyboardLayouts['sog'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'SoraSompeng')">{{localisedKeyboardLayouts['sora'][2]}}</span>
@@ -8507,6 +8921,15 @@
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'SylotiNagri')">{{localisedKeyboardLayouts['sylo'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Syrn')">{{localisedKeyboardLayouts['madn'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Syre')">{{localisedKeyboardLayouts['estr'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Syrj')">{{localisedKeyboardLayouts['sert'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Tagbanwa')">{{localisedKeyboardLayouts['tagb'][2]}}</span>
@@ -8542,10 +8965,28 @@
                     <span (click)="selectTargetTransliteration($event, 'Thai')">{{localisedKeyboardLayouts['th'][2]}}</span>
                 </button>
                 <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'TaiTham')">{{localisedKeyboardLayouts['lana'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'LaoTham')">Tham (Lao)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'KhuenTham')">Tham (Tai Khuen)</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'LueTham')">{{localisedKeyboardLayouts['talu'][2]}}</span>
+                </button>
+                <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Tibetan')">{{localisedKeyboardLayouts['tibt'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Tirhuta')">{{localisedKeyboardLayouts['tirh'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'ugar')">{{localisedKeyboardLayouts['ugar'][2]}}</span>
+                </button>
+                <button mat-menu-item>
+                    <span (click)="selectTargetTransliteration($event, 'Urdu')">{{localisedKeyboardLayouts['ur'][2]}}</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Urdu')">{{localisedKeyboardLayouts['ur'][2]}}</span>

@@ -8,7 +8,7 @@
     </td>
     <td *ngIf="!noTypewriterPresent">
       <mat-icon aria-label="{{ 'QWERTY' | translate }}" alt="{{ 'QWERTY' | translate }}" matTooltip="{{ 'QWERTY' | translate }}">keyboard</mat-icon>&nbsp;&nbsp;
-      <mat-slide-toggle (click)="qwertyKeyboard()" [(ngModel)]="languageBased"><mat-icon aria-label="{{ 'Language Learning' | translate }}" alt="{{ 'Language Learning' | translate }}" matTooltip="{{ 'Language Learning' | translate }}">view_comfy</mat-icon></mat-slide-toggle>&nbsp;&nbsp;
+      <mat-slide-toggle (click)="qwertyKeyboard()" [(ngModel)]="languageBased"><mat-icon aria-label="{{ 'Orthography' | translate }}" alt="{{ 'Orthography' | translate }}" matTooltip="{{ 'Orthography' | translate }}">view_comfy</mat-icon></mat-slide-toggle>&nbsp;&nbsp;
     </td>
     <td *ngIf="allowTransliterate">
       <mat-slide-toggle (click)="(languageBased)? languageBased : transliterationKeysClicked()" [disabled]="languageBased" [(ngModel)]="transliterateKeyboard"><mat-icon aria-label="{{ 'Transliteration' | translate }}" alt="{{ 'Transliteration' | translate }}" matTooltip="{{ 'Transliteration' | translate }}">keyboard_alt</mat-icon></mat-slide-toggle>&nbsp;&nbsp;
@@ -28,7 +28,7 @@
     </td>
     <td *ngIf="!noTypewriterPresent">
       <mat-icon aria-label="{{ 'QWERTY' | translate }}" alt="{{ 'QWERTY' | translate }}" matTooltip="{{ 'QWERTY' | translate }}">keyboard</mat-icon> &nbsp;&nbsp; 
-      <mat-slide-toggle (click)="qwertyKeyboard()" [(ngModel)]="languageBased"><mat-icon aria-label="{{ 'Language Learning' | translate }}" alt="{{ 'Language Learning' | translate }}" matTooltip="{{ 'Language Learning' | translate }}">view_comfy</mat-icon></mat-slide-toggle> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <mat-slide-toggle (click)="qwertyKeyboard()" [(ngModel)]="languageBased"><mat-icon aria-label="{{ 'Orthography' | translate }}" alt="{{ 'Orthography' | translate }}" matTooltip="{{ 'Orthography' | translate }}">view_comfy</mat-icon></mat-slide-toggle> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </td>
     <td *ngIf="allowTransliterate">
       <mat-slide-toggle (click)="(languageBased)? languageBased : transliterationKeysClicked()" [disabled]="languageBased" [(ngModel)]="transliterateKeyboard"><mat-icon aria-label="{{ 'Transliteration' | translate }}" alt="{{ 'Transliteration' | translate }}" matTooltip="{{ 'Transliteration' | translate }}">keyboard_alt</mat-icon></mat-slide-toggle>&nbsp;&nbsp;
@@ -53,7 +53,7 @@
       <mat-icon aria-label="{{ 'QWERTY' | translate }}" alt="{{ 'QWERTY' | translate }}" matTooltip="{{ 'QWERTY' | translate }}">keyboard</mat-icon> &nbsp;&nbsp; 
       <span [ngStyle]="{'font-weight': languageBased == true ? 'normal' : 'bold'}">{{ 'QWERTY' | translate }}</span> &nbsp;&nbsp; 
       <mat-slide-toggle (click)="qwertyKeyboard()" [(ngModel)]="languageBased"></mat-slide-toggle> &nbsp;&nbsp; 
-      <span [ngStyle]="{'font-weight': languageBased == true ? 'bold' : 'normal'}">{{ 'Language Learning' | translate }} &nbsp;&nbsp;<mat-icon aria-label="{{ 'Language Learning' | translate }}" alt="{{ 'Language Learning' | translate }}" matTooltip="{{ 'Language Learning' | translate }}">view_comfy</mat-icon></span>&nbsp;&nbsp;&nbsp;&nbsp;
+      <span [ngStyle]="{'font-weight': languageBased == true ? 'bold' : 'normal'}">{{ 'Orthography' | translate }} &nbsp;&nbsp;<mat-icon aria-label="{{ 'Orthography' | translate }}" alt="{{ 'Orthography' | translate }}" matTooltip="{{ 'Orthography' | translate }}">view_comfy</mat-icon></span>&nbsp;&nbsp;&nbsp;&nbsp;
     </td>
     <td *ngIf="allowTransliterate">
       <span [ngStyle]="{'font-weight': transliterateKeyboard == true ? 'normal' : 'bold'}">{{ 'Standard' | translate }}</span> &nbsp;&nbsp;
