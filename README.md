@@ -26,7 +26,7 @@ This website offers every writer all the tools necessary to ensure they are able
 13. URL redirection capabilities to switch keyboards and override browser default language or locale 
 14. Keyboard Layouts can be bookmarked and layouts could be customised 
 15. The offering in available in `Online` | `Offline` for the different services
-16. The Transliteration Content Generation is established using the APIs provided by Aksharamukha : https://aksharamukha.appspot.com/explore from [@github/virtualvinodh](https://github.com/virtualvinodh/aksharamukha)
+16. The Transliteration Content Generation is established using the APIs provided by Aksharamukha ![Aksharamukha](https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-web-plugin/icon.png) : https://aksharamukha.appspot.com/explore from [@github/virtualvinodh](https://github.com/virtualvinodh/aksharamukha)
 17. Integrated [@EasyOCR](https://github.com/JaidedAI/EasyOCR) to detect text in images for 88 Languages 
 18. Use canvas to scribble or write or draw any Content and include in Editor
 19. Webpage that are integrated through iFrames : 
