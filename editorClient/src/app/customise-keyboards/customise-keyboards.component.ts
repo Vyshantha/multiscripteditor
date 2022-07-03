@@ -545,7 +545,6 @@ import { ThemeService } from '../core/services/theme.service';
 import { TranslateService } from '../core/services/translate.service';
 import { SessionManagerService } from '../core/services/session-manager.service';
 
-
 export interface AvailableKeyboards {
   scriptType: string;
   scriptName: string[];
@@ -1131,11 +1130,11 @@ export class CustomiseKeyboardsComponent implements OnInit {
   layoutRotatedScript: string[] = ['ogam', 'hira', 'kata', 'vaii', 'phag', 'oira', 'mnc', 'mon', 'geez', 'dite', 'iba', 'evn', 'ndju', 'cree', 'inuk', 'galk', 'bla', 'aztc', 'maya'];
   keyDoNotRotate: string[] = ['vaii', 'geez', 'am', 'dite', 'iba', 'ndju'];
 
-  swaraAbugidaType : string [] = ['ahom', 'bada', 'bali', 'batk', 'tglg', 'bn', 'bhai', 'bla', 'brah', 'bug', 'buhd', 'cakm', 'cree', 'dham', 'dite', 'diak', 'dogr', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kthi', 'kn', 'kawi', 'kali', 'khar', 'tang', 'km', 'khoj', 'khud', 'kuli', 'lo', 'lepc', 'limb', 'loma', 'maga', 'maha', 'ml', 'mani', 'mni', 'mr', 'modi', 'mult', 'my', 'nand', 'or', 'phag', 'newa', 'pa', 'rjng', 'renc', 'sa', 'saur', 'shan', 'shrd', 'sn', 'sidd', 'snd', 'si', 'sora', 'sund', 'sylo', 'tagb', 'talu', 'lana', 'takr', 'ta', 'tamu', 'tach', 'te', 'thaa', 'th', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'zanb', 'dv', 'mai'];
+  swaraAbugidaType : string [] = ['ahom', 'bada', 'bali', 'batk', 'tglg', 'bn', 'bhai', 'bla', 'brah', 'bug', 'buhd', 'cakm', 'cree', 'dham', 'dite', 'diak', 'dogr', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kthi', 'kn', 'kawi', 'kali', 'khar', 'tang', 'km', 'khoj', 'khud', 'kuli', 'lo', 'lepc', 'limb', 'loma', 'maga', 'maha', 'ml', 'mani', 'mni', 'mr', 'modi', 'mult', 'my', 'nand', 'or', 'phag', 'newa', 'pa', 'rjng', 'renc', 'sa', 'saur', 'shan', 'shrd', 'sn', 'sidd', 'snd', 'si', 'sora', 'sund', 'sylo', 'tagb', 'talu', 'lana', 'takr', 'ta', 'tamu', 'tach', 'te', 'thaa', 'th', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'zanb', 'dv', 'mai', 'bhp'];
 
   fontsSources: string[] = ['dogr', 'zanb', 'sog', 'kult', 'hmnp', 'nshu', 'txg', 'elym', 'gonm', 'gong', 'soyo', 'yezi', 'ur'];
 
-  imageAlternativeScript: string[] = ['cans', 'esk', 'esi', 'ipk', 'dhan', 'safa', 'txr', 'ibe', 'avo', 'ranj', 'gup', 'tirh', 'pall', 'toch', 'moon', 'tiga', 'xce', 'vith', 'nand', 'kada', 'sog', 'kult', 'estr', 'sert', 'madn', 'diak', 'ber', 'tach', 'gael', 'mwan', 'mult', 'maha', 'wole', 'moss', 'iba', 'hmnp', 'komi', 'dogr', 'maya', 'nshu', 'egyd', 'bug', 'renc', 'kuli', 'sina', 'zou', 'cana', 'kaid', 'dham', 'tamu', 'geba', 'maka', 'lad', 'kama', 'ndju', 'aztc', 'elym', 'txg', 'jiag', 'bada', 'vatt', 'mikq', 'gars', 'dale', 'goyk', 'wolf', 'zag', 'kawi', 'loma', 'ion', 'tika', 'mamb', 'land', 'khat', 'sabe', 'dite', 'toto', 'chrs', 'tang', 'zanb', 'maga', 'luo', 'chik', 'adin', 'khom', 'khaz', 'yezi', 'tnq', 'ics', 'flag', 'ussign', 'banzsl', 'odu'];
+  imageAlternativeScript: string[] = ['cans', 'esk', 'esi', 'ipk', 'dhan', 'safa', 'txr', 'ibe', 'avo', 'ranj', 'gup', 'tirh', 'pall', 'toch', 'moon', 'tiga', 'xce', 'vith', 'nand', 'kada', 'sog', 'kult', 'estr', 'sert', 'madn', 'diak', 'ber', 'tach', 'gael', 'mwan', 'mult', 'maha', 'wole', 'moss', 'iba', 'hmnp', 'komi', 'dogr', 'maya', 'nshu', 'egyd', 'bug', 'renc', 'kuli', 'sina', 'zou', 'cana', 'kaid', 'dham', 'tamu', 'geba', 'maka', 'lad', 'kama', 'ndju', 'aztc', 'elym', 'txg', 'jiag', 'bada', 'vatt', 'mikq', 'gars', 'dale', 'goyk', 'wolf', 'zag', 'kawi', 'loma', 'ion', 'tika', 'mamb', 'land', 'khat', 'sabe', 'dite', 'toto', 'chrs', 'tang', 'zanb', 'maga', 'luo', 'chik', 'adin', 'khom', 'khaz', 'yezi', 'tnq', 'ics', 'flag', 'ussign', 'banzsl', 'odu', 'coorg', 'bhp'];
 
   keysToRotate: Boolean = false;
   isQwerty: Boolean = false;
@@ -1153,6 +1152,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   highlightKeys: Boolean = true;
   allowSuperScript : Boolean = false;
   floatDialogOnly: Boolean = false;
+  floatNotMinimise: Boolean = true;
 
   whichMappedKey: string = "";
   fontClass: string = "";
@@ -1198,6 +1198,17 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sessionManager.itemQwertyType.subscribe((flagValue)=>{
+      this.isQwerty = flagValue;
+      // Constraint : Typewriter is false and Transliterate is set then it should be reset
+      if (flagValue == false && this.isTransliterate == true && this.sessionManager.itemTransliterate.value == true) {
+        this.sessionManager.setTransliterate(false);
+        this.isTransliterate = false;
+      }
+    });
+    this.sessionManager.itemTransliterate.subscribe((flagForTrans) => {
+      this.isTransliterate = flagForTrans;
+    });
     if (this.sessionManager.getUILocale()) {
       this.dirSet = (this.rtlLocales.indexOf(this.sessionManager.getUILocale()) !== -1)? "rtl" : "ltr";
       this.isRTL = (this.rtlLocales.indexOf(this.sessionManager.getUILocale()) !== -1)? true : false;
@@ -1357,256 +1368,16 @@ export class CustomiseKeyboardsComponent implements OnInit {
     }
   }
 
-  showSuperScriptCharacter(character) : string {
-    return "";
+  minimiseFloat() {
+
   }
 
+  restoreBackKeyboard() {
+    this.dialogRef.close();
+    this.sessionManager.softKeyboardState.next(false); 
+  }
+ 
   keyPressed(element, value, action, type, src) {
-    /*this.sessionManager.detectWordTyped = false;
-    if (action === "shift") {
-      if (this.sessionManager.itemAltGrKeyPressed.value == false) {
-        if (this.sessionManager.itemShiftKeyPressed.value == false)
-          this.sessionManager.setShiftKeyPressed(true);
-        else if (this.sessionManager.itemShiftKeyPressed.value == true)
-          this.sessionManager.setShiftKeyPressed(false);
-      } else if (this.sessionManager.itemAltGrKeyPressed.value == true) {
-        if (this.sessionManager.itemShiftKeyPressed.value == false && this.altGrCapsExists)
-          this.sessionManager.setShiftKeyPressed(true);
-        else if (this.sessionManager.itemShiftKeyPressed.value == true && this.altGrCapsExists)
-          this.sessionManager.setShiftKeyPressed(false);
-      }
-      if (this.unicode5AndHigher && this.sessionManager.itemQwertyType.value == true)
-        this.showImageGlyph = true;
-      else if (this.sessionManager.itemQwertyType.value == true)
-        this.showImageGlyph = false;
-    } else if (action === "altGr") {
-      if (this.sessionManager.itemShiftKeyPressed.value == false) {
-        if (this.sessionManager.itemAltGrKeyPressed.value == false)
-          this.sessionManager.setAltGrKeyPressed(true);
-        else if (this.sessionManager.itemAltGrKeyPressed.value == true)
-          this.sessionManager.setAltGrKeyPressed(false);
-      } else if (this.sessionManager.itemShiftKeyPressed.value == true) {
-        if (this.sessionManager.itemAltGrKeyPressed.value == false && this.altGrCapsExists)
-          this.sessionManager.setAltGrKeyPressed(true);
-        else if (this.sessionManager.itemAltGrKeyPressed.value == true && this.altGrCapsExists)
-          this.sessionManager.setAltGrKeyPressed(false);
-      }
-    } else if (action === "tab") {
-      this.sessionManager.setCharFromKeyboard("&nbsp;&nbsp;&nbsp;&nbsp;");
-    } else if (action === "enter") {
-      this.resetSwara();
-      this.sessionManager.setElementForCharacterSelection(element);
-      this.sessionManager.setCharFromKeyboard("<br/> ");
-      this.sessionManager.setActionFromKeyboard(action);
-      this.typedWord.next("");
-    } else if (action === "char" && value === "\u00A0") {
-      this.resetSwara();
-      this.sessionManager.setCharFromKeyboard("");
-    } else if (action === "space" && (value === "\u00A0" || value == " ")) {
-      this.resetSwara();
-      if (this.unicode5AndHigher)
-        this.sessionManager.setCharFromKeyboard("　");
-      else
-        this.sessionManager.setCharFromKeyboard(this.sessionManager.wordSeparator());
-      this.typedWord.next("");
-      this.possibleCombine = "";
-      this.previousTypedKey = "";
-    } else if (action === "delAlt") {
-      this.sessionManager.setActionFromKeyboard(action);
-      if (type == "letter")
-        this.typedWord.next(this.typedWord.value.substring(0, this.typedWord.value.length - 1));
-    } else if (action === "del") {
-      // Backspace Button function
-      this.sessionManager.setActionFromKeyboard(action);
-      if (type == "letter" && this.typedWord.value)
-        this.typedWord.next(this.typedWord.value.substring(0, this.typedWord.value.length - 1));
-      if (type == "letter" && this.sessionManager.typedKeysMap.value && this.mappingKeysToSoft)
-        this.sessionManager.typedKeysMap.next(this.sessionManager.typedKeysMap.value.substring(0, this.sessionManager.typedKeysMap.value.length - 1));
-    } else if (type === "vyanjana" && !this.showImageGlyph) {
-      // Reload Keyboard with Swara places as a combination of the selected Vyanjana
-      if (!this.isQwerty && !this.isTransliterate) {
-        // Loop through all elements
-        for (let j in this.layoutCurrentKeys[1].row) {
-          if (this.layoutCurrentKeys[1].row[j].type === "swara") {
-            if (this.prevSwaras[j] == '') 
-              this.prevSwaras[j] = this.layoutCurrentKeys[1].row[j].value;
-            this.layoutCurrentKeys[1].row[j].value = value + this.prevSwaras[j];
-          }
-        }
-      }
-      this.sessionManager.setElementForCharacterSelection(element);
-      this.sessionManager.setCharFromKeyboard(value);
-      this.sessionManager.setActionFromKeyboard(action);
-      if (this.typedWord.value == null || this.typedWord.value === "")
-        this.typedWord.next(value);
-      else
-        this.typedWord.next(this.typedWord.value + value);
-      this.lastCharVyanjana = true;
-    } else if (type === "word") {
-      if (this.sessionManager.isIntegrationContinous() == 'true') {
-        this.runProgressIndicator = true;
-      }
-      // Keys pressed from Soft Keyboard
-      for(let count in this.typedWord.value) {
-        this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
-      }
-      if (this.lastCharVyanjana == true && action == 'char') {
-        this.lastCharVyanjana = false;
-        this.sessionManager.detectWordTyped = true;
-        this.sessionManager.setCharFromKeyboard(value);
-      } else if (action == 'false') {
-        if (this.typedWord.value && value.includes(this.typedWord.value) > -1 && value[0].toUpperCase() === this.typedWord.value[0] && this.sessionManager.getFromSessionURL() != "pin" && this.sessionManager.getFromSessionURL() != "bopo"){
-          value = this.typedWord.value[0] + value.substr(1, value.length);
-          this.typedWord.next("");
-          this.sessionManager.detectWordTyped = true;
-          this.sessionManager.setCharFromKeyboard(this.sessionManager.wordSeparator() + value + this.sessionManager.wordSeparator());
-          this.resetSwara();
-        } else if (this.sessionManager.getFromSessionURL() == "pin" || this.sessionManager.getFromSessionURL() == "bopo" || (this.sessionManager.getFromSessionURL() == "zhtw" && this.sessionManager.getInSessionQwerty() == true) || (this.sessionManager.getFromSessionURL() == "zhcn" && this.sessionManager.getInSessionQwerty() == true)) {
-          this.typedWord.next("");
-          this.sessionManager.detectWordTyped = true;
-          this.sessionManager.setCharFromKeyboard(value.split(" ")[1] + this.sessionManager.wordSeparator());
-          this.resetSwara();
-        } else {
-          this.typedWord.next("");
-          this.sessionManager.detectWordTyped = true;
-          this.sessionManager.setCharFromKeyboard(value + this.sessionManager.wordSeparator()); 
-          this.resetSwara();
-        }
-      }
-      if (this.mappingKeysToSoft && (this.isQwerty || this.isTransliterate) && this.sessionManager.typedKeysMap.value != null) {
-        this.sessionManager.typedKeysMap.next("");
-      }
-    } else if (action === "control") {
-      if (this.isQwerty || this.isTransliterate) {
-        this.sessionManager.itemCtrlKeyPressed.next(true);
-        this.sessionManager.setActionFromKeyboard(action);
-      }
-    } else if (action === "left" && value === "←") {
-      this.sessionManager.setActionFromKeyboard(action);
-    } else if (action === "top" && value === "↑") { 
-      this.sessionManager.setActionFromKeyboard(action);
-    } else if (action === "right" && value === "→") {
-      this.sessionManager.setActionFromKeyboard(action);
-    } else if (action === "bottom" && value === "↓") {
-      this.sessionManager.setActionFromKeyboard(action);
-    } else if (action === "contextmenu" && value === "☰") {
-      this.sessionManager.setActionFromKeyboard(action);
-    } else if (src && this.showImageGlyph) {
-      this.sessionManager.imageWidthAction.next("16px");
-      if (this.sessionManager.getFromSessionURL() == "odu" && this.previousTypedKey == "" && /[a-ze̱o̱`´]+/i.test(value) && this.possibleCombine == "") {
-        this.previousTypedKey = value;
-      } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.possibleCombine + value) > -1 && this.possibleCombine != "" && /[a-ze̱o̱`´]+/i.test(this.previousTypedKey) == false){
-        // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
-        src = src.split("odu")[0] + "odu/" + this.possibleCombine + value + ".png";
-        this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
-        this.possibleCombine = "";
-        this.sessionManager.imageWidthAction.next("24px");
-      } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.possibleCombine + this.previousTypedKey + value) > -1 && this.possibleCombine != "" && /[a-ze̱o̱`´]+/i.test(this.previousTypedKey)){
-        // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
-        src = src.split("odu")[0] + "odu/" + this.possibleCombine + this.previousTypedKey + value + ".png";
-        this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
-        this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
-        this.possibleCombine = "";
-        this.previousTypedKey = "";
-        this.sessionManager.imageWidthAction.next("24px");
-      } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.previousTypedKey + value) > -1){
-        // Diphthongs for Oduduwa : "./assets/characters/odu/xx.png"
-        src = src.split("odu")[0] + "odu/" + this.previousTypedKey + value + ".png";
-        if (/[`´]+/i.test(this.previousTypedKey)) {
-          this.possibleCombine = this.previousTypedKey + value;
-          this.sessionManager.imageWidthAction.next("16px");
-        } else {
-          this.sessionManager.imageWidthAction.next("24px");
-        }
-        this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
-        this.previousTypedKey = "";
-      } else if (this.sessionManager.getFromSessionURL() == "odu" && this.diphthongsMappingOduduwa.indexOf(this.previousTypedKey + value) == -1 && /[a-ze̱o̱`´]+/i.test(value)) {
-        this.previousTypedKey = value;
-      }
-      this.sessionManager.setActionFromKeyboard(src);
-    } else if (type === "diacritic") {
-      this.diacriticTyped = value;
-      this.sessionManager.setElementForCharacterSelection(element);
-      this.sessionManager.setCharFromKeyboard(value);
-      this.sessionManager.setActionFromKeyboard(action);
-      this.typedWord.next(this.typedWord.value + value);
-      if (this.sessionManager.getFromSessionURL() == "odu" && /[`´]/.test(value) && this.possibleCombine == ""){
-        this.possibleCombine = this.previousTypedKey;
-        this.previousTypedKey = value;
-      } else if (this.sessionManager.getFromSessionURL() == "odu" && /[`´]/.test(value)){
-        this.previousTypedKey = value;
-      }
-    } else {
-      if (this.sessionManager.itemSessionURL.value == "iub") {
-        value = (value.indexOf(" ") > -1) ? value.split(' ')[1] : value;
-      }
-      if (this.sessionManager.itemSessionURL.value == "bharati") {
-        value = (value.indexOf("-") > -1) ? value.split('-')[1].split(' ')[1] : (value.indexOf(" ") > -1) ? value.split(' ')[1] : value;
-      }
-      if (this.isQwerty && !this.isTransliterate && (this.sessionManager.itemSessionURL.value == "ti" || this.sessionManager.itemSessionURL.value == "tig" || this.sessionManager.itemSessionURL.value == "am" || this.sessionManager.itemSessionURL.value == "geez")) {
-        if(type == "syllabic") {
-          this.keyPressed(this.sessionManager.typedKeysMap.value, "⌫", "del", "letter", "");
-          this.syllablicTyping = false;
-        }
-        this.sessionManager.setElementForCharacterSelection(element);
-        this.sessionManager.setCharFromKeyboard(value);
-        this.sessionManager.setActionFromKeyboard(action);
-        if (this.typedWord.value == null || this.typedWord.value === "")
-          this.typedWord.next(value);
-        else
-          this.typedWord.next(this.typedWord.value + value);
-        if (type != undefined && type != "diacritic" && type != "word" && type != "vyanjana" && type != "syllabic")
-          this.showItsSyllables(type);
-        else if (type == "syllabic") {
-          this.resetAllSyllables();
-        }
-      }
-      if (type == "swara") {
-        this.lastCharVyanjana = true;
-      } else if ((type == undefined || (type == "vowel" && !this.diacriticTyped)) && value && action == "char") {
-        this.sessionManager.setElementForCharacterSelection(element);
-        this.sessionManager.setCharFromKeyboard(value);
-        this.sessionManager.setActionFromKeyboard(action);
-        if (this.typedWord.value == null || this.typedWord.value === "")
-          this.typedWord.next(value);
-        else
-          this.typedWord.next(this.typedWord.value + value);
-      } else if (type == "iso" || type == "ini" || type == "med" || type == "fin") {
-        this.sessionManager.setElementForCharacterSelection(element);
-        this.sessionManager.setCharFromKeyboard(value);
-        this.sessionManager.setActionFromKeyboard(action);
-        if (this.typedWord.value == null || this.typedWord.value === "")
-          this.typedWord.next(value);
-        else
-          this.typedWord.next(this.typedWord.value + value);
-      }
-      if (this.lastCharVyanjana == true) {
-        if (value.includes(this.typedWord.value[this.typedWord.value.length - 1])) {
-          this.typedWord.next(this.typedWord.value.substring(0, this.typedWord.value.length - 1) + value);
-        } else if (this.isQwerty || this.isTransliterate) {
-          this.typedWord.next(this.typedWord.value + value);
-        } else {
-          this.typedWord.next(value);
-        }
-        // This is latest Unicode v39 - Invalid or Replacement Characters
-        if (this.sessionManager.getFromSessionURL() == "gran" && this.typedWord.value.indexOf("\ud804") > -1) 
-          this.typedWord.next(this.typedWord.value.replace("\ud804",""))
-        //else if (this.typedWord.value.indexOf("\ud806") > -1 || this.typedWord.value.indexOf("�") > -1 || this.typedWord.value.indexOf("\uFFFD") > -1)
-        //  this.typedWord.next(this.typedWord.value.replace("�", "").replace("\uFFFD","").replace("\ud806",""));
-
-        this.keyPressed(element, " " + this.typedWord.value, action, "word", "");
-      } else if (this.diacriticTyped != "" && this.diacriticsInclusion(value) != undefined) {
-        this.keyPressed(this.typedWord.value, "⌫", "del", "", "");
-        this.sessionManager.setElementForCharacterSelection(this.diacriticsInclusion(value));
-        this.sessionManager.setCharFromKeyboard(this.diacriticsInclusion(value));
-        this.sessionManager.setActionFromKeyboard(action);
-        this.typedWord.next(this.typedWord.value.substring(0, this.typedWord.value.length - 1) + this.diacriticsInclusion(value));
-        this.diacriticTyped = "";
-      }
-    }*/
-    this.sessionManager.setElementForCharacterSelection(element);
-    this.sessionManager.setCharFromKeyboard(value);
-    this.sessionManager.setActionFromKeyboard(action);
-    this.whichMappedKey = "";
+    //this.sessionManager.floatingKeyboardPressed(element, value, action, type, src); TODO
   }
 }

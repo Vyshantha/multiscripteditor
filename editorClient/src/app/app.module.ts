@@ -103,7 +103,7 @@ export function setupTranslateFactory(service: TranslateService): Function {
     //ColorPickerModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
-  entryComponents: [ToolBarActionsComponent, HelperComponent, RichTextEditorComponent, KeyboardLayoutsComponent, ServiceForKeyboardComponent, OptionsComponent, FootInfoBarComponent],
+  entryComponents: [ToolBarActionsComponent, HelperComponent, RichTextEditorComponent, KeyboardLayoutsComponent, ServiceForKeyboardComponent, OptionsComponent, FootInfoBarComponent, CustomiseKeyboardsComponent],
   providers: [SessionManagerService, ThemeService, TranslateService,
     {
       provide: APP_INITIALIZER,
