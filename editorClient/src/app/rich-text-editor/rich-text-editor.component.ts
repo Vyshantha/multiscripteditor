@@ -978,7 +978,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
           if (this.topToBottomRL.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
             for (let i = 0; i < splitContent.length; i++) {
               if (i == (splitContent.length - 2))
-                textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-rl;text-orientation: mixed;letter-spacing: 1em;'>").replace('<p style=\"', '<p style=\"writing-mode: vertical-rl; text-orientation: mixed;');
+                textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-rl;text-orientation: mixed;letter-spacing: 1em;'>").replace('<p style=\"', '<p style=\"writing-mode: vertical-rl;text-orientation: mixed;letter-spacing: 1em;');
               else
                 textOrientatedContent = textOrientatedContent + splitContent[i];
             }
@@ -992,7 +992,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
           } else if (this.bottomToTopLR.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
             for (let i = 0; i < splitContent.length; i++) {
               if (i == (splitContent.length - 2))
-                textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-lr;text-orientation: mixed;transform:rotate(-180deg);'>");
+                textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-lr;text-orientation: mixed;transform: rotate(-180deg);'>");
               else
                 textOrientatedContent = textOrientatedContent + splitContent[i];
             }
@@ -1006,7 +1006,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
           }
         } else if ((content.indexOf("<p ") > -1 || content.indexOf("<p>") > -1) && verticalOrient == false) {
           if (this.topToBottomRL.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.topToBottomLR.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.bottomToTopLR.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.bottomToTopRL.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-            textOrientatedContent = content.replace("writing-mode: vertical-lr;", "").replace("writing-mode: vertical-rl;","").replace("transform:rotate(-180deg);","").replace("text-orientation: mixed", "").replace("letter-spacing: 1em;","");
+            textOrientatedContent = content.replace("writing-mode: vertical-lr;", "").replace("writing-mode: vertical-rl;","").replace("transform: rotate(-180deg);","").replace("transform: rotate(-90deg);","").replace("text-orientation: mixed", "").replace("letter-spacing: 1em;","");
           }
         } else {
           textOrientatedContent = content;
@@ -1022,7 +1022,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
 
   imageAsContent(action, wide) {
     if (action) {
-      this.ckeditorContent = this.ckeditorContent + "<img width='" + wide + "' height='" + (/[`´]+/i.test(action) ? "25px" : "20px") + "' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
+      let styleTBRL = (this.sessionManager.getFromSessionURL() == "ougr" && this.sessionManager.typeVertically.value == true) ? 'style="transform: rotate(-90deg);"' : '';
+      this.ckeditorContent = this.ckeditorContent + "<img " + styleTBRL + "  width='" + wide + "' height='" + (/[`´]+/i.test(action) ? "25px" : "20px") + "' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
       this.contentToEditor();
     }/* else if (this.unicode5AndHigher && this.ckeditorContent.indexOf("/> <img") > -1 && parseInt(this.rowPos) > 0 && parseInt(this.colPos) == 0 && this.position != "∞") {
       let insertImage = this.ckeditorContent.split("/> <img", this.rowPos).join("/> <img").length + 3;
