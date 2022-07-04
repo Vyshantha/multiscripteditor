@@ -74,7 +74,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
 
   boustrophedonScripts: string[] = ['ett', 'sabe', 'maya', 'txr', 'wole', 'phyg', 'pice', 'asom', 'luw', 'moon', 'sina', 'kmt', 'hung', 'safa', 'xsa', 'egyd', 'avo', 'lepo'];
 
-  swaraAbugidaType : string [] = ['ahom', 'bada', 'bali', 'batk', 'tglg', 'bn', 'bhai', 'bla', 'brah', 'bug', 'buhd', 'cakm', 'cree', 'dham', 'dite', 'diak', 'dogr', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kthi', 'kn', 'kawi', 'kali', 'khar', 'tang', 'km', 'khoj', 'khud', 'kuli', 'lo', 'lepc', 'limb', 'loma', 'maga', 'maha', 'ml', 'mani', 'mni', 'mr', 'modi', 'mult', 'my', 'nand', 'or', 'phag', 'newa', 'pa', 'rjng', 'renc', 'sa', 'saur', 'shan', 'shrd', 'sn', 'sidd', 'snd', 'si', 'bhat', 'leke', 'ari', 'sora', 'sund', 'sylo', 'tagb', 'talu', 'lana', 'takr', 'ta', 'tamu', 'tach', 'te', 'thaa', 'th', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'gonm', 'gong', 'soyo', 'zanb', 'dv', 'mai', 'mguj', 'kru', 'scha', 'koch', 'bya', 'khor', 'aima', 'bhp'];
+  swaraAbugidaType : string [] = ['ahom', 'aima', 'ari', 'bada', 'bali', 'batk', 'bhai', 'bhat', 'bhp', 'bla', 'bn', 'brah', 'bug', 'buhd', 'bya', 'cakm', 'cree', 'dham', 'diak', 'dite', 'dogr', 'dv', 'gong', 'gonm', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kali', 'kawi', 'khar', 'khoj', 'khor', 'khud', 'km', 'kn', 'koch', 'kru', 'kthi', 'kuli', 'lana', 'leke', 'lepc', 'limb', 'lo', 'loma', 'maga', 'maha', 'mai', 'mani', 'mguj', 'ml', 'mni', 'modi', 'mr', 'mult', 'my', 'nand', 'newa', 'or', 'pa', 'phag', 'renc', 'rjng', 'sa', 'saur', 'scha', 'shan', 'shrd', 'si', 'sidd', 'sn', 'snd', 'sora', 'soyo', 'sund', 'sylo', 'ta', 'tach', 'tagb', 'takr', 'talu', 'tamu', 'tang', 'te', 'tglg', 'th', 'thaa', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'zanb'];
 
   imageAlternativeScript: string[] = ['adin', 'aima', 'ari', 'avo', 'aztc', 'bada', 'banzsl', 'ber', 'bhat', 'bhp', 'bya', 'cana', 'cans', 'chik', 'chis', 'chrs', 'coorg', 'dale', 'desisign', 'dham', 'dhan', 'diak', 'dite', 'egyd', 'esi', 'esk', 'estr', 'esy', 'flag', 'gael', 'gars', 'geba', 'goyk', 'gup', 'iba', 'ibe', 'ics', 'indus', 'ion', 'ipk', 'jiag', 'kada', 'kaid', 'kama', 'kawi', 'khat', 'khom', 'khor', 'kitl', 'kits', 'koch', 'kpe', 'kru', 'kuli', 'lad', 'land', 'leke', 'loma', 'luo', 'madn', 'maga', 'maha', 'maka', 'mamb', 'maya', 'mguj', 'mikq', 'moon', 'moss', 'mwan', 'nagm', 'nand', 'ndju', 'nsi', 'odu', 'ougr', 'pall', 'ranj', 'renc', 'sabe', 'safa', 'scha', 'sert', 'sina', 'suz', 'tach', 'tamu', 'tang', 'tani', 'tiga', 'tika', 'tnq', 'toch', 'toto', 'txr', 'umw', 'ussign', 'vatt', 'vith', 'wole', 'wolf', 'xce', 'zag', 'zou'];
 
@@ -973,40 +973,40 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         let content = this.fullmodeCkEditor.instance.getData();
         // element is 'p' or 'div' or 'span' : Character insert at cursor position
         let textOrientatedContent = "";
-        if (content.indexOf("<p>") > -1 && verticalOrient == true) {
+        if ((content.indexOf("<p ") > -1 || content.indexOf("<p>") > -1) && verticalOrient == true) {
           let splitContent = content.split("</p>");
           if (this.topToBottomRL.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
             for (let i = 0; i < splitContent.length; i++) {
               if (i == (splitContent.length - 2))
-                textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-rl; text-orientation: mixed;'>");
+                textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-rl;text-orientation: mixed;letter-spacing: 1em;'>");
               else
                 textOrientatedContent = textOrientatedContent + splitContent[i];
             }
           } else if (this.topToBottomLR.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
             for (let i = 0; i < splitContent.length; i++) {
               if (i == (splitContent.length - 2))
-                textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-lr; text-orientation: mixed;'>");
+                textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-lr;text-orientation: mixed;'>");
               else
                 textOrientatedContent = textOrientatedContent + splitContent[i];
             }
           } else if (this.bottomToTopLR.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
             for (let i = 0; i < splitContent.length; i++) {
               if (i == (splitContent.length - 2))
-                textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-lr; text-orientation: mixed;transform:rotate(-180deg)'>");
+                textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-lr;text-orientation: mixed;transform:rotate(-180deg);'>");
               else
                 textOrientatedContent = textOrientatedContent + splitContent[i];
             }
           } else if (this.bottomToTopRL.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
             for (let i = 0; i < splitContent.length; i++) {
               if (i == (splitContent.length - 2))
-                textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-rl; text-orientation: mixed;'>");
+                textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-rl;text-orientation: mixed;'>").replace('<p style=\"', '<p style=\"writing-mode: vertical-rl; text-orientation: mixed;');
               else
                 textOrientatedContent = textOrientatedContent + splitContent[i];
             }
           }
-        } else if (content.indexOf("<p>") > -1 && verticalOrient == false) {
+        } else if ((content.indexOf("<p ") > -1 || content.indexOf("<p>") > -1) && verticalOrient == false) {
           if (this.topToBottomRL.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.topToBottomLR.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.bottomToTopLR.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.bottomToTopRL.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-            textOrientatedContent = content.replace(/<p>/g, "<p style='writing-mode: vertical-lr; text-orientation: upright;'>");
+            textOrientatedContent = content.replace("writing-mode: vertical-lr;", "").replace("writing-mode: vertical-rl;","").replace("transform:rotate(-180deg);","").replace("text-orientation: mixed", "").replace("letter-spacing: 1em;","");
           }
         } else {
           textOrientatedContent = content;
