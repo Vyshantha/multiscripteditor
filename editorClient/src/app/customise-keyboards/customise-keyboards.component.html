@@ -103,8 +103,19 @@
 </div>
 
 <div *ngIf="floatDialogOnly" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="ltr">
-    <h2 mat-dialog-title>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  <mat-icon style="font-size: 12px;" aria-label="Minimise" alt="Minimise" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise" style="cursor: pointer;">minimize</mat-icon> <mat-icon style="font-size: 12px;" aria-label="Minimise" alt="Minimise" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="!floatNotMinimise" style="cursor: pointer;">expand</mat-icon> <mat-icon style="font-size: 12px;" aria-label="Restore" alt="Restore" (click)="restoreBackKeyboard()" style="cursor: pointer;">restore_page</mat-icon> <mat-icon style="font-size: 12px;" aria-label="Close" alt="Close" (click)="restoreBackKeyboard()" style="cursor: pointer;">close</mat-icon> </h2>
-    <mat-dialog-content class="mat-topography" *ngIf="floatNotMinimise">
+    <h2 mat-dialog-title style="text-align: right;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <span>
+            <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
+            <mat-icon style="cursor: pointer;" aria-label="Launch" alt="Launch" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="!floatNotMinimise">open_with</mat-icon> 
+        </span>  
+        <span>
+            <mat-icon style="cursor: pointer;" aria-label="Restore" alt="Restore" (click)="restoreBackKeyboard()" style="cursor: pointer;">restore_page</mat-icon>
+        </span>
+        <span>
+            <mat-icon style="cursor: pointer;" aria-label="Close" alt="Close" (click)="restoreBackKeyboard()">close</mat-icon>
+        </span>
+    </h2>
+    <mat-dialog-content class="mat-topography" *ngIf="floatNotMinimise" style="color: black;">
         <ul *ngFor="let rows of layoutCurrentKeys" style="list-style-type: none;" class="keyboardTheming">
             <li *ngFor="let character of (isQwerty? ( (isTransliterate) ? ( (isShiftKeyPress) ? ( (isAltGrKeyPress) ? rows.altGrCaps : rows.qwertyShiftTrans ) : ( (isAltGrKeyPress) ? rows.altGr : rows.qwertyTrans ) ) : ( (isShiftKeyPress) ? ( (isAltGrKeyPress) ? rows.altGrCaps : rows.qwertyShift ) : ( (isAltGrKeyPress) ? rows.altGr : rows.qwerty ) ) ) : ( ( keysToRotate && enableRotateKeyboard ) ? rows.rowVert : rows.row ) )" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': (highlightKeys && (character.type == 'swara' || character.type == 'vowel'))? 'brown' : ((character.type == 'unused')? 'darkgrey' : ((character.type == 'syllabic')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : ( (!isQwerty && !isTransliterate && character.action === 'enter') ? defaultCellSize*3.3 + 'px' : ( ( (isQwerty || isTransliterate) &&  character.action === 'enter') ? defaultCellSize*2.2 + 'px' : ( (character.action === 'space') ? defaultCellSize*3.3 + 'px' : defaultCellSize + 'px') ) ), 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : defaultFontSize + 'px', 'height' : keysToRotate? defaultCellSize*40/50 + 'px' : defaultCellSize*40/55 + 'px'}" (click)="keyPressed(character, character.value, character.action, character.type, character.src)">
                 <div *ngIf="!showImageGlyph || character.src == null" class="{{fontClass}}">

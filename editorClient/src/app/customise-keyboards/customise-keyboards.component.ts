@@ -1368,10 +1368,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
     }
   }
 
-  minimiseFloat() {
-
-  }
-
   restoreBackKeyboard() {
     this.dialogRef.close();
     this.sessionManager.softKeyboardState.next(false); 
@@ -1379,5 +1375,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
  
   keyPressed(element, value, action, type, src) {
     //this.sessionManager.floatingKeyboardPressed(element, value, action, type, src); TODO
+    this.sessionManager.setElementForCharacterSelection(element);
+    this.sessionManager.setCharFromKeyboard(value);
+    this.sessionManager.setActionFromKeyboard(action);
+    this.sessionManager.setActionFromKeyboard(src);
   }
 }

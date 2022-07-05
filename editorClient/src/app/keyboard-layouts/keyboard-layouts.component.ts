@@ -1194,6 +1194,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   unusedKeys: Boolean = false;
   shiftKeyToggle: Boolean = false;
   initialLoad: Boolean = true;
+  dontShowHideIcon: Boolean = false;
 
   runProgressIndicator: Boolean = false;
 
@@ -2273,10 +2274,6 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
 
     this.sessionManager.continousIntegrationComplete.subscribe((value) => {
       this.runProgressIndicator = !value;
-    });
-
-    this.sessionManager.softKeyboardState.subscribe((value) => {
-      //this.hideSoftKeyboard(); TODO
     });
   }
 
@@ -4023,7 +4020,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.previousLayout = this.layoutCurrentKeys;
       this.layoutCurrentKeys = [];
       this.sessionManager.softKeyboardState.next(true);
-    } else if (this.sessionManager.softKeyboardState.value == true) {
+    } else if (this.sessionManager.softKeyboardState.value == true || this.layoutCurrentKeys.length == 0) {
       this.layoutCurrentKeys = (this.layoutCurrentKeys.length == 0) ? this.previousLayout : this.layoutCurrentKeys;
       this.sessionManager.softKeyboardState.next(false);
     }
@@ -4325,10 +4322,12 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       hasBackdrop: false,
       data: {show: "float"}
     });
+    this.dontShowHideIcon = !this.dontShowHideIcon;
     this.hideSoftKeyboard();
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.dontShowHideIcon = !this.dontShowHideIcon;
       this.hideSoftKeyboard();
     });
   }
