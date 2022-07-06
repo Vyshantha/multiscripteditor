@@ -1153,6 +1153,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   allowSuperScript : Boolean = false;
   floatDialogOnly: Boolean = false;
   floatNotMinimise: Boolean = true;
+  mappingKeysToSoft: Boolean = true;
 
   whichMappedKey: string = "";
   fontClass: string = "";
@@ -1248,15 +1249,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
     });
     this.layoutCurrentKeys = this[this.keyboardLayouts[this.sessionManager.getFromSessionURL()][3]];
     this.altGrCapsExists = (this.layoutCurrentKeys)? this.layoutCurrentKeys.some(x => x.hasOwnProperty('altGrCaps')) : false;
-    this.sessionManager.areKeysToBeHighlighted.subscribe((highlightOrNot)=> {
-      this.highlightKeys = highlightOrNot;
-    });
-    this.sessionManager.currentPressedKey.subscribe((value) => {
-      this.whichMappedKey = value;
-    });
-    this.sessionManager.unusedKeys.subscribe((value) => {
-      this.unusedKeys = value;
-    });
   }
 
   async ngAfterViewInit(): Promise<void> {
@@ -1269,6 +1261,16 @@ export class CustomiseKeyboardsComponent implements OnInit {
     });
 
     this.localisedKeyboardLayouts = await this.localisedKeyboardLayoutDB(this.sessionManager.getUILocale());
+
+    this.sessionManager.areKeysToBeHighlighted.subscribe((highlightOrNot)=> {
+      this.highlightKeys = highlightOrNot;
+    });
+    this.sessionManager.currentPressedKey.subscribe((value) => {
+      this.whichMappedKey = value;
+    });
+    this.sessionManager.unusedKeys.subscribe((value) => {
+      this.unusedKeys = value;
+    });
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -1374,10 +1376,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
  
   keyPressed(element, value, action, type, src) {
-    //this.sessionManager.floatingKeyboardPressed(element, value, action, type, src); TODO
-    this.sessionManager.setElementForCharacterSelection(element);
-    this.sessionManager.setCharFromKeyboard(value);
-    this.sessionManager.setActionFromKeyboard(action);
-    this.sessionManager.setActionFromKeyboard(src);
+    this.sessionManager.floatingKeysTyped.next(JSON.stringify(element) + "�" + value + "�" + action + "�" + type + "�" +  src);
+    this.whichMappedKey = "";
   }
 }

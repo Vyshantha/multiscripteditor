@@ -1195,6 +1195,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   shiftKeyToggle: Boolean = false;
   initialLoad: Boolean = true;
   dontShowHideIcon: Boolean = false;
+  stopFloatingKeyboard: Boolean = false;
 
   runProgressIndicator: Boolean = false;
 
@@ -2274,6 +2275,16 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
 
     this.sessionManager.continousIntegrationComplete.subscribe((value) => {
       this.runProgressIndicator = !value;
+    });
+
+    this.sessionManager.softKeyboardState.subscribe((value)=>{
+      this.stopFloatingKeyboard = !value;
+    });
+
+    this.sessionManager.floatingKeysTyped.subscribe((value)=>{
+      if (value && value.split("�").length > 4) {
+        this.keyPressed(JSON.parse(value.split("�")[0]), value.split("�")[1], (value.split("�")[2] == "undefined") ? undefined : value.split("�")[2], (value.split("�")[3] == "undefined") ? undefined : value.split("�")[3], (value.split("�")[4] == "undefined") ? undefined : value.split("�")[4]);
+      }
     });
   }
 
@@ -4317,6 +4328,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   }
 
   floatKeyboard() {
+    this.sessionManager.floatKeyboardState.next(true);
     const dialogRef = this.customKeyboardDialog.open(this.CustomKeyboardPopUp, {
       width: '50',
       hasBackdrop: false,

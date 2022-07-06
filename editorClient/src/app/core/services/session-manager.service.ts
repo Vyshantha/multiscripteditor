@@ -66,7 +66,9 @@ export class SessionManagerService {
   continousIntegrationComplete = new BehaviorSubject(false);
   targetIntegrationScript = new BehaviorSubject('IAST');
   softKeyboardState = new BehaviorSubject(false);
+  floatKeyboardState = new BehaviorSubject(false);
   nonUnicodeScript = new BehaviorSubject(false);
+  floatingKeysTyped = new BehaviorSubject('');
   detectWordTyped = false;
 
   internalSession : string = '';
@@ -421,14 +423,14 @@ export class SessionManagerService {
   }
 
   // When Shift or Caps Keys is pressed on Physical or Virtual Keyboard for keyboard below
-  setShiftKeyPressed2(flagForShiftKey) {
+  /*setShiftKeyPressed2(flagForShiftKey) {
     this.itemShiftKeyPressed2.next(flagForShiftKey);
-  }
+  }*/
 
   // When AltGr Keys is pressed on Physical or Virtual Keyboard for keyboard below
-  setAltGrKeyPressed2(flagForAltGrKey) {
+  /*setAltGrKeyPressed2(flagForAltGrKey) {
     this.itemAltGrKeyPressed2.next(flagForAltGrKey);
-  }
+  }*/
 
   // Keyboard have Typewriter style layout or only Language Learning
   getAvailabilityOfTypewriter() {

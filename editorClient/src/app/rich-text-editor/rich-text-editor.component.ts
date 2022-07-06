@@ -251,7 +251,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       }, 500);
     });
     this.sessionManager.softKeyboardState.subscribe((value)=>{
-      this.noSoftKeyboard = value;
+      if (this.sessionManager.floatKeyboardState.value == false)
+        this.noSoftKeyboard = value;
     });
     if (this.unicode5AndHigher && this.sessionManager.itemQwertyType.value == true)
       this.sessionManager.nonUnicodeScript.next(true);
