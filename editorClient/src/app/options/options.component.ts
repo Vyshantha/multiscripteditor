@@ -54,6 +54,7 @@ export class OptionsComponent implements OnInit, AfterViewInit {
   translateLocales: string[] = ['az', 'ca', 'et', 'eu', 'ku', 'hu', 'nds', 'sk', 'kab', 'gos', 'el', 'sr', 'hi', 'ja', 'id', 'cy', 'en', 'enus', 'enin', 'engb', 'enintl', 'fr', 'frca', 'befr', 'la', 'ia', 'nl', 'pl', 'fi', 'vi', 'be', 'ar', 'bal', 'ka', 'ko', 'bn', 'mr', 'zhcn', 'ms', 'da', 'es', 'esmx', 'fy', 'it', 'lt', 'oc', 'pt', 'ptbr', 'sv', 'tr', 'ru', 'br', 'de', 'eo', 'gl', 'zza', 'jbo', 'uz', 'ro', 'tl', 'cs', 'uk'];
   thesaurusURLs: any = {"ar": ["مرادفات"], "he": ["מלים-נרדפות"], "en": ["synonym"], "enin": ["synonym"], "enintl": ["synonym"], "engb": ["synonym"], "enus": ["synonym"], "it": ["sinonimi"], "de": ["synonym-woerterbuch"], "es": ["sinonimo"], "esmx": ["sinonimo"], "ja": ["類義語"], "nl": ["synoniem"], "nld": ["synoniem"], "pl": ["synonim"], "pt": ["dicionario-sinonimos"], "ptbr": ["dicionario-sinonimos"], "ro": ["sinonime"], "ru": ["синонимы"], "fr": ["synonyme"], "frca": ["synonyme"], "befr": ["synonyme"], "te": ["www.shabdkosh.com/dictionary/english-telugu/"], "ta": ["www.shabdkosh.com/dictionary/english-tamil/"], "kn": ["www.shabdkosh.com/dictionary/english-kannada/"], "sa": ["www.sanskritdictionary.com/"], "mr": ["www.shabdkosh.com/dictionary/english-marathi/"], "gu": ["www.shabdkosh.com/dictionary/english-gujarati/"], "pa": ["www.shabdkosh.com/dictionary/english-punjabi/"], "bn": ["www.khandbahale.com/language/bengali/"], "ml": ["www.shabdkosh.com/dictionary/english-malayalam/"], "kok": ["www.shabdkosh.com/dictionary/english-konkani/"], "gom": ["www.shabdkosh.com/dictionary/english-konkani/"], "hi": ["www.shabdkosh.com/dictionary/english-hindi/"], "as": ["www.khandbahale.com/language/assamese/"], "brx": ["www.khandbahale.com/language/bodo/"], "dogr": ["www.khandbahale.com/language/dogri/"], "ks": ["www.khandbahale.com/language/kashmiri/"], "tirh": ["www.khandbahale.com/language/maithili/"], "mni": ["www.khandbahale.com/language/manipuri/"], "ne": ["www.khandbahale.com/language/nepali/"], "or": ["www.khandbahale.com/language/oriya/"], "olck": ["www.khandbahale.com/language/santali/"], "sd": ["www.khandbahale.com/language/sindhi/"], "ur": ["www.khandbahale.com/language/urdu/"]};
   dictionaryURLs: any = {"id": ["www.babla.co.id"], "zhcn": ["www.babla.cn"], "zhtw": ["www.babla.cn"], "cs": ["cs.bab.la/slovnik/"], "da": ["da.bab.la/ordbog/"], "de": ["de.bab.la/woerterbuch/"], "el": ["www.babla.gr"], "en": ["en.bab.la/dictionary/"], "enin": ["en.bab.la/dictionary/"], "enintl": ["en.bab.la/dictionary/"], "engb": ["en.bab.la/dictionary/"], "enus": ["en.bab.la/dictionary/"], "es": ["es.bab.la/diccionario/"], "esmx": ["es.bab.la/diccionario/"], "fr": ["fr.bab.la/dictionnaire/"], "frca": ["fr.bab.la/dictionnaire/"], "befr": ["fr.bab.la/dictionnaire/"], "it": ["it.bab.la/dizionario/"], "ja": ["ja.bab.la/辞書/"], "ko": ["www.babla.kr"], "hu": ["hu.bab.la/szótár/"], "nl": ["nl.bab.la/woordenboek/"], "nld": ["nl.bab.la/woordenboek/"], "no": ["www.babla.no"], "pl": ["pl.bab.la/slownik/"], "pt": ["pt.bab.la/dicionario/"], "ptbr": ["pt.bab.la/dicionario/"], "ro": ["ro.bab.la/dicționar/"], "ru": ["www.babla.ru"], "fi": ["fi.bab.la/sanakirja/"], "sv": ["sv.bab.la/lexikon/"], "th": ["www.babla.co.th"], "tr": ["tr.bab.la/sozluk/"], "vi": ["www.babla.vn"]};
+  livingDictionariesURLs: any = {"tani": ["livingdictionaries.app/apatani/entries/list"], "bho": ["livingdictionaries.app/bhojpuri/entries/list"], "ladla": ["livingdictionaries.app/djudeoespanyol/entries/list"], "as": ["livingdictionaries.app/early-assamese/entries/list"],"esy":["livingdictionaries.app/eskaya/entries/list"], "gd": ["livingdictionaries.app/gaidhlig-uisge-dhearg/entries/list"], "ig": ["livingdictionaries.app/igbo/entries/list"], "jaun": ["livingdictionaries.app/jaunsari1/entries/list"], "unr": ["livingdictionaries.app/kera-mundari/entries/list"], "mnc": ["livingdictionaries.app/sibe/entries/list"], "gil": ["livingdictionaries.app/kiribati/entries/list"], "mic":["livingdictionaries.app/mikmaw/entries/list"], "aztc": ["livingdictionaries.app/nahuatl/entries/list"], "zapo": ["livingdictionaries.app/miahuatec-zapotec/entries/list"], "nde": ["livingdictionaries.app/ndebele/entries/list"], "ngyo": ["livingdictionaries.app/owe/entries/list"], "qu": ["livingdictionaries.app/quechua-chanka/entries/list"], "olck": ["livingdictionaries.app/santali/entries/list"], "sn": ["livingdictionaries.app/shona/entries/list"], "wcho": ["livingdictionaries.app/wancho/entries/list"], "baltib": ["livingdictionaries.app/balti/entries/list"]}
   dirSet: string = "rtl";
   isRTL: Boolean = false;
   rtlLocales : string[] = ['ar', 'he', 'ur', 'fa', 'syrc', 'rhg', 'sd', 'bal', 'bsk', 'yi', 'jrb', 'ps', 'ckb', 'ks', 'ett', 'avst', 'khar', 'phn', 'xpu', 'samr', 'mand', 'sog', 'arc', 'skr', 'pal', 'xpr', 'xsa', 'mnkar', 'jawi', 'nkoo', 'thaa', 'orkh', 'lydi', 'adlm', 'ajam', 'wolf', 'woal', 'chrs', 'elym', 'palm', 'hatr', 'ber', 'mani', 'mer', 'psal', 'kult', 'egyd', 'safa', 'nshu', 'txr', 'rohg', 'estr', 'sert', 'madn', 'lad', 'nbat', 'pice', 'gars', 'cprt', 'lepo', 'sabe', 'phyg', 'khaz', 'mero', 'cana', 'sina', 'yezi', 'ug', 'mend', 'linb', 'idu', 'chun', 'kuli', 'txg', 'indus', 'hung', 'dv', 'odu', 'ougr'];
@@ -111,7 +112,7 @@ export class OptionsComponent implements OnInit, AfterViewInit {
         nonSupportedLocale = "hi";
       this.wikipediaURL = "https://" + nonSupportedLocale + ".wikipedia.org/wiki/";
       this.translateURL = ( this.translateLocales.indexOf(locale) ) ? this.translateURL + "/" + locale : this.translateURL;
-      this.dictionaryURL = ( this.dictionaryURLs[locale] ) ? "https://" + this.dictionaryURLs[locale] : this.dictionaryURL;
+      this.dictionaryURL = ( this.dictionaryURLs[locale]) ? "https://" + this.dictionaryURLs[locale] : this.dictionaryURL;
       this.thesaurusURL = ( this.thesaurusURLs[locale] ) ? ((this.thesaurusURLs[locale][0].indexOf("www") > -1)? "https://" + this.thesaurusURLs[locale] : "https://synonyms.reverso.net/" + this.thesaurusURLs[locale] + "/" ) : "https://synonyms.reverso.net/synonym/";
       this.dirSet = (this.rtlLocales.indexOf(locale) !== -1)? "rtl" : "ltr";
       this.isRTL = (this.rtlLocales.indexOf(locale) !== -1)? true : false;
@@ -128,6 +129,7 @@ export class OptionsComponent implements OnInit, AfterViewInit {
       } else if (this.keyboardLayouts[currentURL]) {
         this.endangerScriptURL = this.keyboardLayouts[currentURL][10];
       }
+      this.dictionaryURL = (this.livingDictionariesURLs[currentURL]) ? "https://" + this.livingDictionariesURLs[currentURL] : ( this.dictionaryURLs[currentURL]) ? "https://" + this.dictionaryURLs[currentURL] : this.dictionaryURL;
     });
 
     this.sessionManager.itemShiftKeyPressed2.subscribe((flagForShift) => {
@@ -504,59 +506,6 @@ export class OptionsComponent implements OnInit, AfterViewInit {
     }
     //this.keyboardLayouts = await this.localisedKeyboardLayoutDB("");
   }
-
-  /*
-  keyPressed(element, value, action, type) {
-    if (action === "shift") {
-      if (this.sessionManager.itemAltGrKeyPressed2.value == false) {
-        if (this.sessionManager.itemShiftKeyPressed2.value == false)
-          this.sessionManager.setShiftKeyPressed2(true);
-        else if (this.sessionManager.itemShiftKeyPressed2.value == true)
-          this.sessionManager.setShiftKeyPressed2(false);
-      } else if (this.sessionManager.itemAltGrKeyPressed2.value == true) {
-        if (this.sessionManager.itemShiftKeyPressed2.value == false && this.altGrCapsExists)
-          this.sessionManager.setShiftKeyPressed2(true);
-        else if (this.sessionManager.itemShiftKeyPressed2.value == true && this.altGrCapsExists)
-          this.sessionManager.setShiftKeyPressed2(false);
-      }
-    } else if (action === "altGr") {
-      if (this.sessionManager.itemShiftKeyPressed2.value == false) {
-        if (this.sessionManager.itemAltGrKeyPressed2.value == false)
-          this.sessionManager.setAltGrKeyPressed2(true);
-        else if (this.sessionManager.itemAltGrKeyPressed2.value == true)
-          this.sessionManager.setAltGrKeyPressed2(false);
-      } else if (this.sessionManager.itemShiftKeyPressed2.value == true) {
-        if (this.sessionManager.itemAltGrKeyPressed2.value == false && this.altGrCapsExists)
-          this.sessionManager.setAltGrKeyPressed2(true);
-        else if (this.sessionManager.itemAltGrKeyPressed2.value == true && this.altGrCapsExists)
-          this.sessionManager.setAltGrKeyPressed2(false);
-      }
-    } else if (action === "control") {
-      // No action
-    } else if (action === "tab") {
-      // No action
-    } else if (action === "enter") {
-      //this.sessionManager.setElementForCharacterSelection(element);
-      //this.sessionManager.setCharFromKeyboard(value + "<br/>");
-      //this.sessionManager.setActionFromKeyboard(action);
-    } else if (action === "char" && value === "\u00A0") {
-      //this.sessionManager.setCharFromKeyboard("");
-    } else if (action === "space" && value === "\u00A0") {
-      //this.sessionManager.setCharFromKeyboard(value + " ");
-    } else if (type == "vyanjana") {
-      //this.sessionManager.setElementForCharacterSelection(element);
-      //this.sessionManager.setCharFromKeyboard(value);
-      //this.sessionManager.setActionFromKeyboard(action);
-    } else {
-      //if (this.sessionManager.itemSessionURL.value == "iub") {
-      //  value = value.split(' ')[1];
-      //}
-      //this.sessionManager.setElementForCharacterSelection(element);
-      //this.sessionManager.setCharFromKeyboard(value);
-      //this.sessionManager.setActionFromKeyboard(action);
-    }
-  }
-  */
 
   swapLanguage() {
     let localeForSwap = this.localeOfUI;
