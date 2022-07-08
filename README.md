@@ -15,8 +15,8 @@ This website offers every writer all the tools necessary to ensure they are able
 2. Types of Keyboard Layout : `Language Learning (Default)` available for 600 Scripts & Languages | `Typewriter (QWERTY)` available for 280 Languages & Scripts | `Transliterate (Phonetic)` available for 15 language 
 3. Keyboard selection could be done using the search feature present in each script type, or filtering capabilities using historical timeline or even through the world map
 4. Providing Suggestion while Typing for 150 Scripts & Languages
-5. The suggestions are regularly updated based on Natural Language Process - Standford Stanza NLP (build `Python 3.7`) after sentence completion for each language or script
-6. Virtual Keyboard on screen is **mapped** for any Laptop Keyboard (Mac|Windows|Linux|External) for ease of Typing 
+5. Virtual Keyboard on screen is **mapped** for any Laptop Keyboard (Mac|Windows|Linux|External) for ease of Typing 
+6. `Typewriter (QWERTY)` Keyboard can float and moved inside browser for Tablet and Laptop Devices
 7. Adjustable - size of keys & fonts of Character (or Images) in Keyboard
 8. Keysboards Layouts could be **Rotated** as well as for **Vertical Typing**, **Mirrored** (for **Bousphorden Typing**) and update the **Text Orientation** for **left-to-right** or **right-to-left** or **top-to-bottom** or **bottom-to-top** typing
 9. Interface is scaled for Laptop, Tablet and Mobile screens
@@ -26,19 +26,20 @@ This website offers every writer all the tools necessary to ensure they are able
 13. URL redirection capabilities to switch keyboards and override browser default language or locale 
 14. Keyboard Layouts can be bookmarked and layouts could be customised 
 15. The offering in available in `Online` | `Offline` for the different services
-16. The Transliteration Content Generation is established using the APIs provided by Aksharamukha ![Aksharamukha](https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-web-plugin/icon.png) : https://aksharamukha.appspot.com/explore from [@github/virtualvinodh](https://github.com/virtualvinodh/aksharamukha)
-17. Integrated [@EasyOCR](https://github.com/JaidedAI/EasyOCR) to detect text in images for 88 Languages 
-18. Use canvas to scribble or write or draw any Content and include in Editor
-19. Webpage that are integrated through iFrames : 
+16. The Transliteration content generation for 140 scripts & encodings is established using the APIs provided by Aksharamukha ![Aksharamukha](https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-web-plugin/icon.png) : https://aksharamukha.appspot.com/explore from [@github/virtualvinodh](https://github.com/virtualvinodh/aksharamukha)
+17. The suggestions are regularly updated based on Natural Language Process - Standford Stanza NLP (build `Python 3.7`) after sentence completion for each language or script
+18. Integrated [@EasyOCR](https://github.com/JaidedAI/EasyOCR) to detect text in images for 88 Languages 
+19. Use canvas to scribble or write or draw any Content and include in Editor
+20. Webpage that are integrated through iFrames : 
   - Translation (https://tatoeba.org) 
-  - Dictionary (https://glosbe.com/all-languages | https://bab.la/)
+  - Dictionary (https://glosbe.com/all-languages | https://bab.la/ | https://livingdictionaries.app/)
   - Thesaurus (https://synonyms.reverso.net/synonym/ | https://www.shabdkosh.com | https://www.khandbahale.com)
   - Script Information (https://www.endangeredalphabets.net | https://www.scriptsource.org/cms/scripts/page.php)
   - Linguistic Information (https://omniglot.com)
   - Wikipedia (https://wikipedia.org/wiki/)
-20. Session Management - The content and data typed by user is saved in the browser Local Storage for future use 
-21. Collect the World Scripts Explorer data by using REST API - see [Full Guide](https://worldscriptsexplorer.herokuapp.com)
-22. Development Environment for Linux & Mac OS [here](https://github.com/Vyshantha/multiscripteditor/tree/main) and Windows OS [here](https://github.com/Vyshantha/multiscripteditor/tree/Windows_dev)
+21. Session Management - The content and data typed by user is saved in the browser Local Storage for future use 
+23. Collect the World Scripts Explorer data by using REST API - see [Full Guide](https://worldscriptsexplorer.herokuapp.com)
+24. Development Environment for Linux & Mac OS [here](https://github.com/Vyshantha/multiscripteditor/tree/main) and Windows OS [here](https://github.com/Vyshantha/multiscripteditor/tree/Windows_dev)
 
 ### Server-side `NodeJS 12.x` based on Express server
   Hosted on Salesforce Cloud - **Heroku : https://worldscriptsexplorer.herokuapp.com**
