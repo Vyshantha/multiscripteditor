@@ -41,7 +41,7 @@ This website offers every writer all the tools necessary to ensure they are able
 23. Collect the World Scripts Explorer data by using REST API - see [Full Guide](https://worldscriptsexplorer.herokuapp.com)
 24. Development Environment for Linux & Mac OS [here](https://github.com/Vyshantha/multiscripteditor/tree/main) and Windows OS [here](https://github.com/Vyshantha/multiscripteditor/tree/Windows_dev)
 
-### Server-side `NodeJS 12.x` based on Express server
+### Server-side `NodeJS 16.x` based on Express server
   Hosted on Salesforce Cloud - **Heroku : https://worldscriptsexplorer.herokuapp.com**
  
 ### Webserver based on `AngularJS 11.x`
