@@ -4224,7 +4224,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   }
 
   customiseMyKeyboardLayout(type) {
-    if (!type) {
+    if (type == "float") {
       const dialogProfile = this.customKeyboardDialog.open(this.CustomKeyboardPopUp, {
         width: '95',
         data: {show: "custom"}
@@ -4235,8 +4235,32 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
           console.info('[MULTISCRIPTEDITOR] The dialog was closed ', result);
         }
       );
+    } else if (type == "calculate") {
+      const dialogProfile = this.customKeyboardDialog.open(this.CustomKeyboardPopUp, {
+        width: '95',
+        data: {show: "calculate"}
+      });
+  
+      dialogProfile.afterClosed()
+        .subscribe(result => {
+          console.info('[MULTISCRIPTEDITOR] The dialog was closed ', result);
+        }
+      );
     } else {
-      this.floatKeyboard();
+      this.sessionManager.floatKeyboardState.next(true);
+      const dialogRef = this.customKeyboardDialog.open(this.CustomKeyboardPopUp, {
+        width: '50',
+        hasBackdrop: false,
+        data: {show: "float"}
+      });
+      this.dontShowHideIcon = !this.dontShowHideIcon;
+      this.hideSoftKeyboard();
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+        this.dontShowHideIcon = !this.dontShowHideIcon;
+        this.hideSoftKeyboard();
+      });
     }
   }
 
@@ -4325,23 +4349,6 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         );
       });
     }
-  }
-
-  floatKeyboard() {
-    this.sessionManager.floatKeyboardState.next(true);
-    const dialogRef = this.customKeyboardDialog.open(this.CustomKeyboardPopUp, {
-      width: '50',
-      hasBackdrop: false,
-      data: {show: "float"}
-    });
-    this.dontShowHideIcon = !this.dontShowHideIcon;
-    this.hideSoftKeyboard();
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-      this.dontShowHideIcon = !this.dontShowHideIcon;
-      this.hideSoftKeyboard();
-    });
   }
 
   async translateSnackBars() {

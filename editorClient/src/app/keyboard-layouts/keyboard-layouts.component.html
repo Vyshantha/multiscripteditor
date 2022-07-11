@@ -2541,9 +2541,9 @@
     <mat-card dir="{{dirSet}}">
         <p style="text-align: center;">
             <!--input [(colorPicker)]="color" [style.background]="color"/-->&nbsp;&nbsp;
-            <mat-icon aria-label="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" alt="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" (click)="hideSoftKeyboard()">keyboard_hide</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
-            <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>
-            <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
+            <mat-icon aria-label="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" alt="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" (click)="hideSoftKeyboard()">keyboard_hide</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>
+            <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button [matMenuTriggerFor]="favouriteMenu" matBadge="{{populatingBookmarks.length}}" *ngIf="populatingBookmarks.length > 0">
                 <mat-icon aria-label="{{ 'Select From Favourite Keyboards' | translate }}" matTooltip="{{ 'Select From Favourite Keyboards' | translate }}" style="cursor: pointer;">bookmark</mat-icon>
@@ -5537,10 +5537,10 @@
     <mat-card dir="{{dirSet}}">
         <p style="text-align: center;">
             <!--input [(colorPicker)]="color" [style.background]="color"/-->&nbsp;&nbsp;&nbsp;&nbsp;
-            <mat-icon aria-label="{{ 'Float Keyboard' | translate }}" *ngIf="(isQwerty || isTransliterate) && stopFloatingKeyboard"  alt="{{ 'Float Keyboard' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Float Keyboard' | translate }}" (click)="customiseMyKeyboardLayout('float')">launch</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
-            <mat-icon aria-label="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" *ngIf="!dontShowHideIcon" alt="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" (click)="hideSoftKeyboard()">keyboard_hide</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
-            <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>
-            <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer; vertical-align: sub;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
+            <mat-icon aria-label="{{ 'Float Keyboard' | translate }}" *ngIf="(isQwerty || isTransliterate) && stopFloatingKeyboard"  alt="{{ 'Float Keyboard' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Float Keyboard' | translate }}" (click)="customiseMyKeyboardLayout('float')">launch</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon aria-label="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" *ngIf="!dontShowHideIcon" alt="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" (click)="hideSoftKeyboard()">keyboard_hide</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>
+            <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer; vertical-align: middle;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button [matMenuTriggerFor]="favouriteMenu" matBadge="{{populatingBookmarks.length}}" *ngIf="populatingBookmarks.length > 0">
                 <mat-icon aria-label="{{ 'Select From Favourite Keyboards' | translate }}" matTooltip="{{ 'Select From Favourite Keyboards' | translate }}" style="cursor: pointer;">bookmark</mat-icon>
@@ -8532,10 +8532,10 @@
     <mat-card dir="{{dirSet}}">
         <p style="text-align: center;">
             <!--input [(colorPicker)]="color" [style.background]="color"/-->
-            <mat-icon aria-label="{{ 'Float Keyboard' | translate }}" *ngIf="(isQwerty || isTransliterate) && stopFloatingKeyboard"  alt="{{ 'Float Keyboard' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Float Keyboard' | translate }}" (click)="customiseMyKeyboardLayout('float')">launch</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp; 
-            <mat-icon aria-label="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" *ngIf="!dontShowHideIcon" alt="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" (click)="hideSoftKeyboard()">keyboard_hide</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp; 
-            <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>
-            <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: sub;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
+            <mat-icon aria-label="{{ 'Float Keyboard' | translate }}" *ngIf="(isQwerty || isTransliterate) && stopFloatingKeyboard"  alt="{{ 'Float Keyboard' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Float Keyboard' | translate }}" (click)="customiseMyKeyboardLayout('float')">launch</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp; 
+            <mat-icon aria-label="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" *ngIf="!dontShowHideIcon" alt="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" (click)="hideSoftKeyboard()">keyboard_hide</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp; 
+            <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>
+            <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button [matMenuTriggerFor]="favouriteMenu" matBadge="{{populatingBookmarks.length}}" *ngIf="populatingBookmarks.length > 0">
                 <mat-icon aria-label="{{ 'Select From Favourite Keyboards' | translate }}" matTooltip="{{ 'Select From Favourite Keyboards' | translate }}" style="cursor: pointer;">bookmark</mat-icon>
@@ -9006,6 +9006,7 @@
                 </button>
             </mat-menu>
             &nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon aria-label="{{ 'Calculator Keyboard' | translate }}" alt="{{ 'Calculator Keyboard' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Calculator Keyboard' | translate }}" (click)="customiseMyKeyboardLayout('calculate')">calculate</mat-icon>
             <!--mat-spinner *ngIf="runProgressIndicator" diameter="30" [mode]="'indeterminate'" color="accent"></mat-spinner-->
         </p>
     </mat-card>      

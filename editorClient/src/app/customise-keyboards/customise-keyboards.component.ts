@@ -551,7 +551,7 @@ export interface AvailableKeyboards {
 }
 
 export interface TypeOfLayout {
-  show: 'custom' | 'float';
+  show: 'custom' | 'float' | 'calculate';
 }
 
 export const _filter = (opt: string[], value: string): string[] => {
@@ -573,6 +573,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200;
 
   keyboardLayouts: any = (allLayoutPositions as any).default;
+  calculatorLayout: any = [{"row":[{"value":"1","type":"numerals","action":"char"},{"value":"2","type":"numerals","action":"char"},{"value":"3","type":"numerals","action":"char"},{"value":"4","type":"numerals","action":"char"},{"value":"5","type":"numerals","action":"char"},{"value":"6","type":"numerals","action":"char"},{"value":"7","type":"numerals","action":"char"},{"value":"8","type":"numerals","action":"char"},{"value":"9","type":"numerals","action":"char"},{"value":"0","type":"numerals","action":"char"},{"value":"%","action":"char"},{"value":"<","action":"char"},{"value":">","action":"char"},{"value":"\\","action":"char"},{"value":"(","action":"char"},{"value":")","action":"char"},{"value":"/","action":"char"},{"value":"*","action":"char"},{"value":"+","action":"char"},{"value":"-","action":"char"}]},{"row":[{"value":"@","action":"char"},{"value":"#","action":"char"},{"value":"€","action":"char"},{"value":"&","action":"char"},{"value":"§","action":"char"},{"value":"'","action":"char"},{"value":"\"","action":"char"},{"value":"{","action":"char"},{"value":"}","action":"char"},{"value":" ","action":"space"},{"value":"[","action":"char"},{"value":"]","action":"char"},{"value":"!","action":"char"},{"value":"?","action":"char"},{"value":":","action":"char"},{"value":";","action":"char"},{"value":",","action":"char"},{"value":".","action":"char"}]}];
   layoutCurrentKeys: any = [];
   localisedKeyboardLayouts: any = (allLayoutPositions as any).default;
 
@@ -1121,6 +1122,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
   isRTL: Boolean = false;
 
   rtlLocales : string[] = ['ar', 'he', 'ur', 'fa', 'syrc', 'rhg', 'sd', 'bal', 'bsk', 'yi', 'jrb', 'ps', 'ckb', 'ks', 'ett', 'avst', 'khar', 'phn', 'xpu', 'samr', 'mand', 'sog', 'arc', 'skr', 'pal', 'xpr', 'xsa', 'mnkar', 'jawi', 'nkoo', 'thaa', 'orkh', 'lydi', 'adlm', 'ajam', 'wolf', 'woal', 'chrs', 'elym', 'palm', 'hatr', 'ber', 'mani', 'mer', 'psal', 'kult', 'egyd', 'safa', 'nshu', 'txr', 'rohg', 'estr', 'sert', 'madn', 'lad', 'nbat', 'pice', 'gars', 'cprt', 'lepo', 'sabe', 'phyg', 'khaz', 'mero', 'cana', 'sina', 'yezi', 'ug', 'mend', 'linb', 'idu', 'chun', 'kuli', 'txg', 'indus', 'hung', 'dv', 'odu', 'ougr'];
+  rtlLocalesWithLtRNumerals : string [] = ['ar', 'ur', 'fa'];
+
   boustrophedonScripts: string[] = ['ett', 'sabe', 'maya', 'txr', 'wole', 'phyg', 'pice', 'asom', 'luw', 'moon', 'sina', 'kmt', 'hung', 'safa', 'xsa', 'egyd', 'avo', 'lepo'];
   topToBottomLR: string[] = ['sog', 'oira', 'mon', 'zhcn', 'zhtw', 'ja', 'ko', 'phag', 'mnc', 'galk', 'shui', 'soyo'];
   topToBottomRL: string[] = ['yii', 'zhcn', 'zhtw', 'ja', 'ko', 'nshu', 'idu', 'mero', 'chun', 'kuli', 'txg', 'ougr'];
@@ -1154,6 +1157,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   floatDialogOnly: Boolean = false;
   floatNotMinimise: Boolean = true;
   mappingKeysToSoft: Boolean = true;
+  calculatorKeyboard: Boolean = false;
 
   whichMappedKey: string = "";
   fontClass: string = "";
@@ -1166,8 +1170,13 @@ export class CustomiseKeyboardsComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout) { 
     if (this.data.show == 'custom') {
       this.floatDialogOnly = false;
+      this.calculatorKeyboard = false;
     } else if (this.data.show == 'float') {
       this.floatDialogOnly = true;
+      this.calculatorKeyboard = false;
+    } else if (this.data.show == 'calculate') {
+      this.calculatorKeyboard = true;
+      this.floatDialogOnly = false;
     }
     if (localStorage.getItem('qwertyStyle') != undefined) {
       if (this.sessionManager.getInSessionQwerty() === 'true')
@@ -1378,5 +1387,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
   keyPressed(element, value, action, type, src) {
     this.sessionManager.floatingKeysTyped.next(JSON.stringify(element) + "�" + value + "�" + action + "�" + type + "�" +  src);
     this.whichMappedKey = "";
+  }
+  calulateKeyPress(element, value, action, type, src) {
+
   }
 }
