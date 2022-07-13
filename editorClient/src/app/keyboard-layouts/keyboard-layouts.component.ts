@@ -4014,7 +4014,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     }
   }
 
-  // Diacritics for Latin/Cyrillic/Greek-based/Pinyin/Zhuyin languages - https://en.wikipedia.org/wiki/List_of_Unicode_characters
+  // Diacritics for Latin/Cyrillic/Greek/Pinyin/Zhuyin Languages - https://en.wikipedia.org/wiki/List_of_Unicode_characters
   diacriticsInclusion(characterTyped) { 
     if (this.diacritics[characterTyped] == undefined) {
       return characterTyped;

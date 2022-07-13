@@ -569,6 +569,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
   @ViewChild('searchAllScripts') searchInputAllScripts: ElementRef;
   @ViewChild('countOfSuggestionPerDevice') suggestionsForDevice : ElementRef;
 
+  @ViewChild('equationField') equationField: ElementRef;
+  @ViewChild('resultField') resultField: ElementRef;
+
   isMobile: Boolean = window.outerWidth < 500;
   isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200;
 
@@ -1117,9 +1120,11 @@ export class CustomiseKeyboardsComponent implements OnInit {
   supportedLanguageColumn4 : any = [];
   allSupportedLanguages : any = [];
 
+  currencySymbol: string = "€";
+
   calculatorLayout: any = [
     {"row":[
-      {"value":"x₂","action":"char","type":"base2","visible":"show"},{"value":"x₈","action":"char","type":"base8","visible":"show"},{"value":"x₁₀","action":"char","type":"base10","visible":"show"},{"value":"x₁₂","action":"char","type":"base12","visible":"show"},{"value":"x₁₆","action":"char","type":"base16","visible":"show"},{"value":"x₂₀","action":"char","type":"base20","visible":"show"},{"value":"x₆₀","action":"char","type":"base60","visible":"show"},{"value":"★","action":"char","type":"saveFavs"},{"value":"(","action":"char"},{"value":")","action":"char"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"⎌","action":"char","type":"undoActionCharacter"},{"value":"⎚","action":"char","type":"restart"}
+      {"value":"x₂","action":"char","type":"base2","visible":"show"},{"value":"x₈","action":"char","type":"base8","visible":"show"},{"value":"x₁₀","action":"char","type":"base10","visible":"show"},{"value":"x₁₂","action":"char","type":"base12","visible":"show"},{"value":"x₁₆","action":"char","type":"base16","visible":"show"},{"value":"x₂₀","action":"char","type":"base20","visible":"show"},{"value":"x₆₀","action":"char","type":"base60","visible":"show"},{"value":"★","action":"char","type":"saveFavs"},{"value":"(","action":"char"},{"value":")","action":"char"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⎚","action":"char","type":"restart"}
     ]},
     {"row": [
       {"value":"°","action":"char","type":"degrees","visible":"show"},{"value":"rad","action":"char","type":"radians","visible":"hide"},{"value":"′","action":"char","type":"arcminute"},{"value":"″","action":"char","type":"arcsecond"},{"value":" ","action":"char","type":"blank"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":" ","action":"char","type":"blank"},{"value":"A","action":"char","type":"hexadecimal","visible":"hide"},{"value":"B","action":"char","type":"hexadecimal","visible":"hide"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"}
@@ -1134,24 +1139,46 @@ export class CustomiseKeyboardsComponent implements OnInit {
       {"value":"∞","action":"char","type":"infinity"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"hide"},{"value":"∜","type":"fourthRoot"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"!","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":"7","type":"numerals","action":"char"},{"value":"8","type":"numerals","action":"char"},{"value":"9","type":"numerals","action":"char"},{"value":" ","action":"char","type":"blank"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
     ]},
     {"row":[
-      {"value":"€","action":"char","type":"currencySymbol"},{"value":"💾","action":"char","type":"saveMemory"},{"value":"E","action":"char","type":"exponent10"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"ʸ√x","action":"char","type":"nthRoot"},{"value":"x!","action":"char","type":"factorial"},{"value":'٬',"action":"char","type":"arabicDecimalSeparator","visible":"hide"},{"value":'٫',"action":"char","type":"arabicNumberSeparator","visible":"hide"},{"value":",","action":"char","type":"numberOrDecimal"},{"value":"0","type":"numerals","action":"char"},{"value":".","action":"char","type":"decimalOrNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+      {"value":this.currencySymbol,"action":"char","type":"currencySymbol"},{"value":"💾","action":"char","type":"saveMemory"},{"value":"E","action":"char","type":"exponent10"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"ʸ√x","action":"char","type":"nthRoot"},{"value":"x!","action":"char","type":"factorial"},{"value":'٬',"action":"char","type":"arabicDecimalSeparator","visible":"hide"},{"value":'٫',"action":"char","type":"arabicNumberSeparator","visible":"hide"},{"value":",","action":"char","type":"numberOrDecimal"},{"value":"0","type":"numerals","action":"char"},{"value":".","action":"char","type":"decimalOrNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
     ]}
   ];
 
-  separatorsDecimalNumeral: any = [' ', "'", ',', '.', '·', '\u2009', '\u202F', '˙', '٫' , '٬' , '⎖'];
+  separatorsForDecimalAndNumeral: any = [' ', "'", ',', '.', '·', '\u2009', '\u202F', '˙', '⠨', '٫' , '٬' , '⎖'];
   alphabetSystem: any = ['la', 'he', 'ion', 'hy', 'mand', 'geez', 'am', 'syrc', 'glag', 'copt', 'goth', 'ka', 'morse'];
   baseIndices: any = [2, 8, 10, 12, 16, 20, 60];
-  operators: any = ['+', "-", "*" , "×", "·", "^", "÷" , "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "<", ">", true, false];
+
+  operators: any = ['+', "-", "*" , "×", "·", "^", "÷" , "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "<", ">", "≤", "≥"];
+
+  //https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
   commaDecimalSeparatorLocales: any = [];
-  dotDecimalSeparatorLocales: any = [];
-  arabicDecimalSeparatorLocales: any = [];
+  periodDecimalSeparatorLocales: any = ['en','enus','engb','enintl'];
+  arabicDecimalSeparatorLocales: any = ['ar','fa','ur','ps','ks','sd', 'bal', 'ckb', 'rhg', 'bsk'];
+
+  desiCommaPosition: any = ['enin', 'ne'];
+  desiSpacePosition: any = ['enin', 'ne'];
+  thousandsPositionApostropheAndPeriodDecimal : any = [];
+  thousandsPositionApostropheAndCommaDecimal : any = [];
+  thousandsPositionPeriodAndApostropheDecimal : any = [];
+  thousandsPositionPeriodAndCommaDecimal : any = [];
+  thousandsPositionCommaAndPeriodDecimal : any = [];
+  thousandsPositionSpaceAndPeriodDecimal : any = [];
+  thousandsPositionSpaceAndCommaDecimal : any = [];
+  thousandsPositionCommaAndMiddleDotDecimal : any = [];
+  tenThousandsCommaAndPeriod: any = [];
+  tenThousandsSpaceAndPeriod: any = [];
+  commaAndPeriodAlternating: any = ['hv'];
+
   currencySignLocales: any = ["₠","₡","₢","₣","₤","₥","₦","₧","₨","₩","₪","₫","$","£","€","₹","₺","₽","₾","₻","₼","؋","₭","₮","₯","₰","₱","₲","₳","₴","₵","₶","₷","₸","₿","⃀"];
+  historyEquations: any = [];
+  bookmarkedEquations: any = [];
+  valueInField: string = "";
 
   dirSet: string = "rtl";
   isRTL: Boolean = false;
 
   rtlLocales : string[] = ['ar', 'he', 'ur', 'fa', 'syrc', 'rhg', 'sd', 'bal', 'bsk', 'yi', 'jrb', 'ps', 'ckb', 'ks', 'ett', 'avst', 'khar', 'phn', 'xpu', 'samr', 'mand', 'sog', 'arc', 'skr', 'pal', 'xpr', 'xsa', 'mnkar', 'jawi', 'nkoo', 'thaa', 'orkh', 'lydi', 'adlm', 'ajam', 'wolf', 'woal', 'chrs', 'elym', 'palm', 'hatr', 'ber', 'mani', 'mer', 'psal', 'kult', 'egyd', 'safa', 'nshu', 'txr', 'rohg', 'estr', 'sert', 'madn', 'lad', 'nbat', 'pice', 'gars', 'cprt', 'lepo', 'sabe', 'phyg', 'khaz', 'mero', 'cana', 'sina', 'yezi', 'ug', 'mend', 'linb', 'idu', 'chun', 'kuli', 'txg', 'indus', 'hung', 'dv', 'odu', 'ougr'];
-  rtlLocalesWithLtRNumerals : string [] = ['ar', 'ur', 'fa'];
+  rtlLocalesLtRNumerals : string [] = ['ar','fa','ur','ps','ks','sd', 'bal', 'ckb', 'rhg', 'bsk'];
+  rtlNumerals : string [] = ['odu','adlm','nkoo','naba','avst','khar','xpr','mend','phn','ett'];
 
   boustrophedonScripts: string[] = ['ett', 'sabe', 'maya', 'txr', 'wole', 'phyg', 'pice', 'asom', 'luw', 'moon', 'sina', 'kmt', 'hung', 'safa', 'xsa', 'egyd', 'avo', 'lepo'];
   topToBottomLR: string[] = ['sog', 'oira', 'mon', 'zhcn', 'zhtw', 'ja', 'ko', 'phag', 'mnc', 'galk', 'shui', 'soyo'];
@@ -1196,7 +1223,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   translateForSnackBar: string[] = [];
 
-  constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout) { 
+  constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
     if (this.data.show == 'custom') {
       this.floatDialogOnly = false;
       this.calculatorKeyboard = false;
@@ -1234,6 +1261,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.notToRotateKeys = false;
     }
     this.translateSnackBars();
+    this.resultField = resultField;
+    this.equationField = equationField;
   }
 
   ngOnInit(): void {
@@ -1418,7 +1447,42 @@ export class CustomiseKeyboardsComponent implements OnInit {
     this.sessionManager.floatingKeysTyped.next(JSON.stringify(element) + "�" + value + "�" + action + "�" + type + "�" +  src);
     this.whichMappedKey = "";
   }
-  calulateKeyPress(element, value, action, type, src) {
+  
+  computeWhatToDoWithThisKeyPress(element, value, action, type, src, visible) {
+    // type base2 : Binary
+    // type base8
+    // type base10 : Desi
+    // type base12
+    // type base16
+      // type hexadecimal
+    // type base20 : Maya
+    // type base60 : Sumerian
+    // type saveMemory
+    // type undoAction
+    // type restart
+  }
 
+  copyContent(fieldName) {
+    if (fieldName == 'resultField') {
+      navigator.clipboard.writeText(this.resultField.nativeElement.value);
+    } else if (fieldName == 'equationField') {
+      navigator.clipboard.writeText(this.equationField.nativeElement.value);
+    }
+  }
+
+  sendResultOnly() {
+    
+    //this.keyPressed(element, this.valueInField, action, type, src);
+  }
+
+  sendResultAndEquation() {
+
+    //this.keyPressed(element, this.historyEquations[this.historyEquations.length -1], action, type, src);
+  }
+
+  clearValueInField() {
+    // Validate 'value' otherwise Clear
+    this.valueInField = '';
+    this.resultField.nativeElement.value = '';
   }
 }
