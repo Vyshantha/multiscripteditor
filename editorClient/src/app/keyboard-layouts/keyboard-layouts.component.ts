@@ -4223,8 +4223,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionOnlyKeyboard(false);
   }
 
-  customiseMyKeyboardLayout(type) {
-    if (type == "float") {
+  customKeyboardLayouts(type) {
+    if (type == "custom") {
       const dialogProfile = this.customKeyboardDialog.open(this.CustomKeyboardPopUp, {
         width: '95',
         data: {show: "custom"}

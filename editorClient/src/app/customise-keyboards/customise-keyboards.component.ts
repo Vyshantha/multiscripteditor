@@ -1210,10 +1210,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
   unicode5AndHigher : Boolean = false;
   highlightKeys: Boolean = true;
   allowSuperScript : Boolean = false;
-  floatDialogOnly: Boolean = false;
   floatNotMinimise: Boolean = true;
   mappingKeysToSoft: Boolean = true;
+
+  floatKeyboard: Boolean = false;
   calculatorKeyboard: Boolean = false;
+  customKeyboard: Boolean = false;
 
   whichMappedKey: string = "";
   fontClass: string = "";
@@ -1225,14 +1227,17 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
     if (this.data.show == 'custom') {
-      this.floatDialogOnly = false;
+      this.customKeyboard = true;
+      this.floatKeyboard = false;
       this.calculatorKeyboard = false;
     } else if (this.data.show == 'float') {
-      this.floatDialogOnly = true;
+      this.floatKeyboard = true;
       this.calculatorKeyboard = false;
+      this.customKeyboard = false;
     } else if (this.data.show == 'calculate') {
       this.calculatorKeyboard = true;
-      this.floatDialogOnly = false;
+      this.customKeyboard = false;
+      this.floatKeyboard = false;
     }
     if (localStorage.getItem('qwertyStyle') != undefined) {
       if (this.sessionManager.getInSessionQwerty() === 'true')
