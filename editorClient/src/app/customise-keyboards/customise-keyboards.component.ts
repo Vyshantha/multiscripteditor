@@ -1120,41 +1120,40 @@ export class CustomiseKeyboardsComponent implements OnInit {
   supportedLanguageColumn4 : any = [];
   allSupportedLanguages : any = [];
 
-  currencySymbol: string = "€";
+  currencySymbol: string = "₹";
+  periodSeparator: string = ".";
+  commaSeparator: string = ",";
 
   calculatorLayout: any = [
     {"row":[
-      {"value":"x₂","action":"char","type":"base2","visible":"show"},{"value":"x₈","action":"char","type":"base8","visible":"show"},{"value":"x₁₀","action":"char","type":"base10","visible":"show"},{"value":"x₁₂","action":"char","type":"base12","visible":"show"},{"value":"x₁₆","action":"char","type":"base16","visible":"show"},{"value":"x₂₀","action":"char","type":"base20","visible":"show"},{"value":"x₆₀","action":"char","type":"base60","visible":"show"},{"value":"★","action":"char","type":"saveFavs"},{"value":"(","action":"char"},{"value":")","action":"char"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⎚","action":"char","type":"restart"}
+      {"value":"x₂","action":"char","type":"base2","visible":"show"},{"value":"x₈","action":"char","type":"base8","visible":"show"},{"value":"x₁₀","action":"char","type":"base10","visible":"show"},{"value":"x₁₂","action":"char","type":"base12","visible":"show"},{"value":"x₁₆","action":"char","type":"base16","visible":"show"},{"value":"x₂₀","action":"char","type":"base20","visible":"show"},{"value":"x₆₀","action":"char","type":"base60","visible":"show"},{"value":"(","action":"char"},{"value":")","action":"char"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
     ]},
     {"row": [
-      {"value":"°","action":"char","type":"degrees","visible":"show"},{"value":"rad","action":"char","type":"radians","visible":"hide"},{"value":"′","action":"char","type":"arcminute"},{"value":"″","action":"char","type":"arcsecond"},{"value":" ","action":"char","type":"blank"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":" ","action":"char","type":"blank"},{"value":"A","action":"char","type":"hexadecimal","visible":"hide"},{"value":"B","action":"char","type":"hexadecimal","visible":"hide"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"}
+      {"value":"°","action":"char","type":"degrees","visible":"show"},{"value":"rad","action":"char","type":"radians","visible":"show"},{"value":"′","action":"char","type":"arcminute"},{"value":"″","action":"char","type":"arcsecond"},{"value":"𝑓₁","action":"char","type":"formula1"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"A","action":"char","type":"hexadecimal","visible":"hide"},{"value":"B","action":"char","type":"hexadecimal","visible":"hide"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"}
     ]},
     {"row":[
-      {"value":"π","action":"char"},{"value":"sin","action":"char","type":"sineFunc"},{"value":"sin⁻ⁱ","action":"char","type":"sineInverseFunc","visible":"hide"},{"value":"ln","action":"char","type":"naturalLogarithm"},{"value":"eˣ","action":"char","type":"naturalExponent"},{"value":"≤","action":"char","type":"lessThanEquals","visible":"hide"},{"value":"<","action":"char","type":"lessThanSymbol","visible":"hide"},{"value":"&","action":"char","type":"logicalAnd","visible":"hide"},{"value":"1","type":"numerals","action":"char"},{"value":"2","type":"numerals","action":"char"},{"value":"3","type":"numerals","action":"char"},{"value":" ","action":"char","type":"blank"},{"value":"/","action":"char","type":"divisionOp"},{"value":"÷","action":"char","type":"divisionOp"}
+      {"value":"π","action":"char"},{"value":"sin","action":"char","type":"sineFunc"},{"value":"sin⁻ⁱ","action":"char","type":"sineInverseFunc","visible":"show"},{"value":"ln","action":"char","type":"naturalLogarithm"},{"value":"eˣ","action":"char","type":"naturalExponent"},{"value":"≤","action":"char","type":"lessThanEquals","visible":"hide"},{"value":"<","action":"char","type":"lessThanSymbol","visible":"hide"},{"value":"&","action":"char","type":"logicalAnd","visible":"hide"},{"value":"1","type":"numerals","action":"char"},{"value":"2","type":"numerals","action":"char"},{"value":"3","type":"numerals","action":"char"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":"/","action":"char","type":"divisionOp"},{"value":"÷","action":"char","type":"divisionOp"}
     ]},
     {"row":[
-      {"value":"e","action":"char","type":"exponentNatural"},{"value":"cos","action":"char","type":"cosineFunc"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"hide"},{"value":"log","action":"char","type":"logarithm"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">","action":"char","type":"greaterThanSymbol","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":"4","type":"numerals","action":"char"},{"value":"5","type":"numerals","action":"char"},{"value":"6","type":"numerals","action":"char"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
+      {"value":"e","action":"char","type":"exponentNatural"},{"value":"cos","action":"char","type":"cosineFunc"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"show"},{"value":"log","action":"char","type":"logarithm"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">","action":"char","type":"greaterThanSymbol","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":"4","type":"numerals","action":"char"},{"value":"5","type":"numerals","action":"char"},{"value":"6","type":"numerals","action":"char"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
     ]},
     {"row":[
-      {"value":"∞","action":"char","type":"infinity"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"hide"},{"value":"∜","type":"fourthRoot"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"!","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":"7","type":"numerals","action":"char"},{"value":"8","type":"numerals","action":"char"},{"value":"9","type":"numerals","action":"char"},{"value":" ","action":"char","type":"blank"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
+      {"value":"∞","action":"char","type":"infinity"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"!","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":"7","type":"numerals","action":"char"},{"value":"8","type":"numerals","action":"char"},{"value":"9","type":"numerals","action":"char"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
     ]},
     {"row":[
-      {"value":this.currencySymbol,"action":"char","type":"currencySymbol"},{"value":"💾","action":"char","type":"saveMemory"},{"value":"E","action":"char","type":"exponent10"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"ʸ√x","action":"char","type":"nthRoot"},{"value":"x!","action":"char","type":"factorial"},{"value":'٬',"action":"char","type":"arabicDecimalSeparator","visible":"hide"},{"value":'٫',"action":"char","type":"arabicNumberSeparator","visible":"hide"},{"value":",","action":"char","type":"numberOrDecimal"},{"value":"0","type":"numerals","action":"char"},{"value":".","action":"char","type":"decimalOrNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+      {"value":this.currencySymbol,"action":"char","type":"currencySymbol"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":"E","action":"char","type":"exponent10"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"ʸ√x","action":"char","type":"nthRoot"},{"value":"x!","action":"char","type":"factorial"},{"value":'٬',"action":"char","type":"arabicDecimalSeparator","visible":"hide"},{"value":'٫',"action":"char","type":"arabicNumberSeparator","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberOrDecimal"},{"value":"0","type":"numerals","action":"char"},{"value":this.periodSeparator,"action":"char","type":"decimalOrNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
     ]}
   ];
 
   separatorsForDecimalAndNumeral: any = [' ', "'", ',', '.', '·', '\u2009', '\u202F', '˙', '⠨', '٫' , '٬' , '⎖'];
   alphabetSystem: any = ['la', 'he', 'ion', 'hy', 'mand', 'geez', 'am', 'syrc', 'glag', 'copt', 'goth', 'ka', 'morse'];
-  baseIndices: any = [2, 8, 10, 12, 16, 20, 60];
-
-  operators: any = ['+', "-", "*" , "×", "·", "^", "÷" , "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "<", ">", "≤", "≥"];
 
   //https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
-  commaDecimalSeparatorLocales: any = [];
+  commaDecimalSeparatorLocales: any = ['frca', 'lb', 'es', 'sq', 'hy', 'az', 'aze', 'befr', 'fr', 'bsla', 'bs', 'hv', 'pt', 'ptbr', 'cs', 'da', 'et', 'fo', 'fi', 'de', 'ka', 'el', 'kl', 'hu', 'is', 'id', 'it', 'kk', 'kaz', 'ky', 'kir', 'lv', 'lt', 'mn', 'mon', 'mnla', 'nl', 'no', 'gn', 'pl', 'ro', 'ru', 'be', 'sr', 'sk', 'sl', 'sv', 'tr', 'tk', 'tuk', 'uk', 'uz', 'uzb', 'vi', 'af', 'st', 'ss', 'ts', 'tn', 'ven', 'xh', 'nso', 'zu'];
   periodDecimalSeparatorLocales: any = ['en','enus','engb','enintl'];
   arabicDecimalSeparatorLocales: any = ['ar','fa','ur','ps','ks','sd', 'bal', 'ckb', 'rhg', 'bsk'];
 
-  desiCommaPosition: any = ['enin', 'ne'];
+  desiCommaPosition: any = ['enin', 'ne', 'bn', 'km', 'zhcn', 'zhtw', 'am', 'ga', 'he', 'ja', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enus'];
   desiSpacePosition: any = ['enin', 'ne'];
   thousandsPositionApostropheAndPeriodDecimal : any = [];
   thousandsPositionApostropheAndCommaDecimal : any = [];
@@ -1169,9 +1168,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
   commaAndPeriodAlternating: any = ['hv'];
 
   currencySignLocales: any = ["₠","₡","₢","₣","₤","₥","₦","₧","₨","₩","₪","₫","$","£","€","₹","₺","₽","₾","₻","₼","؋","₭","₮","₯","₰","₱","₲","₳","₴","₵","₶","₷","₸","₿","⃀"];
-  historyEquations: any = [];
-  bookmarkedEquations: any = [];
-  valueInField: string = "";
 
   dirSet: string = "rtl";
   isRTL: Boolean = false;
@@ -1219,6 +1215,15 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   whichMappedKey: string = "";
   fontClass: string = "";
+
+  baseIndices: any = [2, 8, 10, 12, 16, 20, 60];
+  operators: any = ['+', "-", "*" , "×", "·", "^", "÷" , "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "<", ">", "≤", "≥"];
+  varX: string = "";
+  varY: string = "";
+  operatorXY: string = "";
+  keepInMemory: string = "";
+  historyEquations: any = [];
+  bookmarkedEquations: any = [];
 
   defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 18 : ((!this.isMobile && this.isTablet)? 38 : 48 );
   defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 11 : ((!this.isMobile && this.isTablet)? 13 : 15 );
@@ -1453,18 +1458,156 @@ export class CustomiseKeyboardsComponent implements OnInit {
     this.whichMappedKey = "";
   }
   
-  computeWhatToDoWithThisKeyPress(element, value, action, type, src, visible) {
-    // type base2 : Binary
-    // type base8
-    // type base10 : Desi
-    // type base12
-    // type base16
-      // type hexadecimal
-    // type base20 : Maya
-    // type base60 : Sumerian
-    // type saveMemory
-    // type undoAction
-    // type restart
+  whatToDoWithThisKeyPress(element, value, action, type, src, visible) {
+    // Manual Key Press
+    switch (visible) {
+      case 'hide' :
+        break;
+      default :
+        switch (type) {
+          case 'base2' : // Binary
+            //  this.calculatorLayout for Numbers 2 - 9 set visible = "hide"
+            //  Operation Trigonometry, Logarithm, Roots, Powers - Hidden 
+            break;
+
+          case 'base8' : 
+            //  this.calculatorLayout for Numbers 8 - 9 set visible = "hide"
+            break;
+
+          case 'base10' : // Desi
+            //  this.calculatorLayout for Numbers A - F set visible = "hide"
+            break;
+
+          case 'base12' :
+            //  this.calculatorLayout for Numbers C - F set visible = "hide"
+            break;
+
+          case 'base16' :
+            //  this.calculatorLayout for Numbers 0-9 & A - F set visible = "show"
+            break;
+
+          case 'base20' : // Maya, Kaktovik
+            //  this.calculatorLayout for Numbers 0-9 & A - F set visible = "show"
+            break;
+
+          case 'base60' : // Sumerian
+            //  this.calculatorLayout for Numbers 0-9 & A - F set visible = "show"
+            break;
+
+          case 'useMemory' :
+            this.resultField.nativeElement.value = this.keepInMemory;
+            break;
+
+          case '★' :
+            this.bookmarkedEquations.push(this.resultField.nativeElement.value);
+            break;
+
+          case 'undoAction' :
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value[this.resultField.nativeElement.value.length - 1];
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            break;
+
+          case 'restart' :
+            this.resultField.nativeElement.value = '';
+            break;
+          
+          case 'formula1' :
+            // Do calculation based off this.historyEquations[0] formula
+            // Store in LocalStorage for session persistence
+            break;
+          
+          case 'formula2' :
+            // Do calculation based off this.historyEquations[1] formula
+            // Store in LocalStorage for session persistence
+            break;
+
+          case 'formula3' :
+            // Do calculation based off this.historyEquations[2] formula
+            // Store in LocalStorage for session persistence
+            break;
+          
+          case 'formula4' :
+            // Do calculation based off this.historyEquations[3] formula
+            // Store in LocalStorage for session persistence
+            break;
+
+          case 'currencySymbol' :
+            this.equationField.nativeElement.value = (this.resultField.nativeElement.value.indexOf(value) > -1) ? this.resultField.nativeElement.value :  this.resultField.nativeElement.value + value;
+            break;
+
+          case 'factorial' :
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "!";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            break;
+
+          case 'naturalLogarithm' :
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "ln";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            break;
+          
+          case 'logarithm' :
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "log";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            break;
+
+          case 'signChange' :
+            this.resultField.nativeElement.value = "-" + this.resultField.nativeElement.value;
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            break;
+
+          default : // Variable Building Phase - RTL & LTR validation
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "" + value;
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            break;
+
+          // computeResult(value) 
+        }
+    }
+  }
+
+  computeResult(contentOfInput) {
+    // Value is being Typed
+    console.log(contentOfInput , this.resultField.nativeElement.value)
+    // Allow 0-9 & A-F depending on Base with Operations
+    if (this.operators.indexOf(contentOfInput) == -1 && this.varX != "" && this.varY != "") {
+      // Clear Contents
+      this.resultField.nativeElement.value = '';
+    }
+    // Switch Case for Operators and populate result in this.resultField.nativeElement.value 
+
+    // Highlight the Operations clicked
+
+    // Keep variable in Memory once Operator encountered or equation complete
+    this.keepInMemory = this.resultField.nativeElement.value;
+
+    // Build this.equationField.nativeElement.value with complete Equation
+
+    this.displayVariableInLocaleFormat();
+  }
+
+  displayVariableInLocaleFormat () {
+    /* 
+      this.resultField.nativeElement.value = formatted Value;
+
+      Reference - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide for each of the following variables 
+
+      commaDecimalSeparatorLocales
+      periodDecimalSeparatorLocales
+      arabicDecimalSeparatorLocales
+      desiCommaPosition
+      desiSpacePosition
+      thousandsPositionApostropheAndPeriodDecimal
+      thousandsPositionApostropheAndCommaDecimal
+      thousandsPositionPeriodAndApostropheDecimal
+      thousandsPositionPeriodAndCommaDecimal
+      thousandsPositionCommaAndPeriodDecimal
+      thousandsPositionSpaceAndPeriodDecimal
+      thousandsPositionSpaceAndCommaDecimal
+      thousandsPositionCommaAndMiddleDotDecimal
+      tenThousandsCommaAndPeriod
+      tenThousandsSpaceAndPeriod
+      commaAndPeriodAlternating 
+    */
   }
 
   copyContent(fieldName) {
@@ -1476,18 +1619,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
 
   sendResultOnly() {
-    
-    //this.keyPressed(element, this.valueInField, action, type, src);
+    //this.keyPressed(element, value, action, type, src);
   }
 
   sendResultAndEquation() {
-
     //this.keyPressed(element, this.historyEquations[this.historyEquations.length -1], action, type, src);
-  }
-
-  clearValueInField() {
-    // Validate 'value' otherwise Clear
-    this.valueInField = '';
-    this.resultField.nativeElement.value = '';
   }
 }
