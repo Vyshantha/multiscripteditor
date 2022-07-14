@@ -1150,10 +1150,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   //https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
   commaDecimalSeparatorLocales: any = ['frca', 'lb', 'es', 'sq', 'hy', 'az', 'aze', 'befr', 'fr', 'bsla', 'bs', 'hv', 'pt', 'ptbr', 'cs', 'da', 'et', 'fo', 'fi', 'de', 'ka', 'el', 'kl', 'hu', 'is', 'id', 'it', 'kk', 'kaz', 'ky', 'kir', 'lv', 'lt', 'mn', 'mon', 'mnla', 'nl', 'no', 'gn', 'pl', 'ro', 'ru', 'be', 'sr', 'sk', 'sl', 'sv', 'tr', 'tk', 'tuk', 'uk', 'uz', 'uzb', 'vi', 'af', 'st', 'ss', 'ts', 'tn', 'ven', 'xh', 'nso', 'zu'];
-  periodDecimalSeparatorLocales: any = ['en','enus','engb','enintl'];
+  periodDecimalSeparatorLocales: any = ['en','enus','engb','enintl', 'ne', 'bn', 'km', 'zhcn', 'zhtw', 'am', 'ga', 'he', 'ja', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th'];
   arabicDecimalSeparatorLocales: any = ['ar','fa','ur','ps','ks','sd', 'bal', 'ckb', 'rhg', 'bsk'];
 
-  desiCommaPosition: any = ['enin', 'ne', 'bn', 'km', 'zhcn', 'zhtw', 'am', 'ga', 'he', 'ja', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enus'];
+  desiCommaPosition: any = ['enin', 'ne', 'bn', 'km', 'zhcn', 'zhtw', 'am', 'ga', 'he', 'ja', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enus', 'engb', 'enintl'];
   desiSpacePosition: any = ['enin', 'ne'];
   thousandsPositionApostropheAndPeriodDecimal : any = [];
   thousandsPositionApostropheAndCommaDecimal : any = [];
@@ -1224,6 +1224,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
   keepInMemory: string = "";
   historyEquations: any = [];
   bookmarkedEquations: any = [];
+
+  allowedTypingContent: any = ['A','B','C','D','E','F','a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9','(',')']
 
   defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 18 : ((!this.isMobile && this.isTablet)? 38 : 48 );
   defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 11 : ((!this.isMobile && this.isTablet)? 13 : 15 );
@@ -1465,6 +1467,16 @@ export class CustomiseKeyboardsComponent implements OnInit {
         break;
       default :
         switch (type) {
+          case 'equalsSign' : 
+            if (this.varX != "" && this.varY != "") {
+              this.computeResults();
+              this.displayVariableInLocaleFormat();
+              this.varX = "";
+              this.varY = "";
+              this.operatorXY = "";
+            }
+            break;
+
           case 'base2' : // Binary
             //  this.calculatorLayout for Numbers 2 - 9 set visible = "hide"
             //  Operation Trigonometry, Logarithm, Roots, Powers - Hidden 
@@ -1503,12 +1515,15 @@ export class CustomiseKeyboardsComponent implements OnInit {
             break;
 
           case 'undoAction' :
-            this.resultField.nativeElement.value = this.resultField.nativeElement.value[this.resultField.nativeElement.value.length - 1];
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value.substr(0, this.resultField.nativeElement.value.length - 1);
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
             break;
 
           case 'restart' :
             this.resultField.nativeElement.value = '';
+            this.varX = "";
+            this.varY = "";
+            this.operatorXY = "";
             break;
           
           case 'formula1' :
@@ -1556,36 +1571,69 @@ export class CustomiseKeyboardsComponent implements OnInit {
             break;
 
           default : // Variable Building Phase - RTL & LTR validation
-            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "" + value;
-            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            if (this.operators.indexOf(value) == -1 && this.operatorXY == "" && this.varX == "" && this.varY == "") {
+              this.resultField.nativeElement.value = this.resultField.nativeElement.value + value;
+              this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            } else if (this.operators.indexOf(value) > -1 && this.operatorXY == "" && this.varX == "") {
+              this.operatorXY = value;
+              this.equationField.nativeElement.value = this.resultField.nativeElement.value + " " + value;
+              this.varX = this.resultField.nativeElement.value;
+              this.keepInMemory = this.resultField.nativeElement.value;
+            } else if (this.operators.indexOf(value) == -1 && this.operatorXY != "" && this.varY == "") {
+              this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + value;
+              this.resultField.nativeElement.value = value;
+              this.varY = this.resultField.nativeElement.value;
+            } else if (this.operators.indexOf(value) == -1 && this.operatorXY != "" && this.varY != ""){
+              this.resultField.nativeElement.value = this.resultField.nativeElement.value + value;
+              this.equationField.nativeElement.value = this.equationField.nativeElement.value + value;
+              this.varY = this.resultField.nativeElement.value;
+            }
             break;
-
-          // computeResult(value) 
         }
     }
   }
 
-  computeResult(contentOfInput) {
-    // Value is being Typed
-    console.log(contentOfInput , this.resultField.nativeElement.value)
-    // Allow 0-9 & A-F depending on Base with Operations
-    if (this.operators.indexOf(contentOfInput) == -1 && this.varX != "" && this.varY != "") {
-      // Clear Contents
+  carveOperatorVariables(contentOfInput) {
+    // Value is being Typed using Keyboard
+    if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY == "" && this.varX == "" && this.varY == "") {
+      this.resultField.nativeElement.value = contentOfInput;
+      this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+    } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) > -1 && this.operatorXY == "" && this.varX == "") {
+      this.operatorXY = contentOfInput.substr(contentOfInput.length-1);
+      this.resultField.nativeElement.value = contentOfInput.substr(0, contentOfInput.indexOf(this.operatorXY));
+      this.varX = this.resultField.nativeElement.value;
+      this.equationField.nativeElement.value = this.varX + " " + this.operatorXY;
+      this.keepInMemory = this.resultField.nativeElement.value;
+    } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY != "" && this.varY == "") {
+      this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + contentOfInput;
+      this.resultField.nativeElement.value = contentOfInput;
+      this.varY = contentOfInput;
+    } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY != "" && this.varY != ""){
+      this.resultField.nativeElement.value = contentOfInput;
+      this.equationField.nativeElement.value = this.equationField.nativeElement.value + contentOfInput;
+      this.varY = this.resultField.nativeElement.value;
+    } else if (this.allowedTypingContent.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 || this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1) {
+      // Allow 0-9 & A-F depending on Base with Operations
       this.resultField.nativeElement.value = '';
     }
-    // Switch Case for Operators and populate result in this.resultField.nativeElement.value 
+    if (this.operatorXY != "" && this.varX != "" && this.varY != "") {
+      this.computeResults();
+      this.displayVariableInLocaleFormat();
+      this.varX = "";
+      this.varY = "";
+      this.operatorXY = "";
+    }
+  }
 
-    // Highlight the Operations clicked
+  computeResults() {
+    // let operationResult = this.varX this.operatorXY this.varY
 
-    // Keep variable in Memory once Operator encountered or equation complete
-    this.keepInMemory = this.resultField.nativeElement.value;
-
-    // Build this.equationField.nativeElement.value with complete Equation
-
-    this.displayVariableInLocaleFormat();
+    //this.resultField.nativeElement.value = this.resultField.nativeElement.value + " = " + operationResult;
   }
 
   displayVariableInLocaleFormat () {
+    // Highlight the Operations clicked
+
     /* 
       this.resultField.nativeElement.value = formatted Value;
 
@@ -1619,10 +1667,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
 
   sendResultOnly() {
-    //this.keyPressed(element, value, action, type, src);
+    this.keyPressed({"value":this.resultField.nativeElement.value,"action":"char","src":"","type":"numerals"}, this.resultField.nativeElement.value, "char", "numerals", "");
   }
 
   sendResultAndEquation() {
-    //this.keyPressed(element, this.historyEquations[this.historyEquations.length -1], action, type, src);
+    this.keyPressed({"value":this.historyEquations[this.historyEquations.length -1],"action":"char","src":"","type":"numerals"}, this.historyEquations[this.historyEquations.length -1], "char", "numerals", "");
   }
 }
