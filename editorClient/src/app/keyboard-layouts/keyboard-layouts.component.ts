@@ -504,7 +504,7 @@ import * as layoutPersianXpeo from './../../assets/keyboard-layouts/layout-persi
 import * as layoutDemoticEgyd from './../../assets/keyboard-layouts/layout-demotic-egyd.json';
 import * as layoutNKoNKoo from './../../assets/keyboard-layouts/layout-nko-nkoo.json';
 import * as layoutUmweroUmw from './../../assets/keyboard-layouts/layout-umwero-umw.json';
-import * as layoutSundaneseSun from './../../assets/keyboard-layouts/layout-sundanese-sun.json';
+import * as layoutSundaneseSun from './../../assets/keyboard-layouts/layout-sundanese-su.json';
 import * as layoutCebuanoCeb from './../../assets/keyboard-layouts/layout-cebuano-ceb.json';
 import * as layoutAfricaIai from './../../assets/keyboard-layouts/layout-africa-iai.json';
 import * as layoutPinyinPin from './../../assets/keyboard-layouts/layout-pinyin-pin.json';

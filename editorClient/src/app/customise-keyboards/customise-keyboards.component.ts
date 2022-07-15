@@ -481,7 +481,7 @@ import * as layoutPersianXpeo from './../../assets/keyboard-layouts/layout-persi
 import * as layoutDemoticEgyd from './../../assets/keyboard-layouts/layout-demotic-egyd.json';
 import * as layoutNKoNKoo from './../../assets/keyboard-layouts/layout-nko-nkoo.json';
 import * as layoutUmweroUmw from './../../assets/keyboard-layouts/layout-umwero-umw.json';
-import * as layoutSundaneseSun from './../../assets/keyboard-layouts/layout-sundanese-sun.json';
+import * as layoutSundaneseSun from './../../assets/keyboard-layouts/layout-sundanese-su.json';
 import * as layoutCebuanoCeb from './../../assets/keyboard-layouts/layout-cebuano-ceb.json';
 import * as layoutAfricaIai from './../../assets/keyboard-layouts/layout-africa-iai.json';
 import * as layoutPinyinPin from './../../assets/keyboard-layouts/layout-pinyin-pin.json';
@@ -1596,7 +1596,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
           case 'undoAction' :
             this.resultField.nativeElement.value = this.resultField.nativeElement.value.substr(0, this.resultField.nativeElement.value.length - 1);
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
-            this.nonUnicodeNumberResult.splice(this.nonUnicodeNumberResult.length - 1)
+            this.nonUnicodeNumberResult.splice(this.nonUnicodeNumberResult.length - 1);
+            this.nonUnicodeNumberEquation.splice(this.nonUnicodeNumberEquation.length - 1);
             break;
 
           case 'restart' :
@@ -1655,11 +1656,13 @@ export class CustomiseKeyboardsComponent implements OnInit {
             if (this.operators.indexOf(value) == -1 && this.operatorXY == "" && this.varX == "" && this.varY == "") {
               this.resultField.nativeElement.value = this.resultField.nativeElement.value + value;
               this.equationField.nativeElement.value = this.resultField.nativeElement.value;
-              if (this.unicode5AndHigher) {
+              if (this.unicode5AndHigher && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
                 this.nonUnicodeNumberResult.push({"src":"","value":" "});
                 this.nonUnicodeNumberResult.unshift({"src":src,"value":value});
+              } else if (this.unicode5AndHigher) {
+                this.nonUnicodeNumberResult.push({"src":src,"value":value});
               }
-              this.nonUnicodeNumberEquation = this.nonUnicodeNumberResult;
+              this.nonUnicodeNumberEquation = this.nonUnicodeNumberResult.slice();
               if (this.nonUnicodeNumberResult.length == 2 && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
                 this.nonUnicodeNumberResult = this.nonUnicodeNumberResult.slice().reverse();
                 this.nonUnicodeNumberEquation = this.nonUnicodeNumberEquation.slice().reverse();
@@ -1675,34 +1678,41 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 this.nonUnicodeNumberEquation.push({"src":"","value":" "});
                 this.nonUnicodeNumberEquation.unshift({"src":"","value":this.operatorXY});
               } else {
-                this.nonUnicodeNumberEquation.push({"src":"","value":this.operatorXY});
                 this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+                this.nonUnicodeNumberEquation.push({"src":"","value":this.operatorXY});
               }
             } else if (this.operators.indexOf(value) == -1 && this.operatorXY != "" && this.varY == "") {
               this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + value;
               this.resultField.nativeElement.value = value;
               this.varY = this.resultField.nativeElement.value;
               this.nonUnicodeNumberResult = [];
-              if (this.unicode5AndHigher) {
+              if (this.unicode5AndHigher && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
                 this.nonUnicodeNumberResult.push({"src":src,"value":value});
                 this.nonUnicodeNumberEquation.push({"src":"","value":" "});
                 this.nonUnicodeNumberEquation.unshift({"src":src,"value":value});
+              } else if (this.unicode5AndHigher) {
+                this.nonUnicodeNumberResult.push({"src":src,"value":value});
+                this.nonUnicodeNumberEquation.push({"src":src,"value":value});
               }
             } else if (this.operators.indexOf(value) == -1 && this.operatorXY != "" && this.varY != ""){
               this.resultField.nativeElement.value = this.resultField.nativeElement.value + value;
               this.equationField.nativeElement.value = this.equationField.nativeElement.value + value;
               this.varY = this.resultField.nativeElement.value;
-              if (this.unicode5AndHigher) {
+              if (this.unicode5AndHigher && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
                 this.nonUnicodeNumberResult.push({"src":"","value":" "});
                 this.nonUnicodeNumberResult.unshift({"src":src,"value":value});
+              } else if (this.unicode5AndHigher) {
+                this.nonUnicodeNumberResult.push({"src":src,"value":value});
               }
               if (this.nonUnicodeNumberResult.length == 2 && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
                 this.nonUnicodeNumberResult = this.nonUnicodeNumberResult.slice().reverse();
               }
-              if (this.unicode5AndHigher) {
+              if (this.unicode5AndHigher && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
                 this.nonUnicodeNumberEquation.splice(this.nonUnicodeNumberEquation.length - 1)
                 this.nonUnicodeNumberEquation.push({"src":"","value":" "});
                 this.nonUnicodeNumberEquation.unshift({"src":src,"value":value});
+              } else if (this.unicode5AndHigher) {
+                this.nonUnicodeNumberEquation.push({"src":src,"value":value});
               }
             }
             break;
