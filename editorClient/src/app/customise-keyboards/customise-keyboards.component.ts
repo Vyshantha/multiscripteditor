@@ -1224,6 +1224,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
   keepInMemory: string = "";
   historyEquations: any = [];
   bookmarkedEquations: any = [];
+  nonUnicodeNumberEquation: any = [];
+  nonUnicodeNumberResult: any = [];
 
   allowedTypingContent: any = ['A','B','C','D','E','F','a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9','(',')']
 
@@ -1594,6 +1596,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
           case 'undoAction' :
             this.resultField.nativeElement.value = this.resultField.nativeElement.value.substr(0, this.resultField.nativeElement.value.length - 1);
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            this.nonUnicodeNumberResult.splice(this.nonUnicodeNumberResult.length - 1)
             break;
 
           case 'restart' :
@@ -1601,6 +1604,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.varX = "";
             this.varY = "";
             this.operatorXY = "";
+            this.nonUnicodeNumberResult = [];
             break;
           
           case 'formula1' :
@@ -1651,19 +1655,55 @@ export class CustomiseKeyboardsComponent implements OnInit {
             if (this.operators.indexOf(value) == -1 && this.operatorXY == "" && this.varX == "" && this.varY == "") {
               this.resultField.nativeElement.value = this.resultField.nativeElement.value + value;
               this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+              if (this.unicode5AndHigher) {
+                this.nonUnicodeNumberResult.push({"src":"","value":" "});
+                this.nonUnicodeNumberResult.unshift({"src":src,"value":value});
+              }
+              this.nonUnicodeNumberEquation = this.nonUnicodeNumberResult;
+              if (this.nonUnicodeNumberResult.length == 2 && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.nonUnicodeNumberResult = this.nonUnicodeNumberResult.slice().reverse();
+                this.nonUnicodeNumberEquation = this.nonUnicodeNumberEquation.slice().reverse();
+              }
             } else if (this.operators.indexOf(value) > -1 && this.operatorXY == "" && this.varX == "") {
               this.operatorXY = value;
               this.equationField.nativeElement.value = this.resultField.nativeElement.value + " " + value;
               this.varX = this.resultField.nativeElement.value;
               this.keepInMemory = this.resultField.nativeElement.value;
+              if (this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+                this.nonUnicodeNumberEquation.unshift({"src":"","value":" "});
+                this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+                this.nonUnicodeNumberEquation.unshift({"src":"","value":this.operatorXY});
+              } else {
+                this.nonUnicodeNumberEquation.push({"src":"","value":this.operatorXY});
+                this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+              }
             } else if (this.operators.indexOf(value) == -1 && this.operatorXY != "" && this.varY == "") {
               this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + value;
               this.resultField.nativeElement.value = value;
               this.varY = this.resultField.nativeElement.value;
+              this.nonUnicodeNumberResult = [];
+              if (this.unicode5AndHigher) {
+                this.nonUnicodeNumberResult.push({"src":src,"value":value});
+                this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+                this.nonUnicodeNumberEquation.unshift({"src":src,"value":value});
+              }
             } else if (this.operators.indexOf(value) == -1 && this.operatorXY != "" && this.varY != ""){
               this.resultField.nativeElement.value = this.resultField.nativeElement.value + value;
               this.equationField.nativeElement.value = this.equationField.nativeElement.value + value;
               this.varY = this.resultField.nativeElement.value;
+              if (this.unicode5AndHigher) {
+                this.nonUnicodeNumberResult.push({"src":"","value":" "});
+                this.nonUnicodeNumberResult.unshift({"src":src,"value":value});
+              }
+              if (this.nonUnicodeNumberResult.length == 2 && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.nonUnicodeNumberResult = this.nonUnicodeNumberResult.slice().reverse();
+              }
+              if (this.unicode5AndHigher) {
+                this.nonUnicodeNumberEquation.splice(this.nonUnicodeNumberEquation.length - 1)
+                this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+                this.nonUnicodeNumberEquation.unshift({"src":src,"value":value});
+              }
             }
             break;
         }

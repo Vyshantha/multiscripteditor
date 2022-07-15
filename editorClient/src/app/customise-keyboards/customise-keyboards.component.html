@@ -117,12 +117,32 @@
     <mat-form-field style="width: 90%;" appearance="fill">
         <mat-label>{{ 'Equation' | translate }}</mat-label>
         <input matInput disabled id="equationField" #equationField value="x = y + z">
+        <mat-card *ngIf="unicode5AndHigher">
+            <span *ngFor="let image of nonUnicodeNumberEquation">
+                <span *ngIf="showImageGlyph && image.src == ''">
+                    {{image.value}}
+                </span>
+                <span *ngIf="showImageGlyph && image.src != ''">
+                    <img src="{{image.src}}" [ngStyle]="{'width': defaultFontSize*1.4+'px', 'height': defaultFontSize*1.3+'px'}">
+                </span>
+            </span>
+        </mat-card>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
     <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>
     <br/>
     <mat-form-field style="width: 90%;" appearance="fill">
         <mat-label>{{ 'Type Variables' | translate }}</mat-label>
-        <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false;">
+        <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false">
+        <mat-card *ngIf="unicode5AndHigher">
+            <span *ngFor="let image of nonUnicodeNumberResult">
+                <span *ngIf="showImageGlyph && image.src == ''">
+                    {{image.value}}
+                </span>
+                <span *ngIf="showImageGlyph && image.src != ''">
+                    <img src="{{image.src}}" [ngStyle]="{'width': defaultFontSize*1.4+'px', 'height': defaultFontSize*1.3+'px'}">
+                </span>
+            </span>
+        </mat-card>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
     <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>
     <br/>
