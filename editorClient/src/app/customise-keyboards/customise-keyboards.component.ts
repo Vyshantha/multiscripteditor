@@ -1132,16 +1132,16 @@ export class CustomiseKeyboardsComponent implements OnInit {
       {"value":"°","action":"char","type":"degrees","visible":"show"},{"value":"rad","action":"char","type":"radians","visible":"show"},{"value":"′","action":"char","type":"arcminute"},{"value":"″","action":"char","type":"arcsecond"},{"value":"𝑓₁","action":"char","type":"formula1"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"A","action":"char","type":"hexadecimal","visible":"hide"},{"value":"B","action":"char","type":"hexadecimal","visible":"hide"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"}
     ]},
     {"row":[
-      {"value":"π","action":"char"},{"value":"sin","action":"char","type":"sineFunc"},{"value":"sin⁻ⁱ","action":"char","type":"sineInverseFunc","visible":"show"},{"value":"ln","action":"char","type":"naturalLogarithm"},{"value":"eˣ","action":"char","type":"naturalExponent"},{"value":"≤","action":"char","type":"lessThanEquals","visible":"hide"},{"value":"<","action":"char","type":"lessThanSymbol","visible":"hide"},{"value":"&","action":"char","type":"logicalAnd","visible":"hide"},{"value":"1","type":"numerals","action":"char"},{"value":"2","type":"numerals","action":"char"},{"value":"3","type":"numerals","action":"char"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":"/","action":"char","type":"divisionOp"},{"value":"÷","action":"char","type":"divisionOp"}
+      {"value":"π","action":"char"},{"value":"sin","action":"char","type":"sineFunc"},{"value":"sin⁻ⁱ","action":"char","type":"sineInverseFunc","visible":"show"},{"value":"ln","action":"char","type":"naturalLogarithm"},{"value":"eˣ","action":"char","type":"naturalExponent"},{"value":"≤","action":"char","type":"lessThanEquals","visible":"hide"},{"value":"<","action":"char","type":"lessThanSymbol","visible":"hide"},{"value":"&","action":"char","type":"logicalAnd","visible":"hide"},{"value":"1","type":"num1","action":"char"},{"value":"2","type":"num2","action":"char"},{"value":"3","type":"num3","action":"char"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":"/","action":"char","type":"divisionOp"},{"value":"÷","action":"char","type":"divisionOp"}
     ]},
     {"row":[
-      {"value":"e","action":"char","type":"exponentNatural"},{"value":"cos","action":"char","type":"cosineFunc"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"show"},{"value":"log","action":"char","type":"logarithm"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">","action":"char","type":"greaterThanSymbol","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":"4","type":"numerals","action":"char"},{"value":"5","type":"numerals","action":"char"},{"value":"6","type":"numerals","action":"char"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
+      {"value":"e","action":"char","type":"exponentNatural"},{"value":"cos","action":"char","type":"cosineFunc"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"show"},{"value":"log","action":"char","type":"logarithm"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">","action":"char","type":"greaterThanSymbol","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":"4","type":"num4","action":"char"},{"value":"5","type":"num5","action":"char"},{"value":"6","type":"num6","action":"char"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
     ]},
     {"row":[
-      {"value":"∞","action":"char","type":"infinity"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"!","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":"7","type":"numerals","action":"char"},{"value":"8","type":"numerals","action":"char"},{"value":"9","type":"numerals","action":"char"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
+      {"value":"∞","action":"char","type":"infinity"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"!","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":"7","type":"num7","action":"char"},{"value":"8","type":"num8","action":"char"},{"value":"9","type":"num9","action":"char"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
     ]},
     {"row":[
-      {"value":this.currencySymbol,"action":"char","type":"currencySymbol"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":"E","action":"char","type":"exponent10"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"ʸ√x","action":"char","type":"nthRoot"},{"value":"x!","action":"char","type":"factorial"},{"value":'٬',"action":"char","type":"arabicDecimalSeparator","visible":"hide"},{"value":'٫',"action":"char","type":"arabicNumberSeparator","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberOrDecimal"},{"value":"0","type":"numerals","action":"char"},{"value":this.periodSeparator,"action":"char","type":"decimalOrNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+      {"value":this.currencySymbol,"action":"char","type":"currencySymbol"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":"E","action":"char","type":"exponent10"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"ʸ√x","action":"char","type":"nthRoot"},{"value":"x!","action":"char","type":"factorial"},{"value":'٬',"action":"char","type":"arabicDecimalSeparator","visible":"hide"},{"value":'٫',"action":"char","type":"arabicNumberSeparator","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberOrDecimal"},{"value":"0","type":"num0","action":"char"},{"value":this.periodSeparator,"action":"char","type":"decimalOrNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
     ]}
   ];
 
@@ -1327,6 +1327,52 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.isAltGrKeyPress = flagForAltGr;
     });
     this.layoutCurrentKeys = this[this.keyboardLayouts[this.sessionManager.getFromSessionURL()][3]];
+    for(let i = 0; i < this.layoutCurrentKeys.length; i++) {
+      if (this.layoutCurrentKeys[i].row) {
+        for(let j = 0; j < this.layoutCurrentKeys[i].row.length; j++) {
+          // num1
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num1" && this.calculatorLayout[2].row[8].type && this.calculatorLayout[2].row[8].type == "num1") {
+            this.calculatorLayout[2].row[8].value = this.layoutCurrentKeys[i].row[j].value;
+          }
+          // num2
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num2" && this.calculatorLayout[2].row[9].type && this.calculatorLayout[2].row[9].type == "num2") {
+            this.calculatorLayout[2].row[9].value = this.layoutCurrentKeys[i].row[j].value;
+          }
+          // num3
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num3" && this.calculatorLayout[2].row[10].type && this.calculatorLayout[2].row[10].type == "num3") {
+            this.calculatorLayout[2].row[10].value = this.layoutCurrentKeys[i].row[j].value;
+          }
+          // num4
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num4" && this.calculatorLayout[3].row[8].type && this.calculatorLayout[3].row[8].type == "num4") {
+            this.calculatorLayout[3].row[8].value = this.layoutCurrentKeys[i].row[j].value;
+          }
+          // num5
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num5" && this.calculatorLayout[3].row[9].type && this.calculatorLayout[3].row[9].type == "num5") {
+            this.calculatorLayout[3].row[9].value = this.layoutCurrentKeys[i].row[j].value;
+          }
+          // num6
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num6" && this.calculatorLayout[3].row[10].type && this.calculatorLayout[3].row[10].type == "num6") {
+            this.calculatorLayout[3].row[10].value = this.layoutCurrentKeys[i].row[j].value;
+          }
+          // num7
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num7" && this.calculatorLayout[4].row[8].type && this.calculatorLayout[4].row[8].type == "num7") {
+            this.calculatorLayout[4].row[8].value = this.layoutCurrentKeys[i].row[j].value;
+          }
+          // num8
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num8" && this.calculatorLayout[4].row[9].type && this.calculatorLayout[4].row[9].type == "num8") {
+            this.calculatorLayout[4].row[9].value = this.layoutCurrentKeys[i].row[j].value;
+          }
+          // num9
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num9" && this.calculatorLayout[4].row[10].type && this.calculatorLayout[4].row[10].type == "num9") {
+            this.calculatorLayout[4].row[10].value = this.layoutCurrentKeys[i].row[j].value;
+          }
+          // num0
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num0" && this.calculatorLayout[5].row[9].type && this.calculatorLayout[5].row[9].type == "num0") {
+            this.calculatorLayout[5].row[9].value = this.layoutCurrentKeys[i].row[j].value;
+          }
+        }
+      }
+    }
     this.altGrCapsExists = (this.layoutCurrentKeys)? this.layoutCurrentKeys.some(x => x.hasOwnProperty('altGrCaps')) : false;
   }
 
@@ -1667,10 +1713,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
 
   sendResultOnly() {
-    this.keyPressed({"value":this.resultField.nativeElement.value,"action":"char","src":"","type":"numerals"}, this.resultField.nativeElement.value, "char", "numerals", "");
+    this.keyPressed({"value":this.resultField.nativeElement.value,"action":"char","src":"","type":"number"}, this.resultField.nativeElement.value, "char", "number", "");
   }
 
   sendResultAndEquation() {
-    this.keyPressed({"value":this.historyEquations[this.historyEquations.length -1],"action":"char","src":"","type":"numerals"}, this.historyEquations[this.historyEquations.length -1], "char", "numerals", "");
+    this.keyPressed({"value":this.historyEquations[this.historyEquations.length -1],"action":"char","src":"","type":"number"}, this.historyEquations[this.historyEquations.length -1], "char", "number", "");
   }
 }
