@@ -1327,48 +1327,59 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.isAltGrKeyPress = flagForAltGr;
     });
     this.layoutCurrentKeys = this[this.keyboardLayouts[this.sessionManager.getFromSessionURL()][3]];
+    // Populate UI View based on script
     for(let i = 0; i < this.layoutCurrentKeys.length; i++) {
       if (this.layoutCurrentKeys[i].row) {
         for(let j = 0; j < this.layoutCurrentKeys[i].row.length; j++) {
           // num1
           if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num1" && this.calculatorLayout[2].row[8].type && this.calculatorLayout[2].row[8].type == "num1") {
             this.calculatorLayout[2].row[8].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
           }
           // num2
           if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num2" && this.calculatorLayout[2].row[9].type && this.calculatorLayout[2].row[9].type == "num2") {
             this.calculatorLayout[2].row[9].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
           }
           // num3
           if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num3" && this.calculatorLayout[2].row[10].type && this.calculatorLayout[2].row[10].type == "num3") {
             this.calculatorLayout[2].row[10].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
           }
           // num4
           if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num4" && this.calculatorLayout[3].row[8].type && this.calculatorLayout[3].row[8].type == "num4") {
             this.calculatorLayout[3].row[8].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
           }
           // num5
           if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num5" && this.calculatorLayout[3].row[9].type && this.calculatorLayout[3].row[9].type == "num5") {
             this.calculatorLayout[3].row[9].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
           }
           // num6
           if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num6" && this.calculatorLayout[3].row[10].type && this.calculatorLayout[3].row[10].type == "num6") {
             this.calculatorLayout[3].row[10].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
           }
           // num7
           if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num7" && this.calculatorLayout[4].row[8].type && this.calculatorLayout[4].row[8].type == "num7") {
             this.calculatorLayout[4].row[8].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
           }
           // num8
           if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num8" && this.calculatorLayout[4].row[9].type && this.calculatorLayout[4].row[9].type == "num8") {
             this.calculatorLayout[4].row[9].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
           }
           // num9
           if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num9" && this.calculatorLayout[4].row[10].type && this.calculatorLayout[4].row[10].type == "num9") {
             this.calculatorLayout[4].row[10].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
           }
           // num0
           if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num0" && this.calculatorLayout[5].row[9].type && this.calculatorLayout[5].row[9].type == "num0") {
             this.calculatorLayout[5].row[9].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
           }
         }
       }
@@ -1651,17 +1662,19 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.equationField.nativeElement.value = this.varX + " " + this.operatorXY;
       this.keepInMemory = this.resultField.nativeElement.value;
     } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY != "" && this.varY == "") {
-      this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + contentOfInput;
-      this.resultField.nativeElement.value = contentOfInput;
-      this.varY = contentOfInput;
+      this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + contentOfInput.replace(this.varX, '');
+      this.resultField.nativeElement.value = contentOfInput.replace(this.varX, '');
+      this.varY = contentOfInput.replace(this.varX, '');
     } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY != "" && this.varY != ""){
       this.resultField.nativeElement.value = contentOfInput;
-      this.equationField.nativeElement.value = this.equationField.nativeElement.value + contentOfInput;
       this.varY = this.resultField.nativeElement.value;
+      this.equationField.nativeElement.value = this.varX + " " + this.operatorXY + " " + this.varY;
     } else if (this.allowedTypingContent.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 || this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1) {
       // Allow 0-9 & A-F depending on Base with Operations
       this.resultField.nativeElement.value = '';
     }
+    // Call only when "Enter" is pressed
+    /*
     if (this.operatorXY != "" && this.varX != "" && this.varY != "") {
       this.computeResults();
       this.displayVariableInLocaleFormat();
@@ -1669,6 +1682,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.varY = "";
       this.operatorXY = "";
     }
+    */
   }
 
   computeResults() {
