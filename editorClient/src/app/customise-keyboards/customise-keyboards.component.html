@@ -104,7 +104,72 @@
     </mat-dialog-content>
 </div>
 
-<div *ngIf="calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
+<div *ngIf="!isMobile && isTablet && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
+    <h2 mat-dialog-title [ngStyle]="{'text-align':(dirSet == 'ltr')?'right':'left'}">&nbsp;&nbsp;&nbsp;&nbsp;{{ 'Calculator' | translate }}&nbsp;&nbsp;&nbsp;&nbsp; 
+        <span>
+            <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
+            <mat-icon style="cursor: pointer;" aria-label="Launch" alt="Launch" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="!floatNotMinimise">open_with</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; 
+        </span>  
+        <span>
+            <mat-icon style="cursor: pointer;" aria-label="Close" alt="Close" (click)="restoreBackKeyboard()">close</mat-icon>
+        </span>
+    </h2>
+    <mat-form-field style="width: 90%;" appearance="fill">
+        <mat-label>{{ 'Equation' | translate }}</mat-label>
+        <input matInput disabled id="equationField" #equationField value="x = y + z">
+        <mat-card *ngIf="unicode5AndHigher">
+            <span *ngFor="let image of nonUnicodeNumberEquation">
+                <span *ngIf="showImageGlyph && image.src == ''">
+                    {{image.value}}
+                </span>
+                <span *ngIf="showImageGlyph && image.src != ''">
+                    <img src="{{image.src}}" [ngStyle]="{'width': defaultFontSize*1.4+'px', 'height': defaultFontSize*1.3+'px'}">
+                </span>
+            </span>
+        </mat-card>
+    </mat-form-field>&nbsp;&nbsp;&nbsp;
+    <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>
+    <br/>
+    <mat-form-field style="width: 90%;" appearance="fill">
+        <mat-label>{{ 'Type Variables' | translate }}</mat-label>
+        <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false">
+        <mat-card *ngIf="unicode5AndHigher">
+            <span *ngFor="let image of nonUnicodeNumberResult">
+                <span *ngIf="showImageGlyph && image.src == ''">
+                    {{image.value}}
+                </span>
+                <span *ngIf="showImageGlyph && image.src != ''">
+                    <img src="{{image.src}}" [ngStyle]="{'width': defaultFontSize*1.4+'px', 'height': defaultFontSize*1.3+'px'}">
+                </span>
+            </span>
+        </mat-card>
+    </mat-form-field>&nbsp;&nbsp;&nbsp;
+    <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>
+    <br/>
+    <mat-dialog-content class="mat-topography" *ngIf="floatNotMinimise" style="color: black;">
+        <ul *ngFor="let rows of calculatorLayout" style="list-style-type: none;" class="keyboardTheming">
+            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == 'base10' || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'syllabic')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize*0.9 + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '25px' : defaultFontSize + 'px', 'height' : keysToRotate? defaultCellSize*40/50 + 'px' : defaultCellSize*40/55 + 'px', 'padding-top': '0px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
+                <div *ngIf="!showImageGlyph || character.src == null" class="{{fontClass}}">
+                    {{character.value}} 
+                </div>
+                <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') == -1">
+                    <img src="{{character.src}}" [ngStyle]="{'width': defaultFontSize*1.4+'px', 'height': defaultFontSize*1.3+'px'}"/>
+                </div>
+                <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') > -1" class="icon icon-{{character.src.split('/')[1]}}">
+                </div>
+            </li>
+        </ul>
+    </mat-dialog-content>
+    <div mat-dialog-actions style="margin-bottom: 0px;">
+        <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
+        <button mat-raised-button type="submit" color="accent" (click)="sendResultOnly()" aria-label="{{ 'Send Result' | translate }}"><mat-icon>send</mat-icon> {{ 'Send Result' | translate }}</button>
+        <button mat-raised-button type="submit" color="primary" aria-label="{{ 'Send Equation' | translate }}" (click)="sendResultAndEquation()"><mat-icon>summarize</mat-icon> {{ 'Send Equation' | translate }}</button>
+        <button mat-raised-button color="accent" aria-label="{{ 'History' | translate }}" (click)="done()"><mat-icon>work_history</mat-icon></button>
+        <button mat-raised-button color="primary" aria-label="{{ 'Bookmarks' | translate }}" (click)="done()"><mat-icon>stars</mat-icon> {{ 'Bookmarks' | translate }}</button>
+    </div>
+</div>
+
+<div *ngIf="!isMobile && !isTablet && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
     <h2 mat-dialog-title [ngStyle]="{'text-align':(dirSet == 'ltr')?'right':'left'}">&nbsp;&nbsp;&nbsp;&nbsp;{{ 'Calculator' | translate }}&nbsp;&nbsp;&nbsp;&nbsp; 
         <span>
             <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
