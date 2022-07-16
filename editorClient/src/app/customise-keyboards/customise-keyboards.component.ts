@@ -1249,6 +1249,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
   nonUnicodeNumberEquation: any = [];
   nonUnicodeNumberResult: any = [];
 
+  numberMap: any = [];
+  mapLocale: any = [];
+
   allowedTypingContent: any = ['A','B','C','D','E','F','a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9','(',')']
 
   defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 18 : ((!this.isMobile && this.isTablet)? 38 : 48 );
@@ -1362,6 +1365,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.calculatorLayout[2].row[8].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[1].row[0].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "1";
+            this.mapLocale["1"] = this.layoutCurrentKeys[i].row[j].value; 
             if (this.unicode5AndHigher) {
               this.calculatorLayout[2].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[1].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1372,6 +1377,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.calculatorLayout[2].row[9].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[1].row[1].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "2";
+            this.mapLocale["2"] = this.layoutCurrentKeys[i].row[j].value; 
             if (this.unicode5AndHigher) {
               this.calculatorLayout[2].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[1].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1382,6 +1389,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.calculatorLayout[2].row[10].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[1].row[2].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "3";
+            this.mapLocale["3"] = this.layoutCurrentKeys[i].row[j].value; 
             if (this.unicode5AndHigher) {
               this.calculatorLayout[2].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[1].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1392,6 +1401,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.calculatorLayout[3].row[8].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[2].row[0].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "4";
+            this.mapLocale["4"] = this.layoutCurrentKeys[i].row[j].value; 
             if (this.unicode5AndHigher) {
               this.calculatorLayout[3].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[2].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1402,6 +1413,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.calculatorLayout[3].row[9].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[2].row[1].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "5";
+            this.mapLocale["5"] = this.layoutCurrentKeys[i].row[j].value; 
             if (this.unicode5AndHigher) {
               this.calculatorLayout[3].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[2].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1412,6 +1425,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.calculatorLayout[3].row[10].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[2].row[2].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "6";
+            this.mapLocale["6"] = this.layoutCurrentKeys[i].row[j].value; 
             if (this.unicode5AndHigher) {
               this.calculatorLayout[3].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[2].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1422,6 +1437,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.calculatorLayout[4].row[8].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[3].row[0].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "7";
+            this.mapLocale["7"] = this.layoutCurrentKeys[i].row[j].value; 
             if (this.unicode5AndHigher) {
               this.calculatorLayout[4].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[3].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1432,6 +1449,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.calculatorLayout[4].row[9].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[3].row[1].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "8";
+            this.mapLocale["8"] = this.layoutCurrentKeys[i].row[j].value; 
             if (this.unicode5AndHigher) {
               this.calculatorLayout[4].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[3].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1442,6 +1461,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.calculatorLayout[4].row[10].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[3].row[2].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "9";
+            this.mapLocale["9"] = this.layoutCurrentKeys[i].row[j].value; 
             if (this.unicode5AndHigher) {
               this.calculatorLayout[4].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[3].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1452,6 +1473,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.calculatorLayout[5].row[9].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[4].row[1].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "0";
+            this.mapLocale["0"] = this.layoutCurrentKeys[i].row[j].value; 
             if (this.unicode5AndHigher) {
               this.calculatorLayout[5].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[4].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1813,40 +1836,53 @@ export class CustomiseKeyboardsComponent implements OnInit {
     */
   }
 
+  stringManipulator(stringToReturn, hostString, mappedArray) {
+    for (let str of hostString) {
+      if (mappedArray[str])
+        stringToReturn = stringToReturn + mappedArray[str];
+      else
+        stringToReturn = stringToReturn + str;
+    }
+    return stringToReturn;
+  }
+
   computeResults() {
     // map this.varX and this.varY with corresponding num Type be mapped to 0 - 9 numbers
+    var localeMappedX = this.stringManipulator("", this.varX, this.numberMap);
+    var localeMappedY = this.stringManipulator("", this.varY, this.numberMap);
 
     switch(this.operatorXY) {
+      case '%' :
+        this.operationResult = parseInt(localeMappedX) % parseInt(localeMappedY);
+        break;
       case '÷' :
-        this.operationResult = parseInt(this.varX) / parseInt(this.varY);
+        this.operationResult = parseInt(localeMappedX) / parseInt(localeMappedY);
         break;
       case '/' :
-        this.operationResult = parseInt(this.varX) / parseInt(this.varY);
+        this.operationResult = parseInt(localeMappedX) / parseInt(localeMappedY);
         break;
       case '*' :
-        this.operationResult = parseInt(this.varX) * parseInt(this.varY);
+        this.operationResult = parseInt(localeMappedX) * parseInt(localeMappedY);
         break;
       case '·' :
-        this.operationResult = parseInt(this.varX) * parseInt(this.varY);
+        this.operationResult = parseInt(localeMappedX) * parseInt(localeMappedY);
         break;
       case '×' :
-        this.operationResult = parseInt(this.varX) * parseInt(this.varY);
+        this.operationResult = parseInt(localeMappedX) * parseInt(localeMappedY);
         break;
       case '-' :
-        this.operationResult = parseInt(this.varX) - parseInt(this.varY);
+        this.operationResult = parseInt(localeMappedX) - parseInt(localeMappedY);
         break;
       case '+' :
-        this.operationResult = parseInt(this.varX) + parseInt(this.varY);
+        this.operationResult = parseInt(localeMappedX) + parseInt(localeMappedY);
         break;
     }
 
     this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.displayVariableInLocaleFormat(this.operationResult);
-    this.resultField.nativeElement.value = this.operationResult;
+    this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
   }
 
   displayVariableInLocaleFormat (result) {
-    // Iterate through this.anyCalculatorLayout for Type num0 to num9 mapping for 0 to 9 in all scripts & languages
-
     /* 
       this.resultField.nativeElement.value = formatted Value;
 
@@ -1869,7 +1905,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
       tenThousandsSpaceAndPeriod
       commaAndPeriodAlternating 
     */
-    return result;
+
+    // Iterate through this.anyCalculatorLayout for Type num0 to num9 mapping for 0 to 9 in all scripts & languages
+    return this.stringManipulator("", result.toString(), this.mapLocale);
   }
 
   copyContent(fieldName) {
