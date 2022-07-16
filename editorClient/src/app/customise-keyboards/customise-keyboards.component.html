@@ -164,9 +164,9 @@
         <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
         <button mat-raised-button type="submit" color="accent" (click)="sendResultOnly()" aria-label="{{ 'Send Result' | translate }}"><mat-icon>send</mat-icon> {{ 'Send Result' | translate }}</button>
         <button mat-raised-button type="submit" color="primary" aria-label="{{ 'Send Equation' | translate }}" (click)="sendResultAndEquation()"><mat-icon>summarize</mat-icon> {{ 'Send Equation' | translate }}</button>
-        <button mat-raised-button color="accent" aria-label="{{ 'History' | translate }}" (click)="done()"><mat-icon>work_history</mat-icon></button>
-        <button mat-raised-button color="primary" aria-label="{{ 'Bookmark' | translate }}" (click)="done()"><mat-icon>stars</mat-icon></button>
-        <button mat-raised-button color="accent" aria-label="{{ 'Scientific' | translate }}" (click)="switchCalculators()"><mat-icon>science</mat-icon></button>
+        <button mat-raised-button color="accent" aria-label="{{ 'History' | translate }}" matTooltip="{{ 'History' | translate }}" (click)="done()"><mat-icon>work_history</mat-icon></button>
+        <button mat-raised-button color="primary" aria-label="{{ 'Bookmark' | translate }}" matTooltip="{{ 'Bookmark' | translate }}" (click)="done()"><mat-icon>stars</mat-icon></button>
+        <button mat-raised-button color="accent" aria-label="{{ 'Toggle Scientific and Simple Calculator' | translate }}" matTooltip="{{ 'Toggle Scientific and Simple Calculator' | translate }}" (click)="switchCalculators()"><mat-icon>science</mat-icon></button>
     </div>
 </div>
 
@@ -232,6 +232,6 @@
         <button mat-raised-button type="submit" color="primary" aria-label="{{ 'Send Equation' | translate }}" (click)="sendResultAndEquation()"><mat-icon>summarize</mat-icon> {{ 'Send Equation' | translate }}</button>
         <button mat-raised-button color="accent" aria-label="{{ 'History' | translate }}" (click)="done()"><mat-icon>work_history</mat-icon> {{ 'History' | translate }}</button>
         <button mat-raised-button color="primary" aria-label="{{ 'Bookmark' | translate }}" (click)="done()"><mat-icon>stars</mat-icon> {{ 'Bookmark' | translate }} x = y + z</button>
-        <button mat-raised-button color="accent" aria-label="{{ 'Scientific' | translate }}" (click)="switchCalculators()"><mat-icon>science</mat-icon></button>
+        <button mat-raised-button color="accent" aria-label="{{ 'Toggle Scientific and Simple Calculator' | translate }}" matTooltip="{{ 'Toggle Scientific and Simple Calculator' | translate }}" (click)="switchCalculators()"><mat-icon>science</mat-icon></button>
     </div>
 </div>

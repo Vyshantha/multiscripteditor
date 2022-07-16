@@ -1242,6 +1242,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   varX: string = "";
   varY: string = "";
   operatorXY: string = "";
+  operationResult: number = 0;
   keepInMemory: string = "";
   historyEquations: any = [];
   bookmarkedEquations: any = [];
@@ -1594,6 +1595,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
   
   whatToDoWithThisKeyPress(element, value, action, type, src, visible) {
     // Manual Key Press
+
+    // Highlight the Operations clicked
+
     switch (visible) {
       case 'hide' :
         break;
@@ -1660,7 +1664,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.operatorXY = "";
             this.nonUnicodeNumberResult = [];
             break;
-          
+
           case 'formula1' :
             // Do calculation based off this.historyEquations[0] formula
             // Store in LocalStorage for session persistence
@@ -1775,6 +1779,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   carveOperatorVariables(contentOfInput) {
     // Value is being Typed using Keyboard
+
+    // Highlight the Operations clicked
+
     if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY == "" && this.varX == "" && this.varY == "") {
       this.resultField.nativeElement.value = contentOfInput;
       this.equationField.nativeElement.value = this.resultField.nativeElement.value;
@@ -1809,13 +1816,20 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
 
   computeResults() {
-    // let operationResult = this.varX this.operatorXY this.varY
+    // map this.varX and this.varY with corresponding num Type be mapped to 0 - 9 numbers
 
-    //this.resultField.nativeElement.value = this.resultField.nativeElement.value + " = " + operationResult;
+    switch(this.operatorXY) {
+        case '/' :
+          this.operationResult = parseInt(this.varX)/parseInt(this.varY);
+          break;
+    }
+
+    this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.displayVariableInLocaleFormat(this.operationResult);
+    this.resultField.nativeElement.value = this.operationResult;
   }
 
-  displayVariableInLocaleFormat () {
-    // Highlight the Operations clicked
+  displayVariableInLocaleFormat (result) {
+    // Iterate through this.anyCalculatorLayout for Type num0 to num9 mapping for 0 to 9 in all scripts & languages
 
     /* 
       this.resultField.nativeElement.value = formatted Value;
@@ -1839,6 +1853,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
       tenThousandsSpaceAndPeriod
       commaAndPeriodAlternating 
     */
+    return result;
   }
 
   copyContent(fieldName) {
