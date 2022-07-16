@@ -1851,7 +1851,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     for (let str of hostString) {
       if (mappedArray[str])
         stringToReturn = stringToReturn + mappedArray[str];
-      else
+      else // Comman, Period inclusion when required
         stringToReturn = stringToReturn + str;
     }
     return stringToReturn;
@@ -1894,16 +1894,23 @@ export class CustomiseKeyboardsComponent implements OnInit {
       if (this.unicode5AndHigher) {
         let includeEqualsOnce = true;
         for (let char of this.operationResult.toString()) {
-          this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-          this.nonUnicodeNumberResult.unshift({"src":this.nonUnicodeMap[char],"value":char});
-          if (includeEqualsOnce) {
+          if (this.nonUnicodeMap[char]) {
             this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-            this.nonUnicodeNumberEquation.unshift({"src":"","value":"="});
+            this.nonUnicodeNumberResult.unshift({"src":this.nonUnicodeMap[char],"value":char});
+            if (includeEqualsOnce) {
+              this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+              this.nonUnicodeNumberEquation.unshift({"src":"","value":"="});
+              this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+              includeEqualsOnce = false;
+            }
             this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-            includeEqualsOnce = false;
+            this.nonUnicodeNumberEquation.unshift({"src":this.nonUnicodeMap[char],"value":char});
+          } else { // Comman, Period inclusion when required
+            this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+            this.nonUnicodeNumberEquation.unshift({"src":"","value":"."});
+            this.nonUnicodeNumberResult.push({"src":"","value":" "});
+            this.nonUnicodeNumberResult.unshift({"src":"","value":"."});
           }
-          this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-          this.nonUnicodeNumberEquation.unshift({"src":this.nonUnicodeMap[char],"value":char});
         }
       }
     } else {
@@ -1912,14 +1919,19 @@ export class CustomiseKeyboardsComponent implements OnInit {
       if (this.unicode5AndHigher) {
         let includeEqualsOnce = true;
         for (let char of this.operationResult.toString()) {
-          this.nonUnicodeNumberResult.push({"src":this.nonUnicodeMap[char],"value":char});
-          if (includeEqualsOnce) {
-            this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-            this.nonUnicodeNumberEquation.push({"src":"","value":"="});
-            this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-            includeEqualsOnce = false;
+          if (this.nonUnicodeMap[char]) {
+            this.nonUnicodeNumberResult.push({"src":this.nonUnicodeMap[char],"value":char});
+            if (includeEqualsOnce) {
+              this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+              this.nonUnicodeNumberEquation.push({"src":"","value":"="});
+              this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+              includeEqualsOnce = false;
+            }
+            this.nonUnicodeNumberEquation.push({"src":this.nonUnicodeMap[char],"value":char});
+          } else { // Comman, Period inclusion when required
+            this.nonUnicodeNumberResult.push({"src":"","value":"."});
+            this.nonUnicodeNumberEquation.push({"src":"","value":"."});
           }
-          this.nonUnicodeNumberEquation.push({"src":this.nonUnicodeMap[char],"value":char});
         }
       }
     }
