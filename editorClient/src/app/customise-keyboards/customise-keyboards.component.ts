@@ -1606,7 +1606,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
           case 'equalsSign' : 
             if (this.operatorXY != "" && this.varX != "" && this.varY != "") {
               this.computeResults();
-              this.displayVariableInLocaleFormat();
               this.varX = "";
               this.varY = "";
               this.operatorXY = "";
@@ -1807,7 +1806,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
     /*
     if (this.operatorXY != "" && this.varX != "" && this.varY != "") {
       this.computeResults();
-      this.displayVariableInLocaleFormat();
       this.varX = "";
       this.varY = "";
       this.operatorXY = "";
@@ -1819,9 +1817,27 @@ export class CustomiseKeyboardsComponent implements OnInit {
     // map this.varX and this.varY with corresponding num Type be mapped to 0 - 9 numbers
 
     switch(this.operatorXY) {
-        case '/' :
-          this.operationResult = parseInt(this.varX)/parseInt(this.varY);
-          break;
+      case '÷' :
+        this.operationResult = parseInt(this.varX) / parseInt(this.varY);
+        break;
+      case '/' :
+        this.operationResult = parseInt(this.varX) / parseInt(this.varY);
+        break;
+      case '*' :
+        this.operationResult = parseInt(this.varX) * parseInt(this.varY);
+        break;
+      case '·' :
+        this.operationResult = parseInt(this.varX) * parseInt(this.varY);
+        break;
+      case '×' :
+        this.operationResult = parseInt(this.varX) * parseInt(this.varY);
+        break;
+      case '-' :
+        this.operationResult = parseInt(this.varX) - parseInt(this.varY);
+        break;
+      case '+' :
+        this.operationResult = parseInt(this.varX) + parseInt(this.varY);
+        break;
     }
 
     this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.displayVariableInLocaleFormat(this.operationResult);
