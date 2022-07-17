@@ -1141,7 +1141,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
       {"value":"″","action":"char","type":"arcsecond"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"!","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":"7","type":"num7","action":"char"},{"value":"8","type":"num8","action":"char"},{"value":"9","type":"num9","action":"char"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
     ]},
     {"row":[
-      {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"ʸ√x","action":"char","type":"nthRoot"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʹ","action":"char","type":"greekNumerals","visible":"hide"},{"value":'٬',"action":"char","type":"arabicDecimalSeparator","visible":"hide"},{"value":'٫',"action":"char","type":"arabicNumberSeparator","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberOrDecimal"},{"value":"0","type":"num0","action":"char"},{"value":this.periodSeparator,"action":"char","type":"decimalOrNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+      {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"ʸ√x","action":"char","type":"nthRoot"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʹ","action":"char","type":"greekNumerals","visible":"hide"},{"value":'٬',"action":"char","type":"arabicDecimalSeparator","visible":"hide"},{"value":'٫',"action":"char","type":"arabicNumberSeparator","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal"},{"value":"0","type":"num0","action":"char"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
     ]}
   ];
 
@@ -1159,7 +1159,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
       {"value":"7","type":"num7","action":"char"},{"value":"8","type":"num8","action":"char"},{"value":"9","type":"num9","action":"char"},{"value":" ","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
     ]},
     {"row":[
-      {"value":this.commaSeparator,"action":"char","type":"numberOrDecimal"},{"value":"0","type":"num0","action":"char"},{"value":this.periodSeparator,"action":"char","type":"decimalOrNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":" ","action":"char","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+      {"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal"},{"value":"0","type":"num0","action":"char"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":" ","action":"char","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
     ]}
   ];
 
@@ -1239,7 +1239,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   fontClass: string = "";
 
   baseIndices: any = [2, 8, 10, 12, 16, 20, 60];
-  operators: any = ['+', "-", "*" , "×", "·", "^", "÷" , "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "<", ">", "≤", "≥", "ʸ√", " logₓ"];
+  operators: any = ['+', "-", "*" , "×", "·", "^", "÷", '%', '‰', "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "<", ">", "≤", "≥", "ʸ√", "xʸ", "logₓ"];
   varX: string = "";
   varY: string = "";
   operatorValue: string = "";
@@ -1667,46 +1667,49 @@ export class CustomiseKeyboardsComponent implements OnInit {
     let result;
     switch (operator) {
       case '√' :
-        result = Math.sqrt(parseInt(soloVariable.split("√")[1]));
+        result = Math.sqrt(parseFloat(soloVariable.split("√")[1]));
         break;
       case '∛' :
-        result = Math.cbrt(parseInt(soloVariable.split("∛")[1]));
+        result = Math.cbrt(parseFloat(soloVariable.split("∛")[1]));
         break;
       case '10' :
-        result = 10 ** parseInt(soloVariable.split("10 ^ ")[1]);
+        result = 10 ** parseFloat(soloVariable.split("10 ^ ")[1]);
         break;
       case '3.141592653589' :
-        result = 3.141592653589 * parseInt(soloVariable.split("π × ")[1]);
+        result = 3.141592653589 * parseFloat(soloVariable.split("π × ")[1]);
         break;
-      case 'e' :
-        result = Math.exp(parseInt(soloVariable.split("e ^ ")[1]));
+      case 'eˣ' :
+        result = Math.exp(parseFloat(soloVariable.split("eˣ ")[1]));
         break;
       case 'ln' :
-        result = Math.log(parseInt(soloVariable.split("ln ")[1]));
+        result = Math.log(parseFloat(soloVariable.split("ln ")[1]));
         break;
       case 'log' :
-        result = Math.log10(parseInt(soloVariable.split("log ")[1]));
+        result = Math.log10(parseFloat(soloVariable.split("log ")[1]));
         break;
       case '!' :
-        result = this.factorialize(parseInt(soloVariable));
+        result = this.factorialize(parseFloat(soloVariable));
         break;
       case 'sin' : // Consider rad or °
-        result = Math.sin(parseInt(soloVariable.split("sin ")[1]));
+        result = Math.sin(parseFloat(soloVariable.split("sin ")[1]));
         break;
       case 'cos' : // Consider rad or °
-        result = Math.cos(parseInt(soloVariable.split("cos ")[1]));
+        result = Math.cos(parseFloat(soloVariable.split("cos ")[1]));
         break;
       case 'tan' : // Consider rad or °
-        result = Math.tan(parseInt(soloVariable.split("tan ")[1]));
+        result = Math.tan(parseFloat(soloVariable.split("tan ")[1]));
         break;
       case 'sin⁻ⁱ' : // Consider rad or °
-        result = Math.sin(parseInt(soloVariable.split("sin⁻ⁱ ")[1]));
+        result = Math.sin(parseFloat(soloVariable.split("sin⁻ⁱ ")[1]));
         break;
       case 'cos⁻ⁱ' : // Consider rad or °
-        result = Math.cos(parseInt(soloVariable.split("cos⁻ⁱ ")[1]));
+        result = Math.cos(parseFloat(soloVariable.split("cos⁻ⁱ ")[1]));
         break;
       case 'tan⁻ⁱ' : // Consider rad or °
-        result = Math.tan(parseInt(soloVariable.split("tan⁻ⁱ ")[1]));
+        result = Math.tan(parseFloat(soloVariable.split("tan⁻ⁱ ")[1]));
+        break;
+      case '‰' :
+        result = Math.pow(parseFloat(soloVariable.split(" ‰")[0]), 1/1000000);
         break;
     }
     return result;
@@ -1777,7 +1780,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
             break;
 
           case 'useMemory' :
-            this.resultField.nativeElement.value = this.keepInMemory;
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + this.keepInMemory;
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            this.computeNonUnicodeResult("",this.keepInMemory);
+            this.computeNonUnicodeEquation("",this.keepInMemory);
             break;
 
           case '★' :
@@ -1919,9 +1925,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
             break;
           
           case 'naturalExponent' : 
-            this.operatorValue = "e";
-            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "e ^ ";
-            this.equationField.nativeElement.value = this.resultField.nativeElement.setValue;
+            this.operatorValue = "eˣ";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "eˣ ";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
             if (this.unicode5AndHigher) {
               this.computeNonUnicodeResult("", this.operatorValue);
               this.computeNonUnicodeEquation("", this.operatorValue);
@@ -1948,6 +1954,14 @@ export class CustomiseKeyboardsComponent implements OnInit {
             }
             break;
 
+          case 'logarithmToBase' : 
+            this.operatorXY = "logₓ";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "logₓ ";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            this.computeNonUnicodeResult("","logₓ ");
+            this.computeNonUnicodeEquation("","logₓ ");
+            break;
+
           case 'sineFunc' :
             this.operatorValue = "sin";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "sin ";
@@ -1972,6 +1986,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.operatorValue = "tan";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "tan ";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value ;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
             break;
 
           case 'sineInverseFunc' :
@@ -1998,13 +2016,76 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.operatorValue = "tan⁻ⁱ";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "tan⁻ⁱ ";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value ;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
+            break;
+
+          case 'partsPerMillion' :
+            this.operatorValue = "‰";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + " ‰";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
+            if (this.resultField.nativeElement.value != "‰")
+              this.whatToDoWithThisKeyPress(element, value, action, 'equalsSign', src, visible);
+            break;
+
+          case 'additionOpHebrew' : 
+            this.resultField.nativeElement.value = "﬩ " + this.resultField.nativeElement.value;
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", "﬩ ");
+              this.computeNonUnicodeEquation("", "﬩ ");
+            }
             break;
 
           case 'signChange' :
             this.resultField.nativeElement.value = "- " + this.resultField.nativeElement.value;
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
-            this.computeNonUnicodeResult("","- ");
-            this.computeNonUnicodeEquation("","- ");
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", "- ");
+              this.computeNonUnicodeEquation("", "- ");
+            }
+            break;
+          
+          case 'decimalPeriodNumber' :
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + ".";
+            this.equationField.nativeElement.value = this.equationField.nativeElement.value + ".";
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", ".");
+              this.computeNonUnicodeEquation("", ".");
+            }
+            break;
+
+          case 'numberCommaDecimal' :
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + ",";
+            this.equationField.nativeElement.value = this.equationField.nativeElement.value + ",";
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", ",");
+              this.computeNonUnicodeEquation("", ",");
+            }
+            break;
+
+          case 'arabicDecimalSeparator' :
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "٬";
+            this.equationField.nativeElement.value = this.equationField.nativeElement.value + "٬";
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", "٬");
+              this.computeNonUnicodeEquation("", "٬");
+            }
+            break;
+
+          case 'arabicNumberSeparator' :
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "٫";
+            this.equationField.nativeElement.value = this.equationField.nativeElement.value + "٫";
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", "٫");
+              this.computeNonUnicodeEquation("", "٫");
+            }
             break;
 
           default : // Variable Building Phase - RTL & LTR validation
@@ -2063,6 +2144,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
               } else if (this.unicode5AndHigher) {
                 this.nonUnicodeNumberEquation.push({"src":src,"value":value});
               }
+            } else if (this.operators.indexOf(value) > -1 && this.varX != "" && this.varY != "") {
+              this.computeResults();
+              this.keepInMemory = this.resultField.nativeElement.value;
+              this.varX = this.resultField.nativeElement.value;
+              this.varY = "";
+              this.operatorXY = "";
             }
             break;
         }
@@ -2117,6 +2204,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.resultField.nativeElement.value = contentOfInput;
       this.varY = this.resultField.nativeElement.value;
       this.equationField.nativeElement.value = this.varX + " " + this.operatorXY + " " + this.varY;
+    } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) > -1 && this.varX != "" && this.varY != "") {
+      this.computeResults();
+      this.keepInMemory = this.resultField.nativeElement.value;
+      this.varX = this.resultField.nativeElement.value;
+      this.varY = "";
+      this.operatorXY = "";
     } else if (this.allowedTypingContent.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 || this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1) {
       // Allow 0-9 & A-F depending on Base with Operations
       this.resultField.nativeElement.value = '';
@@ -2184,34 +2277,37 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
     switch(this.operatorXY) {
       case '%' :
-        this.operationResult = parseInt(localeMappedX) % parseInt(localeMappedY);
+        this.operationResult = parseFloat(localeMappedX) % parseFloat(localeMappedY);
         break;
       case '÷' :
-        this.operationResult = parseInt(localeMappedX) / parseInt(localeMappedY);
+        this.operationResult = parseFloat(localeMappedX) / parseFloat(localeMappedY);
         break;
       case '/' :
-        this.operationResult = parseInt(localeMappedX) / parseInt(localeMappedY);
+        this.operationResult = parseFloat(localeMappedX) / parseFloat(localeMappedY);
         break;
       case '*' :
-        this.operationResult = parseInt(localeMappedX) * parseInt(localeMappedY);
+        this.operationResult = parseFloat(localeMappedX) * parseFloat(localeMappedY);
         break;
       case '·' :
-        this.operationResult = parseInt(localeMappedX) * parseInt(localeMappedY);
+        this.operationResult = parseFloat(localeMappedX) * parseFloat(localeMappedY);
         break;
       case '×' :
-        this.operationResult = parseInt(localeMappedX) * parseInt(localeMappedY);
+        this.operationResult = parseFloat(localeMappedX) * parseFloat(localeMappedY);
         break;
       case '-' :
-        this.operationResult = parseInt(localeMappedX) - parseInt(localeMappedY);
+        this.operationResult = parseFloat(localeMappedX) - parseFloat(localeMappedY);
         break;
       case '+' :
-        this.operationResult = parseInt(localeMappedX) + parseInt(localeMappedY);
+        this.operationResult = parseFloat(localeMappedX) + parseFloat(localeMappedY);
         break;
       case 'ʸ√' :
-        this.operationResult = Math.pow(parseInt(localeMappedX), 1/parseInt(localeMappedY));
+        this.operationResult = Math.pow(parseFloat(localeMappedX), 1/parseFloat(localeMappedY));
+        break;
+      case 'xʸ' :
+        this.operationResult = Math.pow(parseFloat(localeMappedX), parseFloat(localeMappedY));
         break;
       case 'logₓ':
-        this.operationResult = Math.log(parseInt(localeMappedX)) / Math.log(parseInt(localeMappedY));
+        this.operationResult = Math.log(parseFloat(localeMappedX)) / Math.log(parseFloat(localeMappedY));
     }
     this.nonUnicodeEquationAndResult();
     this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
