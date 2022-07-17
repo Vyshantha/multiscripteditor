@@ -1392,7 +1392,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
         // Last two rows in Orthography template reserved for Mathematics operation symbols
         for(let j = 0; j < this.layoutCurrentKeys[i].row.length; j++) { 
           // num1
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num1" && this.calculatorLayout[2].row[8].type && this.calculatorLayout[2].row[8].type == "num1" && this.calculatorLayout[2].row[8].value != this.layoutCurrentKeys[i].row[j].value) {
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num1" && this.calculatorLayout[2].row[8].type && this.calculatorLayout[2].row[8].type == "num1") {
             this.calculatorLayout[2].row[8].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[1].row[0].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
@@ -1406,7 +1406,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           // num2
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num2" && this.calculatorLayout[2].row[9].type && this.calculatorLayout[2].row[9].type == "num2" && this.calculatorLayout[2].row[9].value != this.layoutCurrentKeys[i].row[j].value) {
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num2" && this.calculatorLayout[2].row[9].type && this.calculatorLayout[2].row[9].type == "num2") {
             this.calculatorLayout[2].row[9].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[1].row[1].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
@@ -1420,7 +1420,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           // num3
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num3" && this.calculatorLayout[2].row[10].type && this.calculatorLayout[2].row[10].type == "num3" && this.calculatorLayout[2].row[10].value != this.layoutCurrentKeys[i].row[j].value) {
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num3" && this.calculatorLayout[2].row[10].type && this.calculatorLayout[2].row[10].type == "num3") {
             this.calculatorLayout[2].row[10].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[1].row[2].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
@@ -1434,7 +1434,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           // num4
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num4" && this.calculatorLayout[3].row[8].type && this.calculatorLayout[3].row[8].type == "num4" && this.calculatorLayout[3].row[8].value != this.layoutCurrentKeys[i].row[j].value) {
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num4" && this.calculatorLayout[3].row[8].type && this.calculatorLayout[3].row[8].type == "num4") {
             this.calculatorLayout[3].row[8].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[2].row[0].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
@@ -1448,7 +1448,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           // num5
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num5" && this.calculatorLayout[3].row[9].type && this.calculatorLayout[3].row[9].type == "num5" && this.calculatorLayout[3].row[9].value != this.layoutCurrentKeys[i].row[j].value) {
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num5" && this.calculatorLayout[3].row[9].type && this.calculatorLayout[3].row[9].type == "num5") {
             this.calculatorLayout[3].row[9].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[2].row[1].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
@@ -1462,7 +1462,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           // num6
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num6" && this.calculatorLayout[3].row[10].type && this.calculatorLayout[3].row[10].type == "num6" && this.calculatorLayout[3].row[10].value != this.layoutCurrentKeys[i].row[j].value) {
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num6" && this.calculatorLayout[3].row[10].type && this.calculatorLayout[3].row[10].type == "num6") {
             this.calculatorLayout[3].row[10].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[2].row[2].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
@@ -1476,7 +1476,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           // num7
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num7" && this.calculatorLayout[4].row[8].type && this.calculatorLayout[4].row[8].type == "num7" && this.calculatorLayout[4].row[8].value != this.layoutCurrentKeys[i].row[j].value) {
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num7" && this.calculatorLayout[4].row[8].type && this.calculatorLayout[4].row[8].type == "num7") {
             this.calculatorLayout[4].row[8].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[3].row[0].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
@@ -1490,7 +1490,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           // num8
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num8" && this.calculatorLayout[4].row[9].type && this.calculatorLayout[4].row[9].type == "num8" && this.calculatorLayout[4].row[9].value != this.layoutCurrentKeys[i].row[j].value) {
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num8" && this.calculatorLayout[4].row[9].type && this.calculatorLayout[4].row[9].type == "num8") {
             this.calculatorLayout[4].row[9].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[3].row[1].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
@@ -1504,7 +1504,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           // num9
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num9" && this.calculatorLayout[4].row[10].type && this.calculatorLayout[4].row[10].type == "num9" && this.calculatorLayout[4].row[10].value != this.layoutCurrentKeys[i].row[j].value) {
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num9" && this.calculatorLayout[4].row[10].type && this.calculatorLayout[4].row[10].type == "num9") {
             this.calculatorLayout[4].row[10].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[3].row[2].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
@@ -1518,7 +1518,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           // num0 or num10 for Modern Greek, Latin/Roman, Hebew, etc.
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num0" && this.calculatorLayout[5].row[9].type && this.calculatorLayout[5].row[9].type == "num0" && this.calculatorLayout[5].row[9].value != this.layoutCurrentKeys[i].row[j].value) {
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num0" && this.calculatorLayout[5].row[9].type && this.calculatorLayout[5].row[9].type == "num0") {
             this.calculatorLayout[5].row[9].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[4].row[1].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
@@ -1543,6 +1543,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
           //num18
           //num19
           //num20
+          //comma
+          //period
         }
       } else {
         break;
@@ -1686,13 +1688,13 @@ export class CustomiseKeyboardsComponent implements OnInit {
         result = this.factorialize(parseInt(soloVariable));
         break;
       case 'sin' : // Consider rad or °
-        result = Math.sin(parseInt(soloVariable.split("sin")[0]));
+        result = Math.sin(parseInt(soloVariable.split("sin ")[0]));
         break;
       case 'cos' : // Consider rad or °
-        result = Math.cos(parseInt(soloVariable.split("cos")[0]));
+        result = Math.cos(parseInt(soloVariable.split("cos ")[0]));
         break;
       case 'tan' : // Consider rad or °
-        result = Math.tan(parseInt(soloVariable.split("tan")[0]));
+        result = Math.tan(parseInt(soloVariable.split("tan ")[0]));
         break;
     }
     return result;
@@ -1723,12 +1725,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
               this.varY = "";
               this.operatorXY = "";
             } else if (this.operatorValue != "") {
-              this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.soloOperation(this.stringManipulator("", this.resultField.nativeElement.value, this.numberMap), this.operatorValue));
-              if (this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-                this.equationField.nativeElement.value =  this.resultField.nativeElement.value + " = " + this.equationField.nativeElement.value;
-              } else {
-                this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.resultField.nativeElement.value;
-              }
+              this.operationResult = this.soloOperation(this.stringManipulator("", this.resultField.nativeElement.value, this.numberMap), this.operatorValue);
+              this.nonUnicodeEquationAndResult();
+              this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
+              this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.resultField.nativeElement.value;
               this.keepInMemory = this.resultField.nativeElement.value;
               this.varX = this.resultField.nativeElement.value;
               this.operatorValue = "";
@@ -1831,61 +1831,98 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.operatorValue = "!";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "!";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
-            this.whatToDoWithThisKeyPress(element, value, action, 'equalsSign', src, visible);
+            if (this.resultField.nativeElement.value != "!")
+              this.whatToDoWithThisKeyPress(element, value, action, 'equalsSign', src, visible);
             break;
 
           case 'squareRoot' :
             this.operatorValue = "√";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "√";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
             break;  
 
           case 'cubeRoot' :
             this.operatorValue = "∛";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "∛";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
             break;
 
           case 'powerOf10' :
             this.operatorValue = "10";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "10 ^ ";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
             break;
           
           case 'piNatural' :
             this.operatorValue = "3.141592653589";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "π × ";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
             break;
           
           case 'naturalExponent' : 
             this.operatorValue = "e";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "e ^ ";
             this.equationField.nativeElement.value = this.resultField.nativeElement.setValue;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
             break;
 
           case 'naturalLogarithm' :
             this.operatorValue = "ln";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "ln ";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
             break;
           
           case 'logarithm' :
             this.operatorValue = "log";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "log ";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value ;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
             break;
 
           case 'sineFunc' :
             this.operatorValue = "sin";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "sin ";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value ;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
             break;
           
           case 'cosineFunc' :
             this.operatorValue = "cos";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "cos ";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value ;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
             break;
 
           case 'tangentFunc' :
@@ -1897,6 +1934,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
           case 'signChange' :
             this.resultField.nativeElement.value = Math.sign(this.resultField.nativeElement.value);
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            this.computeNonUnicodeResult("","- ");
+            this.computeNonUnicodeEquation("","- ");
             break;
 
           default : // Variable Building Phase - RTL & LTR validation
@@ -1904,8 +1943,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
               this.resultField.nativeElement.value = this.resultField.nativeElement.value + value;
               this.equationField.nativeElement.value = this.resultField.nativeElement.value;
               if (this.unicode5AndHigher && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-                this.nonUnicodeNumberResult.push({"src":"","value":" "});
-                this.nonUnicodeNumberResult.unshift({"src":src,"value":value});
+                this.computeNonUnicodeResult(src,value);
               } else if (this.unicode5AndHigher) {
                 this.nonUnicodeNumberResult.push({"src":src,"value":value});
               }
@@ -1920,10 +1958,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
               this.varX = this.resultField.nativeElement.value;
               this.keepInMemory = this.resultField.nativeElement.value;
               if (this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-                this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-                this.nonUnicodeNumberEquation.unshift({"src":"","value":" "});
-                this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-                this.nonUnicodeNumberEquation.unshift({"src":"","value":this.operatorXY});
+                this.computeNonUnicodeEquation(""," ");
+                this.computeNonUnicodeEquation("",this.operatorXY);
               } else {
                 this.nonUnicodeNumberEquation.push({"src":"","value":" "});
                 this.nonUnicodeNumberEquation.push({"src":"","value":this.operatorXY});
@@ -1935,8 +1971,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
               this.nonUnicodeNumberResult = [];
               if (this.unicode5AndHigher && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
                 this.nonUnicodeNumberResult.push({"src":src,"value":value});
-                this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-                this.nonUnicodeNumberEquation.unshift({"src":src,"value":value});
+                this.computeNonUnicodeEquation(src,value);
               } else if (this.unicode5AndHigher) {
                 this.nonUnicodeNumberResult.push({"src":src,"value":value});
                 this.nonUnicodeNumberEquation.push({"src":src,"value":value});
@@ -1946,8 +1981,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
               this.equationField.nativeElement.value = this.equationField.nativeElement.value + value;
               this.varY = this.resultField.nativeElement.value;
               if (this.unicode5AndHigher && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-                this.nonUnicodeNumberResult.push({"src":"","value":" "});
-                this.nonUnicodeNumberResult.unshift({"src":src,"value":value});
+                this.computeNonUnicodeResult(src,value);
               } else if (this.unicode5AndHigher) {
                 this.nonUnicodeNumberResult.push({"src":src,"value":value});
               }
@@ -1956,14 +1990,31 @@ export class CustomiseKeyboardsComponent implements OnInit {
               }
               if (this.unicode5AndHigher && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
                 this.nonUnicodeNumberEquation.splice(this.nonUnicodeNumberEquation.length - 1)
-                this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-                this.nonUnicodeNumberEquation.unshift({"src":src,"value":value});
+                this.computeNonUnicodeEquation(src,value);
               } else if (this.unicode5AndHigher) {
                 this.nonUnicodeNumberEquation.push({"src":src,"value":value});
               }
             }
             break;
         }
+    }
+  }
+
+  computeNonUnicodeResult(sourceInput, valueForInput) {
+    if (this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+      this.nonUnicodeNumberResult.push({"src":"","value":" "});
+      this.nonUnicodeNumberResult.unshift({"src":sourceInput,"value":valueForInput});
+    } else {
+      this.nonUnicodeNumberResult.push({"src":sourceInput,"value":valueForInput});
+    }
+  }
+
+  computeNonUnicodeEquation(sourceInput, valueForInput) {
+    if (this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+      this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+      this.nonUnicodeNumberEquation.unshift({"src":sourceInput,"value":valueForInput});
+    } else {
+      this.nonUnicodeNumberEquation.push({"src":sourceInput,"value":valueForInput});
     }
   }
 
@@ -1980,7 +2031,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   carveOperatorVariables(contentOfInput) {
     // Highlight the Operations clicked
-
     if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY == "" && this.varX == "" && this.varY == "") {
       this.resultField.nativeElement.value = contentOfInput;
       this.equationField.nativeElement.value = this.resultField.nativeElement.value;
@@ -2014,6 +2064,50 @@ export class CustomiseKeyboardsComponent implements OnInit {
     return stringToReturn;
   }
 
+  nonUnicodeEquationAndResult() {
+    if (this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+      this.nonUnicodeNumberResult = [];
+      if (this.unicode5AndHigher) {
+        let includeEqualsOnce = true;
+        for (let char of this.operationResult.toString()) {
+          if (this.nonUnicodeMap[char]) {
+            this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+            this.computeNonUnicodeResult(this.nonUnicodeMap[char],char);
+            if (includeEqualsOnce) {
+              this.computeNonUnicodeEquation("","=");
+              this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+              includeEqualsOnce = false;
+            }
+            this.computeNonUnicodeEquation(this.nonUnicodeMap[char],char);
+          } else { // Comma, Period inclusion when required
+            this.computeNonUnicodeEquation("",".");
+            this.computeNonUnicodeResult("",".");
+          }
+        }
+      }
+    } else {
+      this.nonUnicodeNumberResult = [];
+      if (this.unicode5AndHigher) {
+        let includeEqualsOnce = true;
+        for (let char of this.operationResult.toString()) {
+          if (this.nonUnicodeMap[char]) {
+            this.nonUnicodeNumberResult.push({"src":this.nonUnicodeMap[char],"value":char});
+            if (includeEqualsOnce) {
+              this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+              this.nonUnicodeNumberEquation.push({"src":"","value":"="});
+              this.nonUnicodeNumberEquation.push({"src":"","value":" "});
+              includeEqualsOnce = false;
+            }
+            this.nonUnicodeNumberEquation.push({"src":this.nonUnicodeMap[char],"value":char});
+          } else { // Comma, Period inclusion when required
+            this.nonUnicodeNumberResult.push({"src":"","value":"."});
+            this.nonUnicodeNumberEquation.push({"src":"","value":"."});
+          }
+        }
+      }
+    }
+  }
+
   computeResults() {
     // map this.varX and this.varY with corresponding num Type be mapped to 0 - 9 numbers
     var localeMappedX = this.stringManipulator("", this.varX, this.numberMap);
@@ -2045,54 +2139,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
         this.operationResult = parseInt(localeMappedX) + parseInt(localeMappedY);
         break;
     }
-    if (this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-      this.equationField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult) + " = " + this.equationField.nativeElement.value;
-      this.nonUnicodeNumberResult = [];
-      if (this.unicode5AndHigher) {
-        let includeEqualsOnce = true;
-        for (let char of this.operationResult.toString()) {
-          if (this.nonUnicodeMap[char]) {
-            this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-            this.nonUnicodeNumberResult.unshift({"src":this.nonUnicodeMap[char],"value":char});
-            if (includeEqualsOnce) {
-              this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-              this.nonUnicodeNumberEquation.unshift({"src":"","value":"="});
-              this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-              includeEqualsOnce = false;
-            }
-            this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-            this.nonUnicodeNumberEquation.unshift({"src":this.nonUnicodeMap[char],"value":char});
-          } else { // Comma, Period inclusion when required
-            this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-            this.nonUnicodeNumberEquation.unshift({"src":"","value":"."});
-            this.nonUnicodeNumberResult.push({"src":"","value":" "});
-            this.nonUnicodeNumberResult.unshift({"src":"","value":"."});
-          }
-        }
-      }
-    } else {
-      this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.displayVariableInLocaleFormat(this.operationResult);
-      this.nonUnicodeNumberResult = [];
-      if (this.unicode5AndHigher) {
-        let includeEqualsOnce = true;
-        for (let char of this.operationResult.toString()) {
-          if (this.nonUnicodeMap[char]) {
-            this.nonUnicodeNumberResult.push({"src":this.nonUnicodeMap[char],"value":char});
-            if (includeEqualsOnce) {
-              this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-              this.nonUnicodeNumberEquation.push({"src":"","value":"="});
-              this.nonUnicodeNumberEquation.push({"src":"","value":" "});
-              includeEqualsOnce = false;
-            }
-            this.nonUnicodeNumberEquation.push({"src":this.nonUnicodeMap[char],"value":char});
-          } else { // Comma, Period inclusion when required
-            this.nonUnicodeNumberResult.push({"src":"","value":"."});
-            this.nonUnicodeNumberEquation.push({"src":"","value":"."});
-          }
-        }
-      }
-    }
+    this.nonUnicodeEquationAndResult();
     this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
+    this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.resultField.nativeElement.value;
   }
 
   displayVariableInLocaleFormat (result) {
@@ -2129,6 +2178,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
       navigator.clipboard.writeText(this.resultField.nativeElement.value);
     } else if (fieldName == 'equationField') {
       navigator.clipboard.writeText(this.equationField.nativeElement.value);
+    } else if (fieldName == 'reverseResultField') {
+      navigator.clipboard.writeText(this.resultField.nativeElement.value.split("").reverse().join(""));
+    } else if (fieldName == 'reverseEquationField') {
+      navigator.clipboard.writeText(this.equationField.nativeElement.value.split("").reverse().join(""));
     }
   }
 

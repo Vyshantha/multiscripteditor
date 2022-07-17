@@ -114,7 +114,8 @@
             <mat-icon style="cursor: pointer;" aria-label="Close" alt="Close" (click)="restoreBackKeyboard()">close</mat-icon>
         </span>
     </h2>
-    <mat-form-field style="width: 90%;" appearance="fill">
+    <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
+    <mat-form-field style="width: 80%;" appearance="fill">
         <mat-label>{{ 'Equation' | translate }}</mat-label>
         <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ">
         <mat-card *ngIf="unicode5AndHigher">
@@ -128,9 +129,10 @@
             </span>
         </mat-card>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
-    <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>
+    <mat-icon aria-label="{{ 'Copy Reverse Equation' | translate }}" matTooltip="{{ 'Copy Reverse Equation' | translate }}" (click)="copyContent('reverseEquationField')">copy_all</mat-icon>
     <br/>
-    <mat-form-field style="width: 90%;" appearance="fill">
+    <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
+    <mat-form-field style="width: 80%;" appearance="fill">
         <mat-label>{{ 'Type Variables' | translate }}</mat-label>
         <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()">
         <mat-card *ngIf="unicode5AndHigher">
@@ -144,7 +146,7 @@
             </span>
         </mat-card>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
-    <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>
+    <mat-icon aria-label="{{ 'Copy Reverse Result' | translate }}" matTooltip="{{ 'Copy Reverse Result' | translate }}" (click)="copyContent('reverseResultField')">copy_all</mat-icon>
     <br/>
     <mat-dialog-content class="mat-topography" *ngIf="floatNotMinimise" style="color: black;">
         <ul *ngFor="let rows of anyCalculatorLayout" style="list-style-type: none;" class="keyboardTheming">
@@ -180,6 +182,7 @@
             <mat-icon style="cursor: pointer;" aria-label="Close" alt="Close" (click)="restoreBackKeyboard()">close</mat-icon>
         </span>
     </h2>
+    <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 90%;" appearance="fill">
         <mat-label>{{ 'Equation' | translate }}</mat-label>
         <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ">
@@ -194,8 +197,9 @@
             </span>
         </mat-card>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
-    <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>
+    <mat-icon aria-label="{{ 'Copy Reverse Equation' | translate }}" matTooltip="{{ 'Copy Reverse Equation' | translate }}" (click)="copyContent('reverseEquationField')">copy_all</mat-icon>
     <br/>
+    <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 90%;" appearance="fill">
         <mat-label>{{ 'Type Variables' | translate }}</mat-label>
         <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()">
@@ -210,7 +214,7 @@
             </span>
         </mat-card>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
-    <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>
+    <mat-icon aria-label="{{ 'Copy Reverse Result' | translate }}" matTooltip="{{ 'Copy Reverse Result' | translate }}" (click)="copyContent('reverseResultField')">copy_all</mat-icon>
     <br/>
     <mat-dialog-content class="mat-topography" *ngIf="floatNotMinimise" style="color: black;">
         <ul *ngFor="let rows of anyCalculatorLayout" style="list-style-type: none;" class="keyboardTheming">
