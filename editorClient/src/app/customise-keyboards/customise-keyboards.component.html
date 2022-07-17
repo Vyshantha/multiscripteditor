@@ -117,7 +117,7 @@
     <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 80%;" appearance="fill">
         <mat-label>{{ 'Equation' | translate }}</mat-label>
-        <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ">
+        <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" dir="{{dirInput}}">
         <mat-card *ngIf="unicode5AndHigher">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -134,7 +134,7 @@
     <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 80%;" appearance="fill">
         <mat-label>{{ 'Type Variables' | translate }}</mat-label>
-        <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()">
+        <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" dir="{{dirInput}}">
         <mat-card *ngIf="unicode5AndHigher">
             <span *ngFor="let image of nonUnicodeNumberResult">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -185,7 +185,7 @@
     <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 90%;" appearance="fill">
         <mat-label>{{ 'Equation' | translate }}</mat-label>
-        <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ">
+        <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" dir="{{dirInput}}">
         <mat-card *ngIf="unicode5AndHigher">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -202,7 +202,7 @@
     <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 90%;" appearance="fill">
         <mat-label>{{ 'Type Variables' | translate }}</mat-label>
-        <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()">
+        <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" dir="{{dirInput}}">
         <mat-card *ngIf="unicode5AndHigher">
             <span *ngFor="let image of nonUnicodeNumberResult">
                 <span *ngIf="showImageGlyph && image.src == ''">

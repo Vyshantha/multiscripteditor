@@ -1190,6 +1190,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   currencySignLocales: any = ["₠","₡","₢","₣","₤","₥","₦","₧","₨","₩","₪","₫","$","£","€","₹","₺","₽","₾","₻","₼","؋","₭","₮","₯","₰","₱","₲","₳","₴","₵","₶","₷","₸","₿","⃀"];
 
   dirSet: string = "rtl";
+  dirInput: string = "ltr";
   isRTL: Boolean = false;
 
   rtlLocales : string[] = ['ar', 'he', 'ur', 'fa', 'syrc', 'rhg', 'sd', 'bal', 'bsk', 'yi', 'jrb', 'ps', 'ckb', 'ks', 'ett', 'avst', 'khar', 'phn', 'xpu', 'samr', 'mand', 'sog', 'arc', 'skr', 'pal', 'xpr', 'xsa', 'mnkar', 'jawi', 'nkoo', 'thaa', 'orkh', 'lydi', 'adlm', 'ajam', 'wolf', 'woal', 'chrs', 'elym', 'palm', 'hatr', 'ber', 'mani', 'mer', 'psal', 'kult', 'egyd', 'safa', 'nshu', 'txr', 'rohg', 'estr', 'sert', 'madn', 'lad', 'nbat', 'pice', 'gars', 'cprt', 'lepo', 'sabe', 'phyg', 'khaz', 'mero', 'cana', 'sina', 'yezi', 'ug', 'mend', 'linb', 'idu', 'chun', 'kuli', 'txg', 'indus', 'hung', 'dv', 'odu', 'ougr'];
@@ -1238,7 +1239,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   fontClass: string = "";
 
   baseIndices: any = [2, 8, 10, 12, 16, 20, 60];
-  operators: any = ['+', "-", "*" , "×", "·", "^", "÷" , "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "<", ">", "≤", "≥"];
+  operators: any = ['+', "-", "*" , "×", "·", "^", "÷" , "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "<", ">", "≤", "≥", "ʸ√", " logₓ"];
   varX: string = "";
   varY: string = "";
   operatorValue: string = "";
@@ -1323,6 +1324,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     if (this.sessionManager.getUILocale()) {
       this.dirSet = (this.rtlLocales.indexOf(this.sessionManager.getUILocale()) !== -1)? "rtl" : "ltr";
       this.isRTL = (this.rtlLocales.indexOf(this.sessionManager.getUILocale()) !== -1)? true : false;
+      this.dirInput = (this.rtlNumerals.indexOf(this.sessionManager.getUILocale()) !== -1)? "rtl" : "ltr";
     }
     this.sessionManager.itemSessionURL.subscribe((keysType) => {
       if (keysType) {
@@ -1390,6 +1392,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     for(let i = 0; i < this.layoutCurrentKeys.length; i++) {
       if (this.layoutCurrentKeys[i].row) {
         // Last two rows in Orthography template reserved for Mathematics operation symbols
+        // TODO : Handling avst , khar , mend , nbat , xpr , la , el , he 
         for(let j = 0; j < this.layoutCurrentKeys[i].row.length; j++) { 
           // num1
           if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num1" && this.calculatorLayout[2].row[8].type && this.calculatorLayout[2].row[8].type == "num1") {
@@ -1688,13 +1691,22 @@ export class CustomiseKeyboardsComponent implements OnInit {
         result = this.factorialize(parseInt(soloVariable));
         break;
       case 'sin' : // Consider rad or °
-        result = Math.sin(parseInt(soloVariable.split("sin ")[0]));
+        result = Math.sin(parseInt(soloVariable.split("sin ")[1]));
         break;
       case 'cos' : // Consider rad or °
-        result = Math.cos(parseInt(soloVariable.split("cos ")[0]));
+        result = Math.cos(parseInt(soloVariable.split("cos ")[1]));
         break;
       case 'tan' : // Consider rad or °
-        result = Math.tan(parseInt(soloVariable.split("tan ")[0]));
+        result = Math.tan(parseInt(soloVariable.split("tan ")[1]));
+        break;
+      case 'sin⁻ⁱ' : // Consider rad or °
+        result = Math.sin(parseInt(soloVariable.split("sin⁻ⁱ ")[1]));
+        break;
+      case 'cos⁻ⁱ' : // Consider rad or °
+        result = Math.cos(parseInt(soloVariable.split("cos⁻ⁱ ")[1]));
+        break;
+      case 'tan⁻ⁱ' : // Consider rad or °
+        result = Math.tan(parseInt(soloVariable.split("tan⁻ⁱ ")[1]));
         break;
     }
     return result;
@@ -1790,36 +1802,67 @@ export class CustomiseKeyboardsComponent implements OnInit {
           case 'formula1' :
             // Math.hypot()
             // Do calculation based off this.historyEquations[0] formula
+            if (this.historyEquations[0]) {
+
+            } else {
+              this.equationField.nativeElement.value = "√(x² + y² + z²)"
+            }
             // Store in LocalStorage for session persistence
             break;
           
           case 'formula2' :
             // Math.random()
             // Do calculation based off this.historyEquations[1] formula
+            if (this.historyEquations[1]) {
+
+            } else {
+              this.equationField.nativeElement.value = "Math.random()";
+              this.resultField.nativeElement.value = Math.random();
+            }
             // Store in LocalStorage for session persistence
             break;
 
           case 'formula3' :
             // Math.trunc()
             // Do calculation based off this.historyEquations[2] formula
+            if (this.historyEquations[2]) {
+
+            } else {
+              this.equationField.nativeElement.value = "Math.trunc(x.yz) = x";
+            }
             // Store in LocalStorage for session persistence
             break;
           
           case 'formula4' :
             // Math.ceil()
             // Do calculation based off this.historyEquations[3] formula
+            if (this.historyEquations[3]) {
+
+            } else {
+              this.equationField.nativeElement.value = "Math.ceil(x.yz) = x - 1";
+            }
             // Store in LocalStorage for session persistence
             break;
 
           case 'formula5' :
-            // Math.fround()
+            // Math.floor()
             // Do calculation based off this.historyEquations[4] formula
+            if (this.historyEquations[4]) {
+
+            } else {
+              this.equationField.nativeElement.value = "Math.floor(x.yz) = x + 1";
+            }
             // Store in LocalStorage for session persistence
             break;
 
           case 'formula6' :
             // Math.abs()
             // Do calculation based off this.historyEquations[5] formula
+            if (this.historyEquations[5]) {
+
+            } else {
+              this.equationField.nativeElement.value = "Math.abs(x - X) = +y";
+            }
             // Store in LocalStorage for session persistence
             break;
 
@@ -1931,8 +1974,34 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.equationField.nativeElement.value = this.resultField.nativeElement.value ;
             break;
 
+          case 'sineInverseFunc' :
+            this.operatorValue = "sin⁻ⁱ";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "sin⁻ⁱ ";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value ;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
+            break;
+          
+          case 'cosineInverseFunc' :
+            this.operatorValue = "cos⁻ⁱ";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "cos⁻ⁱ ";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value ;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
+            break;
+
+          case 'tangentInverseFunc' :
+            this.operatorValue = "tan⁻ⁱ";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "tan⁻ⁱ ";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value ;
+            break;
+
           case 'signChange' :
-            this.resultField.nativeElement.value = Math.sign(this.resultField.nativeElement.value);
+            this.resultField.nativeElement.value = "- " + this.resultField.nativeElement.value;
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
             this.computeNonUnicodeResult("","- ");
             this.computeNonUnicodeEquation("","- ");
@@ -1952,7 +2021,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 this.nonUnicodeNumberResult = this.nonUnicodeNumberResult.slice().reverse();
                 this.nonUnicodeNumberEquation = this.nonUnicodeNumberEquation.slice().reverse();
               }
-            } else if (this.operators.indexOf(value) > -1 && this.operatorXY == "" && this.varX == "") {
+            } else if (this.operators.indexOf(value) > -1 && this.operatorXY == "" && (this.varX == "" || this.varX != "")) {
               this.operatorXY = value;
               this.equationField.nativeElement.value = this.resultField.nativeElement.value + " " + value;
               this.varX = this.resultField.nativeElement.value;
@@ -2034,7 +2103,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY == "" && this.varX == "" && this.varY == "") {
       this.resultField.nativeElement.value = contentOfInput;
       this.equationField.nativeElement.value = this.resultField.nativeElement.value;
-    } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) > -1 && this.operatorXY == "" && this.varX == "") {
+    } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) > -1 && this.operatorXY == "" && (this.varX == "" || this.varX != "")) {
       this.operatorXY = contentOfInput.substr(contentOfInput.length-1);
       this.resultField.nativeElement.value = contentOfInput.substr(0, contentOfInput.indexOf(this.operatorXY));
       this.varX = this.resultField.nativeElement.value;
@@ -2138,6 +2207,11 @@ export class CustomiseKeyboardsComponent implements OnInit {
       case '+' :
         this.operationResult = parseInt(localeMappedX) + parseInt(localeMappedY);
         break;
+      case 'ʸ√' :
+        this.operationResult = Math.pow(parseInt(localeMappedX), 1/parseInt(localeMappedY));
+        break;
+      case 'logₓ':
+        this.operationResult = Math.log(parseInt(localeMappedX)) / Math.log(parseInt(localeMappedY));
     }
     this.nonUnicodeEquationAndResult();
     this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
