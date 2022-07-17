@@ -1129,19 +1129,19 @@ export class CustomiseKeyboardsComponent implements OnInit {
       {"value":"x₂","action":"char","type":"base2","visible":"show"},{"value":"x₈","action":"char","type":"base8","visible":"show"},{"value":"x₁₀","action":"char","type":"base10","visible":"show"},{"value":"x₁₂","action":"char","type":"base12","visible":"show"},{"value":"x₁₆","action":"char","type":"base16","visible":"show"},{"value":"x₂₀","action":"char","type":"base20","visible":"show"},{"value":"x₆₀","action":"char","type":"base60","visible":"show"},{"value":"(","action":"char"},{"value":")","action":"char"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
     ]},
     {"row": [
-      {"value":"°","action":"char","type":"degrees","visible":"show"},{"value":"rad","action":"char","type":"radians","visible":"show"},{"value":"′","action":"char","type":"arcminute"},{"value":"″","action":"char","type":"arcsecond"},{"value":"𝑓₁","action":"char","type":"formula1"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"A","action":"char","type":"hexadecimal","visible":"hide"},{"value":"B","action":"char","type":"hexadecimal","visible":"hide"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"}
+      {"value":"°","action":"char","type":"degrees","visible":"show"},{"value":"π","action":"char","type":"piNatural"},{"value":"𝑓₁","action":"char","type":"formula1"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"A","action":"char","type":"hexadecimal","visible":"hide"},{"value":"B","action":"char","type":"hexadecimal","visible":"hide"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"}
     ]},
     {"row":[
-      {"value":"π","action":"char"},{"value":"sin","action":"char","type":"sineFunc"},{"value":"sin⁻ⁱ","action":"char","type":"sineInverseFunc","visible":"show"},{"value":"ln","action":"char","type":"naturalLogarithm"},{"value":"eˣ","action":"char","type":"naturalExponent"},{"value":"≤","action":"char","type":"lessThanEquals","visible":"hide"},{"value":"<","action":"char","type":"lessThanSymbol","visible":"hide"},{"value":"&","action":"char","type":"logicalAnd","visible":"hide"},{"value":"1","type":"num1","action":"char"},{"value":"2","type":"num2","action":"char"},{"value":"3","type":"num3","action":"char"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":"/","action":"char","type":"divisionOp"},{"value":"÷","action":"char","type":"divisionOp"}
+      {"value":"rad","action":"char","type":"radians","visible":"show"},{"value":"sin","action":"char","type":"sineFunc"},{"value":"sin⁻ⁱ","action":"char","type":"sineInverseFunc","visible":"show"},{"value":"ln","action":"char","type":"naturalLogarithm"},{"value":"eˣ","action":"char","type":"naturalExponent"},{"value":"≤","action":"char","type":"lessThanEquals","visible":"hide"},{"value":"<","action":"char","type":"lessThanSymbol","visible":"hide"},{"value":"&","action":"char","type":"logicalAnd","visible":"hide"},{"value":"1","type":"num1","action":"char"},{"value":"2","type":"num2","action":"char"},{"value":"3","type":"num3","action":"char"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":"/","action":"char","type":"divisionOp"},{"value":"÷","action":"char","type":"divisionOp"}
     ]},
     {"row":[
-      {"value":"e","action":"char","type":"exponentNatural"},{"value":"cos","action":"char","type":"cosineFunc"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"show"},{"value":"log","action":"char","type":"logarithm"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">","action":"char","type":"greaterThanSymbol","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":"4","type":"num4","action":"char"},{"value":"5","type":"num5","action":"char"},{"value":"6","type":"num6","action":"char"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
+      {"value":"′","action":"char","type":"arcminute"},{"value":"cos","action":"char","type":"cosineFunc"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"show"},{"value":"log","action":"char","type":"logarithm"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">","action":"char","type":"greaterThanSymbol","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":"4","type":"num4","action":"char"},{"value":"5","type":"num5","action":"char"},{"value":"6","type":"num6","action":"char"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
     ]},
     {"row":[
-      {"value":"∞","action":"char","type":"infinity"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"!","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":"7","type":"num7","action":"char"},{"value":"8","type":"num8","action":"char"},{"value":"9","type":"num9","action":"char"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
+      {"value":"″","action":"char","type":"arcsecond"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"!","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":"7","type":"num7","action":"char"},{"value":"8","type":"num8","action":"char"},{"value":"9","type":"num9","action":"char"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
     ]},
     {"row":[
-      {"value":this.currencySymbol,"action":"char","type":"currencySymbol"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":"E","action":"char","type":"exponent10"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"ʸ√x","action":"char","type":"nthRoot"},{"value":"x!","action":"char","type":"factorial"},{"value":'٬',"action":"char","type":"arabicDecimalSeparator","visible":"hide"},{"value":'٫',"action":"char","type":"arabicNumberSeparator","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberOrDecimal"},{"value":"0","type":"num0","action":"char"},{"value":this.periodSeparator,"action":"char","type":"decimalOrNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+      {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"ʸ√x","action":"char","type":"nthRoot"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʹ","action":"char","type":"greekNumerals","visible":"hide"},{"value":'٬',"action":"char","type":"arabicDecimalSeparator","visible":"hide"},{"value":'٫',"action":"char","type":"arabicNumberSeparator","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberOrDecimal"},{"value":"0","type":"num0","action":"char"},{"value":this.periodSeparator,"action":"char","type":"decimalOrNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
     ]}
   ];
 
@@ -1241,6 +1241,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   operators: any = ['+', "-", "*" , "×", "·", "^", "÷" , "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "<", ">", "≤", "≥"];
   varX: string = "";
   varY: string = "";
+  operatorValue: string = "";
   operatorXY: string = "";
   operationResult: number = 0;
   keepInMemory: string = "";
@@ -1357,143 +1358,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.isAltGrKeyPress = flagForAltGr;
     });
     this.layoutCurrentKeys = this[this.keyboardLayouts[this.sessionManager.getFromSessionURL()][3]];
-    // Populate UI View based on script
-    for(let i = 0; i < this.layoutCurrentKeys.length; i++) {
-      if (this.layoutCurrentKeys[i].row) {
-        for(let j = 0; j < this.layoutCurrentKeys[i].row.length; j++) {
-          // num1
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num1" && this.calculatorLayout[2].row[8].type && this.calculatorLayout[2].row[8].type == "num1") {
-            this.calculatorLayout[2].row[8].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[1].row[0].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "1";
-            this.mapLocale["1"] = this.layoutCurrentKeys[i].row[j].value; 
-            if (this.unicode5AndHigher) {
-              this.calculatorLayout[2].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[1].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["1"] = this.layoutCurrentKeys[i].row[j].src;
-            }
-          }
-          // num2
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num2" && this.calculatorLayout[2].row[9].type && this.calculatorLayout[2].row[9].type == "num2") {
-            this.calculatorLayout[2].row[9].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[1].row[1].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "2";
-            this.mapLocale["2"] = this.layoutCurrentKeys[i].row[j].value; 
-            if (this.unicode5AndHigher) {
-              this.calculatorLayout[2].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[1].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["2"] = this.layoutCurrentKeys[i].row[j].src;
-            }
-          }
-          // num3
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num3" && this.calculatorLayout[2].row[10].type && this.calculatorLayout[2].row[10].type == "num3") {
-            this.calculatorLayout[2].row[10].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[1].row[2].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "3";
-            this.mapLocale["3"] = this.layoutCurrentKeys[i].row[j].value; 
-            if (this.unicode5AndHigher) {
-              this.calculatorLayout[2].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[1].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["3"] = this.layoutCurrentKeys[i].row[j].src;
-            }
-          }
-          // num4
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num4" && this.calculatorLayout[3].row[8].type && this.calculatorLayout[3].row[8].type == "num4") {
-            this.calculatorLayout[3].row[8].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[2].row[0].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "4";
-            this.mapLocale["4"] = this.layoutCurrentKeys[i].row[j].value; 
-            if (this.unicode5AndHigher) {
-              this.calculatorLayout[3].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[2].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["4"] = this.layoutCurrentKeys[i].row[j].src;
-            }
-          }
-          // num5
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num5" && this.calculatorLayout[3].row[9].type && this.calculatorLayout[3].row[9].type == "num5") {
-            this.calculatorLayout[3].row[9].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[2].row[1].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "5";
-            this.mapLocale["5"] = this.layoutCurrentKeys[i].row[j].value; 
-            if (this.unicode5AndHigher) {
-              this.calculatorLayout[3].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[2].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["5"] = this.layoutCurrentKeys[i].row[j].src;
-            }
-          }
-          // num6
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num6" && this.calculatorLayout[3].row[10].type && this.calculatorLayout[3].row[10].type == "num6") {
-            this.calculatorLayout[3].row[10].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[2].row[2].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "6";
-            this.mapLocale["6"] = this.layoutCurrentKeys[i].row[j].value; 
-            if (this.unicode5AndHigher) {
-              this.calculatorLayout[3].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[2].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["6"] = this.layoutCurrentKeys[i].row[j].src;
-            }
-          }
-          // num7
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num7" && this.calculatorLayout[4].row[8].type && this.calculatorLayout[4].row[8].type == "num7") {
-            this.calculatorLayout[4].row[8].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[3].row[0].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "7";
-            this.mapLocale["7"] = this.layoutCurrentKeys[i].row[j].value; 
-            if (this.unicode5AndHigher) {
-              this.calculatorLayout[4].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[3].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["7"] = this.layoutCurrentKeys[i].row[j].src;
-            }
-          }
-          // num8
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num8" && this.calculatorLayout[4].row[9].type && this.calculatorLayout[4].row[9].type == "num8") {
-            this.calculatorLayout[4].row[9].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[3].row[1].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "8";
-            this.mapLocale["8"] = this.layoutCurrentKeys[i].row[j].value; 
-            if (this.unicode5AndHigher) {
-              this.calculatorLayout[4].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[3].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["8"] = this.layoutCurrentKeys[i].row[j].src;
-            }
-          }
-          // num9
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num9" && this.calculatorLayout[4].row[10].type && this.calculatorLayout[4].row[10].type == "num9") {
-            this.calculatorLayout[4].row[10].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[3].row[2].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "9";
-            this.mapLocale["9"] = this.layoutCurrentKeys[i].row[j].value; 
-            if (this.unicode5AndHigher) {
-              this.calculatorLayout[4].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[3].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["9"] = this.layoutCurrentKeys[i].row[j].src;
-            }
-          }
-          // num0
-          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num0" && this.calculatorLayout[5].row[9].type && this.calculatorLayout[5].row[9].type == "num0") {
-            this.calculatorLayout[5].row[9].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[4].row[1].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "0";
-            this.mapLocale["0"] = this.layoutCurrentKeys[i].row[j].value; 
-            if (this.unicode5AndHigher) {
-              this.calculatorLayout[5].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[4].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["0"] = this.layoutCurrentKeys[i].row[j].src;
-            }
-          }
-        }
-      }
-    }
+    
+    this.populateUINumberLayout();
     this.altGrCapsExists = (this.layoutCurrentKeys)? this.layoutCurrentKeys.some(x => x.hasOwnProperty('altGrCaps')) : false;
   }
 
@@ -1517,6 +1383,171 @@ export class CustomiseKeyboardsComponent implements OnInit {
     this.sessionManager.unusedKeys.subscribe((value) => {
       this.unusedKeys = value;
     });
+  }
+
+  populateUINumberLayout() {
+    // Populate UI View based on script
+    for(let i = 0; i < this.layoutCurrentKeys.length; i++) {
+      if (this.layoutCurrentKeys[i].row) {
+        // Last two rows in Orthography template reserved for Mathematics operation symbols
+        for(let j = 0; j < this.layoutCurrentKeys[i].row.length; j++) { 
+          // num1
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num1" && this.calculatorLayout[2].row[8].type && this.calculatorLayout[2].row[8].type == "num1" && this.calculatorLayout[2].row[8].value != this.layoutCurrentKeys[i].row[j].value) {
+            this.calculatorLayout[2].row[8].value = this.layoutCurrentKeys[i].row[j].value;
+            this.simpleCalculatorLayout[1].row[0].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "1";
+            this.mapLocale["1"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.unicode5AndHigher) {
+              this.calculatorLayout[2].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.simpleCalculatorLayout[1].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.nonUnicodeMap["1"] = this.layoutCurrentKeys[i].row[j].src;
+            }
+            continue;
+          }
+          // num2
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num2" && this.calculatorLayout[2].row[9].type && this.calculatorLayout[2].row[9].type == "num2" && this.calculatorLayout[2].row[9].value != this.layoutCurrentKeys[i].row[j].value) {
+            this.calculatorLayout[2].row[9].value = this.layoutCurrentKeys[i].row[j].value;
+            this.simpleCalculatorLayout[1].row[1].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "2";
+            this.mapLocale["2"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.unicode5AndHigher) {
+              this.calculatorLayout[2].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.simpleCalculatorLayout[1].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.nonUnicodeMap["2"] = this.layoutCurrentKeys[i].row[j].src;
+            }
+            continue;
+          }
+          // num3
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num3" && this.calculatorLayout[2].row[10].type && this.calculatorLayout[2].row[10].type == "num3" && this.calculatorLayout[2].row[10].value != this.layoutCurrentKeys[i].row[j].value) {
+            this.calculatorLayout[2].row[10].value = this.layoutCurrentKeys[i].row[j].value;
+            this.simpleCalculatorLayout[1].row[2].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "3";
+            this.mapLocale["3"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.unicode5AndHigher) {
+              this.calculatorLayout[2].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.simpleCalculatorLayout[1].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.nonUnicodeMap["3"] = this.layoutCurrentKeys[i].row[j].src;
+            }
+            continue;
+          }
+          // num4
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num4" && this.calculatorLayout[3].row[8].type && this.calculatorLayout[3].row[8].type == "num4" && this.calculatorLayout[3].row[8].value != this.layoutCurrentKeys[i].row[j].value) {
+            this.calculatorLayout[3].row[8].value = this.layoutCurrentKeys[i].row[j].value;
+            this.simpleCalculatorLayout[2].row[0].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "4";
+            this.mapLocale["4"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.unicode5AndHigher) {
+              this.calculatorLayout[3].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.simpleCalculatorLayout[2].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.nonUnicodeMap["4"] = this.layoutCurrentKeys[i].row[j].src;
+            }
+            continue;
+          }
+          // num5
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num5" && this.calculatorLayout[3].row[9].type && this.calculatorLayout[3].row[9].type == "num5" && this.calculatorLayout[3].row[9].value != this.layoutCurrentKeys[i].row[j].value) {
+            this.calculatorLayout[3].row[9].value = this.layoutCurrentKeys[i].row[j].value;
+            this.simpleCalculatorLayout[2].row[1].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "5";
+            this.mapLocale["5"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.unicode5AndHigher) {
+              this.calculatorLayout[3].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.simpleCalculatorLayout[2].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.nonUnicodeMap["5"] = this.layoutCurrentKeys[i].row[j].src;
+            }
+            continue;
+          }
+          // num6
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num6" && this.calculatorLayout[3].row[10].type && this.calculatorLayout[3].row[10].type == "num6" && this.calculatorLayout[3].row[10].value != this.layoutCurrentKeys[i].row[j].value) {
+            this.calculatorLayout[3].row[10].value = this.layoutCurrentKeys[i].row[j].value;
+            this.simpleCalculatorLayout[2].row[2].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "6";
+            this.mapLocale["6"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.unicode5AndHigher) {
+              this.calculatorLayout[3].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.simpleCalculatorLayout[2].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.nonUnicodeMap["6"] = this.layoutCurrentKeys[i].row[j].src;
+            }
+            continue;
+          }
+          // num7
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num7" && this.calculatorLayout[4].row[8].type && this.calculatorLayout[4].row[8].type == "num7" && this.calculatorLayout[4].row[8].value != this.layoutCurrentKeys[i].row[j].value) {
+            this.calculatorLayout[4].row[8].value = this.layoutCurrentKeys[i].row[j].value;
+            this.simpleCalculatorLayout[3].row[0].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "7";
+            this.mapLocale["7"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.unicode5AndHigher) {
+              this.calculatorLayout[4].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.simpleCalculatorLayout[3].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.nonUnicodeMap["7"] = this.layoutCurrentKeys[i].row[j].src;
+            }
+            continue;
+          }
+          // num8
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num8" && this.calculatorLayout[4].row[9].type && this.calculatorLayout[4].row[9].type == "num8" && this.calculatorLayout[4].row[9].value != this.layoutCurrentKeys[i].row[j].value) {
+            this.calculatorLayout[4].row[9].value = this.layoutCurrentKeys[i].row[j].value;
+            this.simpleCalculatorLayout[3].row[1].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "8";
+            this.mapLocale["8"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.unicode5AndHigher) {
+              this.calculatorLayout[4].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.simpleCalculatorLayout[3].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.nonUnicodeMap["8"] = this.layoutCurrentKeys[i].row[j].src;
+            }
+            continue;
+          }
+          // num9
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num9" && this.calculatorLayout[4].row[10].type && this.calculatorLayout[4].row[10].type == "num9" && this.calculatorLayout[4].row[10].value != this.layoutCurrentKeys[i].row[j].value) {
+            this.calculatorLayout[4].row[10].value = this.layoutCurrentKeys[i].row[j].value;
+            this.simpleCalculatorLayout[3].row[2].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "9";
+            this.mapLocale["9"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.unicode5AndHigher) {
+              this.calculatorLayout[4].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.simpleCalculatorLayout[3].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.nonUnicodeMap["9"] = this.layoutCurrentKeys[i].row[j].src;
+            }
+            continue;
+          }
+          // num0 or num10 for Modern Greek, Latin/Roman, Hebew, etc.
+          if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num0" && this.calculatorLayout[5].row[9].type && this.calculatorLayout[5].row[9].type == "num0" && this.calculatorLayout[5].row[9].value != this.layoutCurrentKeys[i].row[j].value) {
+            this.calculatorLayout[5].row[9].value = this.layoutCurrentKeys[i].row[j].value;
+            this.simpleCalculatorLayout[4].row[1].value = this.layoutCurrentKeys[i].row[j].value;
+            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
+            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "0";
+            this.mapLocale["0"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.unicode5AndHigher) {
+              this.calculatorLayout[5].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.simpleCalculatorLayout[4].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
+              this.nonUnicodeMap["0"] = this.layoutCurrentKeys[i].row[j].src;
+            }
+            continue;
+          }
+          // Hexadecimal
+          //num11 - A
+          //num12 - B
+          //num13 - C
+          //num14 - D
+          //num15 - E
+          //num16 - F
+          // Mayan & Kaktovik
+          //num17
+          //num18
+          //num19
+          //num20
+        }
+      } else {
+        break;
+      }
+    }
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -1626,12 +1657,59 @@ export class CustomiseKeyboardsComponent implements OnInit {
     this.sessionManager.floatingKeysTyped.next(JSON.stringify(element) + "�" + value + "�" + action + "�" + type + "�" +  src);
     this.whichMappedKey = "";
   }
+
+  soloOperation(soloVariable, operator) {
+    let result;
+    switch (operator) {
+      case '√' :
+        result = Math.sqrt(parseInt(soloVariable.split("√")[1]));
+        break;
+      case '∛' :
+        result = Math.cbrt(parseInt(soloVariable.split("∛")[1]));
+        break;
+      case '10' :
+        result = 10 ** parseInt(soloVariable.split("10 ^ ")[1]);
+        break;
+      case '3.141592653589' :
+        result = 3.141592653589 * parseInt(soloVariable.split("π × ")[1]);
+        break;
+      case 'e' :
+        result = Math.exp(parseInt(soloVariable.split("e ^ ")[1]));
+        break;
+      case 'ln' :
+        result = Math.log(parseInt(soloVariable.split("ln ")[1]));
+        break;
+      case 'log' :
+        result = Math.log10(parseInt(soloVariable.split("log ")[1]));
+        break;
+      case '!' :
+        result = this.factorialize(parseInt(soloVariable));
+        break;
+      case 'sin' : // Consider rad or °
+        result = Math.sin(parseInt(soloVariable.split("sin")[0]));
+        break;
+      case 'cos' : // Consider rad or °
+        result = Math.cos(parseInt(soloVariable.split("cos")[0]));
+        break;
+      case 'tan' : // Consider rad or °
+        result = Math.tan(parseInt(soloVariable.split("tan")[0]));
+        break;
+    }
+    return result;
+  }
+
+  factorialize(value) {
+    if (value < 0) 
+          return -1;
+    else if (value == 0) 
+        return 1;
+    else {
+        return (value * this.factorialize(value - 1));
+    }
+  }
   
   whatToDoWithThisKeyPress(element, value, action, type, src, visible) {
     // Manual Key Press
-
-    // Highlight the Operations clicked
-
     switch (visible) {
       case 'hide' :
         break;
@@ -1640,9 +1718,20 @@ export class CustomiseKeyboardsComponent implements OnInit {
           case 'equalsSign' : 
             if (this.operatorXY != "" && this.varX != "" && this.varY != "") {
               this.computeResults();
-              this.varX = "";
+              this.keepInMemory = this.resultField.nativeElement.value;
+              this.varX = this.resultField.nativeElement.value;
               this.varY = "";
               this.operatorXY = "";
+            } else if (this.operatorValue != "") {
+              this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.soloOperation(this.stringManipulator("", this.resultField.nativeElement.value, this.numberMap), this.operatorValue));
+              if (this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.equationField.nativeElement.value =  this.resultField.nativeElement.value + " = " + this.equationField.nativeElement.value;
+              } else {
+                this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.resultField.nativeElement.value;
+              }
+              this.keepInMemory = this.resultField.nativeElement.value;
+              this.varX = this.resultField.nativeElement.value;
+              this.operatorValue = "";
             }
             break;
 
@@ -1680,7 +1769,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             break;
 
           case '★' :
-            this.bookmarkedEquations.push(this.resultField.nativeElement.value);
+            this.bookmarkedEquations.push(this.equationField.nativeElement.value);
             break;
 
           case 'undoAction' :
@@ -1699,22 +1788,38 @@ export class CustomiseKeyboardsComponent implements OnInit {
             break;
 
           case 'formula1' :
+            // Math.hypot()
             // Do calculation based off this.historyEquations[0] formula
             // Store in LocalStorage for session persistence
             break;
           
           case 'formula2' :
+            // Math.random()
             // Do calculation based off this.historyEquations[1] formula
             // Store in LocalStorage for session persistence
             break;
 
           case 'formula3' :
+            // Math.trunc()
             // Do calculation based off this.historyEquations[2] formula
             // Store in LocalStorage for session persistence
             break;
           
           case 'formula4' :
+            // Math.ceil()
             // Do calculation based off this.historyEquations[3] formula
+            // Store in LocalStorage for session persistence
+            break;
+
+          case 'formula5' :
+            // Math.fround()
+            // Do calculation based off this.historyEquations[4] formula
+            // Store in LocalStorage for session persistence
+            break;
+
+          case 'formula6' :
+            // Math.abs()
+            // Do calculation based off this.historyEquations[5] formula
             // Store in LocalStorage for session persistence
             break;
 
@@ -1723,22 +1828,74 @@ export class CustomiseKeyboardsComponent implements OnInit {
             break;
 
           case 'factorial' :
+            this.operatorValue = "!";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "!";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            this.whatToDoWithThisKeyPress(element, value, action, 'equalsSign', src, visible);
+            break;
+
+          case 'squareRoot' :
+            this.operatorValue = "√";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "√";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            break;  
+
+          case 'cubeRoot' :
+            this.operatorValue = "∛";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "∛";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
             break;
 
+          case 'powerOf10' :
+            this.operatorValue = "10";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "10 ^ ";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            break;
+          
+          case 'piNatural' :
+            this.operatorValue = "3.141592653589";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "π × ";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            break;
+          
+          case 'naturalExponent' : 
+            this.operatorValue = "e";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "e ^ ";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.setValue;
+            break;
+
           case 'naturalLogarithm' :
-            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "ln";
+            this.operatorValue = "ln";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "ln ";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
             break;
           
           case 'logarithm' :
-            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "log";
-            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            this.operatorValue = "log";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "log ";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value ;
+            break;
+
+          case 'sineFunc' :
+            this.operatorValue = "sin";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "sin ";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value ;
+            break;
+          
+          case 'cosineFunc' :
+            this.operatorValue = "cos";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "cos ";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value ;
+            break;
+
+          case 'tangentFunc' :
+            this.operatorValue = "tan";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "tan ";
+            this.equationField.nativeElement.value = this.resultField.nativeElement.value ;
             break;
 
           case 'signChange' :
-            this.resultField.nativeElement.value = "-" + this.resultField.nativeElement.value;
+            this.resultField.nativeElement.value = Math.sign(this.resultField.nativeElement.value);
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
             break;
 
@@ -1810,9 +1967,18 @@ export class CustomiseKeyboardsComponent implements OnInit {
     }
   }
 
-  carveOperatorVariables(contentOfInput) {
-    // Value is being Typed using Keyboard
+  enterKeyPressForInput() {
+    // Call only when "Enter" is pressed
+    if (this.operatorXY != "" && this.varX != "" && this.varY != "") {
+      this.computeResults();
+      this.keepInMemory = this.resultField.nativeElement.value;
+      this.varX = this.resultField.nativeElement.value;
+      this.varY = "";
+      this.operatorXY = "";
+    }
+  }
 
+  carveOperatorVariables(contentOfInput) {
     // Highlight the Operations clicked
 
     if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY == "" && this.varX == "" && this.varY == "") {
@@ -1836,22 +2002,13 @@ export class CustomiseKeyboardsComponent implements OnInit {
       // Allow 0-9 & A-F depending on Base with Operations
       this.resultField.nativeElement.value = '';
     }
-    // Call only when "Enter" is pressed
-    /*
-    if (this.operatorXY != "" && this.varX != "" && this.varY != "") {
-      this.computeResults();
-      this.varX = "";
-      this.varY = "";
-      this.operatorXY = "";
-    }
-    */
   }
 
   stringManipulator(stringToReturn, hostString, mappedArray) {
     for (let str of hostString) {
       if (mappedArray[str])
         stringToReturn = stringToReturn + mappedArray[str];
-      else // Comman, Period inclusion when required
+      else // Comma, Period inclusion when required
         stringToReturn = stringToReturn + str;
     }
     return stringToReturn;
@@ -1905,7 +2062,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             }
             this.nonUnicodeNumberEquation.push({"src":"","value":" "});
             this.nonUnicodeNumberEquation.unshift({"src":this.nonUnicodeMap[char],"value":char});
-          } else { // Comman, Period inclusion when required
+          } else { // Comma, Period inclusion when required
             this.nonUnicodeNumberEquation.push({"src":"","value":" "});
             this.nonUnicodeNumberEquation.unshift({"src":"","value":"."});
             this.nonUnicodeNumberResult.push({"src":"","value":" "});
@@ -1928,7 +2085,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
               includeEqualsOnce = false;
             }
             this.nonUnicodeNumberEquation.push({"src":this.nonUnicodeMap[char],"value":char});
-          } else { // Comman, Period inclusion when required
+          } else { // Comma, Period inclusion when required
             this.nonUnicodeNumberResult.push({"src":"","value":"."});
             this.nonUnicodeNumberEquation.push({"src":"","value":"."});
           }
@@ -1940,6 +2097,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   displayVariableInLocaleFormat (result) {
     /* 
+      Special Cases for Latin, Hebrew, Roman, Mayan, Kaktovik, etc.
       this.resultField.nativeElement.value = formatted Value;
 
       Reference - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide for each of the following variables 
