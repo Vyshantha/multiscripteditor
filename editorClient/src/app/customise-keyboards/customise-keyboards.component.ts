@@ -1240,7 +1240,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   baseIndices: any = [2, 8, 10, 12, 16, 20, 60];
   // Operator and Libraries - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
-  operators: any = ['+', "-", "*" , "×", "·", "^", "÷", '%', '‰', "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "<", ">", "≤", "≥", "ʸ√", "xʸ", "logₓ"];
+  operators: any = ['+', "-", "*", "×", "·", "^", "**","÷", '%', '‰', "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "<", ">", "≤", "≥", "ʸ√", "xʸ", "logₓ"];
   varX: string = "";
   varY: string = "";
   operatorValue: string = "";
@@ -1824,8 +1824,16 @@ export class CustomiseKeyboardsComponent implements OnInit {
             break;
 
           case 'useMemory' :
-            this.resultField.nativeElement.value = this.resultField.nativeElement.value + this.keepInMemory;
-            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            let numberCheck = isNaN(parseFloat(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true)));
+            if (!numberCheck) {
+              this.varX = this.resultField.nativeElement.value;
+              this.resultField.nativeElement.value = this.keepInMemory;
+              this.varY = this.keepInMemory;
+            } else {
+              this.resultField.nativeElement.value = this.resultField.nativeElement.value + " " + this.keepInMemory;
+              this.varY = this.keepInMemory;
+            }
+            this.equationField.nativeElement.value = this.equationField.nativeElement.value + this.resultField.nativeElement.value;
             this.computeNonUnicodeResult("",this.keepInMemory);
             this.computeNonUnicodeEquation("",this.keepInMemory);
             break;
@@ -2150,7 +2158,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
               this.operatorXY = value;
               this.equationField.nativeElement.value = this.resultField.nativeElement.value + " " + value;
               this.varX = this.resultField.nativeElement.value;
-              this.keepInMemory = this.resultField.nativeElement.value;
               if (this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
                 this.computeNonUnicodeEquation(""," ");
                 this.computeNonUnicodeEquation("",this.operatorXY);
@@ -2191,7 +2198,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
             } else if (this.operators.indexOf(value) > -1 && this.varX != "" && this.varY != "") {
               this.operatorXY = value;
               this.computeResults();
-              this.keepInMemory = this.resultField.nativeElement.value;
               this.varX = this.resultField.nativeElement.value;
               this.varY = "";
               this.operatorXY = "";
@@ -2251,7 +2257,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
     } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) > -1 && this.varX != "" && this.varY != "") {
       this.operatorXY = contentOfInput.substr(contentOfInput.length-1);
       this.computeResults();
-      this.keepInMemory = this.resultField.nativeElement.value;
       this.varX = this.resultField.nativeElement.value;
       this.varY = "";
       this.operatorXY = "";
@@ -2263,6 +2268,22 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   stringManipulator(hostString, mappedArray, internalCalculation) {
     let stringToReturn = "";
+    if(internalCalculation && hostString.indexOf(".") > -1 && this.commaDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+      hostString = hostString.replaceAll(".","");
+    else if (internalCalculation && hostString.indexOf(",") > -1 && this.periodDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) 
+      hostString = hostString.replaceAll(",","");
+    else if(internalCalculation && hostString.indexOf("٬") > -1 && this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+      hostString = hostString.replaceAll("٬","");
+    else if(internalCalculation && hostString.indexOf(" ") > -1 && this.thousandsPositionSpaceAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+      hostString = hostString.replaceAll(" ","");
+    else if(internalCalculation && hostString.indexOf(" ") > -1 && this.thousandsPositionSpaceAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+      hostString = hostString.replaceAll(" ","");
+    else if(internalCalculation && hostString.indexOf(" ") > -1 && this.tenThousandsSpaceAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+      hostString = hostString.replaceAll(" ","");
+    else if(internalCalculation && hostString.indexOf("'") > -1 && this.thousandsPositionApostropheAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+      hostString = hostString.replaceAll("'","");
+    else if(internalCalculation && hostString.indexOf("'") > -1 && this.thousandsPositionApostropheAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+      hostString = hostString.replaceAll("'","");
     for (let str of hostString) {
       if (mappedArray[str]) {
         stringToReturn = stringToReturn + mappedArray[str];
@@ -2362,6 +2383,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
         this.operationResult = Math.pow(parseFloat(localeMappedX), 1/parseFloat(localeMappedY));
         break;
       case 'xʸ' :
+        this.operationResult = Math.pow(parseFloat(localeMappedX), parseFloat(localeMappedY));
+        break;
+      case '^' :
+          this.operationResult = Math.pow(parseFloat(localeMappedX), parseFloat(localeMappedY));
+          break;
+      case '**' :
         this.operationResult = Math.pow(parseFloat(localeMappedX), parseFloat(localeMappedY));
         break;
       case 'logₓ':
