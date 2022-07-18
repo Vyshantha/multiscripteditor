@@ -1240,7 +1240,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   baseIndices: any = [2, 8, 10, 12, 16, 20, 60];
   // Operator and Libraries - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
-  operators: any = ['+', "-", "*", "×", "·", "^", "**","÷", '%', '‰', "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "<", ">", "≤", "≥", "ʸ√", "xʸ", "logₓ"];
+  operators: any = ['+', "-", "*", "×", "·", "^", "**","÷", '%', '‰', "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "<", ">", "≤", "≥", "ʸ√", "xʸ"];
   varX: string = "";
   varY: string = "";
   operatorValue: string = "";
@@ -1259,7 +1259,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   allowedTypingContent: any = ['A','B','C','D','E','F','a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9','(',')']
 
   defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 45 : ((!this.isMobile && this.isTablet)? 38 : 50 );
-  defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 18 : ((!this.isMobile && this.isTablet)? 16 : 17 );
+  defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 18 : ((!this.isMobile && this.isTablet)? 17 : 17 );
 
   translateForSnackBar: string[] = [];
 
@@ -2098,11 +2098,13 @@ export class CustomiseKeyboardsComponent implements OnInit {
             break;
 
           case 'signChange' :
-            this.resultField.nativeElement.value = "- " + this.resultField.nativeElement.value;
-            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
-            if (this.unicode5AndHigher) {
-              this.computeNonUnicodeResult("", "- ");
-              this.computeNonUnicodeEquation("", "- ");
+            if (this.resultField.nativeElement.value != "-") {
+              this.resultField.nativeElement.value = "-" + this.resultField.nativeElement.value;
+              this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+              if (this.unicode5AndHigher) {
+                this.computeNonUnicodeResult("", "-");
+                this.computeNonUnicodeEquation("", "-");
+              }
             }
             break;
           
@@ -2156,17 +2158,17 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 this.nonUnicodeNumberResult = this.nonUnicodeNumberResult.slice().reverse();
                 this.nonUnicodeNumberEquation = this.nonUnicodeNumberEquation.slice().reverse();
               }
-            } else if (this.operators.indexOf(value) > -1 && this.operatorXY == "" && (this.varX == "" || this.varX != "")) {
+            } else if (this.resultField.nativeElement.value != "" && this.operators.indexOf(value) > -1 && this.operatorXY == "" && (this.varX == "" || this.varX != "")) {
               this.operatorXY = value;
               this.equationField.nativeElement.value = this.resultField.nativeElement.value + " " + value;
               this.varX = this.resultField.nativeElement.value;
-              if (this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              if (this.unicode5AndHigher && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
                 this.computeNonUnicodeEquation(""," ");
                 this.computeNonUnicodeEquation("",this.operatorXY);
-              } else {
+              } else if (this.unicode5AndHigher) {
                 this.nonUnicodeNumberEquation.push({"src":"","value":" "});
                 this.nonUnicodeNumberEquation.push({"src":"","value":this.operatorXY});
-              }
+              } 
             } else if (this.operators.indexOf(value) == -1 && this.operatorXY != "" && this.varY == "") {
               this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + value;
               this.resultField.nativeElement.value = value;
@@ -2243,7 +2245,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY == "" && this.varX == "" && this.varY == "") {
       this.resultField.nativeElement.value = contentOfInput;
       this.equationField.nativeElement.value = this.resultField.nativeElement.value;
-    } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) > -1 && this.operatorXY == "" && (this.varX == "" || this.varX != "")) {
+    } else if (this.resultField.nativeElement.value != "" && this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) > -1 && this.operatorXY == "" && (this.varX == "" || this.varX != "")) {
       this.operatorXY = contentOfInput.substr(contentOfInput.length-1);
       this.resultField.nativeElement.value = contentOfInput.substr(0, contentOfInput.indexOf(this.operatorXY));
       this.varX = this.resultField.nativeElement.value;
