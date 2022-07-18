@@ -1159,7 +1159,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
       {"value":"7","type":"num7","action":"char"},{"value":"8","type":"num8","action":"char"},{"value":"9","type":"num9","action":"char"},{"value":" ","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
     ]},
     {"row":[
-      {"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":"0","type":"num0","action":"char"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":" ","action":"char","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+      {"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":"0","type":"num0","action":"char"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":"+","action":"char","type":"additionOp"}
     ]}
   ];
 
@@ -1258,8 +1258,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   allowedTypingContent: any = ['A','B','C','D','E','F','a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9','(',')']
 
-  defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 35 : ((!this.isMobile && this.isTablet)? 40 : 50 );
-  defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 13 : ((!this.isMobile && this.isTablet)? 14 : 16 );
+  defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 35 : ((!this.isMobile && this.isTablet)? 38 : 50 );
+  defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 15 : ((!this.isMobile && this.isTablet)? 16 : 17 );
 
   translateForSnackBar: string[] = [];
 
@@ -1401,7 +1401,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
           self.currentCalculatorType = 'scientific';
         }
     });
-    if (this.isMobile) {
+    if (this.isMobile || this.isTablet) {
       document.getElementsByClassName("mat-dialog-container")[0]["style"]["padding"] = "10px"
     }
   }
@@ -2438,7 +2438,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
 
   switchCalculators() {
-    if (this.currentCalculatorType == 'simple') {
+    if (this.currentCalculatorType == 'simple' && (this.isMobile && !this.isTablet && window.orientation != 90 || window.orientation != -90)) {
+      this.anyCalculatorLayout = this.calculatorLayout.slice();
+      this.currentCalculatorType = 'scientific';
+    } else if (this.currentCalculatorType == 'simple' && ((!this.isMobile && !this.isTablet) || (!this.isMobile && this.isTablet))) {
       this.anyCalculatorLayout = this.calculatorLayout.slice();
       this.currentCalculatorType = 'scientific';
     } else if (this.currentCalculatorType == 'scientific' && (this.isMobile && !this.isTablet && window.orientation == 90 || window.orientation == -90)) {
