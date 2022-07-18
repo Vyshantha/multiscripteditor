@@ -2240,7 +2240,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.resultField.nativeElement.value = contentOfInput.substr(0, contentOfInput.indexOf(this.operatorXY));
       this.varX = this.resultField.nativeElement.value;
       this.equationField.nativeElement.value = this.varX + " " + this.operatorXY;
-      this.keepInMemory = this.resultField.nativeElement.value;
     } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY != "" && this.varY == "") {
       this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + contentOfInput.replace(this.varX, '');
       this.resultField.nativeElement.value = contentOfInput.replace(this.varX, '');
