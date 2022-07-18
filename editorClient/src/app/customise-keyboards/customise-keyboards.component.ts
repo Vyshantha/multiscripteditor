@@ -1258,8 +1258,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   allowedTypingContent: any = ['A','B','C','D','E','F','a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9','(',')']
 
-  defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 35 : ((!this.isMobile && this.isTablet)? 38 : 50 );
-  defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 15 : ((!this.isMobile && this.isTablet)? 16 : 17 );
+  defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 45 : ((!this.isMobile && this.isTablet)? 38 : 50 );
+  defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 18 : ((!this.isMobile && this.isTablet)? 16 : 17 );
 
   translateForSnackBar: string[] = [];
 
@@ -1402,7 +1402,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
         }
     });
     if (this.isMobile || this.isTablet) {
-      document.getElementsByClassName("mat-dialog-container")[0]["style"]["padding"] = "10px"
+      document.getElementsByClassName("mat-dialog-container")[0]["style"]["padding"] = "10px";
+      document.getElementsByClassName("cdk-overlay-pane")[0]["style"]["max-width"] = "";
+      document.getElementsByClassName("cdk-overlay-pane")[0]["style"]["width"] = document.documentElement.clientWidth - 15 + "px";
     }
   }
 
@@ -1833,7 +1835,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
               this.resultField.nativeElement.value = this.resultField.nativeElement.value + " " + this.keepInMemory;
               this.varY = this.keepInMemory;
             }
-            this.equationField.nativeElement.value = this.equationField.nativeElement.value + this.resultField.nativeElement.value;
+            this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + this.resultField.nativeElement.value;
             this.computeNonUnicodeResult("",this.keepInMemory);
             this.computeNonUnicodeEquation("",this.keepInMemory);
             break;
@@ -2465,13 +2467,13 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
 
   switchCalculators() {
-    if (this.currentCalculatorType == 'simple' && (this.isMobile && !this.isTablet && window.orientation != 90 || window.orientation != -90)) {
+    if (this.currentCalculatorType == 'simple' && this.isMobile && !this.isTablet && (window.orientation == 90 || window.orientation == -90)) {
       this.anyCalculatorLayout = this.calculatorLayout.slice();
       this.currentCalculatorType = 'scientific';
     } else if (this.currentCalculatorType == 'simple' && ((!this.isMobile && !this.isTablet) || (!this.isMobile && this.isTablet))) {
       this.anyCalculatorLayout = this.calculatorLayout.slice();
       this.currentCalculatorType = 'scientific';
-    } else if (this.currentCalculatorType == 'scientific' && (this.isMobile && !this.isTablet && window.orientation == 90 || window.orientation == -90)) {
+    } else if (this.currentCalculatorType == 'scientific' && this.isMobile && !this.isTablet && (window.orientation == 90 || window.orientation == -90)) {
       this.anyCalculatorLayout = this.simpleCalculatorLayout.slice();
       this.currentCalculatorType = 'simple';
     } else if (this.currentCalculatorType == 'scientific' && ((!this.isMobile && !this.isTablet) || (!this.isMobile && this.isTablet))) {
