@@ -15,7 +15,7 @@
     "express": "^4.17.1",
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
-    "properties-reader": "^1.0.0",
+    "properties-reader": "^2.2.0",
     "python-shell": "^3.0.1"
   },
   "devDependencies": {
