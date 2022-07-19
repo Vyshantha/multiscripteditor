@@ -1165,26 +1165,26 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   anyCalculatorLayout : any = [];
 
-  separatorsForDecimalAndNumeral: any = [' ', "'", ',', '.', '·', '\u2009', '\u202F', '˙', '⠨', '٫' , '٬' , '⎖'];
+  separatorsForDecimalAndNumeral: any = [' ', "'", ',', '.', '·', '\u2009', '\u202F', '˙', '⠨', '٫' , '٬' , '⎖', '⹁'];
   alphabetSystem: any = ['la', 'he', 'ion', 'hy', 'mand', 'geez', 'am', 'syrc', 'glag', 'copt', 'goth', 'ka', 'morse'];
 
   //https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
   commaDecimalSeparatorLocales: any = ['frca', 'lb', 'es', 'sq', 'hy', 'az', 'aze', 'befr', 'fr', 'bsla', 'bs', 'hv', 'pt', 'ptbr', 'cs', 'da', 'et', 'fo', 'fi', 'de', 'ka', 'el', 'kl', 'hu', 'is', 'id', 'it', 'kk', 'kaz', 'ky', 'kir', 'lv', 'lt', 'mn', 'mon', 'mnla', 'nl', 'no', 'gn', 'pl', 'ro', 'ru', 'be', 'sr', 'sk', 'sl', 'sv', 'tr', 'tk', 'tuk', 'uk', 'uz', 'uzb', 'vi', 'af', 'st', 'ss', 'ts', 'tn', 'ven', 'xh', 'nso', 'zu'];
-  periodDecimalSeparatorLocales: any = ['en','enus','engb','enintl', 'ne', 'bn', 'km', 'zhcn', 'zhtw', 'am', 'ga', 'he', 'ja', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th'];
+  periodDecimalSeparatorLocales: any = ['en', 'enus', 'engb', 'enintl', 'ne', 'bn', 'km', 'zhcn', 'zhtw', 'am', 'ga', 'he', 'ja', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enin', 'kn', 'hi', 'sa', 'tiga', 'bya', 'ml', 'mr', 'as', 'gu', 'odu'];
   arabicDecimalSeparatorLocales: any = ['ar','fa','ur','ps','ks','sd', 'bal', 'ckb', 'rhg', 'bsk'];
 
-  desiCommaPosition: any = ['enin', 'ne', 'bn', 'km', 'zhcn', 'zhtw', 'am', 'ga', 'he', 'ja', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enus', 'engb', 'enintl'];
-  desiSpacePosition: any = ['enin', 'ne'];
+  desiLakhCommaPosition: any = ['enin', 'ne', 'bn', 'km', 'ms', 'thaa', 'dv', 'si', 'th', 'kn', 'hi', 'sa', 'tiga', 'bya', 'ml', 'mr', 'as', 'gu'];
+  desiLakhSpacePosition: any = ['enin', 'ne'];
   thousandsPositionApostropheAndPeriodDecimal : any = [];
   thousandsPositionApostropheAndCommaDecimal : any = [];
   thousandsPositionPeriodAndApostropheDecimal : any = [];
-  thousandsPositionPeriodAndCommaDecimal : any = [];
-  thousandsPositionCommaAndPeriodDecimal : any = [];
+  thousandsPositionPeriodAndCommaDecimal : any = ['de','it','ptbr'];
+  thousandsPositionCommaAndPeriodDecimal : any = ['enus','engb','en', 'enintl', 'odu'];
   thousandsPositionSpaceAndPeriodDecimal : any = [];
   thousandsPositionSpaceAndCommaDecimal : any = [];
   thousandsPositionCommaAndMiddleDotDecimal : any = [];
-  tenThousandsCommaAndPeriod: any = [];
-  tenThousandsSpaceAndPeriod: any = [];
+  tenThousandsCommaAndPeriod: any = ['zhcn'];
+  tenThousandsSpaceAndPeriod: any = ['zhcn'];
   commaAndPeriodAlternating: any = ['hv'];
 
   currencySignLocales: any = ["₠","₡","₢","₣","₤","₥","₦","₧","₨","₩","₪","₫","$","£","€","₹","₺","₽","₾","₻","₼","؋","₭","₮","₯","₰","₱","₲","₳","₴","₵","₶","₷","₸","₿","⃀"];
@@ -1256,9 +1256,11 @@ export class CustomiseKeyboardsComponent implements OnInit {
   mapLocale: any = [];
   nonUnicodeMap: any = [];
 
-  allowedTypingContent: any = ['A','B','C','D','E','F','a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9','(',')']
+  allowedTypingContent: any = ['A','B','C','D','E','F','a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9','(',')'];
 
-  defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 45 : ((!this.isMobile && this.isTablet)? 38 : 50 );
+  localeNames : any = "";
+
+  defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 40 : ((!this.isMobile && this.isTablet)? 38 : 50 );
   defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 18 : ((!this.isMobile && this.isTablet)? 17 : 17 );
 
   translateForSnackBar: string[] = [];
@@ -1357,7 +1359,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
         if (this.fontsSources.indexOf(keysType) > -1){
           this.fontClass = this.fontsSources[this.fontsSources.indexOf(keysType)];
         }
-        // Swapping Comma and Period - thousandsPositionApostropheAndCommaDecimal, thousandsPositionPeriodAndCommaDecimal , thousandsPositionSpaceAndCommaDecimal
+        // Swapping Comma and Period
         if(this.commaDecimalSeparatorLocales.indexOf(keysType) > -1) {
           this.commaSeparator = ".";
           this.periodSeparator = ",";
@@ -1375,6 +1377,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
         }
         // Currency update based on Locale & Script
         this.calculatorLayout[5].row[1].value = "€";
+        this.localeNames = this.localisedKeyboardLayouts[this.sessionManager.getFromSessionURL()][2] + " : " + this.keyboardLayouts[this.sessionManager.getFromSessionURL()][5];
       }
     });
     this.sessionManager.itemShiftKeyPressed.subscribe((flagForShift) => {
@@ -1435,7 +1438,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     for(let i = 0; i < this.layoutCurrentKeys.length; i++) {
       if (this.layoutCurrentKeys[i].row) {
         // Last two rows in Orthography template reserved for Mathematics operation symbols
-        // TODO : Handling avst , khar , mend , nbat , xpr , la , el , he 
+        // TODO - Handling avst , khar , mend , nbat , xpr , la , el , he 
         for(let j = 0; j < this.layoutCurrentKeys[i].row.length; j++) { 
           // num1
           if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num1" && this.calculatorLayout[2].row[8].type && this.calculatorLayout[2].row[8].type == "num1") {
@@ -1733,22 +1736,22 @@ export class CustomiseKeyboardsComponent implements OnInit {
       case '!' :
         result = this.factorialize(parseFloat(soloVariable));
         break;
-      case 'sin' : // Consider rad or °
+      case 'sin' : // TODO - Consider rad or °
         result = Math.sin(parseFloat(soloVariable.split("sin ")[1]));
         break;
-      case 'cos' : // Consider rad or °
+      case 'cos' : // TODO - Consider rad or °
         result = Math.cos(parseFloat(soloVariable.split("cos ")[1]));
         break;
-      case 'tan' : // Consider rad or °
+      case 'tan' : // TODO - Consider rad or °
         result = Math.tan(parseFloat(soloVariable.split("tan ")[1]));
         break;
-      case 'sin⁻ⁱ' : // Consider rad or °
+      case 'sin⁻ⁱ' : // TODO - Consider rad or °
         result = Math.sin(parseFloat(soloVariable.split("sin⁻ⁱ ")[1]));
         break;
-      case 'cos⁻ⁱ' : // Consider rad or °
+      case 'cos⁻ⁱ' : // TODO - Consider rad or °
         result = Math.cos(parseFloat(soloVariable.split("cos⁻ⁱ ")[1]));
         break;
-      case 'tan⁻ⁱ' : // Consider rad or °
+      case 'tan⁻ⁱ' : // TODO - Consider rad or °
         result = Math.tan(parseFloat(soloVariable.split("tan⁻ⁱ ")[1]));
         break;
       case '‰' :
@@ -1758,7 +1761,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     return result;
   }
 
-  // To Do for Negative & Decimal numbers
+  // TODO - Negative & Decimal numbers
   factorialize(value) {
     if (value < 0) 
           return -1;
@@ -2406,30 +2409,67 @@ export class CustomiseKeyboardsComponent implements OnInit {
   displayVariableInLocaleFormat (result) {
     /* 
       Special Cases for Latin, Hebrew, Roman, Mayan, Kaktovik, etc.
-      this.resultField.nativeElement.value = formatted Value;
-
       Reference - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide for each of the following variables 
-
-      commaDecimalSeparatorLocales
-      periodDecimalSeparatorLocales
-      arabicDecimalSeparatorLocales
-      desiCommaPosition
-      desiSpacePosition
-      thousandsPositionApostropheAndPeriodDecimal
-      thousandsPositionApostropheAndCommaDecimal
-      thousandsPositionPeriodAndApostropheDecimal
-      thousandsPositionPeriodAndCommaDecimal
-      thousandsPositionCommaAndPeriodDecimal
-      thousandsPositionSpaceAndPeriodDecimal
-      thousandsPositionSpaceAndCommaDecimal
-      thousandsPositionCommaAndMiddleDotDecimal
-      tenThousandsCommaAndPeriod
-      tenThousandsSpaceAndPeriod
-      commaAndPeriodAlternating 
     */
 
     // Iterate through this.anyCalculatorLayout for Type num0 to num9 mapping for 0 to 9 in all scripts & languages
-    return this.stringManipulator(result.toString(), this.mapLocale, false);
+    return this.numberRepresentationMarking(this.stringManipulator(result.toString(), this.mapLocale, false));
+  }
+
+  numberRepresentationMarking(numberAsString) {
+    let numberMarked = "";
+    if (this.periodDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+      let periodPosition = (numberAsString.indexOf(".") >  -1) ? numberAsString.indexOf(".") : numberAsString.length - 1;
+      for (let position = 0; position < numberAsString.length - 1; position++) {
+        if (((periodPosition - 4) == position || (periodPosition - 7) == position || (periodPosition - 10) == position || (periodPosition - 13) == position || (periodPosition - 16) == position) && (this.thousandsPositionCommaAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionCommaAndMiddleDotDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)) // thousandsPositionCommaAndPeriodDecimal 1,234,567.89 && thousandsPositionCommaAndMiddleDotDecimal 1,234,567·89
+          numberMarked = numberMarked + numberAsString[position] + ",";
+        else if (((periodPosition - 4) == position || (periodPosition - 7) == position || (periodPosition - 10) == position || (periodPosition - 13) == position || (periodPosition - 16) == position) && this.thousandsPositionSpaceAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionSpaceAndPeriodDecimal 1 234 567.89
+          numberMarked = numberMarked + numberAsString[position] + " ";
+        else if (((periodPosition - 4) == position || (periodPosition - 7) == position || (periodPosition - 10) == position || (periodPosition - 13) == position || (periodPosition - 16) == position) && this.thousandsPositionPeriodAndApostropheDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionPeriodAndApostropheDecimal 1.234.567'89
+          numberMarked = numberMarked + numberAsString[position] + ".";
+        else if (((periodPosition - 4) == position || (periodPosition - 7) == position || (periodPosition - 10) == position || (periodPosition - 13) == position || (periodPosition - 16) == position) && this.thousandsPositionApostropheAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionApostropheAndPeriodDecimal 1'234'567.89
+          numberMarked = numberMarked + numberAsString[position] + "'";
+        else if (((periodPosition - 6) == position || (periodPosition - 11) == position || (periodPosition - 16) == position) && this.tenThousandsSpaceAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1) // tenThousandsSpaceAndPeriod 123 4567.89
+          numberMarked = numberMarked + numberAsString[position] + " ";
+        else if (((periodPosition - 6) == position || (periodPosition - 11) == position || (periodPosition - 16) == position) && this.tenThousandsCommaAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1) // tenThousandsCommaAndPeriod 123,4567.89
+          numberMarked = numberMarked + numberAsString[position] + ",";
+        else if (((periodPosition - 4) == position || (periodPosition - 6) == position || (periodPosition - 8) == position || (periodPosition - 10) == position || (periodPosition - 12) == position || (periodPosition - 14) == position || (periodPosition - 16) == position) && this.desiLakhCommaPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhCommaPosition 12,34,567.89
+          numberMarked = numberMarked + numberAsString[position] + ",";
+        else if (((periodPosition - 4) == position || (periodPosition - 6) == position || (periodPosition - 8) == position || (periodPosition - 10) == position || (periodPosition - 12) == position || (periodPosition - 14) == position || (periodPosition - 16) == position) && this.desiLakhSpacePosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhSpacePosition 12 34 567.89
+          numberMarked = numberMarked + numberAsString[position] + " ";
+        else if (this.thousandsPositionCommaAndMiddleDotDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 && numberAsString[position] == ".") 
+          numberMarked = numberMarked + "·";
+        else if (this.thousandsPositionPeriodAndApostropheDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 && numberAsString[position] == ".") 
+          numberMarked = numberMarked + "'";
+        else
+          numberMarked = numberMarked + numberAsString[position];
+      }
+    } else if (this.commaDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) { 
+      let commaPosition = (numberAsString.indexOf(",") >  -1) ? numberAsString.indexOf(".") : numberAsString.length - 1;
+      for (let position = 0; position < numberAsString.length - 1; position++) {
+        if (((commaPosition - 4) == position || (commaPosition - 7) == position || (commaPosition - 10) == position || (commaPosition - 13) == position || (commaPosition - 16) == position) && this.thousandsPositionApostropheAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionApostropheAndCommaDecimal 1'234'567,89
+          numberMarked = numberMarked + numberAsString[position] + "'";
+        else if (((commaPosition - 4) == position || (commaPosition - 7) == position || (commaPosition - 10) == position || (commaPosition - 13) == position || (commaPosition - 16) == position) && this.thousandsPositionPeriodAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionPeriodAndCommaDecimal 1.234.567,89
+          numberMarked = numberMarked + numberAsString[position] + ".";
+        else if (((commaPosition - 4) == position || (commaPosition - 7) == position || (commaPosition - 10) == position || (commaPosition - 13) == position || (commaPosition - 16) == position) && this.thousandsPositionSpaceAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionSpaceAndCommaDecimal 1 234 567,89
+          numberMarked = numberMarked + numberAsString[position] + " ";
+        else if (((commaPosition - 4) == position || (commaPosition - 10) == position || (commaPosition - 16) == position) && this.commaAndPeriodAlternating.indexOf(this.sessionManager.getFromSessionURL()) > -1) // commaAndPeriodAlternating 1,234.567,89
+          numberMarked = numberMarked + numberAsString[position] + ".";
+        else if (((commaPosition - 7) == position || (commaPosition - 13) == position) && this.commaAndPeriodAlternating.indexOf(this.sessionManager.getFromSessionURL()) > -1) // commaAndPeriodAlternating 1,234.567,89
+          numberMarked = numberMarked + numberAsString[position] + ",";
+        else
+          numberMarked = numberMarked + numberAsString[position];
+      }
+    } else if (this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+      let separatorPosition = (numberAsString.indexOf("٫") >  -1) ? numberAsString.indexOf(".") : numberAsString.length - 1;
+      for (let position = 0; position < numberAsString.length - 1; position++) {
+        if (((separatorPosition - 4) == position || (separatorPosition - 7) == position || (separatorPosition - 10) == position || (separatorPosition - 13) == position || (separatorPosition - 16) == position) && this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) // arabicDecimalSeparatorLocales 1٬234٬567٫89
+          numberMarked = numberMarked + numberAsString[position] + "٬";
+        else 
+          numberMarked = numberMarked + numberAsString[position];
+      }
+    }
+    return numberMarked;
   }
 
   selectEquationFromBookmark(bookmarked) {
