@@ -1173,19 +1173,19 @@ export class CustomiseKeyboardsComponent implements OnInit {
   periodDecimalSeparatorLocales: any = ['en', 'enus', 'engb', 'enintl', 'ne', 'bn', 'km', 'zhcn', 'zhtw', 'am', 'ga', 'he', 'ja', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enin', 'kn', 'hi', 'sa', 'tiga', 'bya', 'ml', 'mr', 'as', 'gu', 'odu'];
   arabicDecimalSeparatorLocales: any = ['ar','fa','ur','ps','ks','sd', 'bal', 'ckb', 'rhg', 'bsk'];
 
-  desiLakhCommaPosition: any = ['enin', 'ne', 'bn', 'km', 'ms', 'thaa', 'dv', 'si', 'th', 'kn', 'hi', 'sa', 'tiga', 'bya', 'ml', 'mr', 'as', 'gu'];
+  desiLakhCommaPosition: any = ['enin', 'ne', 'bn', 'km', 'thaa', 'dv', 'si', 'th', 'kn', 'hi', 'te', 'ta', 'sa', 'tiga', 'bya', 'ml', 'mr', 'as', 'gu'];
   desiLakhSpacePosition: any = ['enin', 'ne'];
-  thousandsPositionApostropheAndPeriodDecimal : any = [];
-  thousandsPositionApostropheAndCommaDecimal : any = [];
+  thousandsPositionApostropheAndPeriodDecimal : any = ['gsw'];
+  thousandsPositionApostropheAndCommaDecimal : any = ['gsw'];
   thousandsPositionPeriodAndApostropheDecimal : any = [];
-  thousandsPositionPeriodAndCommaDecimal : any = ['de','it','ptbr'];
-  thousandsPositionCommaAndPeriodDecimal : any = ['enus','engb','en', 'enintl', 'odu'];
+  thousandsPositionPeriodAndCommaDecimal : any = ['de','it','ptbr','nld','bs','da','el','id','nl','ro','sl','tr','vi'];
+  thousandsPositionCommaAndPeriodDecimal : any = ['enus','engb','en','enintl','odu','fa','zhtw','ga','he','ja','ko','ms','mt','esmx','th','adlm','nkoo','mend'];
   thousandsPositionSpaceAndPeriodDecimal : any = [];
-  thousandsPositionSpaceAndCommaDecimal : any = [];
-  thousandsPositionCommaAndMiddleDotDecimal : any = [];
+  thousandsPositionSpaceAndCommaDecimal : any = ['cs','fr','bg','befr','sq','et','fi','hu','la','lv','lt','no','pl','pt','ru','sr','sk','af','es','sv','gsw','uk','hr'];
+  thousandsPositionCommaAndMiddleDotDecimal : any = ['engb','ms'];
   tenThousandsCommaAndPeriod: any = ['zhcn'];
   tenThousandsSpaceAndPeriod: any = ['zhcn'];
-  commaAndPeriodAlternating: any = ['hv'];
+  commaAndPeriodAlternating: any = ['hr'];
 
   currencySignLocales: any = ["₠","₡","₢","₣","₤","₥","₦","₧","₨","₩","₪","₫","$","£","€","₹","₺","₽","₾","₻","₼","؋","₭","₮","₯","₰","₱","₲","₳","₴","₵","₶","₷","₸","₿","⃀"];
 
@@ -1438,7 +1438,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
     for(let i = 0; i < this.layoutCurrentKeys.length; i++) {
       if (this.layoutCurrentKeys[i].row) {
         // Last two rows in Orthography template reserved for Mathematics operation symbols
-        // TODO - Handling avst , khar , mend , nbat , xpr , la , el , he 
         for(let j = 0; j < this.layoutCurrentKeys[i].row.length; j++) { 
           // num1
           if (this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num1" && this.calculatorLayout[2].row[8].type && this.calculatorLayout[2].row[8].type == "num1") {
@@ -2275,22 +2274,17 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   stringManipulator(hostString, mappedArray, internalCalculation) {
     let stringToReturn = "";
-    if(internalCalculation && hostString.indexOf(".") > -1 && this.commaDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+    if(internalCalculation && hostString.indexOf(".") > -1 && (this.commaDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionPeriodAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1))
       hostString = hostString.replaceAll(".","");
-    else if (internalCalculation && hostString.indexOf(",") > -1 && this.periodDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) 
+    else if (internalCalculation && hostString.indexOf(",") > -1 && (this.periodDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.desiLakhCommaPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionCommaAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionCommaAndMiddleDotDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.tenThousandsCommaAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1)) 
       hostString = hostString.replaceAll(",","");
     else if(internalCalculation && hostString.indexOf("٬") > -1 && this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1)
       hostString = hostString.replaceAll("٬","");
-    else if(internalCalculation && hostString.indexOf(" ") > -1 && this.thousandsPositionSpaceAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+    else if(internalCalculation && hostString.indexOf(" ") > -1 && (this.thousandsPositionSpaceAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionSpaceAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.tenThousandsSpaceAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.desiLakhSpacePosition.indexOf(this.sessionManager.getFromSessionURL()) > -1))
       hostString = hostString.replaceAll(" ","");
-    else if(internalCalculation && hostString.indexOf(" ") > -1 && this.thousandsPositionSpaceAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)
-      hostString = hostString.replaceAll(" ","");
-    else if(internalCalculation && hostString.indexOf(" ") > -1 && this.tenThousandsSpaceAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1)
-      hostString = hostString.replaceAll(" ","");
-    else if(internalCalculation && hostString.indexOf("'") > -1 && this.thousandsPositionApostropheAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+    else if(internalCalculation && hostString.indexOf("'") > -1 && (this.thousandsPositionApostropheAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionApostropheAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1))
       hostString = hostString.replaceAll("'","");
-    else if(internalCalculation && hostString.indexOf("'") > -1 && this.thousandsPositionApostropheAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)
-      hostString = hostString.replaceAll("'","");
+    
     for (let str of hostString) {
       if (mappedArray[str]) {
         stringToReturn = stringToReturn + mappedArray[str];
@@ -2408,7 +2402,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   displayVariableInLocaleFormat (result) {
     /* 
-      Special Cases for Latin, Hebrew, Roman, Mayan, Kaktovik, etc.
+      TODO Special Cases for Mayan, Kaktovik, Avestan, Etruscan, Kharoshthi, Mende, Nabatian, Parthian, Hebrew, Latin Modern Greek, etc.
       Reference - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide for each of the following variables 
     */
 
