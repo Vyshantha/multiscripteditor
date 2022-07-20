@@ -27,7 +27,7 @@ export class CanvasComponent implements AfterViewInit {
   }
 
   public ngAfterViewInit() {
-    const canvasEl: HTMLCanvasElement = this.canvas?.nativeElement;
+    var canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
     
     this.cx = canvasEl.getContext('2d');
 
