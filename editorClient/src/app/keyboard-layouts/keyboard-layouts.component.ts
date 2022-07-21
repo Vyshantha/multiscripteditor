@@ -3037,7 +3037,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionURL('arold');
     } else if (tabChangeEvent.index == 53 && tabChangeEvent.tab.textLabel == "𑫀𑫕𑫢𑫯𑫍𑫗𑫠𑫦𑫈𑫕𑫢𑫴𑫂𑫕𑫤𑫷") {
       this.sessionManager.setInSessionURL('pauc');
-    } else if (tabChangeEvent.index == 54 && tabChangeEvent.tab.textLabel == "Odùduwà") {
+    } else if (tabChangeEvent.index == 54 && tabChangeEvent.tab.textLabel == "Àébájìogbè-Odùduwà") {
       this.sessionManager.setInSessionURL('odu');
     } else if (tabChangeEvent.index == 55 && tabChangeEvent.tab.textLabel == "Tani") {
       this.sessionManager.setInSessionURL('tani');

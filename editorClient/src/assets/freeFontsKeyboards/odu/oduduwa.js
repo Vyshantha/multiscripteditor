@@ -11,7 +11,7 @@ function Keyboard_oduduwa()
 
   this._v=(typeof keyman!="undefined"&&typeof keyman.version=="string")?parseInt(keyman.version,10):9;
   this.KI="Keyboard_oduduwa";
-  this.KN="Oduduwa";
+  this.KN="Àébájìogbè Odùduwà";
   this.KMINVER="10.0";
   this.KV={F:' 1em "Oduduwa_font_complete"',K102:0};
   this.KV.KLS={
