@@ -1190,12 +1190,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
   currencySignLocales: any = ["₠","₡","₢","₣","₤","₥","₦","₧","₨","₩","₪","₫","$","£","€","₹","₺","₽","₾","₻","₼","؋","₭","₮","₯","₰","₱","₲","₳","₴","₵","₶","₷","₸","₿","⃀"];
 
   dirSet: string = "rtl";
-  dirInput: string = "ltr";
+  unicodeOverride: string = "";
   isRTL: Boolean = false;
 
   rtlLocales : string[] = ['ar', 'he', 'ur', 'fa', 'syrc', 'rhg', 'sd', 'bal', 'bsk', 'yi', 'jrb', 'ps', 'ckb', 'ks', 'ett', 'avst', 'khar', 'phn', 'xpu', 'samr', 'mand', 'sog', 'arc', 'skr', 'pal', 'xpr', 'xsa', 'mnkar', 'jawi', 'nkoo', 'thaa', 'orkh', 'lydi', 'adlm', 'ajam', 'wolf', 'woal', 'chrs', 'elym', 'palm', 'hatr', 'ber', 'mani', 'mer', 'psal', 'kult', 'egyd', 'safa', 'nshu', 'txr', 'rohg', 'estr', 'sert', 'madn', 'lad', 'nbat', 'pice', 'gars', 'cprt', 'lepo', 'sabe', 'phyg', 'khaz', 'mero', 'cana', 'sina', 'yezi', 'ug', 'mend', 'linb', 'idu', 'chun', 'kuli', 'txg', 'indus', 'hung', 'dv', 'odu', 'ougr'];
   rtlLocalesLtRNumerals : string [] = ['ar','fa','ur','ps','ks','sd', 'bal', 'ckb', 'rhg', 'bsk'];
-  rtlNumerals : string [] = ['odu','adlm','nkoo','naba','avst','khar','xpr','mend','phn','ett'];
+  rtlNumerals : string [] = ['odu','adlm','nkoo','nbat','avst','khar','xpr','mend','phn','ett'];
 
   boustrophedonScripts: string[] = ['ett', 'sabe', 'maya', 'txr', 'wole', 'phyg', 'pice', 'asom', 'luw', 'moon', 'sina', 'kmt', 'hung', 'safa', 'xsa', 'egyd', 'avo', 'lepo'];
   topToBottomLR: string[] = ['sog', 'oira', 'mon', 'zhcn', 'zhtw', 'ja', 'ko', 'phag', 'mnc', 'galk', 'shui', 'soyo'];
@@ -1332,12 +1332,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.isTransliterate = flagForTrans;
     });
     if (this.sessionManager.getUILocale()) {
-      this.dirSet = (this.rtlLocales.indexOf(this.sessionManager.getUILocale()) !== -1)? "rtl" : "ltr";
       this.isRTL = (this.rtlLocales.indexOf(this.sessionManager.getUILocale()) !== -1)? true : false;
-      this.dirInput = (this.rtlNumerals.indexOf(this.sessionManager.getUILocale()) !== -1)? "rtl" : "ltr";
     }
     this.sessionManager.itemSessionURL.subscribe((keysType) => {
       if (keysType) {
+        this.dirSet = (this.rtlLocales.indexOf(keysType) > -1)? "rtl" : "ltr";
+        this.unicodeOverride = (this.rtlNumerals.indexOf(keysType) > -1)? "bidi-override" : "normal";
         if (this.layoutRotatedScript.indexOf(keysType) != -1) {
           this.enableRotateKeyboard = true;
         } else {
@@ -2534,7 +2534,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   displayVariableInLocaleFormat (result) {
     /* 
-      TODO Special Cases for Mayan, Kaktovik, Avestan, Etruscan, Kharoshthi, Mende, Nabatian, Parthian, Hebrew, Latin Modern Greek, etc.
+      TODO Special Cases for Mayan, Kaktovik, Avestan, Etruscan, Kharoshthi, Mende, Nabatian, Phoenician, Parthian, Hebrew, Latin Modern Greek, etc.
       Reference - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide for each of the following variables 
     */
 
