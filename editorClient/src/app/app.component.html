@@ -25,7 +25,7 @@
             <b style="font-size: 12px;">{{ 'How to see this page in my Language?' | translate }}</b>
         </mat-panel-description>
         </mat-expansion-panel-header> 
-        <mat-card style="font-size: 10px;"><mat-icon style="font-size: 10px;">keyboard</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'Use this' | translate }} <a href="{{currentURL}}" target="_blank">{{currentURL}}</a> {{ 'or' | translate }} <a href="{{alternativeURL}}" target="_blank">{{alternativeURL}}</a> URL {{ 'to access this Keyboard directly next time' | translate }}. {{ 'Keyboard is build as per' | translate }} <a href="{{keyboardLayouts[apiURL][9]}}">Unicode</a></mat-card>
+        <mat-card style="font-size: 10px;"><mat-icon style="font-size: 10px;">keyboard</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'Use this' | translate }} <a href="{{currentURL}}" target="_blank">{{currentURL}}</a> {{ 'or' | translate }} <a href="{{alternativeURL}}" target="_blank">{{alternativeURL}}</a> URL {{ 'to access this Keyboard directly next time' | translate }}. {{ 'Keyboard is build as per' | translate }} <a href="{{keyboardLayouts[apiURL][9]}}" target="_blank">Unicode</a></mat-card>
 
         <mat-card *ngIf="isSupportedLocale" style="font-size: 10px;"><mat-icon style="font-size: 10px;">language</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'You may also access this URL' | translate }} <a href="{{alternativeURL}}" target="_blank">{{alternativeURL}}</a> {{ 'or' | translate }} <a href="{{alternativeURL}}" target="_blank">{{endemicURL}}</a> {{ 'to view screen and keyboard in that language' | translate }}.</mat-card>
 
