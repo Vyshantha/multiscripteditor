@@ -4,6 +4,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import * as SVAConfig from './../../assets/environments/sva_config.json';
 
 import * as allLayoutPositions from './../../assets/keyboard-layouts/keysboards-layouts.json';
 import * as layoutReligionAll from './../../assets/keyboard-layouts/layout-religion-all.json';
@@ -1119,6 +1120,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
   supportedLanguageColumn3 : any = [];
   supportedLanguageColumn4 : any = [];
   allSupportedLanguages : any = [];
+  
+  calculatorOnly: Boolean = SVAConfig.calculatorOnly;
 
   currencySymbol: string = "₹";
   periodSeparator: string = ".";
@@ -2554,7 +2557,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   displayVariableInLocaleFormat (result) {
     /* 
-      TODO Special Cases for Mayan, Kaktovik, Avestan, Etruscan, Kharoshthi, Mende, Nabatian, Phoenician, Parthian, Hebrew, Latin Modern Greek, etc.
+      TODO Special Cases for Mayan, Kaktovik, Avestan, Etruscan, Kharoshthi, Mende, Nabatian, Phoenician, Parthian, Hebrew, Yiddish, Judeo-Espanyol, Syriac,Latin Modern Greek, etc.
       Reference - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide for each of the following variables 
     */
 

@@ -19,9 +19,9 @@
     <h3 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;height: 35px; word-wrap: break-word; text-align: center; width: 86%;">{{ 'Power to Write Every Word in the World' | translate }}</h3>
     <button mat-button [matMenuTriggerFor]="afterMenu"><mat-icon style="cursor: pointer;font-size: 17px;width: 7%;" aria-label="{{ 'Themes' | translate }}" alt="{{ 'Themes' | translate }}" matTooltip="{{ 'Themes' | translate }}">menu</mat-icon></button>
     <mat-menu #afterMenu="matMenu" xPosition="after">
-      <button *ngIf="exploreOnly" mat-menu-item (click)="exploreMode()" style="cursor: pointer;"><mat-icon aria-label="{{ 'Explore Keyboards' | translate }}" alt="{{ 'Explore Keyboards' | translate }}" matTooltip="{{ 'Explore Keyboards' | translate }}">explore</mat-icon>{{ 'Explore Keyboards' | translate }}</button>
-      <button *ngIf="!exploreOnly" mat-menu-item (click)="exploreMode()" style="cursor: pointer;"><mat-icon aria-label="{{ 'Show All' | translate }}" alt="{{ 'Show All' | translate }}" matTooltip="{{ 'Show All' | translate }}">explore_off</mat-icon>{{ 'Show All' | translate }}</button>
-      <button mat-menu-item (click)="helpForUser('privacy')" style="cursor: pointer;"><mat-icon aria-label="{{ 'User Choice' | translate }}" alt="{{ 'User Choice' | translate }}" matTooltip="{{ 'User Choice' | translate }}">person_pin</mat-icon>{{ 'User Choice' | translate }}</button>
+      <button *ngIf="exploreOnly && !calculatorOnly" mat-menu-item (click)="exploreMode()" style="cursor: pointer;"><mat-icon aria-label="{{ 'Explore Keyboards' | translate }}" alt="{{ 'Explore Keyboards' | translate }}" matTooltip="{{ 'Explore Keyboards' | translate }}">explore</mat-icon>{{ 'Explore Keyboards' | translate }}</button>
+      <button *ngIf="!exploreOnly && !calculatorOnly" mat-menu-item (click)="exploreMode()" style="cursor: pointer;"><mat-icon aria-label="{{ 'Show All' | translate }}" alt="{{ 'Show All' | translate }}" matTooltip="{{ 'Show All' | translate }}">explore_off</mat-icon>{{ 'Show All' | translate }}</button>
+      <button mat-menu-item (click)="helpForUser('privacy')" *ngIf="!calculatorOnly" style="cursor: pointer;"><mat-icon aria-label="{{ 'User Choice' | translate }}" alt="{{ 'User Choice' | translate }}" matTooltip="{{ 'User Choice' | translate }}">person_pin</mat-icon>{{ 'User Choice' | translate }}</button>
       <button mat-menu-item (click)="helpForUser('help')" style="cursor: pointer;"><mat-icon aria-label="{{ 'Help Assistance' | translate }}" alt="{{ 'Help Assistance' | translate }}" matTooltip="{{ 'Help Assistance' | translate }}">help_center</mat-icon>{{ 'Help Assistance' | translate }}</button>
       <button mat-menu-item disabled><mat-icon style="cursor: pointer;" aria-label="{{ 'Themes' | translate }}" alt="{{ 'Themes' | translate }}" matTooltip="{{ 'Themes' | translate }}">palette</mat-icon> {{ 'Themes' | translate }}</button>
       <button mat-menu-item style="color: black;font-size: 0.8rem;" (click)="swapToDarkTheme()">{{ 'Dark' | translate }}</button>
@@ -58,9 +58,9 @@
   <div class="spacer"></div>
   <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;height: 10px; word-wrap: break-word; text-align: center;">{{ 'Power to Write Every Word in the World' | translate }}</h2>
   <div class="spacer"></div>
-  <mat-icon (click)="exploreMode()" *ngIf="exploreOnly" style="cursor: pointer;" aria-label="{{ 'Explore Keyboards' | translate }}" alt="{{ 'Explore Keyboards' | translate }}" matTooltip="{{ 'Explore Keyboards' | translate }}">explore</mat-icon>
-  <mat-icon (click)="exploreMode()" *ngIf="!exploreOnly" style="cursor: pointer;" aria-label="{{ 'Show All' | translate }}" alt="{{ 'Show All' | translate }}" matTooltip="{{ 'Show All' | translate }}">explore_off</mat-icon>&nbsp;&nbsp;
-  <mat-icon (click)="helpForUser('privacy')" style="cursor: pointer;" aria-label="{{ 'User Choice' | translate }}" alt="{{ 'User Choice' | translate }}" matTooltip="{{ 'User Choice' | translate }}">person_pin</mat-icon>&nbsp;&nbsp;
+  <mat-icon (click)="exploreMode()" *ngIf="exploreOnly && !calculatorOnly" style="cursor: pointer;" aria-label="{{ 'Explore Keyboards' | translate }}" alt="{{ 'Explore Keyboards' | translate }}" matTooltip="{{ 'Explore Keyboards' | translate }}">explore</mat-icon>
+  <mat-icon (click)="exploreMode()" *ngIf="!exploreOnly && !calculatorOnly" style="cursor: pointer;" aria-label="{{ 'Show All' | translate }}" alt="{{ 'Show All' | translate }}" matTooltip="{{ 'Show All' | translate }}">explore_off</mat-icon>&nbsp;&nbsp;
+  <mat-icon (click)="helpForUser('privacy')" *ngIf="!calculatorOnly" style="cursor: pointer;" aria-label="{{ 'User Choice' | translate }}" alt="{{ 'User Choice' | translate }}" matTooltip="{{ 'User Choice' | translate }}">person_pin</mat-icon>&nbsp;&nbsp;
   <mat-icon (click)="helpForUser('help')" style="cursor: pointer;" matTooltip="{{ 'Help Assistance' | translate }}">help_center</mat-icon>&nbsp;&nbsp;&nbsp;
 </div>
 
@@ -98,8 +98,8 @@
   <div class="spacer"></div>
   <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;height: 10px;">{{ 'Power to Write Every Word in the World' | translate }}</h1>
   <div class="spacer"></div>
-  <mat-icon (click)="exploreMode()" *ngIf="exploreOnly" style="cursor: pointer;" aria-label="{{ 'Explore Keyboards' | translate }}" alt="{{ 'Explore Keyboards' | translate }}" matTooltip="{{ 'Explore Keyboards' | translate }}">explore</mat-icon>
-  <mat-icon (click)="exploreMode()" *ngIf="!exploreOnly" style="cursor: pointer;" aria-label="{{ 'Show All' | translate }}" alt="{{ 'Show All' | translate }}" matTooltip="{{ 'Show All' | translate }}">explore_off</mat-icon>&nbsp;&nbsp;&nbsp;
-  <mat-icon (click)="helpForUser('privacy')" style="cursor: pointer;" aria-label="{{ 'User Choice' | translate }}" alt="{{ 'User Choice' | translate }}" matTooltip="{{ 'User Choice' | translate }}">person_pin</mat-icon>&nbsp;&nbsp;&nbsp;
+  <mat-icon (click)="exploreMode()" *ngIf="exploreOnly && !calculatorOnly" style="cursor: pointer;" aria-label="{{ 'Explore Keyboards' | translate }}" alt="{{ 'Explore Keyboards' | translate }}" matTooltip="{{ 'Explore Keyboards' | translate }}">explore</mat-icon>
+  <mat-icon (click)="exploreMode()" *ngIf="!exploreOnly && !calculatorOnly" style="cursor: pointer;" aria-label="{{ 'Show All' | translate }}" alt="{{ 'Show All' | translate }}" matTooltip="{{ 'Show All' | translate }}">explore_off</mat-icon>&nbsp;&nbsp;&nbsp;
+  <mat-icon (click)="helpForUser('privacy')" *ngIf="!calculatorOnly" style="cursor: pointer;" aria-label="{{ 'User Choice' | translate }}" alt="{{ 'User Choice' | translate }}" matTooltip="{{ 'User Choice' | translate }}">person_pin</mat-icon>&nbsp;&nbsp;&nbsp;
   <mat-icon (click)="helpForUser('help')" style="cursor: pointer;" matTooltip="{{ 'Help Assistance' | translate }}">help_center</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
 </div>

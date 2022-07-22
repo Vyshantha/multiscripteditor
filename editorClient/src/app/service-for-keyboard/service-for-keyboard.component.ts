@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';   
 import { HttpClient } from '@angular/common/http';
 import { SessionManagerService } from '../core/services/session-manager.service';
+import * as SVAConfig from './../../assets/environments/sva_config.json';
 
 import {
   MatSnackBar,
@@ -27,6 +28,7 @@ export class ServiceForKeyboardComponent implements OnInit {
   allowTransliterate: Boolean = true;
   transliterateKeyboard: Boolean = false;
 
+  calculatorOnly: Boolean = SVAConfig.calculatorOnly;
   inExplorerMode: Boolean = false;
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';

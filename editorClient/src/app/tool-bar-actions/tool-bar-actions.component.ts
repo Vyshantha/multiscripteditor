@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { FormControl, FormGroup, FormBuilder, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
+import * as SVAConfig from './../../assets/environments/sva_config.json';
 
 import { SessionManagerService } from '../core/services/session-manager.service';
 import { ThemeService } from '../core/services/theme.service';
@@ -28,6 +29,7 @@ export class ToolBarActionsComponent implements OnInit, AfterViewInit {
 
   keyboardLayouts: any = (allLayoutPositions as any).default;
   localeUISelection : String = '';
+  calculatorOnly: Boolean = SVAConfig.calculatorOnly;
 
   supportedLanguageColumn1 : any = [];
   supportedLanguageColumn2 : any = [];

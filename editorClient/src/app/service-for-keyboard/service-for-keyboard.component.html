@@ -1,4 +1,4 @@
-<table *ngIf="isMobile && !isTablet" style="width: 100%;text-align: center;">
+<table *ngIf="isMobile && !isTablet && !calculatorOnly" style="width: 100%;text-align: center;">
   <tr>
     <td *ngIf="!inExplorerMode">
       <mat-slide-toggle (click)="showOnlyKeyboard()" [(ngModel)]="onlyKeyboardToggle"><img src="./../assets/images/favicon.png" matTooltip="{{ 'Power to Write Every Word in the World' | translate }}" alt="{{ 'Power to Write Every Word in the World' | translate }}" width="40"></mat-slide-toggle> 
@@ -16,7 +16,7 @@
   </tr>
 </table>
 
-<table *ngIf="!isMobile && isTablet" style="width: 100%;text-align: center;">
+<table *ngIf="!isMobile && isTablet && !calculatorOnly" style="width: 100%;text-align: center;">
   <tr>
     <td *ngIf="!inExplorerMode">
       &nbsp;&nbsp; 
@@ -36,7 +36,7 @@
   </tr>
 </table>
 
-<table *ngIf="!isMobile && !isTablet" style="width: 100%;text-align: center;">
+<table *ngIf="!isMobile && !isTablet && !calculatorOnly" style="width: 100%;text-align: center;">
   <tr>
     <td *ngIf="!inExplorerMode">
       &nbsp;&nbsp; 

@@ -24,6 +24,9 @@ import TileLayer from "ol/layer/Tile";
 import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
 
+import * as SVAConfig from './../../assets/environments/sva_config.json';
+
+
 import { HelperComponent } from '../helper/helper.component';
 import { CustomiseKeyboardsComponent } from '../customise-keyboards/customise-keyboards.component';
 
@@ -1152,6 +1155,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
 
   layoutCurrentKeys: any = [];
   previousLayout: any = [];
+
+  calculatorOnly: Boolean = SVAConfig.calculatorOnly;
   
   selectedAllScriptTab : number = 0;
   selectKeysTabs : number = 0;
@@ -2126,6 +2131,11 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     this.sessionManager.currentPressedKey.subscribe((value) => {
       this.whichMappedKey = value;
     });
+
+    if(this.calculatorOnly == true) {
+      // Open the Custom Calculator
+      this.customKeyboardLayouts("calculate");
+    }
   }
 
   ngAfterViewInit(): void {

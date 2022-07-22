@@ -31,6 +31,7 @@ export class AppComponent implements AfterViewInit {
 
   hostname: string = SVAConfig.hostname;
   port: number = SVAConfig.port;
+  calculatorOnly: Boolean = SVAConfig.calculatorOnly;
 
   headerVisible : Boolean = true;
   footerVisible : Boolean = true;
@@ -187,7 +188,7 @@ export class AppComponent implements AfterViewInit {
     const clearCookies = document.cookie.split(';').forEach(cookie => document.cookie = cookie.replace(/^ +/, '').replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`));
 
     // Multiple Ignore option then do not show Help at initial load
-    if (this.sessionManager.getMultiIgnore() != 'set') {
+    if (this.sessionManager.getMultiIgnore() != 'set' && !this.calculatorOnly) {
       const dialogProfile = this.helperDialog.open(this.HelperPopUp, {
         width: (!this.isMobile && !this.isTablet)?
           '70%':
@@ -199,6 +200,13 @@ export class AppComponent implements AfterViewInit {
         data: {show: 'help'}
       });
     }
+
+    if (this.calculatorOnly) {
+      this.onlineOnly = false;
+      this.sessionManager.itemKeyboardOnly.next(false);
+      this.sessionManager.nonExplorationMode.next(false);
+    }
+
     // Sending Session Data To Server
     this.sessionManager.tokenForSession().subscribe((sessionData: any) => {
         // Session Manager Service sends these Device, Browser, Locale & User Interface Data
