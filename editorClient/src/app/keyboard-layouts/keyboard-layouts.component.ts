@@ -2779,6 +2779,9 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   }
 
   resetForAKeyboard() {
+    if (this.calculatorOnly) {
+      this.customKeyboardLayouts("calculate");
+    }
     this.sessionManager.setShiftKeyPressed(false);
     this.isShiftKeyPress = false;
     this.sessionManager.setAltGrKeyPressed(false);

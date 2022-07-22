@@ -239,9 +239,9 @@
   <br/>
   <div mat-dialog-actions style="margin-bottom: 0px;flex-wrap:nowrap;">
     <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
-    <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></button>
-    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon></button>
-    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
+    <button mat-raised-button color="accent" *ngIf="showEditor && !calculatorOnly" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></button>
+    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" *ngIf="!calculatorOnly" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon></button>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" *ngIf="!calculatorOnly" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
   </div>
 </div>
 
@@ -276,9 +276,9 @@
   <br/>
   <div mat-dialog-actions style="margin-bottom: 0px;flex-wrap:nowrap;">
     <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
-    <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></button>
-    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon></button>
-    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
+    <button mat-raised-button color="accent" *ngIf="showEditor && !calculatorOnly" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></button>
+    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" *ngIf="!calculatorOnly" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon></button>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" *ngIf="!calculatorOnly" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
   </div>
 </div>
 
@@ -427,9 +427,9 @@
   <br/>
   <div mat-dialog-actions style="margin-bottom: 0px;flex-wrap:nowrap;">
     <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
-    <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></button>
-    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon></button>
-    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
+    <button mat-raised-button color="accent" *ngIf="showEditor && !calculatorOnly" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"></button>
+    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" *ngIf="!calculatorOnly" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon></button>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" *ngIf="!calculatorOnly" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
   </div>
 </div>
 
@@ -645,9 +645,9 @@
   </mat-card>
   <div mat-dialog-actions style="margin-bottom: 0px;">
       <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
-      <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
-      <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
-      <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
+      <button mat-raised-button color="accent" *ngIf="showEditor && !calculatorOnly" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
+      <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" *ngIf="!calculatorOnly" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
+      <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" *ngIf="!calculatorOnly" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
   </div>
 </div>
 
@@ -682,9 +682,9 @@
 
   <div mat-dialog-actions style="margin-bottom: 0px;">
       <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
-      <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
-      <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
-      <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
+      <button mat-raised-button color="accent" *ngIf="showEditor && !calculatorOnly" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
+      <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" *ngIf="!calculatorOnly" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
+      <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" *ngIf="!calculatorOnly" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>
   </div>
 </div>
 
@@ -787,9 +787,9 @@
   <br/><br/>
   <div mat-dialog-actions style="margin-bottom: 0px;">
     <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
-    <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
-    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
-    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>&nbsp;&nbsp;&nbsp;&nbsp; 
+    <button mat-raised-button color="accent" *ngIf="showEditor && !calculatorOnly" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
+    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" *ngIf="!calculatorOnly" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" *ngIf="!calculatorOnly" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon></button>&nbsp;&nbsp;&nbsp;&nbsp; 
     <mat-spinner *ngIf="runProgressIndicator" diameter="30" [mode]="'indeterminate'" color="accent"></mat-spinner>
   </div>
 </div>
@@ -1014,9 +1014,9 @@
   </mat-card>
   <div mat-dialog-actions style="margin-bottom: 0px;">
       <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon> {{ 'Close' | translate }}</button>
-      <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
-      <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
-      <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>
+      <button mat-raised-button color="accent" *ngIf="showEditor && !calculatorOnly" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
+      <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" *ngIf="!calculatorOnly" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
+      <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" *ngIf="!calculatorOnly" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>
   </div>
 </div>
 
@@ -1051,9 +1051,9 @@
 
   <div mat-dialog-actions style="margin-bottom: 0px;">
       <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon> {{ 'Close' | translate }}</button>
-      <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
-      <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
-      <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>
+      <button mat-raised-button color="accent" *ngIf="showEditor && !calculatorOnly" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
+      <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" *ngIf="!calculatorOnly" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
+      <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" *ngIf="!calculatorOnly" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>
   </div>
 </div>
 
@@ -1156,9 +1156,9 @@
   <br/><br/>
   <div mat-dialog-actions style="margin-bottom: 0px;">
     <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon> {{ 'Close' | translate }}</button>
-    <button mat-raised-button color="accent" *ngIf="showEditor" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
-    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
-    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>&nbsp;&nbsp;&nbsp;&nbsp; 
+    <button mat-raised-button color="accent" *ngIf="showEditor && !calculatorOnly" (click)="zenMode()" aria-label="{{ 'Zen' | translate }}"><img src="./../assets/images/favicon.png" alt="{{ 'Zen' | translate }}" width="40"> {{ 'Zen' | translate }}</button>
+    <button mat-raised-button aria-label="{{ 'Explore Keyboards' | translate }}" *ngIf="!calculatorOnly" (click)="exploreMode()"><mat-icon *ngIf="exploreOnly">explore</mat-icon><mat-icon *ngIf="!exploreOnly">explore_off</mat-icon> {{ 'Explore Keyboards' | translate }}</button>
+    <button mat-raised-button color="primary" aria-label="{{ 'Keyboard Selection' | translate }}" *ngIf="!calculatorOnly" (click)="selectKeyboard()"><mat-icon>travel_explore</mat-icon> {{ 'Keyboard Selection' | translate }}</button>&nbsp;&nbsp;&nbsp;&nbsp; 
     <mat-spinner *ngIf="runProgressIndicator" diameter="30" [mode]="'indeterminate'" color="accent"></mat-spinner>
   </div>
 </div>
