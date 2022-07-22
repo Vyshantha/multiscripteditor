@@ -1120,7 +1120,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   supportedLanguageColumn3 : any = [];
   supportedLanguageColumn4 : any = [];
   allSupportedLanguages : any = [];
-  
+
   calculatorOnly: Boolean = SVAConfig.calculatorOnly;
 
   currencySymbol: string = "₹";
@@ -1265,7 +1265,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   localeNames : any = "";
 
-  defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 40 : ((!this.isMobile && this.isTablet)? 35 : 50 );
+  defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 40 : ((!this.isMobile && this.isTablet)? 45 : 50 );
   defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 18 : ((!this.isMobile && this.isTablet)? 16 : 17 );
 
   translateForSnackBar: string[] = [];
@@ -1379,6 +1379,13 @@ export class CustomiseKeyboardsComponent implements OnInit {
           this.calculatorLayout[5].row[10].value = ".";
           this.simpleCalculatorLayout[4].row[0].value = ",";
           this.simpleCalculatorLayout[4].row[2].value = ".";
+        } else if (this.arabicDecimalSeparatorLocales.indexOf(keysType) > -1) {
+          this.commaSeparator = "٬";
+          this.periodSeparator = "٫";
+          this.calculatorLayout[5].row[8].value = "٬";
+          this.calculatorLayout[5].row[10].value = "٫";
+          this.simpleCalculatorLayout[4].row[0].value = "٬";
+          this.simpleCalculatorLayout[4].row[2].value = "٫";
         }
         // Currency update based on Locale & Script
         this.calculatorLayout[5].row[1].value = "€";

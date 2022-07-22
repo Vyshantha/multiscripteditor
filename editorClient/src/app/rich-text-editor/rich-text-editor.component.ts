@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, AfterContentInit, ViewChild, ElementR
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import * as SVAConfig from './../../assets/environments/sva_config.json';
 
 import { SessionManagerService } from '../core/services/session-manager.service';
 
@@ -22,7 +23,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
   layoutCurrentKeys: any = [];
 
   showEditor : Boolean = true;
-  calculatorOnly: Boolean = true;
+  calculatorOnly: Boolean = SVAConfig.calculatorOnly;
 
   altGrCapsExists : Boolean = false;
   qwertyPos: number = 0;
@@ -243,7 +244,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       }
     });
     this.sessionManager.nonExplorationMode.subscribe((editorOnly) => {
-      this.showEditor = editorOnly;
+      this.showEditor = (!this.calculatorOnly) ? editorOnly : false;
       setTimeout(() => {
         if (editorOnly == true && this.sessionManager.getSessionSavedContent() != null && this.fullmodeCkEditor) {
           this.ckeditorContent = this.sessionManager.getSessionSavedContent();

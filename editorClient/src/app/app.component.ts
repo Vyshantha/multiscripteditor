@@ -105,10 +105,10 @@ export class AppComponent implements AfterViewInit {
     }
 
     this.sessionManager.itemKeyboardOnly.subscribe((flagValue) => {
-      if (flagValue == true) {
+      if (flagValue == true && !this.calculatorOnly) {
         this.headerVisible = false;
         this.footerVisible = false;
-      } else if (flagValue == false) {
+      } else if (flagValue == false && !this.calculatorOnly) {
         this.headerVisible = true;
         this.footerVisible = true;
       }
@@ -203,8 +203,6 @@ export class AppComponent implements AfterViewInit {
 
     if (this.calculatorOnly) {
       this.onlineOnly = false;
-      this.sessionManager.itemKeyboardOnly.next(false);
-      this.sessionManager.nonExplorationMode.next(false);
     }
 
     // Sending Session Data To Server

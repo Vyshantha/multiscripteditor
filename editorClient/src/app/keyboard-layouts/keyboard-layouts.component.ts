@@ -2032,7 +2032,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
           this.fontClass = this.fontsSources[this.fontsSources.indexOf(keysType)];
         }
         this.keysResizePerDeviceWidth();
-        if (this.supportedLanguages.indexOf(keysType) > -1)
+        if (this.supportedLanguages.indexOf(keysType) > -1 && !this.calculatorOnly)
           this.populateSuggestionsForLanguage(keysType);
         this.sessionManager.itemCurrentKeyboard.next(this[this.keyboardLayouts[keysType][3]]);
         if (this.boustrophedonScripts.indexOf(keysType) > -1) {
@@ -2148,10 +2148,10 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     });
   
     this.sessionManager.itemKeyboardOnly.subscribe((flagValue)=> {
-      if (flagValue == true) {
+      if (flagValue == true && this.keysAbove) {
         this.allTabGroups.nativeElement.style.display = 'none';
         this.keysAbove.nativeElement.style.display = 'block';
-      } else if (flagValue == false) {
+      } else if (flagValue == false && this.keysAbove) {
         this.keysAbove.nativeElement.style.display = 'none';
         if (this.allTabGroups)
           this.allTabGroups.nativeElement.style.display = 'block';
