@@ -133,7 +133,7 @@
     </mat-expansion-panel>
   </mat-accordion>
   <br/>
-  <mat-accordion>
+  <mat-accordion *ngIf="!calculatorOnly">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -146,10 +146,10 @@
               <mat-expansion-panel>
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                      <b style="font-size: 12px;">{{ 'Language Learning' | translate }}</b>
+                      <b style="font-size: 12px;">{{ 'Orthography' | translate }}</b>
                   </mat-panel-title>
                   <mat-panel-description style="font-size: 10px;">
-                    <mat-icon aria-label="{{ 'Language Learning' | translate }}" alt="{{ 'Language Learning' | translate }}" matTooltip="{{ 'Language Learning' | translate }}">view_comfy</mat-icon>
+                    <mat-icon aria-label="{{ 'Orthography' | translate }}" alt="{{ 'Orthography' | translate }}" matTooltip="{{ 'Orthography' | translate }}">view_comfy</mat-icon>
                   </mat-panel-description>
                 </mat-expansion-panel-header>
                 {{ 'All Scripts are available in this type' | translate }}
@@ -551,24 +551,24 @@
     </mat-tab-group>
   </mat-card>
   <br/>
-  <mat-accordion>
+  <mat-accordion *ngIf="!calculatorOnly">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
               <b style="font-size: 14px;">{{ 'Choosing Style of Keyboards for Scripts' | translate }}</b>
           </mat-panel-title>
           <mat-panel-description>
-              <div style="font-size: 10px;">{{ 'Language Learning' | translate }} | {{ 'Typewriter' | translate }} ({{ 'QWERTY' | translate }}) | {{ 'Transliterate' | translate }} ({{ 'Phonetic' | translate }})</div>
+              <div style="font-size: 10px;">{{ 'Orthography' | translate }} | {{ 'Typewriter' | translate }} ({{ 'QWERTY' | translate }}) | {{ 'Transliterate' | translate }} ({{ 'Phonetic' | translate }})</div>
           </mat-panel-description>
         </mat-expansion-panel-header>
           <mat-accordion>
               <mat-expansion-panel>
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                      <b>{{ 'Language Learning' | translate }}</b>
+                      <b>{{ 'Orthography' | translate }}</b>
                   </mat-panel-title>
                   <mat-panel-description>
-                    <mat-icon aria-label="{{ 'Language Learning' | translate }}" alt="{{ 'Language Learning' | translate }}" matTooltip="{{ 'Language Learning' | translate }}">view_comfy</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'Writing Systems or Scripts using this style' | translate }}
+                    <mat-icon aria-label="{{ 'Orthography' | translate }}" alt="{{ 'Orthography' | translate }}" matTooltip="{{ 'Orthography' | translate }}">view_comfy</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'Writing Systems or Scripts using this style' | translate }}
                   </mat-panel-description>
                 </mat-expansion-panel-header>
                 {{ 'All Scripts are available in this type' | translate }}
@@ -920,24 +920,24 @@
     </mat-tab-group>
   </mat-card>
   <br/>
-  <mat-accordion>
+  <mat-accordion *ngIf="!calculatorOnly">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
               <b>{{ 'Choosing Style of Keyboards for Scripts' | translate }}</b>
           </mat-panel-title>
           <mat-panel-description>
-              {{ 'Language Learning' | translate }} | {{ 'Typewriter' | translate }} ({{ 'QWERTY' | translate }}) | {{ 'Transliterate' | translate }} ({{ 'Phonetic' | translate }})
+              {{ 'Orthography' | translate }} | {{ 'Typewriter' | translate }} ({{ 'QWERTY' | translate }}) | {{ 'Transliterate' | translate }} ({{ 'Phonetic' | translate }})
           </mat-panel-description>
         </mat-expansion-panel-header>
           <mat-accordion>
               <mat-expansion-panel>
                 <mat-expansion-panel-header>
                   <mat-panel-title>
-                      <b>{{ 'Language Learning' | translate }}</b>
+                      <b>{{ 'Orthography' | translate }}</b>
                   </mat-panel-title>
                   <mat-panel-description>
-                    <mat-icon aria-label="{{ 'Language Learning' | translate }}" alt="{{ 'Language Learning' | translate }}" matTooltip="{{ 'Language Learning' | translate }}">view_comfy</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'Writing Systems or Scripts using this style' | translate }}
+                    <mat-icon aria-label="{{ 'Orthography' | translate }}" alt="{{ 'Orthography' | translate }}" matTooltip="{{ 'Orthography' | translate }}">view_comfy</mat-icon> &nbsp;&nbsp;&nbsp; {{ 'Writing Systems or Scripts using this style' | translate }}
                   </mat-panel-description>
                 </mat-expansion-panel-header>
                 {{ 'All Scripts are available in this type' | translate }}
