@@ -1705,7 +1705,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           // num0 or num10 for use10InPlaceOfZero
-          if ((this.currentBase == "base2" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num0" && this.calculatorLayout[5].row[9].type && this.calculatorLayout[5].row[9].type == "num0") {
+          if ((this.currentBase == "base2" || this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num0" && this.calculatorLayout[5].row[9].type && this.calculatorLayout[5].row[9].type == "num0") {
             this.calculatorLayout[5].row[9].value = this.layoutCurrentKeys[i].row[j].value;
             this.simpleCalculatorLayout[4].row[1].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
