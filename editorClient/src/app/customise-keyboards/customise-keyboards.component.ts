@@ -1128,7 +1128,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   currentBase: string = "base10";
   baseIndices: any = [2, 8, 10, 12, 16, 20, 60];
 
-  vigesimal: any = ["maya", "cans"];
+  vigesimal: any = ["maya", "cans", "esi"];
   sexagesimal : any = ["sux", "hit", "elx"];
 
   // Operator and Libraries - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
@@ -1287,7 +1287,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     - Currency display and use
     - Brackets usage & complete equation computation
     - Logarithm to Base and Yth Root of X
-    - BaseX specific UI display & operations
+    - BaseX specific Operations
   */
 
   constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
@@ -1420,7 +1420,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.isAltGrKeyPress = flagForAltGr;
     });
     this.layoutCurrentKeys = this[this.keyboardLayouts[this.sessionManager.getFromSessionURL()][3]];
-    
+
+    if (this.vigesimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+      this.currentBase = "base20";
+    else if (this.sexagesimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+      this.currentBase = "base60";
+
     this.populateUINumberLayout();
     
     this.altGrCapsExists = (this.layoutCurrentKeys)? this.layoutCurrentKeys.some(x => x.hasOwnProperty('altGrCaps')) : false;
@@ -1802,7 +1807,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
           }
           // Mayan & Kaktovik
           //num17 - G
-          if (this.currentBase == "base20" && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num17" && this.calculatorLayout[1].row[8].type && this.calculatorLayout[1].row[8].type == "formula1") {
+          if (this.currentBase == "base20" && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num17" && this.calculatorLayout[1].row[8].type && this.calculatorLayout[1].row[8].type == "formula6") {
             this.calculatorLayout[1].row[8].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "G";
@@ -1816,7 +1821,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           //num18 - H
-          if (this.currentBase == "base20" && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num18" && this.calculatorLayout[1].row[9].type && this.calculatorLayout[1].row[9].type == "formula2") {
+          if (this.currentBase == "base20" && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num18" && this.calculatorLayout[1].row[9].type && this.calculatorLayout[1].row[9].type == "formula5") {
             this.calculatorLayout[1].row[9].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "H";
@@ -1830,7 +1835,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           //num19 - I
-          if (this.currentBase == "base20" && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num19" && this.calculatorLayout[1].row[10].type && this.calculatorLayout[1].row[10].type == "formula3") {
+          if (this.currentBase == "base20" && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num19" && this.calculatorLayout[1].row[10].type && this.calculatorLayout[1].row[10].type == "formula4") {
             this.calculatorLayout[1].row[10].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "I";
@@ -1844,7 +1849,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           //num20 - J
-          if (this.currentBase == "base20" && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num20" && this.calculatorLayout[1].row[11].type && this.calculatorLayout[1].row[11].type == "formula4") {
+          if (this.currentBase == "base20" && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num20" && this.calculatorLayout[1].row[11].type && this.calculatorLayout[1].row[11].type == "formula3") {
             this.calculatorLayout[1].row[11].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "J";
