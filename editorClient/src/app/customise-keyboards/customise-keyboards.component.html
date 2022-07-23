@@ -175,7 +175,12 @@
                     <button mat-raised-button type="submit" color="primary" aria-label="{{ 'Send Equation' | translate }}" style="height: 35px;" (click)="sendResultAndEquation()"><mat-icon style="font-size: medium;">summarize</mat-icon></button>&nbsp;&nbsp;
                 </td>
                 <td>
-                    <button mat-raised-button color="accent" aria-label="{{ 'History' | translate }}" matTooltip="{{ 'History' | translate }}" style="height: 35px;" (click)="done()"><mat-icon style="font-size: medium;">work_history</mat-icon></button>
+                    <button mat-raised-button color="accent" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="historyMenu" style="height: 35px;" aria-label="{{ 'History' | translate }}"><mat-icon>work_history</mat-icon></button>&nbsp;&nbsp;
+                    <mat-menu #historyMenu="matMenu">
+                        <button *ngFor="let history of historyEquations" mat-menu-item>
+                            <span (click)="selectEquationFromHistory(history)">{{history}}</span>
+                        </button>
+                    </mat-menu>&nbsp;&nbsp;
                 </td>
             </tr>
             <tr>
@@ -183,7 +188,7 @@
             </tr>
             <tr style="text-align: center; width: 100%;">
                 <td colspan="2">
-                    <button mat-raised-button color="primary" [matMenuTriggerFor]="favouriteMenu" aria-label="{{ 'Bookmark' | translate }}" style="height: 35px;" matTooltip="{{ 'Bookmark' | translate }}"><mat-icon style="font-size: medium;">stars</mat-icon></button>&nbsp;&nbsp;
+                    <button mat-raised-button color="primary" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="favouriteMenu" aria-label="{{ 'Bookmark' | translate }}" style="height: 35px;" matTooltip="{{ 'Bookmark' | translate }}"><mat-icon style="font-size: medium;">stars</mat-icon></button>&nbsp;&nbsp;
                     <mat-menu #favouriteMenu="matMenu">
                         <button *ngFor="let valueOfBookmark of bookmarkedEquations" mat-menu-item>
                             <span (click)="selectEquationFromBookmark(valueOfBookmark)">{{valueOfBookmark}}</span>
@@ -201,12 +206,17 @@
                     <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" style="height: 35px;" cdkFocusInitial><mat-icon style="font-size: medium;">check_circle</mat-icon></button>&nbsp;&nbsp;
                 </td>
                 <td>
-                    <button mat-raised-button color="accent" aria-label="{{ 'History' | translate }}" matTooltip="{{ 'History' | translate }}" style="height: 35px;" (click)="done()"><mat-icon style="font-size: medium;">work_history</mat-icon></button>
+                    <button mat-raised-button color="accent" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="historyMenu" style="height: 35px;" aria-label="{{ 'History' | translate }}"><mat-icon>work_history</mat-icon></button>&nbsp;&nbsp;
+                    <mat-menu #historyMenu="matMenu">
+                        <button *ngFor="let history of historyEquations" mat-menu-item>
+                            <span (click)="selectEquationFromHistory(history)">{{history}}</span>
+                        </button>
+                    </mat-menu>&nbsp;&nbsp;
                 </td>
             </tr>
             <tr style="text-align: center; width: 100%;">
                 <td>
-                    <button mat-raised-button color="primary" [matMenuTriggerFor]="favouriteMenu" aria-label="{{ 'Bookmark' | translate }}" style="height: 35px;" matTooltip="{{ 'Bookmark' | translate }}"><mat-icon style="font-size: medium;">stars</mat-icon></button>&nbsp;&nbsp;
+                    <button mat-raised-button color="primary" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="favouriteMenu" aria-label="{{ 'Bookmark' | translate }}" style="height: 35px;" matTooltip="{{ 'Bookmark' | translate }}"><mat-icon style="font-size: medium;">stars</mat-icon></button>&nbsp;&nbsp;
                     <mat-menu #favouriteMenu="matMenu">
                         <button *ngFor="let valueOfBookmark of bookmarkedEquations" mat-menu-item>
                             <span (click)="selectEquationFromBookmark(valueOfBookmark)">{{valueOfBookmark}}</span>
@@ -284,8 +294,13 @@
             <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon></button>
             <button mat-raised-button type="submit" *ngIf="!calculatorOnly" color="accent" (click)="sendResultOnly()" aria-label="{{ 'Send Result' | translate }}"><mat-icon>send</mat-icon> {{ 'Send Result' | translate }}</button>&nbsp;&nbsp;
             <button mat-raised-button type="submit" *ngIf="!calculatorOnly" color="primary" aria-label="{{ 'Send Equation' | translate }}" (click)="sendResultAndEquation()"><mat-icon>summarize</mat-icon> {{ 'Send Equation' | translate }}</button>&nbsp;&nbsp;
-            <button mat-raised-button color="accent" aria-label="{{ 'History' | translate }}" matTooltip="{{ 'History' | translate }}" (click)="done()"><mat-icon>work_history</mat-icon></button>&nbsp;&nbsp;
-            <button mat-raised-button color="primary" [matMenuTriggerFor]="favouriteMenu" aria-label="{{ 'Bookmark' | translate }}" matTooltip="{{ 'Bookmark' | translate }}"><mat-icon>stars</mat-icon></button> &nbsp;&nbsp;
+            <button mat-raised-button color="accent" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="historyMenu" aria-label="{{ 'History' | translate }}"><mat-icon>work_history</mat-icon></button>&nbsp;&nbsp;
+            <mat-menu #historyMenu="matMenu">
+                <button *ngFor="let history of historyEquations" mat-menu-item>
+                    <span (click)="selectEquationFromHistory(history)">{{history}}</span>
+                </button>
+            </mat-menu>&nbsp;&nbsp;
+            <button mat-raised-button color="primary" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="favouriteMenu" aria-label="{{ 'Bookmark' | translate }}" matTooltip="{{ 'Bookmark' | translate }}"><mat-icon>stars</mat-icon></button> &nbsp;&nbsp;
             <mat-menu #favouriteMenu="matMenu">
                 <button *ngFor="let valueOfBookmark of bookmarkedEquations" mat-menu-item>
                     <span (click)="selectEquationFromBookmark(valueOfBookmark)">{{valueOfBookmark}}</span>
@@ -359,8 +374,13 @@
             <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" cdkFocusInitial><mat-icon>check_circle</mat-icon> {{ 'Close' | translate }}</button>&nbsp;&nbsp;
             <button mat-raised-button type="submit" *ngIf="!calculatorOnly" color="accent" (click)="sendResultOnly()" aria-label="{{ 'Send Result' | translate }}"><mat-icon>send</mat-icon> {{ 'Send Result' | translate }}</button>&nbsp;&nbsp;
             <button mat-raised-button type="submit" *ngIf="!calculatorOnly" color="primary" aria-label="{{ 'Send Equation' | translate }}" (click)="sendResultAndEquation()"><mat-icon>summarize</mat-icon> {{ 'Send Equation' | translate }}</button>
-            <button mat-raised-button color="accent" aria-label="{{ 'History' | translate }}" (click)="done()"><mat-icon>work_history</mat-icon> {{ 'History' | translate }}</button>&nbsp;&nbsp;
-            <button mat-raised-button color="primary" [matMenuTriggerFor]="favouriteMenu" aria-label="{{ 'Bookmark' | translate }}"><mat-icon>stars</mat-icon> {{ 'Bookmark' | translate }} xⁿ = yⁿ + zⁿ</button> &nbsp;&nbsp;
+            <button mat-raised-button color="accent" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="historyMenu" aria-label="{{ 'History' | translate }}"><mat-icon>work_history</mat-icon> {{ 'History' | translate }}</button>&nbsp;&nbsp;
+            <mat-menu #historyMenu="matMenu">
+                <button *ngFor="let history of historyEquations" mat-menu-item>
+                    <span (click)="selectEquationFromHistory(history)">{{history}}</span>
+                </button>
+            </mat-menu>&nbsp;&nbsp;
+            <button mat-raised-button color="primary" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="favouriteMenu" aria-label="{{ 'Bookmark' | translate }}"><mat-icon>stars</mat-icon> {{ 'Bookmark' | translate }} xⁿ = yⁿ + zⁿ</button> &nbsp;&nbsp;
             <mat-menu #favouriteMenu="matMenu">
                 <button *ngFor="let valueOfBookmark of bookmarkedEquations" mat-menu-item>
                     <span (click)="selectEquationFromBookmark(valueOfBookmark)">{{valueOfBookmark}}</span>
