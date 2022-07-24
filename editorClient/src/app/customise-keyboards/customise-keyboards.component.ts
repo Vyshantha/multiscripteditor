@@ -1186,10 +1186,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   //https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
   commaDecimalSeparatorLocales: any = ['frca', 'lb', 'es', 'sq', 'hy', 'az', 'aze', 'befr', 'fr', 'bsla', 'bs', 'hv', 'pt', 'ptbr', 'cs', 'da', 'et', 'fo', 'fi', 'de', 'ka', 'el', 'kl', 'hu', 'is', 'id', 'it', 'kk', 'kaz', 'ky', 'kir', 'lv', 'lt', 'mn', 'mon', 'mnla', 'nl', 'no', 'gn', 'pl', 'ro', 'ru', 'be', 'sr', 'sk', 'sl', 'sv', 'tr', 'tk', 'tuk', 'uk', 'uz', 'uzb', 'vi', 'af', 'st', 'ss', 'ts', 'tn', 'ven', 'xh', 'nso', 'zu'];
-  periodDecimalSeparatorLocales: any = ['en', 'enus', 'engb', 'enintl', 'ne', 'bn', 'km', 'zhcn', 'zhtw', 'am', 'ga', 'he', 'ja', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enin', 'kn', 'hi', 'sa', 'tiga', 'bya', 'ml', 'mr', 'as', 'gu', 'odu','adlm','nkoo','mend', 'sgnw'];
+  periodDecimalSeparatorLocales: any = ['en', 'enus', 'engb', 'enintl', 'ne', 'bn', 'km', 'zhcn', 'zhtw', 'am', 'ga', 'he', 'ja', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enin', 'kn', 'hi', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'odu','adlm','nkoo','mend', 'sgnw'];
   arabicDecimalSeparatorLocales: any = ['ar','fa','ur','ps','ks','sd', 'bal', 'ckb', 'rhg', 'bsk'];
 
-  desiLakhCommaPosition: any = ['enin', 'ne', 'bn', 'km', 'thaa', 'dv', 'si', 'th', 'kn', 'hi', 'te', 'ta', 'sa', 'tiga', 'bya', 'ml', 'mr', 'as', 'gu'];
+  desiLakhCommaPosition: any = ['enin', 'ne', 'bn', 'km', 'thaa', 'dv', 'si', 'th', 'kn', 'hi', 'te', 'ta', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu'];
   desiLakhSpacePosition: any = ['enin', 'ne'];
   thousandsPositionApostropheAndPeriodDecimal : any = ['gsw'];
   thousandsPositionApostropheAndCommaDecimal : any = ['gsw'];
@@ -2031,22 +2031,22 @@ export class CustomiseKeyboardsComponent implements OnInit {
       case '!' :
         result = this.factorialize(parseFloat(soloVariable));
         break;
-      case 'sin' : // TODO - Consider rad or °
+      case 'sin' : 
         result = Math.sin(parseFloat(soloVariable.split("sin ")[1]));
         break;
-      case 'cos' : // TODO - Consider rad or °
+      case 'cos' : 
         result = Math.cos(parseFloat(soloVariable.split("cos ")[1]));
         break;
-      case 'tan' : // TODO - Consider rad or °
+      case 'tan' : 
         result = Math.tan(parseFloat(soloVariable.split("tan ")[1]));
         break;
-      case 'sin⁻ⁱ' : // TODO - Consider rad or °
+      case 'sin⁻ⁱ' : 
         result = Math.sin(parseFloat(soloVariable.split("sin⁻ⁱ ")[1]));
         break;
-      case 'cos⁻ⁱ' : // TODO - Consider rad or °
+      case 'cos⁻ⁱ' : 
         result = Math.cos(parseFloat(soloVariable.split("cos⁻ⁱ ")[1]));
         break;
-      case 'tan⁻ⁱ' : // TODO - Consider rad or °
+      case 'tan⁻ⁱ' : 
         result = Math.tan(parseFloat(soloVariable.split("tan⁻ⁱ ")[1]));
         break;
       case '‰' :
@@ -2938,7 +2938,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     */
 
     // Iterate through this.anyCalculatorLayout for Type num0 to num9 mapping for 0 to 9 in all scripts & languages
-    if (this.sessionManager.getFromSessionURL() == "adlm" || this.sessionManager.getFromSessionURL() == "nkoo" || this.sessionManager.getFromSessionURL() == "mend")
+    if (this.sessionManager.getFromSessionURL() == "takr" || this.sessionManager.getFromSessionURL() == "adlm" || this.sessionManager.getFromSessionURL() == "nkoo" || this.sessionManager.getFromSessionURL() == "mend")
       return this.stringManipulator(result.toString(), this.mapLocale, false);
     else if (this.currentBase == "base2") 
       return this.stringManipulator((result >>> 0).toString(2), this.mapLocale, false);

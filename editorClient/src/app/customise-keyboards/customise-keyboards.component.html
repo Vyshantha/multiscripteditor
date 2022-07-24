@@ -322,7 +322,7 @@
         </span>
     </h2>
     <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
-    <mat-form-field style="width: 80%;" appearance="fill">
+    <mat-form-field [ngStyle]="{'width': (currentCalculatorType == 'scientific')? '80%': '70%'}" appearance="fill">
         <mat-label>{{ 'Equation' | translate }}</mat-label>
         <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
@@ -339,7 +339,7 @@
     <mat-icon aria-label="{{ 'Copy Reverse Equation' | translate }}" matTooltip="{{ 'Copy Reverse Equation' | translate }}" (click)="copyContent('reverseEquationField')">copy_all</mat-icon>
     <br/>
     <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
-    <mat-form-field style="width: 80%;" appearance="fill">
+    <mat-form-field [ngStyle]="{'width': (currentCalculatorType == 'scientific')? '80%': '70%'}" appearance="fill">
         <mat-label>{{ 'Type Variables' | translate }}</mat-label>
         <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', '', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
