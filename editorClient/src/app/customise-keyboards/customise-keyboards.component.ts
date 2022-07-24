@@ -1475,7 +1475,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   baseUIRendering() {
     this.currencySymbol = this.currencySignLocales[this.sessionManager.getFromSessionURL()][0];
     this.calculatorLayout[5].row[7].value = this.currencySignLocales[this.sessionManager.getFromSessionURL()][0];
-    this.simpleCalculatorLayout[4].row[5].value = this.currencySignLocales[this.sessionManager.getFromSessionURL()][0];
+    this.simpleCalculatorLayout[4].row[4].value = this.currencySignLocales[this.sessionManager.getFromSessionURL()][0];
     if (this.keyboardLayouts[this.sessionManager.getFromSessionURL()][0] == 1 && this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) == -1) {
       // Duodecimal && Hexadecimal only available for Alphabet Types (Alphanumeric)
       // base2
