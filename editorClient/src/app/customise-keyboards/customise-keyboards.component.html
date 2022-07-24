@@ -150,7 +150,7 @@
     <br/>
     <mat-dialog-content class="mat-topography" *ngIf="floatNotMinimise" style="color: black;">
         <ul *ngFor="let rows of anyCalculatorLayout" style="list-style-type: none;" class="keyboardTheming">
-            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == currentBase || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'formula1' || character.type == 'formula2' || character.type == 'formula3' || character.type == 'formula4' || character.type == 'formula5' || character.type == 'formula6')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '15px' : defaultFontSize + 'px', 'font-weight': 700, 'height' : defaultCellSize + 'px', 'padding-top': '3px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
+            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == currentBase || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'formula1' || character.type == 'formula2' || character.type == 'formula3' || character.type == 'formula4' || character.type == 'formula5' || character.type == 'formula6')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '15px' : defaultFontSize + 'px', 'font-weight': 700, 'height' : defaultCellSize + 'px', 'padding-top': '5px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
                 <div *ngIf="!showImageGlyph || character.src == null" class="{{fontClass}}">
                     {{character.value}} 
                 </div>
@@ -206,12 +206,7 @@
                     <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" style="height: 35px;" cdkFocusInitial><mat-icon style="font-size: medium;">check_circle</mat-icon></button>&nbsp;&nbsp;
                 </td>
                 <td>
-                    <button mat-raised-button color="accent" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="historyMenu" style="height: 35px;" aria-label="{{ 'History' | translate }}"><mat-icon>work_history</mat-icon></button>&nbsp;&nbsp;
-                    <mat-menu #historyMenu="matMenu">
-                        <button *ngFor="let history of historyEquations" mat-menu-item>
-                            <span (click)="selectEquationFromHistory(history)">{{history}}</span>
-                        </button>
-                    </mat-menu>&nbsp;&nbsp;
+                    <button mat-raised-button color="accent" aria-label="{{ 'Toggle Scientific and Simple Calculator' | translate }}" matTooltip="{{ 'Toggle Scientific and Simple Calculator' | translate }}" style="height: 35px;" (click)="switchCalculators()"><mat-icon style="font-size: medium;">screen_rotation</mat-icon><mat-icon>science</mat-icon></button>
                 </td>
             </tr>
             <tr style="text-align: center; width: 100%;">
@@ -224,7 +219,12 @@
                     </mat-menu>&nbsp;&nbsp;
                 </td>
                 <td>
-                    <button mat-raised-button color="accent" aria-label="{{ 'Toggle Scientific and Simple Calculator' | translate }}" matTooltip="{{ 'Toggle Scientific and Simple Calculator' | translate }}" style="height: 35px;" (click)="switchCalculators()"><mat-icon style="font-size: medium;">screen_rotation</mat-icon><mat-icon>science</mat-icon></button>
+                    <button mat-raised-button color="accent" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="historyMenu" style="height: 35px;" aria-label="{{ 'History' | translate }}"><mat-icon>work_history</mat-icon></button>&nbsp;&nbsp;
+                    <mat-menu #historyMenu="matMenu">
+                        <button *ngFor="let history of historyEquations" mat-menu-item>
+                            <span (click)="selectEquationFromHistory(history)">{{history}}</span>
+                        </button>
+                    </mat-menu>&nbsp;&nbsp;
                 </td>
             </tr>
         </table>
@@ -357,7 +357,7 @@
     <br/>
     <mat-dialog-content class="mat-topography" *ngIf="floatNotMinimise" style="color: black;">
         <ul *ngFor="let rows of anyCalculatorLayout" style="list-style-type: none;" class="keyboardTheming">
-            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == currentBase || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'formula1' || character.type == 'formula2' || character.type == 'formula3' || character.type == 'formula4' || character.type == 'formula5' || character.type == 'formula6')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '25px' : defaultFontSize + 'px', 'height' : defaultCellSize + 'px', 'padding-top': '5px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
+            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == currentBase || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'formula1' || character.type == 'formula2' || character.type == 'formula3' || character.type == 'formula4' || character.type == 'formula5' || character.type == 'formula6')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '25px' : defaultFontSize + 'px', 'height' : defaultCellSize + 'px', 'padding-top': '7px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
                 <div *ngIf="!showImageGlyph || character.src == null" class="{{fontClass}}">
                     {{character.value}} 
                 </div>
