@@ -1,5 +1,13 @@
 node_modules
+node_modules_SERVER.zip
+editorClient/package-lock_v1.json
 editorClient/node_modules
 editorClient/dist
 editorClient/.firebase
-editorClientCalculator/*
+editorClientCalculator/
+routes/ai/*
+routes/session-info/session-info_*
+package-lock_v1.json
+editorClient_v11.zip
+convertLayouts/Unused_Images.zip
+convertLayouts/characters_Non_Transparent.zip

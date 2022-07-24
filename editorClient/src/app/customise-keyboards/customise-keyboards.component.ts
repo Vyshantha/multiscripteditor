@@ -1156,7 +1156,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
       {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"hide"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
     ]},
     {"row":[
-      {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+      {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":" ","action":"char","visible":"hide"},{"value":" ","action":"char","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
     ]}
   ];
 
@@ -1259,7 +1259,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
   operatorValue: string = "";
   operatorXY: string = "";
   operationResult: number = 0;
-  booleanResult: Boolean = false;
   keepInMemory: string = "";
   historyEquations: any = [];
   bookmarkedEquations: any = [];
@@ -1288,7 +1287,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
     - Brackets usage & complete equation computation
     - Logarithm to Base and Yth Root of X
     - BaseX specific Operations
-    - Circular coordinates - rad & deg
+    - Circular coordinates - rad & °
+    - Paste equation and use equation
   */
 
   constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
@@ -1524,7 +1524,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
           {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc","visible":"hide"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"hide"},{"value":"logₓ","type":"logarithmToBase","visible":"hide"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
         ]},
         {"row":[
-          {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot","visible":"hide"},{"value":"√","action":"char","type":"squareRoot","visible":"hide"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber","visible":"hide"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+          {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot","visible":"hide"},{"value":"√","action":"char","type":"squareRoot","visible":"hide"},{"value":" ","action":"char","visible":"hide"},{"value":" ","action":"char","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber","visible":"hide"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
         ]}
       ];
     
@@ -2087,7 +2087,22 @@ export class CustomiseKeyboardsComponent implements OnInit {
             } else if (this.operatorValue != "") {
               this.operationResult = this.soloOperation(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true), this.operatorValue);
               this.nonUnicodeEquationAndResult();
-              this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
+              if (this.sessionManager.getFromSessionURL() == "takr" || this.sessionManager.getFromSessionURL() == "adlm" || this.sessionManager.getFromSessionURL() == "nkoo" || this.sessionManager.getFromSessionURL() == "mend") 
+                this.resultField.nativeElement.value = this.operationResult;
+              else if (this.currentBase == "base2")
+                this.resultField.nativeElement.value = (this.operationResult >>> 0).toString(2);
+              else if (this.currentBase == "base8")
+                this.resultField.nativeElement.value = this.operationResult.toString(8);
+              else if (this.currentBase == "base12")
+                this.resultField.nativeElement.value = this.operationResult.toString(12);
+              else if (this.currentBase == "base16")
+                this.resultField.nativeElement.value = this.operationResult.toString(16);
+              else if (this.currentBase == "base20")
+                this.resultField.nativeElement.value = this.operationResult.toString(20);
+              else if (this.currentBase == "base60")
+                this.resultField.nativeElement.value = this.operationResult.toString(60);
+              else
+                this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
               this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.resultField.nativeElement.value;
               this.historyEquations.push(this.equationField.nativeElement.value);
               this.keepInMemory = this.resultField.nativeElement.value;
@@ -2116,7 +2131,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc","visible":"hide"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"hide"},{"value":"logₓ","type":"logarithmToBase","visible":"hide"},{"value":"xʸ","action":"char","type":"powerRaise","visible":"hide"},{"value":"^","action":"char","type":"powerRaise","visible":"hide"},{"value":"~","action":"char","type":"logicalNot","visible":"show"},{"value":"⊻","action":"char","type":"logicalXor","visible":"show"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange","visible":"hide"},{"value":"-","action":"char","type":"subtractionOp","visible":"hide"}
               ]},
               {"row":[
-                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial","visible":"hide"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot","visible":"hide"},{"value":"√","action":"char","type":"squareRoot","visible":"hide"},{"value":"True","type":"booleanTrue","visible":"show"},{"value":"False","type":"booleanFalse","visible":"show"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber","visible":"hide"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp","visible":"hide"}
+                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial","visible":"hide"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot","visible":"hide"},{"value":"√","action":"char","type":"squareRoot","visible":"hide"},{"value":" ","action":"char","visible":"hide"},{"value":" ","action":"char","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber","visible":"hide"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp","visible":"hide"}
               ]}
             ];
             this.baseUIRendering();
@@ -2144,7 +2159,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"hide"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
               ]},
               {"row":[
-                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":" ","action":"char","visible":"hide"},{"value":" ","action":"char","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
               ]}
             ];
             this.baseUIRendering();
@@ -2172,7 +2187,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"hide"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
               ]},
               {"row":[
-                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":" ","action":"char","visible":"hide"},{"value":" ","action":"char","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
               ]}
             ];
             this.baseUIRendering();
@@ -2200,7 +2215,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"hide"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
               ]},
               {"row":[
-                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":" ","action":"char","visible":"hide"},{"value":" ","action":"char","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
               ]}
             ];
             this.baseUIRendering();
@@ -2228,7 +2243,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"hide"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
               ]},
               {"row":[
-                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":" ","action":"char","visible":"hide"},{"value":" ","action":"char","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
               ]}
             ];
             this.baseUIRendering();
@@ -2256,7 +2271,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"hide"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
               ]},
               {"row":[
-                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":" ","action":"char","visible":"hide"},{"value":" ","action":"char","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
               ]}
             ];
             this.baseUIRendering();
@@ -2284,7 +2299,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"hide"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
               ]},
               {"row":[
-                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"True","type":"booleanTrue","visible":"hide"},{"value":"False","type":"booleanFalse","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
+                {"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":" ","action":"char","visible":"hide"},{"value":" ","action":"char","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
               ]}
             ];
             this.baseUIRendering();
@@ -2718,34 +2733,41 @@ export class CustomiseKeyboardsComponent implements OnInit {
     }
   }
 
+  validateAnyTypedInput(contentOfInput) {
+    if (this.allowedTypingContent.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1) {
+      // Allow 0-9 & A-F depending on Base with Operations
+      this.resultField.nativeElement.value = '';
+      this.equationField.nativeElement.value = '';
+    } else {
+      return true;
+    }
+  }
+
   carveOperatorVariables(contentOfInput) {
     // Highlight the Operations clicked
-    if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY == "" && this.varX == "" && this.varY == "") {
+    if (this.validateAnyTypedInput(contentOfInput) && this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY == "" && this.varX == "" && this.varY == "") {
       this.resultField.nativeElement.value = contentOfInput;
       this.equationField.nativeElement.value = this.resultField.nativeElement.value;
-    } else if (this.resultField.nativeElement.value != "" && this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) > -1 && this.operatorXY == "" && (this.varX == "" || this.varX != "")) {
+    } else if (this.validateAnyTypedInput(contentOfInput) && this.resultField.nativeElement.value != "" && this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) > -1 && this.operatorXY == "" && (this.varX == "" || this.varX != "")) {
       this.operatorXY = contentOfInput.substr(contentOfInput.length-1);
       this.resultField.nativeElement.value = contentOfInput.substr(0, contentOfInput.indexOf(this.operatorXY));
       this.varX = this.resultField.nativeElement.value;
       this.equationField.nativeElement.value = this.varX + " " + this.operatorXY;
-    } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY != "" && this.varY == "") {
+    } else if (this.validateAnyTypedInput(contentOfInput) && this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY != "" && this.varY == "") {
       this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + contentOfInput.replace(this.varX, '');
       this.resultField.nativeElement.value = contentOfInput.replace(this.varX, '');
       this.varY = contentOfInput.replace(this.varX, '');
-    } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY != "" && this.varY != ""){
+    } else if (this.validateAnyTypedInput(contentOfInput) && this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY != "" && this.varY != ""){
       this.resultField.nativeElement.value = contentOfInput;
       this.varY = this.resultField.nativeElement.value;
       this.equationField.nativeElement.value = this.varX + " " + this.operatorXY + " " + this.varY;
-    } else if (this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) > -1 && this.varX != "" && this.varY != "") {
+    } else if (this.validateAnyTypedInput(contentOfInput) && this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) > -1 && this.varX != "" && this.varY != "") {
       this.operatorXY = contentOfInput.substr(contentOfInput.length-1);
       this.computeResults();
       this.historyEquations.push(this.equationField.nativeElement.value);
       this.varX = this.resultField.nativeElement.value;
       this.varY = "";
       this.operatorXY = "";
-    } else if (this.allowedTypingContent.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 || this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1) {
-      // Allow 0-9 & A-F depending on Base with Operations
-      this.resultField.nativeElement.value = '';
     }
   }
 
@@ -2875,10 +2897,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
         this.operationResult = (numberOperandX ^ numberOperandY);
         break;
       case '≤' :
-        this.booleanResult = numberOperandX <= numberOperandY;
+        this.operationResult = (numberOperandX <= numberOperandY).toString();
         break;
       case '≥' :
-        this.booleanResult = numberOperandX >= numberOperandY;
+        this.operationResult = (numberOperandX >= numberOperandY).toString();
         break;
       case '%' :
         this.operationResult = numberOperandX % numberOperandY;
@@ -2921,13 +2943,23 @@ export class CustomiseKeyboardsComponent implements OnInit {
     }
     this.nonUnicodeEquationAndResult();
     if (this.currentBase == "base2") {
-      if (this.operatorXY == '&' || this.operatorXY == '!' || this.operatorXY == "<<" || this.operatorXY == ">>" || this.operatorXY == "⊻")
-        this.resultField.nativeElement.value = this.operationResult;
-      else if (this.operatorXY == '≤' || this.operatorXY == '≥') 
-        this.resultField.nativeElement.value = this.booleanResult;
-    } else {
-      this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
-    }  
+      this.resultField.nativeElement.value = this.stringManipulator((this.operationResult >>> 0).toString(2), this.mapLocale, false);
+    } else if (this.currentBase == "base8") {
+      this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(8), this.mapLocale, false);
+    } else if (this.currentBase == "base10") {
+      if (this.sessionManager.getFromSessionURL() == "takr" || this.sessionManager.getFromSessionURL() == "adlm" || this.sessionManager.getFromSessionURL() == "nkoo" || this.sessionManager.getFromSessionURL() == "mend") 
+        this.resultField.nativeElement.value = this.stringManipulator( this.operationResult.toString(), this.mapLocale, false);
+      else
+        this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
+    } else if (this.currentBase == "base12") {
+      this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(12), this.mapLocale, false);
+    } else if (this.currentBase == "base16") {
+      this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(16), this.mapLocale, false);
+    } else if (this.currentBase == "base20") {
+      this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(20), this.mapLocale, false);
+    } else if (this.currentBase == "base60") {
+      this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(60), this.mapLocale, false);
+    } 
     this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.resultField.nativeElement.value;
   }
 
@@ -2938,22 +2970,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     */
 
     // Iterate through this.anyCalculatorLayout for Type num0 to num9 mapping for 0 to 9 in all scripts & languages
-    if (this.sessionManager.getFromSessionURL() == "takr" || this.sessionManager.getFromSessionURL() == "adlm" || this.sessionManager.getFromSessionURL() == "nkoo" || this.sessionManager.getFromSessionURL() == "mend")
-      return this.stringManipulator(result.toString(), this.mapLocale, false);
-    else if (this.currentBase == "base2") 
-      return this.stringManipulator((result >>> 0).toString(2), this.mapLocale, false);
-    else if (this.currentBase == "base8") 
-      return this.stringManipulator(result.toString(8), this.mapLocale, false);
-    else if (this.currentBase == "base10")
-      return this.numberRepresentationMarking(this.stringManipulator(result.toString(), this.mapLocale, false));
-    else if (this.currentBase == "base12") 
-      return this.stringManipulator(result.toString(12), this.mapLocale, false);
-    else if (this.currentBase == "base16") 
-      return this.stringManipulator(result.toString(16), this.mapLocale, false);
-    else if (this.currentBase == "base20") 
-      return this.stringManipulator(result.toString(20), this.mapLocale, false);
-    else if (this.currentBase == "base60") 
-      return this.stringManipulator(result.toString(60), this.mapLocale, false);
+    return this.numberRepresentationMarking(this.stringManipulator(result.toString(), this.mapLocale, false));
   }
 
   numberRepresentationMarking(numberAsString) {
@@ -3066,11 +3083,15 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.currentBase = "base10";
       this.anyCalculatorLayout = this.simpleCalculatorLayout.slice();
       this.currentCalculatorType = 'simple';
+      this.resultField.nativeElement.value = '';
+      this.equationField.nativeElement.value = '';
     } else if (this.currentCalculatorType == 'scientific' && ((!this.isMobile && !this.isTablet) || (!this.isMobile && this.isTablet))) {
       this.scientificCurrentBase = this.currentBase;
       this.currentBase = "base10";
       this.anyCalculatorLayout = this.simpleCalculatorLayout.slice();
       this.currentCalculatorType = 'simple';
+      this.resultField.nativeElement.value = '';
+      this.equationField.nativeElement.value = '';
     }
   }
 }
