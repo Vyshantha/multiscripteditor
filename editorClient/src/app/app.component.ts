@@ -40,6 +40,7 @@ export class AppComponent implements AfterViewInit {
   currentURL : String = window.location.href;
   alternativeURL : String = window.location.href;
   endemicURL : String = window.location.href;
+  calculatorURL : String = "https://worldscriptscalculator.app/";
   browserLocale : String = window.navigator.language;
   isSupportedLocale : Boolean = false;
   isLightTheme: Boolean = true;
@@ -132,6 +133,7 @@ export class AppComponent implements AfterViewInit {
         this.endemicURL = window.location.href.split('/')[0] + '//' + window.location.href.split('/')[2] + '/'  + (this.keyboardLayouts[newURL][5]).toLowerCase();
       }
       this.apiURL = (newURL) ? newURL : this.sessionManager.getFromSessionURL();
+      this.calculatorURL = "https://worldscriptscalculator.app/" + this.sessionManager.getFromSessionURL();
     });
     this.sessionManager.itemUILocale.subscribe((locale) => {
       this.loadFromFile(locale, "Every Writers Choice");

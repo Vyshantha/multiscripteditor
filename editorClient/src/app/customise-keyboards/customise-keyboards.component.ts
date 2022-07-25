@@ -1133,7 +1133,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   sexagesimal : any = ["sux", "hit", "elx"];
 
   // Operator and Libraries - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
-  operators: any = ['+', "-", "*", "×", "·", "^", "**", "÷", '%', '‰', "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "~", "<<", ">>", "≤", "≥", "ʸ√", "xʸ", "⁻ⁱ"];
+  operators: any = ['+', "-", "*", "×", "·", "^", "**", "÷", '%', '‰', "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "~", "<<", ">>", "≤", "≥", "ʸ√", "xʸ", "⁻ⁱ","logₓy"];
   allowedCircularUnits: any = ["°", "rad", "′", "″", "'", "\"", "ᵍ"];
 
   currencySymbol: string = "🪙";
@@ -1142,7 +1142,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   calculatorLayout: any = [
     {"row":[
-      {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
+      {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓-","action":"char","type":"functionKeyDeactivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
     ]},
     {"row":[
       {"value":"°","action":"char","type":"degrees","visible":"hide"},{"value":"π","action":"char","type":"piNatural"},{"value":"A","action":"char","type":"hexadecimal","visible":"hide"},{"value":"B","action":"char","type":"hexadecimal","visible":"hide"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₁","action":"char","type":"formula1"}
@@ -1154,7 +1154,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
       {"value":"′","action":"char","type":"arcminute","visible":"hide"},{"value":"cos","action":"char","type":"cosineFunc"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"show"},{"value":"log","action":"char","type":"logarithm"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">>","action":"char","type":"rightShift","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":" ","type":"num4","action":"char","visible":"hide"},{"value":" ","type":"num5","action":"char","visible":"hide"},{"value":" ","type":"num6","action":"char","visible":"hide"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
     ]},
     {"row":[
-      {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
+      {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓy","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
     ]},
     {"row":[
       {"value":"ᵍ","action":"char","type":"gradientOfCircle","visible":"hide"},{"value":"1/x","action":"char","type":"fractionalNumber","visible":"show"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"show"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
@@ -1290,6 +1290,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     - BaseX specific Operations
     - Curreny use in input field
     - Circular coordinates - allowedCircularUnits
+    - Send Equation and Result
   */
 
   constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
@@ -1515,7 +1516,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     } else if (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
       this.calculatorLayout = [
         {"row":[
-          {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"show"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion","visible":"hide"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
+          {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"show"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion","visible":"hide"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓-","action":"char","type":"functionKeyDeactivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
         ]},
         {"row":[
           {"value":"°","action":"char","type":"degrees","visible":"hide"},{"value":"π","action":"char","type":"piNatural","visible":"hide"},{"value":"A","action":"char","type":"hexadecimal","visible":"hide"},{"value":"B","action":"char","type":"hexadecimal","visible":"hide"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₁","action":"char","type":"formula1"}
@@ -1527,7 +1528,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
           {"value":"′","action":"char","type":"arcminute","visible":"hide"},{"value":"cos","action":"char","type":"cosineFunc","visible":"hide"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"hide"},{"value":"log","action":"char","type":"logarithm","visible":"hide"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">>","action":"char","type":"rightShift","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":" ","type":"num4","action":"char","visible":"hide"},{"value":" ","type":"num5","action":"char","visible":"hide"},{"value":" ","type":"num6","action":"char","visible":"hide"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
         ]},
         {"row":[
-          {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc","visible":"hide"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"hide"},{"value":"logₓ","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
+          {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc","visible":"hide"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"hide"},{"value":"logₓy","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
         ]},
         {"row":[
           {"value":"ᵍ","action":"char","type":"gradientOfCircle","visible":"hide"},{"value":"1/x","action":"char","type":"fractionalNumber","visible":"show"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"show"},{"value":"∛","action":"char","type":"cubeRoot","visible":"hide"},{"value":"√","action":"char","type":"squareRoot","visible":"hide"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber","visible":"hide"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
@@ -2133,7 +2134,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.currentBase = "base2";
             this.calculatorLayout = [
               {"row":[
-                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion","visible":"hide"},{"value":"%","action":"char","type":"modulusOp","visible":"hide"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
+                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion","visible":"hide"},{"value":"%","action":"char","type":"modulusOp","visible":"hide"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓-","action":"char","type":"functionKeyDeactivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
               ]},
               {"row": [
                 {"value":"°","action":"char","type":"degrees","visible":"hide"},{"value":"π","action":"char","type":"piNatural","visible":"hide"},{"value":"A","action":"char","type":"hexadecimal","visible":"hide"},{"value":"B","action":"char","type":"hexadecimal","visible":"hide"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"},{"value":"𝑓₆","action":"char","type":"formula6","visible":"hide"},{"value":"𝑓₅","action":"char","type":"formula5","visible":"hide"},{"value":"𝑓₄","action":"char","type":"formula4","visible":"hide"},{"value":"𝑓₃","action":"char","type":"formula3","visible":"hide"},{"value":"𝑓₂","action":"char","type":"formula2","visible":"hide"},{"value":"𝑓₁","action":"char","type":"formula1","visible":"hide"}
@@ -2145,10 +2146,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"′","action":"char","type":"arcminute","visible":"hide"},{"value":"cos","action":"char","type":"cosineFunc","visible":"hide"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"hide"},{"value":"log","action":"char","type":"logarithm","visible":"hide"},{"value":"10ˣ","action":"char","type":"powerOf10","visible":"hide"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"show"},{"value":">>","action":"char","type":"rightShift","visible":"show"},{"value":"|","action":"char","type":"logicalOr","visible":"show"},{"value":" ","type":"num4","action":"char","visible":"hide"},{"value":" ","type":"num5","action":"char","visible":"hide"},{"value":" ","type":"num6","action":"char","visible":"hide"},{"value":"*","action":"char","type":"multiplicationOp","visible":"hide"},{"value":"·","action":"char","type":"multiplicationOp","visible":"hide"},{"value":"×","action":"char","type":"multiplicationOp","visible":"hide"}
               ]},
               {"row":[
-                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc","visible":"hide"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"hide"},{"value":"logₓ","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise","visible":"hide"},{"value":"^","action":"char","type":"powerRaise","visible":"hide"},{"value":"~","action":"char","type":"logicalNot","visible":"show"},{"value":"⊻","action":"char","type":"logicalXor","visible":"show"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange","visible":"hide"},{"value":"-","action":"char","type":"subtractionOp","visible":"hide"}
+                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc","visible":"hide"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"hide"},{"value":"logₓy","type":"logarithmToBase","visible":"hide"},{"value":"xʸ","action":"char","type":"powerRaise","visible":"hide"},{"value":"^","action":"char","type":"powerRaise","visible":"hide"},{"value":"~","action":"char","type":"logicalNot","visible":"show"},{"value":"⊻","action":"char","type":"logicalXor","visible":"show"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange","visible":"hide"},{"value":"-","action":"char","type":"subtractionOp","visible":"hide"}
               ]},
               {"row":[
-                {"value":"ᵍ","action":"char","type":"gradientOfCircle","visible":"hide"},{"value":"1/x","action":"char","type":"fractionalNumber","visible":"show"},{"value":"x!","action":"char","type":"factorial","visible":"hide"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"show"},{"value":"∛","action":"char","type":"cubeRoot","visible":"hide"},{"value":"√","action":"char","type":"squareRoot","visible":"hide"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber","visible":"hide"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp","visible":"hide"}
+                {"value":"ᵍ","action":"char","type":"gradientOfCircle","visible":"hide"},{"value":"1/x","action":"char","type":"fractionalNumber","visible":"hide"},{"value":"x!","action":"char","type":"factorial","visible":"hide"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot","visible":"hide"},{"value":"√","action":"char","type":"squareRoot","visible":"hide"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber","visible":"hide"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp","visible":"hide"}
               ]}
             ];
             this.baseUIRendering();
@@ -2161,7 +2162,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.currentBase = "base8";
             this.calculatorLayout = [
               {"row":[
-                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
+                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓-","action":"char","type":"functionKeyDeactivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
               ]},
               {"row": [
                 {"value":"°","action":"char","type":"degrees","visible":"hide"},{"value":"π","action":"char","type":"piNatural"},{"value":"A","action":"char","type":"hexadecimal","visible":"hide"},{"value":"B","action":"char","type":"hexadecimal","visible":"hide"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₁","action":"char","type":"formula1"}
@@ -2173,7 +2174,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"′","action":"char","type":"arcminute","visible":"hide"},{"value":"cos","action":"char","type":"cosineFunc"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"show"},{"value":"log","action":"char","type":"logarithm"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">>","action":"char","type":"rightShift","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":" ","type":"num4","action":"char","visible":"hide"},{"value":" ","type":"num5","action":"char","visible":"hide"},{"value":" ","type":"num6","action":"char","visible":"hide"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
               ]},
               {"row":[
-                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
+                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓy","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
               ]},
               {"row":[
                 {"value":"ᵍ","action":"char","type":"gradientOfCircle","visible":"hide"},{"value":"1/x","action":"char","type":"fractionalNumber","visible":"show"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"show"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
@@ -2189,7 +2190,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.currentBase = "base10";
             this.calculatorLayout = [
               {"row":[
-                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
+                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓-","action":"char","type":"functionKeyDeactivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
               ]},
               {"row": [
                 {"value":"°","action":"char","type":"degrees","visible":"hide"},{"value":"π","action":"char","type":"piNatural"},{"value":"A","action":"char","type":"hexadecimal","visible":"hide"},{"value":"B","action":"char","type":"hexadecimal","visible":"hide"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₁","action":"char","type":"formula1"}
@@ -2201,7 +2202,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"′","action":"char","type":"arcminute","visible":"hide"},{"value":"cos","action":"char","type":"cosineFunc"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"show"},{"value":"log","action":"char","type":"logarithm"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">>","action":"char","type":"rightShift","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":" ","type":"num4","action":"char","visible":"hide"},{"value":" ","type":"num5","action":"char","visible":"hide"},{"value":" ","type":"num6","action":"char","visible":"hide"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
               ]},
               {"row":[
-                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
+                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓy","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
               ]},
               {"row":[
                 {"value":"ᵍ","action":"char","type":"gradientOfCircle","visible":"hide"},{"value":"1/x","action":"char","type":"fractionalNumber","visible":"show"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"show"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
@@ -2217,7 +2218,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.currentBase = "base12";
             this.calculatorLayout = [
               {"row":[
-                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
+                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓-","action":"char","type":"functionKeyDeactivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
               ]},
               {"row": [
                 {"value":"°","action":"char","type":"degrees","visible":"hide"},{"value":"π","action":"char","type":"piNatural"},{"value":"A","action":"char","type":"hexadecimal","visible":"show"},{"value":"B","action":"char","type":"hexadecimal","visible":"show"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₁","action":"char","type":"formula1"}
@@ -2229,7 +2230,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"′","action":"char","type":"arcminute","visible":"hide"},{"value":"cos","action":"char","type":"cosineFunc"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"show"},{"value":"log","action":"char","type":"logarithm"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">>","action":"char","type":"rightShift","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":" ","type":"num4","action":"char","visible":"hide"},{"value":" ","type":"num5","action":"char","visible":"hide"},{"value":" ","type":"num6","action":"char","visible":"hide"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
               ]},
               {"row":[
-                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
+                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓy","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
               ]},
               {"row":[
                 {"value":"ᵍ","action":"char","type":"gradientOfCircle","visible":"hide"},{"value":"1/x","action":"char","type":"fractionalNumber","visible":"show"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"show"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
@@ -2245,7 +2246,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.currentBase = "base16";
             this.calculatorLayout = [
               {"row":[
-                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
+                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓-","action":"char","type":"functionKeyDeactivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
               ]},
               {"row": [
                 {"value":"°","action":"char","type":"degrees","visible":"hide"},{"value":"π","action":"char","type":"piNatural"},{"value":"A","action":"char","type":"hexadecimal","visible":"show"},{"value":"B","action":"char","type":"hexadecimal","visible":"show"},{"value":"C","action":"char","type":"hexadecimal","visible":"show"},{"value":"D","action":"char","type":"hexadecimal","visible":"show"},{"value":"E","action":"char","type":"hexadecimal","visible":"show"},{"value":"F","action":"char","type":"hexadecimal","visible":"show"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₁","action":"char","type":"formula1"}
@@ -2257,7 +2258,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"′","action":"char","type":"arcminute","visible":"hide"},{"value":"cos","action":"char","type":"cosineFunc"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"show"},{"value":"log","action":"char","type":"logarithm"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">>","action":"char","type":"rightShift","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":" ","type":"num4","action":"char","visible":"hide"},{"value":" ","type":"num5","action":"char","visible":"hide"},{"value":" ","type":"num6","action":"char","visible":"hide"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
               ]},
               {"row":[
-                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
+                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓy","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
               ]},
               {"row":[
                 {"value":"ᵍ","action":"char","type":"gradientOfCircle","visible":"hide"},{"value":"1/x","action":"char","type":"fractionalNumber","visible":"show"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"show"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
@@ -2273,7 +2274,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.currentBase = "base20";
             this.calculatorLayout = [
               {"row":[
-                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
+                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓-","action":"char","type":"functionKeyDeactivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
               ]},
               {"row": [
                 {"value":"°","action":"char","type":"degrees","visible":"hide"},{"value":"π","action":"char","type":"piNatural"},{"value":"A","action":"char","type":"hexadecimal","visible":"show"},{"value":"B","action":"char","type":"hexadecimal","visible":"show"},{"value":"C","action":"char","type":"hexadecimal","visible":"show"},{"value":"D","action":"char","type":"hexadecimal","visible":"show"},{"value":"E","action":"char","type":"hexadecimal","visible":"show"},{"value":"F","action":"char","type":"hexadecimal","visible":"show"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₁","action":"char","type":"formula1"}
@@ -2285,7 +2286,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"′","action":"char","type":"arcminute","visible":"hide"},{"value":"cos","action":"char","type":"cosineFunc"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"show"},{"value":"log","action":"char","type":"logarithm"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">>","action":"char","type":"rightShift","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":" ","type":"num4","action":"char","visible":"hide"},{"value":" ","type":"num5","action":"char","visible":"hide"},{"value":" ","type":"num6","action":"char","visible":"hide"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
               ]},
               {"row":[
-                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
+                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓy","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
               ]},
               {"row":[
                 {"value":"ᵍ","action":"char","type":"gradientOfCircle","visible":"hide"},{"value":"1/x","action":"char","type":"fractionalNumber","visible":"show"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"show"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
@@ -2301,7 +2302,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.currentBase = "base60";
             this.calculatorLayout = [
               {"row":[
-                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
+                {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓-","action":"char","type":"functionKeyDeactivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
               ]},
               {"row": [
                 {"value":"°","action":"char","type":"degrees","visible":"hide"},{"value":"π","action":"char","type":"piNatural"},{"value":"A","action":"char","type":"hexadecimal","visible":"show"},{"value":"B","action":"char","type":"hexadecimal","visible":"show"},{"value":"C","action":"char","type":"hexadecimal","visible":"show"},{"value":"D","action":"char","type":"hexadecimal","visible":"show"},{"value":"E","action":"char","type":"hexadecimal","visible":"show"},{"value":"F","action":"char","type":"hexadecimal","visible":"show"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₁","action":"char","type":"formula1"}
@@ -2313,7 +2314,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 {"value":"′","action":"char","type":"arcminute","visible":"hide"},{"value":"cos","action":"char","type":"cosineFunc"},{"value":"cos⁻ⁱ","action":"char","type":"cosineInverseFunc","visible":"show"},{"value":"log","action":"char","type":"logarithm"},{"value":"10ˣ","action":"char","type":"powerOf10"},{"value":"≥","action":"char","type":"greaterThanEquals","visible":"hide"},{"value":">>","action":"char","type":"rightShift","visible":"hide"},{"value":"|","action":"char","type":"logicalOr","visible":"hide"},{"value":" ","type":"num4","action":"char","visible":"hide"},{"value":" ","type":"num5","action":"char","visible":"hide"},{"value":" ","type":"num6","action":"char","visible":"hide"},{"value":"*","action":"char","type":"multiplicationOp"},{"value":"·","action":"char","type":"multiplicationOp"},{"value":"×","action":"char","type":"multiplicationOp"}
               ]},
               {"row":[
-                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓ","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
+                {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"show"},{"value":"logₓy","type":"logarithmToBase","visible":"show"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
               ]},
               {"row":[
                 {"value":"ᵍ","action":"char","type":"gradientOfCircle","visible":"hide"},{"value":"1/x","action":"char","type":"fractionalNumber","visible":"show"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"show"},{"value":"∛","action":"char","type":"cubeRoot"},{"value":"√","action":"char","type":"squareRoot"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"hide"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
@@ -2341,7 +2342,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
           case 'bookmarkEquation' :
             this.bookmarkedEquations.push(this.equationField.nativeElement.value);
-            this._snackBar.open(this.translateForSnackBar[0], "Equation Bookmarked", {
+            this._snackBar.open("Equation Bookmarked",this.translateForSnackBar[0], {
               duration: 3000,
             });
             break;
@@ -2368,8 +2369,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
             if (this.historyEquations[0]) {
 
             } else {
-              if (this.resultField.nativeElement.value == "")
-                this.equationField.nativeElement.value = "√(x² + y² + z²)"
+              if (this.resultField.nativeElement.value == "") {
+                this.equationField.nativeElement.value = "∀ √(x² + y² + z²)"
+                this._snackBar.open("To set new 𝑓₁ formula, press 𝑓+ then type the formula & to complete press 𝑓-", this.translateForSnackBar[0], {
+                  duration: 10000,
+                });
+              }
             }
             // Store in LocalStorage for session persistence
             break;
@@ -2381,8 +2386,11 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
             } else {
               if (this.resultField.nativeElement.value == "") {
-                this.equationField.nativeElement.value = "Math.random()";
+                this.equationField.nativeElement.value = "∀ x.yz";
                 this.resultField.nativeElement.value = Math.random(); 
+                this._snackBar.open("To set formula, press 𝑓+ then type the formula & to complete press 𝑓-", this.translateForSnackBar[0], {
+                  duration: 10000,
+                });
               }
             }
             // Store in LocalStorage for session persistence
@@ -2394,9 +2402,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
               // Store in LocalStorage for session persistence
             } else {
-              if (this.resultField.nativeElement.value == "")
-                this.equationField.nativeElement.value = "Math.trunc(x.yz) = x";
-              else {
+              if (this.resultField.nativeElement.value == "") {
+                this.equationField.nativeElement.value = "∀ x.yz = x";
+                this._snackBar.open("To set formula, press 𝑓+ then type the formula & to complete press 𝑓-", this.translateForSnackBar[0], {
+                  duration: 10000,
+                });
+              } else {
                 this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(Math.trunc(parseFloat(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true))));
                 this.equationField.nativeElement.value = this.resultField.nativeElement.value;
               }  
@@ -2409,9 +2420,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
               // Store in LocalStorage for session persistence
             } else {
-              if (this.resultField.nativeElement.value == "")
-                this.equationField.nativeElement.value = "Math.ceil(x.yz) = x + 1";
-              else {
+              if (this.resultField.nativeElement.value == "") {
+                this.equationField.nativeElement.value = "∀ x.yz = x + 1";
+                this._snackBar.open("To set formula, press 𝑓+ then type the formula & to complete press 𝑓-", this.translateForSnackBar[0], {
+                  duration: 10000,
+                });
+              } else {
                 this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(Math.ceil(parseFloat(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true))));
                 this.equationField.nativeElement.value = this.resultField.nativeElement.value;
               }  
@@ -2424,9 +2438,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
               
               // Store in LocalStorage for session persistence
             } else {
-              if (this.resultField.nativeElement.value == "")
-                this.equationField.nativeElement.value = "Math.floor(x.yz) = x - 1";
-              else {
+              if (this.resultField.nativeElement.value == "") {
+                this.equationField.nativeElement.value = "∀ x.yz = x - 1";
+                this._snackBar.open("To set formula, press 𝑓+ then type the formula & to complete press 𝑓-", this.translateForSnackBar[0], {
+                  duration: 10000,
+                });
+              } else {
                 this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(Math.floor(parseFloat(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true))));
                 this.equationField.nativeElement.value = this.resultField.nativeElement.value;
               }
@@ -2439,9 +2456,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
               
               // Store in LocalStorage for session persistence
             } else {
-              if (this.resultField.nativeElement.value == "")
-                this.equationField.nativeElement.value = "Math.abs(-x) = +x";
-              else {
+              if (this.resultField.nativeElement.value == "") {
+                this.equationField.nativeElement.value = "∀ |-x| = +x";
+                this._snackBar.open("To set formula, press 𝑓+ then type the formula & to complete press 𝑓-", this.translateForSnackBar[0], {
+                  duration: 10000,
+                });
+              } else {
                 this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(Math.abs(parseFloat(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true))));
                 this.equationField.nativeElement.value = this.resultField.nativeElement.value;
               }  
@@ -2546,20 +2566,20 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
           case 'logarithmToBase' : 
             if (this.resultField.nativeElement.value != "") {
-              this.operatorXY = "logₓ";
+              this.operatorXY = "logₓy";
               this.resultField.nativeElement.value = "log " + this.resultField.nativeElement.value + " / log ";
 
               this.equationField.nativeElement.value = this.resultField.nativeElement.value;
               this.varX = this.resultField.nativeElement.value;
               
               if (this.unicode5AndHigher) { 
-                ["log "].concat(this.nonUnicodeNumberResult);
-                ["log "].concat(this.nonUnicodeNumberEquation);
+                this.nonUnicodeNumberResult = ["log "].concat(this.nonUnicodeNumberResult);
+                this.nonUnicodeNumberEquation = ["log "].concat(this.nonUnicodeNumberEquation);
                 this.computeNonUnicodeResult("", " / log ");
                 this.computeNonUnicodeEquation("", " / log ");
               }
             } else {
-              this._snackBar.open(this.translateForSnackBar[0], "logₓ - Type number x , press logₓ and then type y", {
+              this._snackBar.open("logₓy - Type number x , press logₓy and then type y", this.translateForSnackBar[0], {
                 duration: 3000,
               });
             }
@@ -2572,7 +2592,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
             this.varX = "1";
             
-             if (this.unicode5AndHigher && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) == -1) {
+             if (this.unicode5AndHigher) {
               this.computeNonUnicodeResult("","" + this.mapLocale["1"] + " / ");
               this.computeNonUnicodeEquation("","" + this.mapLocale["1"] + " / ");
             }
@@ -2591,7 +2611,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 this.computeNonUnicodeEquation(""," ^ " + this.mapLocale["1"] + " / ");
               }
             } else {
-              this._snackBar.open(this.translateForSnackBar[0], "ʸ√x - Type number x , press ʸ√x and then type y", {
+              this._snackBar.open("ʸ√x - Type number x , press ʸ√x and then type y", this.translateForSnackBar[0], {
                 duration: 3000,
               });
             }
@@ -2828,7 +2848,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
       // Allow 0-9 & A-F depending on Base with Operations
       this.resultField.nativeElement.value = '';
       this.equationField.nativeElement.value = '';
-      this._snackBar.open(this.translateForSnackBar[0], "Typing an unallowed character", {
+      this._snackBar.open("Typing an unallowed character", this.translateForSnackBar[0], {
         duration: 3000,
       });
     } else {
@@ -2943,7 +2963,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
 
   computeResults() {
-    if (this.operatorXY == "logₓ")
+    if (this.operatorXY == "logₓy")
       this.varX = this.varX.split(" ")[1];
     else if (this.operatorXY == "ʸ√")
       this.varX = this.varX.split(" ")[0];
@@ -3039,7 +3059,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
       case '**' :
         this.operationResult = Math.pow(numberOperandX, numberOperandY);
         break;
-      case 'logₓ':
+      case 'logₓy':
         this.operationResult = Math.log(numberOperandX) / Math.log(numberOperandY);
     }
     this.nonUnicodeEquationAndResult();
@@ -3142,22 +3162,22 @@ export class CustomiseKeyboardsComponent implements OnInit {
   copyContent(fieldName) {
     if (fieldName == 'resultField') {
       navigator.clipboard.writeText(this.resultField.nativeElement.value);
-      this._snackBar.open(this.translateForSnackBar[0], "Result Field Copied", {
+      this._snackBar.open("Result Field Copied",this.translateForSnackBar[0], {
         duration: 3000,
       });
     } else if (fieldName == 'equationField') {
       navigator.clipboard.writeText(this.equationField.nativeElement.value);
-      this._snackBar.open(this.translateForSnackBar[0], "Equation Field Copied", {
+      this._snackBar.open("Equation Field Copied",this.translateForSnackBar[0], {
         duration: 3000,
       });
     } else if (fieldName == 'reverseResultField') {
       navigator.clipboard.writeText(this.resultField.nativeElement.value.split("").reverse().join(""));
-      this._snackBar.open(this.translateForSnackBar[0], "Reverse Result Field Copied", {
+      this._snackBar.open("Reverse Result Field Copied",this.translateForSnackBar[0], {
         duration: 3000,
       });
     } else if (fieldName == 'reverseEquationField') {
       navigator.clipboard.writeText(this.equationField.nativeElement.value.split("").reverse().join(""));
-      this._snackBar.open(this.translateForSnackBar[0], "Reverse Equation Field Copied", {
+      this._snackBar.open("Reverse Equation Field Copied",this.translateForSnackBar[0], {
         duration: 3000,
       });
     }
