@@ -1206,7 +1206,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   // https://www.compart.com/en/unicode/category/Sc
   // https://en.wikipedia.org/wiki/Currency_symbol
-  currencySignLocales: any = {"all" : ["₠","₡","₢","₣","₤","₥","₦","₧","₨","₩","₽","฿","₹","€","$","£","₪","₫","₺","₾","₻","₼","؋","₭","₮","₯","₰","₱","₲","₳","₴","₵","₶","₷","₸","₿","⃀","֏","៛","௹","૱","ರ"], "enin" : ["₹"], "hi" : ["₹"], "kn" : ["₹"], "ml" : ["₹"], "ma" : ["₹"], "de" : ["€"], "nl" : ["€"], "enus": ["US$"], "engb": ["£"], "ru" : ["₽"], "฿" : ["th"], "am" : ["Br"], "ti" : ["Br"], "tig" : ["Br"], "dz" : ["Nu"], "gil" : ["L$"], "zhtw" : ["$"], "frca" : ["CA$"], "vi" : ["₫"] , "hy" : ["֏"], "hu" : ["Ft"], "gsw" : ["SFr"], "gn" : ["₲"], "cs" : ["Kč","h"], "uk" : ["₴"], "lo" : ["₭"], "da" : ["kr"], "is" : ["kr"], "no" : ["kr"], "sv" : ["kr"], "hr" : ["kn"], "my" : ["K"], "ka" : ["₾"] , "nusk" : ["₾"], "tr" : ["₺"], "az" : ["₼"], "aze" : ["₼"], "bs" : ["KM"], "sq" : ["L"] , "ro" : ["L"], "bg" : ["лв."], "ptbr": ["R$"], "km" : ["៛"], "dv" : ["Rf."], "thaa" : ["Rf."], "ne" : ["₨"], "he" : ["₪"], "kk" : ["₸"], "ja" : ["¥"], "ko" : ["₩"], "ta" : ["௹"], "pl" : ["zł."], "gu" : ["૱"], "wcho" : ["𞋿"], "sa" : ["꠸"], "si" : ["රු"], "befr" : ["€"]};
+  // https://en.wikipedia.org/wiki/ISO_4217
+  currencySignLocales: any = {"all" : ["🪙","₠","₡","₢","₣","₤","₥","₦","₧","₨","₩","₽","฿","₹","€","$","£","₪","₫","₺","₾","₻","₼","؋","₭","₮","₯","₰","₱","₲","₳","₴","₵","₶","₷","₸","₿","⃀","֏","៛","௹","૱","ರ","රු","𞋿","𐆚","𐆖","𐆙","𐆗","𐆘","ƒ","元"], "enin" : ["₹"], "hi" : ["₹"], "kn" : ["₹"], "ml" : ["₹"], "ma" : ["₹"], "engb": ["£"], "ru" : ["₽"], "฿" : ["th"], "am" : ["Br"], "ti" : ["Br"], "tig" : ["Br"], "dz" : ["₹"], "gil" : ["L$"], "zhtw" : ["NT$"], "enus": ["US$"], "ptbr": ["R$"], "frca" : ["CA$"], "vi" : ["₫"] , "hy" : ["֏"], "hu" : ["Ft"], "gsw" : ["SFr"], "gn" : ["₲"], "cs" : ["Kč","h"], "uk" : ["₴"], "lo" : ["₭"], "da" : ["kr"], "is" : ["kr"], "no" : ["kr"], "sv" : ["kr"], "fo" : ["kr"], "kl" : ["kr"],"hr" : ["kn"], "my" : ["K"], "ka" : ["₾"] , "nusk" : ["₾"], "tr" : ["₺"], "az" : ["₼"], "aze" : ["₼"], "bs" : ["KM"], "sq" : ["L"] , "ro" : ["L"], "bg" : ["лв."], "km" : ["៛"], "dv" : ["Rf."], "thaa" : ["Rf."], "ne" : ["रू"], "he" : ["₪"], "kk" : ["₸"], "ja" : ["¥"], "ko" : ["₩"], "ta" : ["௹"], "pl" : ["zł."], "gu" : ["૱"], "wcho" : ["𞋿"], "sa" : ["꠸"], "si" : ["රු"],  "de" : ["€"], "nl" : ["€"], "befr" : ["€"], "ga" : ["€"], "lt" : ["€"], "mt" : ["€"], "lv" : ["€"], "et" : ["€"], "es" : ["€"], "pt" : ["€"], "it" : ["€"], "el" : ["€"], "sl" : ["€"], "sk" : ["€"], "lb" : ["€"], "mk" : ["ден"], "mg" : ["Ar"], "ar" : ["ر.س"], "fa" : ["﷼"], "ms" : ["RM"], "id" : ["Rp."], "latf" : ["₰"], "la" : ["𐆚", "𐆖", "𐆙", "𐆗", "𐆘"], "tk" : ["m."], "to" : ["T$"], "uz" : ["Sʻ"], "tg" : ["с."], "sm" : ["T"], "mn" : ["₮"], "mon" : ["₮"], "gv" : ["£"], "zhcn" : ["元"]};
 
   dirSet: string = "rtl";
   unicodeOverride: string = "";
@@ -1287,6 +1288,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     - Any Equation Setup (Paste/History/Bookmark/Formula) and use
     - Brackets usage & complete equation computation
     - BaseX specific Operations
+    - Curreny use in input field
     - Circular coordinates - allowedCircularUnits
   */
 
@@ -2454,6 +2456,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.operatorValue = "~";
             this.resultField.nativeElement.value = "~";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
             break;
 
           case 'factorial' :
@@ -2462,6 +2468,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
             if (this.resultField.nativeElement.value != "!")
               this.whatToDoWithThisKeyPress(element, value, action, 'equalsSign', src, visible);
+            if (this.unicode5AndHigher) {
+              this.computeNonUnicodeResult("", this.operatorValue);
+              this.computeNonUnicodeEquation("", this.operatorValue);
+            }
             break;
 
           case 'squareRoot' :
@@ -2538,30 +2548,52 @@ export class CustomiseKeyboardsComponent implements OnInit {
             if (this.resultField.nativeElement.value != "") {
               this.operatorXY = "logₓ";
               this.resultField.nativeElement.value = "log " + this.resultField.nativeElement.value + " / log ";
+
               this.equationField.nativeElement.value = this.resultField.nativeElement.value;
               this.varX = this.resultField.nativeElement.value;
-              this.computeNonUnicodeResult("","log ");
-              this.computeNonUnicodeEquation("","log ");
+              
+              if (this.unicode5AndHigher) { 
+                ["log "].concat(this.nonUnicodeNumberResult);
+                ["log "].concat(this.nonUnicodeNumberEquation);
+                this.computeNonUnicodeResult("", " / log ");
+                this.computeNonUnicodeEquation("", " / log ");
+              }
+            } else {
+              this._snackBar.open(this.translateForSnackBar[0], "logₓ - Type number x , press logₓ and then type y", {
+                duration: 3000,
+              });
             }
             break;
 
           case 'fractionalNumber' :
             this.operatorXY = "⁻ⁱ";
             this.resultField.nativeElement.value = this.resultField.nativeElement.value + "" + this.mapLocale["1"] + " / ";
+
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
             this.varX = "1";
-            this.computeNonUnicodeResult("","" + this.mapLocale["1"] + " / ");
-            this.computeNonUnicodeEquation("","" + this.mapLocale["1"] + " / ");
+            
+             if (this.unicode5AndHigher && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) == -1) {
+              this.computeNonUnicodeResult("","" + this.mapLocale["1"] + " / ");
+              this.computeNonUnicodeEquation("","" + this.mapLocale["1"] + " / ");
+            }
             break;
           
           case 'nthRoot' :
             if (this.resultField.nativeElement.value != "") {
               this.operatorXY = "ʸ√";
               this.resultField.nativeElement.value = this.resultField.nativeElement.value + " ^ " + this.mapLocale["1"] + " / ";
+
               this.equationField.nativeElement.value = this.resultField.nativeElement.value;
               this.varX = this.resultField.nativeElement.value;
-              this.computeNonUnicodeResult(""," ^ " + this.mapLocale["1"] + " / ");
-              this.computeNonUnicodeEquation(""," ^ " + this.mapLocale["1"] + " / ");
+              
+              if (this.unicode5AndHigher) {
+                this.computeNonUnicodeResult(""," ^ " + this.mapLocale["1"] + " / ");
+                this.computeNonUnicodeEquation(""," ^ " + this.mapLocale["1"] + " / ");
+              }
+            } else {
+              this._snackBar.open(this.translateForSnackBar[0], "ʸ√x - Type number x , press ʸ√x and then type y", {
+                duration: 3000,
+              });
             }
             break;
 
@@ -2796,6 +2828,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
       // Allow 0-9 & A-F depending on Base with Operations
       this.resultField.nativeElement.value = '';
       this.equationField.nativeElement.value = '';
+      this._snackBar.open(this.translateForSnackBar[0], "Typing an unallowed character", {
+        duration: 3000,
+      });
     } else {
       return true;
     }
@@ -3014,7 +3049,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(8), this.mapLocale, false);
     } else if (this.currentBase == "base10") {
       if (this.sessionManager.getFromSessionURL() == "takr" || this.sessionManager.getFromSessionURL() == "adlm" || this.sessionManager.getFromSessionURL() == "nkoo" || this.sessionManager.getFromSessionURL() == "mend") 
-        this.resultField.nativeElement.value = this.stringManipulator( this.operationResult.toString(), this.mapLocale, false);
+        this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(), this.mapLocale, false);
       else
         this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
     } else if (this.currentBase == "base12") {
@@ -3026,6 +3061,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     } else if (this.currentBase == "base60") {
       this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(60), this.mapLocale, false);
     } 
+
     this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.resultField.nativeElement.value;
   }
 
