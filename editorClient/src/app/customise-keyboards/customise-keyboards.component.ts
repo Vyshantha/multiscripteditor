@@ -2606,10 +2606,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
               this.varX = this.resultField.nativeElement.value;
               
               if (this.unicode5AndHigher) { 
-                this.nonUnicodeNumberResult = ["log "].concat(this.nonUnicodeNumberResult);
-                this.nonUnicodeNumberEquation = ["log "].concat(this.nonUnicodeNumberEquation);
-                this.computeNonUnicodeResult("", " / log ");
-                this.computeNonUnicodeEquation("", " / log ");
+                this.computeNonUnicodeResult("", " logₓy ");
+                this.computeNonUnicodeEquation("", " logₓy ");
               }
             } else {
               this._snackBar.open("logₓy - Type number x , press logₓy and then type y", this.translateForSnackBar[0], {
@@ -2626,8 +2624,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.varX = "1";
             
              if (this.unicode5AndHigher) {
-              this.computeNonUnicodeResult("","" + this.mapLocale["1"] + " / ");
-              this.computeNonUnicodeEquation("","" + this.mapLocale["1"] + " / ");
+              this.computeNonUnicodeResult(this.nonUnicodeMap["1"],this.mapLocale["1"]);
+              this.computeNonUnicodeEquation(this.nonUnicodeMap["1"],this.mapLocale["1"]);
+              this.computeNonUnicodeResult(""," / ");
+              this.computeNonUnicodeEquation(""," / ");
             }
             break;
           
@@ -2640,8 +2640,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
               this.varX = this.resultField.nativeElement.value;
               
               if (this.unicode5AndHigher) {
-                this.computeNonUnicodeResult(""," ^ " + this.mapLocale["1"] + " / ");
-                this.computeNonUnicodeEquation(""," ^ " + this.mapLocale["1"] + " / ");
+                this.computeNonUnicodeResult(""," ^ ");
+                this.computeNonUnicodeEquation(""," ^ ");
+                this.computeNonUnicodeResult(this.nonUnicodeMap["1"],this.mapLocale["1"]);
+                this.computeNonUnicodeEquation(this.nonUnicodeMap["1"],this.mapLocale["1"]);
+                this.computeNonUnicodeResult(""," / ");
+                this.computeNonUnicodeEquation(""," / ");
               }
             } else {
               this._snackBar.open("ʸ√x - Type number x , press ʸ√x and then type y", this.translateForSnackBar[0], {
@@ -3034,15 +3038,18 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
 
   computeResults() {
-    if (this.operatorXY == "logₓy")
-      this.varX = this.varX.split(" ")[1];
-    else if (this.operatorXY == "ʸ√")
-      this.varX = this.varX.split(" ")[0];
-    else if (this.varX == " π ") 
-      this.varX = "3.141592653589";
-    else if (this.varY == " π ")
-      this.varY = "3.141592653589";
+    let untransformedX = this.varX;
+    let untransformedY = this.varY;
 
+    if (this.operatorXY == "logₓy") {
+      this.varX = this.varX.split(" ")[1];
+    } else if (this.operatorXY == "ʸ√") {
+      this.varX = this.varX.split(" ")[0];
+    } else if (this.varX == " π ") {
+      this.varX = "3.141592653589";
+    } else if (this.varY == " π ") {
+      this.varY = "3.141592653589";
+    }
     // map this.varX and this.varY with corresponding num Type be mapped to 0 - 9 numbers
     var localeMappedX = this.stringManipulator(this.varX, this.numberMap, true);
     var localeMappedY = this.stringManipulator(this.varY, this.numberMap, true);
@@ -3157,7 +3164,14 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(60), this.mapLocale, false);
     } 
 
-    this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.resultField.nativeElement.value;
+    //this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.resultField.nativeElement.value;
+    if (this.operatorXY == "ʸ√" || this.operatorXY == "logₓy") {
+      if (!this.unicode5AndHigher && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+        this.equationField.nativeElement.value = untransformedX + " " + this.resultField.nativeElement.value + " = " + untransformedY;
+      else
+        this.equationField.nativeElement.value = untransformedX + " " + untransformedY + " = " + this.resultField.nativeElement.value;
+    } else
+      this.equationField.nativeElement.value = untransformedX + " " + this.operatorXY + " " + untransformedY + " = " + this.resultField.nativeElement.value;
   }
 
   displayVariableInLocaleFormat (result) {
