@@ -137,6 +137,7 @@
         <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
         <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', '', 'undoAction', '', '')" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
+        <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{currencyUnit}}</span>
         <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberResult">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -266,6 +267,7 @@
         <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
         <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', '', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
+        <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{currencyUnit}}</span>
         <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberResult">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -348,6 +350,7 @@
         <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
         <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', '', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
+        <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{currencyUnit}}</span>
         <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberResult">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -368,7 +371,7 @@
                     {{character.value}} 
                 </div>
                 <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') == -1">
-                    <img src="{{character.src}}" [ngStyle]="{'width': defaultFontSize*1.4+'px', 'height': defaultFontSize*1.3+'px'}"/>
+                    <img src="{{character.src}}" [ngStyle]="{'width': defaultFontSize*1.4+'px', 'height': defaultFontSize*1.6+'px'}"/>
                 </div>
                 <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') > -1" class="icon icon-{{character.src.split('/')[1]}}">
                 </div>
