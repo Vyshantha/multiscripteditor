@@ -2388,6 +2388,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
               if (this.resultField.nativeElement.value == "") {
                 this.equationField.nativeElement.value = "∀ x.yz";
                 this.resultField.nativeElement.value = Math.random(); 
+                this.operationResult = this.resultField.nativeElement.value;
+                this.nonUnicodeEquationAndResult();
                 this._snackBar.open("To set formula, press 𝑓+ then type the formula & to complete press 𝑓-", this.translateForSnackBar[0], {
                   duration: 10000,
                 });
@@ -2408,8 +2410,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
                   duration: 10000,
                 });
               } else {
-                this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(Math.trunc(parseFloat(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true))));
+                this.operationResult = Math.trunc(parseFloat(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true)));
+                this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
                 this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+                this.nonUnicodeEquationAndResult();
               }  
             }
             break;
@@ -2426,8 +2430,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
                   duration: 10000,
                 });
               } else {
-                this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(Math.ceil(parseFloat(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true))));
+                this.operationResult = Math.ceil(parseFloat(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true)));
+                this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
                 this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+                this.nonUnicodeEquationAndResult();
               }  
             }
             break;
@@ -2444,8 +2450,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
                   duration: 10000,
                 });
               } else {
-                this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(Math.floor(parseFloat(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true))));
+                this.operationResult = Math.floor(parseFloat(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true)));
+                this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
                 this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+                this.nonUnicodeEquationAndResult();
               }
             }
             break;
@@ -2462,8 +2470,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
                   duration: 10000,
                 });
               } else {
-                this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(Math.abs(parseFloat(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true))));
+                this.operationResult = Math.abs(parseFloat(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true)));
+                this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
                 this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+                this.nonUnicodeEquationAndResult();
               }  
             }
             break;
