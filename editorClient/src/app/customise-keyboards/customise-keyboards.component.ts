@@ -1298,6 +1298,11 @@ export class CustomiseKeyboardsComponent implements OnInit {
     - Brackets usage & complete equation computation
     - BaseX specific Operations
     - Send Equation and Result (with currency)
+
+    Problem to Fix
+    - Tablet UI popup size from bookmarks
+    - Bookmarks not retained in session after close of popup
+    - Operands in Hexa and then result in Decimal
   */
 
   constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
@@ -3269,23 +3274,39 @@ export class CustomiseKeyboardsComponent implements OnInit {
   numberRepresentationMarking(numberAsString) {
     let numberMarked = "";
     if (this.periodDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-      let periodPosition = (numberAsString.indexOf(".") >  -1) ? numberAsString.indexOf(".") : numberAsString.length - 1;
+      let periodPosition = (numberAsString.indexOf(".") > -1) ? numberAsString.indexOf(".") : numberAsString.length - 1;
       for (let position = 0; position < numberAsString.length; position++) {
-        if (((periodPosition - 3) == position || (periodPosition - 6) == position || (periodPosition - 9) == position || (periodPosition - 12) == position || (periodPosition - 15) == position) && (this.thousandsPositionCommaAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionCommaAndMiddleDotDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)) // thousandsPositionCommaAndPeriodDecimal 1,234,567.89 && thousandsPositionCommaAndMiddleDotDecimal 1,234,567·89
+        if (numberAsString.indexOf(".") > -1 && ((periodPosition - 4) == position || (periodPosition - 7) == position || (periodPosition - 10) == position || (periodPosition - 13) == position || (periodPosition - 16) == position) && (this.thousandsPositionCommaAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionCommaAndMiddleDotDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)) // thousandsPositionCommaAndPeriodDecimal 1,234,567.89 && thousandsPositionCommaAndMiddleDotDecimal 1,234,567·89
           numberMarked = numberMarked + numberAsString[position] + ",";
-        else if (((periodPosition - 3) == position || (periodPosition - 6) == position || (periodPosition - 9) == position || (periodPosition - 12) == position || (periodPosition - 15) == position) && this.thousandsPositionSpaceAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionSpaceAndPeriodDecimal 1 234 567.89
+        else if (numberAsString.indexOf(".") == -1 && ((periodPosition - 3) == position || (periodPosition - 6) == position || (periodPosition - 9) == position || (periodPosition - 12) == position || (periodPosition - 15) == position) && (this.thousandsPositionCommaAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionCommaAndMiddleDotDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1)) // thousandsPositionCommaAndPeriodDecimal 1,234,567.89 && thousandsPositionCommaAndMiddleDotDecimal 1,234,567·89
+          numberMarked = numberMarked + numberAsString[position] + ",";
+        else if (numberAsString.indexOf(".") > -1 && ((periodPosition - 4) == position || (periodPosition - 7) == position || (periodPosition - 10) == position || (periodPosition - 13) == position || (periodPosition - 16) == position) && this.thousandsPositionSpaceAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionSpaceAndPeriodDecimal 1 234 567.89
           numberMarked = numberMarked + numberAsString[position] + " ";
-        else if (((periodPosition - 3) == position || (periodPosition - 6) == position || (periodPosition - 9) == position || (periodPosition - 12) == position || (periodPosition - 15) == position) && this.thousandsPositionPeriodAndApostropheDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionPeriodAndApostropheDecimal 1.234.567'89
+        else if (numberAsString.indexOf(".") == -1 && ((periodPosition - 3) == position || (periodPosition - 6) == position || (periodPosition - 9) == position || (periodPosition - 12) == position || (periodPosition - 15) == position) && this.thousandsPositionSpaceAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionSpaceAndPeriodDecimal 1 234 567.89
+          numberMarked = numberMarked + numberAsString[position] + " ";
+        else if (numberAsString.indexOf(".") > -1 && ((periodPosition - 4) == position || (periodPosition - 7) == position || (periodPosition - 10) == position || (periodPosition - 13) == position || (periodPosition - 16) == position) && this.thousandsPositionPeriodAndApostropheDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionPeriodAndApostropheDecimal 1.234.567'89
           numberMarked = numberMarked + numberAsString[position] + ".";
-        else if (((periodPosition - 3) == position || (periodPosition - 6) == position || (periodPosition - 9) == position || (periodPosition - 12) == position || (periodPosition - 15) == position) && this.thousandsPositionApostropheAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionApostropheAndPeriodDecimal 1'234'567.89
+        else if (numberAsString.indexOf(".") == -1 && ((periodPosition - 3) == position || (periodPosition - 6) == position || (periodPosition - 9) == position || (periodPosition - 12) == position || (periodPosition - 15) == position) && this.thousandsPositionPeriodAndApostropheDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionPeriodAndApostropheDecimal 1.234.567'89
+          numberMarked = numberMarked + numberAsString[position] + ".";
+        else if (numberAsString.indexOf(".") > -1 && ((periodPosition - 4) == position || (periodPosition - 7) == position || (periodPosition - 10) == position || (periodPosition - 13) == position || (periodPosition - 16) == position) && this.thousandsPositionApostropheAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionApostropheAndPeriodDecimal 1'234'567.89
           numberMarked = numberMarked + numberAsString[position] + "'";
-        else if (((periodPosition - 5) == position || (periodPosition - 10) == position || (periodPosition - 15) == position) && this.tenThousandsSpaceAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1) // tenThousandsSpaceAndPeriod 123 4567.89
+        else if (numberAsString.indexOf(".") == -1 && ((periodPosition - 3) == position || (periodPosition - 6) == position || (periodPosition - 9) == position || (periodPosition - 12) == position || (periodPosition - 15) == position) && this.thousandsPositionApostropheAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionApostropheAndPeriodDecimal 1'234'567.89
+          numberMarked = numberMarked + numberAsString[position] + "'";
+        else if (numberAsString.indexOf(".") > -1 && ((periodPosition - 6) == position || (periodPosition - 11) == position || (periodPosition - 16) == position) && this.tenThousandsSpaceAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1) // tenThousandsSpaceAndPeriod 123 4567.89
           numberMarked = numberMarked + numberAsString[position] + " ";
-        else if (((periodPosition - 5) == position || (periodPosition - 10) == position || (periodPosition - 15) == position) && this.tenThousandsCommaAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1) // tenThousandsCommaAndPeriod 123,4567.89
+        else if (numberAsString.indexOf(".") == -1 && ((periodPosition - 5) == position || (periodPosition - 10) == position || (periodPosition - 15) == position) && this.tenThousandsSpaceAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1) // tenThousandsSpaceAndPeriod 123 4567.89
+          numberMarked = numberMarked + numberAsString[position] + " ";
+        else if (numberAsString.indexOf(".") > -1 && ((periodPosition - 6) == position || (periodPosition - 11) == position || (periodPosition - 16) == position) && this.tenThousandsCommaAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1) // tenThousandsCommaAndPeriod 123,4567.89
           numberMarked = numberMarked + numberAsString[position] + ",";
-        else if (((periodPosition - 3) == position || (periodPosition - 5) == position || (periodPosition - 7) == position || (periodPosition - 9) == position || (periodPosition - 11) == position || (periodPosition - 13) == position || (periodPosition - 15) == position) && this.desiLakhCommaPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhCommaPosition 12,34,567.89
+        else if (numberAsString.indexOf(".") == -1 && ((periodPosition - 5) == position || (periodPosition - 10) == position || (periodPosition - 15) == position) && this.tenThousandsCommaAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1) // tenThousandsCommaAndPeriod 123,4567.89
           numberMarked = numberMarked + numberAsString[position] + ",";
-        else if (((periodPosition - 3) == position || (periodPosition - 5) == position || (periodPosition - 7) == position || (periodPosition - 9) == position || (periodPosition - 11) == position || (periodPosition - 13) == position || (periodPosition - 15) == position) && this.desiLakhSpacePosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhSpacePosition 12 34 567.89
+        else if (numberAsString.indexOf(".") > -1 && ((periodPosition - 4) == position || (periodPosition - 6) == position || (periodPosition - 8) == position || (periodPosition - 10) == position || (periodPosition - 12) == position || (periodPosition - 14) == position || (periodPosition - 16) == position) && this.desiLakhCommaPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhCommaPosition 12,34,567.89
+        numberMarked = numberMarked + numberAsString[position] + ",";
+        else if (numberAsString.indexOf(".") == -1 && ((periodPosition - 3) == position || (periodPosition - 5) == position || (periodPosition - 7) == position || (periodPosition - 9) == position || (periodPosition - 11) == position || (periodPosition - 13) == position || (periodPosition - 15) == position) && this.desiLakhCommaPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhCommaPosition 12,34,567.89
+          numberMarked = numberMarked + numberAsString[position] + ",";
+        else if (numberAsString.indexOf(".") > -1 && ((periodPosition - 4) == position || (periodPosition - 6) == position || (periodPosition - 8) == position || (periodPosition - 10) == position || (periodPosition - 12) == position || (periodPosition - 14) == position || (periodPosition - 16) == position) && this.desiLakhSpacePosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhSpacePosition 12 34 567.89
+          numberMarked = numberMarked + numberAsString[position] + " ";
+        else if (numberAsString.indexOf(".") == -1 && ((periodPosition - 3) == position || (periodPosition - 5) == position || (periodPosition - 7) == position || (periodPosition - 9) == position || (periodPosition - 11) == position || (periodPosition - 13) == position || (periodPosition - 15) == position) && this.desiLakhSpacePosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhSpacePosition 12 34 567.89
           numberMarked = numberMarked + numberAsString[position] + " ";
         else if (this.thousandsPositionCommaAndMiddleDotDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 && numberAsString[position] == ".") 
           numberMarked = numberMarked + "·";
@@ -3295,25 +3316,37 @@ export class CustomiseKeyboardsComponent implements OnInit {
           numberMarked = numberMarked + numberAsString[position];
       }
     } else if (this.commaDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) { 
-      let commaPosition = (numberAsString.indexOf(",") >  -1) ? numberAsString.indexOf(".") : numberAsString.length - 1;
+      let commaPosition = (numberAsString.indexOf(",") >  -1) ? numberAsString.indexOf(",") : numberAsString.length - 1;
       for (let position = 0; position < numberAsString.length; position++) {
-        if (((commaPosition - 3) == position || (commaPosition - 6) == position || (commaPosition - 9) == position || (commaPosition - 12) == position || (commaPosition - 15) == position) && this.thousandsPositionApostropheAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionApostropheAndCommaDecimal 1'234'567,89
+        if (numberAsString.indexOf(",") > -1 && ((commaPosition - 4) == position || (commaPosition - 7) == position || (commaPosition - 10) == position || (commaPosition - 13) == position || (commaPosition - 16) == position) && this.thousandsPositionApostropheAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionApostropheAndCommaDecimal 1'234'567,89
           numberMarked = numberMarked + numberAsString[position] + "'";
-        else if (((commaPosition - 3) == position || (commaPosition - 6) == position || (commaPosition - 9) == position || (commaPosition - 12) == position || (commaPosition - 15) == position) && this.thousandsPositionPeriodAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionPeriodAndCommaDecimal 1.234.567,89
+        else if (numberAsString.indexOf(",") == -1 && ((commaPosition - 3) == position || (commaPosition - 6) == position || (commaPosition - 9) == position || (commaPosition - 12) == position || (commaPosition - 15) == position) && this.thousandsPositionApostropheAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionApostropheAndCommaDecimal 1'234'567,89
+          numberMarked = numberMarked + numberAsString[position] + "'";
+        else if (numberAsString.indexOf(",") > -1 && ((commaPosition - 4) == position || (commaPosition - 7) == position || (commaPosition - 10) == position || (commaPosition - 13) == position || (commaPosition - 16) == position) && this.thousandsPositionPeriodAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionPeriodAndCommaDecimal 1.234.567,89
           numberMarked = numberMarked + numberAsString[position] + ".";
-        else if (((commaPosition - 3) == position || (commaPosition - 6) == position || (commaPosition - 9) == position || (commaPosition - 12) == position || (commaPosition - 15) == position) && this.thousandsPositionSpaceAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionSpaceAndCommaDecimal 1 234 567,89
+        else if (numberAsString.indexOf(",") == -1 && ((commaPosition - 3) == position || (commaPosition - 6) == position || (commaPosition - 9) == position || (commaPosition - 12) == position || (commaPosition - 15) == position) && this.thousandsPositionPeriodAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionPeriodAndCommaDecimal 1.234.567,89
+          numberMarked = numberMarked + numberAsString[position] + ".";
+        else if (numberAsString.indexOf(",") > -1 && ((commaPosition - 4) == position || (commaPosition - 7) == position || (commaPosition - 10) == position || (commaPosition - 13) == position || (commaPosition - 16) == position) && this.thousandsPositionSpaceAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionSpaceAndCommaDecimal 1 234 567,89
           numberMarked = numberMarked + numberAsString[position] + " ";
-        else if (((commaPosition - 3) == position || (commaPosition - 9) == position || (commaPosition - 15) == position) && this.commaAndPeriodAlternating.indexOf(this.sessionManager.getFromSessionURL()) > -1) // commaAndPeriodAlternating 1,234.567,89
+        else if (numberAsString.indexOf(",") == -1 && ((commaPosition - 3) == position || (commaPosition - 6) == position || (commaPosition - 9) == position || (commaPosition - 12) == position || (commaPosition - 15) == position) && this.thousandsPositionSpaceAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) // thousandsPositionSpaceAndCommaDecimal 1 234 567,89
+          numberMarked = numberMarked + numberAsString[position] + " ";
+        else if (numberAsString.indexOf(",") > -1 && ((commaPosition - 4) == position || (commaPosition - 10) == position || (commaPosition - 16) == position) && this.commaAndPeriodAlternating.indexOf(this.sessionManager.getFromSessionURL()) > -1) // commaAndPeriodAlternating 1,234.567,89
           numberMarked = numberMarked + numberAsString[position] + ".";
-        else if (((commaPosition - 6) == position || (commaPosition - 12) == position) && this.commaAndPeriodAlternating.indexOf(this.sessionManager.getFromSessionURL()) > -1) // commaAndPeriodAlternating 1,234.567,89
+        else if (numberAsString.indexOf(",") == -1 && ((commaPosition - 3) == position || (commaPosition - 9) == position || (commaPosition - 15) == position) && this.commaAndPeriodAlternating.indexOf(this.sessionManager.getFromSessionURL()) > -1) // commaAndPeriodAlternating 1,234.567,89
+          numberMarked = numberMarked + numberAsString[position] + ".";
+        else if (numberAsString.indexOf(",") > -1 && ((commaPosition - 7) == position || (commaPosition - 13) == position) && this.commaAndPeriodAlternating.indexOf(this.sessionManager.getFromSessionURL()) > -1) // commaAndPeriodAlternating 1,234.567,89
+          numberMarked = numberMarked + numberAsString[position] + ",";
+        else if (numberAsString.indexOf(",") == -1 && ((commaPosition - 6) == position || (commaPosition - 12) == position) && this.commaAndPeriodAlternating.indexOf(this.sessionManager.getFromSessionURL()) > -1) // commaAndPeriodAlternating 1,234.567,89
           numberMarked = numberMarked + numberAsString[position] + ",";
         else
           numberMarked = numberMarked + numberAsString[position];
       }
     } else if (this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-      let separatorPosition = (numberAsString.indexOf("٫") >  -1) ? numberAsString.indexOf(".") : numberAsString.length - 1;
+      let separatorPosition = (numberAsString.indexOf("٫") >  -1) ? numberAsString.indexOf("٫") : numberAsString.length - 1;
       for (let position = 0; position < numberAsString.length; position++) {
-        if (((separatorPosition - 3) == position || (separatorPosition - 6) == position || (separatorPosition - 9) == position || (separatorPosition - 12) == position || (separatorPosition - 15) == position) && this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) // arabicDecimalSeparatorLocales 1٬234٬567٫89
+        if (numberAsString.indexOf("٫") > -1 && ((separatorPosition - 4) == position || (separatorPosition - 7) == position || (separatorPosition - 10) == position || (separatorPosition - 13) == position || (separatorPosition - 16) == position) && this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) // arabicDecimalSeparatorLocales 1٬234٬567٫89
+          numberMarked = numberMarked + numberAsString[position] + "٬";
+        else if (numberAsString.indexOf("٫") == -1 && ((separatorPosition - 3) == position || (separatorPosition - 6) == position || (separatorPosition - 9) == position || (separatorPosition - 12) == position || (separatorPosition - 15) == position) && this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) // arabicDecimalSeparatorLocales 1٬234٬567٫89
           numberMarked = numberMarked + numberAsString[position] + "٬";
         else 
           numberMarked = numberMarked + numberAsString[position];
