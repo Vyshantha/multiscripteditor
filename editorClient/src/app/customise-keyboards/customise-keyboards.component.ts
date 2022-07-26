@@ -573,8 +573,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
   @ViewChild('equationField') equationField: ElementRef;
   @ViewChild('resultField') resultField: ElementRef;
 
-  isMobile: Boolean = window.outerWidth < 500;
-  isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200;
+  isMobile: Boolean = window.outerWidth < 500 || (window.outerWidth > 500 && window.outerHeight < 500);
+  isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200 && window.outerHeight > 500;
 
   keyboardLayouts: any = (allLayoutPositions as any).default;
   layoutCurrentKeys: any = [];
@@ -1350,10 +1350,13 @@ export class CustomiseKeyboardsComponent implements OnInit {
     this.equationField = equationField;
 
     this.baseUIRendering();
-    if (this.isMobile && !this.isTablet) {
+    if (window.outerWidth < 500 && this.isMobile && !this.isTablet) {
       this.currentCalculatorType = 'simple';
       this.anyCalculatorLayout = this.simpleCalculatorLayout.slice();
     } else {
+      if (this.isMobile) {
+        this.defaultFontSize = 15;
+      }
       this.currentCalculatorType = 'scientific';
       this.anyCalculatorLayout = this.calculatorLayout.slice();
     }
@@ -1459,20 +1462,20 @@ export class CustomiseKeyboardsComponent implements OnInit {
         }
     });
     if (this.isMobile || this.isTablet) {
-      document.getElementsByClassName("mat-dialog-container")[0]["style"]["padding"] = "10px";
+      document.getElementsByClassName("mat-dialog-container")[0]["style"]["padding"] = "5px";
       document.getElementsByClassName("cdk-overlay-pane")[0]["style"]["max-width"] = "";
       document.getElementsByClassName("cdk-overlay-pane")[0]["style"]["width"] = document.documentElement.clientWidth - 15 + "px";
     }
   }
 
   async ngAfterViewInit(): Promise<void> {
-    this.sessionManager.isMobileDevice.subscribe((value) => {
+    /*this.sessionManager.isMobileDevice.subscribe((value) => {
       this.isMobile = value;
     });
 
     this.sessionManager.isTabletDevice.subscribe((value) => {
       this.isTablet = value;
-    });
+    });*/
 
     this.localisedKeyboardLayouts = await this.localisedKeyboardLayoutDB(this.sessionManager.getUILocale());
 
@@ -3396,7 +3399,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
 
   switchCalculators() {
-    if (this.currentCalculatorType == 'simple' && this.isMobile && !this.isTablet && (window.orientation == 90 || window.orientation == -90)) {
+    if (this.currentCalculatorType == 'simple' && this.isMobile && !this.isTablet) {
       this.currentBase = this.scientificCurrentBase;
       this.anyCalculatorLayout = this.calculatorLayout.slice();
       this.currentCalculatorType = 'scientific';
@@ -3404,7 +3407,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.currentBase = this.scientificCurrentBase;
       this.anyCalculatorLayout = this.calculatorLayout.slice();
       this.currentCalculatorType = 'scientific';
-    } else if (this.currentCalculatorType == 'scientific' && this.isMobile && !this.isTablet && (window.orientation == 90 || window.orientation == -90)) {
+    } else if (this.currentCalculatorType == 'scientific' && this.isMobile && !this.isTablet) {
       this.scientificCurrentBase = this.currentBase;
       this.currentBase = "base10";
       this.anyCalculatorLayout = this.simpleCalculatorLayout.slice();

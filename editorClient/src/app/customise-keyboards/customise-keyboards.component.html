@@ -104,7 +104,7 @@
     </mat-dialog-content>
 </div>
 
-<div *ngIf="isMobile && !isTablet && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
+<div *ngIf="isMobile && !isTablet && currentCalculatorType == 'simple' && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
     <h2 mat-dialog-title [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right'}">&nbsp;&nbsp;&nbsp;&nbsp;{{ 'Calculator' | translate }}&nbsp;&nbsp;&nbsp;&nbsp; 
         <span>
             <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
@@ -223,6 +223,145 @@
                 </td>
                 <td>
                     <button mat-raised-button color="accent" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="historyMenu" style="height: 35px;" aria-label="{{ 'History' | translate }}"><mat-icon>work_history</mat-icon></button>&nbsp;&nbsp;
+                    <mat-menu #historyMenu="matMenu">
+                        <button *ngFor="let history of historyEquations" mat-menu-item>
+                            <span (click)="selectEquationFromHistory(history)">{{history}}</span>
+                        </button>
+                    </mat-menu>&nbsp;&nbsp;
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div *ngIf="isMobile && !isTablet && currentCalculatorType == 'scientific' && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
+    <h4 mat-dialog-title [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right','margin':'1px'}">&nbsp;&nbsp;&nbsp;&nbsp;{{ 'Calculator' | translate }}&nbsp;&nbsp;&nbsp;&nbsp; 
+        <span>
+            <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" style="font-size: smaller;" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
+            <mat-icon style="cursor: pointer;" aria-label="Launch" alt="Launch" style="font-size: smaller;" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="!floatNotMinimise">open_with</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; 
+        </span>  
+        <span>
+            <mat-icon style="cursor: pointer;" aria-label="Close" alt="Close" style="font-size: smaller;" (click)="restoreBackKeyboard()">close</mat-icon>
+        </span>
+    </h4>
+    <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
+    <mat-form-field style="width: 85%;height:20px;margin:1px" appearance="fill">
+        <mat-label>{{ 'Equation' | translate }}</mat-label>
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 50%;">
+                    <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+                </td>
+                <td style="width: 50%;">
+                    <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet,'padding':'0px'}">
+                        <span *ngFor="let image of nonUnicodeNumberEquation">
+                            <span *ngIf="showImageGlyph && image.src == ''">
+                                {{image.value}}
+                            </span>
+                            <span *ngIf="showImageGlyph && image.src != ''">
+                                <img src="{{image.src}}" [ngStyle]="{'width': defaultFontSize+'px', 'height': defaultFontSize+'px'}">
+                            </span>
+                        </span>
+                    </mat-card>
+                </td>
+            </tr>
+        </table>
+    </mat-form-field>&nbsp;&nbsp;&nbsp;
+    <mat-icon aria-label="{{ 'Copy Reverse Equation' | translate }}" matTooltip="{{ 'Copy Reverse Equation' | translate }}" (click)="copyContent('reverseEquationField')">copy_all</mat-icon>
+    <br/>
+    <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
+    <mat-form-field style="width: 85%;height:20px;margin:1px" appearance="fill">
+        <mat-label>{{ 'Type Variables' | translate }}</mat-label>
+        <table style="width: 100%;">
+            <tr>
+                <td style="width: 50%;">
+                    <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
+                    <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', '', 'undoAction', '', '')" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+                </td>
+                <td style="width: 50%;">
+                    <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
+                    <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
+                    <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet,'padding':'0px'}">
+                        <span *ngFor="let image of nonUnicodeNumberResult">
+                            <span *ngIf="showImageGlyph && image.src == ''">
+                                {{image.value}}
+                            </span>
+                            <span *ngIf="showImageGlyph && image.src != ''">
+                                <img src="{{image.src}}" [ngStyle]="{'width': defaultFontSize+'px', 'height': defaultFontSize+'px'}">
+                            </span>
+                        </span>
+                    </mat-card>
+                </td>
+            </tr>
+        </table>
+    </mat-form-field>&nbsp;&nbsp;&nbsp;
+    <mat-icon aria-label="{{ 'Copy Reverse Result' | translate }}" matTooltip="{{ 'Copy Reverse Result' | translate }}" (click)="copyContent('reverseResultField')">copy_all</mat-icon>
+    <br/>
+    <mat-dialog-content class="mat-topography" *ngIf="floatNotMinimise" style="color: black;padding-top: 10px;">
+        <ul *ngFor="let rows of anyCalculatorLayout" style="list-style-type: none;" class="keyboardTheming">
+            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == currentBase || character.value == circularUnit || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'formula1' || character.type == 'formula2' || character.type == 'formula3' || character.type == 'formula4' || character.type == 'formula5' || character.type == 'formula6')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize*1.1 + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '25px' : defaultFontSize + 'px', 'font-weight': 400, 'height' : defaultCellSize*0.7 + 'px', 'padding-top': '0px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
+                <div *ngIf="!showImageGlyph || character.src == null" class="{{fontClass}}">
+                    {{character.value}} 
+                </div>
+                <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') == -1">
+                    <img src="{{character.src}}" [ngStyle]="{'width': defaultFontSize*1.4+'px', 'height': defaultFontSize+'px'}"/>
+                </div>
+                <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') > -1" class="icon icon-{{character.src.split('/')[1]}}">
+                </div>
+            </li>
+        </ul>
+    </mat-dialog-content>
+    <div mat-dialog-actions style="margin-bottom: 0px; padding: 0px; width: 100%;">
+        <table style="width: 100%;" *ngIf="!calculatorOnly">
+            <tr style="text-align: center; width: 100%;">
+                <td>
+                    <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" style="height: 22px;" cdkFocusInitial><mat-icon style="font-size: smaller;vertical-align: super;height:0px;">check_circle</mat-icon></button>&nbsp;&nbsp;
+                </td>
+                <td>
+                    <button mat-raised-button type="submit" color="accent" (click)="sendResultOnly()" style="height: 22px;" aria-label="{{ 'Send Result' | translate }}"><mat-icon style="font-size: smaller;vertical-align: super;height:0px;">send</mat-icon></button>&nbsp;&nbsp;
+                </td>
+                <td>
+                    <button mat-raised-button type="submit" color="primary" aria-label="{{ 'Send Equation' | translate }}" style="height: 22px;" (click)="sendResultAndEquation()"><mat-icon style="font-size: smaller;vertical-align: super;height:0px;">summarize</mat-icon></button>&nbsp;&nbsp;
+                </td>
+                <td>
+                    <button mat-raised-button color="accent" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="historyMenu" style="height: 22px;" aria-label="{{ 'History' | translate }}"><mat-icon style="font-size: smaller;vertical-align: super;height:0px;">work_history</mat-icon></button>&nbsp;&nbsp;
+                    <mat-menu #historyMenu="matMenu">
+                        <button *ngFor="let history of historyEquations" mat-menu-item>
+                            <span (click)="selectEquationFromHistory(history)">{{history}}</span>
+                        </button>
+                    </mat-menu>&nbsp;&nbsp;
+                </td>
+                <td>
+                    <button mat-raised-button color="primary" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="favouriteMenu" aria-label="{{ 'Bookmark' | translate }}" style="height: 22px;" matTooltip="{{ 'Bookmark' | translate }}"><mat-icon style="font-size: smaller;vertical-align: super;height:0px;">stars</mat-icon></button>&nbsp;&nbsp;
+                    <mat-menu #favouriteMenu="matMenu">
+                        <button *ngFor="let valueOfBookmark of bookmarkedEquations" mat-menu-item>
+                            <span (click)="selectEquationFromBookmark(valueOfBookmark)">{{valueOfBookmark}}</span>
+                        </button>
+                    </mat-menu>&nbsp;&nbsp;
+                </td>
+                <td>
+                    <button mat-raised-button color="accent" aria-label="{{ 'Toggle Scientific and Simple Calculator' | translate }}" matTooltip="{{ 'Toggle Scientific and Simple Calculator' | translate }}" style="height: 22px;" (click)="switchCalculators()"><mat-icon style="font-size: smaller;vertical-align: super;height:0px;">screen_rotation</mat-icon><mat-icon style="font-size: smaller;vertical-align: super;">science</mat-icon></button>
+                </td>
+            </tr>
+        </table>
+        <table style="width: 100%;" *ngIf="calculatorOnly">
+            <tr style="text-align: center; width: 100%;">
+                <td>
+                    <button mat-raised-button color="warn" (click)="done()" aria-label="{{ 'Close' | translate }}" style="height: 22px;" cdkFocusInitial><mat-icon style="font-size: smaller;vertical-align: super;height:0px;">check_circle</mat-icon></button>&nbsp;&nbsp;
+                </td>
+                <td>
+                    <button mat-raised-button color="accent" aria-label="{{ 'Toggle Scientific and Simple Calculator' | translate }}" matTooltip="{{ 'Toggle Scientific and Simple Calculator' | translate }}" style="height: 22px;" (click)="switchCalculators()"><mat-icon style="font-size: smaller;vertical-align: super;height:0px;">screen_rotation</mat-icon><mat-icon style="font-size: smaller;vertical-align: super;height:0px;">science</mat-icon></button>
+                </td>
+                <td>
+                    <button mat-raised-button color="primary" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="favouriteMenu" aria-label="{{ 'Bookmark' | translate }}" style="height: 22px;" matTooltip="{{ 'Bookmark' | translate }}"><mat-icon style="font-size: smaller;vertical-align: super;height:0px">stars</mat-icon></button>&nbsp;&nbsp;
+                    <mat-menu #favouriteMenu="matMenu">
+                        <button *ngFor="let valueOfBookmark of bookmarkedEquations" mat-menu-item>
+                            <span (click)="selectEquationFromBookmark(valueOfBookmark)">{{valueOfBookmark}}</span>
+                        </button>
+                    </mat-menu>&nbsp;&nbsp;
+                </td>
+                <td>
+                    <button mat-raised-button color="accent" *ngIf="currentCalculatorType == 'scientific'" [matMenuTriggerFor]="historyMenu" style="height: 22px;" aria-label="{{ 'History' | translate }}"><mat-icon style="font-size: smaller;vertical-align: super;height:0px;">work_history</mat-icon></button>&nbsp;&nbsp;
                     <mat-menu #historyMenu="matMenu">
                         <button *ngFor="let history of historyEquations" mat-menu-item>
                             <span (click)="selectEquationFromHistory(history)">{{history}}</span>
