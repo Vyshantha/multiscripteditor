@@ -58,8 +58,8 @@ export class HelperComponent implements OnInit, AfterViewInit {
   supportedScriptsOptions: Observable<AvailableKeyboards[]>;
   
 
-  isMobile: Boolean = window.outerWidth < 500;
-  isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200;
+  isMobile: Boolean = window.outerWidth < 500 || (window.outerWidth > 500 && window.outerHeight < 500);
+  isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200 && window.outerHeight > 500;
 
   keyboardLayouts: any = (allLayoutPositions as any).default;
 

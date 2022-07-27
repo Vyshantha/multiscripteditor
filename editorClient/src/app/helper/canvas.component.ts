@@ -14,8 +14,8 @@ import { SessionManagerService } from '../core/services/session-manager.service'
 export class CanvasComponent implements AfterViewInit {
   @ViewChild('canvas') public canvas: ElementRef | undefined;
 
-  isMobile: Boolean = window.outerWidth < 500;
-  isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200;
+  isMobile: Boolean = window.outerWidth < 500 || (window.outerWidth > 500 && window.outerHeight < 500);
+  isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200 && window.outerHeight > 500;
 
   public cx: CanvasRenderingContext2D | null | undefined;
 

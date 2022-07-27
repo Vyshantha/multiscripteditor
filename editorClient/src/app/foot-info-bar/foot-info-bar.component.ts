@@ -8,8 +8,8 @@ import { SessionManagerService } from '../core/services/session-manager.service'
 })
 export class FootInfoBarComponent implements OnInit {
 
-  isMobile: Boolean = window.outerWidth < 500;
-  isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200;
+  isMobile: Boolean = window.outerWidth < 500 || (window.outerWidth > 500 && window.outerHeight < 500);
+  isTablet: Boolean = window.outerWidth > 499 && window.outerWidth < 1200 && window.outerHeight > 500;
   footerVisible : Boolean = true;
 
   constructor(private sessionManager: SessionManagerService) { }

@@ -1286,8 +1286,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   localeNames : any = "";
 
-  defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 40 : ((!this.isMobile && this.isTablet)? 42 : 50 );
-  defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 18 : ((!this.isMobile && this.isTablet)? 16 : 17 );
+  defaultCellSize: Number = (this.isMobile && !this.isTablet) ? 40 : ((!this.isMobile && this.isTablet)? 40 : 50 );
+  defaultFontSize: Number = (this.isMobile && !this.isTablet) ? 18 : ((!this.isMobile && this.isTablet)? 17 : 17 );
 
   translateForSnackBar: string[] = [];
 
@@ -1301,7 +1301,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
     Problem to Fix
     - Tablet UI popup size from bookmarks
-    - Bookmarks not retained in session after close of popup
     - Operands in Hexa and then result in Decimal
   */
 
@@ -1446,6 +1445,13 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
     this.populateUINumberLayout();
     
+    if (this.bookmarkedEquations.length == 0 && this.sessionManager.getAllBookmarkedEquations() != "" && this.sessionManager.getAllBookmarkedEquations() != null && this.sessionManager.getAllBookmarkedEquations() != undefined) {
+      let favourites = this.sessionManager.getAllBookmarkedEquations().split("§");
+      for(let i = 0; i < favourites.length - 1; i++) { 
+        this.bookmarkedEquations.push(favourites[i]);
+      }
+    }
+
     this.altGrCapsExists = (this.layoutCurrentKeys)? this.layoutCurrentKeys.some(x => x.hasOwnProperty('altGrCaps')) : false;
 
     let portrait = window.matchMedia("(orientation: portrait)");
@@ -1461,21 +1467,22 @@ export class CustomiseKeyboardsComponent implements OnInit {
           self.currentCalculatorType = 'scientific';
         }
     });
+
     if (this.isMobile || this.isTablet) {
       document.getElementsByClassName("mat-dialog-container")[0]["style"]["padding"] = "5px";
-      document.getElementsByClassName("cdk-overlay-pane")[0]["style"]["max-width"] = "";
+      document.getElementsByClassName("cdk-overlay-pane")[0]["style"]["max-width"] = (this.isTablet)? "90vw" : "";
       document.getElementsByClassName("cdk-overlay-pane")[0]["style"]["width"] = document.documentElement.clientWidth - 15 + "px";
     }
   }
 
   async ngAfterViewInit(): Promise<void> {
-    /*this.sessionManager.isMobileDevice.subscribe((value) => {
+    this.sessionManager.isMobileDevice.subscribe((value) => {
       this.isMobile = value;
     });
 
     this.sessionManager.isTabletDevice.subscribe((value) => {
       this.isTablet = value;
-    });*/
+    });
 
     this.localisedKeyboardLayouts = await this.localisedKeyboardLayoutDB(this.sessionManager.getUILocale());
 
@@ -1488,6 +1495,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
     this.sessionManager.unusedKeys.subscribe((value) => {
       this.unusedKeys = value;
     });
+
+    if (this.isMobile || this.isTablet) {
+      document.getElementsByClassName("mat-dialog-container")[0]["style"]["padding"] = "5px";
+      document.getElementsByClassName("cdk-overlay-pane")[0]["style"]["max-width"] = "";
+      document.getElementsByClassName("cdk-overlay-pane")[0]["style"]["width"] = document.documentElement.clientWidth - 15 + "px";
+    }
   }
 
   baseUIRendering() {
@@ -2423,6 +2436,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
               this._snackBar.open("Equation Bookmarked",this.translateForSnackBar[0], {
                 duration: 3000,
               });
+              this.sessionManager.updateBookmarkEquations(this.equationField.nativeElement.value);
             }
             break;
 

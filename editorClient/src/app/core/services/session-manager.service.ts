@@ -83,10 +83,10 @@ export class SessionManagerService {
   uri = 'https://' + SVAConfig.hostname + ':' + SVAConfig.port + '';
 
   constructor(private translate: TranslateService, private router: Router, private http: HttpClient) {
-    if (window.outerWidth < 500) {
+    if (window.outerWidth < 500 || (window.outerWidth > 500 && window.outerHeight < 500)) {
       this.isMobileDevice.next(true);
       this.isTabletDevice.next(false);
-    } else if (window.outerWidth > 499 && window.outerWidth < 1200) {
+    } else if (window.outerWidth > 499 && window.outerWidth < 1200 && window.outerHeight > 500) {
       this.isMobileDevice.next(false);
       this.isTabletDevice.next(true);
     } else {
@@ -154,6 +154,21 @@ export class SessionManagerService {
       localStorage.setItem('favourites', bookmarks.toString());
       this.favouriteKeyboards.next(bookmarks.toString());
     }
+  }
+
+  // Retrieve All Bookmarked Equations
+  getAllBookmarkedEquations() {
+    if (localStorage.getItem('bookmarkEquations') && localStorage.getItem('bookmarkEquations').indexOf("script") == -1 && localStorage.getItem('bookmarkEquations').indexOf("input") == -1)
+      return localStorage.getItem('bookmarkEquations');
+    else
+      return "";
+  }
+
+  // Push Bookmark to Storage
+  updateBookmarkEquations(equation) {
+    let currentBookmark = (localStorage.getItem('bookmarkEquations') != null && localStorage.getItem('bookmarkEquations') != undefined) ? localStorage.getItem('bookmarkEquations') : "";
+    currentBookmark = currentBookmark + equation + "§";
+    localStorage.setItem('bookmarkEquations', currentBookmark);
   }
 
   // When Show Only Keyboard Slider is Selected
