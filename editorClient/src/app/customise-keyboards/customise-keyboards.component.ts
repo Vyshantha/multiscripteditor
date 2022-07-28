@@ -2890,11 +2890,15 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
           case 'signChange' :
             if (this.resultField.nativeElement.value != "-") {
-              this.resultField.nativeElement.value = "-" + this.resultField.nativeElement.value;
-              this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+              this.equationField.nativeElement.value = this.equationField.nativeElement.value.replace(new RegExp(this.resultField.nativeElement.value + '$'), " -" + this.resultField.nativeElement.value);
+              this.resultField.nativeElement.value = " -" + this.resultField.nativeElement.value;
+              if (this.varX == "") 
+                this.varX = this.resultField.nativeElement.value;
+              else
+                this.varY = this.resultField.nativeElement.value;
               if (this.unicode5AndHigher) {
-                this.computeNonUnicodeResult("", "-");
-                this.computeNonUnicodeEquation("", "-");
+                this.computeNonUnicodeResult("", " -");
+                this.computeNonUnicodeEquation("", " -");
               }
             }
             break;
@@ -3303,7 +3307,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
 
   numberRepresentationMarking(numberAsString) {
-    let numberMarked = "";
+    let numberMarked = "", negativeNum = false;
+    if (numberAsString.indexOf("-") > -1) {
+      numberAsString = numberAsString.split("-")[1];
+      negativeNum = true;
+    }
+
     if (this.periodDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
       let periodPosition = (numberAsString.indexOf(".") > -1) ? numberAsString.indexOf(".") : numberAsString.length - 1;
       for (let position = 0; position < numberAsString.length; position++) {
@@ -3383,7 +3392,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
           numberMarked = numberMarked + numberAsString[position];
       }
     }
-    return numberMarked;
+    return (negativeNum) ? "-" + numberMarked : numberMarked;
   }
 
   selectEquationFromBookmark(bookmarked) {
