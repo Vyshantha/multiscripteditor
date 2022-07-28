@@ -1297,7 +1297,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
     - Any Equation Setup (Paste/History/Bookmark/Formula) and use
     - Brackets usage & complete equation computation
     - BaseX specific Operations
-    - Send Equation and Result (with currency)
 
     Problem to Fix
     - Tablet UI popup size from bookmarks
@@ -2421,13 +2420,16 @@ export class CustomiseKeyboardsComponent implements OnInit {
               this.varX = this.resultField.nativeElement.value;
               this.resultField.nativeElement.value = this.keepInMemory;
               this.varY = this.keepInMemory;
+              this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + this.resultField.nativeElement.value;
+              this.computeNonUnicodeResult("",this.keepInMemory);
+              this.computeNonUnicodeEquation("",this.keepInMemory);
             } else {
               this.resultField.nativeElement.value = this.resultField.nativeElement.value + " " + this.keepInMemory;
               this.varY = this.keepInMemory;
+              this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + this.resultField.nativeElement.value;
+              this.computeNonUnicodeResult("",this.keepInMemory);
+              this.computeNonUnicodeEquation("",this.keepInMemory);
             }
-            this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + this.resultField.nativeElement.value;
-            this.computeNonUnicodeResult("",this.keepInMemory);
-            this.computeNonUnicodeEquation("",this.keepInMemory);
             break;
 
           case 'bookmarkEquation' :
@@ -2441,11 +2443,23 @@ export class CustomiseKeyboardsComponent implements OnInit {
             break;
 
           case 'undoAction' :
-            this.resultField.nativeElement.value = this.resultField.nativeElement.value.substr(0, this.resultField.nativeElement.value.length - 1);
-            this.equationField.nativeElement.value = this.resultField.nativeElement.value;
-            this.varX = this.resultField.nativeElement.value;
-            this.nonUnicodeNumberResult.splice(this.nonUnicodeNumberResult.length - 1);
-            this.nonUnicodeNumberEquation.splice(this.nonUnicodeNumberEquation.length - 1);
+            if (this.equationField.nativeElement.value.substr(this.equationField.nativeElement.value.length - 1, this.equationField.nativeElement.value.length).trim() == this.operatorXY || this.equationField.nativeElement.value.substr(this.equationField.nativeElement.value.length - 2, this.equationField.nativeElement.value.length).trim() == this.operatorXY) {
+              this.resultField.nativeElement.value = this.equationField.nativeElement.value.substr(0, this.equationField.nativeElement.value.length - this.operatorXY.length - 1).trim();
+              this.equationField.nativeElement.value = this.resultField.nativeElement.value; 
+              this.operatorXY = "";
+              this.varX = "";
+              this.varY = "";
+            } else if (action != "keyboard" && this.varY != "") {
+              this.resultField.nativeElement.value = this.resultField.nativeElement.value.substr(0, this.resultField.nativeElement.value.length - 1);
+              this.equationField.nativeElement.value = this.equationField.nativeElement.value.substr(0, this.equationField.nativeElement.value.length - 1);
+              this.nonUnicodeNumberResult.splice(this.nonUnicodeNumberResult.length - 1);
+              this.nonUnicodeNumberEquation.splice(this.nonUnicodeNumberEquation.length - 1);
+            } else if (action != "keyboard" && this.varX == "" && this.varY == "") {
+              this.resultField.nativeElement.value = this.resultField.nativeElement.value.substr(0, this.resultField.nativeElement.value.length - 1);
+              this.equationField.nativeElement.value = this.resultField.nativeElement.value;
+              this.nonUnicodeNumberResult.splice(this.nonUnicodeNumberResult.length - 1);
+              this.nonUnicodeNumberEquation.splice(this.nonUnicodeNumberEquation.length - 1);
+            }
             break;
 
           case 'restart' :
@@ -3374,6 +3388,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   selectEquationFromBookmark(bookmarked) {
     this.equationField.nativeElement.value = bookmarked;
+    if (this.historyEquations.length == 0) {
+      this.historyEquations.push(bookmarked);
+    }
   }
 
   selectEquationFromHistory(history) {
@@ -3405,11 +3422,25 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
 
   sendResultOnly() {
-    this.keyPressed({"value":this.resultField.nativeElement.value,"action":"char","src":"","type":"number"}, this.resultField.nativeElement.value, "char", "number", "");
+    if (this.resultField.nativeElement.value != "") {
+      let valueToSend = "";
+      if (this.appendCurrencyPrefix) 
+        valueToSend = this.currencySymbol + this.resultField.nativeElement.value;
+      else if (this.appendCurrencySuffix) 
+        valueToSend = this.resultField.nativeElement.value + this.currencySymbol;
+      else if (this.appendCircularUnits) 
+        valueToSend = this.resultField.nativeElement.value + this.circularUnit;
+      else
+        valueToSend = this.resultField.nativeElement.value
+
+      this.keyPressed({"value":valueToSend,"action":"false","src":"","type":"word"}, valueToSend, "false", "word", "");
+    }
   }
 
   sendResultAndEquation() {
-    this.keyPressed({"value":this.historyEquations[this.historyEquations.length -1],"action":"char","src":"","type":"number"}, this.historyEquations[this.historyEquations.length -1], "char", "number", "");
+    if (this.historyEquations.length >= 1) {
+      this.keyPressed({"value":this.historyEquations[this.historyEquations.length - 1],"action":"false","src":"","type":"word"}, this.historyEquations[this.historyEquations.length - 1], "false", "word", "");
+    }
   }
 
   switchCalculators() {
