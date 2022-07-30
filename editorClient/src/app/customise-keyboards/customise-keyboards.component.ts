@@ -2890,12 +2890,19 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
           case 'signChange' :
             if (this.resultField.nativeElement.value != "-") {
-              this.equationField.nativeElement.value = this.equationField.nativeElement.value.replace(new RegExp(this.resultField.nativeElement.value + '$'), " -" + this.resultField.nativeElement.value);
-              this.resultField.nativeElement.value = " -" + this.resultField.nativeElement.value;
-              if (this.varX == "") 
-                this.varX = this.resultField.nativeElement.value;
+              if (this.equationField.nativeElement.value == "xⁿ = yⁿ + zⁿ")
+                this.equationField.nativeElement.value = "";
+
+              this.equationField.nativeElement.value = this.equationField.nativeElement.value.replace(this.operatorXY, this.operatorXY + " -");
+
+              if (this.varX != this.resultField.nativeElement.value)
+                this.resultField.nativeElement.value = " -" + this.resultField.nativeElement.value;
               else
+                this.resultField.nativeElement.value = " -";
+
+              if (this.varX != "") 
                 this.varY = this.resultField.nativeElement.value;
+
               if (this.unicode5AndHigher) {
                 this.computeNonUnicodeResult("", " -");
                 this.computeNonUnicodeEquation("", " -");
