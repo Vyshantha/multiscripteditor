@@ -1151,7 +1151,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
       {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"hide"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓-","action":"char","type":"functionKeyDeactivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
     ]},
     {"row":[
-      {"value":"°","action":"char","type":"degrees","visible":"show"},{"value":"π","action":"char","type":"piNatural"},{"value":"A","action":"char","type":"hexadecimal","visible":"hide"},{"value":"B","action":"char","type":"hexadecimal","visible":"hide"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₁","action":"char","type":"formula1"}
+      {"value":"°","action":"char","type":"degrees","visible":"show"},{"value":"π","action":"char","type":"piNatural"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₁","action":"char","type":"formula1"}
     ]},
     {"row":[
       {"value":"rad","action":"char","type":"radians","visible":"show"},{"value":"sin","action":"char","type":"sineFunc"},{"value":"sin⁻ⁱ","action":"char","type":"sineInverseFunc","visible":"show"},{"value":"ln","action":"char","type":"naturalLogarithm"},{"value":"eˣ","action":"char","type":"naturalExponent"},{"value":"≤","action":"char","type":"lessThanEquals","visible":"hide"},{"value":"<<","action":"char","type":"leftShift","visible":"hide"},{"value":"&","action":"char","type":"logicalAnd","visible":"hide"},{"value":" ","type":"num1","action":"char","visible":"hide"},{"value":" ","type":"num2","action":"char","visible":"hide"},{"value":" ","type":"num3","action":"char","visible":"hide"},{"value":"(","type":"bracesOpen","visible":"hide"},{"value":"/","action":"char","type":"divisionOp"},{"value":"÷","action":"char","type":"divisionOp"}
@@ -1190,26 +1190,28 @@ export class CustomiseKeyboardsComponent implements OnInit {
   separatorsForDecimalAndNumeral: any = [' ', "'", ',', '.', '·', '\u2009', '\u202F', '˙', '⠨', '٫' , '٬' , '⎖', '⹁'];
 
   // Alphabets for 1-10, 20, 30 ... , 80, 90, 100, 200, ..., 1000
-  alphaNumeric: any = ['arc', 'el', 'ion', 'he', 'yi', 'lad', 'hy', 'mand', 'syrc', 'glag', 'goth', 'ka', 'nusk', 'asom','linea', 'linb'];
-
-  // Number for 0-10, 100, 1000 ...
+  alphaNumeric: any = ['arc', 'el', 'ion', 'he', 'yi', 'lad', 'hy', 'mand', 'syrc', 'glag', 'goth', 'ka', 'nusk', 'asom', 'linea', 'linb'];
+  // Number for 0-10, 100, 1000 ... without Decimal
   numberFor10Powers: any = ['txg', 'zhcn', 'zhtw', 'ja', 'kan', 'zih', 'bopo', 'kaid', 'ko', 'vi'];
-
+  // Decimal numbers - separate symbol for 10, 100, 1000, 10000
+  use10RegularDecimal: any = ['ahom', 'ta', 'bada', 'vatt'];
   // No 0 number indicator only use 10 multiples
   use10InPlaceOfZero: any = ['la', 'el', 'ion', 'he', 'yi', 'lad', 'hy', 'geez', 'am', 'ti', 'tig', 'glag', 'copt', 'ka', 'sgnw', 'linea', 'linb', 'runr', 'txg', 'ary', 'avst'];
+  // Display Results for these Unicode script without manipulation
+  displayComputedResultForUnicodeScript : any = ['takr','adlm','nkoo','mend','geez','am','ti','tig','el','ion','hy','glag','copt','txg','zhcn','zhtw','ja','kan','zih','bopo','kaid','runr','avst','ahom','aima','bhai'];
 
   //https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
   commaDecimalSeparatorLocales: any = ['frca', 'lb', 'es', 'sq', 'hy', 'az', 'aze', 'befr', 'fr', 'bsla', 'bs', 'hv', 'pt', 'ptbr', 'cs', 'da', 'et', 'fo', 'fi', 'de', 'ka', 'el', 'kl', 'hu', 'is', 'id', 'it', 'kk', 'kaz', 'ky', 'kir', 'lv', 'lt', 'mn', 'mon', 'mnla', 'nl', 'no', 'gn', 'pl', 'ro', 'ru', 'be', 'sr', 'sk', 'sl', 'sv', 'tr', 'tk', 'tuk', 'uk', 'uz', 'uzb', 'vi', 'af', 'st', 'ss', 'ts', 'tn', 'ven', 'xh', 'nso', 'zu'];
-  periodDecimalSeparatorLocales: any = ['en', 'enus', 'engb', 'enintl', 'ne', 'bn', 'km', ,'zhcn', 'zhtw', 'ja', 'kan', 'zih', 'bopo', 'kaid', 'am', 'ga', 'he', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enin', 'kn', 'hi', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'odu', 'adlm', 'nkoo', 'mend', 'sgnw'];
+  periodDecimalSeparatorLocales: any = ['en', 'enus', 'engb', 'enintl', 'ne', 'bn', 'km', ,'zhcn', 'zhtw', 'ja', 'kan', 'zih', 'bopo', 'kaid', 'am', 'ga', 'he', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enin', 'kn', 'hi', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'odu', 'adlm', 'nkoo', 'mend', 'sgnw', 'avo','ahom','aima', 'ta', 'bada', 'vatt', 'bamu', 'bali', 'bhat', 'bhai', 'brx'];
   arabicDecimalSeparatorLocales: any = ['ar', 'ary', 'fa', 'ur', 'ps', 'ks', 'sd', 'bal', 'ckb', 'rhg', 'bsk', 'he', 'yi', 'lad'];
 
-  desiLakhCommaPosition: any = ['enin', 'ne', 'bn', 'km', 'thaa', 'dv', 'si', 'th', 'kn', 'hi', 'te', 'ta', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu'];
-  desiLakhSpacePosition: any = ['enin', 'ne'];
+  desiLakhCommaPosition: any = ['enin', 'ne', 'bn', 'km', 'thaa', 'dv', 'si', 'th', 'kn', 'hi', 'te', 'ta', 'bada', 'vatt', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'brx'];
+  desiLakhSpacePosition: any = ['enin', 'ne', ,'bhat', 'bhai'];
   thousandsPositionApostropheAndPeriodDecimal : any = ['gsw'];
   thousandsPositionApostropheAndCommaDecimal : any = ['gsw'];
   thousandsPositionPeriodAndApostropheDecimal : any = [];
   thousandsPositionPeriodAndCommaDecimal : any = ['de','it','ptbr','nld','bs','da','el','id','nl','ro','sl','tr','vi','sgnw'];
-  thousandsPositionCommaAndPeriodDecimal : any = ['enus','engb','en','enintl','odu','fa','zhtw','ga','he','ja','ko','ms','mt','esmx','th','adlm','nkoo','mend'];
+  thousandsPositionCommaAndPeriodDecimal : any = ['enus','engb','en','enintl','odu','fa','zhtw','ga','he','ja','ko','ms','mt','esmx','th','adlm','nkoo','mend','bamu','bali'];
   thousandsPositionSpaceAndPeriodDecimal : any = [];
   thousandsPositionSpaceAndCommaDecimal : any = ['cs','fr','bg','befr','sq','et','fi','hu','la','lv','lt','no','pl','pt','ru','sr','sk','af','es','sv','gsw','uk','hr'];
   thousandsPositionCommaAndMiddleDotDecimal : any = ['engb','ms'];
@@ -1232,8 +1234,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
   rtlLocales : string[] = ['ar', 'he', 'ur', 'fa', 'syrc', 'rhg', 'sd', 'bal', 'bsk', 'yi', 'jrb', 'ps', 'ckb', 'ks', 'ett', 'avst', 'khar', 'phn', 'xpu', 'samr', 'mand', 'sog', 'arc', 'skr', 'pal', 'xpr', 'xsa', 'mnkar', 'jawi', 'nkoo', 'thaa', 'orkh', 'lydi', 'adlm', 'ajam', 'wolf', 'woal', 'chrs', 'elym', 'palm', 'hatr', 'ber', 'mani', 'mer', 'psal', 'kult', 'egyd', 'safa', 'nshu', 'txr', 'rohg', 'estr', 'sert', 'madn', 'lad', 'nbat', 'pice', 'gars', 'cprt', 'lepo', 'sabe', 'phyg', 'khaz', 'mero', 'cana', 'sina', 'yezi', 'ug', 'mend', 'linb', 'idu', 'chun', 'kuli', 'txg', 'indus', 'hung', 'dv', 'odu', 'ougr'];
   rtlLocalesLtRNumerals : string [] = ['ar','fa','ur','ps','ks','sd', 'bal', 'ckb', 'rhg', 'bsk'];
   rtlNumerals : string [] = ['odu','adlm','nkoo','nbat','avst','khar','xpr','mend','phn','ett','linea','linb'];
-
-  displayComputedResultForUnicodeScript : any = ['takr','adlm','nkoo','mend','geez','am','ti','tig','el','ion','hy','glag','copt','txg','zhcn','zhtw','ja','kan','zih','bopo','kaid','runr','ary','avst'];
 
   boustrophedonScripts: string[] = ['ett', 'sabe', 'maya', 'txr', 'wole', 'phyg', 'pice', 'asom', 'luw', 'moon', 'sina', 'kmt', 'hung', 'safa', 'xsa', 'egyd', 'avo', 'lepo'];
   topToBottomLR: string[] = ['sog', 'oira', 'mon', 'zhcn', 'zhtw', 'ja', 'ko', 'phag', 'mnc', 'galk', 'shui', 'soyo'];
@@ -1291,7 +1291,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   mapLocale: any = [];
   nonUnicodeMap: any = [];
 
-  allowedTypingContent: any = ['A','B','C','D','E','F','a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9','(',')',"°","′","″","'","\"","ᵍ"];
+  allowedTypingContent: any = ['A','B','C','D','E','F','a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9','(',')',"°","′","″","'","\"","ᵍ","₠","₡","₢","₣","₤","₥","₦","₧","₨","₩","₽","฿","₹","€","$","£","₪","₫","₺","₾","₻","₼","؋","₭","₮","₯","₰","₱","₲","₳","₴","₵","₶","₷","₸","₿","⃀","֏","៛","௹","૱","ರ","රු","𞋿","𐆚","𐆖","𐆙","𐆗","𐆘","ƒ","元"];
 
   localeNames : any = "";
 
@@ -1549,13 +1549,13 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.calculatorLayout[0].row[5].visible = "hide";
       // base60
       this.calculatorLayout[0].row[6].visible = "hide";
-    } else if (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+    } else if (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
       this.calculatorLayout = [
         {"row":[
           {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"show"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion","visible":"hide"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓-","action":"char","type":"functionKeyDeactivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
         ]},
         {"row":[
-          {"value":"°","action":"char","type":"degrees","visible":"hide"},{"value":"π","action":"char","type":"piNatural","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₁","action":"char","type":"formula1"}
+          {"value":"°","action":"char","type":"degrees","visible":"hide"},{"value":"π","action":"char","type":"piNatural","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":"𝑓₆","action":"char","type":"formula6","visible":"hide"},{"value":"𝑓₅","action":"char","type":"formula5","visible":"hide"},{"value":"𝑓₄","action":"char","type":"formula4","visible":"hide"},{"value":"𝑓₃","action":"char","type":"formula3","visible":"hide"},{"value":"𝑓₂","action":"char","type":"formula2","visible":"hide"},{"value":"𝑓₁","action":"char","type":"formula1","visible":"hide"}
         ]},
         {"row":[
           {"value":"rad","action":"char","type":"radians","visible":"hide"},{"value":"sin","action":"char","type":"sineFunc","visible":"hide"},{"value":"sin⁻ⁱ","action":"char","type":"sineInverseFunc","visible":"hide"},{"value":"ln","action":"char","type":"naturalLogarithm","visible":"hide"},{"value":"eˣ","action":"char","type":"naturalExponent","visible":"hide"},{"value":"≤","action":"char","type":"lessThanEquals","visible":"hide"},{"value":"<<","action":"char","type":"leftShift","visible":"hide"},{"value":"&","action":"char","type":"logicalAnd","visible":"hide"},{"value":" ","type":"num1","action":"char","visible":"hide"},{"value":" ","type":"num2","action":"char","visible":"hide"},{"value":" ","type":"num3","action":"char","visible":"hide"},{"value":"(","type":"bracesOpen","visible":"hide"},{"value":"/","action":"char","type":"divisionOp"},{"value":"÷","action":"char","type":"divisionOp"}
@@ -1798,7 +1798,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
           }
           // Hexadecimal
           //num11 - A
-          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num11" && this.calculatorLayout[1].row[2].type && this.calculatorLayout[1].row[2].type == "hexadecimal") {
+          if ((this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num11" && this.calculatorLayout[1].row[2].type && this.calculatorLayout[1].row[2].type == "hexadecimal") {
             this.calculatorLayout[1].row[2].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "A";
@@ -1812,7 +1812,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           //num12 - B
-          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num12" && this.calculatorLayout[1].row[3].type && this.calculatorLayout[1].row[3].type == "hexadecimal") {
+          if ((this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num12" && this.calculatorLayout[1].row[3].type && this.calculatorLayout[1].row[3].type == "hexadecimal") {
             this.calculatorLayout[1].row[3].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "B";
@@ -1826,7 +1826,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           //num13 - C
-          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num13" && this.calculatorLayout[1].row[4].type && this.calculatorLayout[1].row[4].type == "hexadecimal") {
+          if ((this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num13" && this.calculatorLayout[1].row[4].type && this.calculatorLayout[1].row[4].type == "hexadecimal") {
             this.calculatorLayout[1].row[4].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "C";
@@ -1840,7 +1840,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           //num14 - D
-          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num14" && this.calculatorLayout[1].row[5].type && this.calculatorLayout[1].row[5].type == "hexadecimal") {
+          if ((this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num14" && this.calculatorLayout[1].row[5].type && this.calculatorLayout[1].row[5].type == "hexadecimal") {
             this.calculatorLayout[1].row[5].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "D";
@@ -1854,7 +1854,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           //num15 - E
-          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num15" && this.calculatorLayout[1].row[6].type && this.calculatorLayout[1].row[6].type == "hexadecimal") {
+          if ((this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num15" && this.calculatorLayout[1].row[6].type && this.calculatorLayout[1].row[6].type == "hexadecimal") {
             this.calculatorLayout[1].row[6].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "E";
@@ -1868,7 +1868,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           //num16 - F
-          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num16" && this.calculatorLayout[1].row[7].type && this.calculatorLayout[1].row[7].type == "hexadecimal") {
+          if ((this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num16" && this.calculatorLayout[1].row[7].type && this.calculatorLayout[1].row[7].type == "hexadecimal") {
             this.calculatorLayout[1].row[7].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "F";
@@ -1883,7 +1883,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
           }
           // Mayan & Kaktovik
           //num17 - G
-          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num17" && this.calculatorLayout[1].row[8].type && this.calculatorLayout[1].row[8].type == "formula6") {
+          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num17" && this.calculatorLayout[1].row[8].type && this.calculatorLayout[1].row[8].type == "formula6") {
             this.calculatorLayout[1].row[8].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "G";
@@ -1897,7 +1897,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           //num18 - H
-          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num18" && this.calculatorLayout[1].row[9].type && this.calculatorLayout[1].row[9].type == "formula5") {
+          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num18" && this.calculatorLayout[1].row[9].type && this.calculatorLayout[1].row[9].type == "formula5") {
             this.calculatorLayout[1].row[9].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "H";
@@ -1911,7 +1911,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           //num19 - I
-          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num19" && this.calculatorLayout[1].row[10].type && this.calculatorLayout[1].row[10].type == "formula4") {
+          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num19" && this.calculatorLayout[1].row[10].type && this.calculatorLayout[1].row[10].type == "formula4") {
             this.calculatorLayout[1].row[10].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "I";
@@ -1925,7 +1925,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
           //num20 - J
-          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num20" && this.calculatorLayout[1].row[11].type && this.calculatorLayout[1].row[11].type == "formula3") {
+          if ((this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num20" && this.calculatorLayout[1].row[11].type && this.calculatorLayout[1].row[11].type == "formula3") {
             this.calculatorLayout[1].row[11].value = this.layoutCurrentKeys[i].row[j].value;
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "J";
