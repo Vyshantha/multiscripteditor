@@ -1199,21 +1199,24 @@ export class CustomiseKeyboardsComponent implements OnInit {
   use10InPlaceOfZero: any = ['la', 'el', 'ion', 'he', 'yi', 'lad', 'hy', 'geez', 'am', 'ti', 'tig', 'glag', 'copt', 'ka', 'sgnw', 'linea', 'linb', 'runr', 'txg', 'ary', 'avst'];
   // Display Results for these Unicode script without manipulation
   displayComputedResultForUnicodeScript : any = ['takr','adlm','nkoo','mend','geez','am','ti','tig','el','ion','hy','glag','copt','txg','zhcn','zhtw','ja','kan','zih','bopo','kaid','runr','avst','ahom','aima','bhai'];
+  // Non-Decimal numerals
+  nonStandardNumeral : any = ['nbat', 'chrs'];
 
   //https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
-  commaDecimalSeparatorLocales: any = ['frca', 'lb', 'es', 'sq', 'hy', 'az', 'aze', 'befr', 'fr', 'bsla', 'bs', 'hv', 'pt', 'ptbr', 'cs', 'da', 'et', 'fo', 'fi', 'de', 'ka', 'el', 'kl', 'hu', 'is', 'id', 'it', 'kk', 'kaz', 'ky', 'kir', 'lv', 'lt', 'mn', 'mon', 'mnla', 'nl', 'no', 'gn', 'pl', 'ro', 'ru', 'be', 'sr', 'sk', 'sl', 'sv', 'tr', 'tk', 'tuk', 'uk', 'uz', 'uzb', 'vi', 'af', 'st', 'ss', 'ts', 'tn', 'ven', 'xh', 'nso', 'zu'];
-  periodDecimalSeparatorLocales: any = ['en', 'enus', 'engb', 'enintl', 'ne', 'bn', 'km', ,'zhcn', 'zhtw', 'ja', 'kan', 'zih', 'bopo', 'kaid', 'am', 'ga', 'he', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enin', 'kn', 'hi', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'odu', 'adlm', 'nkoo', 'mend', 'sgnw', 'avo','ahom','aima', 'ta', 'bada', 'vatt', 'bamu', 'bali', 'bhat', 'bhai', 'brx'];
-  arabicDecimalSeparatorLocales: any = ['ar', 'ary', 'fa', 'ur', 'ps', 'ks', 'sd', 'bal', 'ckb', 'rhg', 'bsk', 'he', 'yi', 'lad'];
+  commaDecimalSeparatorLocales: any = ['frca', 'lb', 'es', 'eu', 'sq', 'hy', 'az', 'aze', 'befr', 'fr', 'br', 'bg', 'bsla', 'bs', 'hv', 'pt', 'ptbr', 'cs', 'da', 'et', 'fo', 'fi', 'de', 'bar', 'ka', 'el', 'kl', 'hu', 'is', 'id', 'it', 'kk', 'kaz', 'ky', 'kir', 'lv', 'lt', 'mn', 'mon', 'mnla', 'nl', 'no', 'gn', 'pl', 'ro', 'ru', 'bak', 'be', 'sr', 'sk', 'sl', 'sv', 'tr', 'tk', 'tuk', 'uk', 'uz', 'uzb', 'vi', 'af', 'st', 'ss', 'ts', 'tn', 'ven', 'xh', 'nso', 'zu', 'ab', 'an', 'ast'];
+  periodDecimalSeparatorLocales: any = ['en', 'enus', 'engb', 'enintl', 'ne', 'brah', 'bn', 'km', ,'zhcn', 'zhtw', 'ja', 'kan', 'zih', 'bopo', 'kaid', 'am', 'ga', 'he', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enin', 'kn', 'hi', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'odu', 'adlm', 'nkoo', 'mend', 'sgnw', 'avo', 'ahom', 'aima', 'ta', 'bada', 'vatt', 'bamu', 'bm', 'bali', 'bhat', 'bhai', 'brx', 'brxla', 'cham', 'cher', 'ace', 'adin', 'iai', 'ajam', 'ak', 'ang', 'njo', 'asom', 'ay', 'bjn', 'ban', 'vah', 'tfng', 'zag', 'bharati', 'bcl', 'bis', 'bla', 'iub', 'bug','bugla'];
+  arabicDecimalSeparatorLocales: any = ['ar', 'ary', 'fa', 'ur', 'ps', 'ks', 'sd', 'bal', 'ckb', 'rhg', 'bsk', 'he', 'yi', 'lad', 'arc', 'khat'];
 
-  desiLakhCommaPosition: any = ['enin', 'ne', 'bn', 'km', 'thaa', 'dv', 'si', 'th', 'kn', 'hi', 'te', 'ta', 'bada', 'vatt', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'brx'];
+  // Separation between Numerals for Display
+  desiLakhCommaPosition: any = ['enin', 'ne', 'brah', 'bn', 'km', 'thaa', 'dv', 'si', 'th', 'kn', 'hi', 'te', 'ta', 'bada', 'vatt', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'brx', 'brxla', 'bharati', 'bcl'];
   desiLakhSpacePosition: any = ['enin', 'ne', ,'bhat', 'bhai'];
   thousandsPositionApostropheAndPeriodDecimal : any = ['gsw'];
   thousandsPositionApostropheAndCommaDecimal : any = ['gsw'];
   thousandsPositionPeriodAndApostropheDecimal : any = [];
-  thousandsPositionPeriodAndCommaDecimal : any = ['de','it','ptbr','nld','bs','da','el','id','nl','ro','sl','tr','vi','sgnw'];
-  thousandsPositionCommaAndPeriodDecimal : any = ['enus','engb','en','enintl','odu','fa','zhtw','ga','he','ja','ko','ms','mt','esmx','th','adlm','nkoo','mend','bamu','bali'];
+  thousandsPositionPeriodAndCommaDecimal : any = ['de','it','bar','ptbr','nld','bs','bsla','da','el','id','nl','ro','sl','tr','vi','sgnw','bjn','ban','bug','bugla'];
+  thousandsPositionCommaAndPeriodDecimal : any = ['enus','engb','en','enintl','odu','fa','zhtw','ga','he','ja','ko','ms','mt','esmx','th','adlm','nkoo','mend','bamu','bm','bali','cham','cher','ab','ace','adin','iai','ajam','ak','ang','njo','ay','vah','tfng','zag','bis','bla','iub'];
   thousandsPositionSpaceAndPeriodDecimal : any = [];
-  thousandsPositionSpaceAndCommaDecimal : any = ['cs','fr','bg','befr','sq','et','fi','hu','la','lv','lt','no','pl','pt','ru','sr','sk','af','es','sv','gsw','uk','hr'];
+  thousandsPositionSpaceAndCommaDecimal : any = ['cs','fr','br','bg','befr','sq','et','fi','hu','la','lv','lt','no','pl','pt','ru','be','bak','sr','sk','af','es','eu','sv','gsw','uk','hr','an','ka','asom','nusk','ast','az','aze'];
   thousandsPositionCommaAndMiddleDotDecimal : any = ['engb','ms'];
   tenThousandsCommaAndPeriod: any = ['zhcn','kan','zih','kaid'];
   tenThousandsSpaceAndPeriod: any = ['zhtw','ja','bopo'];
