@@ -1,6 +1,7 @@
 {
     "ar" : [0, 0, "Arabic", "layoutArabicKeys", "layout-arabic-ar.json", "الْعَرَبِيَّة", "UI", 100, "You", "https://www.unicode.org/charts/PDF/U0600.pdf", "End", "https://omniglot.com/writing/arabic.htm", 45.14161194251499, 19.922607741886093],
     "fa" : [0, 0, "Persian", "layoutFarsiKeys", "layout-farsi-fa.json", "فارسی‎", "UI", 850, "You", "https://www.unicode.org/charts/PDF/U0600.pdf", "End", "https://omniglot.com/writing/persian.htm", 59.60606087348906, 36.3319165377178],
+    "ary" : [0, 0, "Darija", "layoutDarijaKeys", "layout-arabic-ary.json", "الدارجة", "noUI", 980, "You", "https://www.unicode.org/charts/PDF/U0600.pdf", "End", "https://omniglot.com/writing/arabic_moroccan.htm", -5.009122317020371, 34.017270765392716],
     "ur" : [0, 0, "Urdu", "layoutUrduKeys", "layout-urdu-ur.json", "اردو", "UI", 600, "You", "https://www.unicode.org/charts/PDF/U0600.pdf", "https://aksharamukha.appspot.com/describe/Urdu", "https://omniglot.com/writing/urdu.htm", 74.40746655413578, 31.582520035144224],
     "ckb" : [0, 0, "Kurdish", "layoutKurdishKeys", "layout-kurdish-ckb.json", "کوردیی", "UI", 840, "You", "https://www.unicode.org/charts/PDF/U0600.pdf", "End", "https://omniglot.com/writing/kurdish.htm", 46.94852344969695, 35.52717687057886],
     "ps" : [0, 0, "Pashto", "layoutPashtoKeys", "layout-pashto-ps.json", "پښتو", "UI", 770, "You", "https://www.unicode.org/charts/PDF/U0600.pdf", "End", "https://omniglot.com/writing/pashto.htm", 65.72309849596634, 31.70157192560308],

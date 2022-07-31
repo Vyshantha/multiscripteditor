@@ -117,7 +117,7 @@
     <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 70%;" appearance="fill">
         <mat-label>{{ 'Equation' | translate }}</mat-label>
-        <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -135,7 +135,7 @@
     <mat-form-field style="width: 70%;" appearance="fill">
         <mat-label>{{ 'Type Variables' | translate }}</mat-label>
         <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
-        <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
         <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
         <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
@@ -370,7 +370,7 @@
     <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 80%;" appearance="fill">
         <mat-label>{{ 'Equation' | translate }}</mat-label>
-        <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -388,7 +388,7 @@
     <mat-form-field style="width: 80%;" appearance="fill">
         <mat-label>{{ 'Type Variables' | translate }}</mat-label>
         <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
-        <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
         <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
         <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
@@ -453,7 +453,7 @@
     <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field [ngStyle]="{'width': (currentCalculatorType == 'scientific')? '80%': '70%'}" appearance="fill">
         <mat-label>{{ 'Equation' | translate }}</mat-label>
-        <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -471,7 +471,7 @@
     <mat-form-field [ngStyle]="{'width': (currentCalculatorType == 'scientific')? '80%': '70%'}" appearance="fill">
         <mat-label>{{ 'Type Variables' | translate }}</mat-label>
         <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
-        <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
         <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
         <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">

@@ -1,4 +1,4 @@
-import { Component, ComponentRef, OnInit, AfterViewInit, ElementRef, ViewChild, Inject } from '@angular/core';
+import { Component, ComponentRef, OnInit, AfterViewInit, ElementRef, ViewChild, Inject, Renderer2 } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { FormBuilder, FormGroup} from '@angular/forms';
@@ -380,6 +380,7 @@ import * as layoutTotoToto from './../../assets/keyboard-layouts/layout-toto-tot
 import * as layoutSomaliSo from './../../assets/keyboard-layouts/layout-somali-so.json';
 import * as layoutMalayMs from './../../assets/keyboard-layouts/layout-malay-ms.json';
 import * as layoutJawiJawi from './../../assets/keyboard-layouts/layout-jawi-jawi.json';
+import * as layoutDarijaAry from './../../assets/keyboard-layouts/layout-arabic-ary.json';
 import * as layoutWarayWar from './../../assets/keyboard-layouts/layout-waray-war.json';
 import * as layoutCornishKw from './../../assets/keyboard-layouts/layout-cornish-kw.json';
 import * as layoutBislamaBis from './../../assets/keyboard-layouts/layout-bislama-bis.json';
@@ -944,6 +945,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   layoutSomaliKeys: any = (layoutSomaliSo as any).default;
   layoutMalayKeys: any = (layoutMalayMs as any).default;
   layoutJawiKeys: any = (layoutJawiJawi as any).default;
+  layoutDarijaKeys: any = (layoutDarijaAry as any).default;
   layoutWarayKeys: any = (layoutWarayWar as any).default;
   layoutCornishKeys: any = (layoutCornishKw as any).default;
   layoutBislamaKeys: any = (layoutBislamaBis as any).default;
@@ -1186,13 +1188,20 @@ export class CustomiseKeyboardsComponent implements OnInit {
   anyCalculatorLayout : any = [];
 
   separatorsForDecimalAndNumeral: any = [' ', "'", ',', '.', '·', '\u2009', '\u202F', '˙', '⠨', '٫' , '٬' , '⎖', '⹁'];
-  alphanumeric: any = ['la', 'he', 'yi', 'lad', 'ion', 'hy', 'mand', 'geez', 'am', 'syrc', 'glag', 'copt', 'goth', 'ka', 'linea', 'linb'];
-  use10InPlaceOfZero: any = ['la', 'he', 'yi', 'lad', 'ion', 'hy', 'mand', 'geez', 'am', 'syrc', 'glag', 'copt', 'goth', 'ka', 'sgnw', 'linea', 'linb'];
+
+  // Alphabets for 1-10, 20, 30 ... , 80, 90, 100, 200, ..., 1000
+  alphaNumeric: any = ['arc', 'el', 'ion', 'he', 'yi', 'lad', 'hy', 'mand', 'syrc', 'glag', 'goth', 'ka', 'nusk', 'asom','linea', 'linb'];
+
+  // Number for 0-10, 100, 1000 ...
+  numberFor10Powers: any = ['txg', 'zhcn', 'zhtw', 'ja', 'kan', 'zih', 'bopo', 'kaid', 'ko', 'vi'];
+
+  // No 0 number indicator only use 10 multiples
+  use10InPlaceOfZero: any = ['la', 'el', 'ion', 'he', 'yi', 'lad', 'hy', 'geez', 'am', 'ti', 'tig', 'glag', 'copt', 'ka', 'sgnw', 'linea', 'linb', 'runr', 'txg', 'ary', 'avst'];
 
   //https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
   commaDecimalSeparatorLocales: any = ['frca', 'lb', 'es', 'sq', 'hy', 'az', 'aze', 'befr', 'fr', 'bsla', 'bs', 'hv', 'pt', 'ptbr', 'cs', 'da', 'et', 'fo', 'fi', 'de', 'ka', 'el', 'kl', 'hu', 'is', 'id', 'it', 'kk', 'kaz', 'ky', 'kir', 'lv', 'lt', 'mn', 'mon', 'mnla', 'nl', 'no', 'gn', 'pl', 'ro', 'ru', 'be', 'sr', 'sk', 'sl', 'sv', 'tr', 'tk', 'tuk', 'uk', 'uz', 'uzb', 'vi', 'af', 'st', 'ss', 'ts', 'tn', 'ven', 'xh', 'nso', 'zu'];
-  periodDecimalSeparatorLocales: any = ['en', 'enus', 'engb', 'enintl', 'ne', 'bn', 'km', 'zhcn', 'zhtw', 'am', 'ga', 'he', 'ja', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enin', 'kn', 'hi', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'odu','adlm','nkoo','mend', 'sgnw'];
-  arabicDecimalSeparatorLocales: any = ['ar', 'fa', 'ur', 'ps', 'ks', 'sd', 'bal', 'ckb', 'rhg', 'bsk', 'he', 'yi', 'lad'];
+  periodDecimalSeparatorLocales: any = ['en', 'enus', 'engb', 'enintl', 'ne', 'bn', 'km', ,'zhcn', 'zhtw', 'ja', 'kan', 'zih', 'bopo', 'kaid', 'am', 'ga', 'he', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enin', 'kn', 'hi', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'odu', 'adlm', 'nkoo', 'mend', 'sgnw'];
+  arabicDecimalSeparatorLocales: any = ['ar', 'ary', 'fa', 'ur', 'ps', 'ks', 'sd', 'bal', 'ckb', 'rhg', 'bsk', 'he', 'yi', 'lad'];
 
   desiLakhCommaPosition: any = ['enin', 'ne', 'bn', 'km', 'thaa', 'dv', 'si', 'th', 'kn', 'hi', 'te', 'ta', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu'];
   desiLakhSpacePosition: any = ['enin', 'ne'];
@@ -1204,8 +1213,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
   thousandsPositionSpaceAndPeriodDecimal : any = [];
   thousandsPositionSpaceAndCommaDecimal : any = ['cs','fr','bg','befr','sq','et','fi','hu','la','lv','lt','no','pl','pt','ru','sr','sk','af','es','sv','gsw','uk','hr'];
   thousandsPositionCommaAndMiddleDotDecimal : any = ['engb','ms'];
-  tenThousandsCommaAndPeriod: any = ['zhcn'];
-  tenThousandsSpaceAndPeriod: any = ['zhcn'];
+  tenThousandsCommaAndPeriod: any = ['zhcn','kan','zih','kaid'];
+  tenThousandsSpaceAndPeriod: any = ['zhtw','ja','bopo'];
   commaAndPeriodAlternating: any = ['hr'];
 
   // https://www.compart.com/en/unicode/category/Sc
@@ -1224,7 +1233,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   rtlLocalesLtRNumerals : string [] = ['ar','fa','ur','ps','ks','sd', 'bal', 'ckb', 'rhg', 'bsk'];
   rtlNumerals : string [] = ['odu','adlm','nkoo','nbat','avst','khar','xpr','mend','phn','ett','linea','linb'];
 
-  displayComputedResultForUnicodeScript : any = ["takr","adlm","nkoo","mend"];
+  displayComputedResultForUnicodeScript : any = ['takr','adlm','nkoo','mend','geez','am','ti','tig','el','ion','hy','glag','copt','txg','zhcn','zhtw','ja','kan','zih','bopo','kaid','runr','ary','avst'];
 
   boustrophedonScripts: string[] = ['ett', 'sabe', 'maya', 'txr', 'wole', 'phyg', 'pice', 'asom', 'luw', 'moon', 'sina', 'kmt', 'hung', 'safa', 'xsa', 'egyd', 'avo', 'lepo'];
   topToBottomLR: string[] = ['sog', 'oira', 'mon', 'zhcn', 'zhtw', 'ja', 'ko', 'phag', 'mnc', 'galk', 'shui', 'soyo'];
@@ -1239,7 +1248,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   fontsSources: string[] = ['dogr', 'zanb', 'sog', 'kult', 'hmnp', 'nshu', 'txg', 'elym', 'gonm', 'gong', 'soyo', 'yezi', 'ur'];
 
-  imageAlternativeScript: string[] = ['adin', 'aima', 'ari', 'avo', 'aztc', 'bada', 'banzsl', 'ber', 'bhat', 'bhp', 'bya', 'cana', 'cans', 'chik', 'chis', 'chrs', 'coorg', 'dale', 'desisign', 'dham', 'dhan', 'diak', 'dite', 'egyd', 'esi', 'esk', 'estr', 'esy', 'flag', 'gael', 'gars', 'geba', 'goyk', 'gup', 'iba', 'ibe', 'ics', 'indus', 'ion', 'ipk', 'jiag', 'kada', 'kaid', 'kama', 'kawi', 'khat', 'khom', 'khor', 'kitl', 'kits', 'koch', 'kpe', 'kru', 'kuli', 'lad', 'land', 'leke', 'loma', 'luo', 'madn', 'maga', 'maha', 'maka', 'mamb', 'maya', 'mguj', 'mikq', 'moon', 'moss', 'mwan', 'nagm', 'nand', 'ndju', 'nsi', 'odu', 'ougr', 'pall', 'ranj', 'renc', 'sabe', 'safa', 'scha', 'sert', 'sina', 'suz', 'tach', 'tamu', 'tang', 'tani', 'tiga', 'tika', 'tnq', 'toch', 'toto', 'txr', 'umw', 'ussign', 'vatt', 'vith', 'wole', 'wolf', 'xce', 'zag', 'zou'];
+  imageAlternativeScript: string[] = ['adin', 'aima', 'ari', 'ary', 'avst', 'avo', 'aztc', 'bada', 'banzsl', 'ber', 'bhat', 'bhp', 'bya', 'cana', 'cans', 'chik', 'chis', 'chrs', 'coorg', 'dale', 'desisign', 'dham', 'dhan', 'diak', 'dite', 'egyd', 'esi', 'esk', 'estr', 'esy', 'flag', 'gael', 'gars', 'geba', 'goyk', 'gup', 'iba', 'ibe', 'ics', 'indus', 'ion', 'ipk', 'jiag', 'kada', 'kaid', 'kama', 'kawi', 'khat', 'khom', 'khor', 'kitl', 'kits', 'koch', 'kpe', 'kru', 'kuli', 'lad', 'land', 'leke', 'loma', 'luo', 'madn', 'maga', 'maha', 'maka', 'mamb', 'maya', 'mguj', 'mikq', 'moon', 'moss', 'mwan', 'nagm', 'nand', 'ndju', 'nsi', 'odu', 'ougr', 'pall', 'ranj', 'renc', 'runr', 'sabe', 'safa', 'scha', 'sert', 'sina', 'suz', 'tach', 'tamu', 'tang', 'tani', 'tiga', 'tika', 'tnq', 'toch', 'toto', 'txr', 'umw', 'ussign', 'vatt', 'vith', 'wole', 'wolf', 'xce', 'zag', 'zou'];
 
   keysToRotate: Boolean = false;
   isQwerty: Boolean = false;
@@ -1293,7 +1302,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   /* TODO Items
     - Number Data Entries for Abjad, Abugida, Alphabet, Syllabery, Ideo-Logo-Pictorgram
-    - Special Case for display & computing - use10InPlaceOfZero/alphanumeric 
+    - Special Case for display & computing - use10InPlaceOfZero/alphaNumeric/numberFor10Powers 
     - Any Equation Setup (Paste/History/Bookmark/Formula) and use
     - Brackets usage & complete equation computation
     - BaseX specific Operations
@@ -1303,7 +1312,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     - Operands in Hexa and then result in Decimal
   */
 
-  constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
+  constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, private renderer: Renderer2,searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
     if (this.data.show == 'custom') {
       this.customKeyboard = true;
       this.floatKeyboard = false;
@@ -1546,7 +1555,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
           {"value":"x₂","action":"char","type":"base2","visible":"hide"},{"value":"x₈","action":"char","type":"base8","visible":"hide"},{"value":"x₁₀","action":"char","type":"base10","visible":"show"},{"value":"x₁₂","action":"char","type":"base12","visible":"hide"},{"value":"x₁₆","action":"char","type":"base16","visible":"hide"},{"value":"x₂₀","action":"char","type":"base20","visible":"hide"},{"value":"x₆₀","action":"char","type":"base60","visible":"hide"},{"value":"‰","action":"char","type":"partsPerMillion","visible":"hide"},{"value":"%","action":"char","type":"modulusOp"},{"value":"𝑓+","action":"char","type":"functionKeyActivate","visible":"hide"},{"value":"𝑓-","action":"char","type":"functionKeyDeactivate","visible":"hide"},{"value":"🧠","action":"char","type":"useMemory"},{"value":"⎌","action":"char","type":"undoAction"},{"value":"⭕","action":"char","type":"restart"}
         ]},
         {"row":[
-          {"value":"°","action":"char","type":"degrees","visible":"hide"},{"value":"π","action":"char","type":"piNatural","visible":"hide"},{"value":"A","action":"char","type":"hexadecimal","visible":"hide"},{"value":"B","action":"char","type":"hexadecimal","visible":"hide"},{"value":"C","action":"char","type":"hexadecimal","visible":"hide"},{"value":"D","action":"char","type":"hexadecimal","visible":"hide"},{"value":"E","action":"char","type":"hexadecimal","visible":"hide"},{"value":"F","action":"char","type":"hexadecimal","visible":"hide"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₁","action":"char","type":"formula1"}
+          {"value":"°","action":"char","type":"degrees","visible":"hide"},{"value":"π","action":"char","type":"piNatural","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":" ","action":"char","type":"hexadecimal","visible":"hide"},{"value":"𝑓₆","action":"char","type":"formula6"},{"value":"𝑓₅","action":"char","type":"formula5"},{"value":"𝑓₄","action":"char","type":"formula4"},{"value":"𝑓₃","action":"char","type":"formula3"},{"value":"𝑓₂","action":"char","type":"formula2"},{"value":"𝑓₁","action":"char","type":"formula1"}
         ]},
         {"row":[
           {"value":"rad","action":"char","type":"radians","visible":"hide"},{"value":"sin","action":"char","type":"sineFunc","visible":"hide"},{"value":"sin⁻ⁱ","action":"char","type":"sineInverseFunc","visible":"hide"},{"value":"ln","action":"char","type":"naturalLogarithm","visible":"hide"},{"value":"eˣ","action":"char","type":"naturalExponent","visible":"hide"},{"value":"≤","action":"char","type":"lessThanEquals","visible":"hide"},{"value":"<<","action":"char","type":"leftShift","visible":"hide"},{"value":"&","action":"char","type":"logicalAnd","visible":"hide"},{"value":" ","type":"num1","action":"char","visible":"hide"},{"value":" ","type":"num2","action":"char","visible":"hide"},{"value":" ","type":"num3","action":"char","visible":"hide"},{"value":"(","type":"bracesOpen","visible":"hide"},{"value":"/","action":"char","type":"divisionOp"},{"value":"÷","action":"char","type":"divisionOp"}
@@ -1558,7 +1567,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
           {"value":"″","action":"char","type":"arcsecond","visible":"hide"},{"value":"tan","action":"char","type":"tangentFunc","visible":"hide"},{"value":"tan⁻ⁱ","action":"char","type":"tangentInverseFunc","visible":"hide"},{"value":"logₓy","type":"logarithmToBase","visible":"hide"},{"value":"xʸ","action":"char","type":"powerRaise"},{"value":"^","action":"char","type":"powerRaise"},{"value":"~","action":"char","type":"logicalNot","visible":"hide"},{"value":"⊻","action":"char","type":"logicalXor","visible":"hide"},{"value":" ","type":"num7","action":"char","visible":"hide"},{"value":" ","type":"num8","action":"char","visible":"hide"},{"value":" ","type":"num9","action":"char","visible":"hide"},{"value":")","type":"bracesClose","visible":"hide"},{"value":"±","action":"char","type":"signChange"},{"value":"-","action":"char","type":"subtractionOp"}
         ]},
         {"row":[
-          {"value":"ᵍ","action":"char","type":"gradient","visible":"hide"},{"value":"1/x","action":"char","type":"fractionalNumber","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot","visible":"hide"},{"value":"√","action":"char","type":"squareRoot","visible":"hide"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"show"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber","visible":"hide"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"show"},{"value":"+","action":"char","type":"additionOp"}
+          {"value":"ᵍ","action":"char","type":"gradient","visible":"hide"},{"value":"1/x","action":"char","type":"fractionalNumber","visible":"hide"},{"value":"x!","action":"char","type":"factorial"},{"value":"ʸ√x","action":"char","type":"nthRoot","visible":"hide"},{"value":"∛","action":"char","type":"cubeRoot","visible":"hide"},{"value":"√","action":"char","type":"squareRoot","visible":"hide"},{"value":"★","action":"char","type":"bookmarkEquation"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"show"},{"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber","visible":"hide"},{"value":"=","action":"char","type":"equalsSign"},{"value":"﬩","action":"char","type":"additionOpHebrew","visible":"hide"},{"value":"+","action":"char","type":"additionOp"}
         ]}
       ];
     
@@ -1579,6 +1588,14 @@ export class CustomiseKeyboardsComponent implements OnInit {
           {"value":this.commaSeparator,"action":"char","type":"numberCommaDecimal","visible":"hide"},{"value":" ","type":"num0","action":"char","visible":"hide"},{"value":this.periodSeparator,"action":"char","type":"decimalPeriodNumber","visible":"hide"},{"value":"=","action":"char","type":"equalsSign"},{"value":this.currencySymbol,"action":"char","type":"currencySymbol","visible":"show"},{"value":"+","action":"char","type":"additionOp"}
         ]}
       ];
+      if (this.sessionManager.getFromSessionURL() == "he" || this.sessionManager.getFromSessionURL() == "yi" || this.sessionManager.getFromSessionURL() == "lad") {
+        this.calculatorLayout[5].row[12].visible = "show";
+        this.appendCircularUnits = true;
+        this.circularUnit = "׳"
+      } else if (this.sessionManager.getFromSessionURL() == "el" || this.sessionManager.getFromSessionURL() == "ion") {
+        this.appendCircularUnits = true;
+        this.circularUnit = "ʹ";
+      }
     }
     if (this.vigesimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
       // base2
@@ -3005,6 +3022,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
             if (this.sessionManager.getFromSessionURL() == "he" || this.sessionManager.getFromSessionURL() == "yi" || this.sessionManager.getFromSessionURL() == "lad") {
               this.appendCircularUnits = true;
               this.circularUnit = "׳"
+            } else if (this.sessionManager.getFromSessionURL() == "el" || this.sessionManager.getFromSessionURL() == "ion") {
+              this.appendCircularUnits = true;
+              this.circularUnit = "ʹ";
             }
             break;
         }
