@@ -1219,19 +1219,19 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   dirSet: string = "rtl";
   isRTL: Boolean = false;
   
-  rtlLocales : string[] = ['ar', 'he', 'ur', 'fa', 'syrc', 'rhg', 'sd', 'bal', 'bsk', 'yi', 'jrb', 'ps', 'ckb', 'ks', 'ett', 'avst', 'khar', 'phn', 'xpu', 'samr', 'mand', 'sog', 'arc', 'skr', 'pal', 'xpr', 'xsa', 'mnkar', 'jawi', 'nkoo', 'thaa', 'orkh', 'lydi', 'adlm', 'ajam', 'wolf', 'woal', 'chrs', 'elym', 'palm', 'hatr', 'ber', 'mani', 'mer', 'psal', 'kult', 'egyd', 'safa', 'nshu', 'txr', 'rohg', 'estr', 'sert', 'madn', 'lad', 'nbat', 'pice', 'gars', 'cprt', 'lepo', 'sabe', 'phyg', 'khaz', 'mero', 'cana', 'sina', 'yezi', 'ug', 'mend', 'linb', 'idu', 'chun', 'kuli', 'txg', 'indus', 'hung', 'dv', 'odu', 'ougr'];
-  boustrophedonScripts: string[] = ['ett', 'sabe', 'maya', 'txr', 'wole', 'phyg', 'pice', 'asom', 'luw', 'moon', 'sina', 'kmt', 'hung', 'safa', 'xsa', 'egyd', 'avo', 'lepo'];
-  topToBottomLR: string[] = ['sog', 'oira', 'mon', 'phag', 'mnc', 'galk', 'shui', 'soyo', 'kits', 'kitl', 'sgnw'];
-  topToBottomRL: string[] = ['zhcn', 'zhtw', 'ja', 'ko', 'nshu', 'idu', 'mero', 'chun', 'kuli', 'txg', 'indus', 'khit', 'ougr'];
-  bottomToTopLR: string[] = ['ogam', 'btk', 'hano', 'tagb'];
+  rtlLocales : string[] = ['adlm','ajam','ar','arc','avst','bal','ber','bsk','cana','chrs','chun','ckb','cprt','dv','egyd','elym','estr','ett','fa','gars','hatr','he','hung','idu','indus','jawi','jrb','khar','khaz','ks','kuli','kult','lad','lepo','linb','lydi','madn','mand','mani','mend','mer','mero','mnkar','nbat','nkoo','nshu','odu','orkh','ougr','pal','palm','phn','phyg','pice','ps','psal','rhg','rohg','sabe','safa','samr','sd','sert','sina','skr','sog','syrc','thaa','txg','txr','ug','ur','woal','wolf','xpr','xpu','xsa','yezi','yi'];
+  boustrophedonScripts: string[] = ['asom','avo','egyd','ett','hung','kmt','lepo','luw','maya','moon','phyg','pice','sabe','safa','sina','txr','wole','xsa'];
+  topToBottomLR: string[] = ['galk','ja','ko','mnc','mon','oira','phag','shui','sog','soyo','zhcn','zhtw'];
+  topToBottomRL: string[] = ['chun','idu','ja','ko','kuli','mero','nshu','ougr','txg','yii','zhcn','zhtw'];
+  bottomToTopLR: string[] = ['btk','hano','ogam','tagb'];
   bottomToTopRL: string[] = ['ber'];
   layoutsSwitchHV: string[] = ['ogam', 'phag', 'oira', 'mnc', 'mon', 'galk', 'soyo', 'evn', 'hira', 'kata', 'vaii', 'geez', 'dite', 'iba', 'ndju', 'cree', 'crew', 'oji', 'iku', 'carr', 'bla', 'cans', 'nask', 'aztc', 'maya', 'am'];
   keyOrientationSwitch: string[] = ['ogam', 'phag', 'oira', 'mnc', 'mon', 'galk', 'soyo', 'evn'];
-  keyDoNotRotate: string[] = ['vaii', 'geez', 'am', 'dite', 'iba', 'ndju'];
+  keyDoNotRotate: string[] = ['am','dite','geez','iba','ndju','vaii'];
   swaraAbugidaType : string [] = ['ahom', 'aima', 'ari', 'bada', 'bali', 'batk', 'bhai', 'bhat', 'bhp', 'bla', 'bn', 'brah', 'bug', 'buhd', 'bya', 'cakm', 'cree', 'dham', 'diak', 'dite', 'dogr', 'dv', 'gong', 'gonm', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kali', 'kawi', 'khar', 'khoj', 'khor', 'khud', 'km', 'kn', 'koch', 'kru', 'kthi', 'kuli', 'lana', 'leke', 'lepc', 'limb', 'lo', 'loma', 'maga', 'maha', 'mai', 'mani', 'mguj', 'ml', 'mni', 'modi', 'mr', 'mult', 'my', 'nand', 'newa', 'or', 'pa', 'phag', 'renc', 'rjng', 'sa', 'saur', 'scha', 'shan', 'shrd', 'si', 'sidd', 'sn', 'snd', 'sora', 'soyo', 'sund', 'sylo', 'ta', 'tach', 'tagb', 'takr', 'talu', 'tamu', 'tang', 'te', 'tglg', 'th', 'thaa', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'zanb'];
   imageAlternativeScript: string[] = ['adin', 'aima', 'ari', 'ary', 'avst', 'avo', 'aztc', 'bada', 'banzsl', 'ber', 'bhat', 'bhp', 'bya', 'cana', 'cans', 'chik', 'chis', 'chrs', 'coorg', 'dale', 'desisign', 'dham', 'dhan', 'diak', 'dite', 'egyd', 'esi', 'esk', 'estr', 'esy', 'flag', 'gael', 'gars', 'geba', 'goyk', 'gup', 'iba', 'ibe', 'ics', 'indus', 'ion', 'ipk', 'jiag', 'kada', 'kaid', 'kama', 'kawi', 'khat', 'khom', 'khor', 'kitl', 'kits', 'koch', 'kpe', 'kru', 'kuli', 'lad', 'land', 'leke', 'loma', 'luo', 'madn', 'maga', 'maha', 'maka', 'mamb', 'maya', 'mguj', 'mikq', 'moon', 'moss', 'mwan', 'nagm', 'nand', 'ndju', 'nsi', 'odu', 'ougr', 'pall', 'ranj', 'renc', 'runr', 'sabe', 'safa', 'scha', 'sert', 'sina', 'suz', 'tach', 'tamu', 'tang', 'tani', 'tiga', 'tika', 'tnq', 'toch', 'toto', 'txr', 'umw', 'ussign', 'vatt', 'vith', 'wole', 'wolf', 'xce', 'zag', 'zou'];
   // URL Source - 'cana', 'egyd', 'estr', 'flag', 'gars', 'ics', 'ion', 'lad', 'luo', 'madn', 'nsi', 'pall', 'ranj', 'safa', 'sert', 'sina', toch', 'ussign'
-  fontsSources: string[] = ['dogr', 'zanb', 'sog', 'kult', 'hmnp', 'nshu', 'txg', 'elym', 'gonm', 'gong', 'soyo', 'yezi', 'ur'];
+  fontsSources: string[] = ['dogr','elym','gong','gonm','hmnp','kult','nshu','sog','soyo','txg','ur','yezi','zanb'];
   fontClass: string = "";
 
   // Words Suggestion for All Supported Languages

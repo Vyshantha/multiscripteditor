@@ -137,7 +137,7 @@ export class AppComponent implements AfterViewInit {
     });
     this.sessionManager.itemUILocale.subscribe((locale) => {
       this.loadFromFile(locale, "Every Writers Choice");
-      let rtlLocales = ['ar', 'he', 'ur', 'fa', 'syrc', 'rhg', 'sd', 'bal', 'bsk', 'yi', 'jrb', 'ps', 'ckb', 'ks', 'ett', 'avst', 'khar', 'phn', 'xpu', 'samr', 'mand', 'sog', 'arc', 'skr', 'pal', 'xpr', 'xsa', 'mnkar', 'jawi', 'nkoo', 'thaa', 'orkh', 'lydi', 'adlm', 'ajam', 'wolf', 'woal', 'chrs', 'elym', 'palm', 'hatr', 'ber', 'mani', 'mer', 'psal', 'kult', 'egyd', 'safa', 'nshu', 'rohg', 'estr', 'sert', 'madn', 'lad', 'nbat', 'pice', 'gars', 'cprt', 'lepo', 'sabe', 'phyg', 'khaz', 'mero', 'cana', 'sina', 'yezi', 'ug', 'mend', 'linb', 'idu', 'chun', 'kuli', 'txg', 'indus', 'hung', 'dv', 'odu', 'ougr'];
+      let rtlLocales = ['adlm','ajam','ar','arc','avst','bal','ber','bsk','cana','chrs','chun','ckb','cprt','dv','egyd','elym','estr','ett','fa','gars','hatr','he','hung','idu','indus','jawi','jrb','khar','khaz','ks','kuli','kult','lad','lepo','linb','lydi','madn','mand','mani','mend','mer','mero','mnkar','nbat','nkoo','nshu','odu','orkh','ougr','pal','palm','phn','phyg','pice','ps','psal','rhg','rohg','sabe','safa','samr','sd','sert','sina','skr','sog','syrc','thaa','txg','txr','ug','ur','woal','wolf','xpr','xpu','xsa','yezi','yi'];
       document.dir = (rtlLocales.indexOf(locale) > -1)? "rtl" : "ltr";
       this.translateSnackBars();
     });
