@@ -1202,7 +1202,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   sexagesimal : any = ["sux", "hit", "elx", "elam"];
 
   // Display Results for these Unicode script without manipulation
-  displayComputedResultForUnicodeScript : any = ['takr','adlm','nkoo','mend','geez','am','ti','tig','el','ion','hy','glag','copt','txg','zhcn','zhtw','ja','kan','zih','bopo','kaid','runr','avst','ahom','aima','bhai','cans','braille','maya'];
+  displayComputedResultForUnicodeScript : any = ['takr','adlm','nkoo','mend','geez','am','ti','tig','el','ion','hy','glag','copt','txg','zhcn','zhtw','ja','kan','zih','bopo','kaid','runr','avst','ahom','aima','bhai','cans','braille','maya','ett','latf'];
 
   //https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
   commaDecimalSeparatorLocales: any = ['frca', 'cdd', 'lb', 'es', 'ca', 'eu', 'sq', 'elba', 'hy', 'az', 'aze', 'befr', 'fr', 'br', 'bg', 'bsla', 'bs', 'hv', 'pt', 'ptbr', 'cs', 'da', 'et', 'eo', 'fo', 'fi', 'de', 'bar', 'ka', 'el', 'kl', 'hu', 'is', 'id', 'it', 'co','kk', 'kaz', 'ky', 'kir', 'lv', 'lt', 'mn', 'mon', 'mnla', 'nl', 'fy', 'no', 'gn', 'pl', 'ro', 'ru', 'evncy', 'evnla', 'bak', 'be', 'sr', 'sk', 'sl', 'sv', 'tr', 'tk', 'tuk', 'uk', 'uz', 'uzb', 'vi', 'af', 'st', 'ss', 'ts', 'tn', 'ven', 'xh', 'nso', 'zu', 'ab', 'an', 'ast', 'eurkey', 'latf'];
