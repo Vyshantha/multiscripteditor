@@ -1131,9 +1131,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
   scientificCurrentBase: string = "base10";
   baseIndices: any = [2, 8, 10, 12, 16, 20, 60];
 
-  vigesimal: any = ["maya", "cans", "esi"];
-  sexagesimal : any = ["sux", "hit", "elx"];
-
   // Operator and Libraries - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
   operators: any = ['+', "-", "*", "×", "·", "^", "**", "÷", '%', '‰', "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "~", "<<", ">>", "≤", "≥", "ʸ√", "xʸ", "⁻ⁱ", "logₓy", "﬩"];
   allowedCircularUnits: any = ["°", "rad", "′", "″", "'", "\"", "ᵍ"];
@@ -1196,27 +1193,32 @@ export class CustomiseKeyboardsComponent implements OnInit {
   // Decimal numbers - separate symbol for 10, 100, 1000, 10000
   use10RegularDecimal: any = ['ahom', 'ta', 'bada', 'vatt'];
   // No 0 number indicator only use 10 multiples
-  use10InPlaceOfZero: any = ['la', 'el', 'ion', 'he', 'yi', 'lad', 'hy', 'geez', 'am', 'ti', 'tig', 'glag', 'copt', 'ka', 'sgnw', 'linea', 'linb', 'runr', 'txg', 'ary', 'avst', 'chrs'];
-  // Display Results for these Unicode script without manipulation
-  displayComputedResultForUnicodeScript : any = ['takr','adlm','nkoo','mend','geez','am','ti','tig','el','ion','hy','glag','copt','txg','zhcn','zhtw','ja','kan','zih','bopo','kaid','runr','avst','ahom','aima','bhai','cans'];
+  use10InPlaceOfZero: any = ['la', 'el', 'ion', 'he', 'yi', 'lad', 'hy', 'geez', 'am', 'ti', 'tig', 'glag', 'copt', 'ka', 'sgnw', 'linea', 'linb', 'runr', 'txg', 'ary', 'avst', 'chrs', 'ett', 'esy'];
   // Non-Decimal numerals
-  nonStandardNumeral : any = ['nbat', 'chrs'];
+  nonStandardNumeral : any = ['nbat', 'chrs', 'kmt', 'ett', 'la'];
+  // Base 20 numerals
+  vigesimal : any = ["maya", "cans", "esi"];
+  // Base 60 numerals
+  sexagesimal : any = ["sux", "hit", "elx", "elam"];
+
+  // Display Results for these Unicode script without manipulation
+  displayComputedResultForUnicodeScript : any = ['takr','adlm','nkoo','mend','geez','am','ti','tig','el','ion','hy','glag','copt','txg','zhcn','zhtw','ja','kan','zih','bopo','kaid','runr','avst','ahom','aima','bhai','cans','braille','maya'];
 
   //https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
-  commaDecimalSeparatorLocales: any = ['frca', 'cdd', 'lb', 'es', 'ca', 'eu', 'sq', 'hy', 'az', 'aze', 'befr', 'fr', 'br', 'bg', 'bsla', 'bs', 'hv', 'pt', 'ptbr', 'cs', 'da', 'et', 'fo', 'fi', 'de', 'bar', 'ka', 'el', 'kl', 'hu', 'is', 'id', 'it', 'co','kk', 'kaz', 'ky', 'kir', 'lv', 'lt', 'mn', 'mon', 'mnla', 'nl', 'no', 'gn', 'pl', 'ro', 'ru', 'bak', 'be', 'sr', 'sk', 'sl', 'sv', 'tr', 'tk', 'tuk', 'uk', 'uz', 'uzb', 'vi', 'af', 'st', 'ss', 'ts', 'tn', 'ven', 'xh', 'nso', 'zu', 'ab', 'an', 'ast'];
-  periodDecimalSeparatorLocales: any = ['en', 'enus', 'engb', 'enintl', 'ne', 'brah', 'bn', 'km', 'ceb', 'zhcn', 'zhtw', 'ja', 'kan', 'zih', 'bopo', 'kaid', 'am', 'ga', 'he', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enin', 'kn', 'hi', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'odu', 'adlm', 'nkoo', 'mend', 'sgnw', 'avo', 'ahom', 'aima', 'ta', 'bada', 'vatt', 'bamu', 'bm', 'bali', 'bhat', 'bhai', 'brx', 'brxla', 'cham', 'cher', 'ace', 'adin', 'iai', 'ajam', 'ak', 'ang', 'njo', 'asom', 'ay', 'bjn', 'ban', 'vah', 'tfng', 'zag', 'bharati', 'bcl', 'bis', 'bla', 'iub', 'bug', 'bugla', 'kw', 'cans', 'cari', 'carr', 'cakm', 'ch', 'cree', 'crew', 'cjk'];
-  arabicDecimalSeparatorLocales: any = ['ar', 'ary', 'fa', 'ur', 'ps', 'ks', 'sd', 'bal', 'ckb', 'rhg', 'bsk', 'he', 'yi', 'lad', 'arc', 'khat'];
+  commaDecimalSeparatorLocales: any = ['frca', 'cdd', 'lb', 'es', 'ca', 'eu', 'sq', 'elba', 'hy', 'az', 'aze', 'befr', 'fr', 'br', 'bg', 'bsla', 'bs', 'hv', 'pt', 'ptbr', 'cs', 'da', 'et', 'eo', 'fo', 'fi', 'de', 'bar', 'ka', 'el', 'kl', 'hu', 'is', 'id', 'it', 'co','kk', 'kaz', 'ky', 'kir', 'lv', 'lt', 'mn', 'mon', 'mnla', 'nl', 'fy', 'no', 'gn', 'pl', 'ro', 'ru', 'evncy', 'evnla', 'bak', 'be', 'sr', 'sk', 'sl', 'sv', 'tr', 'tk', 'tuk', 'uk', 'uz', 'uzb', 'vi', 'af', 'st', 'ss', 'ts', 'tn', 'ven', 'xh', 'nso', 'zu', 'ab', 'an', 'ast', 'eurkey', 'latf'];
+  periodDecimalSeparatorLocales: any = ['en', 'enus', 'engb', 'enintl', 'ne', 'brah', 'bn', 'km', 'ceb', 'zhcn', 'zhtw', 'ja', 'kan', 'zih', 'bopo', 'kaid', 'am', 'ga', 'he', 'ko', 'lb', 'ms', 'thaa', 'dv', 'esmx', 'yo', 'ngyo', 'bjyo', 'si', 'gsw', 'th', 'enin', 'kn', 'hi', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'odu', 'adlm', 'nkoo', 'mend', 'sgnw', 'avo', 'ahom', 'aima', 'ta', 'bada', 'vatt', 'bamu', 'bm', 'bali', 'bhat', 'bhai', 'brx', 'brxla', 'cham', 'cher', 'ace', 'adin', 'iai', 'ajam', 'ak', 'ang', 'njo', 'asom', 'ay', 'bjn', 'ban', 'vah', 'tfng', 'zag', 'bharati', 'bcl', 'bis', 'bla', 'iub', 'bug', 'bugla', 'kw', 'cans', 'cari', 'carr', 'cakm', 'ch', 'cree', 'crew', 'cjk', 'dgabf', 'dgagh', 'dag', 'dz', 'dhan', 'dham', 'din', 'diak', 'bin', 'ee', 'esy', 'fj', 'ff', 'fur', 'fon', 'ics', 'ussign'];
+  arabicDecimalSeparatorLocales: any = ['ar', 'ary', 'fa', 'ur', 'ps', 'ks', 'sd', 'bal', 'ckb', 'rhg', 'bsk', 'he', 'yi', 'lad', 'arc', 'khat', 'elym'];
 
   // Separation between Numerals for Display
-  desiLakhCommaPosition: any = ['enin', 'ne', 'brah', 'bn', 'cakm', 'km', 'thaa', 'dv', 'si', 'th', 'kn', 'hi', 'te', 'ta', 'bada', 'vatt', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'brx', 'brxla', 'bharati', 'bcl'];
+  desiLakhCommaPosition: any = ['enin', 'ne', 'brah', 'bn', 'cakm', 'km', 'thaa', 'dv', 'si', 'th', 'kn', 'hi', 'te', 'ta', 'bada', 'vatt', 'sa', 'tiga', 'bya', 'takr', 'ml', 'mr', 'as', 'gu', 'brx', 'brxla', 'bharati', 'bcl', 'dz', 'dhan', 'dham', 'diak'];
   desiLakhSpacePosition: any = ['enin', 'ne', ,'bhat', 'bhai'];
   thousandsPositionApostropheAndPeriodDecimal : any = ['gsw'];
   thousandsPositionApostropheAndCommaDecimal : any = ['gsw'];
   thousandsPositionPeriodAndApostropheDecimal : any = [];
-  thousandsPositionPeriodAndCommaDecimal : any = ['de','it','co','bar','ptbr','nld','bs','bsla','da','el','id','nl','ro','sl','tr','vi','sgnw','bjn','ban','bug','bugla'];
-  thousandsPositionCommaAndPeriodDecimal : any = ['enus','engb','en','enintl','odu','ceb','kw','fa','zhtw','ga','he','ja','ko','ms','mt','esmx','th','adlm','nkoo','mend','bamu','bm','bali','cham','cher','ab','ace','adin','iai','ajam','ak','ang','njo','ay','vah','tfng','zag','bis','bla','iub','ch','cree','crew','cjk'];
+  thousandsPositionPeriodAndCommaDecimal : any = ['de','it','co','bar','ptbr','nld','bs','bsla','da','el','fo','id','nl','fy','ro','sl','tr','vi','sgnw','bjn','ban','bug','bugla','eurkey','latf'];
+  thousandsPositionCommaAndPeriodDecimal : any = ['enus','engb','en','enintl','odu','ceb','kw','fa','zhtw','ga','he','ja','ko','ms','mt','esmx','th','adlm','nkoo','mend','bamu','bm','bali','cham','cher','ab','ace','adin','iai','ajam','ak','ang','njo','ay','vah','tfng','zag','bis','bla','iub','ch','cree','crew','cjk','dgabf','dgagh','dag','din','bin','ee','esy','fj','ff','fur','fon','ics','ussign'];
   thousandsPositionSpaceAndPeriodDecimal : any = [];
-  thousandsPositionSpaceAndCommaDecimal : any = ['cs','fr','br','bg','befr','sq','et','fi','hu','la','lv','lt','no','pl','pt','ru','be','bak','sr','sk','af','es','ca','eu','sv','gsw','uk','hr','an','ka','asom','nusk','ast','az','aze','frca','cdd','cans','cari','carr'];
+  thousandsPositionSpaceAndCommaDecimal : any = ['cs','fr','br','bg','befr','sq','elba','et','eo','fi','hu','la','lv','lt','no','pl','pt','ru','be','evncy','evnla','bak','sr','sk','af','es','ca','eu','sv','gsw','uk','hr','an','ka','asom','nusk','ast','az','aze','frca','cdd','cans','cari','carr'];
   thousandsPositionCommaAndMiddleDotDecimal : any = ['engb','ms'];
   tenThousandsCommaAndPeriod: any = ['zhcn','kan','zih','kaid'];
   tenThousandsSpaceAndPeriod: any = ['zhtw','ja','bopo'];
@@ -1305,7 +1307,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   /* TODO Items
     - Number Data Entries for Abjad, Abugida, Alphabet, Syllabery, Ideo-Logo-Pictorgram
-    - Special Case for display & computing - use10InPlaceOfZero/alphaNumeric/numberFor10Powers 
+    - Special Case for display & computing - use10InPlaceOfZero/alphaNumeric/numberFor10Powers/nonStandardNumeral/sexagesimal 
     - Any Equation Setup (Paste/History/Bookmark/Formula) and use
     - Brackets usage & complete equation computation
     - BaseX specific Operations
