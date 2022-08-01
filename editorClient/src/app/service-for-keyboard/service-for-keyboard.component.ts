@@ -33,7 +33,7 @@ export class ServiceForKeyboardComponent implements OnInit {
 
   horizontalPosition: MatSnackBarHorizontalPosition = 'start';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
-  transliterationScripts: string[] = ['as', 'bn', 'brx', 'gu', 'haj', 'hi', 'kn', 'ml', 'malt', 'mr', 'or', 'pa', 'sa', 'ta', 'te', 'ur', 'tirh', 'mni', 'hy', 'bg', 'km'];
+  transliterationScripts: string[] = ['as','bg','bn','brx','gu','haj','hi','hy','km','kn','malt','ml','mni','mr','or','pa','sa','ta','te','tirh','ur'];
 
   constructor(private sessionManager: SessionManagerService, private http: HttpClient, private _snackBar: MatSnackBar) {
     if (this.sessionManager.getFromSessionURL()) {

@@ -1202,7 +1202,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   sexagesimal : any = ['elam','elx','hit','sux'];
 
   // Display Results for these Unicode script without manipulation
-  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','avst','bhai','bopo','cans','copt','el','ett','geez','glag','hy','ion','iub','ja','kaid','kan','khar','latf','maya','mend','nbat','nkoo','runr','takr','ti','tig','txg','zhcn','zhtw','zih'];
+  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','avst','bhai','bopo','brah','cans','copt','el','ett','geez','glag','hy','ion','iub','ja','kaid','kan','khar','latf','maya','mend','nbat','nkoo','runr','takr','ti','tig','txg','zhcn','zhtw','zih'];
 
   //https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
   commaDecimalSeparatorLocales: any = ['ab','af','an','ast','az','aze','bak','bar','be','befr','bg','br','bs','bsla','ca','cdd','co','cs','da','de','el','elba','eo','es','et','eu','eurkey','evncy','evnla','fi','fo','fr','frca','fy','gn','hu','hv','hy','id','is','it','ka','kaz','kir','kk','kl','ky','latf','lb','lt','lv','mn','mnla','mon','nl','no','nso','pl','pt','ptbr','ro','ru','sk','sl','sq','sr','ss','st','sv','tk','tn','tr','ts','tuk','uk','uz','uzb','ven','vi','xh','zu'];
@@ -1211,7 +1211,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   // Separation between Numerals for Display
   desiLakhCommaPosition: any = ['as','bada','bcl','bharati','bn','brah','brx','brxla','bya','cakm','dham','dhan','diak','dv','dz','enin','gu','hi','km','kn','ml','mr','ne','sa','si','ta','takr','te','th','thaa','tiga','vatt'];
-  desiLakhSpacePosition: any = ['bhai','bhat','enin','ne',''];
+  desiLakhSpacePosition: any = ['bhai','bhat','enin','ne'];
   thousandsPositionApostropheAndPeriodDecimal : any = ['gsw'];
   thousandsPositionApostropheAndCommaDecimal : any = ['gsw'];
   thousandsPositionPeriodAndApostropheDecimal : any = [];
@@ -1220,8 +1220,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
   thousandsPositionSpaceAndPeriodDecimal : any = [];
   thousandsPositionSpaceAndCommaDecimal : any = ['af','an','asom','ast','az','aze','bak','be','befr','bg','br','ca','cans','cari','carr','cdd','cs','elba','eo','es','et','eu','evncy','evnla','fi','fr','frca','gsw','hr','hu','ka','la','lt','lv','no','nusk','pl','pt','ru','sk','sq','sr','sv','uk'];
   thousandsPositionCommaAndMiddleDotDecimal : any = ['engb','ms'];
-  tenThousandsCommaAndPeriod: any = ['zhcn','kan','zih','kaid'];
-  tenThousandsSpaceAndPeriod: any = ['zhtw','ja','bopo'];
+  tenThousandsCommaAndPeriod: any = ['kaid','kan','zhcn','zih'];
+  tenThousandsSpaceAndPeriod: any = ['bopo','ja','zhtw'];
   commaAndPeriodAlternating: any = ['hr'];
 
   // https://www.compart.com/en/unicode/category/Sc
@@ -1230,7 +1230,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   currencySignLocales: any = {"all" : ["🪙","₠","₡","₢","₣","₤","₥","₦","₧","₨","₩","₽","฿","₹","€","$","£","₪","₫","₺","₾","₻","₼","؋","₭","₮","₯","₰","₱","₲","₳","₴","₵","₶","₷","₸","₿","⃀","֏","៛","௹","૱","ರ","රු","𞋿","𐆚","𐆖","𐆙","𐆗","𐆘","ƒ","元"], "enin" : ["₹"], "hi" : ["₹"], "kn" : ["₹"], "ml" : ["₹"], "ma" : ["₹"], "engb": ["£"], "ru" : ["₽"], "฿" : ["th"], "am" : ["Br"], "ti" : ["Br"], "tig" : ["Br"], "dz" : ["₹"], "gil" : ["L$"], "zhtw" : ["NT$"], "enus": ["US$"], "ptbr": ["R$"], "frca" : ["CA$"], "vi" : ["₫"] , "hy" : ["֏"], "hu" : ["Ft"], "gsw" : ["SFr"], "gn" : ["₲"], "cs" : ["Kč","h"], "uk" : ["₴"], "lo" : ["₭"], "da" : ["kr"], "is" : ["kr"], "no" : ["kr"], "sv" : ["kr"], "fo" : ["kr"], "kl" : ["kr"],"hr" : ["kn"], "my" : ["K"], "ka" : ["₾"] , "nusk" : ["₾"], "tr" : ["₺"], "az" : ["₼"], "aze" : ["₼"], "bs" : ["KM"], "sq" : ["L"] , "ro" : ["L"], "bg" : ["лв."], "km" : ["៛"], "dv" : ["Rf."], "thaa" : ["Rf."], "ne" : ["रू"], "he" : ["₪"], "kk" : ["₸"], "ja" : ["¥"], "ko" : ["₩"], "ta" : ["௹"], "pl" : ["zł."], "gu" : ["૱"], "wcho" : ["𞋿"], "sa" : ["꠸"], "si" : ["රු"],  "de" : ["€"], "nl" : ["€"], "befr" : ["€"], "ga" : ["€"], "lt" : ["€"], "mt" : ["€"], "lv" : ["€"], "et" : ["€"], "es" : ["€"], "pt" : ["€"], "it" : ["€"], "el" : ["€"], "sl" : ["€"], "sk" : ["€"], "lb" : ["€"], "mk" : ["ден"], "mg" : ["Ar"], "ar" : ["ر.س"], "fa" : ["﷼"], "ms" : ["RM"], "id" : ["Rp."], "latf" : ["₰"], "la" : ["𐆚", "𐆖", "𐆙", "𐆗", "𐆘"], "tk" : ["m."], "to" : ["T$"], "uz" : ["Sʻ"], "tg" : ["с."], "sm" : ["T"], "mn" : ["₮"], "mon" : ["₮"], "gv" : ["£"], "zhcn" : ["元"]};
 
   //https://fastspring.com/blog/how-to-format-30-currencies-from-countries-all-over-the-world/
-  currencySuffixLocales: any = ["frca","cs","hu","pl","ru","ar","sv","th","tr","vi"]
+  currencySuffixLocales: any = ['ar','cs','frca','hu','pl','ru','sv','th','tr','vi']
 
   dirSet: string = "rtl";
   unicodeOverride: string = "";

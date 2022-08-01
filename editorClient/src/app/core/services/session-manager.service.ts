@@ -75,9 +75,9 @@ export class SessionManagerService {
 
   sentenceSeparator : string[] = [".", "·", "։", "՝","~", "՞", "。", "｡", "︒", "、", "?", "!", "‽", ";", ":", ",", "¿", "¡", "؟", "⹁", "⸴", "⸲", "ʻ", "︐", "،", "︑", "﹐", "﹑", "，", "､", "।", "॥", "෴", "⸼", "∘","۔", "።", "└", "▄", "჻", "߸", "፣", "᠂", "᠈", "꓾", "꘍", "꛵", "𑑍", "𝪇", "᭞", "᭟", "᭟᭜᭟", "꧈", "꧉", "꧊", "꧋", "꧋꧆꧋", "꧉꧆꧉", "\u2E4C", "\uD805\uDC5A", "\uD81B\uDE97"];
 
-  noSeparator: string[] = ["zhcn", "zhtw", "ja", "bopo", "pin"];
+  noSeparator: string[] = ['bopo','ja','pin','zhcn','zhtw'];
   visualSeparator: string[] = ["am", "tig", "ti"];
-  zeroWidthSeparator: string[] = ["bali", "jv", "km", "th", "lo", "shan", "tdd", "talu", "my"];
+  zeroWidthSeparator: string[] = ['bali','jv','km','lo','my','shan','talu','tdd','th'];
   syllabicSeparator: string[] = ["lis", "tibt"];
 
   uri = 'https://' + SVAConfig.hostname + ':' + SVAConfig.port + '';
