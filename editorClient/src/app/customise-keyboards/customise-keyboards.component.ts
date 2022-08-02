@@ -1193,32 +1193,32 @@ export class CustomiseKeyboardsComponent implements OnInit {
   // Decimal numbers - separate symbol for 10, 100, 1000, 10000
   use10RegularDecimal: any = ['ahom','bada','ta','vatt'];
   // No 0 number indicator only use 10 multiples
-  use10InPlaceOfZero: any = ['am','ary','avst','chrs','copt','el','esy','ett','geez','glag','he','hy','ion','ka','khar','la','lad','linb','linea','nbat','runr','sgnw','ti','tig','txg','yi'];
+  use10InPlaceOfZero: any = ['am','ary','avst','chrs','copt','el','esy','ett','geez','glag','he','hy','ion','ital','ka','khar','la','lad','linb','linea','nbat','runr','sgnw','ti','tig','txg','yi'];
   // Non-Decimal numerals
-  nonStandardNumeral : any = ['chrs','ett','khar','kmt','la','nbat'];
+  nonStandardNumeral : any = ['chrs','ett','ital','khar','kmt','la','nbat'];
   // Base 20 numerals
-  vigesimal : any = ['cans','esi','maya'];
+  vigesimal : any = ['cans','esi','esk','maya'];
   // Base 60 numerals
   sexagesimal : any = ['elam','elx','hit','sux'];
 
   // Display Results for these Unicode script without manipulation
-  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','avst','bhai','bopo','brah','cans','copt','el','ett','geez','glag','hy','ion','iub','ja','kaid','kan','khar','latf','maya','mend','nbat','nkoo','runr','takr','ti','tig','txg','zhcn','zhtw','zih'];
+  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','avst','bhai','bopo','brah','cans','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hy','ion','ital','iub','ja','kaid','kan','khar','latf','maya','mend','nbat','nkoo','rohg','runr','takr','ti','tig','txg','zhcn','zhtw','zih'];
 
   //https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
-  commaDecimalSeparatorLocales: any = ['ab','af','an','ast','az','aze','bak','bar','be','befr','bg','br','bs','bsla','ca','cdd','co','cs','da','de','el','elba','eo','es','et','eu','eurkey','evncy','evnla','fi','fo','fr','frca','fy','gn','hu','hv','hy','id','is','it','ka','kaz','kir','kk','kl','ky','latf','lb','lt','lv','mn','mnla','mon','nl','no','nso','pl','pt','ptbr','ro','ru','sk','sl','sq','sr','ss','st','sv','tk','tn','tr','ts','tuk','uk','uz','uzb','ven','vi','xh','zu'];
-  periodDecimalSeparatorLocales: any = ['ace','adin','adlm','ahom','aima','ajam','ak','am','ang','as','asom','avo','ay','bada','bali','bamu','ban','bcl','bhai','bharati','bhat','bin','bis','bjn','bjyo','bla','bm','bn','bopo','brah','brx','brxla','bug','bugla','bya','cakm','cans','cari','carr','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','dham','dhan','diak','din','dv','dz','ee','en','engb','enin','enintl','enus','esmx','esy','ff','fj','fon','fur','ga','gsw','gu','he','hi','iai','ics','iub','ja','kaid','kan','khar','km','kn','ko','kw','lb','mend','ml','mr','ms','nbat','ne','ngyo','njo','nkoo','odu','sa','sgnw','si','ta','takr','tfng','th','thaa','tiga','ussign','vah','vatt','yo','zag','zhcn','zhtw','zih'];
-  arabicDecimalSeparatorLocales: any = ['ar','arc','ary','bal','bsk','ckb','elym','fa','he','khat','ks','lad','ps','rhg','sd','ur','yi'];
+  commaDecimalSeparatorLocales: any = ['ab','af','an','apu','ast','az','aze','bak','bar','be','befr','bg','br','bs','bsla','ca','cdd','co','cs','da','de','el','elba','eo','es','et','eu','eurkey','evncy','evnla','fi','fo','fr','frca','fy','gag','gall','gl','gn','goth','gor','hil','hu','hv','hy','id','ilo','is','it','ka','kaz','kir','kk','kl','ky','latf','lb','lt','lv','mn','mnla','mon','nl','no','nso','pl','pt','ptbr','ro','ru','sk','sl','sq','sr','ss','st','sv','tk','tn','tr','ts','tuk','uk','uz','uzb','ven','vi','xh','zu'];
+  periodDecimalSeparatorLocales: any = ['ace','adin','adlm','ahom','aima','ajam','ak','am','ang','as','asom','avo','ay','bada','bali','bamu','ban','bcl','bhai','bharati','bhat','bin','bis','bjn','bjyo','bla','bm','bn','bopo','brah','brx','brxla','bug','bugla','bya','cakm','cans','cari','carr','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','dham','dhan','diak','din','dv','dz','ee','en','engb','enin','enintl','enus','esmx','esy','ff','fj','fon','fur','ga','gd','gong','gonm','goyk','gran','gsw','gu','gup','ha','haj','hatr','haw','he','hi','hmn','hmng','hmnp','ht','iai','ics','ig','iku','indus','iu','iub','ja','jam','jv','kaid','kan','khar','km','kn','ko','kw','lad','ladla','lb','mend','ml','mr','ms','nbat','ne','ngyo','njo','nkoo','odu','rohg','sa','sgnw','si','suz','ta','takr','tfng','th','thaa','tiga','ussign','vah','vatt','yo','zag','zhcn','zhtw','zih'];
+  arabicDecimalSeparatorLocales: any = ['ar','arc','ary','bal','bsk','ckb','elym','fa','he','jawi','khat','ks','lad','ps','rhg','sd','ur','yi'];
 
   // Separation between Numerals for Display
-  desiLakhCommaPosition: any = ['as','bada','bcl','bharati','bn','brah','brx','brxla','bya','cakm','dham','dhan','diak','dv','dz','enin','gu','hi','km','kn','ml','mr','ne','sa','si','ta','takr','te','th','thaa','tiga','vatt'];
-  desiLakhSpacePosition: any = ['bhai','bhat','enin','ne'];
+  desiLakhCommaPosition: any = ['as','bada','bcl','bharati','bn','brah','brx','brxla','bya','cakm','dham','dhan','diak','dv','dz','enin','gong','gonm','goyk','gran','gu','gup','haj','hi','indus','km','kn','ml','mr','ne','rohg','sa','si','ta','takr','te','th','thaa','tiga','vatt','ur'];
+  desiLakhSpacePosition: any = ['bhai','bhat','enin','ne','suz'];
   thousandsPositionApostropheAndPeriodDecimal : any = ['gsw'];
   thousandsPositionApostropheAndCommaDecimal : any = ['gsw'];
   thousandsPositionPeriodAndApostropheDecimal : any = [];
-  thousandsPositionPeriodAndCommaDecimal : any = ['ban','bar','bjn','bs','bsla','bug','bugla','co','da','de','el','eurkey','fo','fy','id','it','latf','nl','nld','ptbr','ro','sgnw','sl','tr','vi'];
-  thousandsPositionCommaAndPeriodDecimal : any = ['ab','ace','adin','adlm','ajam','ak','ang','ay','bali','bamu','bin','bis','bla','bm','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','din','ee','en','engb','enintl','enus','esmx','esy','fa','ff','fj','fon','fur','ga','he','iai','ics','iub','ja','ko','kw','mend','ms','mt','njo','nkoo','odu','tfng','th','ussign','vah','zag','zhtw'];
+  thousandsPositionPeriodAndCommaDecimal : any = ['apu','ban','bar','bjn','bs','bsla','bug','bugla','co','da','de','el','eurkey','fo','fy','gor','hil','id','ilo','it','kl','latf','nl','nld','ptbr','ro','sgnw','sl','tr','vi'];
+  thousandsPositionCommaAndPeriodDecimal : any = ['ab','ace','adin','adlm','ajam','ak','ang','ay','bali','bamu','bin','bis','bla','bm','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','din','ee','en','engb','enintl','enus','esmx','esy','fa','ff','fj','fon','fur','ga','gd','gn','ha','hatr','haw','he','hmn','hmng','hmnp','ht','iai','ics','ig','iku','iu','iub','is','ja','jam','jv','ko','kw','lad','ladla','mend','ms','mt','njo','nkoo','odu','tfng','th','ussign','vah','zag','zhtw'];
   thousandsPositionSpaceAndPeriodDecimal : any = [];
-  thousandsPositionSpaceAndCommaDecimal : any = ['af','an','asom','ast','az','aze','bak','be','befr','bg','br','ca','cans','cari','carr','cdd','cs','elba','eo','es','et','eu','evncy','evnla','fi','fr','frca','gsw','hr','hu','ka','la','lt','lv','no','nusk','pl','pt','ru','sk','sq','sr','sv','uk'];
+  thousandsPositionSpaceAndCommaDecimal : any = ['af','an','asom','ast','az','aze','bak','be','befr','bg','br','ca','cans','cari','carr','cdd','cs','elba','eo','es','et','eu','evncy','evnla','fi','fr','frca','gag','gall','gl','goth','hr','hu','ka','la','lt','lv','no','nusk','pl','pt','ru','sk','sq','sr','sv','uk'];
   thousandsPositionCommaAndMiddleDotDecimal : any = ['engb','ms'];
   tenThousandsCommaAndPeriod: any = ['kaid','kan','zhcn','zih'];
   tenThousandsSpaceAndPeriod: any = ['bopo','ja','zhtw'];
@@ -1312,10 +1312,11 @@ export class CustomiseKeyboardsComponent implements OnInit {
     - Brackets usage & complete equation computation
     - BaseX specific Operations
 
-    Problem to Fix
+    Problems to Fix
     - Tablet UI popup size from bookmarks
     - Operands in Hexa and then result in Decimal
     - RtL Unicode Numerals logx Y , X^y the result comes on wrong side of result equation
+    - 'jawi' multiple digit positioning as operands swap
   */
 
   constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, private renderer: Renderer2,searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
