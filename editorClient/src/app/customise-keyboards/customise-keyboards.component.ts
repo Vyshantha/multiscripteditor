@@ -1204,25 +1204,33 @@ export class CustomiseKeyboardsComponent implements OnInit {
   // Display Results for these Unicode script without manipulation
   displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','avst','bhai','bopo','brah','cans','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hy','ion','ital','iub','ja','kaid','kan','khar','latf','maya','mend','nbat','nkoo','rohg','runr','takr','ti','tig','txg','zhcn','zhtw','zih'];
 
-  //https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
-  commaDecimalSeparatorLocales: any = ['ab','af','an','apu','ast','az','aze','bak','bar','be','befr','bg','br','bs','bsla','ca','cdd','co','cs','da','de','el','elba','eo','es','et','eu','eurkey','evncy','evnla','fi','fo','fr','frca','fy','gag','gall','gl','gn','goth','gor','hil','hu','hv','hy','id','ilo','is','it','ka','kaz','kir','kk','kl','ky','latf','lb','lt','lv','mn','mnla','mon','nl','no','nso','pl','pt','ptbr','ro','ru','sk','sl','sq','sr','ss','st','sv','tk','tn','tr','ts','tuk','uk','uz','uzb','ven','vi','xh','zu'];
-  periodDecimalSeparatorLocales: any = ['ace','adin','adlm','ahom','aima','ajam','ak','am','ang','as','asom','avo','ay','bada','bali','bamu','ban','bcl','bhai','bharati','bhat','bin','bis','bjn','bjyo','bla','bm','bn','bopo','brah','brx','brxla','bug','bugla','bya','cakm','cans','cari','carr','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','dham','dhan','diak','din','dv','dz','ee','en','engb','enin','enintl','enus','esmx','esy','ff','fj','fon','fur','ga','gd','gong','gonm','goyk','gran','gsw','gu','gup','ha','haj','hatr','haw','he','hi','hmn','hmng','hmnp','ht','iai','ics','ig','iku','indus','iu','iub','ja','jam','jv','kaid','kan','khar','km','kn','ko','kw','lad','ladla','lb','mend','ml','mr','ms','nbat','ne','ngyo','njo','nkoo','odu','rohg','sa','sgnw','si','suz','ta','takr','tfng','th','thaa','tiga','ussign','vah','vatt','yo','zag','zhcn','zhtw','zih'];
-  arabicDecimalSeparatorLocales: any = ['ar','arc','ary','bal','bsk','ckb','elym','fa','he','jawi','khat','ks','lad','ps','rhg','sd','ur','yi'];
+  //Separation between Numerals for Display - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
 
-  // Separation between Numerals for Display
+  // COMMA ,
+  commaDecimalSeparatorLocales: any = ['ab','af','an','apu','ast','az','aze','bak','bar','be','befr','bg','br','bs','bsla','ca','cdd','co','cs','csb','da','de','el','elba','eo','es','et','eu','eurkey','evncy','evnla','fi','fo','fr','frca','fy','gag','gall','gl','gn','goth','gor','hil','hu','hv','hy','id','ilo','is','it','ka','kaz','kca','kha','kir','kk','kl','komi','ky','latf','lb','lt','lv','mn','mnla','mon','nl','no','nso','pam','pl','pt','ptbr','ro','ru','sk','sl','sq','sr','ss','st','sv','tk','tn','tr','ts','tuk','uk','uz','uzb','ven','vi','xh','zu'];
+  thousandsPositionPeriodAndCommaDecimal : any = ['apu','ban','bar','bjn','bs','bsla','bug','bugla','co','da','de','el','eurkey','fo','fy','gor','hil','id','ilo','it','kl','latf','nl','nld','pam','ptbr','ro','sgnw','sl','tr','vi'];
+  thousandsPositionSpaceAndCommaDecimal : any = ['af','an','asom','ast','az','aze','bak','be','befr','bg','br','ca','cans','cari','carr','cdd','cs','csb','elba','eo','es','et','eu','evncy','evnla','fi','fr','frca','gag','gall','gl','goth','hr','hu','ka','kaz','kca','kha','kk','komi','ky','la','lt','lv','no','nusk','pl','pt','ru','sk','sq','sr','sv','uk'];
+  thousandsPositionApostropheAndCommaDecimal : any = ['gsw'];
+  commaAndPeriodAlternating: any = ['hr'];
+
+  // PERIOD .
+  periodDecimalSeparatorLocales: any = ['ace','adin','adlm','ahom','aima','ajam','ak','am','ang','as','asom','avo','ay','bada','bali','bamu','ban','bcl','bhai','bharati','bhat','bin','bis','bjn','bjyo','bla','bm','bn','bopo','brah','brx','brxla','bug','bugla','bya','cakm','cans','cari','carr','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','dham','dhan','diak','din','dv','dz','ee','en','engb','enin','enintl','enus','esmx','esy','ff','fj','fon','fur','ga','gd','gil','gong','gonm','goyk','gran','gsw','gu','gup','ha','haj','hatr','haw','he','hi','hmn','hmng','hmnp','ht','iai','ics','ig','iku','indus','iu','iub','ja','jam','jv','kaid','kan','khar','km','kn','ko','kon','kpe','kri','ku','kw','lad','ladla','lb','mend','ml','mr','ms','nbat','ne','ngyo','njo','nkoo','odu','rn','rohg','rw','sa','sgnw','si','suz','ta','takr','tfng','th','thaa','tiga','ussign','vah','vatt','yo','zag','zhcn','zhtw','zih'];
   desiLakhCommaPosition: any = ['as','bada','bcl','bharati','bn','brah','brx','brxla','bya','cakm','dham','dhan','diak','dv','dz','enin','gong','gonm','goyk','gran','gu','gup','haj','hi','indus','km','kn','ml','mr','ne','rohg','sa','si','ta','takr','te','th','thaa','tiga','vatt','ur'];
   desiLakhSpacePosition: any = ['bhai','bhat','enin','ne','suz'];
-  thousandsPositionApostropheAndPeriodDecimal : any = ['gsw'];
-  thousandsPositionApostropheAndCommaDecimal : any = ['gsw'];
-  thousandsPositionPeriodAndApostropheDecimal : any = [];
-  thousandsPositionPeriodAndCommaDecimal : any = ['apu','ban','bar','bjn','bs','bsla','bug','bugla','co','da','de','el','eurkey','fo','fy','gor','hil','id','ilo','it','kl','latf','nl','nld','ptbr','ro','sgnw','sl','tr','vi'];
-  thousandsPositionCommaAndPeriodDecimal : any = ['ab','ace','adin','adlm','ajam','ak','ang','ay','bali','bamu','bin','bis','bla','bm','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','din','ee','en','engb','enintl','enus','esmx','esy','fa','ff','fj','fon','fur','ga','gd','gn','ha','hatr','haw','he','hmn','hmng','hmnp','ht','iai','ics','ig','iku','iu','iub','is','ja','jam','jv','ko','kw','lad','ladla','mend','ms','mt','njo','nkoo','odu','tfng','th','ussign','vah','zag','zhtw'];
-  thousandsPositionSpaceAndPeriodDecimal : any = [];
-  thousandsPositionSpaceAndCommaDecimal : any = ['af','an','asom','ast','az','aze','bak','be','befr','bg','br','ca','cans','cari','carr','cdd','cs','elba','eo','es','et','eu','evncy','evnla','fi','fr','frca','gag','gall','gl','goth','hr','hu','ka','la','lt','lv','no','nusk','pl','pt','ru','sk','sq','sr','sv','uk'];
-  thousandsPositionCommaAndMiddleDotDecimal : any = ['engb','ms'];
+  thousandsPositionCommaAndPeriodDecimal : any = ['ab','ace','adin','adlm','ajam','ak','ang','ay','bali','bamu','bin','bis','bla','bm','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','din','ee','en','engb','enintl','enus','esmx','esy','fa','ff','fj','fon','fur','ga','gd','gil','gn','ha','hatr','haw','he','hmn','hmng','hmnp','ht','iai','ics','ig','iku','iu','iub','is','ja','jam','jv','ko','kon','kpe','kri','ku','kw','lad','ladla','mend','ms','mt','njo','nkoo','odu','rn','rw','tfng','th','ussign','vah','zag','zhtw'];
   tenThousandsCommaAndPeriod: any = ['kaid','kan','zhcn','zih'];
   tenThousandsSpaceAndPeriod: any = ['bopo','ja','zhtw'];
-  commaAndPeriodAlternating: any = ['hr'];
+  thousandsPositionApostropheAndPeriodDecimal : any = ['gsw'];
+  thousandsPositionSpaceAndPeriodDecimal : any = [];
+
+  // ARABIC SEPARATOR ٬
+  arabicDecimalSeparatorLocales: any = ['ar','arc','ary','bal','bsk','ckb','elym','fa','he','jawi','khat','ks','lad','ps','rhg','sd','ur','yi'];
+
+  // APOSTROPHE '
+  thousandsPositionPeriodAndApostropheDecimal : any = [];
+
+  // MIDDLE DOT ·
+  thousandsPositionCommaAndMiddleDotDecimal : any = ['engb','ms'];
 
   // https://www.compart.com/en/unicode/category/Sc
   // https://en.wikipedia.org/wiki/Currency_symbol
@@ -1296,6 +1304,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
   mapLocale: any = [];
   nonUnicodeMap: any = [];
 
+  noNumeralsForNonUnicode: Boolean = false;
+
   allowedTypingContent: any = ['A','B','C','D','E','F','a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9','(',')',"°","′","″","'","\"","ᵍ","₠","₡","₢","₣","₤","₥","₦","₧","₨","₩","₽","฿","₹","€","$","£","₪","₫","₺","₾","₻","₼","؋","₭","₮","₯","₰","₱","₲","₳","₴","₵","₶","₷","₸","₿","⃀","֏","៛","௹","૱","ರ","රු","𞋿","𐆚","𐆖","𐆙","𐆗","𐆘","ƒ","元"];
 
   localeNames : any = "";
@@ -1314,9 +1324,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
     Problems to Fix
     - Tablet UI popup size from bookmarks
-    - Operands in Hexa and then result in Decimal
+    - Operands in Hexa and then result in Decimal does not show up
     - RtL Unicode Numerals logx Y , X^y the result comes on wrong side of result equation
     - 'jawi' multiple digit positioning as operands swap
+    - 'braille' 3 digit answer does not show up
   */
 
   constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, private renderer: Renderer2,searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
@@ -1652,10 +1663,11 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["1"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[2].row[8].visible = "show";
             this.simpleCalculatorLayout[1].row[0].visible = "show";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[2].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[1].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["1"] = this.layoutCurrentKeys[i].row[j].src;
+              this.noNumeralsForNonUnicode = true;
             }
             continue;
           }
@@ -1668,7 +1680,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["2"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[2].row[9].visible = "show";
             this.simpleCalculatorLayout[1].row[1].visible = "show";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[2].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[1].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["2"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1684,7 +1696,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["3"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[2].row[10].visible = "show";
             this.simpleCalculatorLayout[1].row[2].visible = "show";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[2].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[1].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["3"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1700,7 +1712,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["4"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[3].row[8].visible = "show";
             this.simpleCalculatorLayout[2].row[0].visible = "show";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[3].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[2].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["4"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1716,7 +1728,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["5"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[3].row[9].visible = "show";
             this.simpleCalculatorLayout[2].row[1].visible = "show";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[3].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[2].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["5"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1732,7 +1744,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["6"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[3].row[10].visible = "show";
             this.simpleCalculatorLayout[2].row[2].visible = "show";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[3].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[2].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["6"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1748,7 +1760,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["7"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[4].row[8].visible = "show";
             this.simpleCalculatorLayout[3].row[0].visible = "show";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[4].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[3].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["7"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1764,7 +1776,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["8"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[4].row[9].visible = "show";
             this.simpleCalculatorLayout[3].row[1].visible = "show";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[4].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[3].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["8"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1780,7 +1792,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["9"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[4].row[10].visible = "show";
             this.simpleCalculatorLayout[3].row[2].visible = "show";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[4].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[3].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["9"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1796,7 +1808,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["0"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[5].row[9].visible = "show";
             this.simpleCalculatorLayout[4].row[1].visible = "show";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[5].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[4].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["0"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1812,7 +1824,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["A"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[2].visible = "show";
             this.calculatorLayout[1].row[2].type = "num11";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["A"] = this.layoutCurrentKeys[i].row[j].src;
             }
@@ -1826,7 +1838,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["B"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[3].visible = "show";
             this.calculatorLayout[1].row[3].type = "num12";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[3]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["B"] = this.layoutCurrentKeys[i].row[j].src;
             }
@@ -1840,7 +1852,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["C"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[4].visible = "show";
             this.calculatorLayout[1].row[4].type = "num13";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[4]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["C"] = this.layoutCurrentKeys[i].row[j].src;
             }
@@ -1854,7 +1866,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["D"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[5].visible = "show";
             this.calculatorLayout[1].row[5].type = "num14";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[5]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["D"] = this.layoutCurrentKeys[i].row[j].src;
             }
@@ -1868,7 +1880,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["E"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[6].visible = "show";
             this.calculatorLayout[1].row[6].type = "num15";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[6]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["E"] = this.layoutCurrentKeys[i].row[j].src;
             }
@@ -1882,7 +1894,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["F"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[7].visible = "show";
             this.calculatorLayout[1].row[7].type = "num16";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[7]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["F"] = this.layoutCurrentKeys[i].row[j].src;
             }
@@ -1897,7 +1909,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["G"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[8].visible = "show";
             this.calculatorLayout[1].row[8].type = "num17";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["G"] = this.layoutCurrentKeys[i].row[j].src;
             }
@@ -1911,7 +1923,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["H"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[9].visible = "show";
             this.calculatorLayout[1].row[9].type = "num18";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["H"] = this.layoutCurrentKeys[i].row[j].src;
             }
@@ -1925,7 +1937,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["I"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[10].visible = "show";
             this.calculatorLayout[1].row[10].type = "num19";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["I"] = this.layoutCurrentKeys[i].row[j].src;
             }
@@ -1939,7 +1951,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["J"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[11].visible = "show";
             this.calculatorLayout[1].row[11].type = "num20";
-            if (this.unicode5AndHigher) {
+            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[11]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["J"] = this.layoutCurrentKeys[i].row[j].src;
             }

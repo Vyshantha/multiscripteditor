@@ -118,7 +118,7 @@
     <mat-form-field style="width: 70%;" appearance="fill">
         <mat-label>{{ 'View Equation' | translate }}</mat-label>
         <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
-        <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
+        <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
                     {{image.value}}
@@ -138,7 +138,7 @@
         <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
         <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
-        <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
+        <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberResult">
                 <span *ngIf="showImageGlyph && image.src == ''">
                     {{image.value}}
@@ -237,7 +237,7 @@
                     <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
                 </td>
                 <td style="width: 50%;">
-                    <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet,'padding':'0px'}">
+                    <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet,'padding':'0px'}">
                         <span *ngFor="let image of nonUnicodeNumberEquation">
                             <span *ngIf="showImageGlyph && image.src == ''">
                                 {{image.value}}
@@ -265,7 +265,7 @@
                 <td style="width: 50%;">
                     <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
                     <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
-                    <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet,'padding':'0px'}">
+                    <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet,'padding':'0px'}">
                         <span *ngFor="let image of nonUnicodeNumberResult">
                             <span *ngIf="showImageGlyph && image.src == ''">
                                 {{image.value}}
@@ -371,7 +371,7 @@
     <mat-form-field style="width: 80%;" appearance="fill">
         <mat-label>{{ 'View Equation' | translate }}</mat-label>
         <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
-        <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
+        <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
                     {{image.value}}
@@ -391,7 +391,7 @@
         <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
         <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
-        <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
+        <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberResult">
                 <span *ngIf="showImageGlyph && image.src == ''">
                     {{image.value}}
@@ -454,7 +454,7 @@
     <mat-form-field [ngStyle]="{'width': (currentCalculatorType == 'scientific')? '80%': '70%'}" appearance="fill">
         <mat-label>{{ 'View Equation' | translate }}</mat-label>
         <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
-        <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
+        <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
                     {{image.value}}
@@ -474,7 +474,7 @@
         <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
         <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
-        <mat-card *ngIf="unicode5AndHigher" [ngStyle]="{'text-align':dirSet}">
+        <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberResult">
                 <span *ngIf="showImageGlyph && image.src == ''">
                     {{image.value}}
