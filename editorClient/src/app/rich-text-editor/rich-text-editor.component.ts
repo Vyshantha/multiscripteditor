@@ -311,8 +311,9 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
             }
           }, self.FOCUS_TIMEOUT);
         }
-        if (self.unicode5AndHigher && self.fullmodeCkEditor.instance.getData().indexOf("<p>") > -1)
-          self.fullmodeCkEditor.instance.setData(self.fullmodeCkEditor.instance.getData().replace("<p>","<p style='letter-spacing:-5px'>"));
+        // TODO Spacing between non-Unicode letters
+        //if (self.unicode5AndHigher && self.fullmodeCkEditor.instance.getData().indexOf("<p>") > -1)
+        // self.fullmodeCkEditor.instance.setData(self.fullmodeCkEditor.instance.getData().replace("<p>","<p style='letter-spacing:-5px'>"));
       });
 
       this.fullmodeCkEditor.instance.on( 'key', ( event ) => {

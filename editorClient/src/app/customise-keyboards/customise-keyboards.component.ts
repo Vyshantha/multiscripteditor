@@ -1193,16 +1193,16 @@ export class CustomiseKeyboardsComponent implements OnInit {
   // Decimal numbers - separate symbol for 10, 100, 1000, 10000
   use10RegularDecimal: any = ['ahom','bada','ta','vatt'];
   // No 0 number indicator only use 10 multiples
-  use10InPlaceOfZero: any = ['am','ary','avst','chrs','copt','el','esy','ett','geez','glag','he','hy','ion','ital','ka','khar','la','lad','linb','linea','nbat','runr','sgnw','ti','tig','txg','yi'];
+  use10InPlaceOfZero: any = ['am','ary','avst','chrs','copt','el','esy','ett','geez','glag','he','hy','ion','ital','ka','khar','kult','la','lad','linb','linea','nbat','runr','sgnw','ti','tig','txg','yi'];
   // Non-Decimal numerals
-  nonStandardNumeral : any = ['chrs','ett','ital','khar','kmt','la','nbat'];
+  nonStandardNumeral : any = ['chrs','ett','ital','khar','kmt','kult','la','nbat'];
   // Base 20 numerals
   vigesimal : any = ['cans','esi','esk','maya'];
   // Base 60 numerals
   sexagesimal : any = ['elam','elx','hit','sux'];
 
   // Display Results for these Unicode script without manipulation
-  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','avst','bhai','bopo','brah','cans','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hy','ion','ital','iub','ja','kaid','kan','khar','latf','maya','mend','nbat','nkoo','rohg','runr','takr','ti','tig','txg','zhcn','zhtw','zih'];
+  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','avst','bhai','bopo','brah','cans','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hy','ion','ital','iub','ja','kaid','kan','khar','kult','latf','maya','mend','moss','nbat','nkoo','rohg','runr','takr','ti','tig','txg','zhcn','zhtw','zih'];
 
   //Separation between Numerals for Display - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
 
@@ -1214,10 +1214,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
   commaAndPeriodAlternating: any = ['hr'];
 
   // PERIOD .
-  periodDecimalSeparatorLocales: any = ['ace','adin','adlm','ahom','aima','ajam','ak','am','ang','as','asom','avo','ay','bada','bali','bamu','ban','bcl','bhai','bharati','bhat','bin','bis','bjn','bjyo','bla','bm','bn','bopo','brah','brx','brxla','bug','bugla','bya','cakm','cans','cari','carr','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','dham','dhan','diak','din','dv','dz','ee','en','engb','enin','enintl','enus','esmx','esy','ff','fj','fon','fur','ga','gd','gil','gong','gonm','goyk','gran','gsw','gu','gup','ha','haj','hatr','haw','he','hi','hmn','hmng','hmnp','ht','iai','ics','ig','iku','indus','iu','iub','ja','jam','jv','kaid','kan','khar','km','kn','ko','kon','kpe','kri','ku','kw','lad','ladla','lb','mend','ml','mr','ms','nbat','ne','ngyo','njo','nkoo','odu','rn','rohg','rw','sa','sgnw','si','suz','ta','takr','tfng','th','thaa','tiga','ussign','vah','vatt','yo','zag','zhcn','zhtw','zih'];
-  desiLakhCommaPosition: any = ['as','bada','bcl','bharati','bn','brah','brx','brxla','bya','cakm','dham','dhan','diak','dv','dz','enin','gong','gonm','goyk','gran','gu','gup','haj','hi','indus','km','kn','ml','mr','ne','rohg','sa','si','ta','takr','te','th','thaa','tiga','vatt','ur'];
-  desiLakhSpacePosition: any = ['bhai','bhat','enin','ne','suz'];
-  thousandsPositionCommaAndPeriodDecimal : any = ['ab','ace','adin','adlm','ajam','ak','ang','ay','bali','bamu','bin','bis','bla','bm','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','din','ee','en','engb','enintl','enus','esmx','esy','fa','ff','fj','fon','fur','ga','gd','gil','gn','ha','hatr','haw','he','hmn','hmng','hmnp','ht','iai','ics','ig','iku','iu','iub','is','ja','jam','jv','ko','kon','kpe','kri','ku','kw','lad','ladla','mend','ms','mt','njo','nkoo','odu','rn','rw','tfng','th','ussign','vah','zag','zhtw'];
+  periodDecimalSeparatorLocales: any = ['ace','adin','adlm','ahom','aima','ajam','ak','am','ang','as','asom','avo','ay','bada','bali','bamu','ban','bcl','bhai','bharati','bhat','bin','bis','bjn','bjyo','bla','bm','bn','bopo','brah','brx','brxla','bug','bugla','bya','cakm','cans','cari','carr','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','dham','dhan','diak','din','dv','dz','ee','en','engb','enin','enintl','enus','esmx','esy','ff','fj','fon','fur','ga','gd','gil','gong','gonm','goyk','gran','gsw','gu','gup','ha','haj','hatr','haw','he','hi','hmn','hmng','hmnp','ht','iai','ics','ig','iku','indus','iu','iub','ja','jam','jv','kaid','kan','khar','km','kn','ko','kon','kpe','kri','ku','kw','lad','ladla','lb','mend','ml','moss','mr','ms','nbat','ne','ngyo','njo','nkoo','odu','rn','rohg','rw','sa','sgnw','si','suz','ta','takr','tfng','th','thaa','tiga','ussign','vah','vatt','yo','zag','zhcn','zhtw','zih'];
+  desiLakhCommaDecimalPeriodPosition: any = ['as','bada','bcl','bharati','bn','brah','brx','brxla','bya','cakm','dham','dhan','diak','dv','dz','enin','gong','gonm','goyk','gran','gu','gup','haj','hi','indus','kn','ml','moss','mr','ne','rohg','sa','si','ta','takr','te','th','thaa','tiga','vatt','ur'];
+  desiLakhSpaceDecimalPeriodPosition: any = ['bhai','bhat','enin','ne','suz'];
+  thousandsPositionCommaAndPeriodDecimal : any = ['ab','ace','adin','adlm','ajam','ak','ang','ay','bali','bamu','bin','bis','bla','bm','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','din','ee','en','engb','enintl','enus','esmx','esy','fa','ff','fj','fon','fur','ga','gd','gil','gn','ha','hatr','haw','he','hmn','hmng','hmnp','ht','iai','ics','ig','iku','iu','iub','is','ja','jam','jv','km','ko','kon','kpe','kri','ku','kw','lad','ladla','mend','ms','mt','njo','nkoo','odu','rn','rw','tfng','th','ussign','vah','zag','zhtw'];
   tenThousandsCommaAndPeriod: any = ['kaid','kan','zhcn','zih'];
   tenThousandsSpaceAndPeriod: any = ['bopo','ja','zhtw'];
   thousandsPositionApostropheAndPeriodDecimal : any = ['gsw'];
@@ -1246,7 +1246,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   rtlLocales : string[] = ['adlm','ajam','ar','arc','avst','bal','ber','bsk','cana','chrs','chun','ckb','cprt','dv','egyd','elym','estr','ett','fa','gars','hatr','he','hung','idu','indus','jawi','jrb','khar','khaz','ks','kuli','kult','lad','lepo','linb','lydi','madn','mand','mani','mend','mer','mero','mnkar','nbat','nkoo','nshu','odu','orkh','ougr','pal','palm','phn','phyg','pice','ps','psal','rhg','rohg','sabe','safa','samr','sd','sert','sina','skr','sog','syrc','thaa','txg','txr','ug','ur','woal','wolf','xpr','xpu','xsa','yezi','yi'];
   rtlLocalesLtRNumerals : string [] = ['ar','bal','bsk','ckb','fa','ks','ps','rhg','sd','ur'];
-  rtlNumerals : string [] = ['adlm','avst','ett','khar','linb','linea','mend','nbat','nkoo','odu','phn','xpr'];
+  rtlNumerals : string [] = ['adlm','avst','chrs','ett','he','khar','kult','lad','linb','linea','mend','nbat','nkoo','odu','phn','psal','sog','wolf','xpr','yi'];
 
   boustrophedonScripts: string[] = ['asom','avo','egyd','ett','hung','kmt','lepo','luw','maya','moon','phyg','pice','sabe','safa','sina','txr','wole','xsa'];
   topToBottomLR: string[] = ['galk','ja','ko','mnc','mon','oira','phag','shui','sog','soyo','zhcn','zhtw'];
@@ -1306,7 +1306,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   noNumeralsForNonUnicode: Boolean = false;
 
-  allowedTypingContent: any = ['A','B','C','D','E','F','a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9','(',')',"°","′","″","'","\"","ᵍ","₠","₡","₢","₣","₤","₥","₦","₧","₨","₩","₽","฿","₹","€","$","£","₪","₫","₺","₾","₻","₼","؋","₭","₮","₯","₰","₱","₲","₳","₴","₵","₶","₷","₸","₿","⃀","֏","៛","௹","૱","ರ","රු","𞋿","𐆚","𐆖","𐆙","𐆗","𐆘","ƒ","元"];
+  allowedTypingContent: any = ['A','B','C','D','E','F','a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9','(',')',"°","′","″","'","\"","ᵍ"];
 
   localeNames : any = "";
 
@@ -1328,6 +1328,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     - RtL Unicode Numerals logx Y , X^y the result comes on wrong side of result equation
     - 'jawi' multiple digit positioning as operands swap
     - 'braille' 3 digit answer does not show up
+    - 'txg' number directly typed to editor not visible
   */
 
   constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, private renderer: Renderer2,searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
@@ -3127,11 +3128,11 @@ export class CustomiseKeyboardsComponent implements OnInit {
     let stringToReturn = "";
     if(internalCalculation && hostString.indexOf(".") > -1 && (this.commaDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionPeriodAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1))
       hostString = hostString.replaceAll(".","");
-    else if (internalCalculation && hostString.indexOf(",") > -1 && (this.periodDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.desiLakhCommaPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionCommaAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionCommaAndMiddleDotDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.tenThousandsCommaAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1)) 
+    else if (internalCalculation && hostString.indexOf(",") > -1 && (this.periodDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.desiLakhCommaDecimalPeriodPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionCommaAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionCommaAndMiddleDotDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.tenThousandsCommaAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1)) 
       hostString = hostString.replaceAll(",","");
     else if(internalCalculation && hostString.indexOf("٬") > -1 && this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1)
       hostString = hostString.replaceAll("٬","");
-    else if(internalCalculation && hostString.indexOf(" ") > -1 && (this.thousandsPositionSpaceAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionSpaceAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.tenThousandsSpaceAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.desiLakhSpacePosition.indexOf(this.sessionManager.getFromSessionURL()) > -1))
+    else if(internalCalculation && hostString.indexOf(" ") > -1 && (this.thousandsPositionSpaceAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionSpaceAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.tenThousandsSpaceAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.desiLakhSpaceDecimalPeriodPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1))
       hostString = hostString.replaceAll(" ","");
     else if(internalCalculation && hostString.indexOf("'") > -1 && (this.thousandsPositionApostropheAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionApostropheAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1))
       hostString = hostString.replaceAll("'","");
@@ -3386,13 +3387,13 @@ export class CustomiseKeyboardsComponent implements OnInit {
           numberMarked = numberMarked + numberAsString[position] + ",";
         else if (numberAsString.indexOf(".") == -1 && ((periodPosition - 5) == position || (periodPosition - 10) == position || (periodPosition - 15) == position) && this.tenThousandsCommaAndPeriod.indexOf(this.sessionManager.getFromSessionURL()) > -1) // tenThousandsCommaAndPeriod 123,4567.89
           numberMarked = numberMarked + numberAsString[position] + ",";
-        else if (numberAsString.indexOf(".") > -1 && ((periodPosition - 4) == position || (periodPosition - 6) == position || (periodPosition - 8) == position || (periodPosition - 10) == position || (periodPosition - 12) == position || (periodPosition - 14) == position || (periodPosition - 16) == position) && this.desiLakhCommaPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhCommaPosition 12,34,567.89
+        else if (numberAsString.indexOf(".") > -1 && ((periodPosition - 4) == position || (periodPosition - 6) == position || (periodPosition - 8) == position || (periodPosition - 10) == position || (periodPosition - 12) == position || (periodPosition - 14) == position || (periodPosition - 16) == position) && this.desiLakhCommaDecimalPeriodPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhCommaDecimalPeriodPosition 12,34,567.89
         numberMarked = numberMarked + numberAsString[position] + ",";
-        else if (numberAsString.indexOf(".") == -1 && ((periodPosition - 3) == position || (periodPosition - 5) == position || (periodPosition - 7) == position || (periodPosition - 9) == position || (periodPosition - 11) == position || (periodPosition - 13) == position || (periodPosition - 15) == position) && this.desiLakhCommaPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhCommaPosition 12,34,567.89
+        else if (numberAsString.indexOf(".") == -1 && ((periodPosition - 3) == position || (periodPosition - 5) == position || (periodPosition - 7) == position || (periodPosition - 9) == position || (periodPosition - 11) == position || (periodPosition - 13) == position || (periodPosition - 15) == position) && this.desiLakhCommaDecimalPeriodPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhCommaDecimalPeriodPosition 12,34,567.89
           numberMarked = numberMarked + numberAsString[position] + ",";
-        else if (numberAsString.indexOf(".") > -1 && ((periodPosition - 4) == position || (periodPosition - 6) == position || (periodPosition - 8) == position || (periodPosition - 10) == position || (periodPosition - 12) == position || (periodPosition - 14) == position || (periodPosition - 16) == position) && this.desiLakhSpacePosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhSpacePosition 12 34 567.89
+        else if (numberAsString.indexOf(".") > -1 && ((periodPosition - 4) == position || (periodPosition - 6) == position || (periodPosition - 8) == position || (periodPosition - 10) == position || (periodPosition - 12) == position || (periodPosition - 14) == position || (periodPosition - 16) == position) && this.desiLakhSpaceDecimalPeriodPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhSpaceDecimalPeriodPosition 12 34 567.89
           numberMarked = numberMarked + numberAsString[position] + " ";
-        else if (numberAsString.indexOf(".") == -1 && ((periodPosition - 3) == position || (periodPosition - 5) == position || (periodPosition - 7) == position || (periodPosition - 9) == position || (periodPosition - 11) == position || (periodPosition - 13) == position || (periodPosition - 15) == position) && this.desiLakhSpacePosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhSpacePosition 12 34 567.89
+        else if (numberAsString.indexOf(".") == -1 && ((periodPosition - 3) == position || (periodPosition - 5) == position || (periodPosition - 7) == position || (periodPosition - 9) == position || (periodPosition - 11) == position || (periodPosition - 13) == position || (periodPosition - 15) == position) && this.desiLakhSpaceDecimalPeriodPosition.indexOf(this.sessionManager.getFromSessionURL()) > -1) // desiLakhSpaceDecimalPeriodPosition 12 34 567.89
           numberMarked = numberMarked + numberAsString[position] + " ";
         else if (this.thousandsPositionCommaAndMiddleDotDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 && numberAsString[position] == ".") 
           numberMarked = numberMarked + "·";
