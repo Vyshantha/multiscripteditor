@@ -763,6 +763,42 @@
   }
 
   @font-face {
+    font-family: 'Noto Sans Anatolian Hieroglyphs';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-anatolian-hieroglyphs/files/NotoSansAnatolianHieroglyphs-Regular.woff') format('woff');
+  }
+
+  .luw {
+    font-family: 'Noto Sans Anatolian Hieroglyphs' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Serif Old Uyghur';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-serif-old-uyghur/files/NotoSerifOldUyghur-Regular.woff') format('woff');
+  }
+
+  .ougr {
+    font-family: 'Noto Serif Old Uyghur' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Tangsa';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-tangsa/files/NotoSansTangsa-Regular.woff') format('woff');
+  }
+
+  .moss {
+    font-family: 'Noto Sans Tangsa' !important;
+  }
+
+  @font-face {
     font-family: 'Noto Serif Yezidi';
     font-style: normal;
     font-display: swap;
