@@ -1202,7 +1202,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   sexagesimal : any = ['elam','elx','hit','sux'];
 
   // Display Results for these Unicode script without manipulation
-  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','avst','bhai','bopo','brah','cans','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hy','ion','ital','iub','ja','kaid','kan','khar','kult','latf','maya','mend','moss','nbat','nkoo','rohg','runr','takr','ti','tig','txg','zhcn','zhtw','zih'];
+  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','avst','bhai','bopo','brah','cans','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hy','ion','ital','iub','ja','kaid','kali','kan','khar','khud','kult','latf','maya','mend','moss','my','nbat','nkoo','rohg','runr','takr','ti','tig','txg','zhcn','zhtw','zih'];
 
   //Separation between Numerals for Display - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
 
@@ -1214,10 +1214,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
   commaAndPeriodAlternating: any = ['hr'];
 
   // PERIOD .
-  periodDecimalSeparatorLocales: any = ['ace','adin','adlm','ahom','aima','ajam','ak','am','ang','as','asom','avo','ay','bada','bali','bamu','ban','bcl','bhai','bharati','bhat','bin','bis','bjn','bjyo','bla','bm','bn','bopo','brah','brx','brxla','bug','bugla','bya','cakm','cans','cari','carr','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','dham','dhan','diak','din','dv','dz','ee','en','engb','enin','enintl','enus','esmx','esy','ff','fj','fon','fur','ga','gd','gil','gong','gonm','goyk','gran','gsw','gu','gup','ha','haj','hatr','haw','he','hi','hmn','hmng','hmnp','ht','iai','ics','ig','iku','indus','iu','iub','ja','jam','jv','kaid','kan','khar','km','kn','ko','kon','kpe','kri','ku','kw','lad','ladla','lb','mend','ml','moss','mr','ms','nbat','ne','ngyo','njo','nkoo','odu','rn','rohg','rw','sa','sgnw','si','suz','ta','takr','tfng','th','thaa','tiga','ussign','vah','vatt','yo','zag','zhcn','zhtw','zih'];
-  desiLakhCommaDecimalPeriodPosition: any = ['as','bada','bcl','bharati','bn','brah','brx','brxla','bya','cakm','dham','dhan','diak','dv','dz','enin','gong','gonm','goyk','gran','gu','gup','haj','hi','indus','kn','ml','moss','mr','ne','rohg','sa','si','ta','takr','te','th','thaa','tiga','vatt','ur'];
+  periodDecimalSeparatorLocales: any = ['ace','adin','adlm','ahom','aima','ajam','ak','am','ang','as','asom','avo','ay','bada','bali','bamu','ban','bcl','bhai','bharati','bhat','bin','bis','bjn','bjyo','bla','bm','bn','bopo','brah','brx','brxla','bug','bugla','bya','cakm','cans','cari','carr','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','dham','dhan','diak','din','dv','dz','ee','en','engb','enin','enintl','enus','esmx','esy','ff','fj','fon','fur','ga','gd','gil','gong','gonm','goyk','gran','gsw','gu','gup','ha','haj','hatr','haw','he','hi','hmn','hmng','hmnp','ht','iai','ics','ig','iku','indus','iu','iub','ja','jam','jv','kaid','kali','kan','kawi','kbp','khar','khud','ki','km','kn','ko','kon','kpe','kri','kru','kthi','ku','kw','lad','ladla','lb','mend','ml','moss','mr','ms','my','nbat','ne','ngyo','njo','nkoo','odu','rn','rohg','rw','sa','sgnw','si','suz','ta','takr','tfng','th','thaa','tiga','ussign','vah','vatt','yo','zag','zhcn','zhtw','zih'];
+  desiLakhCommaDecimalPeriodPosition: any = ['as','bada','bcl','bharati','bn','brah','brx','brxla','bya','cakm','dham','dhan','diak','dv','dz','enin','gong','gonm','goyk','gran','gu','gup','haj','hi','indus','khud','kn','kru','kthi','ml','moss','mr','ne','rohg','sa','si','ta','takr','te','th','thaa','tiga','vatt','ur'];
   desiLakhSpaceDecimalPeriodPosition: any = ['bhai','bhat','enin','ne','suz'];
-  thousandsPositionCommaAndPeriodDecimal : any = ['ab','ace','adin','adlm','ajam','ak','ang','ay','bali','bamu','bin','bis','bla','bm','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','din','ee','en','engb','enintl','enus','esmx','esy','fa','ff','fj','fon','fur','ga','gd','gil','gn','ha','hatr','haw','he','hmn','hmng','hmnp','ht','iai','ics','ig','iku','iu','iub','is','ja','jam','jv','km','ko','kon','kpe','kri','ku','kw','lad','ladla','mend','ms','mt','njo','nkoo','odu','rn','rw','tfng','th','ussign','vah','zag','zhtw'];
+  thousandsPositionCommaAndPeriodDecimal : any = ['ab','ace','adin','adlm','ajam','ak','ang','ay','bali','bamu','bin','bis','bla','bm','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','din','ee','en','engb','enintl','enus','esmx','esy','fa','ff','fj','fon','fur','ga','gd','gil','gn','ha','hatr','haw','he','hmn','hmng','hmnp','ht','iai','ics','ig','iku','iu','iub','is','ja','jam','jv','kawi','kbp','ki','km','ko','kon','kpe','kri','ku','kw','lad','ladla','mend','ms','mt','njo','nkoo','odu','rn','rw','tfng','th','ussign','vah','zag','zhtw'];
   tenThousandsCommaAndPeriod: any = ['kaid','kan','zhcn','zih'];
   tenThousandsSpaceAndPeriod: any = ['bopo','ja','zhtw'];
   thousandsPositionApostropheAndPeriodDecimal : any = ['gsw'];
@@ -1261,7 +1261,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   fontsSources: string[] = ['dogr','elym','gong','gonm','hmnp','kult','nshu','sog','soyo','txg','ur','yezi','zanb'];
 
-  imageAlternativeScript: string[] = ['adin', 'aima', 'ari', 'ary', 'avst', 'avo', 'aztc', 'bada', 'banzsl', 'ber', 'bhat', 'bhp', 'bya', 'cana', 'cans', 'chik', 'chis', 'chrs', 'coorg', 'dale', 'desisign', 'dham', 'dhan', 'diak', 'dite', 'egyd', 'esi', 'esk', 'estr', 'esy', 'flag', 'gael', 'gars', 'geba', 'goyk', 'gup', 'iba', 'ibe', 'ics', 'indus', 'ion', 'ipk', 'jiag', 'kada', 'kaid', 'kama', 'kawi', 'khat', 'khom', 'khor', 'kitl', 'kits', 'koch', 'kpe', 'kru', 'kuli', 'lad', 'land', 'leke', 'loma', 'luo', 'madn', 'maga', 'maha', 'maka', 'mamb', 'maya', 'mguj', 'mikq', 'moon', 'moss', 'mwan', 'nagm', 'nand', 'ndju', 'nsi', 'odu', 'ougr', 'pall', 'ranj', 'renc', 'runr', 'sabe', 'safa', 'scha', 'sert', 'sina', 'suz', 'tach', 'tamu', 'tang', 'tani', 'tiga', 'tika', 'tnq', 'toch', 'toto', 'txr', 'umw', 'ussign', 'vatt', 'vith', 'wole', 'wolf', 'xce', 'zag', 'zou'];
+  imageAlternativeScript: string[] = ['adin', 'aima', 'ari', 'ary', 'avst', 'avo', 'aztc', 'bada', 'banzsl', 'ber', 'bhat', 'bhp', 'bya', 'cana', 'cans', 'chik', 'chis', 'chrs', 'coorg', 'dale', 'desisign', 'dham', 'dhan', 'diak', 'dite', 'egyd', 'esi', 'esk', 'estr', 'esy', 'flag', 'gael', 'gars', 'geba', 'goyk', 'gup', 'iba', 'ibe', 'ics', 'indus', 'ion', 'ipk', 'jiag', 'kada', 'kaid', 'kama', 'kawi', 'khat', 'khom', 'khor', 'kitl', 'kits', 'koch', 'kpe', 'kru', 'kthi', 'kuli', 'lad', 'land', 'leke', 'loma', 'luo', 'madn', 'maga', 'maha', 'maka', 'mamb', 'maya', 'mguj', 'mikq', 'moon', 'moss', 'mwan', 'nagm', 'nand', 'ndju', 'nsi', 'odu', 'ougr', 'pall', 'ranj', 'renc', 'runr', 'sabe', 'safa', 'scha', 'sert', 'sina', 'suz', 'tach', 'tamu', 'tang', 'tani', 'tiga', 'tika', 'tnq', 'toch', 'toto', 'txr', 'umw', 'ussign', 'vatt', 'vith', 'wole', 'wolf', 'xce', 'zag', 'zou'];
 
   keysToRotate: Boolean = false;
   isQwerty: Boolean = false;
@@ -1323,9 +1323,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
     - BaseX specific Operations
 
     Problems to Fix
-    - Tablet UI popup size from bookmarks
-    - Operands in Hexa and then result in Decimal does not show up
-    - RtL Unicode Numerals logx Y , X^y the result comes on wrong side of result equation
     - 'jawi' multiple digit positioning as operands swap
     - 'braille' 3 digit answer does not show up
     - 'txg' number directly typed to editor not visible
