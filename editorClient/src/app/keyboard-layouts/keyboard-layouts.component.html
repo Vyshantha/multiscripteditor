@@ -1104,8 +1104,8 @@
                         Tolong
                         Gondi
                         Khe-Prih
-                        Lampung
-                        Warang-Citi-->
+                        Lampung-->
+                        <button mat-button aria-label="𑢹𑣗𑣁𑣜𑣊 𑣏𑣂𑣕𑣂" color="primary" matTooltip="{{localisedKeyboardLayouts['wara'][2]}}" (click)="allAbugidaTypeClicked('wara')" *ngIf="keyboardLayouts['wara'][7] < historyAbugida.value && (keyboardLayouts['wara'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['wara'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">𑢹𑣗𑣁𑣜𑣊 𑣏𑣂𑣕𑣂</button>
                         <button mat-button aria-label="Gunjala Gondi" color="primary" matTooltip="{{localisedKeyboardLayouts['gong'][2]}}" (click)="allAbugidaTypeClicked('gong')" *ngIf="keyboardLayouts['gong'][7] < historyAbugida.value && (keyboardLayouts['gong'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['gong'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')" style="font-family: 'Noto Sans Gunjala Gondi';">𑵶𑶍𑶕𑶀𑵵𑶊 𑵶𑶓𑶕𑶂𑶋 𑵵𑶋𑶅𑶋‎</button>
                         <button mat-button aria-label="Masaram Gondi" color="primary" matTooltip="{{localisedKeyboardLayouts['gonm'][2]}}" (click)="allAbugidaTypeClicked('gonm')" *ngIf="keyboardLayouts['gonm'][7] < historyAbugida.value && (keyboardLayouts['gonm'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['gonm'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')" style="font-family: 'Noto Sans Masaram Gondi';">𑴤𑴫𑴦𑴱𑴤 𑴎𑴽𑵀𑴘𑴳‎‎</button>
                         <button mat-button aria-label="Miao" color="primary" matTooltip="{{localisedKeyboardLayouts['plrd'][2]}}" (click)="allAbugidaTypeClicked('plrd')" *ngIf="keyboardLayouts['plrd'][7] < historyAbugida.value && (keyboardLayouts['plrd'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['plrd'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">Miao</button> 
@@ -1635,6 +1635,11 @@
                 <mat-tab label="Gondi">
                     <p style="text-align: center;">
                         <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Gondi <button mat-button aria-label="Masaram Gondi" color="primary" matTooltip="{{localisedKeyboardLayouts['gonm'][2]}}" (click)="languageScriptClicked('gonm')" style="font-family: 'Noto Sans Masaram Gondi';">𑴤𑴫𑴦𑴱𑴤 𑴎𑴽𑵀𑴘𑴳‎‎</button> <button mat-button aria-label="Gunjala Gondi" color="primary" matTooltip="{{localisedKeyboardLayouts['gong'][2]}}" (click)="languageScriptClicked('gong')" style="font-family: 'Noto Sans Gunjala Gondi';">𑵶𑶍𑶕𑶀𑵵𑶊 𑵶𑶓𑶕𑶂𑶋 𑵵𑶋𑶅𑶋‎</button>
+                    </p>
+                </mat-tab>
+                <mat-tab label="𑢹𑣗𑣁𑣜𑣊 𑣏𑣂𑣕𑣂">
+                    <p style="text-align: center;">
+                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Warang Citi / Varang Kshiti
                     </p>
                 </mat-tab>
                 <mat-tab label="Miao">
@@ -4111,8 +4116,8 @@
                         Tolong
                         Gondi
                         Khe-Prih
-                        Lampung
-                        Warang-Citi-->
+                        Lampung-->
+                        <button mat-button aria-label="𑢹𑣗𑣁𑣜𑣊 𑣏𑣂𑣕𑣂" color="primary" matTooltip="{{localisedKeyboardLayouts['wara'][2]}}" (click)="allAbugidaTypeClicked('wara')" *ngIf="keyboardLayouts['wara'][7] < historyAbugida.value && (keyboardLayouts['wara'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['wara'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">𑢹𑣗𑣁𑣜𑣊 𑣏𑣂𑣕𑣂</button>
                         <button mat-button aria-label="Gunjala Gondi" color="primary" matTooltip="{{localisedKeyboardLayouts['gong'][2]}}" (click)="allAbugidaTypeClicked('gong')" *ngIf="keyboardLayouts['gong'][7] < historyAbugida.value && (keyboardLayouts['gong'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['gong'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')" style="font-family: 'Noto Sans Gunjala Gondi';">𑵶𑶍𑶕𑶀𑵵𑶊 𑵶𑶓𑶕𑶂𑶋 𑵵𑶋𑶅𑶋‎</button>
                         <button mat-button aria-label="Masaram Gondi" color="primary" matTooltip="{{localisedKeyboardLayouts['gonm'][2]}}" (click)="allAbugidaTypeClicked('gonm')" *ngIf="keyboardLayouts['gonm'][7] < historyAbugida.value && (keyboardLayouts['gonm'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['gonm'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')" style="font-family: 'Noto Sans Masaram Gondi';">𑴤𑴫𑴦𑴱𑴤 𑴎𑴽𑵀𑴘𑴳‎‎</button>
                         <button mat-button aria-label="Miao" color="primary" matTooltip="{{localisedKeyboardLayouts['plrd'][2]}}" (click)="allAbugidaTypeClicked('plrd')" *ngIf="keyboardLayouts['plrd'][7] < historyAbugida.value && (keyboardLayouts['plrd'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['plrd'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">Miao</button> 
@@ -4643,6 +4648,11 @@
                 <mat-tab label="Gondi">
                     <p style="text-align: center;">
                         <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Gondi <button mat-button aria-label="Masaram Gondi" color="primary" matTooltip="{{localisedKeyboardLayouts['gonm'][2]}}" (click)="languageScriptClicked('gonm')" style="font-family: 'Noto Sans Masaram Gondi';">𑴤𑴫𑴦𑴱𑴤 𑴎𑴽𑵀𑴘𑴳‎‎</button> <button mat-button aria-label="Gunjala Gondi" color="primary" matTooltip="{{localisedKeyboardLayouts['gong'][2]}}" (click)="languageScriptClicked('gong')" style="font-family: 'Noto Sans Gunjala Gondi';">𑵶𑶍𑶕𑶀𑵵𑶊 𑵶𑶓𑶕𑶂𑶋 𑵵𑶋𑶅𑶋‎</button>
+                    </p>
+                </mat-tab>
+                <mat-tab label="𑢹𑣗𑣁𑣜𑣊 𑣏𑣂𑣕𑣂">
+                    <p style="text-align: center;">
+                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Warang Citi / Varang Kshiti
                     </p>
                 </mat-tab>
                 <mat-tab label="Miao">
@@ -7076,8 +7086,8 @@
                         Tolong
                         Gondi
                         Khe-Prih
-                        Lampung
-                        Warang-Citi-->
+                        Lampung-->
+                        <button mat-button aria-label="𑢹𑣗𑣁𑣜𑣊 𑣏𑣂𑣕𑣂" color="primary" matTooltip="{{localisedKeyboardLayouts['wara'][2]}}" (click)="allAbugidaTypeClicked('wara')" *ngIf="keyboardLayouts['wara'][7] < historyAbugida.value && (keyboardLayouts['wara'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['wara'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">𑢹𑣗𑣁𑣜𑣊 𑣏𑣂𑣕𑣂</button>
                         <button mat-button aria-label="Gunjala Gondi" color="primary" matTooltip="{{localisedKeyboardLayouts['gong'][2]}}" (click)="allAbugidaTypeClicked('gong')" *ngIf="keyboardLayouts['gong'][7] < historyAbugida.value && (keyboardLayouts['gong'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['gong'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')" style="font-family: 'Noto Sans Gunjala Gondi';">𑵶𑶍𑶕𑶀𑵵𑶊 𑵶𑶓𑶕𑶂𑶋 𑵵𑶋𑶅𑶋‎</button>
                         <button mat-button aria-label="Masaram Gondi" color="primary" matTooltip="{{localisedKeyboardLayouts['gonm'][2]}}" (click)="allAbugidaTypeClicked('gonm')" *ngIf="keyboardLayouts['gonm'][7] < historyAbugida.value && (keyboardLayouts['gonm'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['gonm'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')" style="font-family: 'Noto Sans Masaram Gondi';">𑴤𑴫𑴦𑴱𑴤 𑴎𑴽𑵀𑴘𑴳‎‎</button>
                         <button mat-button aria-label="Miao" color="primary" matTooltip="{{localisedKeyboardLayouts['plrd'][2]}}" (click)="allAbugidaTypeClicked('plrd')" *ngIf="keyboardLayouts['plrd'][7] < historyAbugida.value && (keyboardLayouts['plrd'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['plrd'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">Miao</button> 
@@ -7636,6 +7646,11 @@
                 <mat-tab label="ꓡꓲ-ꓢꓴ">
                     <p style="text-align: center;">
                         <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Lisu
+                    </p>
+                </mat-tab>
+                <mat-tab label="𑢹𑣗𑣁𑣜𑣊 𑣏𑣂𑣕𑣂">
+                    <p style="text-align: center;">
+                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Warang Citi / Varang Kshiti
                     </p>
                 </mat-tab>
                 <mat-tab label="Miao">

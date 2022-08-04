@@ -514,6 +514,7 @@ import * as layoutGunjalaGondiGong from './../../assets/keyboard-layouts/layout-
 import * as layoutKapampanganPam from './../../assets/keyboard-layouts/layout-kapampangan-pam.json';
 import * as layoutPollardMiao from './../../assets/keyboard-layouts/layout-miao-plrd.json';
 import * as layoutTaniTani from './../../assets/keyboard-layouts/layout-tani-tani.json';
+import * as layoutWarangWara from './../../assets/keyboard-layouts/layout-warang-wara.json';
 import * as layoutKhitanKits from './../../assets/keyboard-layouts/layout-khitans-kits.json';
 import * as layoutKhitanKitl from './../../assets/keyboard-layouts/layout-khitanl-kitl.json';
 import * as layoutNubianOnw from './../../assets/keyboard-layouts/layout-nubian-onw.json';
@@ -1088,6 +1089,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   layoutKapampanganKeys: any = (layoutKapampanganPam as any).default;
   layoutMiaoKeys: any = (layoutPollardMiao as any).default;
   layoutTaniKeys: any = (layoutTaniTani as any).default;
+  layoutWarangKeys: any = (layoutWarangWara as any).default;
   layoutKhitanSKeys: any = (layoutKhitanKits as any).default;
   layoutKhitanLKeys: any = (layoutKhitanKitl as any).default;
   layoutNubianKeys: any = (layoutNubianOnw as any).default;
@@ -1188,6 +1190,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   // Alphabets for 1-10, 20, 30 ... , 80, 90, 100, 200, ..., 1000
   alphaNumeric: any = ['arc','asom','el','glag','goth','he','hy','ion','ka','lad','linb','linea','mand','nusk','syrc','yi'];
+  // Numbers for 0-10, 20, 30 ... , 80, 90
+  distinctNumerals: any = ['wara'];
   // Number for 0-10, 100, 1000 ... without Decimal
   numberFor10Powers: any = ['bopo','ja','kaid','kan','ko','txg','vi','zhcn','zhtw','zih'];
   // Decimal numbers - separate symbol for 10, 100, 1000, 10000
@@ -1202,7 +1206,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   sexagesimal : any = ['elam','elx','hit','sux'];
 
   // Display Results for these Unicode script without manipulation
-  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','avst','bhai','bopo','brah','cans','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hy','ion','ital','iub','ja','kaid','kali','kan','khar','khud','kult','latf','leke','maya','mend','moss','my','nbat','nkoo','rohg','runr','takr','ti','tig','txg','zhcn','zhtw','zih'];
+  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','avst','bhai','bopo','brah','cans','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hy','ion','ital','iub','ja','kaid','kali','kan','khar','khud','kult','latf','leke','maya','mend','moss','my','nbat','nkoo','rohg','runr','takr','ti','tig','txg','wara','zhcn','zhtw','zih'];
 
   //Separation between Numerals for Display - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
 
@@ -1214,8 +1218,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
   commaAndPeriodAlternating: any = ['hr'];
 
   // PERIOD .
-  periodDecimalSeparatorLocales: any = ['ace','adin','adlm','ahom','aima','ajam','ak','am','ang','as','asom','avo','ay','bada','bali','bamu','ban','bcl','bhai','bharati','bhat','bin','bis','bjn','bjyo','bla','bm','bn','bopo','brah','brx','brxla','bug','bugla','bya','cakm','cans','cari','carr','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','dham','dhan','diak','din','dv','dz','ee','en','engb','enin','enintl','enus','esmx','esy','ff','fj','fon','fur','ga','gd','gil','gong','gonm','goyk','gran','gsw','gu','gup','ha','haj','hatr','haw','he','hi','hmn','hmng','hmnp','ht','iai','ics','ig','iku','indus','iu','iub','ja','jam','jv','kaid','kali','kan','kawi','kbp','khar','khud','ki','km','kn','ko','kon','kpe','kri','kru','kthi','ku','kw','lad','ladla','lbj','leke','lepc','lepo','lg','limb','ln','lo','loma','luo','lwo','lyci','lydi','mend','ml','moss','mr','ms','my','nbat','ne','ngyo','njo','nkoo','odu','rn','rohg','rw','sa','sgnw','si','suz','ta','takr','tfng','th','thaa','tiga','ussign','vah','vatt','yo','zag','zhcn','zhtw','zih'];
-  desiLakhCommaDecimalPeriodPosition: any = ['as','bada','bcl','bharati','bn','brah','brx','brxla','bya','cakm','dham','dhan','diak','dv','dz','enin','gong','gonm','goyk','gran','gu','gup','haj','hi','indus','khud','kn','kru','kthi','lbj','ml','moss','mr','ne','rohg','sa','si','ta','takr','te','th','thaa','tiga','vatt','ur'];
+  periodDecimalSeparatorLocales: any = ['ace','adin','adlm','ahom','aima','ajam','ak','am','ang','as','asom','avo','ay','bada','bali','bamu','ban','bcl','bhai','bharati','bhat','bin','bis','bjn','bjyo','bla','bm','bn','bopo','brah','brx','brxla','bug','bugla','bya','cakm','cans','cari','carr','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','dham','dhan','diak','din','dv','dz','ee','en','engb','enin','enintl','enus','esmx','esy','ff','fj','fon','fur','ga','gd','gil','gong','gonm','goyk','gran','gsw','gu','gup','ha','haj','hatr','haw','he','hi','hmn','hmng','hmnp','ht','iai','ics','ig','iku','indus','iu','iub','ja','jam','jv','kaid','kali','kan','kawi','kbp','khar','khud','ki','km','kn','ko','kon','kpe','kri','kru','kthi','ku','kw','lad','ladla','lbj','leke','lepc','lepo','lg','limb','ln','lo','loma','luo','lwo','lyci','lydi','mend','ml','moss','mr','ms','my','nbat','ne','ngyo','njo','nkoo','odu','rn','rohg','rw','sa','sgnw','si','suz','ta','takr','tfng','th','thaa','tiga','ussign','vah','vatt','wara','yo','zag','zhcn','zhtw','zih'];
+  desiLakhCommaDecimalPeriodPosition: any = ['as','bada','bcl','bharati','bn','brah','brx','brxla','bya','cakm','dham','dhan','diak','dv','dz','enin','gong','gonm','goyk','gran','gu','gup','haj','hi','indus','khud','kn','kru','kthi','lbj','ml','moss','mr','ne','rohg','sa','si','ta','takr','te','th','thaa','tiga','vatt','wara','ur'];
   desiLakhSpaceDecimalPeriodPosition: any = ['bhai','bhat','enin','lepc','limb','ne','suz'];
   thousandsPositionCommaAndPeriodDecimal : any = ['ab','ace','adin','adlm','ajam','ak','ang','ay','bali','bamu','bin','bis','bla','bm','ceb','ch','cham','cher','cjk','cree','crew','dag','dgabf','dgagh','din','ee','en','engb','enintl','enus','esmx','esy','fa','ff','fj','fon','fur','ga','gd','gil','gn','ha','hatr','haw','he','hmn','hmng','hmnp','ht','iai','ics','ig','iku','iu','iub','is','ja','jam','jv','kawi','kbp','ki','km','ko','kon','kpe','kri','ku','kw','lad','ladla','lepo','lg','ln','lo','loma','luo','lwo','lyci','lydi','mend','ms','mt','njo','nkoo','odu','rn','rw','tfng','th','ussign','vah','zag','zhtw'];
   tenThousandsCommaAndPeriod: any = ['kaid','kan','zhcn','zih'];

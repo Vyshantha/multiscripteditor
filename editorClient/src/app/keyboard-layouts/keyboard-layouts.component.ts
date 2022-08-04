@@ -541,6 +541,7 @@ import * as layoutPollardMiao from './../../assets/keyboard-layouts/layout-miao-
 import * as layoutTaniTani from './../../assets/keyboard-layouts/layout-tani-tani.json';
 import * as layoutKhitanKits from './../../assets/keyboard-layouts/layout-khitans-kits.json';
 import * as layoutKhitanKitl from './../../assets/keyboard-layouts/layout-khitanl-kitl.json';
+import * as layoutWarangWara from './../../assets/keyboard-layouts/layout-warang-wara.json';
 import * as layoutNubianOnw from './../../assets/keyboard-layouts/layout-nubian-onw.json';
 import * as layoutAimaAima from './../../assets/keyboard-layouts/layout-aima-aima.json';
 import * as layoutLinearALinea from './../../assets/keyboard-layouts/layout-lineara-linea.json';
@@ -1128,6 +1129,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   layoutTaniKeys: any = (layoutTaniTani as any).default;
   layoutKhitanSKeys: any = (layoutKhitanKits as any).default;
   layoutKhitanLKeys: any = (layoutKhitanKitl as any).default;
+  layoutWarangKeys: any = (layoutWarangWara as any).default;
   layoutNubianKeys: any = (layoutNubianOnw as any).default;
   layoutAimaKeys: any = (layoutAimaAima as any).default;
   layoutLinearAKeys: any = (layoutLinearALinea as any).default;
@@ -3231,6 +3233,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionURL('tamu');
     } else if (tabChangeEvent.index == 68 && tabChangeEvent.tab.textLabel == "ꓡꓲ-ꓢꓴ") {
       this.sessionManager.setInSessionURL('lis');
+    } else if (tabChangeEvent.index == 69 && tabChangeEvent.tab.textLabel == "𑢹𑣗𑣁𑣜𑣊 𑣏𑣂𑣕𑣂") {
+      this.sessionManager.setInSessionURL('wara');
     } else if (tabChangeEvent.index == 73 && tabChangeEvent.tab.textLabel == "Miao") {
       this.sessionManager.setInSessionURL('plrd');
     } else if (tabChangeEvent.index == 74 && tabChangeEvent.tab.textLabel == "𑵶𑶍𑶕𑶀𑵵𑶊 𑵶𑶓𑶕𑶂𑶋 𑵵𑶋𑶅𑶋‎") {
