@@ -1496,7 +1496,7 @@
                 <mat-tab label="ꦏꦮꦶ"><p style="text-align: center;">
                     <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Kawi</p>
                 </mat-tab>
-                <mat-tab label="𐨑𐨪𐨆𐨮𐨿𐨛𐨁𐨌"><p style="text-align: center;">
+                <mat-tab label="𐨑𐨪𐨆𐨮𐨿𐨛𐨁𐨌"><p style="text-align: center;font-family: 'Noto Sans Kharoshthi'">
                     <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Kharosthi 𐨑𐨪𐨆𐨮𐨿𐨛𐨁𐨌</p>
                 </mat-tab>
                 <mat-tab label="Tocharian"><p style="text-align: center;">
@@ -1561,7 +1561,7 @@
                     </p>
                 </mat-tab>
                 <mat-tab label="𑊻𑋩𑋣𑋏𑋠𑋔𑋠𑋏𑋢">
-                    <p style="text-align: center;">
+                    <p style="text-align: center;font-family: 'Noto Sans Khudawadi'">
                         <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Khudawadi
                     </p>
                 </mat-tab>
@@ -2194,8 +2194,8 @@
         </mat-tab>
         <mat-tab label="{{ 'Sign' | translate }}"> &nbsp;&nbsp;
             <mat-tab-group> 
-                <mat-tab label="SignWriting"><p style="text-align: center;">
-                    <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Sutton <button mat-button aria-label="SignWriting" color="primary" matTooltip="{{localisedKeyboardLayouts['sgnw'][2]}}" (click)="languageScriptClicked('sgnw')">SignWriting</button> <a href="https://scriptsource.org/cms/scripts/page.php?item_id=entry_detail&uid=wb9v9lchat" target="_blank">Download Noto Sans SignWriting Font</a> : File <a href="https://github.com/googlefonts/noto-fonts/raw/master/unhinted/otf/NotoSansSignWriting/NotoSansSignWriting-Regular.otf" target="_blank">NotoSansSignWriting-Regular.otf</a>
+                <mat-tab label="SignWriting"><p style="text-align: center;font-family: 'Noto Sans Sign Writing';">
+                    <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Sutton <button mat-button aria-label="SignWriting" color="primary" matTooltip="{{localisedKeyboardLayouts['sgnw'][2]}}" (click)="languageScriptClicked('sgnw')">SignWriting</button>
                 </p>
                 </mat-tab>
                 <mat-tab label="Fingerspelling"><p style="text-align: center;">
@@ -2545,7 +2545,7 @@
             <!--input [(colorPicker)]="color" [style.background]="color"/-->&nbsp;&nbsp;
             <mat-icon aria-label="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" alt="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" (click)="hideSoftKeyboard()">keyboard_hide</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
             <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>
-            <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
+            <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="removeBookmark()">bookmark_remove</mat-icon>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button [matMenuTriggerFor]="favouriteMenu" matBadge="{{populatingBookmarks.length}}" *ngIf="populatingBookmarks.length > 0">
                 <mat-icon aria-label="{{ 'Select From Favourite Keyboards' | translate }}" matTooltip="{{ 'Select From Favourite Keyboards' | translate }}" style="cursor: pointer;">bookmark</mat-icon>
@@ -4504,7 +4504,7 @@
                 <mat-tab label="ꦏꦮꦶ"><p style="text-align: center;">
                     <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Kawi</p>
                 </mat-tab>
-                <mat-tab label="𐨑𐨪𐨆𐨮𐨿𐨛𐨁𐨌"><p style="text-align: center;">
+                <mat-tab label="𐨑𐨪𐨆𐨮𐨿𐨛𐨁𐨌"><p style="text-align: center;font-family: 'Noto Sans Kharoshthi'">
                     <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Kharosthi 𐨑𐨪𐨆𐨮𐨿𐨛𐨁𐨌</p>
                 </mat-tab>
                 <mat-tab label="Tocharian"><p style="text-align: center;">
@@ -4569,7 +4569,7 @@
                     </p>
                 </mat-tab>
                 <mat-tab label="𑊻𑋩𑋣𑋏𑋠𑋔𑋠𑋏𑋢">
-                    <p style="text-align: center;">
+                    <p style="text-align: center;font-family: 'Noto Sans Khudawadi'">
                         <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Khudawadi
                     </p>
                 </mat-tab>
@@ -5196,8 +5196,8 @@
         </mat-tab>
         <mat-tab label="{{ 'Sign' | translate }}"> &nbsp;&nbsp;
             <mat-tab-group> 
-                <mat-tab label="SignWriting"><p style="text-align: center;">
-                    <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Sutton <button mat-button aria-label="SignWriting" color="primary" matTooltip="{{localisedKeyboardLayouts['sgnw'][2]}}" (click)="languageScriptClicked('sgnw')">SignWriting</button> <a href="https://scriptsource.org/cms/scripts/page.php?item_id=entry_detail&uid=wb9v9lchat" target="_blank">Download Noto Sans SignWriting Font</a> : File <a href="https://github.com/googlefonts/noto-fonts/raw/master/unhinted/otf/NotoSansSignWriting/NotoSansSignWriting-Regular.otf" target="_blank">NotoSansSignWriting-Regular.otf</a>
+                <mat-tab label="SignWriting"><p style="text-align: center;font-family: 'Noto Sans Sign Writing';">
+                    <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Sutton <button mat-button aria-label="SignWriting" color="primary" matTooltip="{{localisedKeyboardLayouts['sgnw'][2]}}" (click)="languageScriptClicked('sgnw')">SignWriting</button>
                 </p>
                 </mat-tab>
                 <mat-tab label="Fingerspelling"><p style="text-align: center;">
@@ -5545,7 +5545,7 @@
             <mat-icon aria-label="{{ 'Float Keyboard' | translate }}" *ngIf="(isQwerty || isTransliterate) && stopFloatingKeyboard"  alt="{{ 'Float Keyboard' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Float Keyboard' | translate }}" (click)="customKeyboardLayouts('float')">launch</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
             <mat-icon aria-label="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" *ngIf="!dontShowHideIcon" alt="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" (click)="hideSoftKeyboard()">keyboard_hide</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;
             <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>
-            <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer; vertical-align: middle;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
+            <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer; vertical-align: middle;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="removeBookmark()">bookmark_remove</mat-icon>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button [matMenuTriggerFor]="favouriteMenu" matBadge="{{populatingBookmarks.length}}" *ngIf="populatingBookmarks.length > 0">
                 <mat-icon aria-label="{{ 'Select From Favourite Keyboards' | translate }}" matTooltip="{{ 'Select From Favourite Keyboards' | translate }}" style="cursor: pointer;">bookmark</mat-icon>
@@ -7502,7 +7502,7 @@
                 <mat-tab label="ꦏꦮꦶ"><p style="text-align: center;">
                     <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Kawi</p>
                 </mat-tab>
-                <mat-tab label="𐨑𐨪𐨆𐨮𐨿𐨛𐨁𐨌"><p style="text-align: center;">
+                <mat-tab label="𐨑𐨪𐨆𐨮𐨿𐨛𐨁𐨌"><p style="text-align: center;font-family: 'Noto Sans Kharoshthi'">
                     <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Kharosthi 𐨑𐨪𐨆𐨮𐨿𐨛𐨁𐨌</p>
                 </mat-tab>
                 <mat-tab label="Tocharian"><p style="text-align: center;">
@@ -7567,7 +7567,7 @@
                     </p>
                 </mat-tab>
                 <mat-tab label="𑊻𑋩𑋣𑋏𑋠𑋔𑋠𑋏𑋢">
-                    <p style="text-align: center;">
+                    <p style="text-align: center;font-family: 'Noto Sans Khudawadi'">
                         <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Khudawadi
                     </p>
                 </mat-tab>
@@ -8194,8 +8194,8 @@
         </mat-tab>
         <mat-tab label="{{ 'Sign' | translate }}">
             <mat-tab-group> 
-                <mat-tab label="SignWriting"><p style="text-align: center;">
-                    <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Sutton <button mat-button aria-label="SignWriting" color="primary" matTooltip="{{localisedKeyboardLayouts['sgnw'][2]}}" (click)="languageScriptClicked('sgnw')">SignWriting</button> <a href="https://scriptsource.org/cms/scripts/page.php?item_id=entry_detail&uid=wb9v9lchat" target="_blank">Download Noto Sans SignWriting Font</a> : File <a href="https://github.com/googlefonts/noto-fonts/raw/master/unhinted/otf/NotoSansSignWriting/NotoSansSignWriting-Regular.otf" target="_blank">NotoSansSignWriting-Regular.otf</a>
+                <mat-tab label="SignWriting"><p style="text-align: center;font-family: 'Noto Sans Sign Writing';">
+                    <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Sutton <button mat-button aria-label="SignWriting" color="primary" matTooltip="{{localisedKeyboardLayouts['sgnw'][2]}}" (click)="languageScriptClicked('sgnw')">SignWriting</button>
                 </p>
                 </mat-tab>
                 <mat-tab label="Fingerspelling"><p style="text-align: center;">
@@ -8543,7 +8543,7 @@
             <mat-icon aria-label="{{ 'Float Keyboard' | translate }}" *ngIf="(isQwerty || isTransliterate) && stopFloatingKeyboard"  alt="{{ 'Float Keyboard' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Float Keyboard' | translate }}" (click)="customKeyboardLayouts('float')">launch</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp; 
             <mat-icon aria-label="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" *ngIf="!dontShowHideIcon" alt="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Hide Soft Keyboard Use Device Keyboard Only' | translate }}" (click)="hideSoftKeyboard()">keyboard_hide</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp; 
             <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>
-            <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
+            <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="removeBookmark()">bookmark_remove</mat-icon>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <button mat-icon-button [matMenuTriggerFor]="favouriteMenu" matBadge="{{populatingBookmarks.length}}" *ngIf="populatingBookmarks.length > 0">
                 <mat-icon aria-label="{{ 'Select From Favourite Keyboards' | translate }}" matTooltip="{{ 'Select From Favourite Keyboards' | translate }}" style="cursor: pointer;">bookmark</mat-icon>
@@ -9022,7 +9022,7 @@
 <div *ngIf="calculatorOnly">
     <p style="text-align: center;">
         <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;font-size: xxx-large;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-        <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;font-size: xxx-large;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="remmoveBookmark()">bookmark_remove</mat-icon>
+        <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;font-size: xxx-large;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="removeBookmark()">bookmark_remove</mat-icon>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
         <button mat-icon-button [matMenuTriggerFor]="favouriteMenu" matBadge="{{populatingBookmarks.length}}" *ngIf="populatingBookmarks.length > 0">
             <mat-icon aria-label="{{ 'Select From Favourite Keyboards' | translate }}" matTooltip="{{ 'Select From Favourite Keyboards' | translate }}" style="cursor: pointer;vertical-align: bottom;font-size: xxx-large;">bookmark</mat-icon>

@@ -787,6 +787,42 @@
   }
 
   @font-face {
+    font-family: 'Noto Sans Sign Writing';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-sign-writing/files/NotoSansSignWriting-Regular.woff') format('woff');
+  }
+
+  .sgnw {
+    font-family: 'Noto Sans Sign Writing' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Kharoshthi';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-kharoshthi/files/NotoSansKharoshthi-Regular.woff') format('woff');
+  }
+
+  .khar {
+    font-family: 'Noto Sans Kharoshthi' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Khudawadi';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-khudawadi/files/NotoSansKhudawadi-Regular.woff') format('woff');
+  }
+
+  .khud {
+    font-family: 'Noto Sans Khudawadi' !important;
+  }
+
+  @font-face {
     font-family: 'Noto Sans Tangsa';
     font-style: normal;
     font-display: swap;
