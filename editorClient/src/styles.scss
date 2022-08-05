@@ -811,6 +811,30 @@
   }
 
   @font-face {
+    font-family: 'Noto Serif Makasar';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-serif-makasar/files/NotoSerifMakasar-Regular.woff') format('woff');
+  }
+
+  .maka {
+    font-family: 'Noto Serif Makasar' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Chorasmian';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-chorasmian/files/NotoSansChorasmian-Regular.woff') format('woff');
+  }
+
+  .chrs {
+    font-family: 'Noto Sans Chorasmian' !important;
+  }
+
+  @font-face {
     font-family: 'Noto Sans Khudawadi';
     font-style: normal;
     font-display: swap;
