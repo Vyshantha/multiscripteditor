@@ -835,6 +835,18 @@
   }
 
   @font-face {
+    font-family: 'Zaghawa Beria';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/zaghawa-beria/files/ZaghawaBeria.woff') format('woff');
+  }
+
+  .zag {
+    font-family: 'Zaghawa Beria' !important;
+  }
+
+  @font-face {
     font-family: 'Noto Sans Khudawadi';
     font-style: normal;
     font-display: swap;
