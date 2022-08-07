@@ -1098,7 +1098,7 @@
                         <button mat-button aria-label="Aima-ককবরক" color="primary" (click)="allAbugidaTypeClicked('aima')" matTooltip="{{localisedKeyboardLayouts['aima'][2]}}" (click)="allAbugidaTypeClicked('aima')" *ngIf="keyboardLayouts['aima'][7] < historyAbugida.value && (keyboardLayouts['aima'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['aima'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">Aima-ককবরক</button>
                         <button mat-button aria-label="Khorpa" color="primary" (click)="allAbugidaTypeClicked('khor')" matTooltip="{{localisedKeyboardLayouts['khor'][2]}}" (click)="allAbugidaTypeClicked('khor')" *ngIf="keyboardLayouts['khor'][7] < historyAbugida.value && (keyboardLayouts['khor'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['khor'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">Khorpa</button>
                         <button mat-button aria-label="𑲄𑲮𑱵 𑲄𑲮𑲲𑱵" color="primary" (click)="allAbugidaTypeClicked('marc')" matTooltip="{{localisedKeyboardLayouts['marc'][2]}}" (click)="allAbugidaTypeClicked('marc')" *ngIf="keyboardLayouts['marc'][7] < historyAbugida.value && (keyboardLayouts['marc'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['marc'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">𑲄𑲮𑱵 𑲄𑲮𑲲𑱵</button>
-                        <button mat-button aria-label="Ariyaka" color="primary" matTooltip="{{localisedKeyboardLayouts['ari'][2]}}" (click)="allAbugidaTypeClicked('ari')" *ngIf="keyboardLayouts['ari'][7] < historyAbugida.value && (keyboardLayouts['ari'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['ari'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">Ariyaka</button>
+                        <button mat-button aria-label="ariyaka" color="primary" matTooltip="{{localisedKeyboardLayouts['ari'][2]}}" (click)="allAbugidaTypeClicked('ari')" style="font-family: 'Ariyaka'" *ngIf="keyboardLayouts['ari'][7] < historyAbugida.value && (keyboardLayouts['ari'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['ari'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">ariyaka</button>
                         <!--Gangga-Malayu
                         Bima 
                         Tolong
@@ -1647,9 +1647,9 @@
                         <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Miao
                     </p>
                 </mat-tab>
-                <mat-tab label="Ariyaka">
+                <mat-tab label="ariyaka">
                     <p style="text-align: center;">
-                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Ariyaka
+                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; ariyaka
                     </p>
                 </mat-tab>
                 <mat-tab label="𑲄𑲮𑱵 𑲄𑲮𑲲𑱵">
@@ -2593,7 +2593,7 @@
                     <span (click)="selectTargetTransliteration($event, 'Ahom')">{{localisedKeyboardLayouts['ahom'][2]}}</span>
                 </button>
                 <button mat-menu-item>
-                    <span (click)="selectTargetTransliteration($event, 'Ariyaka')">Ariyaka</span>
+                    <span (click)="selectTargetTransliteration($event, 'ariyaka')" style="font-family: 'Ariyaka'">ariyaka</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Assamese')">{{localisedKeyboardLayouts['as'][2]}}</span>
@@ -4110,7 +4110,7 @@
                         <button mat-button aria-label="Aima-ককবরক" color="primary" (click)="allAbugidaTypeClicked('aima')" matTooltip="{{localisedKeyboardLayouts['aima'][2]}}" (click)="allAbugidaTypeClicked('aima')" *ngIf="keyboardLayouts['aima'][7] < historyAbugida.value && (keyboardLayouts['aima'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['aima'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">Aima-ককবরক</button>
                         <button mat-button aria-label="Khorpa" color="primary" (click)="allAbugidaTypeClicked('khor')" matTooltip="{{localisedKeyboardLayouts['khor'][2]}}" (click)="allAbugidaTypeClicked('khor')" *ngIf="keyboardLayouts['khor'][7] < historyAbugida.value && (keyboardLayouts['khor'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['khor'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">Khorpa</button>
                         <button mat-button aria-label="𑲄𑲮𑱵 𑲄𑲮𑲲𑱵" color="primary" (click)="allAbugidaTypeClicked('marc')" matTooltip="{{localisedKeyboardLayouts['marc'][2]}}" (click)="allAbugidaTypeClicked('marc')" *ngIf="keyboardLayouts['marc'][7] < historyAbugida.value && (keyboardLayouts['marc'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['marc'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">𑲄𑲮𑱵 𑲄𑲮𑲲𑱵</button>
-                        <button mat-button aria-label="Ariyaka" color="primary" matTooltip="{{localisedKeyboardLayouts['ari'][2]}}" (click)="allAbugidaTypeClicked('ari')" *ngIf="keyboardLayouts['ari'][7] < historyAbugida.value && (keyboardLayouts['ari'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['ari'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">Ariyaka</button>
+                        <button mat-button aria-label="ariyaka" color="primary" matTooltip="{{localisedKeyboardLayouts['ari'][2]}}" (click)="allAbugidaTypeClicked('ari')" style="font-family: 'Ariyaka'" *ngIf="keyboardLayouts['ari'][7] < historyAbugida.value && (keyboardLayouts['ari'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['ari'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">ariyaka</button>
                         <!--Gangga-Malayu
                         Bima 
                         Tolong
@@ -4660,9 +4660,9 @@
                         <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Miao
                     </p>
                 </mat-tab>
-                <mat-tab label="Ariyaka">
+                <mat-tab label="ariyaka">
                     <p style="text-align: center;">
-                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Ariyaka
+                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; ariyaka
                     </p>
                 </mat-tab>
                 <mat-tab label="𑲄𑲮𑱵 𑲄𑲮𑲲𑱵">
@@ -5624,7 +5624,7 @@
                     <span (click)="selectTargetTransliteration($event, 'Ahom')">{{localisedKeyboardLayouts['ahom'][2]}}</span>
                 </button>
                 <button mat-menu-item>
-                    <span (click)="selectTargetTransliteration($event, 'Ariyaka')">Ariyaka</span>
+                    <span (click)="selectTargetTransliteration($event, 'ariyaka')" style="font-family: 'Ariyaka'">ariyaka</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Assamese')">{{localisedKeyboardLayouts['as'][2]}}</span>
@@ -7080,7 +7080,7 @@
                         <button mat-button aria-label="Aima-ককবরক" color="primary" (click)="allAbugidaTypeClicked('aima')" matTooltip="{{localisedKeyboardLayouts['aima'][2]}}" (click)="allAbugidaTypeClicked('aima')" *ngIf="keyboardLayouts['aima'][7] < historyAbugida.value && (keyboardLayouts['aima'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['aima'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">Aima-ককবরক</button>
                         <button mat-button aria-label="Khorpa" color="primary" (click)="allAbugidaTypeClicked('khor')" matTooltip="{{localisedKeyboardLayouts['khor'][2]}}" (click)="allAbugidaTypeClicked('khor')" *ngIf="keyboardLayouts['khor'][7] < historyAbugida.value && (keyboardLayouts['khor'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['khor'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">Khorpa</button>
                         <button mat-button aria-label="𑲄𑲮𑱵 𑲄𑲮𑲲𑱵" color="primary" (click)="allAbugidaTypeClicked('marc')" matTooltip="{{localisedKeyboardLayouts['marc'][2]}}" (click)="allAbugidaTypeClicked('marc')" *ngIf="keyboardLayouts['marc'][7] < historyAbugida.value && (keyboardLayouts['marc'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['marc'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">𑲄𑲮𑱵 𑲄𑲮𑲲𑱵</button>
-                        <button mat-button aria-label="Ariyaka" color="primary" matTooltip="{{localisedKeyboardLayouts['ari'][2]}}" (click)="allAbugidaTypeClicked('ari')" *ngIf="keyboardLayouts['ari'][7] < historyAbugida.value && (keyboardLayouts['ari'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['ari'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">Ariyaka</button>
+                        <button mat-button aria-label="ariyaka" color="primary" matTooltip="{{localisedKeyboardLayouts['ari'][2]}}" (click)="allAbugidaTypeClicked('ari')" style="font-family: 'Ariyaka'" *ngIf="keyboardLayouts['ari'][7] < historyAbugida.value && (keyboardLayouts['ari'][2].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || keyboardLayouts['ari'][5].toLowerCase().indexOf(searchAbugida.value.toLowerCase()) !== -1 || searchAbugida.value == '')">ariyaka</button>
                         <!--Gangga-Malayu
                         Bima 
                         Tolong
@@ -7663,9 +7663,9 @@
                         <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Gondi <button mat-button aria-label="Masaram Gondi" color="primary" matTooltip="{{localisedKeyboardLayouts['gonm'][2]}}" (click)="languageScriptClicked('gonm')" style="font-family: 'Noto Sans Masaram Gondi';">𑴤𑴫𑴦𑴱𑴤 𑴎𑴽𑵀𑴘𑴳‎‎</button> <button mat-button aria-label="Gunjala Gondi" color="primary" matTooltip="{{localisedKeyboardLayouts['gong'][2]}}" (click)="languageScriptClicked('gong')" style="font-family: 'Noto Sans Gunjala Gondi';">𑵶𑶍𑶕𑶀𑵵𑶊 𑵶𑶓𑶕𑶂𑶋 𑵵𑶋𑶅𑶋‎</button>
                     </p>
                 </mat-tab>
-                <mat-tab label="Ariyaka">
+                <mat-tab label="ariyaka">
                     <p style="text-align: center;">
-                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Ariyaka
+                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; ariyaka
                     </p>
                 </mat-tab>
                 <mat-tab label="𑲄𑲮𑱵 𑲄𑲮𑲲𑱵">
@@ -8629,7 +8629,7 @@
                     <span (click)="selectTargetTransliteration($event, 'Ahom')">{{localisedKeyboardLayouts['ahom'][2]}}</span>
                 </button>
                 <button mat-menu-item>
-                    <span (click)="selectTargetTransliteration($event, 'Ariyaka')">Ariyaka</span>
+                    <span (click)="selectTargetTransliteration($event, 'ariyaka')" style="font-family: 'Ariyaka'">ariyaka</span>
                 </button>
                 <button mat-menu-item>
                     <span (click)="selectTargetTransliteration($event, 'Assamese')">{{localisedKeyboardLayouts['as'][2]}}</span>

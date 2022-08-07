@@ -1267,7 +1267,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   imageAlternativeScript: string[] = ['adin', 'aima', 'ary', 'avst', 'avo', 'aztc', 'bada', 'banzsl', 'ber', 'bhat', 'bhp', 'bya', 'cana', 'cans', 'chik', 'chis', 'coorg', 'dale', 'desisign', 'dham', 'dhan', 'diak', 'dite', 'egyd', 'esi', 'esk', 'estr', 'esy', 'flag', 'gael', 'gars', 'geba', 'goyk', 'gup', 'iba', 'ibe', 'ics', 'indus', 'ion', 'ipk', 'jiag', 'kada', 'kaid', 'kama', 'kawi', 'khat', 'khom', 'khor', 'kitl', 'kits', 'koch', 'kpe', 'kru', 'kthi', 'kuli', 'lad', 'land', 'leke', 'loma', 'luo', 'madn', 'maga', 'mamb', 'maya', 'mguj', 'mikq', 'moon', 'mwan', 'nagm', 'nand', 'ndju', 'nsi', 'odu', 'pall', 'ranj', 'renc', 'runr', 'sabe', 'safa', 'scha', 'sert', 'sina', 'suz', 'tach', 'tamu', 'tang', 'tani', 'tiga', 'tika', 'tnq', 'toch', 'toto', 'txr', 'umw', 'ussign', 'vatt', 'vith', 'wole', 'wolf', 'xce', 'zou'];
 
-  //Remove Images folders ['diak','ndju','pall','ranj','tiga','vatt','vith','zag']
+  //Remove Images folders ['diak','ndju','pall','ranj','tiga','vith']
 
 
   keysToRotate: Boolean = false;
