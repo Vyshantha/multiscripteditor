@@ -847,6 +847,42 @@
   }
 
   @font-face {
+    font-family: 'Vatteluttu';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/vatteluttu/files/VatteluttuOT.woff') format('woff');
+  }
+
+  .vatt {
+    font-family: 'Vatteluttu' !important;
+  }
+
+  @font-face {
+    font-family: 'Ariyaka';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/ariyaka/files/ARIYAKA.woff') format('woff');
+  }
+
+  .ari {
+    font-family: 'Ariyaka' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Nandinagari';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans-nandinagari/files/NotoSansNandinagari-Regular.woff') format('woff');
+  }
+
+  .nand {
+    font-family: 'Noto Sans Nandinagari' !important;
+  }
+
+  @font-face {
     font-family: 'Noto Sans Khudawadi';
     font-style: normal;
     font-display: swap;
