@@ -219,7 +219,7 @@
 </div>
 
 <div *ngIf="isMobile && !isTablet && currentCalculatorType == 'scientific' && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
-    <h4 mat-dialog-title class="{{fontClass}}" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right','margin':'1px'}">&nbsp;&nbsp;&nbsp;&nbsp;{{ 'Calculator' | translate }}&nbsp;&nbsp;&nbsp;&nbsp; 
+    <h4 mat-dialog-title class="{{fontClass}}" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right','margin':'1px'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} &nbsp;&nbsp;&nbsp;&nbsp; 
         <span>
             <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" style="font-size: smaller;" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
             <mat-icon style="cursor: pointer;" aria-label="Launch" alt="Launch" style="font-size: smaller;" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="!floatNotMinimise">open_with</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; 
