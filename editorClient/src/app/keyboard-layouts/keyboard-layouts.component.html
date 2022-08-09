@@ -6,7 +6,7 @@
                 <span style="width: 12%; float: left; position: relative;">
                     &nbsp; <mat-icon aria-hidden="false" aria-label="{{ 'Open Settings' | translate }}" alt="{{ 'Open Settings' | translate }}" matTooltip="{{ 'Open Settings' | translate }}" style="cursor: pointer;" (click)="openSettings()">travel_explore</mat-icon> &nbsp; 
                 </span>
-                <span style="position: relative; width: 78%;height: 40px;">
+                <span style="position: relative; width: 78%;height: 40px;" class="{{fontClass}}">
                     <mat-chip *ngFor="let wordChip of listOfWordsChips" color="primary" style="cursor: pointer;" (click)="keyPressed($event, wordChip, 'false', 'word', '')" selected>{{wordChip}}</mat-chip>
                 </span>
                 <span style="width: 10%; float: right; position: relative;">
@@ -3034,7 +3034,7 @@
                     &nbsp;&nbsp; <mat-icon aria-hidden="false" aria-label="{{ 'Open Settings' | translate }}" alt="{{ 'Open Settings' | translate }}" matTooltip="{{ 'Open Settings' | translate }}" style="cursor: pointer;" (click)="openSettings()">travel_explore</mat-icon> &nbsp;&nbsp;
                     <mat-icon aria-hidden="false" aria-label="{{ 'Reading Direction' | translate }}" alt="{{ 'Reading Direction' | translate }}" matTooltip="{{ 'Reading Direction' | translate }}" [ngStyle]="{'transform': (bottomToTopRL.indexOf(sessionManager.itemSessionURL.value) > -1)? 'rotate(-180deg)' : ( (bottomToTopLR.indexOf(sessionManager.itemSessionURL.value) > -1) ? 'rotate(-180deg)' : 'none')  }">{{readingDir}}</mat-icon>
                 </span>
-                <span style="position: relative; width: 78%;height: 40px;">
+                <span style="position: relative; width: 78%;height: 40px;" class="{{fontClass}}">
                     <mat-chip *ngFor="let wordChip of listOfWordsChips" color="primary" style="cursor: pointer;" (click)="keyPressed($event, wordChip, 'false', 'word', '')" selected>{{wordChip}}</mat-chip>
                 </span>
                 <span style="width: 12%; float: right; position: relative;">
@@ -6038,7 +6038,7 @@
                     &nbsp;&nbsp; <mat-icon aria-hidden="false" aria-label="{{ 'Open Settings' | translate }}" alt="{{ 'Open Settings' | translate }}" matTooltip="{{ 'Open Settings' | translate }}" style="cursor: pointer;" (click)="openSettings()">travel_explore</mat-icon> &nbsp;&nbsp;
                     <mat-icon aria-hidden="false" aria-label="{{ 'Reading Direction' | translate }}" alt="{{ 'Reading Direction' | translate }}" matTooltip="{{ 'Reading Direction' | translate }}" [ngStyle]="{'transform': (bottomToTopRL.indexOf(sessionManager.itemSessionURL.value) > -1)? 'rotate(-180deg)' : ( (bottomToTopLR.indexOf(sessionManager.itemSessionURL.value) > -1) ? 'rotate(-180deg)' : 'none')  }">{{readingDir}}</mat-icon>&nbsp;&nbsp; 
                 </span>
-                <span style="position: relative; width: 88%;height: 40px;">
+                <span style="position: relative; width: 88%;height: 40px;" class="{{fontClass}}">
                     <mat-chip *ngFor="let wordChip of listOfWordsChips" color="primary" style="cursor: pointer" (click)="keyPressed($event, wordChip, 'false', 'word', '')" selected>{{wordChip}}</mat-chip>
                 </span>
                 <span style="width: 6%; float: right; position: relative;">
