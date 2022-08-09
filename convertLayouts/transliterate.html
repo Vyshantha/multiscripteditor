@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Oduduwa Transliteration</h1>
+
+Original <br/>
+<pre><p id="demo3"></p></pre><br/>
+
+Yoruba To Arabic (base for Oduduwa)<br/>
+<pre><p id="demo1"></p></pre>
+<br/>
+
+Arabic (base for Oduduwa) To Yoruba<br/>
+<pre><p id="demo2"></p></pre>
+
+<script>
+    function swap(json){
+    var ret = {};
+    for(var key in json){
+        ret[json[key]] = key;
+    }
+    return ret;
+    }
+
+    var yorubaToArabic = {"`":"ذ","q":"ض","w":"ص","e":"ث","r":"ق","t":"ف","y":"غ","u":"ع","i":"ه","o":"خ","p":"ح","a":"ش","s":"س","d":"ي","f":"ب","gb":"ء","g":"ل","h":"ا","j":"ن","k":"م","l":"ك",";":"ط","\"":"'","z":"ئ","ṣ":"ئ","x":"ء","ẹ":"ؤ","c":"ؤ","ọ":"ر","v":"ر","b":"لا","n":"ى","m":"ة",",":"و",".":"ز","/":"ظ","<":",",">":".","?":"؟",":":":","1":"١","2":"٢","3":"٣","4":"٤","5":"٥","6":"٦","7":"٧","8":"٨","9":"٩","0":"٠"," ":" ","-":"-"};
+
+    var arabicToYoruba = {"٠":"0","١":"1","٢":"2","٣":"3","٤":"4","٥":"5","٦":"6","٧":"7","٨":"8","٩":"9","ذ":"◌̀","ض":"◌́","ص":"w","ث":"e","ق":"r","ف":"t","غ":"y","ع":"u","ه":"i","خ":"o","ح":"p","ش":"a","س":"s","ي":"d","ب":"f","ل":"g","ا":"h","ن":"j","م":"k","ك":"l","ط":";","'":"\"","ئ":"ṣ","ء":"gb","ؤ":"ẹ","ر":"ọ","لا":"b","ى":"n","ة":"m","و":",","ز":".","ظ":"/",",":"<",".":">","؟":"?",":":":"," ":" ","-":"-"};
+
+    let textYo = "eyi ni gbolohun ọrọ . iṣẹ-ṣiṣe ti a ti gbogun";
+    let textAr = "ثغه ىه للاخكخاعى رقر ز هئؤ-ئهئث فه ش فه للاخلعى";
+
+    let resultAr = "";
+    for (let u = 0; u < textYo.length; u++ ) {
+        console.log(textYo[u])
+        resultAr = resultAr + yorubaToArabic[textYo[u]];
+    }
+    let resultYo = "";
+    for (let u = 0; u < textAr.length; u++ ) {
+        console.log(textAr[u])
+        resultYo = resultYo + arabicToYoruba[textAr[u]];
+    }
+
+    document.getElementById("demo3").innerHTML = textYo;
+
+    document.getElementById("demo2").innerHTML = resultYo;
+
+    document.getElementById("demo1").innerHTML = resultAr;
+</script>
+
+</body>
+</html>

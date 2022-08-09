@@ -1268,7 +1268,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   //Remove Images folders ['diak','ndju','pall','ranj','tiga','vith']
 
-
   keysToRotate: Boolean = false;
   isQwerty: Boolean = false;
   isTransliterate : Boolean = false;
