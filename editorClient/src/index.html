@@ -24,10 +24,6 @@
     <!--script src="https://cdn.ckeditor.com/4.15.1/full/ckeditor.js" async></script-->
     <script src="https://cdn.ckeditor.com/4.17.1/full-all/ckeditor.js" async></script>
 
-    <!--script src="https://unpkg.com/@sutton-signwriting/unicode8@1.1.0/font/font.js"></script>
-    <script src="https://unpkg.com/@sutton-signwriting/font-ttf@1.0.0/font/font.min.js"></script>
-    <script type="module" src="https://unpkg.com/@sutton-signwriting/sgnw-components@0.10.0/dist/sgnw-components/sgnw-components.esm.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://unpkg.com/@sutton-signwriting/sgnw-components@0.10.0/dist/sgnw-components/sgnw-components.css"/-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.5.0/css/ol.css" type="text/css">
@@ -37,12 +33,7 @@
       // Catalogue : https://keyman.com/developer/keymanweb/keyboards BCP 47 Language Codes
       (function(kmw) {
         kmw.init({attachType:'auto'});
-        kmw.addKeyboards('@en');
-        kmw.addKeyboards('@kn');
-        kmw.addKeyboards('@he');
-        kmw.addKeyboards('@ug');
-        kmw.addKeyboards('@uk');
-        kmw.addKeyboards('@tha');
+        kmw.addKeyboards('@' + 'BCP-47-Code');
       })(keyman);
     </script-->
   </head>
