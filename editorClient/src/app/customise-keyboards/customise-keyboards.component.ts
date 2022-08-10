@@ -1206,7 +1206,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   sexagesimal : any = ['elam','elx','hit','sux','xpeo'];
 
   // Display Results for these Unicode script without manipulation
-  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','ari','avst','bhai','bopo','brah','cans','chrs','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hung','hy','ion','ital','iub','ja','kaid','kali','kan','khar','khud','kult','latf','lana','leke','maya','mend','mero','modi','mon','moss','mroo','my','nagm','newa','nbat','nkoo','osma','pal','palm','phn','psal','rohg','runr','tach','takr','tamu','tdd','ti','tibt','tig','tirh','txg','wara','wcho','udi','xpr','zhcn','zhtw','zih'];
+  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','ari','avst','bhai','bopo','brah','cans','chrs','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hung','hy','ion','ital','iub','ja','kaid','kali','kan','khar','khud','kult','latf','lana','leke','maya','mend','mero','modi','mon','moss','mroo','my','nagm','newa','nbat','nkoo','odu','osma','pal','palm','phn','psal','rohg','runr','tach','takr','tamu','tdd','ti','tibt','tig','tirh','txg','wara','wcho','udi','xpr','zhcn','zhtw','zih'];
 
   //Separation between Numerals for Display - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
 
@@ -1262,9 +1262,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   swaraAbugidaType : string [] = ['ahom', 'aima', 'ari', 'bada', 'bali', 'batk', 'bhai', 'bhat', 'bhp', 'bla', 'bn', 'brah', 'bug', 'buhd', 'bya', 'cakm', 'cree', 'dham', 'diak', 'dite', 'dogr', 'dv', 'gong', 'gonm', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kali', 'kawi', 'khar', 'khoj', 'khor', 'khud', 'km', 'kn', 'koch', 'kru', 'kthi', 'kuli', 'lana', 'leke', 'lepc', 'limb', 'lo', 'loma', 'maga', 'maha', 'mai', 'mani', 'mguj', 'ml', 'mni', 'modi', 'mr', 'mult', 'my', 'nand', 'newa', 'or', 'pa', 'phag', 'renc', 'rjng', 'sa', 'saur', 'scha', 'shan', 'shrd', 'si', 'sidd', 'sn', 'snd', 'sora', 'soyo', 'sund', 'sylo', 'ta', 'tach', 'tagb', 'takr', 'talu', 'tamu', 'tang', 'te', 'tglg', 'th', 'thaa', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'zanb'];
 
-  fontsSources: string[] = ['chrs','dogr','elym','gong','gonm','hmnp','khar','khud','kult','luw','maka','moss','nand','nshu','ougr','sgnw','sog','soyo','txg','ur','vatt','yezi','zag','zanb'];
+  fontsSources: string[] = ['chrs','dogr','elym','gong','gonm','hmnp','khar','khud','kult','luw','maka','moss','nand','nshu','odu','ougr','sgnw','sog','soyo','txg','ur','vatt','yezi','zag','zanb'];
 
-  imageAlternativeScript: string[] = ['adin', 'aima', 'ary', 'avst', 'avo', 'aztc', 'bada', 'banzsl', 'ber', 'bhat', 'bhp', 'bya', 'cana', 'cans', 'chik', 'chis', 'coorg', 'dale', 'desisign', 'dham', 'dhan', 'diak', 'dite', 'egyd', 'esi', 'esk', 'estr', 'esy', 'flag', 'gael', 'gars', 'geba', 'goyk', 'gup', 'iba', 'ibe', 'ics', 'indus', 'ion', 'ipk', 'jiag', 'kada', 'kaid', 'kama', 'kawi', 'khat', 'khom', 'khor', 'kitl', 'kits', 'koch', 'kpe', 'kru', 'kthi', 'kuli', 'lad', 'land', 'leke', 'loma', 'luo', 'madn', 'maga', 'mamb', 'maya', 'mguj', 'mikq', 'moon', 'mwan', 'nagm', 'nand', 'ndju', 'nsi', 'odu', 'pall', 'ranj', 'renc', 'runr', 'sabe', 'safa', 'scha', 'sert', 'sina', 'suz', 'tach', 'tamu', 'tang', 'tani', 'tdd', 'tiga', 'tika', 'tnq', 'toch', 'toto', 'txr', 'umw', 'ussign', 'vatt', 'vith', 'wole', 'wolf', 'xce', 'zou'];
+  imageAlternativeScript: string[] = ['adin', 'aima', 'ary', 'avst', 'avo', 'aztc', 'bada', 'banzsl', 'ber', 'bhat', 'bhp', 'bya', 'cana', 'cans', 'chik', 'chis', 'coorg', 'dale', 'desisign', 'dham', 'dhan', 'diak', 'dite', 'egyd', 'esi', 'esk', 'estr', 'esy', 'flag', 'gael', 'gars', 'geba', 'goyk', 'gup', 'iba', 'ibe', 'ics', 'indus', 'ion', 'ipk', 'jiag', 'kada', 'kaid', 'kama', 'kawi', 'khat', 'khom', 'khor', 'kitl', 'kits', 'koch', 'kpe', 'kru', 'kthi', 'kuli', 'lad', 'land', 'leke', 'loma', 'luo', 'madn', 'maga', 'mamb', 'maya', 'mguj', 'mikq', 'moon', 'mwan', 'nagm', 'nand', 'ndju', 'nsi', 'pall', 'ranj', 'renc', 'runr', 'sabe', 'safa', 'scha', 'sert', 'sina', 'suz', 'tach', 'tamu', 'tang', 'tani', 'tdd', 'tiga', 'tika', 'tnq', 'toch', 'toto', 'txr', 'umw', 'ussign', 'vatt', 'vith', 'wole', 'wolf', 'xce', 'zou'];
 
   //Remove Images folders ['diak','ndju','pall','ranj','tiga','vith']
 
@@ -1960,8 +1960,21 @@ export class CustomiseKeyboardsComponent implements OnInit {
             }
             continue;
           }
-          //comma
-          //period
+          
+          if (this.sessionManager.getFromSessionURL() == "odu") {
+            //comma
+            this.calculatorLayout[5].row[8].value = "و";
+            this.simpleCalculatorLayout[4].row[0].value = "و";
+            this.commaSeparator = "و";
+            this.calculatorLayout[5].row[8].visible = "hide";
+            this.simpleCalculatorLayout[4].row[0].visible = "hide";
+            //period
+            this.calculatorLayout[5].row[10].value = "ز";
+            this.simpleCalculatorLayout[4].row[2].value = "ز";
+            this.periodSeparator = "ز";
+            this.calculatorLayout[5].row[10].visible = "show";
+            this.simpleCalculatorLayout[4].row[2].visible = "show";
+          }
         }
       } else {
         break;
@@ -2941,38 +2954,46 @@ export class CustomiseKeyboardsComponent implements OnInit {
             break;
           
           case 'decimalPeriodNumber' :
-            this.resultField.nativeElement.value = this.resultField.nativeElement.value + this.periodSeparator;
-            this.equationField.nativeElement.value = this.equationField.nativeElement.value + this.periodSeparator;
-            if (this.unicode5AndHigher) {
-              this.computeNonUnicodeResult("", this.periodSeparator);
-              this.computeNonUnicodeEquation("", this.periodSeparator);
+            if (this.resultField.nativeElement.value != "") {
+              this.resultField.nativeElement.value = this.resultField.nativeElement.value + this.periodSeparator;
+              this.equationField.nativeElement.value = this.equationField.nativeElement.value + this.periodSeparator;
+              if (this.unicode5AndHigher) {
+                this.computeNonUnicodeResult("", this.periodSeparator);
+                this.computeNonUnicodeEquation("", this.periodSeparator);
+              }
             }
             break;
 
           case 'numberCommaDecimal' :
-            this.resultField.nativeElement.value = this.resultField.nativeElement.value + this.commaSeparator;
-            this.equationField.nativeElement.value = this.equationField.nativeElement.value + this.commaSeparator;
-            if (this.unicode5AndHigher) {
-              this.computeNonUnicodeResult("", this.commaSeparator);
-              this.computeNonUnicodeEquation("", this.commaSeparator);
+            if (this.resultField.nativeElement.value != "") {
+              this.resultField.nativeElement.value = this.resultField.nativeElement.value + this.commaSeparator;
+              this.equationField.nativeElement.value = this.equationField.nativeElement.value + this.commaSeparator;
+              if (this.unicode5AndHigher) {
+                this.computeNonUnicodeResult("", this.commaSeparator);
+                this.computeNonUnicodeEquation("", this.commaSeparator);
+              }
             }
             break;
 
           case 'arabicDecimalSeparator' :
-            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "٫";
-            this.equationField.nativeElement.value = this.equationField.nativeElement.value + "٫";
-            if (this.unicode5AndHigher) {
-              this.computeNonUnicodeResult("", "٫");
-              this.computeNonUnicodeEquation("", "٫");
+            if (this.resultField.nativeElement.value != "") {
+              this.resultField.nativeElement.value = this.resultField.nativeElement.value + "٫";
+              this.equationField.nativeElement.value = this.equationField.nativeElement.value + "٫";
+              if (this.unicode5AndHigher) {
+                this.computeNonUnicodeResult("", "٫");
+                this.computeNonUnicodeEquation("", "٫");
+              }
             }
             break;
 
           case 'arabicNumberSeparator' :
-            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "٫";
-            this.equationField.nativeElement.value = this.equationField.nativeElement.value + "٫";
-            if (this.unicode5AndHigher) {
-              this.computeNonUnicodeResult("", "٫");
-              this.computeNonUnicodeEquation("", "٫");
+            if (this.resultField.nativeElement.value != "") {
+              this.resultField.nativeElement.value = this.resultField.nativeElement.value + "٫";
+              this.equationField.nativeElement.value = this.equationField.nativeElement.value + "٫";
+              if (this.unicode5AndHigher) {
+                this.computeNonUnicodeResult("", "٫");
+                this.computeNonUnicodeEquation("", "٫");
+              }
             }
             break;
 
@@ -3138,6 +3159,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
       hostString = hostString.replaceAll(" ","");
     else if(internalCalculation && hostString.indexOf("'") > -1 && (this.thousandsPositionApostropheAndPeriodDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.thousandsPositionApostropheAndCommaDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1))
       hostString = hostString.replaceAll("'","");
+    else if(internalCalculation && hostString.indexOf("ز") > -1 && this.periodDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+      hostString = hostString.replaceAll("ز",".");
     
     for (let str of hostString) {
       // Manage use10InPlaceOfZero / Alphanumeric scenarios here
@@ -3150,6 +3173,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
       } else if (!internalCalculation) {
         if(str == "." && this.commaDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1)
           str = ",";
+        else if (str == "." && this.periodDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1 && this.sessionManager.getFromSessionURL() == "odu") 
+          str = "ز"; 
         else if (str == "." && this.periodDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) 
           str = "."; 
         else if(str == "." && this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1)
@@ -3464,16 +3489,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
     } else if (fieldName == 'equationField') {
       navigator.clipboard.writeText(this.equationField.nativeElement.value);
       this._snackBar.open("Equation Field Copied",this.translateForSnackBar[0], {
-        duration: 3000,
-      });
-    } else if (fieldName == 'reverseResultField') {
-      navigator.clipboard.writeText(this.resultField.nativeElement.value.split("").reverse().join(""));
-      this._snackBar.open("Reverse Result Field Copied",this.translateForSnackBar[0], {
-        duration: 3000,
-      });
-    } else if (fieldName == 'reverseEquationField') {
-      navigator.clipboard.writeText(this.equationField.nativeElement.value.split("").reverse().join(""));
-      this._snackBar.open("Reverse Equation Field Copied",this.translateForSnackBar[0], {
         duration: 3000,
       });
     }

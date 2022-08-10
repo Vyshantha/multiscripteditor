@@ -715,6 +715,18 @@
   }
 
   @font-face {
+    font-family: 'Aebajiogbe Oduduwa';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/aebajiogbe-oduduwa/files/Aebajiogbe_oduduwa_font-Regular.woff') format('woff');
+  }
+
+  .odu {
+    font-family: 'Aebajiogbe Oduduwa' !important;
+  }
+
+  @font-face {
     font-family: 'Noto Sans Elymaic';
     font-style: normal;
     font-display: swap;

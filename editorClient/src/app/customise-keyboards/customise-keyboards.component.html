@@ -105,7 +105,7 @@
 </div>
 
 <div *ngIf="isMobile && !isTablet && currentCalculatorType == 'simple' && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
-    <h2 mat-dialog-title [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} &nbsp;&nbsp;&nbsp;&nbsp; 
+    <h2 mat-dialog-title [ngClass]=" fontClass == 'odu' ? '' : fontClass" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} &nbsp;&nbsp;&nbsp;&nbsp; 
         <span>
             <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
             <mat-icon style="cursor: pointer;" aria-label="Launch" alt="Launch" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="!floatNotMinimise">open_with</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; 
@@ -117,7 +117,7 @@
     <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 70%;" appearance="fill">
         <mat-label>{{ 'View Equation' | translate }}</mat-label>
-        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
         <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -129,13 +129,12 @@
             </span>
         </mat-card>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
-    <mat-icon aria-label="{{ 'Copy Reverse Equation' | translate }}" matTooltip="{{ 'Copy Reverse Equation' | translate }}" (click)="copyContent('reverseEquationField')">copy_all</mat-icon>
     <br/>
     <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 70%;" appearance="fill">
         <mat-label>{{ 'Type Numbers' | translate }}</mat-label>
         <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
-        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
         <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
         <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
@@ -149,12 +148,11 @@
             </span>
         </mat-card>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
-    <mat-icon aria-label="{{ 'Copy Reverse Result' | translate }}" matTooltip="{{ 'Copy Reverse Result' | translate }}" (click)="copyContent('reverseResultField')">copy_all</mat-icon>
     <br/>
     <mat-dialog-content class="mat-topography" *ngIf="floatNotMinimise" style="color: black;">
         <ul *ngFor="let rows of anyCalculatorLayout" style="list-style-type: none;" class="keyboardTheming">
-            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == currentBase || character.value == circularUnit || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'formula1' || character.type == 'formula2' || character.type == 'formula3' || character.type == 'formula4' || character.type == 'formula5' || character.type == 'formula6')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '15px' : defaultFontSize + 'px', 'font-weight': 700, 'height' : defaultCellSize + 'px', 'padding-top': '5px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
-                <div *ngIf="!showImageGlyph || character.src == null" class="{{fontClass}}">
+            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == currentBase || character.value == circularUnit || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'formula1' || character.type == 'formula2' || character.type == 'formula3' || character.type == 'formula4' || character.type == 'formula5' || character.type == 'formula6')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '20px' : ( (fontClass == 'odu' && character.type.indexOf('num') > -1 || character.type == 'decimalPeriodNumber') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' ), 'font-weight': 700, 'height' : defaultCellSize + 'px', 'padding-top': '5px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
+                <div *ngIf="!showImageGlyph || character.src == null" [ngClass]=" character.type.indexOf('num') > -1 || character.type == 'decimalPeriodNumber' ? fontClass : '' ">
                     {{character.value}} 
                 </div>
                 <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') == -1">
@@ -219,7 +217,7 @@
 </div>
 
 <div *ngIf="isMobile && !isTablet && currentCalculatorType == 'scientific' && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
-    <h4 mat-dialog-title class="{{fontClass}}" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right','margin':'1px'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} &nbsp;&nbsp;&nbsp;&nbsp; 
+    <h4 mat-dialog-title [ngClass]=" fontClass == 'odu' ? '' : fontClass" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right','margin':'1px'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} &nbsp;&nbsp;&nbsp;&nbsp; 
         <span>
             <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" style="font-size: smaller;" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
             <mat-icon style="cursor: pointer;" aria-label="Launch" alt="Launch" style="font-size: smaller;" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="!floatNotMinimise">open_with</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; 
@@ -234,7 +232,7 @@
         <table style="width: 100%;">
             <tr>
                 <td style="width: 50%;">
-                    <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+                    <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
                 </td>
                 <td style="width: 50%;">
                     <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet,'padding':'0px'}">
@@ -251,7 +249,6 @@
             </tr>
         </table>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
-    <mat-icon aria-label="{{ 'Copy Reverse Equation' | translate }}" matTooltip="{{ 'Copy Reverse Equation' | translate }}" (click)="copyContent('reverseEquationField')">copy_all</mat-icon>
     <br/>
     <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 85%;height:20px;margin:1px" appearance="fill">
@@ -260,7 +257,7 @@
             <tr>
                 <td style="width: 50%;">
                     <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
-                    <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', '', 'undoAction', '', '')" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+                    <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', '', 'undoAction', '', '')" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
                 </td>
                 <td style="width: 50%;">
                     <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
@@ -279,12 +276,11 @@
             </tr>
         </table>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
-    <mat-icon aria-label="{{ 'Copy Reverse Result' | translate }}" matTooltip="{{ 'Copy Reverse Result' | translate }}" (click)="copyContent('reverseResultField')">copy_all</mat-icon>
     <br/>
     <mat-dialog-content class="mat-topography" *ngIf="floatNotMinimise" style="color: black;padding-top: 10px;">
         <ul *ngFor="let rows of anyCalculatorLayout" style="list-style-type: none;" class="keyboardTheming">
-            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == currentBase || character.value == circularUnit || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'formula1' || character.type == 'formula2' || character.type == 'formula3' || character.type == 'formula4' || character.type == 'formula5' || character.type == 'formula6')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize*1.1 + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '25px' : defaultFontSize + 'px', 'font-weight': 400, 'height' : defaultCellSize*0.7 + 'px', 'padding-top': '0px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
-                <div *ngIf="!showImageGlyph || character.src == null" class="{{fontClass}}">
+            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == currentBase || character.value == circularUnit || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'formula1' || character.type == 'formula2' || character.type == 'formula3' || character.type == 'formula4' || character.type == 'formula5' || character.type == 'formula6')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize*1.1 + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '25px' : ( (fontClass == 'odu' && character.type.indexOf('num') > -1 || character.type == 'decimalPeriodNumber') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' ), 'font-weight': 400, 'height' : defaultCellSize*0.7 + 'px', 'padding-top': '0px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
+                <div *ngIf="!showImageGlyph || character.src == null" [ngClass]=" character.type.indexOf('num') > -1 || character.type == 'decimalPeriodNumber' ? fontClass : '' ">
                     {{character.value}} 
                 </div>
                 <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') == -1">
@@ -358,7 +354,7 @@
 </div>
 
 <div *ngIf="!isMobile && isTablet && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
-    <h2 mat-dialog-title class="{{fontClass}}" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} {{ 'Calculator' | translate }}&nbsp;&nbsp;&nbsp;&nbsp; 
+    <h2 mat-dialog-title [ngClass]=" fontClass == 'odu' ? '' : fontClass" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} {{ 'Calculator' | translate }}&nbsp;&nbsp;&nbsp;&nbsp; 
         <span>
             <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
             <mat-icon style="cursor: pointer;" aria-label="Launch" alt="Launch" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="!floatNotMinimise">open_with</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; 
@@ -370,7 +366,7 @@
     <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 80%;" appearance="fill">
         <mat-label>{{ 'View Equation' | translate }}</mat-label>
-        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
         <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -382,13 +378,12 @@
             </span>
         </mat-card>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
-    <mat-icon aria-label="{{ 'Copy Reverse Equation' | translate }}" matTooltip="{{ 'Copy Reverse Equation' | translate }}" (click)="copyContent('reverseEquationField')">copy_all</mat-icon>
     <br/>
     <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 80%;" appearance="fill">
         <mat-label>{{ 'Type Numbers' | translate }}</mat-label>
         <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
-        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
         <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
         <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
@@ -402,12 +397,11 @@
             </span>
         </mat-card>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
-    <mat-icon aria-label="{{ 'Copy Reverse Result' | translate }}" matTooltip="{{ 'Copy Reverse Result' | translate }}" (click)="copyContent('reverseResultField')">copy_all</mat-icon>
     <br/>
     <mat-dialog-content class="mat-topography" *ngIf="floatNotMinimise" style="color: black;">
         <ul *ngFor="let rows of anyCalculatorLayout" style="list-style-type: none;" class="keyboardTheming">
-            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == currentBase || character.value == circularUnit || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'formula1' || character.type == 'formula2' || character.type == 'formula3' || character.type == 'formula4' || character.type == 'formula5' || character.type == 'formula6')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '20px' : ((character.type == 'booleanFalse' || character.type == 'booleanTrue') ? '14px' : defaultFontSize + 'px'), 'height' : defaultCellSize + 'px', 'padding-top': '3px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
-                <div *ngIf="!showImageGlyph || character.src == null" class="{{fontClass}}">
+            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == currentBase || character.value == circularUnit || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'formula1' || character.type == 'formula2' || character.type == 'formula3' || character.type == 'formula4' || character.type == 'formula5' || character.type == 'formula6')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '20px' : ((character.type == 'booleanFalse' || character.type == 'booleanTrue') ? '14px' :  ( (fontClass == 'odu' && character.type.indexOf('num') > -1 || character.type == 'decimalPeriodNumber') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' ) ), 'height' : defaultCellSize + 'px', 'padding-top': '3px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
+                <div *ngIf="!showImageGlyph || character.src == null" [ngClass]=" character.type.indexOf('num') > -1 || character.type == 'decimalPeriodNumber' ? fontClass : '' ">
                     {{character.value}} 
                 </div>
                 <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') == -1">
@@ -441,7 +435,7 @@
 </div>
 
 <div *ngIf="!isMobile && !isTablet && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
-    <h2 mat-dialog-title class="{{fontClass}}" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} {{ 'Calculator' | translate }}&nbsp;&nbsp;&nbsp;&nbsp; 
+    <h2 mat-dialog-title [ngClass]=" fontClass == 'odu' ? '' : fontClass" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} {{ 'Calculator' | translate }}&nbsp;&nbsp;&nbsp;&nbsp; 
         <span>
             <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
             <mat-icon style="cursor: pointer;" aria-label="Launch" alt="Launch" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="!floatNotMinimise">open_with</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; 
@@ -453,7 +447,7 @@
     <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field [ngStyle]="{'width': (currentCalculatorType == 'scientific')? '80%': '70%'}" appearance="fill">
         <mat-label>{{ 'View Equation' | translate }}</mat-label>
-        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
         <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -465,13 +459,12 @@
             </span>
         </mat-card>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
-    <mat-icon aria-label="{{ 'Copy Reverse Equation' | translate }}" matTooltip="{{ 'Copy Reverse Equation' | translate }}" (click)="copyContent('reverseEquationField')">copy_all</mat-icon>
     <br/>
     <mat-icon aria-label="{{ 'Copy Result' | translate }}" matTooltip="{{ 'Copy Result' | translate }}" (click)="copyContent('resultField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field [ngStyle]="{'width': (currentCalculatorType == 'scientific')? '80%': '70%'}" appearance="fill">
         <mat-label>{{ 'Type Numbers' | translate }}</mat-label>
         <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
-        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet}">
+        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
         <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
         <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
@@ -485,12 +478,11 @@
             </span>
         </mat-card>
     </mat-form-field>&nbsp;&nbsp;&nbsp;
-    <mat-icon aria-label="{{ 'Copy Reverse Result' | translate }}" matTooltip="{{ 'Copy Reverse Result' | translate }}" (click)="copyContent('reverseResultField')">copy_all</mat-icon>
     <br/>
     <mat-dialog-content class="mat-topography" *ngIf="floatNotMinimise" style="color: black;">
         <ul *ngFor="let rows of anyCalculatorLayout" style="list-style-type: none;" class="keyboardTheming">
-            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == currentBase || character.value == circularUnit || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'formula1' || character.type == 'formula2' || character.type == 'formula3' || character.type == 'formula4' || character.type == 'formula5' || character.type == 'formula6')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '25px' : defaultFontSize + 'px', 'height' : defaultCellSize + 'px', 'padding-top': '7px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
-                <div *ngIf="!showImageGlyph || character.src == null" class="{{fontClass}}">
+            <li *ngFor="let character of rows.row" [ngClass]="{'btnVert': keysToRotate, 'btn': !keysToRotate, 'btnSelected': (isShiftKeyPress && character.action == 'shift' || isAltGrKeyPress && character.action == 'altGr' || whichMappedKey == character.value) }" [ngStyle]="{'display': (!unusedKeys && character.type == 'unused')? 'none': 'inline-block', 'color': ((character.type == currentBase || character.value == circularUnit || character.type == 'equalsSign'))? 'brown' : ((character.visible == 'hide')? 'darkgrey' : ((character.type == 'formula1' || character.type == 'formula2' || character.type == 'formula3' || character.type == 'formula4' || character.type == 'formula5' || character.type == 'formula6')? '#e6ac00' : 'inherit')), 'box-sizing': 'border-box', 'width' : defaultCellSize + 'px', 'transform': (switchScriptDirection == true) ? 'scaleX(-1)' : ((character.orient == 'b2t') ? 'rotate(-180deg)' : ((keysToRotate && notToRotateKeys)? 'rotate(-90deg)' :'none')), 'font-size' : (character.type == 'undoAction') ? '25px' : ( (fontClass == 'odu' && character.type.indexOf('num') > -1 || character.type == 'decimalPeriodNumber') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' ), 'height' : defaultCellSize + 'px', 'padding-top': '7px'}" (click)="whatToDoWithThisKeyPress(character, character.value, character.action, character.type, character.src, character.visible)">
+                <div *ngIf="!showImageGlyph || character.src == null" [ngClass]=" character.type.indexOf('num') > -1 || character.type == 'decimalPeriodNumber' ? fontClass : '' ">
                     {{character.value}} 
                 </div>
                 <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') == -1">
