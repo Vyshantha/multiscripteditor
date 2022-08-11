@@ -117,7 +117,7 @@
     <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 70%;" appearance="fill">
         <mat-label>{{ 'View Equation' | translate }}</mat-label>
-        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
+        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'height':'30px', 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
         <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -134,7 +134,7 @@
     <mat-form-field style="width: 70%;" appearance="fill">
         <mat-label>{{ 'Type Numbers' | translate }}</mat-label>
         <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
-        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
+        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'height':'30px', 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
         <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
         <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
@@ -232,7 +232,7 @@
         <table style="width: 100%;">
             <tr>
                 <td style="width: 50%;">
-                    <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
+                    <input matInput disabled id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'height':'30px', 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
                 </td>
                 <td style="width: 50%;">
                     <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet,'padding':'0px'}">
@@ -257,7 +257,7 @@
             <tr>
                 <td style="width: 50%;">
                     <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
-                    <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', '', 'undoAction', '', '')" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
+                    <input matInput type="text" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', '', 'undoAction', '', '')" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'height':'30px', 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
                 </td>
                 <td style="width: 50%;">
                     <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
@@ -366,7 +366,7 @@
     <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field style="width: 80%;" appearance="fill">
         <mat-label>{{ 'View Equation' | translate }}</mat-label>
-        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
+        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'height':'30px', 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
         <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -383,7 +383,7 @@
     <mat-form-field style="width: 80%;" appearance="fill">
         <mat-label>{{ 'Type Numbers' | translate }}</mat-label>
         <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
-        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
+        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'height':'30px', 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
         <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
         <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
@@ -447,7 +447,7 @@
     <mat-icon aria-label="{{ 'Copy Equation' | translate }}" matTooltip="{{ 'Copy Equation' | translate }}" (click)="copyContent('equationField')">content_copy</mat-icon>&nbsp;&nbsp;&nbsp;
     <mat-form-field [ngStyle]="{'width': (currentCalculatorType == 'scientific')? '80%': '70%'}" appearance="fill">
         <mat-label>{{ 'View Equation' | translate }}</mat-label>
-        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
+        <input matInput disabled class="{{fontClass}}" id="equationField" #equationField value="xⁿ = yⁿ + zⁿ" [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'height':'30px', 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
         <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
             <span *ngFor="let image of nonUnicodeNumberEquation">
                 <span *ngIf="showImageGlyph && image.src == ''">
@@ -464,7 +464,7 @@
     <mat-form-field [ngStyle]="{'width': (currentCalculatorType == 'scientific')? '80%': '70%'}" appearance="fill">
         <mat-label>{{ 'Type Numbers' | translate }}</mat-label>
         <span *ngIf="appendCurrencyPrefix" matPrefix>{{currencySymbol}} &nbsp;</span>
-        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
+        <input matInput type="text" class="{{fontClass}}" id="resultField" #resultField [(ngModel)]="valueInField" (ngModelChange)="carveOperatorVariables($event)" onpaste="return false" (keyup.enter)="enterKeyPressForInput()" (keyup.backspace)="whatToDoWithThisKeyPress('', '', 'keyboard', 'undoAction', '', '')"  [ngStyle]="{'unicode-bidi':unicodeOverride,'text-align':dirSet, 'height':'30px', 'font-size': ( (fontClass == 'odu') ? defaultFontSize + 10 + 'px' : defaultFontSize + 'px' )}">
         <span *ngIf="appendCurrencySuffix" matSuffix>&nbsp; {{currencySymbol}}</span>
         <span *ngIf="appendCircularUnits" matSuffix>&nbsp; {{circularUnit}}</span>
         <mat-card *ngIf="unicode5AndHigher && noNumeralsForNonUnicode" [ngStyle]="{'text-align':dirSet}">
