@@ -1206,7 +1206,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   sexagesimal : any = ['elam','elx','hit','sux','xpeo'];
 
   // Display Results for these Unicode script without manipulation
-  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','ari','avst','bhai','bopo','brah','cans','chrs','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hung','hy','ion','ital','iub','ja','kaid','kali','kan','khar','khud','kult','latf','lana','leke','maya','mend','mero','modi','mon','moss','mroo','my','nagm','newa','nbat','nkoo','odu','osma','pal','palm','phn','psal','rohg','runr','sabe','shan','shrd','sidd','sog','sora','tach','takr','tamu','tdd','ti','tibt','tig','tirh','txg','wara','wcho','udi','xpr','zhcn','zhtw','zih'];
+  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','ari','avst','bhai','bopo','brah','cans','chrs','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hung','hy','ion','ital','iub','ja','kaid','kali','kan','khar','khud','kult','latf','lana','leke','maya','mend','mero','modi','mon','moss','mroo','my','nagm','newa','nbat','nkoo','odu','osma','pal','palm','phn','psal','rohg','runr','sabe','shan','shrd','si','sidd','sog','sora','tach','takr','tamu','tdd','ti','tibt','tig','tirh','txg','wara','wcho','udi','xpr','zhcn','zhtw','zih'];
 
   //Separation between Numerals for Display - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
 
