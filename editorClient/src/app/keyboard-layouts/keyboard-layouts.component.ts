@@ -4261,7 +4261,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       );
     } else if (type == "calculate") {
       const dialogProfile = this.customKeyboardDialog.open(this.CustomKeyboardPopUp, {
-        width: '100',
+        width: (this.isMobile || this.isTablet) ? document.documentElement.clientWidth - 15 + "px" : '100',
+        maxWidth: (this.isMobile || this.isTablet) ? "90vw" : "80vw",
         data: {show: "calculate"}
       });
   

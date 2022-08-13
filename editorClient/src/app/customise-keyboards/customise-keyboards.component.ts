@@ -1134,7 +1134,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   baseIndices: any = [2, 8, 10, 12, 16, 20, 60];
 
   // Operator and Libraries - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
-  operators: any = ['+', "-", "*", "×", "·", "^", "**", "÷", '%', '‰', "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "~", "<<", ">>", "≤", "≥", "ʸ√", "xʸ", "⁻ⁱ", "logₓy", "﬩"];
+  operators: any = ['+', "-", "*", "×", "·", "^", "**", "÷", '%', '‰', "/", "&", "|", "⊻", "=", "≠", "≈", "≡", "∼", "∽", "≅", "⇔", "!", "~", "<<", ">>", "≤", "≥", "ʸ√", "⁻ⁱ", "logₓy", "﬩"];
   allowedCircularUnits: any = ["°", "rad", "′", "″", "'", "\"", "ᵍ"];
 
   appendCurrencyPrefix : Boolean = false; 
@@ -1329,7 +1329,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
     Problems to Fix
     - 'jawi' multiple digit positioning as operands swap
     - 'braille' 3 digit answer does not show up
-    - Negative number with non-Unicode
   */
 
   constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, private renderer: Renderer2,searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
@@ -1495,12 +1494,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
           self.currentCalculatorType = 'scientific';
         }
     });
-
-    if (this.isMobile || this.isTablet) {
-      document.getElementsByClassName("mat-dialog-container")[0]["style"]["padding"] = "5px";
-      document.getElementsByClassName("cdk-overlay-pane")[0]["style"]["max-width"] = (this.isTablet)? "90vw" : "";
-      document.getElementsByClassName("cdk-overlay-pane")[0]["style"]["width"] = document.documentElement.clientWidth - 15 + "px";
-    }
   }
 
   async ngAfterViewInit(): Promise<void> {
@@ -1523,12 +1516,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
     this.sessionManager.unusedKeys.subscribe((value) => {
       this.unusedKeys = value;
     });
-
-    if (this.isMobile || this.isTablet) {
-      document.getElementsByClassName("mat-dialog-container")[0]["style"]["padding"] = "5px";
-      document.getElementsByClassName("cdk-overlay-pane")[0]["style"]["max-width"] = "";
-      document.getElementsByClassName("cdk-overlay-pane")[0]["style"]["width"] = document.documentElement.clientWidth - 15 + "px";
-    }
   }
 
   baseUIRendering() {
@@ -1973,6 +1960,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.periodSeparator = "ز";
             this.calculatorLayout[5].row[10].visible = "show";
             this.simpleCalculatorLayout[4].row[2].visible = "show";
+            this.mapLocale["."] = "ز"; 
           }
         }
       } else {
@@ -2691,7 +2679,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
           case 'powerOf10' :
             this.operatorValue = "10";
-            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "10 ^ ";
+            this.operatorXY = "^";
+            this.varX = this.mapLocale["1"] + this.mapLocale["0"];
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + this.mapLocale["1"] + this.mapLocale["0"] + " ^ ";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
             if (this.unicode5AndHigher) {
               this.computeNonUnicodeResult("", this.operatorValue);
@@ -2720,7 +2710,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
           
           case 'naturalExponent' : 
             this.operatorValue = "eˣ";
-            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "eˣ ";
+            //this.varX = this.mapLocale["2"] + this.mapLocale["."] + this.mapLocale["7"] + this.mapLocale["1"] + this.mapLocale["8"] + this.mapLocale["2"] + this.mapLocale["8"] + this.mapLocale["1"] + this.mapLocale["8"] + this.mapLocale["2"] + this.mapLocale["8"] + this.mapLocale["4"] + this.mapLocale["5"] + this.mapLocale["9"] + this.mapLocale["0"] + this.mapLocale["4"] + this.mapLocale["5"] + this.mapLocale["2"] + this.mapLocale["3"] + this.mapLocale["3"] + this.mapLocale["5"] + this.mapLocale["6"];
+            this.varX = "2.71828182845904523536";
+            this.resultField.nativeElement.value = this.resultField.nativeElement.value + "2.71828182845904523536 ";
             this.equationField.nativeElement.value = this.resultField.nativeElement.value;
             if (this.unicode5AndHigher) {
               this.computeNonUnicodeResult("", this.operatorValue);
@@ -2761,7 +2753,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 this.computeNonUnicodeEquation("", " logₓy ");
               }
             } else {
-              this._snackBar.open("logₓy - Type number x , press logₓy and then type y", this.translateForSnackBar[0], {
+              this._snackBar.open("logₓy - Type number y , press logₓy and then type x", this.translateForSnackBar[0], {
                 duration: 3000,
               });
             }
@@ -2937,9 +2929,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
               this.equationField.nativeElement.value = this.equationField.nativeElement.value.replace(this.operatorXY, this.operatorXY + " -");
 
-              if (this.varX != this.resultField.nativeElement.value)
-                this.resultField.nativeElement.value = " -" + this.resultField.nativeElement.value;
-              else
+              if (this.varX != this.resultField.nativeElement.value) {
+                if (this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+                  this.resultField.nativeElement.value = this.resultField.nativeElement.value + "- ";
+                else
+                  this.resultField.nativeElement.value = " -" + this.resultField.nativeElement.value;
+              } else
                 this.resultField.nativeElement.value = " -";
 
               if (this.varX != "") 
@@ -2997,6 +2992,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
             break;
 
           default : // Variable Building Phase - RTL & LTR validation
+            if (value == "xʸ") {
+              value = "^";
+            }
             if (this.operators.indexOf(value) == -1 && this.operatorXY == "" && this.varX == "" && this.varY == "") {
               this.resultField.nativeElement.value = this.resultField.nativeElement.value + value;
               this.equationField.nativeElement.value = this.resultField.nativeElement.value;
@@ -3241,6 +3239,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.varX = "3.141592653589";
     } else if (this.varY == " π ") {
       this.varY = "3.141592653589";
+    } 
+    if (this.varX.indexOf("-") > -1 && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+      this.varX = "-" + this.varX.replace("-", "").trim();
+    }
+    if (this.varY.indexOf("-") > -1 && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+      this.varY = "-" + this.varY.replace("-", "").trim();
     }
     // map this.varX and this.varY with corresponding num Type be mapped to 0 - 9 numbers
     var localeMappedX = this.stringManipulator(this.varX, this.numberMap, true);
@@ -3365,8 +3369,12 @@ export class CustomiseKeyboardsComponent implements OnInit {
         this.equationField.nativeElement.value = untransformedX + " " + this.resultField.nativeElement.value + " = " + untransformedY;
       else
         this.equationField.nativeElement.value = untransformedX + " " + untransformedY + " = " + this.resultField.nativeElement.value;
-    } else
+    } else if (this.resultField.nativeElement.value.indexOf("-") > -1) {
+      this.equationField.nativeElement.value = untransformedX.trim() + " " + this.operatorXY + " " + untransformedY.trim() + " = " + this.resultField.nativeElement.value;
+      this.resultField.nativeElement.value = this.resultField.nativeElement.value.replace("-","") + "-";
+    } else {
       this.equationField.nativeElement.value = untransformedX + " " + this.operatorXY + " " + untransformedY + " = " + this.resultField.nativeElement.value;
+    }
   }
 
   displayVariableInLocaleFormat (result) {
