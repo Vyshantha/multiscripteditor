@@ -1229,6 +1229,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   // ARABIC SEPARATOR ٬
   arabicDecimalSeparatorLocales: any = ['ar','arc','arold','ary','bal','bsk','chrs','ckb','elym','he','jawi','khat','ks','lad','mnkar','orkh','osma','ps','rhg','safa','samr','sd','sina','skr','woal','xsa','yi'];
+  // Requires - U+202A https://en.wikipedia.org/wiki/Universal_Character_Set_characters#Bidirectional_general_formatting
 
   // APOSTROPHE '
   thousandsPositionPeriodAndApostropheDecimal : any = [];
@@ -1327,7 +1328,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
     - BaseX specific Operations
 
     Problems to Fix
-    - 'jawi' multiple digit positioning as operands swap
     - 'braille' 3 digit answer does not show up
   */
 
@@ -3020,7 +3020,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 this.nonUnicodeNumberEquation.push({"src":"","value":this.operatorXY});
               } 
             } else if (this.operators.indexOf(value) == -1 && this.operatorXY != "" && this.varY == "") {
-              this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + value;
+              if (this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+                this.equationField.nativeElement.value = this.equationField.nativeElement.value + "\u202A " + value;
+              else
+                this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + value;
               this.resultField.nativeElement.value = value;
               this.varY = this.resultField.nativeElement.value;
               this.nonUnicodeNumberResult = [];
@@ -3126,13 +3129,19 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.varX = this.resultField.nativeElement.value;
       this.equationField.nativeElement.value = this.varX + " " + this.operatorXY;
     } else if (this.validateAnyTypedInput(contentOfInput) && this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY != "" && this.varY == "") {
-      this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + contentOfInput.replace(this.varX, '');
+      if (this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+        this.equationField.nativeElement.value = this.equationField.nativeElement.value + "\u202A " + contentOfInput.replace(this.varX, '');
+      else
+        this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + contentOfInput.replace(this.varX, '');
       this.resultField.nativeElement.value = contentOfInput.replace(this.varX, '');
       this.varY = contentOfInput.replace(this.varX, '');
     } else if (this.validateAnyTypedInput(contentOfInput) && this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) == -1 && this.operatorXY != "" && this.varY != ""){
       this.resultField.nativeElement.value = contentOfInput;
       this.varY = this.resultField.nativeElement.value;
-      this.equationField.nativeElement.value = this.varX + " " + this.operatorXY + " " + this.varY;
+      if (this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+        this.equationField.nativeElement.value = this.varX + "\u202A " + this.operatorXY + "\u202A " + this.varY;
+      else
+        this.equationField.nativeElement.value = this.varX + " " + this.operatorXY + " " + this.varY;
     } else if (this.validateAnyTypedInput(contentOfInput) && this.operators.indexOf(contentOfInput.substr(contentOfInput.length-1)) > -1 && this.varX != "" && this.varY != "") {
       this.operatorXY = contentOfInput.substr(contentOfInput.length-1);
       this.computeResults();
@@ -3365,13 +3374,15 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
     //this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.resultField.nativeElement.value;
     if (this.operatorXY == "ʸ√" || this.operatorXY == "logₓy") {
-      if (!this.unicode5AndHigher && this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1)
-        this.equationField.nativeElement.value = untransformedX + " " + this.resultField.nativeElement.value + " = " + untransformedY;
+      if (this.rtlNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 && this.operatorXY == "logₓy")
+        this.equationField.nativeElement.value = this.resultField.nativeElement.value + " = " + " " + untransformedX + untransformedY;
       else
         this.equationField.nativeElement.value = untransformedX + " " + untransformedY + " = " + this.resultField.nativeElement.value;
     } else if (this.resultField.nativeElement.value.indexOf("-") > -1) {
       this.equationField.nativeElement.value = untransformedX.trim() + " " + this.operatorXY + " " + untransformedY.trim() + " = " + this.resultField.nativeElement.value;
       this.resultField.nativeElement.value = this.resultField.nativeElement.value.replace("-","") + "-";
+    } else if (this.arabicDecimalSeparatorLocales.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+      this.equationField.nativeElement.value = untransformedX + "\u202A " + this.operatorXY + "\u202A " + untransformedY + "\u202A =\u202A " + this.resultField.nativeElement.value;
     } else {
       this.equationField.nativeElement.value = untransformedX + " " + this.operatorXY + " " + untransformedY + " = " + this.resultField.nativeElement.value;
     }
