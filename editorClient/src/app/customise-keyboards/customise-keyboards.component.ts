@@ -1188,21 +1188,55 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   separatorsForDecimalAndNumeral: any = [' ', "'", ',', '.', '·', '\u2009', '\u202F', '˙', '⠨', '٫' , '٬' , '⎖', '⹁'];
 
-  // Alphabets for 1-10, 20, 30 ... , 80, 90, 100, 200, ..., 1000
-  alphaNumeric: any = ['arc','asom','el','estr','glag','goth','he','hy','ion','ka','lad','linb','linea','madn','mand','nusk','sert','sina','syrc','udi','yi'];
   // Numbers for 0-10, 20, 30 ... , 80, 90
+  // num11 = 10, num12 = 20, num13 = 30 ... , num19 = 90, num20 = 100 
   distinctNumerals: any = ['si','wara'];
+  
   // Number for 0-10, 100, 1000 ... without Decimal
+  // num11 = 10, num12 = 100, num13 = 1000
   numberFor10Powers: any = ['bopo','ja','jiag','kaid','kan','ko','txg','vi','zhcn','zhtw','zih'];
-  // Decimal numbers - separate symbol for 10, 100, 1000, 10000
+  
+  // Decimal numbers - separate symbol for 10, 100, 1000
+  // num11 = 10, num12 = 100, num13 = 1000
   use10RegularDecimal: any = ['ahom','bada','ta','vatt'];
+  
   // No 0 number indicator only use 10 multiples
+  // num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 200 
   use10InPlaceOfZero: any = ['am','ary','avst','chrs','copt','el','esy','ett','geez','glag','he','hy','hung','ion','ital','ka','khar','kult','la','lad','linb','linea','mero','nbat','pal','palm','phn','psal','runr','sgnw','sog','ti','tig','txg','udi','sabe','xpr','yi'];
+
+  // No 0 number indicator only use 10 multiples
+  // num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 1000 
+  use10InPlaceOfZeroUpTo200: any = ['avst','xpr'];
+
+  // Alphabets for 1-10, 20, 30 ... , 80, 90, 100, 200, ..., 1000
+  // num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 200 
+  alphaNumeric: any = ['arc','asom','el','estr','glag','goth','he','hy','ion','ka','lad','linb','linea','madn','mand','nusk','sert','sina','syrc','udi','yi'];
+  
   // Non-Decimal numerals
-  nonStandardNumeral : any = ['chrs','ett','ital','hung','khar','kmt','kult','la','nbat','pal','palm','phn','psal','sabe','sog','xpr'];
+  nonStandardNumeral : any = ['chrs','ett','ital','hung','khar','kmt','kult','la','nbat','pal','palm','phn','psal','sabe','sog'];
+  // num0 = 10, num11 = 20 - palm
+  nonDeciUpTo20: any = ['palm'];
+  // num0 = 10, num11 = 20, num12 = 100 - chrs, nbat, phn, psal
+  nonDeciUpTo100: any = ['chrs','nbat','phn','psal'];
+  // num0 = 10, num11 = 20, num12 = 30, num13 = 100, num14 = 0.5 - kult
+  nonDeciUpTo100Fraction: any = ['kult'];
+  // num0 = 10, num11 = 20, num12 = 100, num13 = 1000 - khar, pal
+  nonDeciUpTo1000: any = ['khar','pal'];
+  // num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000 - ett, hung
+  nonDeciUpToPos1000: any = ['ett','hung'];
+  // num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 0.5, num16 = 1/12, num17 = 2/3, num18 = 3/4, num19 = 10/12, num20 = 11/12 -la
+  nonDeciUpToPos1000Fraction: any = ['la'];
+
+  // num0 = 10, num11 = 100, num12 = 1000, num13 = 10000, num14 = 100000 - kmt : https://en.wikipedia.org/wiki/Egyptian_numerals
+  nonDeciUpTo100000: any = ['kmt'];
+  // num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 200 - Indic Siyaq https://www.unicode.org/charts/PDF/U1EC70.pdf ,  Ottaman Siyaq : https://www.unicode.org/charts/PDF/U1ED00.pdf
+  nonDecimalUpTo200: any = ['indq', 'ottoq'];
+  
   // Base 20 numerals
+  // num0 = 0, num11 = 11, num12 = 12 ... , num19 = 19, num20 = 20 
   vigesimal : any = ['cans','esi','esk','ipk','maya'];
-  // Base 60 numerals
+  
+  // Base 60 numerals : https://en.wikipedia.org/wiki/Babylonian_cuneiform_numerals
   sexagesimal : any = ['elam','elx','hit','sux','xpeo'];
 
   // Display Results for these Unicode script without manipulation
@@ -1468,6 +1502,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.currentBase = "base60";
 
     this.populateUINumberLayout();
+    if (this.numberMap.length == 0) {
+      this.restoreBackKeyboard();
+    }
     
     if (this.bookmarkedEquations.length == 0 && this.sessionManager.getAllBookmarkedEquations() != "" && this.sessionManager.getAllBookmarkedEquations() != null && this.sessionManager.getAllBookmarkedEquations() != undefined) {
       let favourites = this.sessionManager.getAllBookmarkedEquations().split("§");
