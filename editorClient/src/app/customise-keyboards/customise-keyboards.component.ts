@@ -1962,7 +1962,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "E";
             this.mapLocale["E"] = this.layoutCurrentKeys[i].row[j].value; 
-            this.calculatorLayout[1].row[6].visible = "show";
+            if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+              this.calculatorLayout[1].row[6].visible = "hide";
+            else
+              this.calculatorLayout[1].row[6].visible = "show";
             this.calculatorLayout[1].row[6].type = "num15";
             if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[6]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1976,7 +1979,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "F";
             this.mapLocale["F"] = this.layoutCurrentKeys[i].row[j].value; 
-            this.calculatorLayout[1].row[7].visible = "show";
+            if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+              this.calculatorLayout[1].row[7].visible = "hide";
+            else
+              this.calculatorLayout[1].row[7].visible = "show";
             this.calculatorLayout[1].row[7].type = "num16";
             if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[7]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1991,7 +1997,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "G";
             this.mapLocale["G"] = this.layoutCurrentKeys[i].row[j].value; 
-            this.calculatorLayout[1].row[8].visible = "show";
+            if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+              this.calculatorLayout[1].row[8].visible = "hide";
+            else
+              this.calculatorLayout[1].row[8].visible = "show";
             this.calculatorLayout[1].row[8].type = "num17";
             if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -2005,7 +2014,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "H";
             this.mapLocale["H"] = this.layoutCurrentKeys[i].row[j].value; 
-            this.calculatorLayout[1].row[9].visible = "show";
+            if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+              this.calculatorLayout[1].row[9].visible = "hide";
+            else
+              this.calculatorLayout[1].row[9].visible = "show";
             this.calculatorLayout[1].row[9].type = "num18";
             if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -2019,7 +2031,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "I";
             this.mapLocale["I"] = this.layoutCurrentKeys[i].row[j].value; 
-            this.calculatorLayout[1].row[10].visible = "show";
+            if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+              this.calculatorLayout[1].row[10].visible = "hide";
+            else
+              this.calculatorLayout[1].row[10].visible = "show";
             this.calculatorLayout[1].row[10].type = "num19";
             if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -2033,7 +2048,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
             this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "J";
             this.mapLocale["J"] = this.layoutCurrentKeys[i].row[j].value; 
-            this.calculatorLayout[1].row[11].visible = "show";
+            if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+              this.calculatorLayout[1].row[11].visible = "hide";
+            else
+              this.calculatorLayout[1].row[11].visible = "show";
             this.calculatorLayout[1].row[11].type = "num20";
             if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[11]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -3357,40 +3375,68 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
     // nonDeciUpToPos1000000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 5000, num16 = 10000, num17 = 50000, num18 = 1000000 - ett
 
-    for (let str of stringNumeral) {
-      if (mappedArray[str] && internal) {
-        valueInternal = parseInt(mappedArray[str]) + valueInternal;
-      } else if (mappedArray[str] && !internal) {
+    for (let str = 0; str < stringNumeral.length; str++) {
+      if (mappedArray[stringNumeral[str]] && internal && stringNumeral != "") {
+        if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+          if (stringNumeral.indexOf("ⅭⅮ") > -1) {
+            valueInternal = 400 + valueInternal;
+            stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅭⅮ")) + stringNumeral.substr(stringNumeral.indexOf("ⅭⅮ") + 2, stringNumeral.length - 1);
+            str = str - 1;
+            continue;
+          } else if (stringNumeral.indexOf("ⅭⅯ") > -1) { 
+            valueInternal = 900 + valueInternal; 
+            stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅭⅯ")) + stringNumeral.substr(stringNumeral.indexOf("ⅭⅯ") + 2, stringNumeral.length - 1);
+            str = str - 1;
+            continue;
+          } else if (stringNumeral.indexOf("ⅩⅬ") > -1) {
+            valueInternal = 40 + valueInternal;
+            stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅩⅬ")) + stringNumeral.substr(stringNumeral.indexOf("ⅩⅬ") + 2, stringNumeral.length - 1);
+            str = str - 1;
+            continue;
+          } else if (stringNumeral.indexOf("ⅩⅭ") > -1) {
+            valueInternal = 90 + valueInternal; 
+            stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅩⅭ")) + stringNumeral.substr(stringNumeral.indexOf("ⅩⅭ") + 2, stringNumeral.length - 1);
+            str = str - 1;
+            continue;
+          }
+        }
+        valueInternal = parseInt(mappedArray[stringNumeral[str]]) + valueInternal;
+      } else if (mappedArray[stringNumeral[str]] && !internal && stringNumeral != "") {
         if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
           // nonDeciUpToPos1000Fraction : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 0.5, num16 = 1/12, num17 = 2/3, num18 = 3/4, num19 = 10/12, num20 = 11/12 -la
           /* DCCLXXXIX-789 , MLXVI-1066 , MDCCLXXVI-1776 , MCMLIV-1954 , MMXXII-2022, MMCDXXI-2421 , MMMCMXCIX-3999 */
           if (parseInt(stringNumeral) >= 1000) {
             valueExternal = valueExternal + mappedArray["1000"];
-            stringNumeral = stringNumeral % 1000;
+            stringNumeral = stringNumeral % 1000 + "";
+            str = str - 1;
           } else if (parseInt(stringNumeral) >= 500) {
             valueExternal = valueExternal + mappedArray["500"];
-            stringNumeral = stringNumeral % 500;
+            stringNumeral = stringNumeral % 500 + "";
+            str = str - 1;
           } else if (parseInt(stringNumeral) >= 100) {
-            if (Math.round(parseInt(stringNumeral) % 1000 / 100) < 4) {
-              valueExternal = valueExternal + mappedArray["100"].repeat(Math.round(parseInt(stringNumeral) % 1000 / 100));
-              stringNumeral = stringNumeral % 100;
+            if (Math.floor(parseInt(stringNumeral) % 1000 / 100) < 4) {
+              valueExternal = valueExternal + mappedArray["100"].repeat(Math.floor(parseInt(stringNumeral) % 1000 / 100));
+              stringNumeral = stringNumeral % 100 + "";
             } else {
               valueExternal = valueExternal + mappedArray["100"] + mappedArray["500"];
-              stringNumeral = stringNumeral % 100;
+              stringNumeral = stringNumeral % 100 + "";
             }
+            str = str - 1;
           } else if (parseInt(stringNumeral) >= 50) {
             valueExternal = valueExternal + mappedArray["50"];
-            stringNumeral = stringNumeral % 50;
+            stringNumeral = stringNumeral % 50 + "";
+            str = str - 1;
           } else if (parseInt(stringNumeral) >= 10) {
-            if (Math.round(parseInt(stringNumeral) % 100 / 10) < 4) {
-              valueExternal = valueExternal + mappedArray["10"].repeat(Math.round(parseInt(stringNumeral) % 100 / 10));
-              stringNumeral = stringNumeral % 10;
+            if (Math.floor(parseInt(stringNumeral) % 100 / 10) < 4) {
+              valueExternal = valueExternal + mappedArray["10"].repeat(Math.floor(parseInt(stringNumeral) % 100 / 10));
+              stringNumeral = stringNumeral % 10 + "";
             } else {
               valueExternal = valueExternal + mappedArray["10"] + mappedArray["50"];
-              stringNumeral = stringNumeral % 10;
+              stringNumeral = stringNumeral % 10 + "";
             }
+            str = str - 1;
           } else if (parseInt(stringNumeral) > 0) {
-            valueExternal = valueExternal + mappedArray[str];
+            valueExternal = valueExternal + mappedArray[stringNumeral[str]];
           }
         }
       }
