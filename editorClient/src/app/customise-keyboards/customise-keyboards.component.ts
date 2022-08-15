@@ -1222,8 +1222,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
   nonDeciUpTo100Fraction: any = ['kult'];
   // num0 = 10, num11 = 20, num12 = 100, num13 = 1000 - khar, pal
   nonDeciUpTo1000: any = ['khar','pal'];
-  // num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000 - ett, hung
-  nonDeciUpToPos1000: any = ['ett','hung'];
+  // num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000 - hung
+  nonDeciUpToPos1000 = ['hung'];
+  // num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 5000, num16 = 10000, num17 = 50000, num18 = 1000000 - ett
+  nonDeciUpToPos1000000 = ['ett'];
   // num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 0.5, num16 = 1/12, num17 = 2/3, num18 = 3/4, num19 = 10/12, num20 = 11/12 -la
   nonDeciUpToPos1000Fraction: any = ['la'];
 
@@ -1834,6 +1836,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["0"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[5].row[9].visible = "show";
             this.simpleCalculatorLayout[4].row[1].visible = "show";
+            if (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "10";
+              this.mapLocale["10"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
             if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[5].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.simpleCalculatorLayout[4].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1850,6 +1856,18 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["A"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[2].visible = "show";
             this.calculatorLayout[1].row[2].type = "num11";
+            if (this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "10";
+              this.mapLocale["10"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
+            if (this.nonDeciUpTo20.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpTo100.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpTo100Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpTo1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "20";
+              this.mapLocale["20"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
+            if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "50";
+              this.mapLocale["50"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
             if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["A"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1864,6 +1882,18 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["B"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[3].visible = "show";
             this.calculatorLayout[1].row[3].type = "num12";
+            if (this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "20";
+              this.mapLocale["20"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
+            if (this.nonDeciUpTo100Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpTo1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "30";
+              this.mapLocale["30"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
+            if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "100";
+              this.mapLocale["100"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
             if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[3]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["B"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1878,6 +1908,22 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["C"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[4].visible = "show";
             this.calculatorLayout[1].row[4].type = "num13";
+            if (this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "30";
+              this.mapLocale["30"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
+            if ( this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "40";
+              this.mapLocale["40"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
+            if (this.nonDeciUpTo1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "500";
+              this.mapLocale["500"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
+            if (this.nonDeciUpTo100Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "1000";
+              this.mapLocale["1000"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
             if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[4]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["C"] = this.layoutCurrentKeys[i].row[j].src;
@@ -1892,6 +1938,18 @@ export class CustomiseKeyboardsComponent implements OnInit {
             this.mapLocale["D"] = this.layoutCurrentKeys[i].row[j].value; 
             this.calculatorLayout[1].row[5].visible = "show";
             this.calculatorLayout[1].row[5].type = "num14";
+            if (this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "40";
+              this.mapLocale["40"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
+            if ( this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "50";
+              this.mapLocale["50"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
+            if (this.nonDeciUpTo1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "1000";
+              this.mapLocale["1000"] = this.layoutCurrentKeys[i].row[j].value; 
+            }
             if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
               this.calculatorLayout[1].row[5]["src"] = this.layoutCurrentKeys[i].row[j].src;
               this.nonUnicodeMap["D"] = this.layoutCurrentKeys[i].row[j].src;
@@ -3209,7 +3267,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
       hostString = hostString.replaceAll("ز",".");
     
     for (let str of hostString) {
-      // Manage use10InPlaceOfZero / Alphanumeric scenarios here
       if (mappedArray[str]) {
         stringToReturn = stringToReturn + mappedArray[str];
       } else if (internalCalculation) {
@@ -3276,6 +3333,72 @@ export class CustomiseKeyboardsComponent implements OnInit {
     }
   }
 
+  convertNonStandardToDecimal(stringNumeral, mappedArray, internal) {
+    let valueInternal = 0, valueExternal = "";
+    // use10InPlaceOfZero & nonStandardNumeral
+
+    // distinctNumerals : num11 = 10, num12 = 20, num13 = 30 ... , num19 = 90, num20 = 100 
+
+    // numberFor10Powers : num11 = 10, num12 = 100, num13 = 1000
+
+    // use10RegularDecimal : num11 = 10, num12 = 100, num13 = 1000
+
+    // use10InPlaceOfZeroUpTo200 : num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 1000
+
+    // nonDeciUpTo20 : num0 = 10, num11 = 20 - palm
+
+    // nonDeciUpTo100 : num0 = 10, num11 = 20, num12 = 100 - chrs, nbat, phn, psal, sog
+
+    // nonDeciUpTo100Fraction : num0 = 10, num11 = 20, num12 = 30, num13 = 100, num14 = 0.5 - kult
+
+    // nonDeciUpTo1000 : num0 = 10, num11 = 20, num12 = 100, num13 = 1000 - khar, pal
+
+    // nonDeciUpToPos1000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000 - hung
+
+    // nonDeciUpToPos1000000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 5000, num16 = 10000, num17 = 50000, num18 = 1000000 - ett
+
+    for (let str of stringNumeral) {
+      if (mappedArray[str] && internal) {
+        valueInternal = parseInt(mappedArray[str]) + valueInternal;
+      } else if (mappedArray[str] && !internal) {
+        if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+          // nonDeciUpToPos1000Fraction : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 0.5, num16 = 1/12, num17 = 2/3, num18 = 3/4, num19 = 10/12, num20 = 11/12 -la
+          /* DCCLXXXIX-789 , MLXVI-1066 , MDCCLXXVI-1776 , MCMLIV-1954 , MMXXII-2022, MMCDXXI-2421 , MMMCMXCIX-3999 */
+          if (parseInt(stringNumeral) >= 1000) {
+            valueExternal = valueExternal + mappedArray["1000"];
+            stringNumeral = stringNumeral % 1000;
+          } else if (parseInt(stringNumeral) >= 500) {
+            valueExternal = valueExternal + mappedArray["500"];
+            stringNumeral = stringNumeral % 500;
+          } else if (parseInt(stringNumeral) >= 100) {
+            if (Math.round(parseInt(stringNumeral) % 1000 / 100) < 4) {
+              valueExternal = valueExternal + mappedArray["100"].repeat(Math.round(parseInt(stringNumeral) % 1000 / 100));
+              stringNumeral = stringNumeral % 100;
+            } else {
+              valueExternal = valueExternal + mappedArray["100"] + mappedArray["500"];
+              stringNumeral = stringNumeral % 100;
+            }
+          } else if (parseInt(stringNumeral) >= 50) {
+            valueExternal = valueExternal + mappedArray["50"];
+            stringNumeral = stringNumeral % 50;
+          } else if (parseInt(stringNumeral) >= 10) {
+            if (Math.round(parseInt(stringNumeral) % 100 / 10) < 4) {
+              valueExternal = valueExternal + mappedArray["10"].repeat(Math.round(parseInt(stringNumeral) % 100 / 10));
+              stringNumeral = stringNumeral % 10;
+            } else {
+              valueExternal = valueExternal + mappedArray["10"] + mappedArray["50"];
+              stringNumeral = stringNumeral % 10;
+            }
+          } else if (parseInt(stringNumeral) > 0) {
+            valueExternal = valueExternal + mappedArray[str];
+          }
+        }
+      }
+    }
+
+    return (internal) ? valueInternal + "" : valueExternal;
+  }
+
   computeResults() {
     let untransformedX = this.varX;
     let untransformedY = this.varY;
@@ -3300,8 +3423,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.varY = this.varY.split("").map((str) => {return isNaN(parseInt(str)) == false ? str : (str == ".") ? "." : ""}).join("");
     }
     // map this.varX and this.varY with corresponding num Type be mapped to 0 - 9 numbers
-    var localeMappedX = this.stringManipulator(this.varX, this.numberMap, true);
-    var localeMappedY = this.stringManipulator(this.varY, this.numberMap, true);
+    var localeMappedX = (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) ? this.convertNonStandardToDecimal(this.varX, this.numberMap, true) : this.stringManipulator(this.varX, this.numberMap, true);
+    var localeMappedY = (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) ? this.convertNonStandardToDecimal(this.varY, this.numberMap, true) : this.stringManipulator(this.varY, this.numberMap, true);
 
     let numberOperandX : any;
     let numberOperandY : any;
@@ -3403,9 +3526,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(8), this.mapLocale, false);
     } else if (this.currentBase == "base10") {
       if (this.displayComputedResultForUnicodeScript.indexOf(this.sessionManager.getFromSessionURL()) > -1) 
-        this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(), this.mapLocale, false);
+        this.resultField.nativeElement.value = (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) ? this.convertNonStandardToDecimal(this.operationResult.toString(), this.mapLocale, false) : this.stringManipulator(this.operationResult.toString(), this.mapLocale, false);
       else
-        this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
+        this.resultField.nativeElement.value = (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) ? this.convertNonStandardToDecimal(this.operationResult.toString(), this.mapLocale, false) : this.displayVariableInLocaleFormat(this.operationResult);
     } else if (this.currentBase == "base12") {
       this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(12), this.mapLocale, false);
     } else if (this.currentBase == "base16") {
