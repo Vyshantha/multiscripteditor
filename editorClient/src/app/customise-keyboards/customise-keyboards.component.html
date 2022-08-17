@@ -105,7 +105,7 @@
 </div>
 
 <div *ngIf="isMobile && !isTablet && currentCalculatorType == 'simple' && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
-    <h2 mat-dialog-title [ngClass]=" fontClass == 'odu' ? '' : fontClass" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} &nbsp;&nbsp;&nbsp;&nbsp; 
+    <h2 mat-dialog-title [ngClass]="fontClass" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} &nbsp;&nbsp;&nbsp;&nbsp; 
         <span>
             <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
             <mat-icon style="cursor: pointer;" aria-label="Launch" alt="Launch" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="!floatNotMinimise">open_with</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; 
@@ -217,7 +217,7 @@
 </div>
 
 <div *ngIf="isMobile && !isTablet && currentCalculatorType == 'scientific' && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
-    <h4 mat-dialog-title [ngClass]=" fontClass == 'odu' ? '' : fontClass" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right','margin':'1px'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} &nbsp;&nbsp;&nbsp;&nbsp; 
+    <h4 mat-dialog-title [ngClass]="fontClass" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right','margin':'1px'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} &nbsp;&nbsp;&nbsp;&nbsp; 
         <span>
             <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" style="font-size: smaller;" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
             <mat-icon style="cursor: pointer;" aria-label="Launch" alt="Launch" style="font-size: smaller;" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="!floatNotMinimise">open_with</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; 
@@ -354,7 +354,7 @@
 </div>
 
 <div *ngIf="!isMobile && isTablet && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
-    <h2 mat-dialog-title [ngClass]=" fontClass == 'odu' ? '' : fontClass" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} {{ 'Calculator' | translate }}&nbsp;&nbsp;&nbsp;&nbsp; 
+    <h2 mat-dialog-title [ngClass]="fontClass" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} {{ 'Calculator' | translate }}&nbsp;&nbsp;&nbsp;&nbsp; 
         <span>
             <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
             <mat-icon style="cursor: pointer;" aria-label="Launch" alt="Launch" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="!floatNotMinimise">open_with</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; 
@@ -435,7 +435,7 @@
 </div>
 
 <div *ngIf="!isMobile && !isTablet && calculatorKeyboard && !floatKeyboard && !customKeyboard" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle style="cursor: pointer;" class="keyboard-container" dir="auto">
-    <h2 mat-dialog-title [ngClass]=" fontClass == 'odu' ? '' : fontClass" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} {{ 'Calculator' | translate }}&nbsp;&nbsp;&nbsp;&nbsp; 
+    <h2 mat-dialog-title [ngClass]="fontClass" [ngStyle]="{'text-align':(dirSet == 'ltr')?'left':'right'}">&nbsp;&nbsp;&nbsp;&nbsp;{{localeNames}} {{ 'Calculator' | translate }}&nbsp;&nbsp;&nbsp;&nbsp; 
         <span>
             <mat-icon style="cursor: pointer;" aria-label="Minimise" alt="Minimise" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="floatNotMinimise">minimize</mat-icon> 
             <mat-icon style="cursor: pointer;" aria-label="Launch" alt="Launch" (click)="floatNotMinimise = !floatNotMinimise"  *ngIf="!floatNotMinimise">open_with</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; 

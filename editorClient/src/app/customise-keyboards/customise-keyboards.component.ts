@@ -2353,7 +2353,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
               this.operationResult = this.soloOperation(this.stringManipulator(this.resultField.nativeElement.value, this.numberMap, true), this.operatorValue);
               this.nonUnicodeEquationAndResult();
               if (this.displayComputedResultForUnicodeScript.indexOf(this.sessionManager.getFromSessionURL()) > -1) 
-                this.resultField.nativeElement.value = this.operationResult;
+                this.resultField.nativeElement.value = (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) ? this.convertNonStandardToDecimal(this.operationResult.toString(), this.mapLocale, false) : this.operationResult;
               else if (this.currentBase == "base2")
                 this.resultField.nativeElement.value = (this.operationResult >>> 0).toString(2);
               else if (this.currentBase == "base8")
@@ -2367,7 +2367,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
               else if (this.currentBase == "base60")
                 this.resultField.nativeElement.value = this.operationResult.toString(60);
               else
-                this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
+                this.resultField.nativeElement.value = (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) ? this.convertNonStandardToDecimal(this.operationResult.toString(), this.mapLocale, false) : this.displayVariableInLocaleFormat(this.operationResult);
 
               if (this.operatorValue == "sin" || this.operatorValue == "cos" || this.operatorValue == "tan") {
                 this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + this.circularUnit + " = " + this.resultField.nativeElement.value;
@@ -3389,9 +3389,40 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
     // nonDeciUpToPos1000000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 5000, num16 = 10000, num17 = 50000, num18 = 1000000 - ett
 
+    if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+      const rovasirasValidation = new RegExp('^M{0,4}(CM|CD{0,4})(XC|XL{0,4})(V?I{0,4})$');
+      // M = 𐳿 , D = ַ𐳽, C = 𐳾 , L = 𐳽 , X = 𐳼 , V = 𐳻 , I = 𐳺 
+      if (!rovasirasValidation.test(stringNumeral)) {
+        this.resultField.nativeElement.value = '';
+        this.equationField.nativeElement.value = '';
+        this._snackBar.open("Typing an unallowed character", this.translateForSnackBar[0], {
+          duration: 3000,
+        });
+        stringNumeral = "";
+      }
+    } else if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1){
+      const romanValidation = new RegExp('^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$');
+      if (!romanValidation.test(stringNumeral)) {
+        this.resultField.nativeElement.value = '';
+        this.equationField.nativeElement.value = '';
+        this._snackBar.open("Typing an unallowed character", this.translateForSnackBar[0], {
+          duration: 3000,
+        });
+        stringNumeral = "";
+      }
+    } else if (this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+      const etruscanValidation = new RegExp('^ↀ{0,3}(ↀ𐌟|D𐌟|D?𐌟{0,3})(𐌟𐌢|𐌣𐌢|𐌣?𐌢{0,3})(𐌢𐌠|𐌡𐌠|𐌡?𐌠{0,3})$');
+      if (!etruscanValidation.test(stringNumeral)) {
+        this.resultField.nativeElement.value = '';
+        this.equationField.nativeElement.value = '';
+        this._snackBar.open("Typing an unallowed character", this.translateForSnackBar[0], {
+          duration: 3000,
+        });
+        stringNumeral = "";
+      }
+    }
     for (let str = 0; str < stringNumeral.length; str++) {
       if (mappedArray[stringNumeral[str]] && internal && stringNumeral != "") {
-        // Number Validation & Operations
         if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
           if (stringNumeral.indexOf("ⅭⅮ") > -1) {
             valueInternal = 400 + valueInternal;
