@@ -1130,6 +1130,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   // Numeral System : https://en.wikipedia.org/wiki/List_of_numeral_systems
   // Base-20 : https://en.wikipedia.org/wiki/Vigesimal
   currentBase: string = "base10";
+  previousBase: string = "base10";
   scientificCurrentBase: string = "base10";
   baseIndices: any = [2, 8, 10, 12, 16, 20, 60];
 
@@ -2388,6 +2389,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
           case 'base2' : // Binary
             //  this.calculatorLayout for Numbers 2 - 9 set visible = "hide" & show binary operations
+            this.previousBase = this.currentBase;
             this.currentBase = "base2";
             this.calculatorLayout = [
               {"row":[
@@ -2416,6 +2418,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
           case 'base8' : 
             //  this.calculatorLayout for Numbers 8 - 9 set visible = "hide"
+            this.previousBase = this.currentBase;
             this.currentBase = "base8";
             this.calculatorLayout = [
               {"row":[
@@ -2444,6 +2447,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
           case 'base10' : // Default
             //  this.calculatorLayout for Numbers A - F set visible = "hide"
+            this.previousBase = this.currentBase;
             this.currentBase = "base10";
             this.calculatorLayout = [
               {"row":[
@@ -2472,6 +2476,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
           case 'base12' :
             //  this.calculatorLayout for Numbers C - F set visible = "hide"
+            this.previousBase = this.currentBase;
             this.currentBase = "base12";
             this.calculatorLayout = [
               {"row":[
@@ -2500,6 +2505,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
           case 'base16' :
             //  this.calculatorLayout for Numbers 0-9 & A - F set visible = "show"
+            this.previousBase = this.currentBase;
             this.currentBase = "base16";
             this.calculatorLayout = [
               {"row":[
@@ -2528,6 +2534,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
           case 'base20' : // Vigesimal
             //  this.calculatorLayout for Numbers 0-9 & A - F set visible = "show"
+            this.previousBase = this.currentBase;
             this.currentBase = "base20";
             this.calculatorLayout = [
               {"row":[
@@ -2556,6 +2563,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
           case 'base60' : // Sexagesimal
             //  this.calculatorLayout for Numbers 0-9 & A - F set visible = "show"
+            this.previousBase = this.currentBase;
             this.currentBase = "base60";
             this.calculatorLayout = [
               {"row":[
@@ -3390,12 +3398,16 @@ export class CustomiseKeyboardsComponent implements OnInit {
     // nonDeciUpToPos1000000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 5000, num16 = 10000, num17 = 50000, num18 = 1000000 - ett
 
     if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-      const rovasirasValidation = new RegExp('^M{0,4}(CM|CD{0,4})(XC|XL{0,4})(V?I{0,4})$');
-      // M = 𐳿 , D = ַ𐳽, C = 𐳾 , L = 𐳽 , X = 𐳼 , V = 𐳻 , I = 𐳺 
-      if (!rovasirasValidation.test(stringNumeral)) {
+      const mapRovasirasToLatin = {'𐳿':'M',' ַ𐳽':'D','𐳾':'C','𐳽':'L','𐳼':'X','𐳻':'V','𐳺':'I'};
+      let latinNumber = "";
+      for (let str of stringNumeral) {
+        latinNumber = latinNumber + mapRovasirasToLatin[str];
+      }
+      const rovasirasValidation = new RegExp('^M{0,4}(D?C{0,4})(L?X{0,4})(V?I{0,4})$');
+      if (!rovasirasValidation.test(latinNumber)) {
         this.resultField.nativeElement.value = '';
         this.equationField.nativeElement.value = '';
-        this._snackBar.open("Typing an unallowed character", this.translateForSnackBar[0], {
+        this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
           duration: 3000,
         });
         stringNumeral = "";
@@ -3405,17 +3417,17 @@ export class CustomiseKeyboardsComponent implements OnInit {
       if (!romanValidation.test(stringNumeral)) {
         this.resultField.nativeElement.value = '';
         this.equationField.nativeElement.value = '';
-        this._snackBar.open("Typing an unallowed character", this.translateForSnackBar[0], {
+        this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
           duration: 3000,
         });
         stringNumeral = "";
       }
     } else if (this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-      const etruscanValidation = new RegExp('^ↀ{0,3}(ↀ𐌟|D𐌟|D?𐌟{0,3})(𐌟𐌢|𐌣𐌢|𐌣?𐌢{0,3})(𐌢𐌠|𐌡𐌠|𐌡?𐌠{0,3})$');
+      const etruscanValidation = new RegExp('^ↂ{0,4}(ↁ?ↀ{0,4})(D?𐌟{0,4})(𐌣?𐌢{0,4})(𐌡?𐌠{0,4})$');
       if (!etruscanValidation.test(stringNumeral)) {
         this.resultField.nativeElement.value = '';
         this.equationField.nativeElement.value = '';
-        this._snackBar.open("Typing an unallowed character", this.translateForSnackBar[0], {
+        this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
           duration: 3000,
         });
         stringNumeral = "";
@@ -3445,28 +3457,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
             str = str - 1;
             continue;
           }
-        } else if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-          if (stringNumeral.indexOf("𐳾 ַ𐳽") > -1) {
-            valueInternal = 400 + valueInternal;
-            stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("𐳾 ַ𐳽")) + stringNumeral.substr(stringNumeral.indexOf("𐳾 ַ𐳽") + 2, stringNumeral.length - 1);
-            str = str - 1;
-            continue;
-          } else if (stringNumeral.indexOf("𐳾𐳿") > -1) { 
-            valueInternal = 900 + valueInternal; 
-            stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("𐳾𐳿")) + stringNumeral.substr(stringNumeral.indexOf("𐳾𐳿") + 2, stringNumeral.length - 1);
-            str = str - 1;
-            continue;
-          } else if (stringNumeral.indexOf("𐳼𐳽") > -1) {
-            valueInternal = 40 + valueInternal;
-            stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("𐳼𐳽")) + stringNumeral.substr(stringNumeral.indexOf("𐳼𐳽") + 2, stringNumeral.length - 1);
-            str = str - 1;
-            continue;
-          } else if (stringNumeral.indexOf("𐳼𐳾") > -1) {
-            valueInternal = 90 + valueInternal; 
-            stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("𐳼𐳾")) + stringNumeral.substr(stringNumeral.indexOf("𐳼𐳾") + 2, stringNumeral.length - 1);
-            str = str - 1;
-            continue;
-          }
         }
         valueInternal = parseInt(mappedArray[stringNumeral[str]]) + valueInternal;
       } else if (mappedArray[stringNumeral[str]] == undefined && internal && stringNumeral != "") {
@@ -3477,7 +3467,15 @@ export class CustomiseKeyboardsComponent implements OnInit {
           // nonDeciUpToPos1000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000 - hung
           // nonDeciUpToPos1000Fraction : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 0.5, num16 = 1/12, num17 = 2/3, num18 = 3/4, num19 = 10/12, num20 = 11/12 -la
           /* DCCLXXXIX-789 , MLXVI-1066 , MDCCLXXVI-1776 , MCMLIV-1954 , MMXXII-2022, MMCDXXI-2421 , MMMCMXCIX-3999 */
-          if (parseInt(stringNumeral) >= 1000) {
+          if (parseInt(stringNumeral) >= 10000 && mappedArray["10000"]) {
+            valueExternal = valueExternal + mappedArray["10000"];
+            stringNumeral = stringNumeral % 10000 + "";
+            str = str - 1;
+          } else if (parseInt(stringNumeral) >= 5000 && mappedArray["5000"]) {
+            valueExternal = valueExternal + mappedArray["5000"];
+            stringNumeral = stringNumeral % 5000 + "";
+            str = str - 1;
+          } else if (parseInt(stringNumeral) >= 1000) {
             valueExternal = valueExternal + mappedArray["1000"];
             stringNumeral = stringNumeral % 1000 + "";
             str = str - 1;
@@ -3489,7 +3487,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             if (Math.floor(parseInt(stringNumeral) % 1000 / 100) < 4 && this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
               valueExternal = valueExternal + mappedArray["100"].repeat(Math.floor(parseInt(stringNumeral) % 1000 / 100));
               stringNumeral = stringNumeral % 100 + "";
-            } else if (Math.floor(parseInt(stringNumeral) % 1000 / 100) <= 4 && this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+            } else if (Math.floor(parseInt(stringNumeral) % 1000 / 100) <= 4 && (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1)) {
               valueExternal = valueExternal + mappedArray["100"].repeat(Math.floor(parseInt(stringNumeral) % 1000 / 100));
               stringNumeral = stringNumeral % 100 + "";
             } else {
@@ -3505,7 +3503,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             if (Math.floor(parseInt(stringNumeral) % 100 / 10) < 4 && this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
               valueExternal = valueExternal + mappedArray["10"].repeat(Math.floor(parseInt(stringNumeral) % 100 / 10));
               stringNumeral = stringNumeral % 10 + "";
-            } else if (Math.floor(parseInt(stringNumeral) % 100 / 10) <= 4 && this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+            } else if (Math.floor(parseInt(stringNumeral) % 100 / 10) <= 4 && (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1)) {
               valueExternal = valueExternal + mappedArray["10"].repeat(Math.floor(parseInt(stringNumeral) % 100 / 10));
               stringNumeral = stringNumeral % 10 + "";
             } else {
@@ -3553,25 +3551,25 @@ export class CustomiseKeyboardsComponent implements OnInit {
     let numberOperandX : any;
     let numberOperandY : any;
     
-    if (this.currentBase == "base2") {
+    if (this.currentBase == "base2" && parseInt(this.previousBase.split("base")[1]) <= 2) {
       numberOperandX = parseInt(localeMappedX.split('').reverse().join(''), 2);
       numberOperandY = parseInt(localeMappedY.split('').reverse().join(''), 2);
-    } else if (this.currentBase == "base8") {
+    } else if ((this.currentBase == "base8" && parseInt(this.previousBase.split("base")[1]) <= 8) || (this.previousBase == "base2" || this.previousBase == "base8")) {
       numberOperandX = parseInt(localeMappedX.split('').reverse().join(''), 8);
       numberOperandY = parseInt(localeMappedY.split('').reverse().join(''), 8);
-    } else if (this.currentBase == "base10") {
+    } else if ((this.currentBase == "base10" && parseInt(this.previousBase.split("base")[1]) <= 10) || (this.previousBase == "base2" || this.previousBase == "base8" || this.previousBase == "base10")) {
       numberOperandX = parseFloat(localeMappedX);
       numberOperandY = parseFloat(localeMappedY);
-    } else if (this.currentBase == "base12") {
+    } else if ((this.currentBase == "base12" && parseInt(this.previousBase.split("base")[1]) <= 12) || (this.previousBase == "base2" || this.previousBase == "base8" || this.previousBase == "base10" || this.previousBase == "base12")) {
       numberOperandX = parseInt(localeMappedX.split('').reverse().join(''), 12);
       numberOperandY = parseInt(localeMappedY.split('').reverse().join(''), 12);
-    } else if (this.currentBase == "base16") {
+    } else if ((this.currentBase == "base16" && parseInt(this.previousBase.split("base")[1]) <= 16) || (this.previousBase == "base2" || this.previousBase == "base8" || this.previousBase == "base10" || this.previousBase == "base12" || this.previousBase == "base16")) {
       numberOperandX = parseInt(localeMappedX.split('').reverse().join(''), 16);
       numberOperandY = parseInt(localeMappedY.split('').reverse().join(''), 16);
-    } else if (this.currentBase == "base20") {
+    } else if ((this.currentBase == "base20" && parseInt(this.previousBase.split("base")[1]) <= 20) || (this.previousBase == "base2" || this.previousBase == "base8" || this.previousBase == "base10" || this.previousBase == "base12" || this.previousBase == "base16" || this.previousBase == "base20")) {
       numberOperandX = parseInt(localeMappedX.split('').reverse().join(''), 20);
       numberOperandY = parseInt(localeMappedY.split('').reverse().join(''), 20);
-    } else if (this.currentBase == "base60") {
+    } else if ((this.currentBase == "base60" && parseInt(this.previousBase.split("base")[1]) <= 60) || (this.previousBase == "base2" || this.previousBase == "base8" || this.previousBase == "base10" || this.previousBase == "base12" || this.previousBase == "base16" || this.previousBase == "base20" || this.previousBase == "base60")) {
       numberOperandX = parseInt(localeMappedX.split('').reverse().join(''), 60);
       numberOperandY = parseInt(localeMappedY.split('').reverse().join(''), 60);
     }

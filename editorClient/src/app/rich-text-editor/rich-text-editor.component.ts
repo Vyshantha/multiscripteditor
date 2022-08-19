@@ -993,9 +993,13 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
             let splitContent = content.split("</p>");
             if (this.topToBottomRL.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
               for (let i = 0; i < splitContent.length; i++) {
-                if (i == (splitContent.length - 2))
+                if (i == (splitContent.length - 2) && this.sessionManager.getFromSessionURL() != "ougr")
                   textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-rl;text-orientation: mixed;letter-spacing: 1em;'>").replace('<p style=\"', '<p style=\"writing-mode: vertical-rl;text-orientation: mixed;letter-spacing: 1em;');
-                else
+                else if (this.sessionManager.getFromSessionURL() != "ougr")
+                  textOrientatedContent = textOrientatedContent + splitContent[i];
+                else if (i == (splitContent.length - 2) && this.sessionManager.getFromSessionURL() == "ougr") 
+                  textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-rl;text-orientation: mixed;letter-spacing: 1em;'>").replace('<p style=\"', '<p style=\"writing-mode: vertical-rl;text-orientation: mixed;letter-spacing: 1em;transform: rotate(-180deg);');
+                else if (this.sessionManager.getFromSessionURL() == "ougr")
                   textOrientatedContent = textOrientatedContent + splitContent[i];
               }
             } else if (this.topToBottomLR.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
