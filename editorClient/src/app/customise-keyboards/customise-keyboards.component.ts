@@ -1440,7 +1440,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     this.sessionManager.itemSessionURL.subscribe((keysType) => {
       if (keysType) {
         this.dirSet = (this.rtlLocales.indexOf(keysType) > -1)? "right" : "left";
-        this.unicodeOverride = (this.rtlNumerals.indexOf(keysType) > -1 && this.unicode5AndHigher)? "bidi-override" : "normal";
+        this.unicodeOverride = (this.rtlNumerals.indexOf(keysType) > -1 && this.unicode5AndHigher || this.sessionManager.getFromSessionURL() == "ett")? "bidi-override" : "normal";
         if (this.layoutRotatedScript.indexOf(keysType) != -1) {
           this.enableRotateKeyboard = true;
         } else {
@@ -3395,15 +3395,14 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
     // nonDeciUpTo1000 : num0 = 10, num11 = 20, num12 = 100, num13 = 1000 - khar, pal
 
-    // nonDeciUpToPos1000000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 5000, num16 = 10000, num17 = 50000, num18 = 1000000 - ett
 
-    if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-      const mapRovasirasToLatin = {'𐳿':'M',' ַ𐳽':'D','𐳾':'C','𐳽':'L','𐳼':'X','𐳻':'V','𐳺':'I'};
+    if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 && internal) {
+      const mapRovasirasToLatin = {'𐳿':'Ⅿ',' ַ𐳽':'Ⅾ','𐳾':'Ⅽ','𐳽':'Ⅼ','𐳼':'Ⅹ','𐳻':'Ⅴ','𐳺':'Ⅰ'};
       let latinNumber = "";
       for (let str of stringNumeral) {
         latinNumber = latinNumber + mapRovasirasToLatin[str];
       }
-      const rovasirasValidation = new RegExp('^M{0,4}(D?C{0,4})(L?X{0,4})(V?I{0,4})$');
+      const rovasirasValidation = new RegExp('^Ⅿ{0,4}(Ⅾ?Ⅽ{0,4})(Ⅼ?Ⅹ{0,4})(Ⅴ?Ⅰ{0,4})$');
       if (!rovasirasValidation.test(latinNumber)) {
         this.resultField.nativeElement.value = '';
         this.equationField.nativeElement.value = '';
@@ -3412,8 +3411,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
         });
         stringNumeral = "";
       }
-    } else if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1){
-      const romanValidation = new RegExp('^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$');
+    } else if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 && internal){
+      const romanValidation = new RegExp('^Ⅿ{0,3}(ⅭⅯ|CⅮ|Ⅾ?Ⅽ{0,3})(ⅩC|ⅩⅬ|Ⅼ?Ⅹ{0,3})(ⅠⅩ|ⅠⅤ|Ⅴ?Ⅰ{0,3})$');
       if (!romanValidation.test(stringNumeral)) {
         this.resultField.nativeElement.value = '';
         this.equationField.nativeElement.value = '';
@@ -3422,9 +3421,14 @@ export class CustomiseKeyboardsComponent implements OnInit {
         });
         stringNumeral = "";
       }
-    } else if (this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-      const etruscanValidation = new RegExp('^ↂ{0,4}(ↁ?ↀ{0,4})(D?𐌟{0,4})(𐌣?𐌢{0,4})(𐌡?𐌠{0,4})$');
-      if (!etruscanValidation.test(stringNumeral)) {
+    } else if (this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1 && internal) {
+      const etruscanToLatin = {'ↂ':'Ⅿ','ↁ':'Ⅾ','ↀ':'Ⅽ','𐌣':'Ⅼ','𐌢':'Ⅹ','𐌡':'Ⅴ','𐌠':'Ⅰ'};
+      let latinNumber = "";
+      for (let str of stringNumeral) {
+        latinNumber = latinNumber + etruscanToLatin[str];
+      }
+      const etruscanValidation = new RegExp('^Ⅿ{0,4}(Ⅾ?Ⅽ{0,4})(Ⅼ?Ⅹ{0,4})(Ⅴ?Ⅰ{0,4})$');
+      if (!etruscanValidation.test(latinNumber)) {
         this.resultField.nativeElement.value = '';
         this.equationField.nativeElement.value = '';
         this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
@@ -3433,9 +3437,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
         stringNumeral = "";
       }
     }
-    for (let str = 0; str < stringNumeral.length; str++) {
-      if (mappedArray[stringNumeral[str]] && internal && stringNumeral != "") {
-        if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+    for (let str of stringNumeral) {
+      if (mappedArray[str] && internal && stringNumeral != "") {
+        if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
           if (stringNumeral.indexOf("ⅭⅮ") > -1) {
             valueInternal = 400 + valueInternal;
             stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅭⅮ")) + stringNumeral.substr(stringNumeral.indexOf("ⅭⅮ") + 2, stringNumeral.length - 1);
@@ -3458,15 +3462,16 @@ export class CustomiseKeyboardsComponent implements OnInit {
             continue;
           }
         }
-        valueInternal = parseInt(mappedArray[stringNumeral[str]]) + valueInternal;
-      } else if (mappedArray[stringNumeral[str]] == undefined && internal && stringNumeral != "") {
+        valueInternal = parseInt(mappedArray[str]) + valueInternal;
+      } else if (mappedArray[stringNumeral] == undefined && internal && stringNumeral != "") {
         valueInternal = parseInt(mappedArray[stringNumeral]) + valueInternal;
         stringNumeral = "";
-      } else if (mappedArray[stringNumeral[str]] && !internal && stringNumeral != "") {
-        if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+      } else if (mappedArray[str] && !internal && stringNumeral != "") {
+        if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
           // nonDeciUpToPos1000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000 - hung
           // nonDeciUpToPos1000Fraction : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 0.5, num16 = 1/12, num17 = 2/3, num18 = 3/4, num19 = 10/12, num20 = 11/12 -la
           /* DCCLXXXIX-789 , MLXVI-1066 , MDCCLXXVI-1776 , MCMLIV-1954 , MMXXII-2022, MMCDXXI-2421 , MMMCMXCIX-3999 */
+          // nonDeciUpToPos1000000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 5000, num16 = 10000, num17 = 50000, num18 = 1000000 - ett
           if (parseInt(stringNumeral) >= 10000 && mappedArray["10000"]) {
             valueExternal = valueExternal + mappedArray["10000"];
             stringNumeral = stringNumeral % 10000 + "";
@@ -3512,7 +3517,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
             }
             str = str - 1;
           } else if (parseInt(stringNumeral) > 0) {
-            valueExternal = valueExternal + mappedArray[stringNumeral[str]];
+            valueExternal = valueExternal + mappedArray[str];
           }
         }
       }
