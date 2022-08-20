@@ -45,7 +45,7 @@ This website offers every writer all the tools necessary to ensure they are able
 ### Server-side `NodeJS 16.x` based on Express server
   Hosted on Salesforce Cloud - **Heroku : https://worldscriptsexplorer.herokuapp.com**
  
-### Webserver based on `AngularJS 11.x`
+### Webserver based on `AngularJS 14.x`
   Hosted on Firebase **Google : https://worldscriptsexplorer.page**
 
 ### Generate the AngularJS & NodeJS Applications.
