@@ -28,12 +28,10 @@ sudo npm install -g firebase-tools # ONLY first time
 firebase login # ONLY first time
 firebase init # ONLY first time
 firebase deploy # ONLY first time
-cp ./src/assets/environments/sva_config_prod.json ./src/assets/environments/sva_config.json && ng build --prod --build-optimizer && firebase deploy --project worldscriptsexplorer
-cp ./src/assets/environments/sva_config_calc.json ./src/assets/environments/sva_config.json && ng build --prod --build-optimizer && firebase deploy --project worldscriptscalculator
+cp ./src/assets/environments/sva_config_prod.json ./src/assets/environments/sva_config.json && ng build --configuration production --build-optimizer && firebase deploy --project worldscriptsexplorer
+cp ./src/assets/environments/sva_config_calc.json ./src/assets/environments/sva_config.json && ng build --configuration production --build-optimizer && firebase deploy --project worldscriptscalculator
 
 
 ### Update Process
-git stash save --include-untracked
-git stash
-ng update @angular/core@12 @angular/cli@12 --allow-dirty
-git stash pop
+ng update @angular/core@12 @angular/cli@12 --allow-dirty --force
+ng update @angular/material@12 --allow-dirty --force

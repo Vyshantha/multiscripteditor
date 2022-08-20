@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';   
 import { HttpClient } from '@angular/common/http';
 import { SessionManagerService } from '../core/services/session-manager.service';
-import * as SVAConfig from './../../assets/environments/sva_config.json';
+import { default as SVAConfig } from './../../assets/environments/sva_config.json';
 
 import {
   MatSnackBar,

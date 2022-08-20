@@ -4,7 +4,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import * as SVAConfig from './../../assets/environments/sva_config.json';
+import { default as SVAConfig } from './../../assets/environments/sva_config.json';
 
 import * as allLayoutPositions from './../../assets/keyboard-layouts/keysboards-layouts.json';
 import * as layoutReligionAll from './../../assets/keyboard-layouts/layout-religion-all.json';

@@ -2,7 +2,7 @@
 ./stopMSE.sh
 # Publish to https://worldscriptsexplorer.page
 cd editorClient
-cp ./src/assets/environments/sva_config_prod.json ./src/assets/environments/sva_config.json && ng build --prod --build-optimizer && firebase deploy --project worldscriptsexplorer
+cp ./src/assets/environments/sva_config_prod.json ./src/assets/environments/sva_config.json && ng build --configuration production --build-optimizer && firebase deploy --project worldscriptsexplorer
 # Google Tag G-QSCLMX9T5B
 
 # Copy all the source content over
@@ -18,5 +18,5 @@ rm -rf index2.html
 
 cd ..
 # Publish to https://worldscriptscalculator.app
-cp ./src/assets/environments/sva_config_calc.json ./src/assets/environments/sva_config.json && ng build --prod --build-optimizer && firebase deploy --project worldscriptscalculator
+cp ./src/assets/environments/sva_config_calc.json ./src/assets/environments/sva_config.json && ng build --configuration production --build-optimizer && firebase deploy --project worldscriptscalculator
 # Google Tag G-J8VB632PHZ

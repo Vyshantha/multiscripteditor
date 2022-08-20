@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, AfterContentInit, ViewChild, ElementR
 import { CKEditorModule } from 'ng2-ckeditor';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import * as SVAConfig from './../../assets/environments/sva_config.json';
+import { default as SVAConfig } from './../../assets/environments/sva_config.json';
 
 import { SessionManagerService } from '../core/services/session-manager.service';
 
@@ -85,7 +85,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
 
   diphthongsMappingOduduwa : string[] = ["diba","die̱","dilo̱","dio̱","dire","diu","diwu","eba","ee̱","elo̱","eo̱","ere","eu","ewu","huba","hue̱","hulo̱","huo̱","hure","huu","huwu","iba","ie̱","ilo̱","io̱","ire","iu","iwu","miba","mie̱","milo̱","mio̱","mire","miu","miwu","niba","nie̱","nilo̱","nio̱","nire","niu","niwu","oba","oe̱","olo̱","oo̱","ore","ou","owu","´a","`a","´e","`e","´e̱","`e̱","´i","`i","´mi","`mi","´ni","`ni","´o","`o","´o̱","`o̱","´u","`u","`eba","`ee̱","`elo̱","`eo̱","`ere","`eu","`ewu","´e´e̱","´e´o̱","´e´u","´e´wu","´eba","´ee̱","´elo̱","´eo̱","´ere","´eu","´ewu","´oba","´oe̱","´olo̱","´oo̱","´ore","´ou","´owu","`oba","`oe̱","`olo̱","`oo̱","`ore","`ou","`owu","e´e̱","e´o̱","e´u","e´wu","di`e̱","di`o̱","di`u","di`wu","e`e̱","e`o̱","e`u","e`wu","`e´e̱","`e´o̱","`e´u","`e´wu","`o´e̱","`o´o̱","`o´u","`o´wu","´o`e̱","´o`o̱","´o`u","´o`wu","o`e̱","o`o̱","o`u","o`wu","´o´e̱","´o´o̱","´o´u","´o´wu","o´e̱","o´o̱","o´u","o´wu","`mi`e̱","`mi`o̱","`mi`u","`mi`wu","`mi´e̱","`mi´o̱","`mi´u","`mi´wu","`miba","`mie̱","`milo̱","`mio̱","`mire","`miu","`miwu","´mi`e̱","´mi`o̱","´mi`u","´mi`wu","´mi´e̱","´mi´o̱","´mi´u","´mi´wu","´miba","´mie̱","´milo̱","´mio̱","´mire","´miu","´miwu","mi`e̱","mi`o̱","mi`u","mi`wu","mi´e̱","mi´o̱","mi´u","mi´wu","`ni`e̱","`ni`o̱","`ni`u","`ni`wu","`ni´e̱","`ni´o̱","`ni´u","`ni´wu","`niba","`nie̱","`nilo̱","`nio̱","`nire","`niu","`niwu","´ni´e̱","´ni´o̱","´ni´u","´ni´wu","´niba","´nie̱","´nilo̱","´nio̱","´nire","´niu","´niwu","ni`e̱","ni`o̱","ni`u","ni`wu","ni´e̱","ni´o̱","ni´u","ni´wu","`i`e̱","`i`o̱","`i`u","`i`wu","`i´e̱","`i´o̱","`i´u","`i´wu","`iba","`ie̱","`ilo̱","`io̱","`ire","`iu","`iwu","´i`e̱","´i`o̱","´i`u","´i`wu","´i´e̱","´i´o̱","´i´u","´i´wu","´iba","´ie̱","´ilo̱","´io̱","´ire","´iu","´iwu","i`e̱","i`o̱","i`u","i`wu","i´e̱","i´o̱","i´u","i´wu","`o`e̱","`o`o̱","`o`u","`o`wu","´e`e̱","´e`o̱","´e`u","´e`wu","di´e̱","hu`e̱","hu`o̱","hu`u","hu`wu","hu´e̱","hu´o̱","hu´u","hu´wu","di´o̱","di´u","di´wu"];
 
-  topToBottomLR: string[] = ['galk','ja','ko','mnc','mon','oira','phag','shui','sog','soyo','zhcn','zhtw'];
+  topToBottomLR: string[] = ['evn','galk','ja','ko','mnc','mon','oira','phag','shui','sog','soyo','zhcn','zhtw'];
   topToBottomRL: string[] = ['chun','idu','ja','ko','kuli','mero','nshu','ougr','txg','yii','zhcn','zhtw'];
   bottomToTopLR: string[] = ['btk','hano','ogam','tagb'];
   bottomToTopRL: string[] = ['ber'];

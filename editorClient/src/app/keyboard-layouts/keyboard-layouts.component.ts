@@ -24,7 +24,7 @@ import TileLayer from "ol/layer/Tile";
 import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
 
-import * as SVAConfig from './../../assets/environments/sva_config.json';
+import { default as SVAConfig } from './../../assets/environments/sva_config.json';
 
 
 import { HelperComponent } from '../helper/helper.component';
@@ -1223,7 +1223,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   
   rtlLocales : string[] = ['adlm','ajam','ar','arc','avst','bal','ber','bsk','cana','chrs','chun','ckb','cprt','dv','egyd','elym','estr','ett','fa','gars','hatr','he','hung','idu','indus','jawi','jrb','khar','khaz','ks','kuli','kult','lad','lepo','linb','lydi','madn','mand','mani','mend','mer','mero','mnkar','nbat','nkoo','nshu','odu','orkh','ougr','pal','palm','phn','phyg','pice','ps','psal','rhg','rohg','sabe','safa','samr','sd','sert','sina','skr','sog','syrc','thaa','txg','txr','ug','ur','woal','wolf','xpr','xpu','xsa','yezi','yi'];
   boustrophedonScripts: string[] = ['asom','avo','egyd','ett','hung','kmt','lepo','luw','maya','moon','phyg','pice','sabe','safa','sina','txr','wole','xsa'];
-  topToBottomLR: string[] = ['galk','ja','ko','mnc','mon','oira','phag','shui','sog','soyo','zhcn','zhtw'];
+  topToBottomLR: string[] = ['evn','galk','ja','ko','mnc','mon','oira','phag','shui','sog','soyo','zhcn','zhtw'];
   topToBottomRL: string[] = ['chun','idu','ja','ko','kuli','mero','nshu','ougr','txg','yii','zhcn','zhtw'];
   bottomToTopLR: string[] = ['btk','hano','ogam','tagb'];
   bottomToTopRL: string[] = ['ber'];

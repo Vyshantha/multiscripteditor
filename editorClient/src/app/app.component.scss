@@ -1,36 +1,36 @@
-@import '~@angular/material/theming';
-@include mat-core();
+@use '~@angular/material' as mat;
+@include mat.core();
 
-@include mat-core();
+@include mat.core();
 
 .light-theme {
-    color: $dark-primary-text;
-    $light-primary: mat-palette($mat-purple);
-    $light-accent: mat-palette($mat-green, A200, A100, A400);
-    $light-warn: mat-palette($mat-red);
-    $light-theme: mat-light-theme($light-primary, $light-accent, $light-warn);
+    color: rgba(black, 0.87);
+    $light-primary: mat.define-palette(mat.$purple-palette);
+    $light-accent: mat.define-palette(mat.$green-palette, A200, A100, A400);
+    $light-warn: mat.define-palette(mat.$red-palette);
+    $light-theme: mat.define-light-theme($light-primary, $light-accent, $light-warn);
   
-    @include angular-material-theme($light-theme);
+    @include mat.all-component-themes($light-theme);
   }
   
   .dark-theme {
-    $dark-primary: mat-palette($mat-yellow);
-    $dark-accent: mat-palette($mat-amber, A400, A100, A700);
-    $dark-warn: mat-palette($mat-red);
-    $dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+    $dark-primary: mat.define-palette(mat.$yellow-palette);
+    $dark-accent: mat.define-palette(mat.$amber-palette, A400, A100, A700);
+    $dark-warn: mat.define-palette(mat.$red-palette);
+    $dark-theme: mat.define-dark-theme($dark-primary, $dark-accent, $dark-warn);
   
-    @include angular-material-theme($dark-theme);
+    @include mat.all-component-themes($dark-theme);
     color: beige;
     background-color: rgb(75, 74, 74);
   }
   
   .cdk-high-contrast-theme {
-    $cdk-high-contrast-primary: mat-palette($mat-blue);
-    $cdk-high-contrast-accent: mat-palette($mat-pink, A400, A100, A700);
-    $cdk-high-contrast-warn: mat-palette($mat-red);
-    $cdk-high-contrast-theme: mat-dark-theme($cdk-high-contrast-primary, $cdk-high-contrast-accent, $cdk-high-contrast-warn);
+    $cdk-high-contrast-primary: mat.define-palette(mat.$blue-palette);
+    $cdk-high-contrast-accent: mat.define-palette(mat.$pink-palette, A400, A100, A700);
+    $cdk-high-contrast-warn: mat.define-palette(mat.$red-palette);
+    $cdk-high-contrast-theme: mat.define-dark-theme($cdk-high-contrast-primary, $cdk-high-contrast-accent, $cdk-high-contrast-warn);
   
-    @include angular-material-theme($cdk-high-contrast-theme);
+    @include mat.all-component-themes($cdk-high-contrast-theme);
     background-color: rgb(83, 87, 76);
   }
 
@@ -100,8 +100,8 @@
         -moz-transform: rotate(90deg); /* Mozilla */
         -o-transform: rotate(90deg); /* Opera */
         transform: rotate(-90deg);
-        //width: /* screen width */ ;
-        //height: /* screen height */ ;
+        //width: __<<ngThemingMigrationEscapedComment4>>__ ;
+        //height: __<<ngThemingMigrationEscapedComment5>>__ ;
         overflow: scroll;
     }
 }
