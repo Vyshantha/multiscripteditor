@@ -11,3 +11,8 @@ package-lock_v1.json
 editorClient_v11.zip
 convertLayouts/Unused_Images.zip
 convertLayouts/characters_Non_Transparent.zip
+editorClient/backup_v11/*
+editorClient/backup_v12/*
+editorClient/backup_v13/*
+editorClient/backup_v14/*
+editorClient/.angular/*

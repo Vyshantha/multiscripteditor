@@ -133,7 +133,10 @@ export class AppComponent implements AfterViewInit {
         this.endemicURL = window.location.href.split('/')[0] + '//' + window.location.href.split('/')[2] + '/'  + (this.keyboardLayouts[newURL][5]).toLowerCase();
       }
       this.apiURL = (newURL) ? newURL : this.sessionManager.getFromSessionURL();
-      this.calculatorURL = "https://worldscriptscalculator.app/" + this.sessionManager.getFromSessionURL();
+      if (this.sessionManager.getFromSessionURL() != undefined && this.sessionManager.getFromSessionURL() != "")
+        this.calculatorURL = "https://worldscriptscalculator.app/" + this.sessionManager.getFromSessionURL();
+      else
+        this.calculatorURL = "https://worldscriptscalculator.app/" + this.browserLocale.split('-')[0];
     });
     this.sessionManager.itemUILocale.subscribe((locale) => {
       this.loadFromFile(locale, "Every Writers Choice");

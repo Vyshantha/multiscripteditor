@@ -55,64 +55,63 @@ export function setupTranslateFactory(service: TranslateService): Function {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RichTextEditorComponent,
-    OptionsComponent,
-    KeyboardLayoutsComponent,
-    CanvasComponent,
-    ServiceForKeyboardComponent,
-    ToolBarActionsComponent,
-    FootInfoBarComponent,
-    TranslatePipe,
-    HelperComponent,
-    SafePipe,
-    CustomiseKeyboardsComponent
-  ],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    BidiModule,
-    AppRoutingModule,
-    CKEditorModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatTabsModule,
-    MatCheckboxModule,
-    MatAutocompleteModule,
-    MatMenuModule,
-    MatSlideToggleModule,
-    MatSelectModule,
-    DragDropModule,
-    MatBadgeModule,
-    MatButtonModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatChipsModule,
-    MatCardModule,
-    MatDialogModule,
-    MatToolbarModule,
-    MatDividerModule,
-    MatExpansionModule,
-    MatSnackBarModule,
-    MatSliderModule,
-    MatTooltipModule,
-    BrowserAnimationsModule,
-    HttpClientModule
-    //ColorPickerModule
-  ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ],
-  entryComponents: [ToolBarActionsComponent, HelperComponent, RichTextEditorComponent, KeyboardLayoutsComponent, ServiceForKeyboardComponent, OptionsComponent, FootInfoBarComponent, CustomiseKeyboardsComponent],
-  providers: [SessionManagerService, ThemeService, TranslateService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: setupTranslateFactory,
-      deps: [
-        TranslateService
-      ],
-      multi: true
-    },{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        RichTextEditorComponent,
+        OptionsComponent,
+        KeyboardLayoutsComponent,
+        CanvasComponent,
+        ServiceForKeyboardComponent,
+        ToolBarActionsComponent,
+        FootInfoBarComponent,
+        TranslatePipe,
+        HelperComponent,
+        SafePipe,
+        CustomiseKeyboardsComponent
+    ],
+    imports: [
+        CommonModule,
+        BrowserModule,
+        BidiModule,
+        AppRoutingModule,
+        CKEditorModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatTabsModule,
+        MatCheckboxModule,
+        MatAutocompleteModule,
+        MatMenuModule,
+        MatSlideToggleModule,
+        MatSelectModule,
+        DragDropModule,
+        MatBadgeModule,
+        MatButtonModule,
+        MatInputModule,
+        MatProgressSpinnerModule,
+        MatIconModule,
+        MatChipsModule,
+        MatCardModule,
+        MatDialogModule,
+        MatToolbarModule,
+        MatDividerModule,
+        MatExpansionModule,
+        MatSnackBarModule,
+        MatSliderModule,
+        MatTooltipModule,
+        BrowserAnimationsModule,
+        HttpClientModule
+        //ColorPickerModule
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+    providers: [SessionManagerService, ThemeService, TranslateService,
+        {
+            provide: APP_INITIALIZER,
+            useFactory: setupTranslateFactory,
+            deps: [
+                TranslateService
+            ],
+            multi: true
+        }, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

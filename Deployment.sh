@@ -35,3 +35,5 @@ cp ./src/assets/environments/sva_config_calc.json ./src/assets/environments/sva_
 ### Update Process
 ng update @angular/core@12 @angular/cli@12 --allow-dirty --force
 ng update @angular/material@12 --allow-dirty --force
+ng update @angular/core@13 @angular/cli@13 --allow-dirty --force
+ng update @angular/material@13 --allow-dirty --force
