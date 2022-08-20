@@ -27,7 +27,7 @@ cd editorClient
 #sleep 5s
 
 # Start Client Side
-ng serve --host 0.0.0.0 --port 4200 --ssl true --ssl-cert ./../routes/server.crt --ssl-key ./../routes/key.pem --liveReload=false &
+ng serve --host 0.0.0.0 --port 4200 --ssl true --ssl-cert ./../routes/server.crt --ssl-key ./../routes/key.pem &
 
 sleep 10s
 cd ..

@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FormControl, FormGroup, FormBuilder, FormGroupDirective, NgForm, Validators} from '@angular/forms';
+import { UntypedFormControl, FormGroup, FormBuilder, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { default as SVAConfig } from './../../assets/environments/sva_config.json';
@@ -37,7 +37,7 @@ export class ToolBarActionsComponent implements OnInit, AfterViewInit {
   supportedLanguageColumn4 : any = [];
   allSupportedLanguages : any = [];
 
-  panelColor = new FormControl('lightsalmon');
+  panelColor = new UntypedFormControl('lightsalmon');
   headerVisible : Boolean = true;
 
   HelperPopUp: any = HelperComponent;

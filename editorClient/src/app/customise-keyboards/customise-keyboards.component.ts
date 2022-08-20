@@ -1,7 +1,7 @@
 import { Component, ComponentRef, OnInit, AfterViewInit, ElementRef, ViewChild, Inject, Renderer2 } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { UntypedFormBuilder, FormGroup} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { default as SVAConfig } from './../../assets/environments/sva_config.json';
@@ -1365,7 +1365,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     - BaseX specific Operations
   */
 
-  constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, private renderer: Renderer2,searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
+  constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: UntypedFormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, private renderer: Renderer2,searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
     if (this.data.show == 'custom') {
       this.customKeyboard = true;
       this.floatKeyboard = false;

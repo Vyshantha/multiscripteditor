@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, EventEmitter, Output, Input, NgZone, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
 import { MatDialog } from '@angular/material/dialog';
@@ -1317,7 +1317,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   };
 
   isSuggestionRequested: Boolean = true;
-  languageSuggestion: FormGroup = this._formBuilder.group({
+  languageSuggestion: UntypedFormGroup = this._formBuilder.group({
     setOfWords: ''
   });
   typedWord = new BehaviorSubject(null);
@@ -1444,7 +1444,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     return value;
   }
 
-  constructor(private router: Router, private sessionManager: SessionManagerService, private zone: NgZone, private cd: ChangeDetectorRef, private _formBuilder: FormBuilder, private http: HttpClient, private helperDialog: MatDialog, private customKeyboardDialog: MatDialog, private _snackBar: MatSnackBar, abjadSearchField: ElementRef, alphabetSearchField: ElementRef, latinSearchField: ElementRef, abugidaSearchField: ElementRef, syllaberySearchField: ElementRef, gramsSearchField: ElementRef, unclassifiedSearchField: ElementRef) {
+  constructor(private router: Router, private sessionManager: SessionManagerService, private zone: NgZone, private cd: ChangeDetectorRef, private _formBuilder: UntypedFormBuilder, private http: HttpClient, private helperDialog: MatDialog, private customKeyboardDialog: MatDialog, private _snackBar: MatSnackBar, abjadSearchField: ElementRef, alphabetSearchField: ElementRef, latinSearchField: ElementRef, abugidaSearchField: ElementRef, syllaberySearchField: ElementRef, gramsSearchField: ElementRef, unclassifiedSearchField: ElementRef) {
     if (localStorage.getItem('qwertyStyle') != undefined) {
       if (this.sessionManager.getInSessionQwerty() === 'true')
         this.isQwerty = false;

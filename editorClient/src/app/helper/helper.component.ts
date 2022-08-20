@@ -3,7 +3,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTabChangeEvent, MatTabGroup } from '@angular/material/tabs';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {startWith, map} from 'rxjs/operators';
@@ -51,7 +51,7 @@ export class HelperComponent implements OnInit, AfterViewInit {
   port: number = SVAConfig.port;
   calculatorOnly: Boolean = SVAConfig.calculatorOnly;
 
-  supportedScripts: FormGroup = this._formBuilder.group({
+  supportedScripts: UntypedFormGroup = this._formBuilder.group({
     script: ''
   });
   allScripts: AvailableKeyboards[] = [{"scriptType": "", "scriptName": []},{"scriptType": "", "scriptName": []},{"scriptType": "", "scriptName": []},{"scriptType": "", "scriptName": []},{"scriptType": "", "scriptName": []},{"scriptType": "", "scriptName": []},{"scriptType": "", "scriptName": []},{"scriptType": "", "scriptName": []},{"scriptType": "", "scriptName": []}];
@@ -116,7 +116,7 @@ export class HelperComponent implements OnInit, AfterViewInit {
   // EasyOCR Supported Languages
   supported_written_language = [];
 
-  constructor(private dialogRef: MatDialogRef<HelperComponent>, private _formBuilder: FormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, private sanitizer: DomSanitizer, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: HelpOrPrivacy) { 
+  constructor(private dialogRef: MatDialogRef<HelperComponent>, private _formBuilder: UntypedFormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, searchInputAllScripts: ElementRef, private sanitizer: DomSanitizer, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: HelpOrPrivacy) { 
     if (this.data.show == 'privacy') {
       this.helpOrPrivacy = true;
     } else if (this.data.show == 'help') {

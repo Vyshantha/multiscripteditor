@@ -32,8 +32,22 @@ cp ./src/assets/environments/sva_config_prod.json ./src/assets/environments/sva_
 cp ./src/assets/environments/sva_config_calc.json ./src/assets/environments/sva_config.json && ng build --configuration production --build-optimizer && firebase deploy --project worldscriptscalculator
 
 
-### Update Process
+### Update Process for Angular
+# v11 to v12
+ng version
 ng update @angular/core@12 @angular/cli@12 --allow-dirty --force
 ng update @angular/material@12 --allow-dirty --force
+cp ./editorClient ./editorClientCalculator
+./publishWebsite.sh
+# v12 to v13
+ng version
 ng update @angular/core@13 @angular/cli@13 --allow-dirty --force
 ng update @angular/material@13 --allow-dirty --force
+cp ./editorClient ./editorClientCalculator
+./publishWebsite.sh
+# v13 to v14
+ng version
+ng update @angular/core@14 @angular/cli@14 --allow-dirty --force
+ng update @angular/material@14 --allow-dirty --force
+cp ./editorClient ./editorClientCalculator
+./publishWebsite.sh
