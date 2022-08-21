@@ -9036,11 +9036,11 @@
 </div>
 <div *ngIf="calculatorOnly">
     <p style="text-align: center;">
-        <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;font-size: xxx-large;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-        <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;font-size: xxx-large;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="removeBookmark()">bookmark_remove</mat-icon>
+        <mat-icon aria-label="{{ 'Add Keyboard To Favourites' | translate }}" alt="{{ 'Add Keyboard To Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;font-size: x-large;" matTooltip="{{ 'Add Keyboard To Favourites' | translate }}" (click)="addBookmark()">bookmark_add</mat-icon>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        <mat-icon aria-label="{{ 'Remomve Keyboard From Favourites' | translate }}" alt="{{ 'Remove Keyboard From Favourites' | translate }}" style="cursor: pointer;vertical-align: middle;font-size: x-large;" matTooltip="{{ 'Remmove Keyboard From Favourites' | translate }}" (click)="removeBookmark()">bookmark_remove</mat-icon>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
         <button mat-icon-button [matMenuTriggerFor]="favouriteMenu" matBadge="{{populatingBookmarks.length}}" *ngIf="populatingBookmarks.length > 0">
-            <mat-icon aria-label="{{ 'Select From Favourite Keyboards' | translate }}" matTooltip="{{ 'Select From Favourite Keyboards' | translate }}" style="cursor: pointer;vertical-align: bottom;font-size: xxx-large;">bookmark</mat-icon>
+            <mat-icon aria-label="{{ 'Select From Favourite Keyboards' | translate }}" matTooltip="{{ 'Select From Favourite Keyboards' | translate }}" style="cursor: pointer;vertical-align: bottom;font-size: x-large;">bookmark</mat-icon>
         </button>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
         <mat-menu #favouriteMenu="matMenu">
@@ -9049,7 +9049,7 @@
             </button>
         </mat-menu>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-        <mat-icon aria-label="{{ 'Calculator Keyboard' | translate }}" alt="{{ 'Calculator Keyboard' | translate }}" style="cursor: pointer;vertical-align: middle;font-size: xxx-large;" matTooltip="{{ 'Calculator Keyboard' | translate }}" (click)="customKeyboardLayouts('calculate')">calculate</mat-icon>
+        <mat-icon aria-label="{{ 'Calculator Keyboard' | translate }}" alt="{{ 'Calculator Keyboard' | translate }}" style="cursor: pointer;vertical-align: middle;font-size: x-large;" matTooltip="{{ 'Calculator Keyboard' | translate }}" (click)="customKeyboardLayouts('calculate')">calculate</mat-icon>
     </p>
     <br/><br/>
 </div>

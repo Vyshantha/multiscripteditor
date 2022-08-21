@@ -3511,7 +3511,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
         stringNumeral = "";
       }
     } else if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 && internal){
-      const romanValidation = new RegExp('^Ⅿ{0,3}(ⅭⅯ|ⅭⅮ|Ⅾ?Ⅽ{0,3})(ⅩⅭ|ⅩⅬ|Ⅼ?Ⅹ{0,3})(Ⅰ|Ⅱ|Ⅲ|Ⅳ|Ⅴ|Ⅵ|Ⅶ|Ⅷ|ⅠⅩ|Ⅹ)$');
+      const romanValidation = new RegExp('^Ⅿ{0,3}(ⅭⅯ|ⅭⅮ|Ⅾ?Ⅽ{0,3})(ⅩⅭ|ⅩⅬ|Ⅼ?Ⅹ{0,3})(Ⅰ|Ⅱ|Ⅲ|Ⅳ|Ⅴ|Ⅵ|Ⅶ|Ⅷ|Ⅸ|Ⅹ)$');
       if (!romanValidation.test(stringNumeral)) {
         this.resultField.nativeElement.value = '';
         this.equationField.nativeElement.value = '';
@@ -3536,6 +3536,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
         stringNumeral = "";
       }
     }
+    // Defect 'chrs' opposite side result
+    // ToDo Validate numbers : rtlArrayOverride
     var digitPosition = 0;
     for (var str of stringNumeral) {
       if (digitPosition < stringNumeral.length) {
@@ -3628,8 +3630,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 stringNumeral = parseInt(stringNumeral) % 10 + "";
               }
               digitPosition = digitPosition - 1;
-            } else if (parseInt(stringNumeral) > 0) {
-              valueExternal = valueExternal + mappedArray[digitPosition];
+            } 
+            if (parseInt(stringNumeral) > 0 && stringNumeral.length == 1) {
+              valueExternal = valueExternal + mappedArray[stringNumeral];
+              stringNumeral = "";
             }
           } else if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
             // use10InPlaceOfZeroUpTo200 : num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 1000
