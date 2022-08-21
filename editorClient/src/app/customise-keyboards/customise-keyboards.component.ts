@@ -1214,25 +1214,33 @@ export class CustomiseKeyboardsComponent implements OnInit {
   alphaNumeric: any = ['arc','asom','el','estr','glag','goth','he','hy','ion','ka','lad','linb','linea','madn','mand','nusk','sert','sina','syrc','udi','yi'];
   
   // Non-Decimal numerals
+  rtlArrayOverride : any = ['chrs','khar','kult','nbat','pal','palm','phn','psal'];
   nonStandardNumeral : any = ['chrs','ett','ital','hung','khar','kmt','kult','la','nbat','pal','palm','phn','psal','sabe','sog'];
   // num0 = 10, num11 = 20 - palm
   nonDeciUpTo20: any = ['palm'];
+
   // num0 = 10, num11 = 20, num12 = 100 - chrs, nbat, phn, psal, sog
   nonDeciUpTo100: any = ['chrs','nbat','phn','psal','sog'];
+
   // num0 = 10, num11 = 20, num12 = 30, num13 = 100, num14 = 0.5 - kult
   nonDeciUpTo100Fraction: any = ['kult'];
+
   // num0 = 10, num11 = 20, num12 = 100, num13 = 1000 - khar, pal
   nonDeciUpTo1000: any = ['khar','pal'];
+
   // num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000 - hung
   nonDeciUpToPos1000 = ['hung'];
+
   // num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 5000, num16 = 10000, num17 = 50000, num18 = 1000000 - ett
   nonDeciUpToPos1000000 = ['ett'];
+
   // num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 0.5, num16 = 1/12, num17 = 2/3, num18 = 3/4, num19 = 10/12, num20 = 11/12 -la
   nonDeciUpToPos1000Fraction: any = ['la'];
 
   // num0 = 10, num11 = 100, num12 = 1000, num13 = 10000, num14 = 100000 - kmt : https://en.wikipedia.org/wiki/Egyptian_numerals
   nonDeciUpTo100000: any = ['kmt'];
-  // num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 200 - Indic Siyaq https://www.unicode.org/charts/PDF/U1EC70.pdf ,  Ottaman Siyaq : https://www.unicode.org/charts/PDF/U1ED00.pdf
+
+  // num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 200 - Persian Siyaq : https://www.unicode.org/L2/L2021/21105-persian-siyaq.pdf, Indic Siyaq https://www.unicode.org/charts/PDF/U1EC70.pdf , Diwani Siyaq : http://std.dkuug.dk/JTC1/SC2/WG2/docs/n4119.pdf, Ottaman Siyaq : https://www.unicode.org/charts/PDF/U1ED00.pdf
   nonDecimalUpTo200: any = ['indq', 'ottoq'];
   
   // Base 20 numerals
@@ -1343,7 +1351,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   nonUnicodeNumberEquation: any = [];
   nonUnicodeNumberResult: any = [];
 
-  numberMap: any = [];
+  numberMap: any = {};
   mapLocale: any = [];
   nonUnicodeMap: any = [];
 
@@ -1359,7 +1367,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   translateForSnackBar: string[] = [];
 
   /* TODO Items
-    - Special Case for display & computing - distinctNumerals/use10InPlaceOfZero/alphaNumeric/numberFor10Powers/nonStandardNumeral/vigesimal/sexagesimal 
+    - Special Case for display & computing - use10InPlaceOfZero/nonStandardNumeral/vigesimal/sexagesimal 
     - Any Equation Setup (Paste/History/Bookmark/Formula) and use
     - Brackets usage & complete equation computation
     - BaseX specific Operations
@@ -1463,6 +1471,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
         if (this.fontsSources.indexOf(keysType) > -1){
           this.fontClass = this.fontsSources[this.fontsSources.indexOf(keysType)];
+        } else if (this.sessionManager.getFromSessionURL() == "ett") {
+          this.fontClass = "ett";
         }
         // Swapping Comma and Period
         if(this.commaDecimalSeparatorLocales.indexOf(keysType) > -1) {
@@ -1683,396 +1693,498 @@ export class CustomiseKeyboardsComponent implements OnInit {
       if (this.layoutCurrentKeys[i].row) {
         // Last two rows in Orthography template reserved for Mathematics operation symbols
         for(let j = 0; j < this.layoutCurrentKeys[i].row.length; j++) { 
+          let layoutCurrentElement = this.layoutCurrentKeys[i].row[j];
           // num1
-          if ((this.currentBase == "base2" || this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num1" && this.calculatorLayout[2].row[8].type && this.calculatorLayout[2].row[8].type == "num1") {
-            this.calculatorLayout[2].row[8].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[1].row[0].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "1";
-            this.mapLocale["1"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.currentBase == "base2" || this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num1" && this.calculatorLayout[2].row[8].type && this.calculatorLayout[2].row[8].type == "num1") {
+            this.calculatorLayout[2].row[8].value = layoutCurrentElement.value;
+            this.simpleCalculatorLayout[1].row[0].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "\u202A 1";
+            } else 
+              this.numberMap[layoutCurrentElement.value] = "1";
+            this.mapLocale["1"] = layoutCurrentElement.value; 
             this.calculatorLayout[2].row[8].visible = "show";
             this.simpleCalculatorLayout[1].row[0].visible = "show";
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[2].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[1].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["1"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[2].row[8]["src"] = layoutCurrentElement.src;
+              this.simpleCalculatorLayout[1].row[0]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["1"] = layoutCurrentElement.src;
               this.noNumeralsForNonUnicode = true;
             }
             continue;
           }
           // num2
-          if ((this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num2" && this.calculatorLayout[2].row[9].type && this.calculatorLayout[2].row[9].type == "num2") {
-            this.calculatorLayout[2].row[9].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[1].row[1].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "2";
-            this.mapLocale["2"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num2" && this.calculatorLayout[2].row[9].type && this.calculatorLayout[2].row[9].type == "num2") {
+            this.calculatorLayout[2].row[9].value = layoutCurrentElement.value;
+            this.simpleCalculatorLayout[1].row[1].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "\u202A 2";
+            } else 
+              this.numberMap[layoutCurrentElement.value] = "2";
+            this.mapLocale["2"] = layoutCurrentElement.value; 
             this.calculatorLayout[2].row[9].visible = "show";
             this.simpleCalculatorLayout[1].row[1].visible = "show";
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[2].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[1].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["2"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[2].row[9]["src"] = layoutCurrentElement.src;
+              this.simpleCalculatorLayout[1].row[1]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["2"] = layoutCurrentElement.src;
             }
             continue;
           }
           // num3
-          if ((this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num3" && this.calculatorLayout[2].row[10].type && this.calculatorLayout[2].row[10].type == "num3") {
-            this.calculatorLayout[2].row[10].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[1].row[2].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "3";
-            this.mapLocale["3"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num3" && this.calculatorLayout[2].row[10].type && this.calculatorLayout[2].row[10].type == "num3") {
+            this.calculatorLayout[2].row[10].value = layoutCurrentElement.value;
+            this.simpleCalculatorLayout[1].row[2].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "\u202A 3";
+            } else 
+              this.numberMap[layoutCurrentElement.value] = "3";
+            this.mapLocale["3"] = layoutCurrentElement.value; 
             this.calculatorLayout[2].row[10].visible = "show";
             this.simpleCalculatorLayout[1].row[2].visible = "show";
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[2].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[1].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["3"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[2].row[10]["src"] = layoutCurrentElement.src;
+              this.simpleCalculatorLayout[1].row[2]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["3"] = layoutCurrentElement.src;
             }
             continue;
           }
           // num4
-          if ((this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num4" && this.calculatorLayout[3].row[8].type && this.calculatorLayout[3].row[8].type == "num4") {
-            this.calculatorLayout[3].row[8].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[2].row[0].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "4";
-            this.mapLocale["4"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num4" && this.calculatorLayout[3].row[8].type && this.calculatorLayout[3].row[8].type == "num4") {
+            this.calculatorLayout[3].row[8].value = layoutCurrentElement.value;
+            this.simpleCalculatorLayout[2].row[0].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "\u202A 4";
+            } else 
+              this.numberMap[layoutCurrentElement.value] = "4";
+            this.mapLocale["4"] = layoutCurrentElement.value; 
             this.calculatorLayout[3].row[8].visible = "show";
             this.simpleCalculatorLayout[2].row[0].visible = "show";
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[3].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[2].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["4"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[3].row[8]["src"] = layoutCurrentElement.src;
+              this.simpleCalculatorLayout[2].row[0]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["4"] = layoutCurrentElement.src;
             }
             continue;
           }
           // num5
-          if ((this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num5" && this.calculatorLayout[3].row[9].type && this.calculatorLayout[3].row[9].type == "num5") {
-            this.calculatorLayout[3].row[9].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[2].row[1].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "5";
-            this.mapLocale["5"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num5" && this.calculatorLayout[3].row[9].type && this.calculatorLayout[3].row[9].type == "num5") {
+            this.calculatorLayout[3].row[9].value = layoutCurrentElement.value;
+            this.simpleCalculatorLayout[2].row[1].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "\u202A 5";
+            } else 
+              this.numberMap[layoutCurrentElement.value] = "5";
+            this.mapLocale["5"] = layoutCurrentElement.value; 
             this.calculatorLayout[3].row[9].visible = "show";
             this.simpleCalculatorLayout[2].row[1].visible = "show";
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[3].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[2].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["5"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[3].row[9]["src"] = layoutCurrentElement.src;
+              this.simpleCalculatorLayout[2].row[1]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["5"] = layoutCurrentElement.src;
             }
             continue;
           }
           // num6
-          if ((this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num6" && this.calculatorLayout[3].row[10].type && this.calculatorLayout[3].row[10].type == "num6") {
-            this.calculatorLayout[3].row[10].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[2].row[2].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "6";
-            this.mapLocale["6"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num6" && this.calculatorLayout[3].row[10].type && this.calculatorLayout[3].row[10].type == "num6") {
+            this.calculatorLayout[3].row[10].value = layoutCurrentElement.value;
+            this.simpleCalculatorLayout[2].row[2].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "\u202A 6";
+            } else 
+              this.numberMap[layoutCurrentElement.value] = "6";
+            this.mapLocale["6"] = layoutCurrentElement.value; 
             this.calculatorLayout[3].row[10].visible = "show";
             this.simpleCalculatorLayout[2].row[2].visible = "show";
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[3].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[2].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["6"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[3].row[10]["src"] = layoutCurrentElement.src;
+              this.simpleCalculatorLayout[2].row[2]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["6"] = layoutCurrentElement.src;
             }
             continue;
           }
           // num7
-          if ((this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num7" && this.calculatorLayout[4].row[8].type && this.calculatorLayout[4].row[8].type == "num7") {
-            this.calculatorLayout[4].row[8].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[3].row[0].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "7";
-            this.mapLocale["7"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num7" && this.calculatorLayout[4].row[8].type && this.calculatorLayout[4].row[8].type == "num7") {
+            this.calculatorLayout[4].row[8].value = layoutCurrentElement.value;
+            this.simpleCalculatorLayout[3].row[0].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "\u202A 7";
+            } else 
+              this.numberMap[layoutCurrentElement.value] = "7";
+            this.mapLocale["7"] = layoutCurrentElement.value; 
             this.calculatorLayout[4].row[8].visible = "show";
             this.simpleCalculatorLayout[3].row[0].visible = "show";
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[4].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[3].row[0]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["7"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[4].row[8]["src"] = layoutCurrentElement.src;
+              this.simpleCalculatorLayout[3].row[0]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["7"] = layoutCurrentElement.src;
             }
             continue;
           }
           // num8
-          if ((this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num8" && this.calculatorLayout[4].row[9].type && this.calculatorLayout[4].row[9].type == "num8") {
-            this.calculatorLayout[4].row[9].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[3].row[1].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "8";
-            this.mapLocale["8"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num8" && this.calculatorLayout[4].row[9].type && this.calculatorLayout[4].row[9].type == "num8") {
+            this.calculatorLayout[4].row[9].value = layoutCurrentElement.value;
+            this.simpleCalculatorLayout[3].row[1].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "\u202A 8";
+            } else 
+              this.numberMap[layoutCurrentElement.value] = "8";
+            this.mapLocale["8"] = layoutCurrentElement.value; 
             this.calculatorLayout[4].row[9].visible = "show";
             this.simpleCalculatorLayout[3].row[1].visible = "show";
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[4].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[3].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["8"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[4].row[9]["src"] = layoutCurrentElement.src;
+              this.simpleCalculatorLayout[3].row[1]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["8"] = layoutCurrentElement.src;
             }
             continue;
           }
           // num9
-          if ((this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num9" && this.calculatorLayout[4].row[10].type && this.calculatorLayout[4].row[10].type == "num9") {
-            this.calculatorLayout[4].row[10].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[3].row[2].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "9";
-            this.mapLocale["9"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num9" && this.calculatorLayout[4].row[10].type && this.calculatorLayout[4].row[10].type == "num9") {
+            this.calculatorLayout[4].row[10].value = layoutCurrentElement.value;
+            this.simpleCalculatorLayout[3].row[2].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "\u202A 9";
+            } else 
+              this.numberMap[layoutCurrentElement.value] = "9";
+            this.mapLocale["9"] = layoutCurrentElement.value; 
             this.calculatorLayout[4].row[10].visible = "show";
             this.simpleCalculatorLayout[3].row[2].visible = "show";
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[4].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[3].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["9"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[4].row[10]["src"] = layoutCurrentElement.src;
+              this.simpleCalculatorLayout[3].row[2]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["9"] = layoutCurrentElement.src;
             }
             continue;
           }
           // num0 or num10 for use10InPlaceOfZero
-          if ((this.currentBase == "base2" || this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num0" && this.calculatorLayout[5].row[9].type && this.calculatorLayout[5].row[9].type == "num0") {
-            this.calculatorLayout[5].row[9].value = this.layoutCurrentKeys[i].row[j].value;
-            this.simpleCalculatorLayout[4].row[1].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "0";
-            this.mapLocale["0"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.currentBase == "base2" || this.currentBase == "base8" || this.currentBase == "base10" || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num0" && this.calculatorLayout[5].row[9].type && this.calculatorLayout[5].row[9].type == "num0") {
+            this.calculatorLayout[5].row[9].value = layoutCurrentElement.value;
+            this.simpleCalculatorLayout[4].row[1].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1 && this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) == -1)
+              this.numberMap[layoutCurrentElement.value] = "0";
+            this.mapLocale["0"] = layoutCurrentElement.value; 
             this.calculatorLayout[5].row[9].visible = "show";
             this.simpleCalculatorLayout[4].row[1].visible = "show";
             if (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "10";
-              this.mapLocale["10"] = this.layoutCurrentKeys[i].row[j].value; 
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 10";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "10";
+              this.mapLocale["10"] = layoutCurrentElement.value; 
             }
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[5].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.simpleCalculatorLayout[4].row[1]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["0"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[5].row[9]["src"] = layoutCurrentElement.src;
+              this.simpleCalculatorLayout[4].row[1]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["0"] = layoutCurrentElement.src;
             }
             continue;
           }
           // Hexadecimal
           //num11 - A
-          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num11" && this.calculatorLayout[1].row[2].type && this.calculatorLayout[1].row[2].type == "hexadecimal") {
-            this.calculatorLayout[1].row[2].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "A";
-            this.mapLocale["A"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num11" && this.calculatorLayout[1].row[2].type && this.calculatorLayout[1].row[2].type == "hexadecimal") {
+            this.calculatorLayout[1].row[2].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1)
+              this.numberMap[layoutCurrentElement.value] = "A";
+            this.mapLocale["A"] = layoutCurrentElement.value; 
             this.calculatorLayout[1].row[2].visible = "show";
             this.calculatorLayout[1].row[2].type = "num11";
             if (this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "10";
-              this.mapLocale["10"] = this.layoutCurrentKeys[i].row[j].value; 
+              this.numberMap[layoutCurrentElement.value] = "10";
+              this.mapLocale["10"] = layoutCurrentElement.value; 
             }
             if (this.nonDeciUpTo20.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpTo100.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpTo100Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpTo1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "20";
-              this.mapLocale["20"] = this.layoutCurrentKeys[i].row[j].value; 
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 20";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "20";
+              this.mapLocale["20"] = layoutCurrentElement.value; 
             }
             if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "50";
-              this.mapLocale["50"] = this.layoutCurrentKeys[i].row[j].value; 
+              this.numberMap[layoutCurrentElement.value] = "50";
+              this.mapLocale["50"] = layoutCurrentElement.value; 
             }
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[1].row[2]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["A"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[1].row[2]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["A"] = layoutCurrentElement.src;
             }
             continue;
           }
           //num12 - B
-          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num12" && this.calculatorLayout[1].row[3].type && this.calculatorLayout[1].row[3].type == "hexadecimal") {
-            this.calculatorLayout[1].row[3].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "B";
-            this.mapLocale["B"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base12" || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num12" && this.calculatorLayout[1].row[3].type && this.calculatorLayout[1].row[3].type == "hexadecimal") {
+            this.calculatorLayout[1].row[3].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1)
+              this.numberMap[layoutCurrentElement.value] = "B";
+            this.mapLocale["B"] = layoutCurrentElement.value; 
             this.calculatorLayout[1].row[3].visible = "show";
             this.calculatorLayout[1].row[3].type = "num12";
             if (this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "20";
-              this.mapLocale["20"] = this.layoutCurrentKeys[i].row[j].value; 
+              this.numberMap[layoutCurrentElement.value] = "20";
+              this.mapLocale["20"] = layoutCurrentElement.value; 
             }
-            if (this.nonDeciUpTo100Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpTo1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "30";
-              this.mapLocale["30"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.nonDeciUpTo100Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 30";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "30";
+              this.mapLocale["30"] = layoutCurrentElement.value; 
             }
-            if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "100";
-              this.mapLocale["100"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpTo100.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpTo1000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 100";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "100";
+              this.mapLocale["100"] = layoutCurrentElement.value; 
             }
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[1].row[3]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["B"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[1].row[3]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["B"] = layoutCurrentElement.src;
             }
             continue;
           }
           //num13 - C
-          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num13" && this.calculatorLayout[1].row[4].type && this.calculatorLayout[1].row[4].type == "hexadecimal") {
-            this.calculatorLayout[1].row[4].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "C";
-            this.mapLocale["C"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num13" && this.calculatorLayout[1].row[4].type && this.calculatorLayout[1].row[4].type == "hexadecimal") {
+            this.calculatorLayout[1].row[4].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1)
+              this.numberMap[layoutCurrentElement.value] = "C";
+            this.mapLocale["C"] = layoutCurrentElement.value; 
             this.calculatorLayout[1].row[4].visible = "show";
             this.calculatorLayout[1].row[4].type = "num13";
             if (this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "30";
-              this.mapLocale["30"] = this.layoutCurrentKeys[i].row[j].value; 
+              this.numberMap[layoutCurrentElement.value] = "30";
+              this.mapLocale["30"] = layoutCurrentElement.value; 
             }
             if ( this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "40";
-              this.mapLocale["40"] = this.layoutCurrentKeys[i].row[j].value; 
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 40";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "40";
+              this.mapLocale["40"] = layoutCurrentElement.value; 
             }
-            if (this.nonDeciUpTo1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "500";
-              this.mapLocale["500"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "500";
+              this.mapLocale["500"] = layoutCurrentElement.value; 
             }
-            if (this.nonDeciUpTo100Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "1000";
-              this.mapLocale["1000"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.nonDeciUpTo1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpTo100Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 1000";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "1000";
+              this.mapLocale["1000"] = layoutCurrentElement.value; 
             }
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[1].row[4]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["C"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[1].row[4]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["C"] = layoutCurrentElement.src;
             }
             continue;
           }
           //num14 - D
-          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num14" && this.calculatorLayout[1].row[5].type && this.calculatorLayout[1].row[5].type == "hexadecimal") {
-            this.calculatorLayout[1].row[5].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "D";
-            this.mapLocale["D"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num14" && this.calculatorLayout[1].row[5].type && this.calculatorLayout[1].row[5].type == "hexadecimal") {
+            this.calculatorLayout[1].row[5].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1)
+              this.numberMap[layoutCurrentElement.value] = "D";
+            this.mapLocale["D"] = layoutCurrentElement.value; 
             this.calculatorLayout[1].row[5].visible = "show";
             this.calculatorLayout[1].row[5].type = "num14";
             if (this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "40";
-              this.mapLocale["40"] = this.layoutCurrentKeys[i].row[j].value; 
+              this.numberMap[layoutCurrentElement.value] = "40";
+              this.mapLocale["40"] = layoutCurrentElement.value; 
             }
-            if ( this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "50";
-              this.mapLocale["50"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 50";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "50";
+              this.mapLocale["50"] = layoutCurrentElement.value; 
             }
-            if (this.nonDeciUpTo1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "1000";
-              this.mapLocale["1000"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "1000";
+              this.mapLocale["1000"] = layoutCurrentElement.value; 
             }
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[1].row[5]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["D"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[1].row[5]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["D"] = layoutCurrentElement.src;
             }
             continue;
           }
           //num15 - E
-          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num15" && this.calculatorLayout[1].row[6].type && this.calculatorLayout[1].row[6].type == "hexadecimal") {
-            this.calculatorLayout[1].row[6].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "E";
-            this.mapLocale["E"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num15" && this.calculatorLayout[1].row[6].type && this.calculatorLayout[1].row[6].type == "hexadecimal") {
+            this.calculatorLayout[1].row[6].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1 && this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) == -1)
+              this.numberMap[layoutCurrentElement.value] = "E";
+            this.mapLocale["E"] = layoutCurrentElement.value; 
             if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1)
               this.calculatorLayout[1].row[6].visible = "hide";
             else
               this.calculatorLayout[1].row[6].visible = "show";
             this.calculatorLayout[1].row[6].type = "num15";
-            if (this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "5000";
-              this.mapLocale["5000"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 60";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "60";
+              this.mapLocale["60"] = layoutCurrentElement.value; 
             }
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[1].row[6]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["E"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "5000";
+              this.mapLocale["5000"] = layoutCurrentElement.value; 
+            }
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[1].row[6]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["E"] = layoutCurrentElement.src;
             }
             continue;
           }
           //num16 - F
-          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num16" && this.calculatorLayout[1].row[7].type && this.calculatorLayout[1].row[7].type == "hexadecimal") {
-            this.calculatorLayout[1].row[7].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "F";
-            this.mapLocale["F"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base16" || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num16" && this.calculatorLayout[1].row[7].type && this.calculatorLayout[1].row[7].type == "hexadecimal") {
+            this.calculatorLayout[1].row[7].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1 && this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) == -1)
+              this.numberMap[layoutCurrentElement.value] = "F";
+            this.mapLocale["F"] = layoutCurrentElement.value; 
             if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1)
               this.calculatorLayout[1].row[7].visible = "hide";
             else
               this.calculatorLayout[1].row[7].visible = "show";
             this.calculatorLayout[1].row[7].type = "num16";
-            if (this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "10000";
-              this.mapLocale["10000"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 70";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "70";
+              this.mapLocale["70"] = layoutCurrentElement.value; 
             }
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[1].row[7]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["F"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "10000";
+              this.mapLocale["10000"] = layoutCurrentElement.value; 
+            }
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[1].row[7]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["F"] = layoutCurrentElement.src;
             }
             continue;
           }
           // Mayan & Kaktovik
           //num17 - G
-          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num17" && this.calculatorLayout[1].row[8].type && this.calculatorLayout[1].row[8].type == "formula6") {
-            this.calculatorLayout[1].row[8].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "G";
-            this.mapLocale["G"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num17" && this.calculatorLayout[1].row[8].type && this.calculatorLayout[1].row[8].type == "formula6") {
+            this.calculatorLayout[1].row[8].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1 && this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) == -1)
+              this.numberMap[layoutCurrentElement.value] = "G";
+            this.mapLocale["G"] = layoutCurrentElement.value; 
             if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1)
               this.calculatorLayout[1].row[8].visible = "hide";
             else
               this.calculatorLayout[1].row[8].visible = "show";
             this.calculatorLayout[1].row[8].type = "num17";
-            if (this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "50000";
-              this.mapLocale["50000"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 80";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "80";
+              this.mapLocale["80"] = layoutCurrentElement.value; 
             }
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[1].row[8]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["G"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "50000";
+              this.mapLocale["50000"] = layoutCurrentElement.value; 
+            }
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[1].row[8]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["G"] = layoutCurrentElement.src;
             }
             continue;
           }
           //num18 - H
-          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num18" && this.calculatorLayout[1].row[9].type && this.calculatorLayout[1].row[9].type == "formula5") {
-            this.calculatorLayout[1].row[9].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "H";
-            this.mapLocale["H"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num18" && this.calculatorLayout[1].row[9].type && this.calculatorLayout[1].row[9].type == "formula5") {
+            this.calculatorLayout[1].row[9].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1 && this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) == -1)
+              this.numberMap[layoutCurrentElement.value] = "H";
+            this.mapLocale["H"] = layoutCurrentElement.value; 
             if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1)
               this.calculatorLayout[1].row[9].visible = "hide";
             else
               this.calculatorLayout[1].row[9].visible = "show";
             this.calculatorLayout[1].row[9].type = "num18";
-            if (this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "1000000";
-              this.mapLocale["1000000"] = this.layoutCurrentKeys[i].row[j].value; 
+            if (this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 90";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "90";
+              this.mapLocale["90"] = layoutCurrentElement.value; 
             }
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[1].row[9]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["H"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              this.numberMap[layoutCurrentElement.value] = "1000000";
+              this.mapLocale["1000000"] = layoutCurrentElement.value; 
+            }
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[1].row[9]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["H"] = layoutCurrentElement.src;
             }
             continue;
           }
           //num19 - I
-          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num19" && this.calculatorLayout[1].row[10].type && this.calculatorLayout[1].row[10].type == "formula4") {
-            this.calculatorLayout[1].row[10].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "I";
-            this.mapLocale["I"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num19" && this.calculatorLayout[1].row[10].type && this.calculatorLayout[1].row[10].type == "formula4") {
+            this.calculatorLayout[1].row[10].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1 && this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) == -1)
+              this.numberMap[layoutCurrentElement.value] = "I";
+            this.mapLocale["I"] = layoutCurrentElement.value; 
             if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1)
               this.calculatorLayout[1].row[10].visible = "hide";
             else
               this.calculatorLayout[1].row[10].visible = "show";
             this.calculatorLayout[1].row[10].type = "num19";
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[1].row[10]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["I"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 100";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "100";
+              this.mapLocale["100"] = layoutCurrentElement.value; 
+            }
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[1].row[10]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["I"] = layoutCurrentElement.src;
             }
             continue;
           }
           //num20 - J
-          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && this.layoutCurrentKeys[i].row[j].type && this.layoutCurrentKeys[i].row[j].type == "num20" && this.calculatorLayout[1].row[11].type && this.calculatorLayout[1].row[11].type == "formula3") {
-            this.calculatorLayout[1].row[11].value = this.layoutCurrentKeys[i].row[j].value;
-            this.allowedTypingContent.push(this.layoutCurrentKeys[i].row[j].value);
-            this.numberMap["" + this.layoutCurrentKeys[i].row[j].value + ""] = "J";
-            this.mapLocale["J"] = this.layoutCurrentKeys[i].row[j].value; 
+          if ((this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.currentBase == "base20") && layoutCurrentElement.type && layoutCurrentElement.type == "num20" && this.calculatorLayout[1].row[11].type && this.calculatorLayout[1].row[11].type == "formula3") {
+            this.calculatorLayout[1].row[11].value = layoutCurrentElement.value;
+            this.allowedTypingContent.push(layoutCurrentElement.value);
+            if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1 && this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) == -1)
+              this.numberMap[layoutCurrentElement.value] = "J";
+            this.mapLocale["J"] = layoutCurrentElement.value; 
             if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1)
               this.calculatorLayout[1].row[11].visible = "hide";
             else
               this.calculatorLayout[1].row[11].visible = "show";
             this.calculatorLayout[1].row[11].type = "num20";
-            if (this.unicode5AndHigher && this.layoutCurrentKeys[i].row[j].src) {
-              this.calculatorLayout[1].row[11]["src"] = this.layoutCurrentKeys[i].row[j].src;
-              this.nonUnicodeMap["J"] = this.layoutCurrentKeys[i].row[j].src;
+            if (this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 200";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "200";
+              this.mapLocale["200"] = layoutCurrentElement.value; 
+            }
+            if (this.unicode5AndHigher && layoutCurrentElement.src) {
+              this.calculatorLayout[1].row[11]["src"] = layoutCurrentElement.src;
+              this.nonUnicodeMap["J"] = layoutCurrentElement.src;
             }
             continue;
           }
@@ -3380,21 +3492,8 @@ export class CustomiseKeyboardsComponent implements OnInit {
     // use10InPlaceOfZero & nonStandardNumeral
 
     // distinctNumerals : num11 = 10, num12 = 20, num13 = 30 ... , num19 = 90, num20 = 100 
-
-    // numberFor10Powers : num11 = 10, num12 = 100, num13 = 1000
-
     // use10RegularDecimal : num11 = 10, num12 = 100, num13 = 1000
-
-    // use10InPlaceOfZeroUpTo200 : num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 1000
-
-    // nonDeciUpTo20 : num0 = 10, num11 = 20 - palm
-
-    // nonDeciUpTo100 : num0 = 10, num11 = 20, num12 = 100 - chrs, nbat, phn, psal, sog
-
-    // nonDeciUpTo100Fraction : num0 = 10, num11 = 20, num12 = 30, num13 = 100, num14 = 0.5 - kult
-
-    // nonDeciUpTo1000 : num0 = 10, num11 = 20, num12 = 100, num13 = 1000 - khar, pal
-
+    // numberFor10Powers : num11 = 10, num12 = 100, num13 = 1000
 
     if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 && internal) {
       const mapRovasirasToLatin = {'𐳿':'Ⅿ',' ַ𐳽':'Ⅾ','𐳾':'Ⅽ','𐳽':'Ⅼ','𐳼':'Ⅹ','𐳻':'Ⅴ','𐳺':'Ⅰ'};
@@ -3412,7 +3511,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
         stringNumeral = "";
       }
     } else if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 && internal){
-      const romanValidation = new RegExp('^Ⅿ{0,3}(ⅭⅯ|CⅮ|Ⅾ?Ⅽ{0,3})(ⅩC|ⅩⅬ|Ⅼ?Ⅹ{0,3})(ⅠⅩ|ⅠⅤ|Ⅴ?Ⅰ{0,3})$');
+      const romanValidation = new RegExp('^Ⅿ{0,3}(ⅭⅯ|ⅭⅮ|Ⅾ?Ⅽ{0,3})(ⅩⅭ|ⅩⅬ|Ⅼ?Ⅹ{0,3})(Ⅰ|Ⅱ|Ⅲ|Ⅳ|Ⅴ|Ⅵ|Ⅶ|Ⅷ|ⅠⅩ|Ⅹ)$');
       if (!romanValidation.test(stringNumeral)) {
         this.resultField.nativeElement.value = '';
         this.equationField.nativeElement.value = '';
@@ -3437,90 +3536,176 @@ export class CustomiseKeyboardsComponent implements OnInit {
         stringNumeral = "";
       }
     }
-    for (let str of stringNumeral) {
-      if (mappedArray[str] && internal && stringNumeral != "") {
-        if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-          if (stringNumeral.indexOf("ⅭⅮ") > -1) {
-            valueInternal = 400 + valueInternal;
-            stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅭⅮ")) + stringNumeral.substr(stringNumeral.indexOf("ⅭⅮ") + 2, stringNumeral.length - 1);
-            str = str - 1;
-            continue;
-          } else if (stringNumeral.indexOf("ⅭⅯ") > -1) { 
-            valueInternal = 900 + valueInternal; 
-            stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅭⅯ")) + stringNumeral.substr(stringNumeral.indexOf("ⅭⅯ") + 2, stringNumeral.length - 1);
-            str = str - 1;
-            continue;
-          } else if (stringNumeral.indexOf("ⅩⅬ") > -1) {
-            valueInternal = 40 + valueInternal;
-            stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅩⅬ")) + stringNumeral.substr(stringNumeral.indexOf("ⅩⅬ") + 2, stringNumeral.length - 1);
-            str = str - 1;
-            continue;
-          } else if (stringNumeral.indexOf("ⅩⅭ") > -1) {
-            valueInternal = 90 + valueInternal; 
-            stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅩⅭ")) + stringNumeral.substr(stringNumeral.indexOf("ⅩⅭ") + 2, stringNumeral.length - 1);
-            str = str - 1;
-            continue;
+    var digitPosition = 0;
+    for (var str of stringNumeral) {
+      if (digitPosition < stringNumeral.length) {
+        if (mappedArray[digitPosition] && internal && stringNumeral != "") {
+          if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+            if (stringNumeral.indexOf("ⅭⅮ") > -1) {
+              valueInternal = 400 + valueInternal;
+              stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅭⅮ")) + stringNumeral.substr(stringNumeral.indexOf("ⅭⅮ") + 2, stringNumeral.length - 1);
+              digitPosition = digitPosition - 1;
+              continue;
+            } else if (stringNumeral.indexOf("ⅭⅯ") > -1) { 
+              valueInternal = 900 + valueInternal; 
+              stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅭⅯ")) + stringNumeral.substr(stringNumeral.indexOf("ⅭⅯ") + 2, stringNumeral.length - 1);
+              digitPosition = digitPosition - 1;
+              continue;
+            } else if (stringNumeral.indexOf("ⅩⅬ") > -1) {
+              valueInternal = 40 + valueInternal;
+              stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅩⅬ")) + stringNumeral.substr(stringNumeral.indexOf("ⅩⅬ") + 2, stringNumeral.length - 1);
+              digitPosition = digitPosition - 1;
+              continue;
+            } else if (stringNumeral.indexOf("ⅩⅭ") > -1) {
+              valueInternal = 90 + valueInternal; 
+              stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅩⅭ")) + stringNumeral.substr(stringNumeral.indexOf("ⅩⅭ") + 2, stringNumeral.length - 1);
+              digitPosition = digitPosition - 1;
+              continue;
+            }
           }
-        }
-        valueInternal = parseInt(mappedArray[str]) + valueInternal;
-      } else if (mappedArray[stringNumeral] == undefined && internal && stringNumeral != "") {
-        valueInternal = parseInt(mappedArray[stringNumeral]) + valueInternal;
-        stringNumeral = "";
-      } else if (mappedArray[str] && !internal && stringNumeral != "") {
-        if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-          // nonDeciUpToPos1000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000 - hung
-          // nonDeciUpToPos1000Fraction : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 0.5, num16 = 1/12, num17 = 2/3, num18 = 3/4, num19 = 10/12, num20 = 11/12 -la
-          /* DCCLXXXIX-789 , MLXVI-1066 , MDCCLXXVI-1776 , MCMLIV-1954 , MMXXII-2022, MMCDXXI-2421 , MMMCMXCIX-3999 */
-          // nonDeciUpToPos1000000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 5000, num16 = 10000, num17 = 50000, num18 = 1000000 - ett
-          if (parseInt(stringNumeral) >= 10000 && mappedArray["10000"]) {
-            valueExternal = valueExternal + mappedArray["10000"];
-            stringNumeral = stringNumeral % 10000 + "";
-            str = str - 1;
-          } else if (parseInt(stringNumeral) >= 5000 && mappedArray["5000"]) {
-            valueExternal = valueExternal + mappedArray["5000"];
-            stringNumeral = stringNumeral % 5000 + "";
-            str = str - 1;
-          } else if (parseInt(stringNumeral) >= 1000) {
-            valueExternal = valueExternal + mappedArray["1000"];
-            stringNumeral = stringNumeral % 1000 + "";
-            str = str - 1;
-          } else if (parseInt(stringNumeral) >= 500) {
-            valueExternal = valueExternal + mappedArray["500"];
-            stringNumeral = stringNumeral % 500 + "";
-            str = str - 1;
-          } else if (parseInt(stringNumeral) >= 100) {
-            if (Math.floor(parseInt(stringNumeral) % 1000 / 100) < 4 && this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              valueExternal = valueExternal + mappedArray["100"].repeat(Math.floor(parseInt(stringNumeral) % 1000 / 100));
-              stringNumeral = stringNumeral % 100 + "";
-            } else if (Math.floor(parseInt(stringNumeral) % 1000 / 100) <= 4 && (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1)) {
-              valueExternal = valueExternal + mappedArray["100"].repeat(Math.floor(parseInt(stringNumeral) % 1000 / 100));
-              stringNumeral = stringNumeral % 100 + "";
-            } else {
-              valueExternal = valueExternal + mappedArray["100"] + mappedArray["500"];
-              stringNumeral = stringNumeral % 100 + "";
+          valueInternal = parseInt(mappedArray[digitPosition]) + valueInternal;
+        } else if (mappedArray[str] != undefined && internal && stringNumeral != "") {
+          if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1) {
+            valueInternal = parseInt(mappedArray[str]) + valueInternal;
+          } else {
+            // use10InPlaceOfZeroUpTo200 : num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 1000
+            // nonDeciUpTo100Fraction : num0 = 10, num11 = 20, num12 = 30, num13 = 100, num14 = 0.5 - kult
+            // nonDeciUpTo1000 : num0 = 10, num11 = 20, num12 = 100, num13 = 1000 - khar, pal
+            // nonDeciUpTo100 : num0 = 10, num11 = 20, num12 = 100 - chrs, nbat, phn, psal, sog
+            // nonDeciUpTo20 : num0 = 10, num11 = 20 - palm
+            valueInternal = parseInt(mappedArray[str].split(" ")[1]) + valueInternal;
+          }
+        } else if (mappedArray[stringNumeral] != undefined && internal && stringNumeral != "") {
+          valueInternal = parseInt(mappedArray[stringNumeral]) + valueInternal;
+          stringNumeral = "";
+        } else if (mappedArray[digitPosition] && !internal && stringNumeral != "") {
+          if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+            // nonDeciUpToPos1000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000 - hung
+            // nonDeciUpToPos1000Fraction : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 0.5, num16 = 1/12, num17 = 2/3, num18 = 3/4, num19 = 10/12, num20 = 11/12 -la
+            /* DCCLXXXIX-789 , MLXVI-1066 , MDCCLXXVI-1776 , MCMLIV-1954 , MMXXII-2022, MMCDXXI-2421 , MMMCMXCIX-3999 */
+            // nonDeciUpToPos1000000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 5000, num16 = 10000, num17 = 50000, num18 = 1000000 - ett
+            if (parseInt(stringNumeral) >= 10000 && mappedArray["10000"]) {
+              valueExternal = valueExternal + mappedArray["10000"];
+              stringNumeral = parseInt(stringNumeral) % 10000 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 5000 && mappedArray["5000"]) {
+              valueExternal = valueExternal + mappedArray["5000"];
+              stringNumeral = parseInt(stringNumeral) % 5000 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 1000) {
+              valueExternal = valueExternal + mappedArray["1000"];
+              stringNumeral = parseInt(stringNumeral) % 1000 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 500) {
+              valueExternal = valueExternal + mappedArray["500"];
+              stringNumeral = parseInt(stringNumeral) % 500 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 100) {
+              if (Math.floor(parseInt(stringNumeral) % 1000 / 100) < 4 && this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                valueExternal = valueExternal + mappedArray["100"].repeat(Math.floor(parseInt(stringNumeral) % 1000 / 100));
+                stringNumeral = parseInt(stringNumeral) % 100 + "";
+              } else if (Math.floor(parseInt(stringNumeral) % 1000 / 100) <= 4 && (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1)) {
+                valueExternal = valueExternal + mappedArray["100"].repeat(Math.floor(parseInt(stringNumeral) % 1000 / 100));
+                stringNumeral = parseInt(stringNumeral) % 100 + "";
+              } else {
+                valueExternal = valueExternal + mappedArray["100"] + mappedArray["500"];
+                stringNumeral = parseInt(stringNumeral) % 100 + "";
+              }
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 50) {
+              valueExternal = valueExternal + mappedArray["50"];
+              stringNumeral = parseInt(stringNumeral) % 50 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 10) {
+              if (Math.floor(parseInt(stringNumeral) % 100 / 10) < 4 && this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                valueExternal = valueExternal + mappedArray["10"].repeat(Math.floor(parseInt(stringNumeral) % 100 / 10));
+                stringNumeral = parseInt(stringNumeral) % 10 + "";
+              } else if (Math.floor(parseInt(stringNumeral) % 100 / 10) <= 4 && (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1)) {
+                valueExternal = valueExternal + mappedArray["10"].repeat(Math.floor(parseInt(stringNumeral) % 100 / 10));
+                stringNumeral = parseInt(stringNumeral) % 10 + "";
+              } else {
+                valueExternal = valueExternal + mappedArray["10"] + mappedArray["50"];
+                stringNumeral = parseInt(stringNumeral) % 10 + "";
+              }
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) > 0) {
+              valueExternal = valueExternal + mappedArray[digitPosition];
             }
-            str = str - 1;
-          } else if (parseInt(stringNumeral) >= 50) {
-            valueExternal = valueExternal + mappedArray["50"];
-            stringNumeral = stringNumeral % 50 + "";
-            str = str - 1;
-          } else if (parseInt(stringNumeral) >= 10) {
-            if (Math.floor(parseInt(stringNumeral) % 100 / 10) < 4 && this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
-              valueExternal = valueExternal + mappedArray["10"].repeat(Math.floor(parseInt(stringNumeral) % 100 / 10));
-              stringNumeral = stringNumeral % 10 + "";
-            } else if (Math.floor(parseInt(stringNumeral) % 100 / 10) <= 4 && (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1)) {
-              valueExternal = valueExternal + mappedArray["10"].repeat(Math.floor(parseInt(stringNumeral) % 100 / 10));
-              stringNumeral = stringNumeral % 10 + "";
-            } else {
-              valueExternal = valueExternal + mappedArray["10"] + mappedArray["50"];
-              stringNumeral = stringNumeral % 10 + "";
+          } else if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+            // use10InPlaceOfZeroUpTo200 : num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 1000
+            // nonDeciUpTo100Fraction : num0 = 10, num11 = 20, num12 = 30, num13 = 100, num14 = 0.5 - kult
+            // nonDeciUpTo1000 : num0 = 10, num11 = 20, num12 = 100, num13 = 1000 - khar, pal
+            // nonDeciUpTo100 : num0 = 10, num11 = 20, num12 = 100 - chrs, nbat, phn, psal, sog
+            // nonDeciUpTo20 : num0 = 10, num11 = 20 - palm
+            if (parseInt(stringNumeral) >= 1000 && mappedArray["1000"]) {
+              valueExternal = valueExternal + mappedArray["1000"];
+              stringNumeral = parseInt(stringNumeral) % 1000 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 100 && mappedArray["100"]) {
+              valueExternal = valueExternal + mappedArray["100"];
+              stringNumeral = parseInt(stringNumeral) % 100 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 90 && mappedArray["90"]) {
+              valueExternal = valueExternal + mappedArray["90"];
+              stringNumeral = parseInt(stringNumeral) % 90 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 80 && mappedArray["80"]) {
+              valueExternal = valueExternal + mappedArray["80"];
+              stringNumeral = parseInt(stringNumeral) % 80 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 70 && mappedArray["70"]) {
+              valueExternal = valueExternal + mappedArray["70"];
+              stringNumeral = parseInt(stringNumeral) % 70 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 60 && mappedArray["60"]) {
+              valueExternal = valueExternal + mappedArray["60"];
+              stringNumeral = parseInt(stringNumeral) % 60 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 50 && mappedArray["50"]) {
+              valueExternal = valueExternal + mappedArray["50"];
+              stringNumeral = parseInt(stringNumeral) % 50 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 40 && mappedArray["40"]) {
+              valueExternal = valueExternal + mappedArray["40"];
+              stringNumeral = parseInt(stringNumeral) % 40 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 30 && mappedArray["30"]) {
+              valueExternal = valueExternal + mappedArray["30"];
+              stringNumeral = parseInt(stringNumeral) % 30 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 20 && mappedArray["20"]) {
+              valueExternal = valueExternal + mappedArray["20"];
+              stringNumeral = parseInt(stringNumeral) % 20 + "";
+              digitPosition = digitPosition - 1;
+            } else if (parseInt(stringNumeral) >= 10 && mappedArray["10"]) {
+              valueExternal = valueExternal + mappedArray["10"];
+              stringNumeral = parseInt(stringNumeral) % 10 + "";
+              digitPosition = digitPosition - 1;
+            } 
+            if (stringNumeral.length == 1 && parseInt(stringNumeral) >= 5 && mappedArray["5"]) {
+              valueExternal = valueExternal + mappedArray["5"];
+              stringNumeral = parseInt(stringNumeral) - 5 + "";
             }
-            str = str - 1;
-          } else if (parseInt(stringNumeral) > 0) {
-            valueExternal = valueExternal + mappedArray[str];
+            if (stringNumeral.length == 1 && parseInt(stringNumeral) >= 4 && mappedArray["4"]) {
+              valueExternal = valueExternal + mappedArray["4"];
+              stringNumeral = parseInt(stringNumeral) - 4 + "";
+            }
+            if (stringNumeral.length == 1 && parseInt(stringNumeral) >= 3 && mappedArray["3"]) {
+              valueExternal = valueExternal + mappedArray["3"];
+              stringNumeral = parseInt(stringNumeral) - 3 + "";
+            }
+            if (stringNumeral.length == 1 && parseInt(stringNumeral) >= 2 && mappedArray["2"]) {
+              valueExternal = valueExternal + mappedArray["2"];
+              stringNumeral = parseInt(stringNumeral) - 2 + "";
+            } 
+            if (stringNumeral.length == 1 && parseInt(stringNumeral) == 1 && mappedArray["1"]) {
+              valueExternal = valueExternal + mappedArray["1"];
+              stringNumeral = "";
+            }
           }
         }
       }
+      digitPosition = digitPosition + 1;
     }
 
     return (internal) ? valueInternal + "" : valueExternal;
@@ -3549,9 +3734,18 @@ export class CustomiseKeyboardsComponent implements OnInit {
       this.varX = this.varX.split("").map((str) => {return isNaN(parseInt(str)) == false ? str : (str == ".") ? "." : ""}).join("");
       this.varY = this.varY.split("").map((str) => {return isNaN(parseInt(str)) == false ? str : (str == ".") ? "." : ""}).join("");
     }
+    var localeMappedX;
+    var localeMappedY;
     // map this.varX and this.varY with corresponding num Type be mapped to 0 - 9 numbers
-    var localeMappedX = (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) ? this.convertNonStandardToDecimal(this.varX, this.numberMap, true) : this.stringManipulator(this.varX, this.numberMap, true);
-    var localeMappedY = (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) ? this.convertNonStandardToDecimal(this.varY, this.numberMap, true) : this.stringManipulator(this.varY, this.numberMap, true);
+    if (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) 
+      localeMappedX = this.convertNonStandardToDecimal(this.varX, this.numberMap, true);
+    else
+      localeMappedX = this.stringManipulator(this.varX, this.numberMap, true);
+
+    if (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+      localeMappedY = this.convertNonStandardToDecimal(this.varY, this.numberMap, true);
+    else
+      localeMappedY = this.stringManipulator(this.varY, this.numberMap, true);
 
     let numberOperandX : any;
     let numberOperandY : any;
@@ -3683,11 +3877,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
   }
 
   displayVariableInLocaleFormat (result) {
-    /* 
-      TODO Special Cases for Mayan, Kaktovik, Avestan, Etruscan, Kharoshthi, Mende, Nabatian, Phoenician, Parthian, Hebrew, Yiddish, Judeo-Espanyol, Syriac, Latin, Modern Greek, etc.
-      Reference - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide for each of the following variables 
-    */
-
     // Iterate through this.anyCalculatorLayout for Type num0 to num9 mapping for 0 to 9 in all scripts & languages
     return this.numberRepresentationMarking(this.stringManipulator(result.toString(), this.mapLocale, false));
   }

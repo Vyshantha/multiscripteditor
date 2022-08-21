@@ -7,6 +7,10 @@ cp ./src/assets/environments/sva_config_prod.json ./src/assets/environments/sva_
 
 # Copy all the source content over
 cp -r ./src ./../editorClientCalculator/
+#cp ./angular.json ./../editorClientCalculator/angular.json
+#sed 's/"buildOptimizer": false/"buildOptimizer": true/g' ./../editorClientCalculator/angular.json > ./../editorClientCalculator/angular2.json
+#sed 's/"optimization": false/"optimization": true/g' ./../editorClientCalculator/angular2.json > ./../editorClientCalculator/angular.json
+#rm -rf ./../editorClientCalculator/angular2.json
 
 cd ../editorClientCalculator/src
 # Replace Tags and URLs
