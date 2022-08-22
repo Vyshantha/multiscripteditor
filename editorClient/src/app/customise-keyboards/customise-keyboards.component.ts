@@ -1974,11 +1974,18 @@ export class CustomiseKeyboardsComponent implements OnInit {
                 this.numberMap[layoutCurrentElement.value] = "40";
               this.mapLocale["40"] = layoutCurrentElement.value; 
             }
+            if (this.nonDeciUpTo100Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+                this.numberMap[layoutCurrentElement.value] = "\u202A 100";
+              } else 
+                this.numberMap[layoutCurrentElement.value] = "100";
+              this.mapLocale["100"] = layoutCurrentElement.value; 
+            }
             if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
               this.numberMap[layoutCurrentElement.value] = "500";
               this.mapLocale["500"] = layoutCurrentElement.value; 
             }
-            if (this.nonDeciUpTo1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpTo100Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+            if (this.nonDeciUpTo1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
               if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
                 this.numberMap[layoutCurrentElement.value] = "\u202A 1000";
               } else 
@@ -3487,14 +3494,101 @@ export class CustomiseKeyboardsComponent implements OnInit {
     }
   }
 
+  nonRegularNumerals(stringNumeral, mappedArray, internal) {
+    let valueInternal = 0, valueExternal = "", digitPosition = 0, map = 0, allowedMappings = [1000, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10];
+    // ToDo Validate numbers & Decimal numbers
+    if (internal) {
+      // distinctNumerals : num11 = 10, num12 = 20, num13 = 30 ... , num19 = 90, num20 = 100 
+      // use10RegularDecimal : num11 = 10, num12 = 100, num13 = 1000
+      // numberFor10Powers : num11 = 10, num12 = 100, num13 = 1000
+      const allowedMappings = [1000, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+      // No Limit on 1000, No Limit on 100 for distinctNumerals and Limit up to 9 only for use10RegularDecimal & numberFor10Powers, Limit of only once for 90 - 1
+      for (let str of stringNumeral) { 
+
+      }
+    }
+    for (let str of stringNumeral) {
+      if (digitPosition < stringNumeral.length) {
+        if (mappedArray[digitPosition] && internal && stringNumeral != "") {
+          valueInternal = parseInt(mappedArray[digitPosition]) + valueInternal;
+        } else if (mappedArray[str] != undefined && internal && stringNumeral != "") {
+          valueInternal = parseInt(mappedArray[str]) + valueInternal;
+          // Decimal Numerals
+        } else if (mappedArray[stringNumeral] != undefined && internal && stringNumeral != "") {
+          valueInternal = parseInt(mappedArray[stringNumeral]) + valueInternal;
+          stringNumeral = "";
+        } else if (mappedArray[digitPosition] && !internal && stringNumeral != "") {
+          /*while(map < allowedMappings.length) {
+            if (parseInt(stringNumeral) >= allowedMappings[map] && mappedArray[map]) {
+              valueExternal = valueExternal + mappedArray[map];
+              stringNumeral = parseInt(stringNumeral) % map + "";
+              digitPosition = digitPosition - 1;
+              map = map + 1;
+              break;
+            }
+            map = map + 1;
+          }*/
+          if (parseInt(stringNumeral) >= 1000 && mappedArray["1000"]) {
+            valueExternal = valueExternal + mappedArray["1000"].repeat(Math.floor(parseInt(stringNumeral) % 10000 / 1000));
+            stringNumeral = parseInt(stringNumeral) % 1000 + "";
+            digitPosition = digitPosition - 1;
+          } else if (parseInt(stringNumeral) >= 100 && mappedArray["100"]) {
+            valueExternal = valueExternal + mappedArray["100"].repeat(Math.floor(parseInt(stringNumeral) % 1000 / 100));
+            stringNumeral = parseInt(stringNumeral) % 100 + "";
+            digitPosition = digitPosition - 1;
+          } else if (parseInt(stringNumeral) >= 90 && mappedArray["90"]) {
+            valueExternal = valueExternal + mappedArray["90"];
+            stringNumeral = parseInt(stringNumeral) % 90 + "";
+            digitPosition = digitPosition - 1;
+          } else if (parseInt(stringNumeral) >= 80 && mappedArray["80"]) {
+            valueExternal = valueExternal + mappedArray["80"];
+            stringNumeral = parseInt(stringNumeral) % 80 + "";
+            digitPosition = digitPosition - 1;
+          } else if (parseInt(stringNumeral) >= 70 && mappedArray["70"]) {
+            valueExternal = valueExternal + mappedArray["70"];
+            stringNumeral = parseInt(stringNumeral) % 70 + "";
+            digitPosition = digitPosition - 1;
+          } else if (parseInt(stringNumeral) >= 60 && mappedArray["60"]) {
+            valueExternal = valueExternal + mappedArray["60"];
+            stringNumeral = parseInt(stringNumeral) % 60 + "";
+            digitPosition = digitPosition - 1;
+          } else if (parseInt(stringNumeral) >= 50 && mappedArray["50"]) {
+            valueExternal = valueExternal + mappedArray["50"];
+            stringNumeral = parseInt(stringNumeral) % 50 + "";
+            digitPosition = digitPosition - 1;
+          } else if (parseInt(stringNumeral) >= 40 && mappedArray["40"]) {
+            valueExternal = valueExternal + mappedArray["40"];
+            stringNumeral = parseInt(stringNumeral) % 40 + "";
+            digitPosition = digitPosition - 1;
+          } else if (parseInt(stringNumeral) >= 30 && mappedArray["30"]) {
+            valueExternal = valueExternal + mappedArray["30"];
+            stringNumeral = parseInt(stringNumeral) % 30 + "";
+            digitPosition = digitPosition - 1;
+          } else if (parseInt(stringNumeral) >= 20 && mappedArray["20"]) {
+            valueExternal = valueExternal + mappedArray["20"];
+            stringNumeral = parseInt(stringNumeral) % 20 + "";
+            digitPosition = digitPosition - 1;
+          } else if (parseInt(stringNumeral) >= 10 && mappedArray["10"]) {
+            valueExternal = valueExternal + mappedArray["10"];
+            stringNumeral = parseInt(stringNumeral) % 10 + "";
+            digitPosition = digitPosition - 1;
+          } 
+          if (stringNumeral.length == 1) {
+            valueExternal = valueExternal + mappedArray[stringNumeral];
+            stringNumeral = "";
+          }
+          // Decimal Numerals
+        }
+      }
+      digitPosition = digitPosition + 1;
+    }
+
+    return (internal) ? valueInternal + "" : valueExternal;
+  }
+
   convertNonStandardToDecimal(stringNumeral, mappedArray, internal) {
-    let valueInternal = 0, valueExternal = "";
     // use10InPlaceOfZero & nonStandardNumeral
-
-    // distinctNumerals : num11 = 10, num12 = 20, num13 = 30 ... , num19 = 90, num20 = 100 
-    // use10RegularDecimal : num11 = 10, num12 = 100, num13 = 1000
-    // numberFor10Powers : num11 = 10, num12 = 100, num13 = 1000
-
+    let valueInternal = 0, valueExternal = "", digitPosition = 0;
     if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 && internal) {
       const mapRovasirasToLatin = {'𐳿':'Ⅿ',' ַ𐳽':'Ⅾ','𐳾':'Ⅽ','𐳽':'Ⅼ','𐳼':'Ⅹ','𐳻':'Ⅴ','𐳺':'Ⅰ'};
       let latinNumber = "";
@@ -3535,11 +3629,21 @@ export class CustomiseKeyboardsComponent implements OnInit {
         });
         stringNumeral = "";
       }
+    } else if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1 && internal) {
+      // Validate numbers : rtlArrayOverride
+      // use10InPlaceOfZeroUpTo200 : num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 1000
+      // nonDeciUpTo100Fraction : num0 = 10, num11 = 20, num12 = 30, num13 = 100, num14 = 0.5 - kult
+      // nonDeciUpTo1000 : num0 = 10, num11 = 20, num12 = 100, num13 = 1000 - khar, pal
+      // nonDeciUpTo100 : num0 = 10, num11 = 20, num12 = 100 - chrs, nbat, phn, psal, sog
+      // nonDeciUpTo20 : num0 = 10, num11 = 20 - palm
+      const allowedMappings = [1000, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+      // No Limit on 1000, Limit on 100 up to 9, Limit on 30 up to 3 except use10InPlaceOfZeroUpTo200 only once, Limit on 20 up to 4 except use10InPlaceOfZeroUpTo200 only once, Limit of only once for 90 - 40, 9, 8, 7, 6, 5, 4, 3, 2, 1
+      for (let str of stringNumeral) { 
+
+      }
     }
     // Defect 'chrs' opposite side result
-    // ToDo Validate numbers : rtlArrayOverride
-    var digitPosition = 0;
-    for (var str of stringNumeral) {
+    for (let str of stringNumeral) {
       if (digitPosition < stringNumeral.length) {
         if (mappedArray[digitPosition] && internal && stringNumeral != "") {
           if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
@@ -3570,11 +3674,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
           if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1) {
             valueInternal = parseInt(mappedArray[str]) + valueInternal;
           } else {
-            // use10InPlaceOfZeroUpTo200 : num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 1000
-            // nonDeciUpTo100Fraction : num0 = 10, num11 = 20, num12 = 30, num13 = 100, num14 = 0.5 - kult
-            // nonDeciUpTo1000 : num0 = 10, num11 = 20, num12 = 100, num13 = 1000 - khar, pal
-            // nonDeciUpTo100 : num0 = 10, num11 = 20, num12 = 100 - chrs, nbat, phn, psal, sog
-            // nonDeciUpTo20 : num0 = 10, num11 = 20 - palm
             valueInternal = parseInt(mappedArray[str].split(" ")[1]) + valueInternal;
           }
         } else if (mappedArray[stringNumeral] != undefined && internal && stringNumeral != "") {
@@ -3641,12 +3740,22 @@ export class CustomiseKeyboardsComponent implements OnInit {
             // nonDeciUpTo1000 : num0 = 10, num11 = 20, num12 = 100, num13 = 1000 - khar, pal
             // nonDeciUpTo100 : num0 = 10, num11 = 20, num12 = 100 - chrs, nbat, phn, psal, sog
             // nonDeciUpTo20 : num0 = 10, num11 = 20 - palm
+            /*while(map < allowedMappings.length) {
+              if (parseInt(stringNumeral) >= allowedMappings[map] && mappedArray[map]) {
+                valueExternal = valueExternal + mappedArray[map];
+                stringNumeral = parseInt(stringNumeral) % map + "";
+                digitPosition = digitPosition - 1;
+                map = map + 1;
+                break;
+              }
+              map = map + 1;
+            }*/
             if (parseInt(stringNumeral) >= 1000 && mappedArray["1000"]) {
-              valueExternal = valueExternal + mappedArray["1000"];
+              valueExternal = valueExternal + mappedArray["1000"].repeat(Math.floor(parseInt(stringNumeral) % 10000 / 1000));
               stringNumeral = parseInt(stringNumeral) % 1000 + "";
               digitPosition = digitPosition - 1;
             } else if (parseInt(stringNumeral) >= 100 && mappedArray["100"]) {
-              valueExternal = valueExternal + mappedArray["100"];
+              valueExternal = valueExternal + mappedArray["100"].repeat(Math.floor(parseInt(stringNumeral) % 1000 / 100));
               stringNumeral = parseInt(stringNumeral) % 100 + "";
               digitPosition = digitPosition - 1;
             } else if (parseInt(stringNumeral) >= 90 && mappedArray["90"]) {
@@ -3674,11 +3783,17 @@ export class CustomiseKeyboardsComponent implements OnInit {
               stringNumeral = parseInt(stringNumeral) % 40 + "";
               digitPosition = digitPosition - 1;
             } else if (parseInt(stringNumeral) >= 30 && mappedArray["30"]) {
-              valueExternal = valueExternal + mappedArray["30"];
+              if (this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+                valueExternal = valueExternal + mappedArray["30"];
+              else
+                valueExternal = valueExternal + mappedArray["30"].repeat(Math.floor(parseInt(stringNumeral) % 1000 / 30));
               stringNumeral = parseInt(stringNumeral) % 30 + "";
               digitPosition = digitPosition - 1;
             } else if (parseInt(stringNumeral) >= 20 && mappedArray["20"]) {
-              valueExternal = valueExternal + mappedArray["20"];
+              if (this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+                valueExternal = valueExternal + mappedArray["20"];
+              else
+                valueExternal = valueExternal + mappedArray["20"].repeat(Math.floor(parseInt(stringNumeral) % 1000 / 20));
               stringNumeral = parseInt(stringNumeral) % 20 + "";
               digitPosition = digitPosition - 1;
             } else if (parseInt(stringNumeral) >= 10 && mappedArray["10"]) {
@@ -3704,6 +3819,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
             } 
             if (stringNumeral.length == 1 && parseInt(stringNumeral) == 1 && mappedArray["1"]) {
               valueExternal = valueExternal + mappedArray["1"];
+              stringNumeral = "";
+            }
+            if (stringNumeral == "0") {
               stringNumeral = "";
             }
           }
