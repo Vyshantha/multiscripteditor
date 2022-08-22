@@ -1189,6 +1189,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   separatorsForDecimalAndNumeral: any = [' ', "'", ',', '.', '·', '\u2009', '\u202F', '˙', '⠨', '٫' , '٬' , '⎖', '⹁'];
 
+  // Not Regular Decimal Numerals
+  nonRegularDecimals: any = ['ahom','bada','bopo','ja','jiag','kaid','kan','ko','si','ta','txg','vatt','vi','wara','zhcn','zhtw','zih'];
+
   // Numbers for 0-10, 20, 30 ... , 80, 90
   // num11 = 10, num12 = 20, num13 = 30 ... , num19 = 90, num20 = 100 
   distinctNumerals: any = ['si','wara'];
@@ -1367,10 +1370,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
   translateForSnackBar: string[] = [];
 
   /* TODO Items
-    - Special Case for display & computing - use10InPlaceOfZero/nonStandardNumeral/vigesimal/sexagesimal 
+    - Special Case for display & computing - vigesimal/sexagesimal 
     - Any Equation Setup (Paste/History/Bookmark/Formula) and use
     - Brackets usage & complete equation computation
-    - BaseX specific Operations
+    - BaseX specific Operations Defects
   */
 
   constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: UntypedFormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, private renderer: Renderer2,searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
@@ -3494,30 +3497,71 @@ export class CustomiseKeyboardsComponent implements OnInit {
     }
   }
 
-  nonRegularNumerals(stringNumeral, mappedArray, internal) {
-    let valueInternal = 0, valueExternal = "", digitPosition = 0, map = 0, allowedMappings = [1000, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10];
-    // ToDo Validate numbers & Decimal numbers
-    if (internal) {
-      // distinctNumerals : num11 = 10, num12 = 20, num13 = 30 ... , num19 = 90, num20 = 100 
-      // use10RegularDecimal : num11 = 10, num12 = 100, num13 = 1000
-      // numberFor10Powers : num11 = 10, num12 = 100, num13 = 1000
-      const allowedMappings = [1000, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
-      // No Limit on 1000, No Limit on 100 for distinctNumerals and Limit up to 9 only for use10RegularDecimal & numberFor10Powers, Limit of only once for 90 - 1
-      for (let str of stringNumeral) { 
+  // Defect 'ta' 10 represented with single character or two characters allowed and Decimal validation
+  nonRegularDecimalNumerals(stringNumeral, mappedArray, internal) {
+    // distinctNumerals : num11 = 10, num12 = 20, num13 = 30 ... , num19 = 90, num20 = 100 
+    // use10RegularDecimal : num11 = 10, num12 = 100, num13 = 1000
+    // numberFor10Powers : num11 = 10, num12 = 100, num13 = 1000
 
+    let valueInternal = 0, valueExternal = "", digitPosition = 0;
+    
+    // Validate numbers & Decimal numbers
+    if (internal) {
+      // No Limit on 1000
+      // Count of 100 - No Limit on 100 for distinctNumerals and Limit up to 9 only for use10RegularDecimal & numberFor10Powers
+      if (this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+        let expressionMath = "/" + this.mapLocale["100"] + "/g";
+        if ((stringNumeral.match(expressionMath) || []).length > 9) {
+          this.resultField.nativeElement.value = '';
+          this.equationField.nativeElement.value = '';
+          this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
+            duration: 3000
+          });
+          stringNumeral = "";
+        } 
+      }
+      // Count of 10 Limit up to 9 for use10RegularDecimal & numberFor10Powers
+      if (this.use10RegularDecimal.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.numberFor10Powers.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+        let expressionMath = "/" + this.mapLocale["10"] + "/g";
+        if ((stringNumeral.match(expressionMath) || []).length > 9) {
+          this.resultField.nativeElement.value = '';
+          this.equationField.nativeElement.value = '';
+          this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
+            duration: 3000
+          });
+          stringNumeral = "";
+        } 
+      }
+      // Limit of only once for 90 - 1 for distinctNumerals
+      if (this.distinctNumerals.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+        let map = 0;
+        const allowedMappings = [90, 80, 70, 60, 50, 40, 30, 20, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+        while (map < allowedMappings.length) {
+          if (this.mapLocale[allowedMappings[map]]) {
+            if (stringNumeral.split(this.mapLocale[allowedMappings[map]]).length - 1 > 1) {
+              this.resultField.nativeElement.value = '';
+              this.equationField.nativeElement.value = '';
+              this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
+                duration: 3000
+              });
+              stringNumeral = "";
+              break;
+            } 
+          }
+          map = map + 1;
+        }
       }
     }
+
     for (let str of stringNumeral) {
-      if (digitPosition < stringNumeral.length) {
-        if (mappedArray[digitPosition] && internal && stringNumeral != "") {
-          valueInternal = parseInt(mappedArray[digitPosition]) + valueInternal;
-        } else if (mappedArray[str] != undefined && internal && stringNumeral != "") {
+      if (digitPosition < stringNumeral.length && stringNumeral != "") {
+        if (mappedArray[str] != undefined && internal) {
           valueInternal = parseInt(mappedArray[str]) + valueInternal;
           // Decimal Numerals
-        } else if (mappedArray[stringNumeral] != undefined && internal && stringNumeral != "") {
+        } else if (mappedArray[stringNumeral] != undefined && internal) {
           valueInternal = parseInt(mappedArray[stringNumeral]) + valueInternal;
           stringNumeral = "";
-        } else if (mappedArray[digitPosition] && !internal && stringNumeral != "") {
+        } else if (mappedArray[digitPosition] && !internal) {
           /*while(map < allowedMappings.length) {
             if (parseInt(stringNumeral) >= allowedMappings[map] && mappedArray[map]) {
               valueExternal = valueExternal + mappedArray[map];
@@ -3573,8 +3617,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
             stringNumeral = parseInt(stringNumeral) % 10 + "";
             digitPosition = digitPosition - 1;
           } 
-          if (stringNumeral.length == 1) {
+          if (stringNumeral.length == 1 && stringNumeral != "0") {
             valueExternal = valueExternal + mappedArray[stringNumeral];
+            stringNumeral = "";
+          } else if (stringNumeral == "0") {
             stringNumeral = "";
           }
           // Decimal Numerals
@@ -3586,6 +3632,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
     return (internal) ? valueInternal + "" : valueExternal;
   }
 
+  // Defect 'chrs' opposite side result & validate 'avst'
   convertNonStandardToDecimal(stringNumeral, mappedArray, internal) {
     // use10InPlaceOfZero & nonStandardNumeral
     let valueInternal = 0, valueExternal = "", digitPosition = 0;
@@ -3605,7 +3652,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
         stringNumeral = "";
       }
     } else if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 && internal){
-      const romanValidation = new RegExp('^Ⅿ{0,3}(ⅭⅯ|ⅭⅮ|Ⅾ?Ⅽ{0,3})(ⅩⅭ|ⅩⅬ|Ⅼ?Ⅹ{0,3})(Ⅰ|Ⅱ|Ⅲ|Ⅳ|Ⅴ|Ⅵ|Ⅶ|Ⅷ|Ⅸ|Ⅹ)$');
+      const romanValidation = new RegExp('^Ⅿ{0,2}(Ⅽ?Ⅿ{0,0}|Ⅽ?Ⅾ{0,0}|Ⅾ?Ⅽ{0,2})(Ⅹ?Ⅽ{0,0}|Ⅹ?Ⅼ{0,0}|Ⅼ?Ⅹ{0,2})(Ⅰ|Ⅱ|Ⅲ|Ⅳ|Ⅴ|Ⅵ|Ⅶ|Ⅷ|Ⅸ|Ⅹ|Ⅼ|Ⅽ|Ⅾ|Ⅿ)$');
       if (!romanValidation.test(stringNumeral)) {
         this.resultField.nativeElement.value = '';
         this.equationField.nativeElement.value = '';
@@ -3631,21 +3678,90 @@ export class CustomiseKeyboardsComponent implements OnInit {
       }
     } else if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1 && internal) {
       // Validate numbers : rtlArrayOverride
+
       // use10InPlaceOfZeroUpTo200 : num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 1000
       // nonDeciUpTo100Fraction : num0 = 10, num11 = 20, num12 = 30, num13 = 100, num14 = 0.5 - kult
       // nonDeciUpTo1000 : num0 = 10, num11 = 20, num12 = 100, num13 = 1000 - khar, pal
       // nonDeciUpTo100 : num0 = 10, num11 = 20, num12 = 100 - chrs, nbat, phn, psal, sog
       // nonDeciUpTo20 : num0 = 10, num11 = 20 - palm
-      const allowedMappings = [1000, 100, 90, 80, 70, 60, 50, 40, 30, 20, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
-      // No Limit on 1000, Limit on 100 up to 9, Limit on 30 up to 3 except use10InPlaceOfZeroUpTo200 only once, Limit on 20 up to 4 except use10InPlaceOfZeroUpTo200 only once, Limit of only once for 90 - 40, 9, 8, 7, 6, 5, 4, 3, 2, 1
-      for (let str of stringNumeral) { 
 
+      // No Limit on 1000
+      // Limit on 100 up to 9
+      let expressionMath = "/" + this.mapLocale["100"] + "/g";
+      if ((stringNumeral.match(expressionMath) || []).length > 9) {
+        this.resultField.nativeElement.value = '';
+        this.equationField.nativeElement.value = '';
+        this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
+          duration: 3000
+        });
+        stringNumeral = "";
+      }
+      // Limit on 30 up to 3 except use10InPlaceOfZeroUpTo200 only once
+      if (this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) == -1) {
+        let expressionMath = "/" + this.mapLocale["30"] + "/g";
+        if ((stringNumeral.match(expressionMath) || []).length > 3) {
+          this.resultField.nativeElement.value = '';
+          this.equationField.nativeElement.value = '';
+          this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
+            duration: 3000
+          });
+          stringNumeral = "";
+        } 
+      } else if (this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+        let expressionMath = "/" + this.mapLocale["30"] + "/g";
+        if ((stringNumeral.match(expressionMath) || []).length > 1) {
+          this.resultField.nativeElement.value = '';
+          this.equationField.nativeElement.value = '';
+          this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
+            duration: 3000
+          });
+          stringNumeral = "";
+        } 
+      }
+      // Limit on 20 up to 4 except use10InPlaceOfZeroUpTo200 only once
+      if (this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) == -1) {
+        let expressionMath = "/" + this.mapLocale["30"] + "/g";
+        if ((stringNumeral.match(expressionMath) || []).length > 4) {
+          this.resultField.nativeElement.value = '';
+          this.equationField.nativeElement.value = '';
+          this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
+            duration: 3000
+          });
+          stringNumeral = "";
+        } 
+      } else if (this.use10InPlaceOfZeroUpTo200.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+        let expressionMath = "/" + this.mapLocale["30"] + "/g";
+        if ((stringNumeral.match(expressionMath) || []).length > 1) {
+          this.resultField.nativeElement.value = '';
+          this.equationField.nativeElement.value = '';
+          this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
+            duration: 3000
+          });
+          stringNumeral = "";
+        } 
+      }
+      // Limit of only once for 90 - 40, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+      let map = 0;
+      const allowedMappings = [90, 80, 70, 60, 50, 40, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+      while (map < allowedMappings.length) {
+        if (this.mapLocale[allowedMappings[map]]) {
+          if (stringNumeral.split(this.mapLocale[allowedMappings[map]]).length - 1 > 1) {
+            this.resultField.nativeElement.value = '';
+            this.equationField.nativeElement.value = '';
+            this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
+              duration: 3000
+            });
+            stringNumeral = "";
+            break;
+          } 
+        }
+        map = map + 1;
       }
     }
-    // Defect 'chrs' opposite side result
+
     for (let str of stringNumeral) {
-      if (digitPosition < stringNumeral.length) {
-        if (mappedArray[digitPosition] && internal && stringNumeral != "") {
+      if (digitPosition < stringNumeral.length && stringNumeral != "") {
+        if (internal) {
           if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
             if (stringNumeral.indexOf("ⅭⅮ") > -1) {
               valueInternal = 400 + valueInternal;
@@ -3667,19 +3783,16 @@ export class CustomiseKeyboardsComponent implements OnInit {
               stringNumeral = stringNumeral.substr(0, stringNumeral.indexOf("ⅩⅭ")) + stringNumeral.substr(stringNumeral.indexOf("ⅩⅭ") + 2, stringNumeral.length - 1);
               digitPosition = digitPosition - 1;
               continue;
+            } else {
+              valueInternal = parseInt(mappedArray[str]) + valueInternal;
             }
-          }
-          valueInternal = parseInt(mappedArray[digitPosition]) + valueInternal;
-        } else if (mappedArray[str] != undefined && internal && stringNumeral != "") {
-          if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) == -1) {
-            valueInternal = parseInt(mappedArray[str]) + valueInternal;
-          } else {
+          } else if (this.rtlArrayOverride.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
             valueInternal = parseInt(mappedArray[str].split(" ")[1]) + valueInternal;
+          } else if (!mappedArray[str] && mappedArray[stringNumeral] != undefined) {
+            valueInternal = parseInt(mappedArray[stringNumeral]) + valueInternal;
+            stringNumeral = "";
           }
-        } else if (mappedArray[stringNumeral] != undefined && internal && stringNumeral != "") {
-          valueInternal = parseInt(mappedArray[stringNumeral]) + valueInternal;
-          stringNumeral = "";
-        } else if (mappedArray[digitPosition] && !internal && stringNumeral != "") {
+        } else if (mappedArray[digitPosition] && !internal) {
           if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonDeciUpToPos1000000.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
             // nonDeciUpToPos1000 : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000 - hung
             // nonDeciUpToPos1000Fraction : num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 0.5, num16 = 1/12, num17 = 2/3, num18 = 3/4, num19 = 10/12, num20 = 11/12 -la
@@ -3694,7 +3807,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
               stringNumeral = parseInt(stringNumeral) % 5000 + "";
               digitPosition = digitPosition - 1;
             } else if (parseInt(stringNumeral) >= 1000) {
-              valueExternal = valueExternal + mappedArray["1000"];
+              valueExternal = valueExternal + mappedArray["1000"].repeat(Math.floor(parseInt(stringNumeral) % 10000 / 1000));
               stringNumeral = parseInt(stringNumeral) % 1000 + "";
               digitPosition = digitPosition - 1;
             } else if (parseInt(stringNumeral) >= 500) {
@@ -3861,12 +3974,16 @@ export class CustomiseKeyboardsComponent implements OnInit {
     // map this.varX and this.varY with corresponding num Type be mapped to 0 - 9 numbers
     if (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) 
       localeMappedX = this.convertNonStandardToDecimal(this.varX, this.numberMap, true);
-    else
+    else if (this.nonRegularDecimals.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+      localeMappedX = this.nonRegularDecimalNumerals(this.varX, this.numberMap, true);
+    else 
       localeMappedX = this.stringManipulator(this.varX, this.numberMap, true);
 
     if (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1)
       localeMappedY = this.convertNonStandardToDecimal(this.varY, this.numberMap, true);
-    else
+    else if (this.nonRegularDecimals.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+      localeMappedY = this.nonRegularDecimalNumerals(this.varY, this.numberMap, true);
+    else 
       localeMappedY = this.stringManipulator(this.varY, this.numberMap, true);
 
     let numberOperandX : any;
@@ -3968,10 +4085,21 @@ export class CustomiseKeyboardsComponent implements OnInit {
     } else if (this.currentBase == "base8") {
       this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(8), this.mapLocale, false);
     } else if (this.currentBase == "base10") {
-      if (this.displayComputedResultForUnicodeScript.indexOf(this.sessionManager.getFromSessionURL()) > -1) 
-        this.resultField.nativeElement.value = (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) ? this.convertNonStandardToDecimal(this.operationResult.toString(), this.mapLocale, false) : this.stringManipulator(this.operationResult.toString(), this.mapLocale, false);
-      else
-        this.resultField.nativeElement.value = (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) ? this.convertNonStandardToDecimal(this.operationResult.toString(), this.mapLocale, false) : this.displayVariableInLocaleFormat(this.operationResult);
+      if (this.displayComputedResultForUnicodeScript.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+        if (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+          this.resultField.nativeElement.value = this.convertNonStandardToDecimal(this.operationResult.toString(), this.mapLocale, false);
+        else if (this.nonRegularDecimals.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+          this.resultField.nativeElement.value = this.nonRegularDecimalNumerals(this.operationResult.toString(), this.mapLocale, false)
+        else
+          this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(), this.mapLocale, false)
+      } else {
+        if (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) 
+          this.resultField.nativeElement.value = this.convertNonStandardToDecimal(this.operationResult.toString(), this.mapLocale, false);
+        else if (this.nonRegularDecimals.indexOf(this.sessionManager.getFromSessionURL()) > -1)
+          this.resultField.nativeElement.value = this.nonRegularDecimalNumerals(this.operationResult.toString(), this.mapLocale, false)
+        else 
+          this.resultField.nativeElement.value = this.displayVariableInLocaleFormat(this.operationResult);
+      }
     } else if (this.currentBase == "base12") {
       this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(12), this.mapLocale, false);
     } else if (this.currentBase == "base16") {
