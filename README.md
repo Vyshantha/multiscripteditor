@@ -27,7 +27,7 @@ This website offers every writer all the tools necessary to ensure they are able
 14. Keyboard Layouts can be bookmarked and layouts could be customised 
 15. The offering in available in `Online` | `Offline` for the different services
 16. The Transliteration content generation for 140 scripts & encodings is established using the APIs provided by Aksharamukha ![Aksharamukha](https://cdn.jsdelivr.net/gh/virtualvinodh/aksharamukha/aksharamukha-web-plugin/icon.png) : https://aksharamukha.appspot.com/explore from [@github/virtualvinodh](https://github.com/virtualvinodh/aksharamukha)
-17. The suggestions are regularly updated based on Natural Language Process - Standford Stanza NLP (build `Python 3.7`) after sentence completion for each language or script
+17. The suggestions are regularly updated based on Natural Language Process - Standford Stanza NLP [@Stanza](https://github.com/stanfordnlp/stanza) (build `Python 3.7`) after sentence completion for each language or script
 18. Integrated [@EasyOCR](https://github.com/JaidedAI/EasyOCR) to detect text in images for 88 Languages 
 19. Use canvas to scribble or write or draw any Content and include in Editor
 20. Calculator ( `Simple` | `Scientific` ) integrated here and available as separate [*website*](https://worldscriptscalculator.app/) 
