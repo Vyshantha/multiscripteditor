@@ -12,7 +12,7 @@ This website offers every writer all the tools necessary to ensure they are able
  - [Sign](https://en.wikipedia.org/wiki/Sign_language) 
  - [Code-Shorthand-Emoji](https://en.wikipedia.org/wiki/Shorthand) 
  - [Unclassified](https://www.omniglot.com/writing/undeciphered.htm)
-2. Types of Keyboard Layout : `Language Learning (Default)` available for 600 Scripts & Languages | `Typewriter (QWERTY)` available for 280 Languages & Scripts | `Transliterate (Phonetic)` available for 15 language 
+2. Types of Keyboard Layout : `Orthography (Default)` available for 600 Scripts & Languages | `Typewriter (QWERTY)` available for 280 Languages & Scripts | `Transliterate (Phonetic)` available for 15 language 
 3. Keyboard selection could be done using the search feature present in each script type, or filtering capabilities using historical timeline or even through the world map
 4. Providing Suggestion while Typing for 150 Scripts & Languages
 5. Virtual Keyboard on screen is **mapped** for any Laptop Keyboard (Mac|Windows|Linux|External) for ease of Typing 
