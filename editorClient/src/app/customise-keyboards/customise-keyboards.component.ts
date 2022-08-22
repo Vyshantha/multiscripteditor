@@ -1218,7 +1218,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   
   // Non-Decimal numerals
   rtlArrayOverride : any = ['chrs','khar','kult','nbat','pal','palm','phn','psal'];
-  nonStandardNumeral : any = ['chrs','ett','ital','hung','khar','kmt','kult','la','nbat','pal','palm','phn','psal','sabe','sog'];
+  nonStandardNumeral : any = ['chrs','ett','hung','ital','khar','kmt','kult','la','nbat','pal','palm','phn','psal','sabe','sog'];
   // num0 = 10, num11 = 20 - palm
   nonDeciUpTo20: any = ['palm'];
 
@@ -1232,7 +1232,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   nonDeciUpTo1000: any = ['khar','pal'];
 
   // num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000 - hung
-  nonDeciUpToPos1000 = ['hung'];
+  nonDeciUpToPos1000 = ['hung','ital'];
 
   // num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 5000, num16 = 10000, num17 = 50000, num18 = 1000000 - ett
   nonDeciUpToPos1000000 = ['ett'];
@@ -1244,7 +1244,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   nonDeciUpTo100000: any = ['kmt'];
 
   // num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 200 - Persian Siyaq : https://www.unicode.org/L2/L2021/21105-persian-siyaq.pdf, Indic Siyaq https://www.unicode.org/charts/PDF/U1EC70.pdf , Diwani Siyaq : http://std.dkuug.dk/JTC1/SC2/WG2/docs/n4119.pdf, Ottaman Siyaq : https://www.unicode.org/charts/PDF/U1ED00.pdf
-  nonDecimalUpTo200: any = ['indq', 'ottoq'];
+  nonDecimalUpTo200: any = ['diwaq','indiq','farsq','ottoq'];
   
   // Base 20 numerals
   // num0 = 0, num11 = 11, num12 = 12 ... , num19 = 19, num20 = 20 
@@ -1374,6 +1374,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
     - Any Equation Setup (Paste/History/Bookmark/Formula) and use
     - Brackets usage & complete equation computation
     - BaseX specific Operations Defects
+    - Defect 'ta' 10 represented with single character or two characters allowed and Decimal validation
+    - Non-unicode numerals like Runes/Avestan results do not show
+    - Defect 'chrs' opposite side result
   */
 
   constructor(private dialogRef: MatDialogRef<CustomiseKeyboardsComponent>, private _formBuilder: UntypedFormBuilder, private http: HttpClient, private translate: TranslateService, private sessionManager: SessionManagerService, private themeService: ThemeService, private renderer: Renderer2,searchInputAllScripts: ElementRef, suggestionsForDevice: ElementRef, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: TypeOfLayout, resultField: ElementRef, equationField: ElementRef) { 
@@ -3497,7 +3500,6 @@ export class CustomiseKeyboardsComponent implements OnInit {
     }
   }
 
-  // Defect 'ta' 10 represented with single character or two characters allowed and Decimal validation
   nonRegularDecimalNumerals(stringNumeral, mappedArray, internal) {
     // distinctNumerals : num11 = 10, num12 = 20, num13 = 30 ... , num19 = 90, num20 = 100 
     // use10RegularDecimal : num11 = 10, num12 = 100, num13 = 1000
@@ -3632,24 +3634,40 @@ export class CustomiseKeyboardsComponent implements OnInit {
     return (internal) ? valueInternal + "" : valueExternal;
   }
 
-  // Defect 'chrs' opposite side result & validate 'avst'
   convertNonStandardToDecimal(stringNumeral, mappedArray, internal) {
     // use10InPlaceOfZero & nonStandardNumeral
     let valueInternal = 0, valueExternal = "", digitPosition = 0;
     if (this.nonDeciUpToPos1000.indexOf(this.sessionManager.getFromSessionURL()) > -1 && internal) {
-      const mapRovasirasToLatin = {'𐳿':'Ⅿ',' ַ𐳽':'Ⅾ','𐳾':'Ⅽ','𐳽':'Ⅼ','𐳼':'Ⅹ','𐳻':'Ⅴ','𐳺':'Ⅰ'};
-      let latinNumber = "";
-      for (let str of stringNumeral) {
-        latinNumber = latinNumber + mapRovasirasToLatin[str];
-      }
-      const rovasirasValidation = new RegExp('^Ⅿ{0,4}(Ⅾ?Ⅽ{0,4})(Ⅼ?Ⅹ{0,4})(Ⅴ?Ⅰ{0,4})$');
-      if (!rovasirasValidation.test(latinNumber)) {
-        this.resultField.nativeElement.value = '';
-        this.equationField.nativeElement.value = '';
-        this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
-          duration: 3000,
-        });
-        stringNumeral = "";
+      if (this.sessionManager.getFromSessionURL() == "hung") {
+        const mapNumeralsToLatin = {'𐳿':'Ⅿ',' ַ𐳽':'Ⅾ','𐳾':'Ⅽ','𐳽':'Ⅼ','𐳼':'Ⅹ','𐳻':'Ⅴ','𐳺':'Ⅰ'};
+        let latinNumber = "";
+        for (let str of stringNumeral) {
+          latinNumber = latinNumber + mapNumeralsToLatin[str];
+        }
+        const rovasirasValidation = new RegExp('^Ⅿ{0,4}(Ⅾ?Ⅽ{0,4})(Ⅼ?Ⅹ{0,4})(Ⅴ?Ⅰ{0,4})$');
+        if (!rovasirasValidation.test(latinNumber)) {
+          this.resultField.nativeElement.value = '';
+          this.equationField.nativeElement.value = '';
+          this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
+            duration: 3000,
+          });
+          stringNumeral = "";
+        }
+      } else if (this.sessionManager.getFromSessionURL() == "ital") {
+        const mapNumeralsToLatin = {'ↂ':'Ⅿ','ↁ':'Ⅾ','ↀ':'Ⅽ','𐌣':'Ⅼ','𐌢':'Ⅹ','𐌡':'Ⅴ','𐌠':'Ⅰ'};
+        let latinNumber = "";
+        for (let str of stringNumeral) {
+          latinNumber = latinNumber + mapNumeralsToLatin[str];
+        }
+        const italicValidation = new RegExp('^Ⅿ{0,4}(Ⅾ?Ⅽ{0,4})(Ⅼ?Ⅹ{0,4})(Ⅴ?Ⅰ{0,4})$');
+        if (!italicValidation.test(latinNumber)) {
+          this.resultField.nativeElement.value = '';
+          this.equationField.nativeElement.value = '';
+          this._snackBar.open("Invalid Number is Typed", this.translateForSnackBar[0], {
+            duration: 3000,
+          });
+          stringNumeral = "";
+        }
       }
     } else if (this.nonDeciUpToPos1000Fraction.indexOf(this.sessionManager.getFromSessionURL()) > -1 && internal){
       const romanValidation = new RegExp('^Ⅿ{0,2}(Ⅽ?Ⅿ{0,0}|Ⅽ?Ⅾ{0,0}|Ⅾ?Ⅽ{0,2})(Ⅹ?Ⅽ{0,0}|Ⅹ?Ⅼ{0,0}|Ⅼ?Ⅹ{0,2})(Ⅰ|Ⅱ|Ⅲ|Ⅳ|Ⅴ|Ⅵ|Ⅶ|Ⅷ|Ⅸ|Ⅹ|Ⅼ|Ⅽ|Ⅾ|Ⅿ)$');
