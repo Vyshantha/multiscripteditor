@@ -2495,6 +2495,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
               else
                 this.resultField.nativeElement.value = (this.use10InPlaceOfZero.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.nonStandardNumeral.indexOf(this.sessionManager.getFromSessionURL()) > -1) ? this.convertNonStandardToDecimal(this.operationResult.toString(), this.mapLocale, false) : this.displayVariableInLocaleFormat(this.operationResult);
 
+              if (this.resultField.nativeElement.value == "Infinity") {
+                this.resultField.nativeElement.value = "∞";
+              }
+              
               if (this.operatorValue == "sin" || this.operatorValue == "cos" || this.operatorValue == "tan") {
                 this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + this.circularUnit + " = " + this.resultField.nativeElement.value;
                 this.appendCircularUnits = false;
@@ -4127,6 +4131,10 @@ export class CustomiseKeyboardsComponent implements OnInit {
     } else if (this.currentBase == "base60") {
       this.resultField.nativeElement.value = this.stringManipulator(this.operationResult.toString(60), this.mapLocale, false);
     } 
+
+    if (this.resultField.nativeElement.value == "Infinity") {
+      this.resultField.nativeElement.value = "∞";
+    }
 
     //this.equationField.nativeElement.value = this.equationField.nativeElement.value + " = " + this.resultField.nativeElement.value;
     if (this.operatorXY == "ʸ√" || this.operatorXY == "logₓy") {
