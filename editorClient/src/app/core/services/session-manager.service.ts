@@ -713,7 +713,7 @@ export class SessionManagerService {
     Note - swara + "large" vyanjana is a problem with size of cell calulation for above when probing for "row2*" and the superscript back side keys options will distort if space is not enough
   */
   perfectFontCellMatch(keyboardType, mobile, tablet, typeFlag, layoutCurrentKeys, cellSize, fontSize, where) {
-    if (layoutCurrentKeys != undefined && layoutCurrentKeys != null && layoutCurrentKeys != []) {
+    if (layoutCurrentKeys != undefined && layoutCurrentKeys != null) {
       let rowsMaxWidth = 0, currentRowMax = 0, marginWidth = (mobile)? 1 : ((tablet)? 2 : 3);
       for(let i = 0; i < layoutCurrentKeys.length; i++) {
         Object.keys(layoutCurrentKeys[i]).map((key) => {

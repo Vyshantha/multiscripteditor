@@ -1206,11 +1206,11 @@ export class CustomiseKeyboardsComponent implements OnInit {
   
   // No 0 number indicator only use 10 multiples
   // num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 200 
-  use10InPlaceOfZero: any = ['am','ary','avst','chrs','copt','el','esy','ett','geez','glag','he','hy','hung','ion','ital','ka','khar','kult','la','lad','linb','linea','mero','nbat','pal','palm','phn','psal','runr','sgnw','sog','ti','tig','txg','udi','sabe','xpr','yi'];
+  use10InPlaceOfZero: any = ['am','ary','avst','chrs','copt','el','esy','ett','geez','glag','he','hy','hung','ion','ital','ka','khar','kult','la','lad','linb','linea','mero','nbat','orkh','pal','palm','phn','psal','runr','sgnw','sog','ti','tig','toch','txg','udi','sabe','xpr','yi'];
 
   // No 0 number indicator only use 10 multiples
   // num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 1000 
-  use10InPlaceOfZeroUpTo200: any = ['avst','xpr'];
+  use10InPlaceOfZeroUpTo200: any = ['avst','toch','xpr'];
 
   // Alphabets for 1-10, 20, 30 ... , 80, 90, 100, 200, ..., 1000
   // num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 200 
@@ -1232,7 +1232,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   nonDeciUpTo1000: any = ['khar','pal'];
 
   // num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000 - hung
-  nonDeciUpToPos1000 = ['hung','ital'];
+  nonDeciUpToPos1000 = ['hung','ital','orkh'];
 
   // num0 = 10, num11 = 50, num12 = 100, num13 = 500, num14 = 1000, num15 = 5000, num16 = 10000, num17 = 50000, num18 = 1000000 - ett
   nonDeciUpToPos1000000 = ['ett'];
@@ -1243,7 +1243,11 @@ export class CustomiseKeyboardsComponent implements OnInit {
   // num0 = 10, num11 = 100, num12 = 1000, num13 = 10000, num14 = 100000 - kmt : https://en.wikipedia.org/wiki/Egyptian_numerals
   nonDeciUpTo100000: any = ['kmt'];
 
-  // num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 200 - Persian Siyaq : https://www.unicode.org/L2/L2021/21105-persian-siyaq.pdf, Indic Siyaq https://www.unicode.org/charts/PDF/U1EC70.pdf , Diwani Siyaq : http://std.dkuug.dk/JTC1/SC2/WG2/docs/n4119.pdf, Ottaman Siyaq : https://www.unicode.org/charts/PDF/U1ED00.pdf
+  // num0 = 10, num11 = 20, num12 = 30 ... , num19 = 100, num20 = 200 - 
+  // Persian Siyaq : https://www.unicode.org/L2/L2021/21105-persian-siyaq.pdf
+  // Indic Siyaq https://www.unicode.org/charts/PDF/U1EC70.pdf
+  // Diwani Siyaq : http://std.dkuug.dk/JTC1/SC2/WG2/docs/n4119.pdf
+  // Ottaman Siyaq : https://www.unicode.org/charts/PDF/U1ED00.pdf
   nonDecimalUpTo200: any = ['diwaq','indiq','farsq','ottoq'];
   
   // Base 20 numerals
@@ -1254,7 +1258,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   sexagesimal : any = ['elam','elx','hit','sux','xpeo'];
 
   // Display Results for these Unicode script without manipulation
-  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','ari','avst','bhai','bopo','brah','cans','chrs','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hung','hy','ion','ital','iub','ja','kaid','kali','kan','khar','khud','kult','latf','lana','leke','maya','mend','mero','modi','mon','moss','mroo','my','nagm','newa','nbat','nkoo','odu','osma','pal','palm','phn','psal','rohg','runr','sabe','shan','shrd','si','sidd','sog','sora','tach','takr','tamu','tdd','ti','tibt','tig','tirh','txg','wara','wcho','udi','xpr','zhcn','zhtw','zih'];
+  displayComputedResultForUnicodeScript : any = ['adlm','ahom','aima','am','ari','avst','bhai','bopo','brah','cans','chrs','copt','el','ett','geez','glag','gong','gonm','gup','hmng','hmnp','hung','hy','ion','ital','iub','ja','kaid','kali','kan','khar','khud','kult','latf','lana','leke','maya','mend','mero','modi','mon','moss','mroo','my','nagm','newa','nbat','nkoo','odu','orkh','osma','pal','palm','phn','psal','rohg','runr','sabe','shan','shrd','si','sidd','sog','sora','tach','takr','tamu','tdd','ti','tibt','tig','tirh','toch','txg','wara','wcho','udi','xpr','zhcn','zhtw','zih'];
 
   //Separation between Numerals for Display - https://en.wikipedia.org/wiki/Decimal_separator#Usage_worldwide
 
@@ -1266,7 +1270,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   commaAndPeriodAlternating: any = ['hr'];
 
   // PERIOD .
-  periodDecimalSeparatorLocales: any = ['aa','ace','adin','adlm','ahom','aima','ajam','ak','am','ang','ari','as','asom','avo','ay','bada','bali','bamu','bcl','bhai','bharati','bhat','bin','bis','bjn','bjyo','bla','bm','bn','bopo','brah','brx','brxla','bug','bugla','bya','cakm','cans','cari','carr','ceb','ch','cham','cher','chik','cjk','cree','crew','crs','cy','dag','dgabf','dgagh','dham','dhan','diak','din','dv','dz','ee','en','engb','enin','enintl','enus','esmx','esy','fa','ff','fj','flag','fon','fur','ga','gars','gd','gil','gong','gonm','goyk','gran','gsw','gu','gup','gv','ha','haj','hatr','haw','he','hi','hmn','hmng','hmnp','ht','iai','iast','ics','ig','iku','indus','iu','iub','ja','jiag','jam','jpn','jv','kab','kaid','kali','kan','kawi','kbp','khar','khud','ki','km','kn','ko','kon','kpe','kri','kru','kthi','ku','kw','maga','maha','mai','lad','ladla','lana','lbj','leke','lepc','lepo','lg','limb','ln','lo','loma','luo','lus','lwo','lyci','lydi','malt','mamb','mani','mand','marc','mfe','mic','mguj','moon','mos','mni','mend','mg','mh','mi','min','ml','mnc','mnk','modi','moss','mr','mroo','mrw','ms','mt','my','na','nag','nagm','nand','nask','newa','nbat','nde','ne','ngyo','njo','njz','nkoo','nshu','nso','nv','ny','odu','oji','om','onw','olck','or','osge','pa','pau','phyg','pice','pin','pli','pln','plrd','qu','ranj','rally','rap','rn','rohg','rw','sa','saur','scha','sgnw','shan','shrd','si','sidd','sii','sm','sn','snd','so','sora','soyo','ss','st','suz','sw','sylo','ta','tach','takr','tale','talu','tamu','tavt','tdd','te','tfng','th','thaa','tibt','tiga','tika','tirh','tl','tn','tnq','to','tok','toto','tpi','ts','ty','ug','umw','ur','ussign','usy','uyy','vah','vaii','vatt','wara','wbl','wcho','wo','wolf','xpu','yi','yiii','yo','zag','zhcn','zhtw','zih','zou'];
+  periodDecimalSeparatorLocales: any = ['aa','ace','adin','adlm','ahom','aima','ajam','ak','am','ang','ari','as','asom','avo','ay','bada','bali','bamu','bcl','bhai','bharati','bhat','bin','bis','bjn','bjyo','bla','bm','bn','bopo','brah','brx','brxla','bug','bugla','bya','cakm','cans','cari','carr','ceb','ch','cham','cher','chik','cjk','cree','crew','crs','cy','dag','dgabf','dgagh','dham','dhan','diak','din','dv','dz','ee','en','engb','enin','enintl','enus','esmx','esy','fa','ff','fj','flag','fon','fur','ga','gars','gd','gil','gong','gonm','goyk','gran','gsw','gu','gup','gv','ha','haj','hatr','haw','he','hi','hmn','hmng','hmnp','ht','iai','iast','ics','ig','iku','indus','iu','iub','ja','jiag','jam','jpn','jv','kab','kaid','kali','kan','kawi','kbp','khar','khud','ki','km','kn','ko','kon','kpe','kri','kru','kthi','ku','kw','maga','maha','mai','lad','ladla','lana','lbj','leke','lepc','lepo','lg','limb','ln','lo','loma','luo','lus','lwo','lyci','lydi','malt','mamb','mani','mand','marc','mfe','mic','mguj','moon','mos','mni','mend','mg','mh','mi','min','ml','mnc','mnk','modi','moss','mr','mroo','mrw','ms','mt','my','na','nag','nagm','nand','nask','newa','nbat','nde','ne','ngyo','njo','njz','nkoo','nshu','nso','nv','ny','odu','oji','om','onw','olck','or','osge','pa','pau','phyg','pice','pin','pli','pln','plrd','qu','ranj','rally','rap','rn','rohg','rw','sa','saur','scha','sgnw','shan','shrd','si','sidd','sii','sm','sn','snd','so','sora','soyo','ss','st','suz','sw','sylo','ta','tach','takr','tale','talu','tamu','tavt','tdd','te','tfng','th','thaa','tibt','tiga','tika','tirh','tl','tn','tnq','to','toch','tok','toto','tpi','ts','ty','ug','umw','ur','ussign','usy','uyy','vah','vaii','vatt','wara','wbl','wcho','wo','wolf','xpu','yi','yiii','yo','zag','zhcn','zhtw','zih','zou'];
   desiLakhCommaDecimalPeriodPosition: any = ['as','bada','bcl','bharati','bn','brah','brx','brxla','bya','cakm','chik','dham','dhan','diak','dv','dz','enin','gars','gong','gonm','goyk','gran','gu','gup','haj','hi','iast','indus','khud','kn','kru','kthi','lbj','lus','maga','maha','mai','malt','mfe','mguj','ml','mni','modi','moss','mr','mroo','nag','nagm','nand','ne','newa','njz','olck','or','pa','pli','ranj','rohg','sa','saur','scha','shrd','si','sidd','sii','snd','sora','sylo','ta','takr','tamu','te','thaa','tiga','tika','tirh','toto','vatt','wara','ur','wcho','zou'];
   desiLakhSpaceDecimalPeriodPosition: any = ['bhai','bhat','enin','lepc','limb','ne','suz'];
   thousandsPositionCommaAndPeriodDecimal : any = ['aa','ab','ace','adin','adlm','ajam','ak','ang','ay','bali','bamu','bin','bis','bjyo','bla','bm','ceb','ch','cham','cher','cjk','cree','crew','crs','cy','dag','dgabf','dgagh','din','ee','en','engb','enintl','enus','esmx','esy','fa','ff','fj','fon','fur','ga','gd','gil','gn','gv','ha','hatr','haw','he','hmn','hmng','hmnp','ht','iai','ics','ig','iku','iu','iub','is','ja','jam','jpn','jv','kawi','kab','kbp','ki','km','ko','kon','kpe','kri','ku','kw','mg','mh','min','lad','ladla','lana','lepo','lg','ln','lo','loma','luo','lwo','lyci','lydi','mamb','mand','mani','mend','mi','mic','mnk','moon','mos','mrw','ms','mt','na','nask','nde','ngyo','njo','nkoo','nso','nv','ny','odu','oji','om','onw','osge','pau','phyg','pice','pln','qu','rally','rap','rn','rw','sm','sn','so','ss','st','sw','tavt','tfng','th','tl','tn','tnq','to','tok','tpi','ts','ty','vah','wbl','wo','wolf','xpu','ug','umw','ussign','usy','uyy','vaii','yi','yo','zag','zhtw'];
@@ -1298,7 +1302,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
   isRTL: Boolean = false;
 
   rtlLocales : string[] = ['adlm','ajam','ar','arc','avst','bal','ber','bsk','cana','chrs','chun','ckb','cprt','dv','egyd','elym','estr','ett','fa','gars','hatr','he','hung','idu','indus','jawi','jrb','khar','khaz','ks','kuli','kult','lad','lepo','linb','lydi','madn','mand','mani','mend','mer','mero','mnkar','nbat','nkoo','nshu','odu','orkh','ougr','pal','palm','phn','phyg','pice','ps','psal','rhg','rohg','sabe','safa','samr','sd','sert','sina','skr','sog','syrc','thaa','txg','txr','ug','ur','woal','wolf','xpr','xpu','xsa','yezi','yi'];
-  rtlNumerals : string [] = ['adlm','avst','chrs','ett','he','hung','khar','kult','lad','linb','linea','mend','mero','nbat','nkoo','odu','pal','palm','phn','psal','sog','wolf','xpr','yi'];
+  rtlNumerals : string [] = ['adlm','avst','chrs','ett','he','hung','khar','kult','lad','linb','linea','mend','mero','nbat','nkoo','odu','orkh','pal','palm','phn','psal','sog','wolf','xpr','yi'];
 
   boustrophedonScripts: string[] = ['asom','avo','egyd','ett','hung','kmt','lepo','luw','maya','moon','phyg','pice','sabe','safa','sina','txr','wole','xsa'];
   topToBottomLR: string[] = ['galk','ja','ko','mnc','mon','oira','phag','shui','sog','soyo','zhcn','zhtw'];
@@ -1313,7 +1317,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
 
   fontsSources: string[] = ['chrs','dogr','elym','gong','gonm','hmnp','khar','khud','kult','luw','maka','moss','nand','nshu','odu','ougr','sgnw','sog','soyo','txg','ur','vatt','yezi','zag','zanb'];
 
-  imageAlternativeScript: string[] = ['adin', 'aima', 'ary', 'avst', 'avo', 'aztc', 'bada', 'banzsl', 'ber', 'bhat', 'bhp', 'bya', 'cana', 'cans', 'chik', 'chis', 'coorg', 'dale', 'desisign', 'dham', 'dhan', 'diak', 'dite', 'egyd', 'esi', 'esk', 'estr', 'esy', 'flag', 'gael', 'gars', 'geba', 'goyk', 'gup', 'iba', 'ibe', 'ics', 'indus', 'ion', 'ipk', 'jiag', 'kada', 'kaid', 'kama', 'kawi', 'khat', 'khom', 'khor', 'kitl', 'kits', 'koch', 'kpe', 'kru', 'kthi', 'kuli', 'lad', 'land', 'leke', 'loma', 'luo', 'madn', 'maga', 'mamb', 'maya', 'mguj', 'mikq', 'moon', 'mwan', 'nagm', 'nand', 'ndju', 'nsi', 'pall', 'ranj', 'renc', 'runr', 'sabe', 'safa', 'scha', 'sert', 'sina', 'suz', 'tach', 'tamu', 'tang', 'tani', 'tdd', 'tiga', 'tika', 'tnq', 'toch', 'toto', 'txr', 'umw', 'ussign', 'vatt', 'vith', 'wole', 'wolf', 'xce', 'zou'];
+  imageAlternativeScript: string[] = ['adin', 'aima', 'ary', 'avst', 'avo', 'aztc', 'bada', 'banzsl', 'ber', 'bhat', 'bhp', 'bya', 'cana', 'cans', 'chik', 'chis', 'coorg', 'dale', 'desisign', 'dham', 'dhan', 'diak', 'dite', 'egyd', 'esi', 'esk', 'estr', 'esy', 'flag', 'gael', 'gars', 'geba', 'goyk', 'gup', 'iba', 'ibe', 'ics', 'indus', 'ion', 'ipk', 'jiag', 'kada', 'kaid', 'kama', 'kawi', 'khat', 'khom', 'khor', 'kitl', 'kits', 'koch', 'kpe', 'kru', 'kthi', 'kuli', 'lad', 'land', 'leke', 'loma', 'luo', 'madn', 'maga', 'mamb', 'maya', 'mguj', 'mikq', 'moon', 'mwan', 'nagm', 'nand', 'ndju', 'nsi', 'orkh', 'pall', 'ranj', 'renc', 'runr', 'sabe', 'safa', 'scha', 'sert', 'sina', 'suz', 'tach', 'tamu', 'tang', 'tani', 'tdd', 'tiga', 'tika', 'tnq', 'toch', 'toto', 'txr', 'umw', 'ussign', 'vatt', 'vith', 'wole', 'wolf', 'xce', 'zou'];
 
   //Remove Images folders ['diak','ndju','pall','ranj','tiga','vith']
 
@@ -2498,7 +2502,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
               if (this.resultField.nativeElement.value == "Infinity") {
                 this.resultField.nativeElement.value = "∞";
               }
-              
+
               if (this.operatorValue == "sin" || this.operatorValue == "cos" || this.operatorValue == "tan") {
                 this.equationField.nativeElement.value = this.equationField.nativeElement.value + " " + this.circularUnit + " = " + this.resultField.nativeElement.value;
                 this.appendCircularUnits = false;
