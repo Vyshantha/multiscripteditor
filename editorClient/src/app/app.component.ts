@@ -211,7 +211,7 @@ export class AppComponent implements AfterViewInit {
     }
 
     // Sending Session Data To Server
-    this.sessionManager.tokenForSession().subscribe((sessionData: any) => {
+    /* this.sessionManager.tokenForSession().subscribe((sessionData: any) => {
         // Session Manager Service sends these Device, Browser, Locale & User Interface Data
         console.info("[MUlTISCRIPTEDITOR] Session is initiated from Browser");
         localStorage.setItem("ltpaToken", sessionData.idToken);
@@ -222,7 +222,7 @@ export class AppComponent implements AfterViewInit {
             console.info("[MUlTISCRIPTEDITOR] User's Choice Session Data is sent to server");
           });
         }
-    });
+    }); */
     
     if (localStorage.getItem("ltpaToken") == "" || localStorage.getItem("ltpaToken") == null || localStorage.getItem("ltpaToken") == undefined) {
       // Explorer mode by default

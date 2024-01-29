@@ -2065,12 +2065,12 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
 
     this.sessionManager.itemQwertyType.subscribe((flagValue)=>{
       this.isQwerty = flagValue;
-      if (this.sessionManager.isSendInitialLoadDataAllowed() == 'true' && flagValue) {
+      /* if (this.sessionManager.isSendInitialLoadDataAllowed() == 'true' && flagValue) {
         this.sessionManager.sendDataToServerAtSessionBegin().subscribe(() => {
           // Session Manager Service sends these Device, Browser, Locale & User Interface Data
           console.info("[MUlTISCRIPTEDITOR] User's Choice Session Data is sent to server");
         });
-      }
+      } */
       // Constraint : Typewriter is false and Transliterate is set then it should be reset
       if (flagValue == false && this.isTransliterate == true && this.sessionManager.itemTransliterate.value == true) {
         this.sessionManager.setTransliterate(false);
@@ -2083,12 +2083,12 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     });
     this.sessionManager.itemTransliterate.subscribe((flagForTrans) => {
       this.isTransliterate = flagForTrans;
-      if (this.sessionManager.isSendInitialLoadDataAllowed() == 'true' && flagForTrans) {
+      /* if (this.sessionManager.isSendInitialLoadDataAllowed() == 'true' && flagForTrans) {
         this.sessionManager.sendDataToServerAtSessionBegin().subscribe(() => {
           // Session Manager Service sends these Device, Browser, Locale & User Interface Data
           console.info("[MUlTISCRIPTEDITOR] User's Choice Session Data is sent to server");
         });
-      }
+      } */
       if (this.allowSuperScript && (this.isQwerty || this.isTransliterate)) {
         this.setSuperPosition();
         this.setSuperScriptInLayout();
@@ -2815,12 +2815,12 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.renderBiDi(false);
     if (this.layoutCurrentKeys && this.sessionManager.triggerWindowsKeys.value == true)
       this.microsoftDetected();
-    if (this.sessionManager.isSendInitialLoadDataAllowed() == 'true') {
+    /* if (this.sessionManager.isSendInitialLoadDataAllowed() == 'true') {
       this.sessionManager.sendDataToServerAtSessionBegin().subscribe(() => {
         // Session Manager Service sends these Device, Browser, Locale & User Interface Data
         console.info("[MUlTISCRIPTEDITOR] User's Choice Session Data is sent to server");
       });
-    }
+    } */
   }
 
   tabLoadShow(instance, position) {

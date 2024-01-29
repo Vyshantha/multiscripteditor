@@ -51,3 +51,23 @@ ng update @angular/core@14 @angular/cli@14 --allow-dirty --force
 ng update @angular/material@14 --allow-dirty --force
 cp ./editorClient ./editorClientCalculator
 ./publishWebsite.sh
+
+
+# v14 to v15
+ng version
+ng update @angular/core@14 @angular/cli@14 --allow-dirty --force
+ng update @angular/material@14 --allow-dirty --force
+cp ./editorClient ./editorClientCalculator
+./publishWebsite.sh
+# v15 to v16
+ng version
+ng update @angular/core@14 @angular/cli@14 --allow-dirty --force
+ng update @angular/material@14 --allow-dirty --force
+cp ./editorClient ./editorClientCalculator
+./publishWebsite.sh
+# v16 to v17
+ng version
+ng update @angular/core@14 @angular/cli@14 --allow-dirty --force
+ng update @angular/material@14 --allow-dirty --force
+cp ./editorClient ./editorClientCalculator
+./publishWebsite.sh

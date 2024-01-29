@@ -16,3 +16,4 @@ editorClient/backup_v12/*
 editorClient/backup_v13/*
 editorClient/backup_v14/*
 editorClient/.angular/*
+routes/session-info/session-info.json

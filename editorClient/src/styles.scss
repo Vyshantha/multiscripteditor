@@ -35,7 +35,7 @@
   html, body { height: 100%; }
   body { 
     margin: 0; 
-    font-family: "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", Roboto, "Helvetica Neue", sans-serif; 
+    font-family: "Zaghawa Beria", "Noto Sans Sign Writing", "Noto Serif Old Uyghur", "Aebajiogbe Oduduwa", "Noto Sans Nandinagari", "Noto Sans Tangsa", "Noto Serif Makasar", "Noto Sans Runic", "Noto Sans Anatolian Hieroglyphs", "Noto Sans Khudawadi", "Noto Sans Kharoshthi", "indus-script", "Noto Sans Chorasmian", "Ariyaka", "Noto Serif Armenian", "Noto Serif Georgian", "Noto Serif", "Noto Sans Devanagari", "Noto Sans Tamil", "Noto Sans CJK JP", "Noto Serif Dogra", "Noto Sans Zanabazar Square", "Noto Sans Mahajani", "Noto Sans Old Sogdian", "Noto Sans Sogdian", "Noto Serif Nyiakeng Puachue Hmong", "Noto Traditional Nushu", "Noto Sans Nushu", "Noto Serif Tangut", "Noto Sans Elymaic", "Noto Sans Masaram Gondi", "Noto Sans Gunjala Gondi", "Noto Sans Soyombo", "Noto Serif Yezidi", "Noto Nastaliq Urdu", "Noto Sans", Roboto, "Helvetica Neue", sans-serif; 
   }
 
   :host {
@@ -832,6 +832,18 @@
 
   .maka {
     font-family: 'Noto Serif Makasar' !important;
+  }
+
+  @font-face {
+    font-family: 'Noto Sans Runic';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: url('./assets/font-families/noto-sans/files/NotoSansRunic-Regular.woff') format('woff');
+  }
+
+  .maka {
+    font-family: 'Noto Sans Runic' !important;
   }
 
   @font-face {
