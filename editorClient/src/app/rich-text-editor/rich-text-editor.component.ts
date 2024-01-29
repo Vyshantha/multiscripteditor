@@ -1186,6 +1186,8 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
 
     if (this.sessionManager.getFromSessionURL() == "la") 
       return "·";
+    else if (this.sessionManager.getFromSessionURL() == "runr")
+        return "\u16EB\u200B";
     else if (this.sessionManager.getFromSessionURL() == "geez")
       return "፡";
     else if (this.noSeparator.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.unicode5AndHigher)

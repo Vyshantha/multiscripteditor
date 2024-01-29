@@ -315,7 +315,7 @@ export class SessionManagerService {
   wordSeparator() {
     /* Word-Separator https://r12a.github.io/scripts/featurelist/
       [space] " "
-      [interpunct] "·" (la)
+      [interpunct] "·" (la,runr)
       [visually separate] "\u2009" bzw. "፡" (am, geez)
       [no separator] "" (zhcn, zhtw, ja)
       [syllabic] (lisu, tibetan)
@@ -324,6 +324,8 @@ export class SessionManagerService {
 
     if (this.getFromSessionURL() == "la") 
       return "·";
+    else if (this.getFromSessionURL() == "runr")
+        return "\u16EB\u200B";
     else if (this.getFromSessionURL() == "geez")
       return "፡";
     else if (this.noSeparator.indexOf(this.getFromSessionURL()) > -1)
