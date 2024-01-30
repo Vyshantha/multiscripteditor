@@ -2920,7 +2920,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.sessionManager.setInSessionURL('rohg');
     } else if (tabChangeEvent.index == 12 && tabChangeEvent.tab.textLabel == "Old Sinaitic") {
       this.sessionManager.setInSessionURL('sina');
-    } else if (tabChangeEvent.index == 13 && tabChangeEvent.tab.textLabel == "ئۇيغۇرچە-Old Uyghur") {
+    } else if (tabChangeEvent.index == 13 && tabChangeEvent.tab.textLabel == "ئۇيغۇرچە-Old Uyghur-𐽳𐽱𐽴𐾀𐽵") {
       this.sessionManager.setInSessionURL('ougr');
     }
     this.layoutCurrentKeys = this[this.keyboardLayouts[this.sessionManager.getFromSessionURL()][3]];
@@ -3570,7 +3570,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   }
 
   selectKeyboardFromBookmark(valueOfBookmark) {
-    this.sessionManager.setSelectedKeyboard(valueOfBookmark.split('(')[1].split(')')[0]);
+    this.sessionManager.setSelectedKeyboard(valueOfBookmark.split('(')[valueOfBookmark.split('(').length - 1].split(')')[0]);
   }
 
   showSuperScriptCharacter(character) : string {

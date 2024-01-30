@@ -999,7 +999,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                 else if (this.sessionManager.getFromSessionURL() != "ougr")
                   textOrientatedContent = textOrientatedContent + splitContent[i];
                 else if (i == (splitContent.length - 2) && this.sessionManager.getFromSessionURL() == "ougr") 
-                  textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-rl;text-orientation: mixed;letter-spacing: 1em;'>").replace('<p style=\"', '<p style=\"writing-mode: vertical-rl;text-orientation: mixed;letter-spacing: 1em;transform: rotate(-180deg);');
+                  textOrientatedContent = textOrientatedContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='writing-mode: vertical-rl;text-orientation: mixed;transform: rotate(180deg);'>");
                 else if (this.sessionManager.getFromSessionURL() == "ougr")
                   textOrientatedContent = textOrientatedContent + splitContent[i];
               }

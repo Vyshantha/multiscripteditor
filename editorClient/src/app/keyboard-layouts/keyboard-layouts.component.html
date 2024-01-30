@@ -72,7 +72,7 @@
                     </table>
                 </span>
                 <span *ngIf="toggleAbjad == false" style="width: 100%; height: 400px; display:block; overflow-y: scroll;text-align:center">
-                    <button mat-button aria-label="ئۇيغۇرچە-Old Uyghur" color="primary" matTooltip="{{localisedKeyboardLayouts['ougr'][2]}}" (click)="allAbjadTypeClicked('ougr')" *ngIf="keyboardLayouts['ougr'][7] < historyAbjad.value && (keyboardLayouts['ougr'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['ougr'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">ئۇيغۇرچە-Old Uyghur</button>
+                    <button mat-button aria-label="ئۇيغۇرچە-Old Uyghur-𐽳𐽱𐽴𐾀𐽵" color="primary" matTooltip="{{localisedKeyboardLayouts['ougr'][2]}}" (click)="allAbjadTypeClicked('ougr')" *ngIf="keyboardLayouts['ougr'][7] < historyAbjad.value && (keyboardLayouts['ougr'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['ougr'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">ئۇيغۇرچە-Old Uyghur</button>
                     <button mat-button aria-label="Old Sinaitic" color="primary" matTooltip="{{localisedKeyboardLayouts['sina'][2]}}" (click)="allAbjadTypeClicked('sina')" *ngIf="keyboardLayouts['sina'][7] < historyAbjad.value && (keyboardLayouts['sina'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['sina'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">Old Sinaitic</button>
                     <button mat-button aria-label="𐴌𐴟𐴇𐴥𐴝𐴚𐴒𐴙𐴝 𐴇𐴝𐴕𐴞𐴉𐴞" color="primary" matTooltip="{{localisedKeyboardLayouts['rohg'][2]}}" (click)="allAbjadTypeClicked('rohg')" *ngIf="keyboardLayouts['rohg'][7] < historyAbjad.value && (keyboardLayouts['rohg'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['rohg'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">𐴌𐴟𐴇𐴥𐴝𐴚𐴒𐴙𐴝 𐴇𐴝𐴕𐴞𐴉𐴞</button>
                     <button mat-button aria-label="Khwarezmian" color="primary" matTooltip="{{localisedKeyboardLayouts['chrs'][2]}}" (click)="allAbjadTypeClicked('chrs')" *ngIf="keyboardLayouts['chrs'][7] < historyAbjad.value && (keyboardLayouts['chrs'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['chrs'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">Khwarezmian</button>
@@ -229,9 +229,9 @@
                         <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Old-Sinaitic
                     </p>
                 </mat-tab>
-                <mat-tab label="ئۇيغۇرچە-Old Uyghur">
+                <mat-tab label="ئۇيغۇرچە-Old Uyghur-𐽳𐽱𐽴𐾀𐽵">
                     <p style="text-align: center; font-family: 'Noto Serif Old Uyghur'">
-                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; ئۇيغۇرچە - Old Uyghur
+                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; ئۇيغۇرچە - Old Uyghur - 𐽳𐽱𐽴𐾀𐽵
                     </p>
                 </mat-tab>
             </mat-tab-group>
@@ -3093,7 +3093,7 @@
                     </table>
                 </span>
                 <span *ngIf="toggleAbjad == false" style="width: 100%; height: 400px; display:block; overflow-y: scroll;text-align:center">
-                    <button mat-button aria-label="ئۇيغۇرچە-Old Uyghur" color="primary" matTooltip="{{localisedKeyboardLayouts['ougr'][2]}}" (click)="allAbjadTypeClicked('ougr')" *ngIf="keyboardLayouts['ougr'][7] < historyAbjad.value && (keyboardLayouts['ougr'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['ougr'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">ئۇيغۇرچە-Old Uyghur</button>
+                    <button mat-button aria-label="ئۇيغۇرچە-Old Uyghur-𐽳𐽱𐽴𐾀𐽵" color="primary" matTooltip="{{localisedKeyboardLayouts['ougr'][2]}}" (click)="allAbjadTypeClicked('ougr')" *ngIf="keyboardLayouts['ougr'][7] < historyAbjad.value && (keyboardLayouts['ougr'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['ougr'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">ئۇيغۇرچە-Old Uyghur</button>
                     <button mat-button aria-label="Old Sinaitic" color="primary" matTooltip="{{localisedKeyboardLayouts['sina'][2]}}" (click)="allAbjadTypeClicked('sina')" *ngIf="keyboardLayouts['sina'][7] < historyAbjad.value && (keyboardLayouts['sina'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['sina'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">Old Sinaitic</button>
                     <button mat-button aria-label="𐴌𐴟𐴇𐴥𐴝𐴚𐴒𐴙𐴝 𐴇𐴝𐴕𐴞𐴉𐴞" color="primary" matTooltip="{{localisedKeyboardLayouts['rohg'][2]}}" (click)="allAbjadTypeClicked('rohg')" *ngIf="keyboardLayouts['rohg'][7] < historyAbjad.value && (keyboardLayouts['rohg'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['rohg'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">𐴌𐴟𐴇𐴥𐴝𐴚𐴒𐴙𐴝 𐴇𐴝𐴕𐴞𐴉𐴞</button>
                     <button mat-button aria-label="Khwarezmian" color="primary" matTooltip="{{localisedKeyboardLayouts['chrs'][2]}}" (click)="allAbjadTypeClicked('chrs')" *ngIf="keyboardLayouts['chrs'][7] < historyAbjad.value && (keyboardLayouts['chrs'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['chrs'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">Khwarezmian</button>
@@ -3250,9 +3250,9 @@
                         <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Old-Sinaitic
                     </p>
                 </mat-tab>
-                <mat-tab label="ئۇيغۇرچە-Old Uyghur">
+                <mat-tab label="ئۇيغۇرچە-Old Uyghur-𐽳𐽱𐽴𐾀𐽵">
                     <p style="text-align: center; font-family: 'Noto Serif Old Uyghur'">
-                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; ئۇيغۇرچە - Old Uyghur
+                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; ئۇيغۇرچە - Old Uyghur - 𐽳𐽱𐽴𐾀𐽵
                     </p>
                 </mat-tab>
             </mat-tab-group>
@@ -6064,7 +6064,7 @@
                 </mat-panel-description>
                 </mat-expansion-panel-header> 
                 <span *ngIf="toggleAbjad == false" style="width: 100%; height: 400px; display:block; overflow-y: scroll;text-align:center">
-                    <button mat-button aria-label="ئۇيغۇرچە-Old Uyghur" color="primary" matTooltip="{{localisedKeyboardLayouts['ougr'][2]}}" (click)="allAbjadTypeClicked('ougr')" *ngIf="keyboardLayouts['ougr'][7] < historyAbjad.value && (keyboardLayouts['ougr'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['ougr'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">ئۇيغۇرچە-Old Uyghur</button>
+                    <button mat-button aria-label="ئۇيغۇرچە-Old Uyghur-𐽳𐽱𐽴𐾀𐽵" color="primary" matTooltip="{{localisedKeyboardLayouts['ougr'][2]}}" (click)="allAbjadTypeClicked('ougr')" *ngIf="keyboardLayouts['ougr'][7] < historyAbjad.value && (keyboardLayouts['ougr'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['ougr'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">ئۇيغۇرچە-Old Uyghur</button>
                     <button mat-button aria-label="Old Sinaitic" color="primary" matTooltip="{{localisedKeyboardLayouts['sina'][2]}}" (click)="allAbjadTypeClicked('sina')" *ngIf="keyboardLayouts['sina'][7] < historyAbjad.value && (keyboardLayouts['sina'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['sina'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">Old Sinaitic</button>
                     <button mat-button aria-label="𐴌𐴟𐴇𐴥𐴝𐴚𐴒𐴙𐴝 𐴇𐴝𐴕𐴞𐴉𐴞" color="primary" matTooltip="{{localisedKeyboardLayouts['rohg'][2]}}" (click)="allAbjadTypeClicked('rohg')" *ngIf="keyboardLayouts['rohg'][7] < historyAbjad.value && (keyboardLayouts['rohg'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['rohg'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">𐴌𐴟𐴇𐴥𐴝𐴚𐴒𐴙𐴝 𐴇𐴝𐴕𐴞𐴉𐴞</button>
                     <button mat-button aria-label="Khwarezmian" color="primary" matTooltip="{{localisedKeyboardLayouts['chrs'][2]}}" (click)="allAbjadTypeClicked('chrs')" *ngIf="keyboardLayouts['chrs'][7] < historyAbjad.value && (keyboardLayouts['chrs'][2].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || keyboardLayouts['chrs'][5].toLowerCase().indexOf(searchAbjad.value.toLowerCase()) !== -1 || searchAbjad.value == '')">Khwarezmian</button>
@@ -6254,9 +6254,9 @@
                         <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; Old-Sinaitic
                     </p>
                 </mat-tab>
-                <mat-tab label="ئۇيغۇرچە-Old Uyghur">
+                <mat-tab label="ئۇيغۇرچە-Old Uyghur-𐽳𐽱𐽴𐾀𐽵">
                     <p style="text-align: center; font-family: 'Noto Serif Old Uyghur'">
-                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; ئۇيغۇرچە - Old Uyghur
+                        <mat-icon aria-label="{{ 'Used to write' | translate }}" alt="{{ 'Used to write' | translate }}" matTooltip="{{ 'Used to write' | translate }}" style="padding-top: 5px;">history_edu</mat-icon> &nbsp;&nbsp;&nbsp;&nbsp; ئۇيغۇرچە - Old Uyghur - 𐽳𐽱𐽴𐾀𐽵
                     </p>
                 </mat-tab>
             </mat-tab-group>
