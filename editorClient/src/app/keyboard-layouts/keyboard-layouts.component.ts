@@ -2719,7 +2719,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
 
   async populateSuggestionsForLanguage(ISO_Code) {
     var self = this;
-    if (localStorage.getItem("ltpaToken") && ISO_Code == this.sessionManager.getFromSessionURL() && this.sessionManager.getOfflineOnly() == false)
+    if (ISO_Code == this.sessionManager.getFromSessionURL() && this.sessionManager.getOfflineOnly() == false)
       this.allSuggestionsForLanguage = await this.loadSuggestionsFile(ISO_Code);
     else if (this.sessionManager.getOfflineOnly()) {
       var self = this;
@@ -2752,7 +2752,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     return new Promise<any>((resolve, reject)=> {
       var language_script_name = (this.keyboardLayouts[ISO_Code][2].indexOf("(") > -1 && ISO_Code != "zhcn" && ISO_Code != "zhtw") ? this.keyboardLayouts[ISO_Code][2].toLowerCase().split("(")[0] : this.keyboardLayouts[ISO_Code][2].toLowerCase();
       language_script_name = (language_script_name.indexOf(" ") > -1) ? language_script_name.split(" ")[0] : language_script_name;
-      this.sessionManager.retrieveSuggestionsFromServer(ISO_Code).subscribe((suggestionlist) => {
+      /* this.sessionManager.retrieveSuggestionsFromServer(ISO_Code).subscribe((suggestionlist) => {
         console.info("[MUlTISCRIPTEDITOR] Suggestion for the currently used language is retrieved ", language_script_name);
         if (suggestionlist) {
             let myLanguageWordList = [{"words":[]}];
@@ -2763,7 +2763,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
           } else
             resolve([]);
       }, (errorNetwork) => {
-        console.info("[MUlTISCRIPTEDITOR] Unable to retrieve from Network ", errorNetwork);
+        console.info("[MUlTISCRIPTEDITOR] Unable to retrieve from Network ", errorNetwork); */
         console.info("[MUlTISCRIPTEDITOR] Suggestion for the currently used language is retrieved locally ", language_script_name);
         this.http.get<[]>(`assets/suggestionWords/${language_script_name}.json`).subscribe(
           suggestionlist => {
@@ -2781,7 +2781,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
             resolve([]);
           });
       });
-    });
+    //});
   }
 
   resetForAKeyboard() {

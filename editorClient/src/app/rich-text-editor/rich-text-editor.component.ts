@@ -260,7 +260,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     this.sessionManager.nonExplorationMode.subscribe((editorOnly) => {
       this.showEditor = (!this.calculatorOnly) ? editorOnly : false;
       setTimeout(() => {
-        if (editorOnly == true && this.sessionManager.getSessionSavedContent() != null && this.fullmodeCkEditor) {
+        if (editorOnly == true && this.sessionManager.getSessionSavedContent() != null && this.fullmodeCkEditor && this.fullmodeCkEditor.instance) {
           this.ckeditorContent = this.sessionManager.getSessionSavedContent();
           this.fullmodeCkEditor.instance.setData(this.ckeditorContent);
         }
@@ -296,7 +296,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
     });
 
     var self = this;
-    if (this.fullmodeCkEditor) {
+    if (this.fullmodeCkEditor && this.fullmodeCkEditor.instance) {
       // On content 'dom' of Editor attach handler for the click event of the document
       this.fullmodeCkEditor.instance.on( 'contentDom', (contentEvent) => {
         contentEvent.editor.editable().on('click', (event) => {
