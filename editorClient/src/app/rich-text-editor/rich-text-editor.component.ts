@@ -74,7 +74,9 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
 
   rtlLocales = ['adlm','ajam','ar','arc','avst','bal','ber','bsk','cana','chrs','chun','ckb','cprt','dv','egyd','elym','estr','ett','fa','gars','hatr','he','hung','idu','indus','jawi','jrb','khar','khaz','ks','kuli','kult','lad','lepo','linb','lydi','madn','mand','mani','mend','mer','mero','mnkar','nbat','nkoo','nshu','odu','orkh','ougr','pal','palm','phn','phyg','pice','ps','psal','rhg','rohg','sabe','safa','samr','sd','sert','sina','skr','sog','syrc','thaa','txg','txr','ug','ur','woal','wolf','xpr','xpu','xsa','yezi','yi'];
 
-  boustrophedonScripts: string[] = ['asom','avo','egyd','ett','hung','kmt','lepo','luw','maya','moon','phyg','pice','sabe','safa','sina','txr','wole','xsa'];
+  boustrophedonScripts: string[] = ['asom','egyd','ett','hung','kmt','lepo','luw','maya','moon','phyg','pice','sabe','safa','sina','txr','wole','xsa'];
+
+  reverseBoustrophedonScripts : string[] = ['avo','rongo'];
 
   swaraAbugidaType : string [] = ['ahom', 'aima', 'ari', 'bada', 'bali', 'batk', 'bhai', 'bhat', 'bhp', 'bla', 'bn', 'brah', 'bug', 'buhd', 'bya', 'cakm', 'cree', 'dham', 'diak', 'dite', 'dogr', 'dv', 'gong', 'gonm', 'gran', 'gu', 'gup', 'hano', 'hi', 'jv', 'kali', 'kawi', 'khar', 'khoj', 'khor', 'khud', 'km', 'kn', 'koch', 'kru', 'kthi', 'kuli', 'lana', 'leke', 'lepc', 'limb', 'lo', 'loma', 'maga', 'maha', 'mai', 'mani', 'mguj', 'ml', 'mni', 'modi', 'mr', 'mult', 'my', 'nand', 'newa', 'or', 'pa', 'phag', 'renc', 'rjng', 'sa', 'saur', 'scha', 'shan', 'shrd', 'si', 'sidd', 'snd', 'sora', 'soyo', 'sund', 'sylo', 'ta', 'tach', 'tagb', 'takr', 'talu', 'tamu', 'tang', 'te', 'tglg', 'th', 'thaa', 'tibt', 'tiga', 'tika', 'tirh', 'toch', 'zanb'];
 
@@ -952,7 +954,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       });
 
       this.sessionManager.renderBiDi.subscribe((scriptBoustrophedon)=>{
-        if (this.boustrophedonScripts.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+        if (this.boustrophedonScripts.indexOf(this.sessionManager.getFromSessionURL()) > -1 || this.reverseBoustrophedonScripts.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
           let content = this.fullmodeCkEditor.instance.getData();
           // element is 'p' or 'div' or 'span' : Character insert at cursor position
           // TODO - Multi scripts within 'p' or 'div' or 'span' then only render bi-di for explicitly detected scripts alone
@@ -966,7 +968,14 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                 } else
                   renderBiDiContent = renderBiDiContent + splitContent[i];
               }
-            } else if (scriptBoustrophedon == true) {
+            } else if (scriptBoustrophedon == true && this.boustrophedonScripts.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
+              for (let i = 0; i < splitContent.length; i++) {
+                if (i == (splitContent.length - 2)) {
+                  renderBiDiContent = renderBiDiContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='direction: ltr;unicode-bidi: bidi-override;transform: " + ((this.ckEditorConfiguration.contentsLangDirection == 'rtl')? "scaleX(-1)" : "none") + "'>");
+                } else
+                  renderBiDiContent = renderBiDiContent + splitContent[i];
+              }
+            } else if (scriptBoustrophedon == true && this.reverseBoustrophedonScripts.indexOf(this.sessionManager.getFromSessionURL()) > -1) {
               for (let i = 0; i < splitContent.length; i++) {
                 if (i == (splitContent.length - 2)) {
                   renderBiDiContent = renderBiDiContent + splitContent[splitContent.length - 2].replace(/<p>/g, "<p style='direction: ltr;unicode-bidi: bidi-override;transform: " + ((this.ckEditorConfiguration.contentsLangDirection == 'rtl')? "scaleX(-1)" : "none") + "'>");
@@ -1045,7 +1054,9 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
   imageAsContent(action, wide) {
     if (action) {
       let styleTBRL = (this.sessionManager.getFromSessionURL() == "ougr" && this.sessionManager.typeVertically.value == true) ? 'style="transform: rotate(-90deg);"' : '';
-      this.ckeditorContent = this.ckeditorContent + "<img " + styleTBRL + "  width='" + wide + "' height='" + (/[`´]+/i.test(action) ? "25px" : "20px") + "' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
+      wide = (this.sessionManager.getFromSessionURL() == "runr") ? '9px' : wide;
+      let high = (this.sessionManager.getFromSessionURL() == "runr") ? '12px' : ((this.sessionManager.getFromSessionURL() == "runr"));
+      this.ckeditorContent = this.ckeditorContent + "<img " + styleTBRL + "  width='" + wide + "' height='" + high + "' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> ";
       this.contentToEditor();
     }/* else if (this.unicode5AndHigher && this.ckeditorContent.indexOf("/> <img") > -1 && parseInt(this.rowPos) > 0 && parseInt(this.colPos) == 0 && this.position != "∞") {
       let insertImage = this.ckeditorContent.split("/> <img", this.rowPos).join("/> <img").length + 3;

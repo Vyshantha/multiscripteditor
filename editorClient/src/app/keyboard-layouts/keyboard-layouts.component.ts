@@ -1222,11 +1222,15 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
   isRTL: Boolean = false;
   
   rtlLocales : string[] = ['adlm','ajam','ar','arc','avst','bal','ber','bsk','cana','chrs','chun','ckb','cprt','dv','egyd','elym','estr','ett','fa','gars','hatr','he','hung','idu','indus','jawi','jrb','khar','khaz','ks','kuli','kult','lad','lepo','linb','lydi','madn','mand','mani','mend','mer','mero','mnkar','nbat','nkoo','nshu','odu','orkh','ougr','pal','palm','phn','phyg','pice','ps','psal','rhg','rohg','sabe','safa','samr','sd','sert','sina','skr','sog','syrc','thaa','txg','txr','ug','ur','woal','wolf','xpr','xpu','xsa','yezi','yi'];
-  boustrophedonScripts: string[] = ['asom','avo','egyd','ett','hung','kmt','lepo','luw','maya','moon','phyg','pice','sabe','safa','sina','txr','wole','xsa'];
+
+  boustrophedonScripts: string[] = ['asom','egyd','ett','hung','kmt','lepo','luw','maya','moon','phyg','pice','sabe','safa','sina','txr','wole','xsa'];
+  reverseBoustrophedonScripts : string[] = ['avo','rongo'];
+
   topToBottomLR: string[] = ['evn','galk','ja','ko','mnc','mon','oira','phag','shui','sog','soyo','zhcn','zhtw'];
   topToBottomRL: string[] = ['chun','idu','ja','ko','kuli','mero','nshu','ougr','txg','yii','zhcn','zhtw'];
   bottomToTopLR: string[] = ['btk','hano','ogam','tagb'];
   bottomToTopRL: string[] = ['ber'];
+
   layoutsSwitchHV: string[] = ['am','aztc','bla','cans','carr','cree','crew','dite','evn','galk','geez','hira','iba','iku','kata','maya','mnc','mon','nask','ndju','ogam','oira','oji','phag','soyo','vaii'];
   keyOrientationSwitch: string[] = ['evn','galk','mnc','mon','ogam','oira','phag','soyo'];
   keyDoNotRotate: string[] = ['am','dite','geez','iba','ndju','vaii'];
@@ -1472,7 +1476,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       } else {
         this.notToRotateKeys = false;
       }
-      if (this.boustrophedonScripts.indexOf(this.sessionManager.getFromSessionURL()) != -1) {
+      if (this.boustrophedonScripts.indexOf(this.sessionManager.getFromSessionURL()) != -1 || this.reverseBoustrophedonScripts.indexOf(this.sessionManager.getFromSessionURL()) != -1) {
         this.bidiLetters = true;
       } else {
         this.bidiLetters = false;
@@ -2022,7 +2026,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         } else {
           this.notToRotateKeys = false;
         }
-        if (this.boustrophedonScripts.indexOf(keysType) != -1) {
+        if (this.boustrophedonScripts.indexOf(keysType) != -1 || this.reverseBoustrophedonScripts.indexOf(keysType) != -1) {
           this.bidiLetters = true;
         } else {
           this.bidiLetters = false;
@@ -2041,7 +2045,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
         if (this.supportedLanguages.indexOf(keysType) > -1 && !this.calculatorOnly)
           this.populateSuggestionsForLanguage(keysType);
         this.sessionManager.itemCurrentKeyboard.next(this[this.keyboardLayouts[keysType][3]]);
-        if (this.boustrophedonScripts.indexOf(keysType) > -1) {
+        if (this.boustrophedonScripts.indexOf(keysType) > -1 || this.reverseBoustrophedonScripts.indexOf(keysType) > -1) {
           this.readingDir = "compare_arrows";
         } else if (this.bottomToTopRL.indexOf(keysType) > -1 || this.topToBottomLR.indexOf(keysType) > -1) {
           this.readingDir = "subdirectory_arrow_right";

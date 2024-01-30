@@ -2537,7 +2537,7 @@
                 <sup *ngIf="allowSuperScript && (isQwerty || isTransliterate) && character.sup && character.action === 'char'" class="charSuper">{{character.sup}}</sup>
             </div>
             <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') == -1">
-                <img src="{{character.src}}" [ngStyle]="{'width': fonts.value*1.4+'px', 'height': fonts.value*1.3+'px'}"/>
+                <img src="{{character.src}}" [ngStyle]="{'width': (character.src.indexOf('runr') > -1) ? fonts.value*0.6+'px' : fonts.value*1.4+'px', 'height': (character.src.indexOf('runr') > -1) ? fonts.value*0.9+'px' : fonts.value*1.3+'px'}"/>
             </div>
             <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') > -1" class="icon icon-{{character.src.split('/')[1]}}">
             </div>
@@ -5541,7 +5541,7 @@
                 <sup *ngIf="allowSuperScript && (isQwerty || isTransliterate) && character.sup && character.action === 'char'" class="charSuper">{{character.sup}}</sup>
             </div>
             <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') == -1">
-                <img src="{{character.src}}" [ngStyle]="{'width': fonts.value*1.4+'px', 'height': fonts.value*1.3+'px'}"/>
+                <img src="{{character.src}}" [ngStyle]="{'width': (character.src.indexOf('runr') > -1) ? fonts.value*0.6+'px' : fonts.value*1.4+'px', 'height': (character.src.indexOf('runr') > -1) ? fonts.value*0.9+'px' : fonts.value*1.3+'px'}"/>
             </div>
             <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') > -1" class="icon icon-{{character.src.split('/')[1]}}">
             </div>
@@ -8544,7 +8544,7 @@
                 <sup *ngIf="allowSuperScript && (isQwerty || isTransliterate) && character.sup && character.action === 'char'" class="charSuper">{{character.sup}}</sup>
             </div>
             <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') == -1">
-                <img src="{{character.src}}" [ngStyle]="{'width': fonts.value*1.4+'px', 'height': fonts.value*1.3+'px'}"/>
+                <img src="{{character.src}}" [ngStyle]="{'width': (character.src.indexOf('runr') > -1) ? fonts.value*0.6+'px' : fonts.value*1.4+'px', 'height': (character.src.indexOf('runr') > -1) ? fonts.value*0.9+'px' : fonts.value*1.3+'px'}"/>
             </div>
             <div *ngIf="showImageGlyph && character.src != null && character.src.indexOf('class') > -1" class="icon icon-{{character.src.split('/')[1]}}">
             </div>

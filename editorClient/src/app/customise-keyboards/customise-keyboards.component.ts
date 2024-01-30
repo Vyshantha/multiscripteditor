@@ -1304,7 +1304,9 @@ export class CustomiseKeyboardsComponent implements OnInit {
   rtlLocales : string[] = ['adlm','ajam','ar','arc','avst','bal','ber','bsk','cana','chrs','chun','ckb','cprt','dv','egyd','elym','estr','ett','fa','gars','hatr','he','hung','idu','indus','jawi','jrb','khar','khaz','ks','kuli','kult','lad','lepo','linb','lydi','madn','mand','mani','mend','mer','mero','mnkar','nbat','nkoo','nshu','odu','orkh','ougr','pal','palm','phn','phyg','pice','ps','psal','rhg','rohg','sabe','safa','samr','sd','sert','sina','skr','sog','syrc','thaa','txg','txr','ug','ur','woal','wolf','xpr','xpu','xsa','yezi','yi'];
   rtlNumerals : string [] = ['adlm','avst','chrs','ett','he','hung','khar','kult','lad','linb','linea','mend','mero','nbat','nkoo','odu','orkh','pal','palm','phn','psal','sog','wolf','xpr','yi'];
 
-  boustrophedonScripts: string[] = ['asom','avo','egyd','ett','hung','kmt','lepo','luw','maya','moon','phyg','pice','sabe','safa','sina','txr','wole','xsa'];
+  boustrophedonScripts: string[] = ['asom','egyd','ett','hung','kmt','lepo','luw','maya','moon','phyg','pice','sabe','safa','sina','txr','wole','xsa'];
+  reverseBoustrophedonScripts : string[] = ['avo','rongo'];
+
   topToBottomLR: string[] = ['galk','ja','ko','mnc','mon','oira','phag','shui','sog','soyo','zhcn','zhtw'];
   topToBottomRL: string[] = ['chun','idu','ja','ko','kuli','mero','nshu','ougr','txg','yii','zhcn','zhtw'];
   bottomToTopLR: string[] = ['btk','hano','ogam','tagb'];
@@ -1464,7 +1466,7 @@ export class CustomiseKeyboardsComponent implements OnInit {
         } else {
           this.enableRotateKeyboard = false;
         }
-        if (this.boustrophedonScripts.indexOf(keysType) != -1) {
+        if (this.boustrophedonScripts.indexOf(keysType) != -1 || this.reverseBoustrophedonScripts.indexOf(keysType) != -1) {
           this.bidiLetters = true;
         } else {
           this.bidiLetters = false;
