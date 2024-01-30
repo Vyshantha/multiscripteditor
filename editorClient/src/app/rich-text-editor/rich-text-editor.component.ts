@@ -449,7 +449,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                 self.fullmodeCkEditor.instance.focusManager.blur(true);
               }
               if ((event.data.domEvent["$"].key == "Alt" || event.data.domEvent["$"].key == "AltGraph" || event.data.domEvent["$"].key == "AltGr") && event.data.keyCode == 4456466 && self.layoutCurrentKeys.some(x => x.hasOwnProperty('altGr'))) {
-                if (self.sessionManager.itemAltGrKeyPressed.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrCapsExists.value == false) {
+                if (self.sessionManager.itemAltGrKeyPressed.value == false && self.sessionManager.itemShiftKeyPressed.value == false && self.sessionManager.itemAltGrCapsExists.value == true) {
                   setTimeout(() => {
                     self.sessionManager.setAltGrKeyPressed(true);
                     self._snackBar.open(self.translateForSnackBar[4], self.translateForSnackBar[0], {
