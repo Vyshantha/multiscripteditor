@@ -514,9 +514,10 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
                     self.imageAsContent(src, wide);
                   } else if (self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["action"] != "shift") {
                     if (self.typedWord.value != null) {
-                        self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
-                    } else 
+                      self.typedWord.next(self.typedWord.value + self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
+                    } else {
                       self.typedWord.next(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
+                    }
                     self.sessionManager.setCharFromKeyboard(self.layoutCurrentKeys[rowForSoftKey]["qwerty"][columnForSoftKey]["value"]);
                     self.sessionManager.typedKeysMap.next(self.typedWord.value);
                   }
@@ -1052,7 +1053,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
   }
 
   imageAsContent(action, wide) {
-    if (action) {
+    if (action && action.indexOf("ZWJ") == -1) {
       let styleTBRL = (this.sessionManager.getFromSessionURL() == "ougr" && this.sessionManager.typeVertically.value == true) ? 'style="transform: rotate(-90deg);"' : '';
       wide = (this.sessionManager.getFromSessionURL() == "runr") ? '9px' : wide;
       let high = (this.sessionManager.getFromSessionURL() == "runr") ? '12px' : ((this.sessionManager.getFromSessionURL() == "runr"));
@@ -1075,7 +1076,9 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
       this.ckeditorContent.split("<br />")[this.colPos] = this.ckeditorContent.split("<br />")[this.colPos].substr(0, insertImage) + "<img width='" + wide + "' height='" + (/[`´]+/i.test(action) ? "25px" : "20px") + "' src='" + action + "' alt='Image for " + action.split("/")[3] + " " + action.split("/")[4] + "'/> " + this.ckeditorContent.split("<br />")[this.colPos].substr(insertImage, lengthOfContent);
       this.ckeditorContent = this.ckeditorContent.split("<br />").join("");
       this.contentToEditor();
-    }*/
+    }*/ else if (action.indexOf("ZWJ") > -1) {
+      this.sessionManager.setCharFromKeyboard("\u200D");
+    }
   }
 
   contentToEditor() {
