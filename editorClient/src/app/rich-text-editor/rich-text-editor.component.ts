@@ -337,7 +337,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
         if (event.data.domEvent["$"].key != "Escape" && self.noSoftKeyboard == false) {
           let controlActionKey = false;
           // Ensure Cursor focus moved back to Editor
-          if (event.data.keyCode == 1114129 || event.data.keyCode == 1114336) {
+          if (event.data.keyCode == 1114129 || event.data.keyCode == 1114336 || event.data.keyCode == 1114203) {
             self.sessionManager.itemCtrlKeyPressed.next(true);
             self._snackBar.open(self.translateForSnackBar[6], "OK", {
               duration: 3000,
