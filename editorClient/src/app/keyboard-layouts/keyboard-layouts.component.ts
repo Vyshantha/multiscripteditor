@@ -2064,7 +2064,8 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.tabLoadShow(this, this.sessionManager.getFromSessionURL());
       this.layoutCurrentKeys = this[this.keyboardLayouts[this.sessionManager.getFromSessionURL()][3]];
       this.sessionManager.setInSessionOnlyKeyboard(true);
-      this.verifyThisKeyboardHasQwerty();
+      // TODO : When QWERTY does not exist how to switch back to Orthography type when multiple tabs are opened
+      // this.verifyThisKeyboardHasQwerty();
       this.initSwara();
     }
 

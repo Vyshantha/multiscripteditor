@@ -723,7 +723,7 @@ export class RichTextEditorComponent implements OnInit, AfterViewInit {
             }
             // Don't show the paste dialog for Ctrl+Shift+V
             if (event.data.name == "pastetext" && event.data.commandData.from == "keystrokeHandler") {
-                event.cancel();
+                //event.cancel();
             }
             self.pasteContentSetToEditor = true;
         });
