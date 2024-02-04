@@ -2064,6 +2064,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
       this.tabLoadShow(this, this.sessionManager.getFromSessionURL());
       this.layoutCurrentKeys = this[this.keyboardLayouts[this.sessionManager.getFromSessionURL()][3]];
       this.sessionManager.setInSessionOnlyKeyboard(true);
+      this.verifyThisKeyboardHasQwerty();
       this.initSwara();
     }
 
@@ -4205,7 +4206,7 @@ export class KeyboardLayoutsComponent implements OnInit, AfterViewInit {
     if (this.layoutCurrentKeys) {
       Object.keys(this.layoutCurrentKeys).map(element => {
         Object.keys(this.layoutCurrentKeys[element]).map(key => {
-          if(this.layoutCurrentKeys[element][key].indexOf("qwerty")) {
+          if(this.layoutCurrentKeys[element][key].indexOf("qwerty") > -1) {
             qwertyExists = true;
           }
         });
