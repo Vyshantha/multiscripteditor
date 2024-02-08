@@ -43,7 +43,7 @@ This website offers every writer all the tools necessary to ensure they are able
 24. Development Environment for Linux & Mac OS [here](https://github.com/Vyshantha/multiscripteditor/tree/main) and Windows OS contact me
 
 ### Server-side `NodeJS 16.x` based on Express server
-  Hosted on Salesforce Cloud - **Heroku : https://worldscriptsexplorer.herokuapp.com**
+  ~~Hosted on Salesforce Cloud - **Heroku : https://worldscriptsexplorer.herokuapp.com**~~
  
 ### Webserver based on `Angular Material, Core and CLI 14.x`
   Hosted on Firebase **Google : https://worldscriptsexplorer.page**
