@@ -1,6 +1,5 @@
-### Multi Script Editor (Collaborators are Welcome!!!!...) 😊
+## World Scripts Explorer (Collaborators are Welcome!!!!...) 😊
 
-### World Scripts Explorer - SaaS Offering
 This website offers every writer all the tools necessary to ensure they are able to construct their piece of work with ease.
 1. One could use the Keyboard Layouts which are seggregated over multiple **Script** or **Writing-System** types encompassing over 600 types from all over world including ancient, old, classical and constructed types):
  - [Abjad](https://www.omniglot.com/writing/abjads.htm)
