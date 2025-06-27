@@ -29,7 +29,7 @@ This website offers every writer all the tools necessary to ensure they are able
 17. The suggestions are regularly updated based on Natural Language Process - Standford Stanza NLP [@Stanza](https://github.com/stanfordnlp/stanza) (build `Python 3.7`) after sentence completion for each language or script
 18. Integrated [@EasyOCR](https://github.com/JaidedAI/EasyOCR) to detect text in images for 88 Languages 
 19. Use canvas to scribble or write or draw any Content and include in Editor
-20. Calculator ( `Simple` | `Scientific` ) integrated here and available as separate [*website*](https://worldscriptscalculator.app/) - [https://worldscriptscalculator.app/](https://worldscriptscalculator.app/)
+20. Calculator ( `Simple` | `Scientific` ) integrated here ~~and available as separate [*website*](https://worldscriptscalculator.app/) - [https://worldscriptscalculator.app/](https://worldscriptscalculator.app/)~~
 21. Webpage that are integrated through iFrames : 
   - Translation (https://tatoeba.org) 
   - Dictionary (https://glosbe.com/all-languages | https://bab.la/ | https://livingdictionaries.app/)
@@ -38,7 +38,7 @@ This website offers every writer all the tools necessary to ensure they are able
   - Linguistic Information (https://omniglot.com)
   - Wikipedia (https://wikipedia.org/wiki/)
 22. Session Management - The content and data typed by user is saved in the browser Local Storage for future use 
-23. Collect the World Scripts Explorer data by using REST API - see [Full Guide](https://worldscriptsexplorer.herokuapp.com)
+23. ~~Collect the World Scripts Explorer data by using REST API - see [Full Guide](https://worldscriptsexplorer.herokuapp.com)~~
 24. Development Environment for Linux & Mac OS [here](https://github.com/Vyshantha/multiscripteditor/tree/main) and Windows OS contact me
 
 ### Server-side `NodeJS 16.x` based on Express server
