@@ -10,9 +10,9 @@
   "author": "Vyshantha Simha",
   "license": "CC0",
   "dependencies": {
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.6",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.22.2",
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "properties-reader": "^2.2.0",
